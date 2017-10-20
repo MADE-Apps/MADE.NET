@@ -9,12 +9,16 @@
 
 namespace MADE.Controls
 {
+    using System.ComponentModel;
+
     using Android.Views;
+
+    using MADE.Controls.Design;
 
     /// <summary>
     /// Defines an interface for Android UI elements that use a template to define their appearance when rendered.
     /// </summary>
-    public interface IAndroidControl : IControl
+    public interface IAndroidControl : IControl, INotifyPropertyChanged
     {
         /// <summary>
         /// Gets the reference identifier for the control's layout.
@@ -25,6 +29,11 @@ namespace MADE.Controls
         /// Gets the view associated with the inflated layout.
         /// </summary>
         View View { get; }
+
+        /// <summary>
+        /// Gets or sets a color that provides the background of the control.
+        /// </summary>
+        Color BackgroundColor { get; set; }
 
         /// <summary>
         /// Retrieves the element from the instantiated control template by the given resource identifier.

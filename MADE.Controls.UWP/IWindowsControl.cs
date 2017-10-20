@@ -9,11 +9,18 @@
 
 namespace MADE.Controls
 {
+    using MADE.Controls.Design;
+
     /// <summary>
     /// Defines an interface for Windows UI elements that use a template to define their appearance when rendered.
     /// </summary>
     public interface IWindowsControl : IControl
     {
+        /// <summary>
+        /// Gets or sets a color that provides the background of the control.
+        /// </summary>
+        Color BackgroundColor { get; set; }
+
         /// <summary>
         /// Retrieves the given named element from the instantiated control template.
         /// </summary>

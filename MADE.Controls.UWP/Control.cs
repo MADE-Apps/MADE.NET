@@ -10,6 +10,9 @@
 namespace MADE.Controls
 {
     using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Media;
+
+    using MADE.Controls.Design;
 
     /// <summary>
     /// Defines an base class for UI elements that use a template to define their appearance when rendered.
@@ -36,6 +39,15 @@ namespace MADE.Controls
         {
             get => this.Visibility == Visibility.Visible;
             set => this.SetVisible(value);
+        }
+
+        /// <summary>
+        /// Gets or sets a color that provides the background of the control.
+        /// </summary>
+        public Color BackgroundColor
+        {
+            get => this.Background as SolidColorBrush;
+            set => this.Background = value;
         }
 
         /// <summary>

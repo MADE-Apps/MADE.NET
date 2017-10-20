@@ -12,7 +12,7 @@ namespace MADE.Controls.Design
     /// <summary>
     /// Defines a model for a UI element color.
     /// </summary>
-    public class Color
+    public class Color : IColor
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Color"/> class.
