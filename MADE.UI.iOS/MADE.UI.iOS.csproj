@@ -43,6 +43,9 @@
     <Compile Include="..\MADE.UI.UWP\Design\Color.cs">
       <Link>Design\Color.cs</Link>
     </Compile>
+    <Compile Include="..\MADE.UI.UWP\Layout\Thickness.cs">
+      <Link>Layout\Thickness.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +53,13 @@
       <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
       <Name>MADE.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
+    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
