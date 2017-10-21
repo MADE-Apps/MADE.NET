@@ -14,4 +14,8 @@
     <PackageReference Include="MADE.Analyzers" Version="1.0.6491.39580" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj" />
+  </ItemGroup>
+
 </Project>

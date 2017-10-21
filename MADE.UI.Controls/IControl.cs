@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls
+namespace MADE.UI.Controls
 {
     /// <summary>
     /// Defines an interface for UI elements that use a template to define their appearance when rendered.

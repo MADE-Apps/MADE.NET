@@ -8,9 +8,9 @@
     <ProjectGuid>{C7E54ACD-8B36-4318-A60C-D7EDDA63A26D}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>MADE.Controls</RootNamespace>
+    <RootNamespace>MADE.UI.Controls</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MADE.Controls.iOS</AssemblyName>
+    <AssemblyName>MADE.UI.Controls.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,15 +40,22 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MADE.Controls\Design\Color.cs">
-      <Link>Design\Color.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MADE.Controls\MADE.Controls.csproj">
-      <Project>{136456a7-33b6-43a1-a124-7d9159ce7706}</Project>
-      <Name>MADE.Controls</Name>
+    <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj">
+      <Project>{2469a729-c7f3-4a68-9d1b-f089951aadab}</Project>
+      <Name>MADE.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.iOS\MADE.UI.iOS.csproj">
+      <Project>{4d89de5e-1255-44c2-9482-d353917ed97a}</Project>
+      <Name>MADE.UI.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
+      <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
+      <Name>MADE.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

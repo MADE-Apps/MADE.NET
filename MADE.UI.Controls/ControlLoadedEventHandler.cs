@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls
+namespace MADE.UI.Controls
 {
     /// <summary>
     /// Defines a delegate for handling when a control has loaded.

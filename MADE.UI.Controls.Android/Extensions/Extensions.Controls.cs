@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls
+namespace MADE.UI.Controls
 {
     using Android.Views;
 

@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls.Design
+namespace MADE.UI.Design
 {
     /// <summary>
     /// Defines a model for a UI element color.

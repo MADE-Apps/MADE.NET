@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls
+namespace MADE.UI.Controls
 {
     using System;
     using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace MADE.Controls
     using Android.Views;
     using Android.Widget;
 
-    using MADE.Controls.Design;
+    using MADE.UI.Design;
 
     /// <summary>
     /// Defines an base class for UI elements that use a template to define their appearance when rendered.

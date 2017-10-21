@@ -7,9 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls
+namespace MADE.UI.Controls
 {
-    using MADE.Controls.Design;
+    using MADE.UI.Design;
 
     /// <summary>
     /// Defines an interface for Windows UI elements that use a template to define their appearance when rendered.

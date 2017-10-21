@@ -7,14 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls
+namespace MADE.UI.Controls
 {
     using System.ComponentModel;
 
     using Android.Util;
     using Android.Views;
 
-    using MADE.Controls.Design;
+    using MADE.UI.Design;
 
     /// <summary>
     /// Defines an interface for Android UI elements that use a template to define their appearance when rendered.

@@ -1,4 +1,4 @@
-﻿namespace MADE.Controls
+﻿namespace MADE.UI.Design
 {
     public interface IColor
     {

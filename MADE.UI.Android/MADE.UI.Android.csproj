@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{2FC17F7C-A6A8-44AF-B578-A03B7BFA5B65}</ProjectGuid>
+    <ProjectGuid>{1319A64A-5DA2-475B-ACF8-2884F892A371}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MADE.Controls</RootNamespace>
-    <AssemblyName>MADE.Controls.Android</AssemblyName>
+    <RootNamespace>MADE.UI</RootNamespace>
+    <AssemblyName>MADE.UI.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -44,27 +44,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MADE.Controls\Design\Color.cs">
+    <Compile Include="..\MADE.UI.UWP\Design\Color.cs">
       <Link>Design\Color.cs</Link>
     </Compile>
-    <Compile Include="Control.cs" />
-    <Compile Include="Extensions\Extensions.Controls.cs" />
-    <Compile Include="IAndroidControl.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MADE.Controls\MADE.Controls.csproj">
-      <Project>{136456a7-33b6-43a1-a124-7d9159ce7706}</Project>
-      <Name>MADE.Controls</Name>
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
+      <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
+      <Name>MADE.UI</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

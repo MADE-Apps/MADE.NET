@@ -7,9 +7,9 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.Controls
+namespace MADE.UI.Controls
 {
-    using MADE.Controls.Design;
+    using MADE.UI.Design;
 
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Media;
