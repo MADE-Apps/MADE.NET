@@ -42,6 +42,7 @@ namespace MADE.Controls
         protected Control(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)
         {
+            this.Initialize();
         }
 
         /// <summary>
@@ -53,6 +54,7 @@ namespace MADE.Controls
         protected Control(Context context)
             : base(context)
         {
+            this.Initialize();
         }
 
         /// <summary>
@@ -67,6 +69,7 @@ namespace MADE.Controls
         protected Control(Context context, IAttributeSet attrs)
             : base(context, attrs)
         {
+            this.Initialize(attrs);
         }
 
         /// <summary>
@@ -84,6 +87,7 @@ namespace MADE.Controls
         protected Control(Context context, IAttributeSet attrs, int defStyleAttr)
             : base(context, attrs, defStyleAttr)
         {
+            this.Initialize(attrs);
         }
 
         /// <summary>
@@ -104,6 +108,7 @@ namespace MADE.Controls
         protected Control(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes)
             : base(context, attrs, defStyleAttr, defStyleRes)
         {
+            this.Initialize(attrs);
         }
 
         /// <summary>
@@ -147,7 +152,7 @@ namespace MADE.Controls
         /// <summary>
         /// Gets the view associated with the inflated layout.
         /// </summary>
-        public View View { get; }
+        public View View { get; private set; }
 
         /// <summary>
         /// Gets or sets a color that provides the background of the control.
@@ -183,6 +188,14 @@ namespace MADE.Controls
         {
             return this.View?.FindViewById<TElement>(resourceId);
         }
+
+        /// <summary>
+        /// Loads the relevant control template so that it's parts can be referenced.
+        /// </summary>
+        /// <param name="attrs">
+        /// The XML attributes set.
+        /// </param>
+        public abstract void OnApplyTemplate(IAttributeSet attrs);
 
         /// <summary>
         /// Raises the property changed event for the specified property.
@@ -382,6 +395,20 @@ namespace MADE.Controls
             this.RaisePropertyChanged(propertyName);
 
             return true;
+        }
+
+        private void Initialize()
+        {
+            this.Initialize(null);
+        }
+
+        private void Initialize(IAttributeSet attrs)
+        {
+            this.View = View.Inflate(this.Context, this.LayoutReference, this);
+            this.OnApplyTemplate(attrs);
+
+            ControlLoadedEventHandler handler = this.ControlLoaded;
+            handler?.Invoke(this, new ControlLoadedEventArgs());
         }
     }
 }

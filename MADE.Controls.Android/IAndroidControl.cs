@@ -11,6 +11,7 @@ namespace MADE.Controls
 {
     using System.ComponentModel;
 
+    using Android.Util;
     using Android.Views;
 
     using MADE.Controls.Design;
@@ -49,5 +50,13 @@ namespace MADE.Controls
         /// </returns>
         TElement GetTemplateChild<TElement>(int resourceId)
             where TElement : View;
+
+        /// <summary>
+        /// Loads the relevant control template so that it's parts can be referenced.
+        /// </summary>
+        /// <param name="attrs">
+        /// The XML attributes set.
+        /// </param>
+        void OnApplyTemplate(IAttributeSet attrs);
     }
 }

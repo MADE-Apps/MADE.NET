@@ -9,10 +9,10 @@
 
 namespace MADE.Controls
 {
+    using MADE.Controls.Design;
+
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Media;
-
-    using MADE.Controls.Design;
 
     /// <summary>
     /// Defines an base class for UI elements that use a template to define their appearance when rendered.
