@@ -205,13 +205,13 @@ namespace MADE.UI.Design
         }
 
         /// <summary>
-        /// Checks the equality of the current color and the given object.
+        /// Determines whether the specified object is equal to the current object.
         /// </summary>
         /// <param name="obj">
-        /// The object to compare with.
+        /// The object to compare with the current object.
         /// </param>
         /// <returns>
-        /// Return true if the objects are equal.
+        /// Returns true if the specified object is equal to the current object.
         /// </returns>
         public override bool Equals(object obj)
         {

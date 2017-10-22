@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71E85111-8A1C-4B38-945F-F5B5E4CDF0E1}</ProjectGuid>
+    <ProjectGuid>{0311DCED-5B9D-4174-BFE7-01E5B080C4BB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MADE.UI</RootNamespace>
-    <AssemblyName>MADE.UI.UWP</AssemblyName>
+    <RootNamespace>MADE.UI.Controls</RootNamespace>
+    <AssemblyName>MADE.UI.Controls.HeaderedTextBlock.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
@@ -106,10 +106,9 @@
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Design\Color.cs" />
-    <Compile Include="Layout\Thickness.cs" />
+    <Compile Include="HeaderedTextBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Properties\MADE.UI.UWP.rd.xml" />
+    <EmbeddedResource Include="Properties\MADE.UI.Controls.HeaderedTextBlock.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MADE.Analyzers">
@@ -120,10 +119,37 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MADE.UI.Controls.HeaderedTextBlock\MADE.UI.Controls.HeaderedTextBlock.csproj">
+      <Project>{7f561d39-0b34-472f-b2f0-c4696f3d2e51}</Project>
+      <Name>MADE.UI.Controls.HeaderedTextBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls.UWP\MADE.UI.Controls.UWP.csproj">
+      <Project>{2c70160a-ffdd-4532-9572-12398b1c0722}</Project>
+      <Name>MADE.UI.Controls.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj">
+      <Project>{2469a729-c7f3-4a68-9d1b-f089951aadab}</Project>
+      <Name>MADE.UI.Controls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.UWP\MADE.UI.UWP.csproj">
+      <Project>{71e85111-8a1c-4b38-945f-f5b5e4cdf0e1}</Project>
+      <Name>MADE.UI.UWP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
       <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
       <Name>MADE.UI</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="HeaderedTextBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

@@ -69,7 +69,7 @@ namespace MADE.UI.Controls
         protected Control(Context context, IAttributeSet attrs)
             : base(context, attrs)
         {
-            this.Initialize(attrs);
+            this.Initialize(attrs, 0, 0);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace MADE.UI.Controls
         protected Control(Context context, IAttributeSet attrs, int defStyleAttr)
             : base(context, attrs, defStyleAttr)
         {
-            this.Initialize(attrs);
+            this.Initialize(attrs, defStyleAttr, 0);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace MADE.UI.Controls
         protected Control(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes)
             : base(context, attrs, defStyleAttr, defStyleRes)
         {
-            this.Initialize(attrs);
+            this.Initialize(attrs, defStyleAttr, defStyleRes);
         }
 
         /// <summary>
@@ -195,7 +195,13 @@ namespace MADE.UI.Controls
         /// <param name="attrs">
         /// The XML attributes set.
         /// </param>
-        public abstract void OnApplyTemplate(IAttributeSet attrs);
+        /// <param name="defStyleAttr">
+        /// The XML default style attribute.
+        /// </param>
+        /// <param name="defStyleRes">
+        /// The default style resource.
+        /// </param>
+        public abstract void OnApplyTemplate(IAttributeSet attrs, int defStyleAttr, int defStyleRes);
 
         /// <summary>
         /// Raises the property changed event for the specified property.
@@ -399,13 +405,13 @@ namespace MADE.UI.Controls
 
         private void Initialize()
         {
-            this.Initialize(null);
+            this.Initialize(null, 0, 0);
         }
 
-        private void Initialize(IAttributeSet attrs)
+        private void Initialize(IAttributeSet attrs, int defStyleAttr, int defStyleRes)
         {
             this.View = View.Inflate(this.Context, this.LayoutReference, this);
-            this.OnApplyTemplate(attrs);
+            this.OnApplyTemplate(attrs, defStyleAttr, defStyleRes);
 
             ControlLoadedEventHandler handler = this.ControlLoaded;
             handler?.Invoke(this, new ControlLoadedEventArgs());

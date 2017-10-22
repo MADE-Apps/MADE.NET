@@ -57,6 +57,12 @@ namespace MADE.UI.Controls
         /// <param name="attrs">
         /// The XML attributes set.
         /// </param>
-        void OnApplyTemplate(IAttributeSet attrs);
+        /// <param name="defStyleAttr">
+        /// The XML default style attribute.
+        /// </param>
+        /// <param name="defStyleRes">
+        /// The default style resource.
+        /// </param>
+        void OnApplyTemplate(IAttributeSet attrs, int defStyleAttr, int defStyleRes);
     }
 }

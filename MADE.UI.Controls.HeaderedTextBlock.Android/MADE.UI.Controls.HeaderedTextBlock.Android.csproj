@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1319A64A-5DA2-475B-ACF8-2884F892A371}</ProjectGuid>
+    <ProjectGuid>{B699C9A0-B99B-47C2-843F-6E48BF560B63}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MADE.UI</RootNamespace>
-    <AssemblyName>MADE.UI.Android</AssemblyName>
+    <RootNamespace>MADE.UI.Controls</RootNamespace>
+    <AssemblyName>MADE.UI.Controls.HeaderedTextBlock.Android</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
@@ -44,16 +44,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MADE.UI.UWP\Design\Color.cs">
-      <Link>Design\Color.cs</Link>
-    </Compile>
-    <Compile Include="..\MADE.UI.UWP\Layout\Thickness.cs">
-      <Link>Layout\Thickness.cs</Link>
-    </Compile>
+    <Compile Include="HeaderedTextBlock.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MADE.UI.Android\MADE.UI.Android.csproj">
+      <Project>{1319a64a-5da2-475b-acf8-2884f892a371}</Project>
+      <Name>MADE.UI.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls.Android\MADE.UI.Controls.Android.csproj">
+      <Project>{2fc17f7c-a6a8-44af-b578-a03b7bfa5b65}</Project>
+      <Name>MADE.UI.Controls.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls.HeaderedTextBlock\MADE.UI.Controls.HeaderedTextBlock.csproj">
+      <Project>{7f561d39-0b34-472f-b2f0-c4696f3d2e51}</Project>
+      <Name>MADE.UI.Controls.HeaderedTextBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj">
+      <Project>{2469a729-c7f3-4a68-9d1b-f089951aadab}</Project>
+      <Name>MADE.UI.Controls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
       <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
       <Name>MADE.UI</Name>
@@ -65,9 +76,6 @@
   <ItemGroup>
     <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
     <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\Values\Colors.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
