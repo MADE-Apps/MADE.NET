@@ -35,5 +35,15 @@ namespace MADE.UI.Controls
         /// Gets or sets a value indicating whether to hide the control if the <see cref="Text"/> is null or whitespace.
         /// </summary>
         bool HideIfNullOrWhiteSpace { get; set; }
+
+        /// <summary>
+        /// Updates the layout for the control based on the current <see cref="Orientation"/> value.
+        /// </summary>
+        void UpdateOrientation();
+
+        /// <summary>
+        /// Updates the visibility of the control based on the values of the <see cref="Header"/> and <see cref="Text"/> properties.
+        /// </summary>
+        void UpdateVisibility();
     }
 }

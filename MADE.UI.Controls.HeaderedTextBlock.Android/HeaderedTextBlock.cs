@@ -231,7 +231,10 @@ namespace MADE.UI.Controls
             this.UpdateOrientation();
         }
 
-        private void UpdateVisibility()
+        /// <summary>
+        /// Updates the visibility of the control based on the values of the <see cref="IHeaderedTextBlock.Header"/> and <see cref="IHeaderedTextBlock.Text"/> properties.
+        /// </summary>
+        public void UpdateVisibility()
         {
             if (!this.HideIfNullOrWhiteSpace || !string.IsNullOrWhiteSpace(this.Text))
             {
@@ -247,7 +250,10 @@ namespace MADE.UI.Controls
             }
         }
 
-        private void UpdateOrientation()
+        /// <summary>
+        /// Updates the layout for the control based on the current <see cref="IHeaderedTextBlock.Orientation"/> value.
+        /// </summary>
+        public void UpdateOrientation()
         {
             this.container?.SetOrientation(this.Orientation);
         }
