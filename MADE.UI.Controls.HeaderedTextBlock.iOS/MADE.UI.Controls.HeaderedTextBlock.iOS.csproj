@@ -5,12 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C7E54ACD-8B36-4318-A60C-D7EDDA63A26D}</ProjectGuid>
+    <ProjectGuid>{076BB7AA-CE1F-476F-8541-27F25C3BDD9C}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <RootNamespace>MADE.UI.Controls</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MADE.UI.Controls.iOS</AssemblyName>
+    <AssemblyName>MADE.UI.Controls.HeaderedTextBlock.iOS</AssemblyName>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,15 +42,23 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control.cs" />
-    <Compile Include="Extensions\Extensions.Controls.cs" />
-    <Compile Include="IIOSControl.cs" />
+    <Compile Include="HeaderedTextBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MADE.Common.iOS\MADE.Common.iOS.csproj">
       <Project>{d739f564-5b24-43d1-aa85-de0a888c2bb6}</Project>
       <Name>MADE.Common.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls.HeaderedTextBlock\MADE.UI.Controls.HeaderedTextBlock.csproj">
+      <Project>{7f561d39-0b34-472f-b2f0-c4696f3d2e51}</Project>
+      <Name>MADE.UI.Controls.HeaderedTextBlock</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls.iOS\MADE.UI.Controls.iOS.csproj">
+      <Project>{c7e54acd-8b36-4318-a60c-d7edda63a26d}</Project>
+      <Name>MADE.UI.Controls.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
@@ -68,11 +78,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
+    <InterfaceDefinition Include="HeaderedTextBlock.xib">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
