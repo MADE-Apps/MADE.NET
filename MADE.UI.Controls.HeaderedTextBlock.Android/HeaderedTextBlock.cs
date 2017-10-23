@@ -111,11 +111,6 @@ namespace MADE.UI.Controls
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the user can interact with the control.
-        /// </summary>
-        public override bool IsEnabled { get; set; }
-
-        /// <summary>
         /// Gets the reference identifier for the control's layout.
         /// </summary>
         public override int LayoutReference => Resource.Layout.HeaderedTextBlock;

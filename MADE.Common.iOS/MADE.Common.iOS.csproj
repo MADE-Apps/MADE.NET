@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C7E54ACD-8B36-4318-A60C-D7EDDA63A26D}</ProjectGuid>
+    <ProjectGuid>{D739F564-5B24-43D1-AA85-DE0A888C2BB6}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>MADE.UI.Controls</RootNamespace>
+    <RootNamespace>MADE</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MADE.UI.Controls.iOS</AssemblyName>
+    <AssemblyName>MADE.Common.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -40,39 +40,10 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Control.cs" />
-    <Compile Include="Extensions\Extensions.Controls.cs" />
-    <Compile Include="IIOSControl.cs" />
+    <Compile Include="Enums\AssociationPolicy.cs" />
+    <Compile Include="Extensions\Extensions.NSLayoutConstraint.cs" />
+    <Compile Include="Extensions\Extensions.NSObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MADE.Common.iOS\MADE.Common.iOS.csproj">
-      <Project>{d739f564-5b24-43d1-aa85-de0a888c2bb6}</Project>
-      <Name>MADE.Common.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
-    </ProjectReference>
-    <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj">
-      <Project>{2469a729-c7f3-4a68-9d1b-f089951aadab}</Project>
-      <Name>MADE.UI.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MADE.UI.iOS\MADE.UI.iOS.csproj">
-      <Project>{4d89de5e-1255-44c2-9482-d353917ed97a}</Project>
-      <Name>MADE.UI.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
-    </ProjectReference>
-    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
-      <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
-      <Name>MADE.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
