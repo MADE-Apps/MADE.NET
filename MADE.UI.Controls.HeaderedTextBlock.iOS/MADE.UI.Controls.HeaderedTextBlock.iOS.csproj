@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="HeaderedTextBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HeaderedTextBlock.designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MADE.Common.iOS\MADE.Common.iOS.csproj">

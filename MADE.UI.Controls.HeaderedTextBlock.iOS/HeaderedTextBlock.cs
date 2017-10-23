@@ -10,20 +10,18 @@
 namespace MADE.UI.Controls
 {
     using System;
-    using System.CodeDom.Compiler;
     using System.ComponentModel;
 
     using Foundation;
 
     using MADE.UI.Layout;
-
     using UIKit;
 
     /// <summary>
     /// Defines a UI element representing read-only text with a header component.
     /// </summary>
     [DesignTimeVisible(true)]
-    public class HeaderedTextBlock : Control, IHeaderedTextBlock
+    public partial class HeaderedTextBlock : Control, IHeaderedTextBlock
     {
         private string header;
 
@@ -103,13 +101,7 @@ namespace MADE.UI.Controls
         /// </summary>
         public override string NibName => "HeaderedTextBlock";
 
-        [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
-        private UILabel HeaderUiLabel { get; set; }
-
-        [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
-        private UILabel TextUiLabel { get; set; }
+        public override UIView Root => this.RootView;
 
         /// <summary>
         /// Loads the relevant control template so that it's parts can be referenced.
@@ -121,26 +113,6 @@ namespace MADE.UI.Controls
 
             this.UpdateVisibility();
             this.UpdateOrientation();
-        }
-
-        /// <summary>
-        /// Cleans up the designer outlets.
-        /// </summary>
-        public override void ReleaseDesignerOutlets()
-        {
-            if (this.HeaderUiLabel != null)
-            {
-                this.HeaderUiLabel.Dispose();
-                this.HeaderUiLabel = null;
-            }
-
-            if (this.TextUiLabel != null)
-            {
-                this.TextUiLabel.Dispose();
-                this.TextUiLabel = null;
-            }
-
-            base.ReleaseDesignerOutlets();
         }
 
         /// <summary>

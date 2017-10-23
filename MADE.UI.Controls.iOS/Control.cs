@@ -68,13 +68,6 @@ namespace MADE.UI.Controls
         public abstract string NibName { get; }
 
         /// <summary>
-        /// Gets or sets the root view.
-        /// </summary>
-        [Outlet]
-        [GeneratedCode("iOS Designer", "1.0")]
-        public UIView RootView { get; set; }
-
-        /// <summary>
         /// Gets or sets a value indicating whether the user can interact with the control.
         /// </summary>
         [Export("IsEnabled"), Browsable(true)]
@@ -102,6 +95,8 @@ namespace MADE.UI.Controls
             }
         }
 
+        public abstract UIView Root { get; }
+
         /// <summary>
         /// Called after the object has been loaded from the nib file. Overriders must call base.AwakeFromNib().
         /// </summary>
@@ -121,18 +116,6 @@ namespace MADE.UI.Controls
         /// Loads the relevant control template so that it's parts can be referenced.
         /// </summary>
         public abstract void OnApplyTemplate();
-
-        /// <summary>
-        /// Cleans up the designer outlets.
-        /// </summary>
-        public virtual void ReleaseDesignerOutlets()
-        {
-            if (this.RootView != null)
-            {
-                this.RootView.Dispose();
-                this.RootView = null;
-            }
-        }
 
         /// <summary>
         /// Raises the property changed event for the specified property.
@@ -338,17 +321,15 @@ namespace MADE.UI.Controls
         {
             NSBundle.MainBundle.LoadNib(this.NibName, this, null);
 
-            if (this.RootView == null)
+            if (this.Root != null)
             {
-                return;
+                this.AddSubview(this.Root);
+
+                this.OnApplyTemplate();
+
+                ControlLoadedEventHandler handler = this.ControlLoaded;
+                handler?.Invoke(this, new ControlLoadedEventArgs());
             }
-
-            this.AddSubview(this.RootView);
-
-            this.OnApplyTemplate();
-
-            ControlLoadedEventHandler handler = this.ControlLoaded;
-            handler?.Invoke(this, new ControlLoadedEventArgs());
         }
     }
 }

@@ -24,18 +24,13 @@ namespace MADE.UI.Controls
         string NibName { get; }
 
         /// <summary>
-        /// Gets or sets the root view.
+        /// Gets the view associated with the root of the control.
         /// </summary>
-        UIView RootView { get; set; }
+        UIView Root { get; }
 
         /// <summary>
         /// Loads the relevant control template so that it's parts can be referenced.
         /// </summary>
         void OnApplyTemplate();
-
-        /// <summary>
-        /// Cleans up the designer outlets.
-        /// </summary>
-        void ReleaseDesignerOutlets();
     }
 }
