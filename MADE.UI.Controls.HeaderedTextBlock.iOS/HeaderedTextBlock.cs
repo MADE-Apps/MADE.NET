@@ -73,6 +73,7 @@ namespace MADE.UI.Controls
         /// <summary>
         /// Gets or sets the orientation the header and text should layout as.
         /// </summary>
+        [Export("Orientation"), Browsable(true)]
         public Orientation Orientation
         {
             get => this.orientation;
@@ -86,6 +87,7 @@ namespace MADE.UI.Controls
         /// <summary>
         /// Gets or sets a value indicating whether to hide the control if the <see cref="IHeaderedTextBlock.Text"/> is null or whitespace.
         /// </summary>
+        [Export("HideIfNullOrWhiteSpace"), Browsable(true)]
         public bool HideIfNullOrWhiteSpace
         {
             get => this.hideIfNullOrWhiteSpace;
@@ -120,6 +122,7 @@ namespace MADE.UI.Controls
         /// </summary>
         public void UpdateOrientation()
         {
+            this.ContainerView?.SetOrientation(this.Orientation);
         }
 
         /// <summary>

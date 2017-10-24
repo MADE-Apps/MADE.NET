@@ -15,6 +15,10 @@ namespace MADE.UI.Controls
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIStackView ContainerView { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel HeaderUiLabel { get; set; }
 
         [Outlet]
@@ -27,6 +31,11 @@ namespace MADE.UI.Controls
 
         void ReleaseDesignerOutlets ()
         {
+            if (ContainerView != null) {
+                ContainerView.Dispose ();
+                ContainerView = null;
+            }
+
             if (HeaderUiLabel != null) {
                 HeaderUiLabel.Dispose ();
                 HeaderUiLabel = null;
