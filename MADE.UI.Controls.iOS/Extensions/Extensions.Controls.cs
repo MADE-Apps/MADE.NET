@@ -82,15 +82,19 @@ namespace MADE.UI.Controls
         /// </returns>
         public static bool IsVisible(this UIView view)
         {
-            NSNumber isVisibleInt = new NSNumber(0);
+            NSNumber isVisibleInt = new NSNumber(1);
             object associatedObject = view.GetAssociatedObject(VisibilityKey);
             if (associatedObject != null)
             {
                 isVisibleInt = (bool)(NSNumber)associatedObject;
             }
 
-            bool.TryParse(isVisibleInt.Int32Value.ToString(), out bool isVisible);
-            return isVisible;
+            if (isVisibleInt.Int32Value == 1)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         private static void ClearMargins(UIView view)
