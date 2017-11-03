@@ -40,11 +40,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Design\" />
+    <Folder Include="Design\Styling\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HeaderedTextBlock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HeaderedTextBlock.designer.cs" />
+    <Compile Include="Design\Styling\DefaultHeaderedTextBlockStyle.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MADE.Common.iOS\MADE.Common.iOS.csproj">

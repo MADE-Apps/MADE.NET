@@ -38,6 +38,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Design\Styling\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\MADE.UI.UWP\Design\Color.cs">
@@ -47,6 +49,8 @@
       <Link>Layout\Thickness.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Design\Styling\StyleBase.cs" />
+    <Compile Include="Design\Styling\UILabelStyle.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">

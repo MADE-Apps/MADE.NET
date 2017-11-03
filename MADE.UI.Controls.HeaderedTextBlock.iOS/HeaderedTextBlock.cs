@@ -13,7 +13,8 @@ namespace MADE.UI.Controls
     using System.ComponentModel;
 
     using Foundation;
-
+    using MADE.UI.Controls.Design.Styling;
+    using MADE.UI.Design.Styling;
     using MADE.UI.Layout;
     using UIKit;
 
@@ -31,6 +32,9 @@ namespace MADE.UI.Controls
 
         private Orientation orientation;
 
+        private UILabelStyle headerStyle;
+        private UILabelStyle textStyle;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="HeaderedTextBlock"/> class.
         /// </summary>
@@ -40,6 +44,8 @@ namespace MADE.UI.Controls
         public HeaderedTextBlock(IntPtr handle)
             : base(handle)
         {
+            this.headerStyle = DefaultHeaderedTextBlockStyle.DefaultHeaderStyle;
+            this.textStyle = DefaultHeaderedTextBlockStyle.DefaultTextStyle;
         }
 
         /// <summary>
@@ -73,6 +79,7 @@ namespace MADE.UI.Controls
         /// <summary>
         /// Gets or sets the orientation the header and text should layout as.
         /// </summary>
+        [Export("Orientation"), Browsable(true)]
         public Orientation Orientation
         {
             get => this.orientation;
@@ -86,6 +93,7 @@ namespace MADE.UI.Controls
         /// <summary>
         /// Gets or sets a value indicating whether to hide the control if the <see cref="IHeaderedTextBlock.Text"/> is null or whitespace.
         /// </summary>
+        [Export("HideIfNullOrWhiteSpace"), Browsable(true)]
         public bool HideIfNullOrWhiteSpace
         {
             get => this.hideIfNullOrWhiteSpace;
@@ -93,6 +101,34 @@ namespace MADE.UI.Controls
             {
                 this.Set(() => this.HideIfNullOrWhiteSpace, ref this.hideIfNullOrWhiteSpace, value);
                 this.UpdateVisibility();
+            }
+        }
+
+        public UILabelStyle HeaderStyle
+        {
+            get
+            {
+                return headerStyle;
+            }
+
+            set
+            {
+                this.Set(() => this.HeaderStyle, ref this.headerStyle, value);
+                this.UpdateHeader();
+            }
+        }
+
+        public UILabelStyle TextStyle
+        {
+            get
+            {
+                return textStyle;
+            }
+
+            set
+            {
+                this.Set(() => this.TextStyle, ref this.textStyle, value);
+                this.UpdateText();
             }
         }
 
@@ -120,6 +156,7 @@ namespace MADE.UI.Controls
         /// </summary>
         public void UpdateOrientation()
         {
+            this.ContainerView?.SetOrientation(this.Orientation);
         }
 
         /// <summary>
@@ -129,13 +166,11 @@ namespace MADE.UI.Controls
         {
             if (!this.HideIfNullOrWhiteSpace || !string.IsNullOrWhiteSpace(this.Text))
             {
-                this.IsVisible = true;
                 this.HeaderUiLabel?.SetVisible(!string.IsNullOrWhiteSpace(this.Header));
                 this.TextUiLabel?.SetVisible(!string.IsNullOrWhiteSpace(this.Text));
             }
             else
             {
-                this.IsVisible = false;
                 this.HeaderUiLabel?.SetVisible(false);
                 this.TextUiLabel?.SetVisible(false);
             }
@@ -145,6 +180,8 @@ namespace MADE.UI.Controls
         {
             if (this.TextUiLabel != null)
             {
+                this.TextStyle?.Apply(this.TextUiLabel);
+
                 this.TextUiLabel.Text = this.Text;
             }
         }
@@ -153,6 +190,8 @@ namespace MADE.UI.Controls
         {
             if (this.HeaderUiLabel != null)
             {
+                this.HeaderStyle?.Apply(this.HeaderUiLabel);
+
                 this.HeaderUiLabel.Text = this.Header;
             }
         }

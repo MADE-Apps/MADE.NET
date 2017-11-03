@@ -110,10 +110,24 @@ namespace MADE.UI.Design
 #if __IOS__
         public Color(UIKit.UIColor color)
         {
-            this.A = (byte)(color.CIColor.Alpha * 255);
-            this.R = (byte)(color.CIColor.Red * 255);
-            this.G = (byte)(color.CIColor.Green * 255);
-            this.B = (byte)(color.CIColor.Blue * 255);
+            if (color != null && color.CGColor != null)
+            {
+                if (color.CGColor.NumberOfComponents == 2)
+                {
+                    var rgb = (byte)(color.CGColor.Components[0] * 255);
+                    this.R = rgb;
+                    this.G = rgb;
+                    this.B = rgb;
+                    this.A = (byte)(color.CGColor.Components[1] * 255);
+                }
+                else
+                {
+                    this.R = (byte)(color.CGColor.Components[0] * 255);
+                    this.G = (byte)(color.CGColor.Components[1] * 255);
+                    this.B = (byte)(color.CGColor.Components[2] * 255);
+                    this.A = (byte)(color.CGColor.Components[3] * 255);
+                }
+            }
         }
 
         public static implicit operator Color(UIKit.UIColor color)
@@ -184,6 +198,21 @@ namespace MADE.UI.Design
         /// </returns>
         public static bool operator ==(Color color1, Color color2)
         {
+            if (ReferenceEquals(color1, color2))
+            {
+                return true;
+            }
+
+            if (ReferenceEquals(color1, null))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(color2, null))
+            {
+                return false;
+            }
+
             return color1.Equals(color2);
         }
 
@@ -201,7 +230,7 @@ namespace MADE.UI.Design
         /// </returns>
         public static bool operator !=(Color color1, Color color2)
         {
-            return !color1.Equals(color2);
+            return !(color1 == color2);
         }
 
         /// <summary>
