@@ -4,6 +4,10 @@
 
 MADE App Components aims to provide a collection of easy to user features to make app development easier for applications built with C#.
 
+## Made with MADE
+
+Want to highlight a project you've published or are building using the MADE Apps Components libraries? Send an e-mail to us at made-apps@outlook.com and we'll promote your project here on our front page!
+
 ## Builds
 
 No builds are currently available for the MADE App Components project.
