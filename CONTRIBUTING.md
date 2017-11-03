@@ -30,4 +30,3 @@ We're including Unit Tests and UI tests for the project. While we will aim to ha
 
 As well as testing, we aim to document the entire project in terms of both developer guidelines such as these and our own API documentation. If you find something that is wrong or is missing, again, feel free to raise an issue or contribute towards the documentation.
 
-## A Special Thanks To You
