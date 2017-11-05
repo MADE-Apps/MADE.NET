@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{DD543EEB-8283-40E6-8BB4-3ED14274517B}"
 EndProject
@@ -508,8 +508,6 @@ Global
 		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.AppStore|x86.Build.0 = Release|Any CPU
 		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.AppStore|x86.Deploy.0 = Release|Any CPU
 		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.Debug|ARM.Build.0 = Debug|Any CPU
 		{26BEFC2B-AF82-41FB-AF3E-E0C8F8243509}.Debug|ARM.Deploy.0 = Debug|Any CPU
@@ -868,7 +866,6 @@ Global
 		{55D198F1-CD16-418E-9DBD-CA720E46251F}.AppStore|x86.ActiveCfg = Release|iPhoneSimulator
 		{55D198F1-CD16-418E-9DBD-CA720E46251F}.AppStore|x86.Build.0 = Release|iPhoneSimulator
 		{55D198F1-CD16-418E-9DBD-CA720E46251F}.Debug|Any CPU.ActiveCfg = Debug|iPhoneSimulator
-		{55D198F1-CD16-418E-9DBD-CA720E46251F}.Debug|Any CPU.Build.0 = Debug|iPhoneSimulator
 		{55D198F1-CD16-418E-9DBD-CA720E46251F}.Debug|ARM.ActiveCfg = Debug|iPhoneSimulator
 		{55D198F1-CD16-418E-9DBD-CA720E46251F}.Debug|ARM.Build.0 = Debug|iPhoneSimulator
 		{55D198F1-CD16-418E-9DBD-CA720E46251F}.Debug|iPhone.ActiveCfg = Debug|iPhone
@@ -988,8 +985,6 @@ Global
 		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.AppStore|x86.Build.0 = Release|Any CPU
 		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.AppStore|x86.Deploy.0 = Release|Any CPU
 		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.Debug|ARM.ActiveCfg = Debug|Any CPU
 		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.Debug|ARM.Build.0 = Debug|Any CPU
 		{EE4FFD11-4071-4D93-AE46-416489B7F1EA}.Debug|ARM.Deploy.0 = Debug|Any CPU

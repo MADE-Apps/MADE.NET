@@ -2,7 +2,7 @@
 
 # MADE App Components
 
-MADE App Components aims to provide a collection of easy to user features to make app development easier for applications built with C#.
+MADE App Components aims to provide a collection of easy to use features to make app development easier for applications built with C#.
 
 ## Made with MADE
 
@@ -10,7 +10,10 @@ Want to highlight a project you've published or are building using the MADE Apps
 
 ## Builds
 
-No builds are currently available for the MADE App Components project.
+| Branch | Status |
+| ------ | ------ |
+| MADE.App.Components.CI | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/18/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
+| MADE.App.Components.Release | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/19/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
 
 ## Available Components
 
