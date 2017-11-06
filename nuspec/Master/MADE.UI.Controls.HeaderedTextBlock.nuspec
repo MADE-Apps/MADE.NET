@@ -48,6 +48,8 @@
 
     <file src="..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="lib\uap10.0.16299.0" />
     <file src="..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.xml" target="lib\uap10.0.16299.0" />
+    <file src="..\MADE.UI.Controls.HeaderedTextBlock.UWP\Themes\Generic.xaml" target="lib\uap10.0.16299.0\Themes"/>
+    <file src="..\MADE.UI.Controls.HeaderedTextBlock.UWP\HeaderedTextBlock.xaml" target="lib\uap10.0.16299.0"/>
     <file src="..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.dll" target="lib\uap10.0.16299.0" />
     <file src="..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.xml" target="lib\uap10.0.16299.0" />
 

@@ -114,9 +114,6 @@
     <EmbeddedResource Include="Properties\MADE.UI.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MADE.Analyzers">
-      <Version>1.0.6491.39580</Version>
-    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.1</Version>
     </PackageReference>
