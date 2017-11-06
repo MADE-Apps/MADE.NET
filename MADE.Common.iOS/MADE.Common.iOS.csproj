@@ -5,12 +5,12 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{4D89DE5E-1255-44C2-9482-D353917ED97A}</ProjectGuid>
+    <ProjectGuid>{D739F564-5B24-43D1-AA85-DE0A888C2BB6}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>MADE.UI</RootNamespace>
+    <RootNamespace>MADE</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MADE.UI.iOS</AssemblyName>
+    <AssemblyName>MADE.Common.iOS</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -38,32 +38,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Design\Styling\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MADE.UI.UWP\Design\Color.cs">
-      <Link>Design\Color.cs</Link>
-    </Compile>
-    <Compile Include="..\MADE.UI.UWP\Layout\Thickness.cs">
-      <Link>Layout\Thickness.cs</Link>
-    </Compile>
+    <Compile Include="Enums\AssociationPolicy.cs" />
+    <Compile Include="Extensions\Extensions.NSLayoutConstraint.cs" />
+    <Compile Include="Extensions\Extensions.NSObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Design\Styling\StyleBase.cs" />
-    <Compile Include="Design\Styling\UILabelStyle.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
-      <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
-      <Name>MADE.UI</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

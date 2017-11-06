@@ -3,112 +3,38 @@
 //   Copyright (c) MADE Apps.
 // </copyright>
 // <summary>
-//   Defines an base class for UI elements that use a template to define their appearance when rendered.
+//   Defines a base class for UI elements that use a template to define their appearance when rendered.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace MADE.UI.Controls
 {
     using System;
+    using System.CodeDom.Compiler;
     using System.Collections.Generic;
     using System.ComponentModel;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Runtime.CompilerServices;
 
-    using Android.Content;
-    using Android.Graphics.Drawables;
-    using Android.Runtime;
-    using Android.Util;
-    using Android.Views;
-    using Android.Widget;
+    using Foundation;
 
-    using MADE.UI.Design;
+    using UIKit;
 
     /// <summary>
     /// Defines a base class for UI elements that use a template to define their appearance when rendered.
     /// </summary>
-    public abstract class Control : FrameLayout, IAndroidControl
+    public abstract class Control : UIView, IIOSControl, IComponent
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Control"/> class.
         /// </summary>
-        /// <param name="javaReference">
-        /// The Java reference.
+        /// <param name="handle">
+        /// The handle.
         /// </param>
-        /// <param name="transfer">
-        /// The JNI handle ownership.
-        /// </param>
-        protected Control(IntPtr javaReference, JniHandleOwnership transfer)
-            : base(javaReference, transfer)
+        protected Control(IntPtr handle)
+            : base(handle)
         {
-            this.Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Control"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The Android context.
-        /// </param>
-        protected Control(Context context)
-            : base(context)
-        {
-            this.Initialize();
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Control"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The Android context.
-        /// </param>
-        /// <param name="attrs">
-        /// The XML attributes set.
-        /// </param>
-        protected Control(Context context, IAttributeSet attrs)
-            : base(context, attrs)
-        {
-            this.Initialize(attrs, 0, 0);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Control"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The Android context.
-        /// </param>
-        /// <param name="attrs">
-        /// The XML attributes set.
-        /// </param>
-        /// <param name="defStyleAttr">
-        /// The XML default style attribute.
-        /// </param>
-        protected Control(Context context, IAttributeSet attrs, int defStyleAttr)
-            : base(context, attrs, defStyleAttr)
-        {
-            this.Initialize(attrs, defStyleAttr, 0);
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Control"/> class.
-        /// </summary>
-        /// <param name="context">
-        /// The Android context.
-        /// </param>
-        /// <param name="attrs">
-        /// The XML attributes set.
-        /// </param>
-        /// <param name="defStyleAttr">
-        /// The XML default style attribute.
-        /// </param>
-        /// <param name="defStyleRes">
-        /// The default style resource.
-        /// </param>
-        protected Control(Context context, IAttributeSet attrs, int defStyleAttr, int defStyleRes)
-            : base(context, attrs, defStyleAttr, defStyleRes)
-        {
-            this.Initialize(attrs, defStyleAttr, defStyleRes);
         }
 
         /// <summary>
@@ -127,16 +53,41 @@ namespace MADE.UI.Controls
         public event PropertyChangingEventHandler PropertyChanging;
 
         /// <summary>
+        /// Represents the method that handles the <see cref="Disposed" /> event of a component.
+        /// </summary>
+        public event EventHandler Disposed;
+
+        /// <summary>
+        /// Gets or sets the <see cref="ISite"/> associated with the <see cref="IComponent" />.
+        /// </summary>
+        public ISite Site { get; set; }
+
+        /// <summary>
+        /// Gets the name of the nib to load.
+        /// </summary>
+        public abstract string NibName { get; }
+
+        /// <summary>
         /// Gets or sets a value indicating whether the user can interact with the control.
         /// </summary>
-        public virtual bool IsEnabled { get; set; }
+        [Export("IsEnabled"), Browsable(true)]
+        public bool IsEnabled
+        {
+            get => this.UserInteractionEnabled;
+            set
+            {
+                this.UserInteractionEnabled = value;
+                this.RaisePropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Gets or sets a value indicating whether the control is visible to the user.
         /// </summary>
+        [Export("IsVisible"), Browsable(true)]
         public bool IsVisible
         {
-            get => this.Visibility == ViewStates.Visible;
+            get => this.IsVisible();
             set
             {
                 this.SetVisible(value);
@@ -144,64 +95,27 @@ namespace MADE.UI.Controls
             }
         }
 
-        /// <summary>
-        /// Gets the reference identifier for the control's layout.
-        /// </summary>
-        public abstract int LayoutReference { get; }
+        public abstract UIView Root { get; }
 
         /// <summary>
-        /// Gets the view associated with the inflated layout.
+        /// Called after the object has been loaded from the nib file. Overriders must call base.AwakeFromNib().
         /// </summary>
-        public View View { get; private set; }
-
-        /// <summary>
-        /// Gets or sets a color that provides the background of the control.
-        /// </summary>
-        public Color BackgroundColor
+        public override void AwakeFromNib()
         {
-            get
-            {
-                ColorDrawable colorDrawable = this.Background as ColorDrawable;
-                return colorDrawable?.Color ?? Android.Graphics.Color.Transparent;
-            }
-            set
-            {
-                this.SetBackgroundColor(value);
-                this.RaisePropertyChanged();
-            }
-        }
+            base.AwakeFromNib();
 
-        /// <summary>
-        /// Retrieves the element from the instantiated control template by the given resource identifier.
-        /// </summary>
-        /// <param name="resourceId">
-        /// The element resource identifier.
-        /// </param>
-        /// <typeparam name="TElement">
-        /// The type of element to retrieve.
-        /// </typeparam>
-        /// <returns>
-        /// Returns the element from the template, if the element is found.
-        /// </returns>
-        public TElement GetTemplateChild<TElement>(int resourceId)
-            where TElement : View
-        {
-            return this.View?.FindViewById<TElement>(resourceId);
+            if (this.Site != null && this.Site.DesignMode)
+            {
+                return;
+            }
+
+            this.Initialize();
         }
 
         /// <summary>
         /// Loads the relevant control template so that it's parts can be referenced.
         /// </summary>
-        /// <param name="attrs">
-        /// The XML attributes set.
-        /// </param>
-        /// <param name="defStyleAttr">
-        /// The XML default style attribute.
-        /// </param>
-        /// <param name="defStyleRes">
-        /// The default style resource.
-        /// </param>
-        public abstract void OnApplyTemplate(IAttributeSet attrs, int defStyleAttr, int defStyleRes);
+        public abstract void OnApplyTemplate();
 
         /// <summary>
         /// Raises the property changed event for the specified property.
@@ -405,16 +319,17 @@ namespace MADE.UI.Controls
 
         private void Initialize()
         {
-            this.Initialize(null, 0, 0);
-        }
+            NSBundle.MainBundle.LoadNib(this.NibName, this, null);
 
-        private void Initialize(IAttributeSet attrs, int defStyleAttr, int defStyleRes)
-        {
-            this.View = View.Inflate(this.Context, this.LayoutReference, this);
-            this.OnApplyTemplate(attrs, defStyleAttr, defStyleRes);
+            if (this.Root != null)
+            {
+                this.AddSubview(this.Root);
 
-            ControlLoadedEventHandler handler = this.ControlLoaded;
-            handler?.Invoke(this, new ControlLoadedEventArgs());
+                this.OnApplyTemplate();
+
+                ControlLoadedEventHandler handler = this.ControlLoaded;
+                handler?.Invoke(this, new ControlLoadedEventArgs());
+            }
         }
     }
 }

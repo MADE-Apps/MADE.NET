@@ -40,9 +40,19 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control.cs" />
+    <Compile Include="Extensions\Extensions.Controls.cs" />
+    <Compile Include="IIOSControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Extensions\Extensions.UIStackView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MADE.Common.iOS\MADE.Common.iOS.csproj">
+      <Project>{d739f564-5b24-43d1-aa85-de0a888c2bb6}</Project>
+      <Name>MADE.Common.iOS</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj">
       <Project>{2469a729-c7f3-4a68-9d1b-f089951aadab}</Project>
       <Name>MADE.UI.Controls</Name>
