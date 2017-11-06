@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Controls", "Controls", "{DD543EEB-8283-40E6-8BB4-3ED14274517B}"
 EndProject
@@ -44,6 +44,12 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.UI.Controls.HeaderedTextBlock.Android", "MADE.UI.Controls.HeaderedTextBlock.Android\MADE.UI.Controls.HeaderedTextBlock.Android.csproj", "{B699C9A0-B99B-47C2-843F-6E48BF560B63}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Playground.UWP", "MADE.Playground.UWP\MADE.Playground.UWP.csproj", "{3B3232DD-EBED-4E8F-99F7-E5FFF8367A87}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{F9613086-D3BC-4AE3-BF89-881A2D3CFC11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Validation", "Validation", "{3BBDD7DA-969A-4392-9A59-8A6E6EDE174D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Data.Validation", "MADE.Data.Validation\MADE.Data.Validation.csproj", "{C969410E-27CB-4E36-AB90-3F31E0450179}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -277,6 +283,22 @@ Global
 		{3B3232DD-EBED-4E8F-99F7-E5FFF8367A87}.Release|x86.ActiveCfg = Release|x86
 		{3B3232DD-EBED-4E8F-99F7-E5FFF8367A87}.Release|x86.Build.0 = Release|x86
 		{3B3232DD-EBED-4E8F-99F7-E5FFF8367A87}.Release|x86.Deploy.0 = Release|x86
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|ARM.Build.0 = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|x64.Build.0 = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Debug|x86.Build.0 = Debug|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|ARM.ActiveCfg = Release|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|ARM.Build.0 = Release|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|x64.ActiveCfg = Release|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|x64.Build.0 = Release|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|x86.ActiveCfg = Release|Any CPU
+		{C969410E-27CB-4E36-AB90-3F31E0450179}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +323,8 @@ Global
 		{0311DCED-5B9D-4174-BFE7-01E5B080C4BB} = {99F1B79F-4429-4262-A530-2EB5E1C8D933}
 		{B699C9A0-B99B-47C2-843F-6E48BF560B63} = {99F1B79F-4429-4262-A530-2EB5E1C8D933}
 		{3B3232DD-EBED-4E8F-99F7-E5FFF8367A87} = {835CE285-784A-4121-AC03-1E0ABC6A8D10}
+		{3BBDD7DA-969A-4392-9A59-8A6E6EDE174D} = {F9613086-D3BC-4AE3-BF89-881A2D3CFC11}
+		{C969410E-27CB-4E36-AB90-3F31E0450179} = {3BBDD7DA-969A-4392-9A59-8A6E6EDE174D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3921AD86-E6C0-4436-8880-2D9EDFAD6151}

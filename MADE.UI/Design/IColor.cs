@@ -1,5 +1,17 @@
-﻿namespace MADE.UI.Design
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IColor.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an interface for a color component.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace MADE.UI.Design
 {
+    /// <summary>
+    /// Defines an interface for a color component.
+    /// </summary>
     public interface IColor
     {
         /// <summary>
