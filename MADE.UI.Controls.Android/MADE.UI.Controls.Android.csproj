@@ -68,14 +68,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
     <AndroidResource Include="Resources\Layout\HeaderedTextBlock.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Values\Styles.xml" />

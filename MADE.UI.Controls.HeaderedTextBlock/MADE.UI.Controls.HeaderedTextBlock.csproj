@@ -14,10 +14,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MADE.Analyzers" Version="1.0.6491.39580" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj" />
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj" />
   </ItemGroup>

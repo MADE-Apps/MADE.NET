@@ -72,13 +72,6 @@
       <Name>MADE.UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

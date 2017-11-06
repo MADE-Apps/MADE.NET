@@ -60,12 +60,5 @@
       <Name>MADE.UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.Common.dll" />
-    <Analyzer Include="..\packages\MADE.Analyzers.1.0.6491.39580\analyzers\dotnet\cs\MADE.Analyzers.dll" />
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
