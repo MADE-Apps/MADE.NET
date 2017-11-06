@@ -5,6 +5,14 @@
     <RootNamespace>MADE.UI.Controls</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\MADE.UI.Controls.HeaderedTextBlock.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.UI.Controls.HeaderedTextBlock.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="MADE.Analyzers" Version="1.0.6491.39580" />
   </ItemGroup>
