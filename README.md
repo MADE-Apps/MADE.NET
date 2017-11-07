@@ -19,11 +19,11 @@ Want to highlight a project you've published or are building using the MADE Apps
 
 | Component | Description | Public | Prerelease |
 | ------ | ------ | ------ | ------ |
-| Common | This package contains a collection of extensions, helpers and components for cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Common.svg)](https://www.nuget.org/packages/MADE.Common/) |
-| Data.Validation | This package contains assemblies for running data validation on .NET objects in cross-platform applications with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.svg)](https://www.nuget.org/packages/MADE.Data.Validation/) |
-| UI | This package contains assemblies for handling UI components in cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.svg)](https://www.nuget.org/packages/MADE.UI/) |
-| UI.Controls | This package contains assemblies for helping to build custom controls in cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.svg)](https://www.nuget.org/packages/MADE.UI.Controls/) |
-| UI.Controls.HeaderedTextBlock | This package contains a control consisting of a read-only text field with a header for cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.HeaderedTextBlock/) |
+| Common | Collection of extensions, helpers and components for cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Common.svg)](https://www.nuget.org/packages/MADE.Common/) |
+| Data.Validation | Assemblies for running data validation on objects for cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.svg)](https://www.nuget.org/packages/MADE.Data.Validation/) |
+| UI | Assemblies for handling UI components for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.svg)](https://www.nuget.org/packages/MADE.UI/) |
+| UI.Controls | Assemblies for helping to build custom UI elements for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.svg)](https://www.nuget.org/packages/MADE.UI.Controls/) |
+| UI.Controls.HeaderedTextBlock | A control consisting of a read-only text field with a header for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.HeaderedTextBlock/) |
 
 ## Contributing
 
