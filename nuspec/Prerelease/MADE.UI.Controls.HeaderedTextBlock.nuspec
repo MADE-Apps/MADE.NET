@@ -51,11 +51,11 @@
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.dll" target="lib\uap10.0.16299.0" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.xml" target="lib\uap10.0.16299.0" />
 
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\ARM\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-arm\native"/>
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\ARM\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-arm\native"/>
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\x64\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-x64\native"/>
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\x64\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-x64\native"/>
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-x86\native"/>
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-x86\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\ARM\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-arm\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\ARM\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-arm\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\x64\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-x64\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\x64\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-x64\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-x86\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-x86\native"/>
   </files>
 </package>

@@ -33,12 +33,12 @@
     <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.dll" target="lib\uap10.0.16299.0" />
     <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.xml" target="lib\uap10.0.16299.0" />
 
-    <file src="..\..\MADE.UI.UWP\ARM\Release\MADE.UI.UWP.dll" target="runtimes\win10-arm\native"/>
-    <file src="..\..\MADE.UI.UWP\ARM\Release\MADE.UI.UWP.pri" target="runtimes\win10-arm\native"/>
-    <file src="..\..\MADE.UI.UWP\x64\Release\MADE.UI.UWP.dll" target="runtimes\win10-x64\native"/>
-    <file src="..\..\MADE.UI.UWP\x64\Release\MADE.UI.UWP.pri" target="runtimes\win10-x64\native"/>
-    <file src="..\..\MADE.UI.UWP\Release\MADE.UI.UWP.dll" target="runtimes\win10-x86\native"/>
-    <file src="..\..\MADE.UI.UWP\Release\MADE.UI.UWP.pri" target="runtimes\win10-x86\native"/>
+    <file src="..\..\MADE.UI.UWP\bin\ARM\Release\MADE.UI.UWP.dll" target="runtimes\win10-arm\native"/>
+    <file src="..\..\MADE.UI.UWP\bin\ARM\Release\MADE.UI.UWP.pri" target="runtimes\win10-arm\native"/>
+    <file src="..\..\MADE.UI.UWP\bin\x64\Release\MADE.UI.UWP.dll" target="runtimes\win10-x64\native"/>
+    <file src="..\..\MADE.UI.UWP\bin\x64\Release\MADE.UI.UWP.pri" target="runtimes\win10-x64\native"/>
+    <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.UWP.dll" target="runtimes\win10-x86\native"/>
+    <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.UWP.pri" target="runtimes\win10-x86\native"/>
 
   </files>
 </package>
