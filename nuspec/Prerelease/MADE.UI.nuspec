@@ -15,30 +15,30 @@
     <tags>MADE Apps UI Common Extensions Helpers Components Collections Runtime NET UWP Android iOS Web PCL</tags>
   </metadata>
   <files>
-    <file src="..\MADE.UI\bin\Release\netstandard2.0\MADE.UI.dll" target="lib\netstandard2.0" />
-    <file src="..\MADE.UI\bin\Release\netstandard2.0\MADE.UI.xml" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.UI\bin\Release\netstandard2.0\MADE.UI.dll" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.UI\bin\Release\netstandard2.0\MADE.UI.xml" target="lib\netstandard2.0" />
 
-    <file src="..\MADE.UI.Android\bin\Release\MADE.UI.Android.dll" target="lib\MonoAndroid10" />
-    <file src="..\MADE.UI.Android\bin\Release\MADE.UI.Android.xml" target="lib\MonoAndroid10" />
-    <file src="..\MADE.UI.Android\bin\Release\MADE.UI.dll" target="lib\MonoAndroid10" />
-    <file src="..\MADE.UI.Android\bin\Release\MADE.UI.xml" target="lib\MonoAndroid10" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.Android.dll" target="lib\MonoAndroid10" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.Android.xml" target="lib\MonoAndroid10" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.dll" target="lib\MonoAndroid10" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.xml" target="lib\MonoAndroid10" />
 
-    <file src="..\MADE.UI.iOS\bin\Release\MADE.UI.iOS.dll" target="lib\Xamarin.iOS10" />
-    <file src="..\MADE.UI.iOS\bin\Release\MADE.UI.iOS.xml" target="lib\Xamarin.iOS10" />
-    <file src="..\MADE.UI.iOS\bin\Release\MADE.UI.dll" target="lib\Xamarin.iOS10" />
-    <file src="..\MADE.UI.iOS\bin\Release\MADE.UI.xml" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.UI.iOS\bin\Release\MADE.UI.iOS.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.UI.iOS\bin\Release\MADE.UI.iOS.xml" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.UI.iOS\bin\Release\MADE.UI.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.UI.iOS\bin\Release\MADE.UI.xml" target="lib\Xamarin.iOS10" />
 
-    <file src="..\MADE.UI.UWP\bin\Release\MADE.UI.UWP.dll" target="lib\uap10.0.16299.0" />
-    <file src="..\MADE.UI.UWP\bin\Release\MADE.UI.UWP.xml" target="lib\uap10.0.16299.0" />
-    <file src="..\MADE.UI.UWP\bin\Release\MADE.UI.dll" target="lib\uap10.0.16299.0" />
-    <file src="..\MADE.UI.UWP\bin\Release\MADE.UI.xml" target="lib\uap10.0.16299.0" />
+    <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.UWP.dll" target="lib\uap10.0.16299.0" />
+    <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.UWP.xml" target="lib\uap10.0.16299.0" />
+    <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.dll" target="lib\uap10.0.16299.0" />
+    <file src="..\..\MADE.UI.UWP\bin\Release\MADE.UI.xml" target="lib\uap10.0.16299.0" />
 
-    <file src="..\MADE.UI.UWP\ARM\Release\MADE.UI.UWP.dll" target="runtimes\win10-arm\native"/>
-    <file src="..\MADE.UI.UWP\ARM\Release\MADE.UI.UWP.pri" target="runtimes\win10-arm\native"/>
-    <file src="..\MADE.UI.UWP\x64\Release\MADE.UI.UWP.dll" target="runtimes\win10-x64\native"/>
-    <file src="..\MADE.UI.UWP\x64\Release\MADE.UI.UWP.pri" target="runtimes\win10-x64\native"/>
-    <file src="..\MADE.UI.UWP\Release\MADE.UI.UWP.dll" target="runtimes\win10-x86\native"/>
-    <file src="..\MADE.UI.UWP\Release\MADE.UI.UWP.pri" target="runtimes\win10-x86\native"/>
+    <file src="..\..\MADE.UI.UWP\ARM\Release\MADE.UI.UWP.dll" target="runtimes\win10-arm\native"/>
+    <file src="..\..\MADE.UI.UWP\ARM\Release\MADE.UI.UWP.pri" target="runtimes\win10-arm\native"/>
+    <file src="..\..\MADE.UI.UWP\x64\Release\MADE.UI.UWP.dll" target="runtimes\win10-x64\native"/>
+    <file src="..\..\MADE.UI.UWP\x64\Release\MADE.UI.UWP.pri" target="runtimes\win10-x64\native"/>
+    <file src="..\..\MADE.UI.UWP\Release\MADE.UI.UWP.dll" target="runtimes\win10-x86\native"/>
+    <file src="..\..\MADE.UI.UWP\Release\MADE.UI.UWP.pri" target="runtimes\win10-x86\native"/>
 
   </files>
 </package>

@@ -15,7 +15,7 @@
     <tags>MADE Apps Common Extensions Helpers Components Collections Runtime NET UWP Android iOS Web PCL</tags>
   </metadata>
   <files>
-    <file src="..\MADE.Common.iOS\bin\Release\MADE.Common.iOS.dll" target="lib\Xamarin.iOS10" />
-    <file src="..\MADE.Common.iOS\bin\Release\MADE.Common.iOS.xml" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.Common.iOS\bin\Release\MADE.Common.iOS.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.Common.iOS\bin\Release\MADE.Common.iOS.xml" target="lib\Xamarin.iOS10" />
   </files>
 </package>

@@ -15,8 +15,8 @@
     <tags>MADE Apps Data Validation Rules Common Extensions Helpers Components Collections Runtime NET UWP Android iOS Web PCL</tags>
   </metadata>
   <files>
-    <file src="..\MADE.Data.Validation\bin\Release\netstandard2.0\MADE.Data.Validation.dll" target="lib\netstandard2.0" />
-    <file src="..\MADE.Data.Validation\bin\Release\netstandard2.0\MADE.Data.Validation.xml" target="lib\netstandard2.0" />
-    <file src="..\MADE.Data.Validation\bin\Release\netstandard2.0\en\MADE.Data.Validation.resources.dll" target="lib\netstandard2.0\en" />
+    <file src="..\..\MADE.Data.Validation\bin\Release\netstandard2.0\MADE.Data.Validation.dll" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.Data.Validation\bin\Release\netstandard2.0\MADE.Data.Validation.xml" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.Data.Validation\bin\Release\netstandard2.0\en\MADE.Data.Validation.resources.dll" target="lib\netstandard2.0\en" />
   </files>
 </package>
