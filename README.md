@@ -13,11 +13,17 @@ Want to highlight a project you've published or are building using the MADE Apps
 | Branch | Status |
 | ------ | ------ |
 | MADE.App.Components.CI | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/18/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
-| MADE.App.Components.Release | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/19/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
+| MADE.App.Components.Release | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/20/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
 
 ## Available Components
 
-No components are currently available for the MADE App Components project.
+| Component | Description | Public | Prerelease |
+| ------ | ------ | ------ | ------ |
+| Common | Collection of extensions, helpers and components for cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Common.svg)](https://www.nuget.org/packages/MADE.Common/) |
+| Data.Validation | Assemblies for running data validation on objects for cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.svg)](https://www.nuget.org/packages/MADE.Data.Validation/) |
+| UI | Assemblies for handling UI components for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.svg)](https://www.nuget.org/packages/MADE.UI/) |
+| UI.Controls | Assemblies for helping to build custom UI elements for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.svg)](https://www.nuget.org/packages/MADE.UI.Controls/) |
+| UI.Controls.HeaderedTextBlock | A control consisting of a read-only text field with a header for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.HeaderedTextBlock/) |
 
 ## Contributing
 
