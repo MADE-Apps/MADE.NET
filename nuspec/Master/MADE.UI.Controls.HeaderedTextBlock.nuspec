@@ -41,8 +41,8 @@
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Android\bin\Release\MADE.UI.Controls.HeaderedTextBlock.dll" target="lib\MonoAndroid10" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Android\bin\Release\MADE.UI.Controls.HeaderedTextBlock.xml" target="lib\MonoAndroid10" />
 
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.iOS\bin\Release\MADE.UI.Controls.iOS.HeaderedTextBlock.dll" target="lib\Xamarin.iOS10" />
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.iOS\bin\Release\MADE.UI.Controls.iOS.HeaderedTextBlock.xml" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.iOS\bin\Release\MADE.UI.Controls.HeaderedTextBlock.iOS.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.iOS\bin\Release\MADE.UI.Controls.HeaderedTextBlock.iOS.xml" target="lib\Xamarin.iOS10" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.iOS\bin\Release\MADE.UI.Controls.HeaderedTextBlock.dll" target="lib\Xamarin.iOS10" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.iOS\bin\Release\MADE.UI.Controls.HeaderedTextBlock.xml" target="lib\Xamarin.iOS10" />
 
