@@ -134,6 +134,14 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MADE.Common\MADE.Common.csproj">
+      <Project>{b6e60519-bee5-4fb3-a093-7cfdd6e66e11}</Project>
+      <Name>MADE.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.Data.Validation\MADE.Data.Validation.csproj">
+      <Project>{c969410e-27cb-4e36-ab90-3f31e0450179}</Project>
+      <Name>MADE.Data.Validation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.UI.Controls.HeaderedTextBlock.UWP\MADE.UI.Controls.HeaderedTextBlock.UWP.csproj">
       <Project>{0311dced-5b9d-4174-bfe7-01e5b080c4bb}</Project>
       <Name>MADE.UI.Controls.HeaderedTextBlock.UWP</Name>

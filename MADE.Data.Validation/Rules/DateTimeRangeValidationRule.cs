@@ -12,6 +12,7 @@ namespace MADE.Data.Validation.Rules
     using System;
     using System.Globalization;
 
+    using MADE.Common;
     using MADE.Data.Validation.Strings;
 
     /// <summary>
@@ -47,6 +48,12 @@ namespace MADE.Data.Validation.Rules
 
             this.UpdateErrorMessage();
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to include the time component when checking the range.
+        /// Default is true.
+        /// </summary>
+        public bool IncludeTimeInRange { get; set; } = true;
 
         /// <summary>
         /// Gets or sets the minimum date in the valid range.
@@ -98,7 +105,8 @@ namespace MADE.Data.Validation.Rules
             }
 
             DateTime temp;
-            return DateTime.TryParse(valueString, out temp) && temp >= this.MinDate && temp <= this.MaxDate;
+            return DateTime.TryParse(valueString, out temp) && temp.IsGreaterThanOrEqualTo(this.MinDate, this.IncludeTimeInRange)
+                   && temp.IsLessThanOrEqualTo(this.MaxDate, this.IncludeTimeInRange);
         }
 
         private void UpdateErrorMessage()

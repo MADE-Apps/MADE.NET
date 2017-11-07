@@ -71,6 +71,14 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MADE.Common\MADE.Common.csproj">
+      <Project>{b6e60519-bee5-4fb3-a093-7cfdd6e66e11}</Project>
+      <Name>MADE.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.Data.Validation\MADE.Data.Validation.csproj">
+      <Project>{c969410e-27cb-4e36-ab90-3f31e0450179}</Project>
+      <Name>MADE.Data.Validation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.UI.Android\MADE.UI.Android.csproj">
       <Project>{1319a64a-5da2-475b-acf8-2884f892a371}</Project>
       <Name>MADE.UI.Android</Name>
