@@ -3,7 +3,7 @@
 //   Copyright (c) MADE Apps.
 // </copyright>
 // <summary>
-//   Defines a collection of common extensions for <see cref="DateTime" /> objects.
+//   Defines a collection of common extensions for DateTime objects.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
