@@ -44,12 +44,17 @@
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.1.2.0\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\TestModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\Common\Extensions\DateTimeExtensionTests.cs" />
+    <Compile Include="Tests\Data\Caching\FileSystem\FileDataCacheProviderTests.cs" />
     <Compile Include="Tests\Data\Validation\Rules\DateTimeRangeValidationRuleTests.cs" />
     <Compile Include="Tests\Data\Validation\Rules\DateTimeValidationRuleTests.cs" />
     <Compile Include="Tests\Data\Validation\Rules\DoubleValidationRuleTests.cs" />
@@ -62,9 +67,21 @@
       <Project>{b6e60519-bee5-4fb3-a093-7cfdd6e66e11}</Project>
       <Name>MADE.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MADE.Data.Caching.FileSystem\MADE.Data.Caching.FileSystem.csproj">
+      <Project>{4b039d52-9896-4b03-a861-b4a0eae3f9cd}</Project>
+      <Name>MADE.Data.Caching.FileSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.Data.Caching\MADE.Data.Caching.csproj">
+      <Project>{5f877f1b-3ce7-4391-af76-72bfafa652e8}</Project>
+      <Name>MADE.Data.Caching</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.Data.Validation\MADE.Data.Validation.csproj">
       <Project>{c969410e-27cb-4e36-ab90-3f31e0450179}</Project>
       <Name>MADE.Data.Validation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.Networking\MADE.Networking.csproj">
+      <Project>{ce84c6da-837b-4bdc-ab4f-2b908076b3b2}</Project>
+      <Name>MADE.Networking</Name>
     </ProjectReference>
     <ProjectReference Include="..\MADE.UI.Controls.HeaderedTextBlock\MADE.UI.Controls.HeaderedTextBlock.csproj">
       <Project>{7f561d39-0b34-472f-b2f0-c4696f3d2e51}</Project>
@@ -82,6 +99,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
