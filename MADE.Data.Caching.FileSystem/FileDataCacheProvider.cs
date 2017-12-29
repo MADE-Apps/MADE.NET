@@ -34,7 +34,7 @@ namespace MADE.Data.Caching.FileSystem
 
         private string cacheIndexFilePath;
 
-        /// <summary>
+	    /// <summary>
         /// Initializes a new instance of the <see cref="FileDataCacheProvider"/> class.
         /// </summary>
         public FileDataCacheProvider()
@@ -57,7 +57,12 @@ namespace MADE.Data.Caching.FileSystem
             this.LoadIndex();
         }
 
-        /// <summary>
+		/// <summary>
+		/// Gets or sets the name of the folder storing application data.
+		/// </summary>
+		public string ApplicationFolderName { get; set; } = "MADE";
+
+	    /// <summary>
         /// Gets or sets the name of the folder storing the cached data.
         /// </summary>
         public string CacheFolderName { get; set; } = "Cache";
@@ -257,7 +262,7 @@ Foundation.NSSearchPath.GetDirectories(Foundation.NSSearchPathDirectory.CachesDi
 #elif WINDOWS_UWP
             path = Windows.Storage.ApplicationData.Current.LocalFolder.Path;
 #else
-            path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), this.ApplicationFolderName);
 #endif
 
             return Path.Combine(path, this.CacheFolderName);

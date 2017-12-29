@@ -14,6 +14,11 @@ namespace MADE.Data.Caching.FileSystem
     /// </summary>
     public interface IFileDataCacheProvider : IDataCacheProvider
     {
+	    /// <summary>
+	    /// Gets or sets the name of the folder storing application data.
+	    /// </summary>
+	    string ApplicationFolderName { get; set; }
+
         /// <summary>
         /// Gets or sets the name of the folder storing the cached data.
         /// </summary>
