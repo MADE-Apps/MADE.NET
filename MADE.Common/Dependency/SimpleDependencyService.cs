@@ -68,7 +68,7 @@ namespace MADE.Common.Dependency
 
 				this.ctorInfos.Add(type, this.GetConstructorInfo(type));
 				Func<TClass> factory = this.MakeInstance<TClass>;
-				this.Register(type, factory);
+				this.Register(this.registrationKey, type, factory);
 			}
 		}
 
@@ -96,37 +96,100 @@ namespace MADE.Common.Dependency
 				}
 
 				Func<TInterface> factory = this.MakeInstance<TInterface>;
-				this.Register(interfaceType, factory);
+				this.Register(this.registrationKey, interfaceType, factory);
+			}
+		}
+
+		/// <summary>
+		/// Registers the given type with the given factory.
+		/// </summary>
+		/// <param name="factory">
+		/// The factory for creating instances of the given type.
+		/// </param>
+		/// <typeparam name="TClass">
+		/// The type to register.
+		/// </typeparam>
+		public void Register<TClass>(Func<TClass> factory)
+		{
+			this.Register(this.registrationKey, factory);
+		}
+
+		/// <summary>
+		/// Registers the given type with the given factory and associates it with the given key.
+		/// </summary>
+		/// <param name="key">
+		/// The key associated with the registration.
+		/// </param>
+		/// <param name="factory">
+		/// The factory for creating instances of the given type.
+		/// </param>
+		/// <typeparam name="TClass">
+		/// The type to register.
+		/// </typeparam>
+		public void Register<TClass>(string key, Func<TClass> factory)
+		{
+			lock (this.registrationLock)
+			{
+				Type type = typeof(TClass);
+
+				if (this.factories.ContainsKey(type) && this.factories[type].ContainsKey(key))
+				{
+					return;
+				}
+
+				if (!this.interfaceToClassMapping.ContainsKey(type))
+				{
+					this.interfaceToClassMapping.Add(type, null);
+				}
+
+				this.Register(key, type, factory);
 			}
 		}
 
 		/// <summary>
 		/// Gets an instance of the given service type that is registered.
 		/// </summary>
+		/// <param name="key">
+		/// The key of the instance to retrieve.
+		/// </param>
 		/// <typeparam name="TService">
 		/// The type of service to retrieve.
 		/// </typeparam>
 		/// <returns>
 		/// Returns a registered instance of the given service.
 		/// </returns>
-		public TService GetInstance<TService>()
+		public TService GetInstance<TService>(string key = null)
 		{
-			return (TService)this.GetInstance(typeof(TService));
+			return (TService)this.GetInstance(key, typeof(TService));
 		}
 
 		/// <summary>
 		/// Checks whether the given type is registered with the service.
 		/// </summary>
+		/// <param name="key">
+		/// The key to check is registered.
+		/// </param>
 		/// <typeparam name="T">
 		/// The type to check.
 		/// </typeparam>
 		/// <returns>
 		/// Returns true if the type is registered.
 		/// </returns>
-		public bool IsRegistered<T>()
+		public bool IsRegistered<T>(string key = null)
 		{
 			Type type = typeof(T);
-			return this.interfaceToClassMapping.ContainsKey(type);
+
+			if (string.IsNullOrWhiteSpace(key))
+			{
+				return this.interfaceToClassMapping.ContainsKey(type);
+			}
+
+			if (!this.interfaceToClassMapping.ContainsKey(type) || !this.factories.ContainsKey(type))
+			{
+				return false;
+			}
+
+			return this.factories[type].ContainsKey(key);
 		}
 
 		private ConstructorInfo GetConstructorInfo(Type serviceType)
@@ -205,36 +268,51 @@ namespace MADE.Common.Dependency
 
 		private object GetInstance(Type serviceType)
 		{
+			return this.GetInstance(this.registrationKey, serviceType);
+		}
+
+		private object GetInstance(string key, Type serviceType)
+		{
 			lock (this.registrationLock)
 			{
+				if (string.IsNullOrWhiteSpace(key))
+				{
+					key = this.registrationKey;
+				}
+
 				if (!this.factories.ContainsKey(serviceType))
 				{
 					return null;
 				}
 
-				if (!this.factories[serviceType].ContainsKey(this.registrationKey))
+				if (!this.factories[serviceType].ContainsKey(key))
 				{
 					throw new InvalidOperationException($"Type {serviceType.FullName} not found in cache");
 				}
 
-				return this.factories[serviceType][this.registrationKey].DynamicInvoke(null);
+				return this.factories[serviceType][key].DynamicInvoke(null);
 			}
 		}
 
-		private void Register<TClass>(Type classType, Func<TClass> factory)
+		private void Register<TClass>(string key, Type classType, Func<TClass> factory)
 		{
+			if (string.IsNullOrWhiteSpace(key))
+			{
+				key = this.registrationKey;
+			}
+
 			if (this.factories.ContainsKey(classType))
 			{
-				if (this.factories[classType].ContainsKey(this.registrationKey))
+				if (this.factories[classType].ContainsKey(key))
 				{
 					return;
 				}
 
-				this.factories[classType].Add(this.registrationKey, factory);
+				this.factories[classType].Add(key, factory);
 			}
 			else
 			{
-				Dictionary<string, Delegate> list = new Dictionary<string, Delegate> { { this.registrationKey, factory } };
+				Dictionary<string, Delegate> list = new Dictionary<string, Delegate> { { key, factory } };
 
 				this.factories.Add(classType, list);
 			}

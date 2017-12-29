@@ -2,6 +2,7 @@
 {
 	using System;
 
+	using MADE.Data.Caching;
 	using MADE.Data.Caching.FileSystem;
 	using MADE.UnitTests.Common.Models;
 
@@ -12,7 +13,7 @@
 	{
 		private TestModel model;
 
-		private IFileDataCacheProvider provider;
+		private IDataCacheProvider provider;
 
 		[TestInitialize]
 		public void Setup()
