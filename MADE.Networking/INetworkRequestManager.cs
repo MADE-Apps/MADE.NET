@@ -13,6 +13,6 @@ namespace MADE.Networking
 	/// Defines an interface for a HTTP network request manager.
 	/// </summary>
 	public interface INetworkRequestManager
-	{
+	{ 
 	}
 }
