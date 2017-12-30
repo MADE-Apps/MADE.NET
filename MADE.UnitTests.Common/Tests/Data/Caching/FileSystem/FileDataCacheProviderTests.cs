@@ -103,6 +103,42 @@
 		}
 
 		[TestMethod]
+		public void Weed_ExistingModelWithinWeedDate_Days_NotRemoved()
+		{
+			string key = Guid.NewGuid().ToString();
+
+			this.provider.AddOrUpdate(key, this.model);
+
+			Assert.IsTrue(this.provider.Contains(key));
+
+			TestModel item = this.provider.Get<TestModel>(key);
+
+			Assert.IsNotNull(item);
+
+			this.provider.Weed(1);
+
+			Assert.IsTrue(this.provider.Contains(key));
+		}
+
+		[TestMethod]
+		public void Weed_ExistingModelWithinWeedDate_TimeSpan_NotRemoved()
+		{
+			string key = Guid.NewGuid().ToString();
+
+			this.provider.AddOrUpdate(key, this.model);
+
+			Assert.IsTrue(this.provider.Contains(key));
+
+			TestModel item = this.provider.Get<TestModel>(key);
+
+			Assert.IsNotNull(item);
+
+			this.provider.Weed(TimeSpan.FromDays(1));
+
+			Assert.IsTrue(this.provider.Contains(key));
+		}
+
+		[TestMethod]
 		public void Weed_ExistingModelWithinWeedDate_DateOnly_Removed()
 		{
 			string key = Guid.NewGuid().ToString();

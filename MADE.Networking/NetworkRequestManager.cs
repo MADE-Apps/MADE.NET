@@ -16,18 +16,17 @@ namespace MADE.Networking
 	/// <summary>
 	/// Defines a manager for HTTP network requests which supports request caching.
 	/// </summary>
-	public class NetworkRequestManager : INetworkRequestManager, IFileDataCacheInfo
+	public class NetworkRequestManager : INetworkRequestManager, IDataCacheSupported, IFileDataCacheInfo, IDataCacheInfo
 	{
 		private const string NetworkCacheKey = "NetworkCache";
-
-		private readonly IDataCacheProvider networkCache;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NetworkRequestManager"/> class.
 		/// </summary>
 		public NetworkRequestManager()
 		{
-			this.networkCache = this.SetupDataCacheProvider();
+			this.CacheProvider = this.GetNetworkDataCacheProvider();
+			this.CacheProvider.Weed(this.DaysToWeedCache); // Cleans up older cached data.
 		}
 
 		/// <summary>
@@ -40,7 +39,22 @@ namespace MADE.Networking
 		/// </summary>
 		public string CacheFolderName { get; set; } = NetworkCacheKey;
 
-		private IDataCacheProvider SetupDataCacheProvider()
+		/// <summary>
+		/// Gets or sets the number of days from the current day (UTC) to weed cached data from. Default is 0 (never).
+		/// </summary>
+		public int DaysToWeedCache { get; set; } = 0;
+
+		/// <summary>
+		/// Gets the provider for the data caching.
+		/// </summary>
+		public IDataCacheProvider CacheProvider { get; }
+
+		/// <summary>
+		/// Gets or sets a value indicating whether caching is currently enabled.
+		/// </summary>
+		public bool IsCachingEnabled { get; set; } = false;
+
+		private IDataCacheProvider GetNetworkDataCacheProvider()
 		{
 			if (!SimpleDependencyService.Instance.IsRegistered<IDataCacheProvider>(NetworkCacheKey))
 			{

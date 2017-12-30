@@ -206,6 +206,42 @@ namespace MADE.Data.Caching.FileSystem
 		}
 
 		/// <summary>
+		/// Weeds/removes content from the cache that were cached before the given number of days from the current day (UTC).
+		/// </summary>
+		/// <param name="weedFromDays">
+		/// The number of days from the current day (UTC) to weed cached data from.
+		/// </param>
+		public void Weed(int weedFromDays)
+		{
+			// We only want to weed items when the number of days is positive and not zero.
+			if (weedFromDays <= 0)
+			{
+				return;
+			}
+
+			DateTime weedFromDate = DateTime.UtcNow.AddDays(-weedFromDays);
+			this.Weed(weedFromDate);
+		}
+
+		/// <summary>
+		/// Weeds/removes content from the cache that were cached before the given time span from the current day (UTC).
+		/// </summary>
+		/// <param name="weedFrom">
+		/// The time from the current day (UTC) to weed cached data from.
+		/// </param>
+		public void Weed(TimeSpan weedFrom)
+		{
+			// We only want to weed items when the time is positive and not zero.
+			if (weedFrom <= TimeSpan.Zero)
+			{
+				return;
+			}
+
+			DateTime weedFromDate = DateTime.UtcNow.Subtract(weedFrom);
+			this.Weed(weedFromDate);
+		}
+
+		/// <summary>
 		/// Weeds/removes content from the cache that were cached before the given weed from date.
 		/// </summary>
 		/// <param name="weedFromDate">

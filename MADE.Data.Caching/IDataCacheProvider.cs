@@ -63,6 +63,22 @@ namespace MADE.Data.Caching
         /// </param>
         void Remove(string key);
 
+		/// <summary>
+		/// Weeds/removes content from the cache that were cached before the given number of days from the current day (UTC).
+		/// </summary>
+		/// <param name="weedFromDays">
+		/// The number of days from the current day (UTC) to weed cached data from.
+		/// </param>
+		void Weed(int weedFromDays);
+
+	    /// <summary>
+	    /// Weeds/removes content from the cache that were cached before the given time span from the current day (UTC).
+	    /// </summary>
+	    /// <param name="weedFrom">
+	    /// The time from the current day (UTC) to weed cached data from.
+	    /// </param>
+		void Weed(TimeSpan weedFrom);
+
         /// <summary>
         /// Weeds/removes content from the cache that were cached before the given weed from date.
         /// </summary>
