@@ -1,0 +1,14 @@
+﻿[
+  {
+    "String": "Hello, World!"
+  },
+  {
+    "String": "This is a test."
+  },
+  {
+    "String": "This is another string item."
+  },
+  {
+    "String": "Items are being returned!"
+  }
+]
