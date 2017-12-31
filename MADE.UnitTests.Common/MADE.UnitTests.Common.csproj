@@ -97,6 +97,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\TestModels.json" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
