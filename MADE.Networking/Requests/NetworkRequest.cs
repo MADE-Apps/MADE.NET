@@ -3,7 +3,7 @@
 //   Copyright (c) MADE Apps.
 // </copyright>
 // <summary>
-//   Defines a model for a request that can be made with an INetworkRequestManager.
+//   Defines a base model for a request that can be made with an INetworkRequestManager.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -18,9 +18,9 @@ namespace MADE.Networking.Requests
 	using MADE.Data.Caching;
 
 	/// <summary>
-	/// Defines a model for a request that can be made with an <see cref="INetworkRequestManager"/>.
+	/// Defines a base model for a request that can be made with an <see cref="INetworkRequestManager"/>.
 	/// </summary>
-	public class NetworkRequest : INetworkRequest, IDataCacheSupported
+	public abstract class NetworkRequest : INetworkRequest, IDataCacheSupported
 	{
 		/// <summary>
 		/// Initializes a new instance of the <see cref="NetworkRequest"/> class.
@@ -249,9 +249,6 @@ namespace MADE.Networking.Requests
 		/// <returns>
 		/// Returns the content of the response after being handled.
 		/// </returns>
-		public virtual async Task<object> HandleResponseAsync(HttpContent responseContent)
-		{
-			return await responseContent.ReadAsStringAsync();
-		}
+		public abstract Task<object> HandleResponseAsync(HttpContent responseContent);
 	}
 }
