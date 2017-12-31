@@ -30,6 +30,11 @@ namespace MADE.Networking
 		/// </summary>
 		TimeSpan QueueProcessPeriod { get; set; }
 
+	    /// <summary>
+	    /// Starts the network request manager processing the requests added to the queue.
+	    /// </summary>
+	    void StartProcessing();
+
 		/// <summary>
 		/// Adds a network request to the current queue.
 		/// </summary>

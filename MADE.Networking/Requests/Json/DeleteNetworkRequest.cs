@@ -27,7 +27,7 @@ namespace MADE.Networking.Requests.Json
 		/// <param name="responseType">
 		/// The type of response expected from the request.
 		/// </param>
-		protected DeleteNetworkRequest(string url, Type responseType)
+		public DeleteNetworkRequest(string url, Type responseType)
 			: this(url, null, responseType)
 		{
 		}
@@ -44,7 +44,7 @@ namespace MADE.Networking.Requests.Json
 		/// <param name="responseType">
 		/// The type of response expected from the request.
 		/// </param>
-		protected DeleteNetworkRequest(string url, Dictionary<string, string> headers, Type responseType)
+		public DeleteNetworkRequest(string url, Dictionary<string, string> headers, Type responseType)
 			: base(url, HttpMethod.Delete, headers, responseType)
 		{
 		}

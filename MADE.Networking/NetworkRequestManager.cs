@@ -41,11 +41,6 @@ namespace MADE.Networking
 		public NetworkRequestManager()
 		{
 			this.Queue = new ConcurrentDictionary<string, NetworkRequestCallback>();
-
-			this.CacheProvider = this.GetNetworkDataCacheProvider();
-			this.CacheProvider.Weed(this.DaysToWeedCache); // Cleans up older cached data.
-
-			this.UpdateQueueProcessing();
 		}
 
 		/// <summary>
@@ -66,7 +61,7 @@ namespace MADE.Networking
 		/// <summary>
 		/// Gets the provider for the data caching.
 		/// </summary>
-		public IDataCacheProvider CacheProvider { get; }
+		public IDataCacheProvider CacheProvider { get; private set; }
 
 		/// <summary>
 		/// Gets or sets a value indicating whether caching is currently enabled.
@@ -91,22 +86,33 @@ namespace MADE.Networking
 			}
 		}
 
-		/// <summary>
-		/// Adds a network request to the current queue.
-		/// </summary>
-		/// <param name="request">
-		/// The network request to add.
-		/// </param>
-		/// <param name="successCallback">
-		/// The callback for if the network request was successful.
-		/// </param>
-		/// <typeparam name="TRequest">
-		/// The type of network request.
-		/// </typeparam>
-		/// <typeparam name="TResponse">
-		/// The type of the expected response from the network request.
-		/// </typeparam>
-		public void AddToQueue<TRequest, TResponse>(TRequest request, Action<TResponse> successCallback)
+	    /// <summary>
+	    /// Starts the network request manager processing the requests added to the queue.
+	    /// </summary>
+	    public void StartProcessing()
+	    {
+	        this.CacheProvider = this.GetNetworkDataCacheProvider();
+	        this.CacheProvider.Weed(this.DaysToWeedCache); // Cleans up older cached data.
+
+	        this.UpdateQueueProcessing();
+	    }
+
+        /// <summary>
+        /// Adds a network request to the current queue.
+        /// </summary>
+        /// <param name="request">
+        /// The network request to add.
+        /// </param>
+        /// <param name="successCallback">
+        /// The callback for if the network request was successful.
+        /// </param>
+        /// <typeparam name="TRequest">
+        /// The type of network request.
+        /// </typeparam>
+        /// <typeparam name="TResponse">
+        /// The type of the expected response from the network request.
+        /// </typeparam>
+        public void AddToQueue<TRequest, TResponse>(TRequest request, Action<TResponse> successCallback)
 			where TRequest : NetworkRequest
 		{
 			this.AddToQueue<TRequest, TResponse, Exception>(request, successCallback, null, false);
@@ -308,13 +314,9 @@ namespace MADE.Networking
 		{
 			if (!SimpleDependencyService.Instance.IsRegistered<IDataCacheProvider>(NetworkCacheKey))
 			{
-				SimpleDependencyService.Instance.Register<IDataCacheProvider>(
-					NetworkCacheKey,
-					() => new FileDataCacheProvider
-						      {
-							      ApplicationFolderName = this.ApplicationFolderName,
-							      CacheFolderName = this.CacheFolderName
-						      });
+			    SimpleDependencyService.Instance.Register<IDataCacheProvider>(
+			        NetworkCacheKey,
+			        () => new FileDataCacheProvider(this.ApplicationFolderName, this.CacheFolderName));
 			}
 
 			return SimpleDependencyService.Instance.GetInstance<IDataCacheProvider>(NetworkCacheKey);

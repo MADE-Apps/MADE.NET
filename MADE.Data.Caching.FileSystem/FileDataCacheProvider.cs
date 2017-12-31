@@ -13,6 +13,8 @@ namespace MADE.Data.Caching.FileSystem
 	using System.Collections.Generic;
 	using System.IO;
 	using System.Linq;
+	using System.Security.Cryptography;
+	using System.Text;
 	using System.Threading;
 
 	using MADE.Common;
@@ -38,11 +40,31 @@ namespace MADE.Data.Caching.FileSystem
 
 		private string cacheIndexFilePath;
 
+	    /// <summary>
+	    /// Initializes a new instance of the <see cref="FileDataCacheProvider"/> class.
+	    /// </summary>
+	    public FileDataCacheProvider()
+	        : this(DefaultApplicationFolderName, DefaultCacheFolderName)
+	    {
+	    }
+
 		/// <summary>
 		/// Initializes a new instance of the <see cref="FileDataCacheProvider"/> class.
 		/// </summary>
-		public FileDataCacheProvider()
+		/// <param name="applicationFolderName">
+		/// The name of the folder storing application data.
+		/// </param>
+		/// <param name="cacheFolderName">
+		/// The name of the folder storing the cached data.
+		/// </param>
+		public FileDataCacheProvider(string applicationFolderName, string cacheFolderName)
 		{
+		    this.ApplicationFolderName = string.IsNullOrWhiteSpace(applicationFolderName)
+		                                     ? DefaultApplicationFolderName
+		                                     : applicationFolderName;
+
+		    this.CacheFolderName = string.IsNullOrWhiteSpace(cacheFolderName) ? DefaultCacheFolderName : cacheFolderName;
+
 			this.indexSemaphore = new ReaderWriterLockSlim();
 
 			this.jsonSerializerSettings = new JsonSerializerSettings
@@ -60,14 +82,14 @@ namespace MADE.Data.Caching.FileSystem
 		}
 
 		/// <summary>
-		/// Gets or sets the name of the folder storing application data.
+		/// Gets the name of the folder storing application data.
 		/// </summary>
-		public string ApplicationFolderName { get; set; } = DefaultApplicationFolderName;
+		public string ApplicationFolderName { get; } = DefaultApplicationFolderName;
 
 		/// <summary>
-		/// Gets or sets the name of the folder storing the cached data.
+		/// Gets the name of the folder storing the cached data.
 		/// </summary>
-		public string CacheFolderName { get; set; } = DefaultCacheFolderName;
+		public string CacheFolderName { get; }
 
 		/// <summary>
 		/// Adds or updates content in the data cache by the given key.
@@ -287,7 +309,14 @@ namespace MADE.Data.Caching.FileSystem
 			this.indexSemaphore.ExitWriteLock();
 		}
 
-		private string GetCacheFolderPath()
+	    private static string Hash(string str)
+	    {
+	        SHA256 hasher = SHA256.Create();
+	        byte[] bytes = hasher.ComputeHash(Encoding.UTF8.GetBytes(str));
+	        return BitConverter.ToString(bytes);
+	    }
+
+        private string GetCacheFolderPath()
 		{
 			string path = string.Empty;
 
@@ -371,7 +400,7 @@ Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicatio
 			this.UpdateCacheFileInfo();
 
 			string cacheFolderPath = this.GetCacheFolderPath();
-			return Path.Combine(cacheFolderPath, $"{key}.store");
+			return Path.Combine(cacheFolderPath, $"{Hash(key)}.store");
 		}
-	}
+    }
 }

@@ -27,7 +27,7 @@ namespace MADE.Networking.Requests.Json
 		/// <param name="responseType">
 		/// The type of response expected from the request.
 		/// </param>
-		protected GetNetworkRequest(string url, Type responseType)
+		public GetNetworkRequest(string url, Type responseType)
 			: this(url, null, responseType)
 		{
 		}
@@ -44,7 +44,7 @@ namespace MADE.Networking.Requests.Json
 		/// <param name="responseType">
 		/// The type of response expected from the request.
 		/// </param>
-		protected GetNetworkRequest(string url, Dictionary<string, string> headers, Type responseType)
+		public GetNetworkRequest(string url, Dictionary<string, string> headers, Type responseType)
 			: base(url, HttpMethod.Get, headers, responseType)
 		{
 		}

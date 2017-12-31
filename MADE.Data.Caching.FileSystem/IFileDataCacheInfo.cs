@@ -15,13 +15,13 @@ namespace MADE.Data.Caching.FileSystem
 	public interface IFileDataCacheInfo
 	{
 		/// <summary>
-		/// Gets or sets the name of the folder storing application data.
+		/// Gets the name of the folder storing application data.
 		/// </summary>
-		string ApplicationFolderName { get; set; }
+		string ApplicationFolderName { get; }
 
 		/// <summary>
-		/// Gets or sets the name of the folder storing the cached data.
+		/// Gets the name of the folder storing the cached data.
 		/// </summary>
-		string CacheFolderName { get; set; }
+		string CacheFolderName { get; }
 	}
 }

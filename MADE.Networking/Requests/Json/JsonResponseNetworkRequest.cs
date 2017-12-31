@@ -33,7 +33,7 @@ namespace MADE.Networking.Requests.Json
 		/// <param name="responseType">
 		/// The type of response expected from the request.
 		/// </param>
-		protected JsonResponseNetworkRequest(string url, HttpMethod method, Type responseType)
+		public JsonResponseNetworkRequest(string url, HttpMethod method, Type responseType)
 			: this(url, method, null, responseType)
 		{
 		}
@@ -53,7 +53,7 @@ namespace MADE.Networking.Requests.Json
 		/// <param name="responseType">
 		/// The type of response expected from the request.
 		/// </param>
-		protected JsonResponseNetworkRequest(
+		public JsonResponseNetworkRequest(
 			string url,
 			HttpMethod method,
 			Dictionary<string, string> headers,
