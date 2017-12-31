@@ -13,7 +13,7 @@
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+	        this.SetContentView(Resource.Layout.Main);
 
             var htb = this.FindViewById<HeaderedTextBlock>(Resource.Id.main_htb);
 

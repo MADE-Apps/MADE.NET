@@ -197,8 +197,28 @@ namespace MADE.Networking
 			bool allowRetry)
 			where TRequest : NetworkRequest
 		{
-			WeakCallback successWeakCallback = new WeakCallback(successCallback, typeof(TResponse));
-			WeakCallback errorWeakCallback = new WeakCallback(errorCallback, typeof(TErrorResponse));
+			if (request == null)
+			{
+				return;
+			}
+
+			if (request.CacheProvider == null)
+			{
+				request.CacheProvider = this.CacheProvider;
+			}
+
+			WeakCallback successWeakCallback = null;
+			if (successCallback != null)
+			{
+				successWeakCallback = new WeakCallback(successCallback, typeof(TResponse));
+			}
+
+			WeakCallback errorWeakCallback = null;
+			if (errorCallback != null)
+			{
+				errorWeakCallback = new WeakCallback(errorCallback, typeof(TErrorResponse));
+			}
+
 			NetworkRequestCallback networkRequestCallback =
 				new NetworkRequestCallback(request, successWeakCallback, errorWeakCallback) { AllowRetry = allowRetry };
 
@@ -269,12 +289,12 @@ namespace MADE.Networking
 			try
 			{
 				object response = await networkRequestCallback.Request.SendAsync(cts);
-				networkRequestCallback.SuccessCallback.Invoke(response);
+				networkRequestCallback.SuccessCallback?.Invoke(response);
 			}
 			catch (Exception ex)
 			{
-				networkRequestCallback.SuccessCallback.Invoke(null);
-				networkRequestCallback.ErrorCallback.Invoke(ex);
+				networkRequestCallback.SuccessCallback?.Invoke(null);
+				networkRequestCallback.ErrorCallback?.Invoke(ex);
 
 				if (networkRequestCallback.AllowRetry)
 				{

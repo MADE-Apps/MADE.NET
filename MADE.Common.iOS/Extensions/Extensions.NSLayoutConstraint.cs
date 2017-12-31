@@ -34,7 +34,7 @@ namespace MADE
         {
             if (constraint.Constant != 0)
             {
-                var oldConstant = new NSNumber(constraint.Constant);
+                NSNumber oldConstant = new NSNumber(constraint.Constant);
                 constraint.Constant = 0;
 
                 constraint.SetAssociatedObject(ConstantKey, oldConstant);
@@ -55,8 +55,8 @@ namespace MADE
         /// </returns>
         public static bool Restore(this NSLayoutConstraint constraint)
         {
-            var oldConstant = (NSNumber)constraint.GetAssociatedObject(ConstantKey);
-            var didCreate = (NSNumber)constraint.GetAssociatedObject(DidCreateKey);
+            NSNumber oldConstant = (NSNumber)constraint.GetAssociatedObject(ConstantKey);
+            NSNumber didCreate = (NSNumber)constraint.GetAssociatedObject(DidCreateKey);
 
             if (oldConstant != null)
             {
