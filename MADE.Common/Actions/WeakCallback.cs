@@ -34,7 +34,7 @@ namespace MADE.Common.Actions
 		{
 			this.actionInfo = action.GetMethodInfo();
 			this.weakReference = new WeakReference(action.Target);
-			this.Type = callbackType;
+			this.CallbackType = callbackType;
 		}
 
 		/// <summary>
@@ -45,7 +45,7 @@ namespace MADE.Common.Actions
 		/// <summary>
 		/// Gets the expected type for the callback.
 		/// </summary>
-		public Type Type { get; }
+		public Type CallbackType { get; }
 
 		/// <summary>
 		/// Invokes the callback with the specified parameter.
@@ -53,9 +53,6 @@ namespace MADE.Common.Actions
 		/// <param name="param">
 		/// The parameter to pass to the callback.
 		/// </param>
-		/// <exception cref="InvalidOperationException">
-		/// Thrown if the weak reference is no longer alive.
-		/// </exception>
 		public void Invoke(object param)
 		{
 			if (this.IsAlive)
