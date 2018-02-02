@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>MADE.UI.Controls.Forms</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="2.5.0.122203" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.UI.Controls.Forms\MADE.UI.Controls.Forms.csproj" />
+    <ProjectReference Include="..\MADE.UI.Controls.HeaderedTextBlock\MADE.UI.Controls.HeaderedTextBlock.csproj" />
+    <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj" />
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="HeaderedTextBlock.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

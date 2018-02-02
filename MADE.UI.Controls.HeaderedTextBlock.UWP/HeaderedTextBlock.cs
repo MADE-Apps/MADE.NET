@@ -39,7 +39,7 @@ namespace MADE.UI.Controls
             nameof(Orientation),
             typeof(Orientation),
             typeof(HeaderedTextBlock),
-            new PropertyMetadata(null, (d, e) => ((HeaderedTextBlock)d).UpdateOrientation()));
+            new PropertyMetadata(Orientation.Vertical, (d, e) => ((HeaderedTextBlock)d).UpdateOrientation()));
 
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
             nameof(Text),
