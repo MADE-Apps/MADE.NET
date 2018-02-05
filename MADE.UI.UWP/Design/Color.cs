@@ -15,7 +15,7 @@ namespace MADE.UI.Design
     public class Color : IColor
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Color"/> class.
+        /// Initializes a new instance of the <see cref="Color"/> class with set ARGB byte values.
         /// </summary>
         /// <param name="a">
         /// The alpha value.
@@ -38,6 +38,12 @@ namespace MADE.UI.Design
         }
 
 #if WINDOWS_UWP || __ANDROID__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> class with a <see cref="System.Drawing.Color"/>.
+        /// </summary>
+        /// <param name="color">
+        /// The system color value.
+        /// </param>
         public Color(System.Drawing.Color color)
         {
             this.A = color.A;
@@ -46,11 +52,23 @@ namespace MADE.UI.Design
             this.B = color.B;
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="System.Drawing.Color"/> to <see cref="Color"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The system color value.
+        /// </param>
         public static implicit operator Color(System.Drawing.Color color)
         {
             return new Color(color);
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Color"/> to <see cref="System.Drawing.Color"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The internal color value.
+        /// </param>
         public static implicit operator System.Drawing.Color(Color color)
         {
             return System.Drawing.Color.FromArgb(color.A, color.R, color.G, color.B);
@@ -58,6 +76,12 @@ namespace MADE.UI.Design
 #endif
 
 #if __ANDROID__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> class with a <see cref="Android.Graphics.Color"/>.
+        /// </summary>
+        /// <param name="color">
+        /// The Android color value.
+        /// </param>
         public Color(Android.Graphics.Color color)
         {
             this.A = color.A;
@@ -66,11 +90,23 @@ namespace MADE.UI.Design
             this.B = color.B;
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Android.Graphics.Color"/> to <see cref="Color"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The Android color value.
+        /// </param>
         public static implicit operator Color(Android.Graphics.Color color)
         {
             return new Color(color);
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Color"/> to <see cref="Android.Graphics.Color"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The internal color value.
+        /// </param>
         public static implicit operator Android.Graphics.Color(Color color)
         {
             return new Android.Graphics.Color(color.R, color.G, color.B, color.A);

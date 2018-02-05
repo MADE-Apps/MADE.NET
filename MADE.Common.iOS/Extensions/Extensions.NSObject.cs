@@ -39,7 +39,7 @@ namespace MADE
                 nsObject.Handle,
                 key.Handle,
                 value?.Handle ?? IntPtr.Zero,
-                AssociationPolicy.RETAIN);
+                AssociationPolicy.Retain);
         }
 
         /// <summary>

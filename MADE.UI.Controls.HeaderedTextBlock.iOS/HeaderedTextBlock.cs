@@ -13,9 +13,11 @@ namespace MADE.UI.Controls
     using System.ComponentModel;
 
     using Foundation;
+
     using MADE.UI.Controls.Design.Styling;
     using MADE.UI.Design.Styling;
     using MADE.UI.Layout;
+
     using UIKit;
 
     /// <summary>
@@ -33,6 +35,7 @@ namespace MADE.UI.Controls
         private Orientation orientation;
 
         private UILabelStyle headerStyle;
+
         private UILabelStyle textStyle;
 
         /// <summary>
@@ -104,13 +107,12 @@ namespace MADE.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the style associated with the header content.
+        /// </summary>
         public UILabelStyle HeaderStyle
         {
-            get
-            {
-                return headerStyle;
-            }
-
+            get => this.headerStyle;
             set
             {
                 this.Set(() => this.HeaderStyle, ref this.headerStyle, value);
@@ -118,13 +120,12 @@ namespace MADE.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Gets or sets the style associated with the text content.
+        /// </summary>
         public UILabelStyle TextStyle
         {
-            get
-            {
-                return textStyle;
-            }
-
+            get => this.textStyle;
             set
             {
                 this.Set(() => this.TextStyle, ref this.textStyle, value);
@@ -137,6 +138,9 @@ namespace MADE.UI.Controls
         /// </summary>
         public override string NibName => "HeaderedTextBlock";
 
+        /// <summary>
+        /// Gets the view associated with the root of the control.
+        /// </summary>
         public override UIView Root => this.RootView;
 
         /// <summary>
@@ -178,22 +182,26 @@ namespace MADE.UI.Controls
 
         private void UpdateText()
         {
-            if (this.TextUiLabel != null)
+            if (this.TextUiLabel == null)
             {
-                this.TextStyle?.Apply(this.TextUiLabel);
-
-                this.TextUiLabel.Text = this.Text;
+                return;
             }
+
+            this.TextStyle?.Apply(this.TextUiLabel);
+
+            this.TextUiLabel.Text = this.Text;
         }
 
         private void UpdateHeader()
         {
-            if (this.HeaderUiLabel != null)
+            if (this.HeaderUiLabel == null)
             {
-                this.HeaderStyle?.Apply(this.HeaderUiLabel);
-
-                this.HeaderUiLabel.Text = this.Header;
+                return;
             }
+
+            this.HeaderStyle?.Apply(this.HeaderUiLabel);
+
+            this.HeaderUiLabel.Text = this.Header;
         }
     }
 }

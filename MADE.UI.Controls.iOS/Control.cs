@@ -95,6 +95,9 @@ namespace MADE.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Gets the view associated with the root of the control.
+        /// </summary>
         public abstract UIView Root { get; }
 
         /// <summary>
