@@ -152,13 +152,13 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\MADE.UI.Control.HeaderedTextBlock.Forms\MADE.UI.Controls.HeaderedTextBlock.Forms.csproj">
-      <Project>{8a16103b-778b-4805-8d86-750c0b3ba6f3}</Project>
-      <Name>MADE.UI.Controls.HeaderedTextBlock.Forms</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\MADE.UI.Controls.Forms\MADE.UI.Controls.Forms.csproj">
       <Project>{2ce81908-fc49-4b66-94c8-2602cb94a93c}</Project>
       <Name>MADE.UI.Controls.Forms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\MADE.UI.Controls.HeaderedTextBlock.Forms.csproj">
+      <Project>{8a8d0212-db22-4874-91e3-829055d0fa41}</Project>
+      <Name>MADE.UI.Controls.HeaderedTextBlock.Forms</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\MADE.UI.Controls.HeaderedTextBlock\MADE.UI.Controls.HeaderedTextBlock.csproj">
       <Project>{7f561d39-0b34-472f-b2f0-c4696f3d2e51}</Project>

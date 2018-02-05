@@ -3,9 +3,8 @@
     x:Class="MADE.Playground.Forms.MainPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:MADE.UI.Control.Forms;assembly=MADE.UI.Control.HeaderedTextBlock.Forms"
-    xmlns:local="clr-namespace:MADE.Playground.Forms">
+    xmlns:forms="clr-namespace:MADE.UI.Control.Forms;assembly=MADE.UI.Controls.HeaderedTextBlock.Forms">
 
-    <controls:HeaderedTextBlock Header="Welcome" Text="Xamarin.Forms!" />
+    <forms:HeaderedTextBlock Header="Welcome" Text="Xamarin.Forms!" />
 
 </ContentPage>

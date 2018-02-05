@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>MADE.UI.Controls.Forms.HeaderedTextBlock</id>
+    <version>#{Build.BuildNumber}#-prerelease</version>
+    <title>MADE Xamarin.Forms HeaderedTextBlock Control Library</title>
+    <authors>MADE Apps</authors>
+    <owners>MADE Apps</owners>
+    <licenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/MADE-Apps/MADE-App-Components</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <iconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</iconUrl>
+    <description>This package contains a control consisting of a read-only text field with a header for Xamarin.Forms applications.</description>
+    <copyright>Copyright © MADE Apps. All rights reserved.</copyright>
+    <tags>MADE Apps HeaderedTextBlock UI Controls Xamarin Forms Common Extensions Helpers Components Collections Runtime NET UWP Android iOS</tags>
+    <dependencies>
+        <group targetFramework="netstandard2.0">
+            <dependency id="Xamarin.Forms" version="2.5.0.122203" />
+            <dependency id="MADE.UI" version="#{Build.BuildNumber}#-prerelease" />
+            <dependency id="MADE.UI.Controls" version="#{Build.BuildNumber}#-prerelease" />
+            <dependency id="MADE.UI.Forms" version="#{Build.BuildNumber}#-prerelease" />
+            <dependency id="MADE.UI.Controls.HeaderedTextBlock" version="#{Build.BuildNumber}#-prerelease" />
+        </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\bin\Release\netstandard2.0\MADE.UI.Controls.HeaderedTextBlock.dll" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\bin\Release\netstandard2.0\MADE.UI.Controls.HeaderedTextBlock.xml" target="lib\netstandard2.0" />
+  </files>
+</package>

@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\MADE.UI.Control.HeaderedTextBlock.Forms\MADE.UI.Controls.HeaderedTextBlock.Forms.csproj" />
     <ProjectReference Include="..\..\MADE.UI.Controls.Forms\MADE.UI.Controls.Forms.csproj" />
+    <ProjectReference Include="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\MADE.UI.Controls.HeaderedTextBlock.Forms.csproj" />
     <ProjectReference Include="..\..\MADE.UI.Controls\MADE.UI.Controls.csproj" />
     <ProjectReference Include="..\..\MADE.UI\MADE.UI.csproj" />
   </ItemGroup>
