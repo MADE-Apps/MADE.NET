@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MADE.Playground.Forms.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:MADE.UI.Control.Forms;assembly=MADE.UI.Controls.HeaderedTextBlock.Forms">
+
+    <forms:HeaderedTextBlock Header="Welcome" Text="Xamarin.Forms!" />
+
+</ContentPage>

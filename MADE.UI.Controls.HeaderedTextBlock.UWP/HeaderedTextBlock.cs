@@ -23,36 +23,54 @@ namespace MADE.UI.Controls
     [TemplateVisualState(GroupName = "OrientationStates", Name = "Horizontal")]
     public class HeaderedTextBlock : Control, IHeaderedTextBlock
     {
+        /// <summary>
+        /// Defines the dependency property for the <see cref="Header"/> value.
+        /// </summary>
         public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
             nameof(Header),
             typeof(string),
             typeof(HeaderedTextBlock),
             new PropertyMetadata(null, (d, e) => ((HeaderedTextBlock)d).UpdateVisibility()));
 
+        /// <summary>
+        /// Defines the dependency property for the <see cref="HeaderStyle"/> value.
+        /// </summary>
         public static readonly DependencyProperty HeaderStyleProperty = DependencyProperty.Register(
             nameof(HeaderStyle),
             typeof(Style),
             typeof(HeaderedTextBlock),
             new PropertyMetadata(default(Style)));
 
+        /// <summary>
+        /// Defines the dependency property for the <see cref="Orientation"/> value.
+        /// </summary>
         public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register(
             nameof(Orientation),
             typeof(Orientation),
             typeof(HeaderedTextBlock),
-            new PropertyMetadata(null, (d, e) => ((HeaderedTextBlock)d).UpdateOrientation()));
+            new PropertyMetadata(Orientation.Vertical, (d, e) => ((HeaderedTextBlock)d).UpdateOrientation()));
 
+        /// <summary>
+        /// Defines the dependency property for the <see cref="Text"/> value.
+        /// </summary>
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
             nameof(Text),
             typeof(string),
             typeof(HeaderedTextBlock),
             new PropertyMetadata(null, (d, e) => ((HeaderedTextBlock)d).UpdateVisibility()));
 
+        /// <summary>
+        /// Defines the dependency property for the <see cref="TextStyle"/> value.
+        /// </summary>
         public static readonly DependencyProperty TextStyleProperty = DependencyProperty.Register(
             nameof(TextStyle),
             typeof(Style),
             typeof(HeaderedTextBlock),
             new PropertyMetadata(default(Style)));
 
+        /// <summary>
+        /// Defines the dependency property for the <see cref="HideIfNullOrWhiteSpace"/> value.
+        /// </summary>
         public static readonly DependencyProperty HideIfNullOrWhiteSpaceProperty = DependencyProperty.Register(
             nameof(HideIfNullOrWhiteSpace),
             typeof(bool),

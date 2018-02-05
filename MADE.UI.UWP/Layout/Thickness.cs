@@ -126,6 +126,12 @@ namespace MADE.UI.Layout
         }
 
 #if __ANDROID__
+        /// <summary>
+        /// Converts the thickness value to the correct density pixels for the device.
+        /// </summary>
+        /// <returns>
+        /// Returns the thickness converted to density pixels.
+        /// </returns>
         public Thickness InDensityPixels()
         {
             float d = Android.App.Application.Context.Resources.DisplayMetrics.Density;

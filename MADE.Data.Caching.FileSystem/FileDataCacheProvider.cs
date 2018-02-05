@@ -26,8 +26,14 @@ namespace MADE.Data.Caching.FileSystem
 	/// </summary>
 	public class FileDataCacheProvider : IDataCacheProvider, IFileDataCacheInfo
 	{
+        /// <summary>
+        /// Gets the default name for the application's storage folder.
+        /// </summary>
 		public const string DefaultApplicationFolderName = "MADE";
 
+        /// <summary>
+        /// Gets the default name for the application's data cache storage folder. 
+        /// </summary>
 		public const string DefaultCacheFolderName = "Cache";
 
 		private readonly ReaderWriterLockSlim indexSemaphore;
