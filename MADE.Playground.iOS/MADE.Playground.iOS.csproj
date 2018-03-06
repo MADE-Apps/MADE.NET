@@ -122,10 +122,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MADE.Common.iOS\MADE.Common.iOS.csproj">
-      <Project>{D739F564-5B24-43D1-AA85-DE0A888C2BB6}</Project>
-      <Name>MADE.Common.iOS</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
       <Project>{49F44AC9-02D1-44B4-B98F-9949BB7D00A4}</Project>
       <Name>MADE.UI</Name>

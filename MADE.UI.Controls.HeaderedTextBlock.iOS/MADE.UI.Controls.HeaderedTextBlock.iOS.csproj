@@ -50,12 +50,6 @@
     <Compile Include="Design\Styling\DefaultHeaderedTextBlockStyle.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MADE.Common.iOS\MADE.Common.iOS.csproj">
-      <Project>{d739f564-5b24-43d1-aa85-de0a888c2bb6}</Project>
-      <Name>MADE.Common.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
-    </ProjectReference>
     <ProjectReference Include="..\MADE.UI.Controls.HeaderedTextBlock\MADE.UI.Controls.HeaderedTextBlock.csproj">
       <Project>{7f561d39-0b34-472f-b2f0-c4696f3d2e51}</Project>
       <Name>MADE.UI.Controls.HeaderedTextBlock</Name>

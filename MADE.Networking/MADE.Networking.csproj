@@ -18,7 +18,7 @@
 
   <ItemGroup>
     <PackageReference Condition=" '$(TargetFramework)' == 'uap10.0.16299' " Include="Microsoft.NETCore.UniversalWindowsPlatform " Version="6.0.5" />
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.0-build.23" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 

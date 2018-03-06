@@ -1,4 +1,5 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+﻿#if __IOS__
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Extensions.NSObject.cs" company="MADE Apps">
 //   Copyright (c) MADE Apps.
 // </copyright>
@@ -73,3 +74,4 @@ namespace MADE
         private static extern IntPtr objc_getAssociatedObject(IntPtr obj, IntPtr key);
     }
 }
+#endif
