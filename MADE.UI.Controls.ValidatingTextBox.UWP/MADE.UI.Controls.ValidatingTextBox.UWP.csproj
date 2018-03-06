@@ -125,6 +125,10 @@
       <Project>{2c70160a-ffdd-4532-9572-12398b1c0722}</Project>
       <Name>MADE.UI.Controls.UWP</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MADE.UI.Controls.ValidatingTextBox\MADE.UI.Controls.ValidatingTextBox.csproj">
+      <Project>{5e037c48-806f-4890-a787-ac6911e8f723}</Project>
+      <Name>MADE.UI.Controls.ValidatingTextBox</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.UI.Controls.Validation\MADE.UI.Controls.Validation.csproj">
       <Project>{162647e3-9011-4435-9287-312dd134977c}</Project>
       <Name>MADE.UI.Controls.Validation</Name>
@@ -140,10 +144,6 @@
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
       <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
       <Name>MADE.UI</Name>
-    </ProjectReference>
-    <ProjectReference Include="\\Mac\Home\Documents\GitHub\MADE-App-Components\MADE.UI.Controls.ValidatingTextBox\MADE.UI.Controls.ValidatingTextBox.csproj">
-      <Project>{a6bd5b99-5054-4890-809f-388560a6fef0}</Project>
-      <Name>MADE.UI.Controls.ValidatingTextBox</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

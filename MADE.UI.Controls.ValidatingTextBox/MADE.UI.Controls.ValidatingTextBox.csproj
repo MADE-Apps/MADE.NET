@@ -6,10 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="Y:\Documents\GitHub\MADE-App-Components\MADE.Data.Validation\MADE.Data.Validation.csproj" />
-    <ProjectReference Include="Y:\Documents\GitHub\MADE-App-Components\MADE.UI.Controls.Validation\MADE.UI.Controls.Validation.csproj" />
-    <ProjectReference Include="Y:\Documents\GitHub\MADE-App-Components\MADE.UI.Controls\MADE.UI.Controls.csproj" />
-    <ProjectReference Include="Y:\Documents\GitHub\MADE-App-Components\MADE.UI\MADE.UI.csproj" />
+    <ProjectReference Include="..\MADE.Data.Validation\MADE.Data.Validation.csproj" />
+    <ProjectReference Include="..\MADE.UI.Controls.Validation\MADE.UI.Controls.Validation.csproj" />
+    <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj" />
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj" />
   </ItemGroup>
 
 </Project>
