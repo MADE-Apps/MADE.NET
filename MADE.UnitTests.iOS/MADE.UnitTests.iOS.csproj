@@ -104,8 +104,8 @@
     <Reference Include="MonoTouch.NUnitLite" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.IO.Compression" />
@@ -142,12 +142,6 @@
     <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj">
       <Project>{2469a729-c7f3-4a68-9d1b-f089951aadab}</Project>
       <Name>MADE.UI.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MADE.UI.iOS\MADE.UI.iOS.csproj">
-      <Project>{4d89de5e-1255-44c2-9482-d353917ed97a}</Project>
-      <Name>MADE.UI.iOS</Name>
-      <IsAppExtension>false</IsAppExtension>
-      <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
       <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>

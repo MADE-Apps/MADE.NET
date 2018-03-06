@@ -46,12 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\MADE.UI.UWP\Design\Color.cs">
-      <Link>Design\Color.cs</Link>
-    </Compile>
-    <Compile Include="..\MADE.UI.UWP\Layout\Thickness.cs">
-      <Link>Layout\Thickness.cs</Link>
-    </Compile>
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -128,7 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.5</Version>
+      <Version>6.0.8</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
@@ -147,10 +147,6 @@
     <ProjectReference Include="..\MADE.UI.Controls\MADE.UI.Controls.csproj">
       <Project>{2469a729-c7f3-4a68-9d1b-f089951aadab}</Project>
       <Name>MADE.UI.Controls</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MADE.UI.UWP\MADE.UI.UWP.csproj">
-      <Project>{71e85111-8a1c-4b38-945f-f5b5e4cdf0e1}</Project>
-      <Name>MADE.UI.UWP</Name>
     </ProjectReference>
     <ProjectReference Include="..\MADE.UI\MADE.UI.csproj">
       <Project>{49f44ac9-02d1-44b4-b98f-9949bb7d00a4}</Project>
