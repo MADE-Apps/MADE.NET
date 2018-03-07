@@ -1,4 +1,5 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+﻿#if __IOS__
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Extensions.Controls.cs" company="MADE Apps">
 //   Copyright (c) MADE Apps.
 // </copyright>
@@ -177,6 +178,7 @@ namespace MADE.UI.Controls
 
             constraint.Active = false;
             NSString key = GetDeactivatedConstraintKey(attribute);
+
             view.SetAssociatedObject(key, constraint);
         }
 
@@ -208,3 +210,4 @@ namespace MADE.UI.Controls
         }
     }
 }
+#endif

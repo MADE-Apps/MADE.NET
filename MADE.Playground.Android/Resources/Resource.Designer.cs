@@ -26,12 +26,6 @@ namespace MADE.Playground.Android
 		
 		public static void UpdateIdValues()
 		{
-			global::MADE.UI.Resource.Color.accent = global::MADE.Playground.Android.Resource.Color.accent;
-			global::MADE.UI.Resource.Color.colorActivated = global::MADE.Playground.Android.Resource.Color.colorActivated;
-			global::MADE.UI.Resource.Color.colorHighlight = global::MADE.Playground.Android.Resource.Color.colorHighlight;
-			global::MADE.UI.Resource.Color.primary = global::MADE.Playground.Android.Resource.Color.primary;
-			global::MADE.UI.Resource.Color.primaryDark = global::MADE.Playground.Android.Resource.Color.primaryDark;
-			global::MADE.UI.Resource.Color.textPrimary = global::MADE.Playground.Android.Resource.Color.textPrimary;
 			global::MADE.UI.Controls.Resource.Attribute.header = global::MADE.Playground.Android.Resource.Attribute.header;
 			global::MADE.UI.Controls.Resource.Attribute.hide_if_empty = global::MADE.Playground.Android.Resource.Attribute.hide_if_empty;
 			global::MADE.UI.Controls.Resource.Attribute.text = global::MADE.Playground.Android.Resource.Attribute.text;
@@ -51,6 +45,12 @@ namespace MADE.Playground.Android
 			global::MADE.UI.Controls.Resource.Styleable.HeaderedTextBlock_header = global::MADE.Playground.Android.Resource.Styleable.HeaderedTextBlock_header;
 			global::MADE.UI.Controls.Resource.Styleable.HeaderedTextBlock_hide_if_empty = global::MADE.Playground.Android.Resource.Styleable.HeaderedTextBlock_hide_if_empty;
 			global::MADE.UI.Controls.Resource.Styleable.HeaderedTextBlock_text = global::MADE.Playground.Android.Resource.Styleable.HeaderedTextBlock_text;
+			global::MADE.UI.Resource.Color.accent = global::MADE.Playground.Android.Resource.Color.accent;
+			global::MADE.UI.Resource.Color.colorActivated = global::MADE.Playground.Android.Resource.Color.colorActivated;
+			global::MADE.UI.Resource.Color.colorHighlight = global::MADE.Playground.Android.Resource.Color.colorHighlight;
+			global::MADE.UI.Resource.Color.primary = global::MADE.Playground.Android.Resource.Color.primary;
+			global::MADE.UI.Resource.Color.primaryDark = global::MADE.Playground.Android.Resource.Color.primaryDark;
+			global::MADE.UI.Resource.Color.textPrimary = global::MADE.Playground.Android.Resource.Color.textPrimary;
 		}
 		
 		public partial class Attribute
@@ -78,23 +78,23 @@ namespace MADE.Playground.Android
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f040004
-			public const int accent = 2130968580;
+			// aapt resource value: 0x7f030004
+			public const int accent = 2130903044;
 			
-			// aapt resource value: 0x7f040000
-			public const int colorActivated = 2130968576;
+			// aapt resource value: 0x7f030000
+			public const int colorActivated = 2130903040;
 			
-			// aapt resource value: 0x7f040005
-			public const int colorHighlight = 2130968581;
+			// aapt resource value: 0x7f030005
+			public const int colorHighlight = 2130903045;
 			
-			// aapt resource value: 0x7f040001
-			public const int primary = 2130968577;
+			// aapt resource value: 0x7f030001
+			public const int primary = 2130903041;
 			
-			// aapt resource value: 0x7f040002
-			public const int primaryDark = 2130968578;
+			// aapt resource value: 0x7f030002
+			public const int primaryDark = 2130903042;
 			
-			// aapt resource value: 0x7f040003
-			public const int textPrimary = 2130968579;
+			// aapt resource value: 0x7f030003
+			public const int textPrimary = 2130903043;
 			
 			static Color()
 			{
@@ -169,11 +169,11 @@ namespace MADE.Playground.Android
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f030001
-			public const int HeaderedTextBlockHeaderStyle = 2130903041;
+			// aapt resource value: 0x7f040001
+			public const int HeaderedTextBlockHeaderStyle = 2130968577;
 			
-			// aapt resource value: 0x7f030000
-			public const int HeaderedTextBlockTextStyle = 2130903040;
+			// aapt resource value: 0x7f040000
+			public const int HeaderedTextBlockTextStyle = 2130968576;
 			
 			static Style()
 			{

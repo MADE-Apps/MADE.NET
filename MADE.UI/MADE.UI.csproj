@@ -29,5 +29,9 @@
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.2" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'monoandroid60'">
+    <AndroidResource Include="Resources\Values\Colors.xml" />
+  </ItemGroup>
+
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>

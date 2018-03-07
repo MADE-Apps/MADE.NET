@@ -26,12 +26,6 @@ namespace MADE.UnitTests.Droid
 		
 		public static void UpdateIdValues()
 		{
-			global::MADE.UI.Resource.Color.accent = global::MADE.UnitTests.Droid.Resource.Color.accent;
-			global::MADE.UI.Resource.Color.colorActivated = global::MADE.UnitTests.Droid.Resource.Color.colorActivated;
-			global::MADE.UI.Resource.Color.colorHighlight = global::MADE.UnitTests.Droid.Resource.Color.colorHighlight;
-			global::MADE.UI.Resource.Color.primary = global::MADE.UnitTests.Droid.Resource.Color.primary;
-			global::MADE.UI.Resource.Color.primaryDark = global::MADE.UnitTests.Droid.Resource.Color.primaryDark;
-			global::MADE.UI.Resource.Color.textPrimary = global::MADE.UnitTests.Droid.Resource.Color.textPrimary;
 			global::MADE.UI.Controls.Resource.Attribute.header = global::MADE.UnitTests.Droid.Resource.Attribute.header;
 			global::MADE.UI.Controls.Resource.Attribute.hide_if_empty = global::MADE.UnitTests.Droid.Resource.Attribute.hide_if_empty;
 			global::MADE.UI.Controls.Resource.Attribute.text = global::MADE.UnitTests.Droid.Resource.Attribute.text;
@@ -51,6 +45,12 @@ namespace MADE.UnitTests.Droid
 			global::MADE.UI.Controls.Resource.Styleable.HeaderedTextBlock_header = global::MADE.UnitTests.Droid.Resource.Styleable.HeaderedTextBlock_header;
 			global::MADE.UI.Controls.Resource.Styleable.HeaderedTextBlock_hide_if_empty = global::MADE.UnitTests.Droid.Resource.Styleable.HeaderedTextBlock_hide_if_empty;
 			global::MADE.UI.Controls.Resource.Styleable.HeaderedTextBlock_text = global::MADE.UnitTests.Droid.Resource.Styleable.HeaderedTextBlock_text;
+			global::MADE.UI.Resource.Color.accent = global::MADE.UnitTests.Droid.Resource.Color.accent;
+			global::MADE.UI.Resource.Color.colorActivated = global::MADE.UnitTests.Droid.Resource.Color.colorActivated;
+			global::MADE.UI.Resource.Color.colorHighlight = global::MADE.UnitTests.Droid.Resource.Color.colorHighlight;
+			global::MADE.UI.Resource.Color.primary = global::MADE.UnitTests.Droid.Resource.Color.primary;
+			global::MADE.UI.Resource.Color.primaryDark = global::MADE.UnitTests.Droid.Resource.Color.primaryDark;
+			global::MADE.UI.Resource.Color.textPrimary = global::MADE.UnitTests.Droid.Resource.Color.textPrimary;
 			global::Xamarin.Android.NUnitLite.Resource.Id.OptionHostName = global::MADE.UnitTests.Droid.Resource.Id.OptionHostName;
 			global::Xamarin.Android.NUnitLite.Resource.Id.OptionPort = global::MADE.UnitTests.Droid.Resource.Id.OptionPort;
 			global::Xamarin.Android.NUnitLite.Resource.Id.OptionRemoteServer = global::MADE.UnitTests.Droid.Resource.Id.OptionRemoteServer;
@@ -100,23 +100,23 @@ namespace MADE.UnitTests.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050004
-			public const int accent = 2131034116;
+			// aapt resource value: 0x7f040004
+			public const int accent = 2130968580;
 			
-			// aapt resource value: 0x7f050000
-			public const int colorActivated = 2131034112;
+			// aapt resource value: 0x7f040000
+			public const int colorActivated = 2130968576;
 			
-			// aapt resource value: 0x7f050005
-			public const int colorHighlight = 2131034117;
+			// aapt resource value: 0x7f040005
+			public const int colorHighlight = 2130968581;
 			
-			// aapt resource value: 0x7f050001
-			public const int primary = 2131034113;
+			// aapt resource value: 0x7f040001
+			public const int primary = 2130968577;
 			
-			// aapt resource value: 0x7f050002
-			public const int primaryDark = 2131034114;
+			// aapt resource value: 0x7f040002
+			public const int primaryDark = 2130968578;
 			
-			// aapt resource value: 0x7f050003
-			public const int textPrimary = 2131034115;
+			// aapt resource value: 0x7f040003
+			public const int textPrimary = 2130968579;
 			
 			static Color()
 			{
@@ -270,11 +270,11 @@ namespace MADE.UnitTests.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int HeaderedTextBlockHeaderStyle = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int HeaderedTextBlockHeaderStyle = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int HeaderedTextBlockTextStyle = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int HeaderedTextBlockTextStyle = 2131034112;
 			
 			static Style()
 			{

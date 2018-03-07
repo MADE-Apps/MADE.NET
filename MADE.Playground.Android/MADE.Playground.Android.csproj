@@ -88,10 +88,6 @@
     <Folder Include="Resources\mipmap-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MADE.UI.Android\MADE.UI.Android.csproj">
-      <Project>{1319a64a-5da2-475b-acf8-2884f892a371}</Project>
-      <Name>MADE.UI.Android</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MADE.UI.Controls.Android\MADE.UI.Controls.Android.csproj">
       <Project>{2fc17f7c-a6a8-44af-b578-a03b7bfa5b65}</Project>
       <Name>MADE.UI.Controls.Android</Name>
