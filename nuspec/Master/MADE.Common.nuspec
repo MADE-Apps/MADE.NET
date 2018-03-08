@@ -17,5 +17,10 @@
   <files>
     <file src="..\..\MADE.Common.iOS\bin\Release\MADE.Common.iOS.dll" target="lib\Xamarin.iOS10" />
     <file src="..\..\MADE.Common.iOS\bin\Release\MADE.Common.iOS.xml" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.Common.iOS\bin\Release\MADE.Common.dll" target="lib\Xamarin.iOS10" />
+    <file src="..\..\MADE.Common.iOS\bin\Release\MADE.Common.xml" target="lib\Xamarin.iOS10" />
+
+    <file src="..\..\MADE.Common\bin\Release\netstandard2.0\MADE.Common.dll" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.Common\bin\Release\netstandard2.0\MADE.Common.xml" target="lib\netstandard2.0" />
   </files>
 </package>
