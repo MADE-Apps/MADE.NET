@@ -12,21 +12,23 @@ Want to highlight a project you've published or are building using the MADE Apps
 
 | Branch | Status |
 | ------ | ------ |
-| MADE.App.Components.CI | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/18/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
+| MADE.App.Components.Prerelease | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/18/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
 | MADE.App.Components.Release | [![Status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/20/badge)](https://github.com/MADE-Apps/MADE-App-Components) |
 
 ## Available Components
 
 | Component | Description | Public | Prerelease |
 | ------ | ------ | ------ | ------ |
-| Common | Collection of extensions, helpers and components for cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Common.svg)](https://www.nuget.org/packages/MADE.Common/) |
-| Data.Caching | Assemblies for performing data caching in cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Caching.svg)](https://www.nuget.org/packages/MADE.Data.Caching/) |
-| Data.Caching.FileSystem | Assemblies for performing data caching to local file in cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Caching.FileSystem.svg)](https://www.nuget.org/packages/MADE.Data.Caching.FileSystem/) |
-| Data.Validation | Assemblies for running data validation on objects for cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.svg)](https://www.nuget.org/packages/MADE.Data.Validation/) |
-| Networking | Assemblies for performing network requests in cross-platform .NET applications | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Networking.svg)](https://www.nuget.org/packages/MADE.Networking/) |
-| UI | Assemblies for handling UI components for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.svg)](https://www.nuget.org/packages/MADE.UI/) |
-| UI.Controls | Assemblies for helping to build custom UI elements for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.svg)](https://www.nuget.org/packages/MADE.UI.Controls/) |
-| UI.Controls.HeaderedTextBlock | A control consisting of a read-only text field with a header for UWP, Android, iOS and Xamarin.Forms | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.HeaderedTextBlock/) |
+| Common | This package contains a collection of extensions, helpers and components for cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications  | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Common.svg)](https://www.nuget.org/packages/MADE.Common/) |
+| Data.Caching | This package contains assemblies for performing data caching in cross-platform applications with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Caching.svg)](https://www.nuget.org/packages/MADE.Data.Caching/) |
+| Data.Caching.FileSystem | This package contains assemblies for performing data caching to local files in cross-platform applications with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Caching.FileSystem.svg)](https://www.nuget.org/packages/MADE.Data.Caching.FileSystem/) |
+| Data.Validation | This package contains assemblies for running data validation on .NET objects in cross-platform applications with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.svg)](https://www.nuget.org/packages/MADE.Data.Validation/) |
+| Networking | This package contains assemblies for performing network requests in cross-platform applications with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.Networking.svg)](https://www.nuget.org/packages/MADE.Networking/) |
+| UI | This package contains assemblies for handling UI components in cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.svg)](https://www.nuget.org/packages/MADE.UI/) |
+| UI.Controls | This package contains assemblies for helping to build custom controls in cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications.  | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.svg)](https://www.nuget.org/packages/MADE.UI.Controls/) |
+| UI.Controls.Forms | This package contains assemblies for helping to build custom controls in Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.Forms.svg)](https://www.nuget.org/packages/MADE.UI.Controls.Forms/) |
+| UI.Controls.HeaderedTextBlock | This package contains a control consisting of a read-only text field with a header for cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.HeaderedTextBlock/) |
+| UI.Controls.Forms.HeaderedTextBlock | This package contains a control consisting of a read-only text field with a header for Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.Forms.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.Forms.HeaderedTextBlock/) |
 
 ## Contributing
 
