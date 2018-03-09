@@ -16,15 +16,15 @@
     <dependencies>
         <dependency id="MADE.Common" version="#{Build.BuildNumber}#-prerelease" />
         <dependency id="MADE.Data.Caching" version="#{Build.BuildNumber}#-prerelease" />
-        <dependency id="Newtonsoft.Json" version="10.0.3" />
+        <dependency id="Newtonsoft.Json" version="11.0.1" />
     </dependencies>
  </metadata>
   <files>
     <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\xamarinios10\MADE.Data.Caching.FileSystem.dll" target="lib\xamarinios10" />
     <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\xamarinios10\MADE.Data.Caching.FileSystem.xml" target="lib\xamarinios10" />
 
-    <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\monoandroid50\MADE.Data.Caching.FileSystem.dll" target="lib\monoandroid50" />
-    <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\monoandroid50\MADE.Data.Caching.FileSystem.xml" target="lib\monoandroid50" />
+    <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\monoandroid60\MADE.Data.Caching.FileSystem.dll" target="lib\monoandroid60" />
+    <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\monoandroid60\MADE.Data.Caching.FileSystem.xml" target="lib\monoandroid60" />
 
     <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\uap10.0.16299\MADE.Data.Caching.FileSystem.dll" target="lib\uap10.0.16299" />
     <file src="..\..\MADE.Data.Caching.FileSystem\bin\Release\uap10.0.16299\MADE.Data.Caching.FileSystem.pri" target="lib\uap10.0.16299" />

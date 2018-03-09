@@ -17,15 +17,15 @@
         <dependency id="MADE.Common" version="#{Build.BuildNumber}#" />
         <dependency id="MADE.Data.Caching" version="#{Build.BuildNumber}#" />
         <dependency id="MADE.Data.Caching.FileSystem" version="#{Build.BuildNumber}#" />
-        <dependency id="Newtonsoft.Json" version="10.0.3" />
+        <dependency id="Newtonsoft.Json" version="11.0.1" />
     </dependencies>
  </metadata>
   <files>
     <file src="..\..\MADE.Networking\bin\Release\xamarinios10\MADE.Networking.dll" target="lib\xamarinios10" />
     <file src="..\..\MADE.Networking\bin\Release\xamarinios10\MADE.Networking.xml" target="lib\xamarinios10" />
 
-    <file src="..\..\MADE.Networking\bin\Release\monoandroid50\MADE.Networking.dll" target="lib\monoandroid50" />
-    <file src="..\..\MADE.Networking\bin\Release\monoandroid50\MADE.Networking.xml" target="lib\monoandroid50" />
+    <file src="..\..\MADE.Networking\bin\Release\monoandroid60\MADE.Networking.dll" target="lib\monoandroid60" />
+    <file src="..\..\MADE.Networking\bin\Release\monoandroid60\MADE.Networking.xml" target="lib\monoandroid60" />
 
     <file src="..\..\MADE.Networking\bin\Release\uap10.0.16299\MADE.Networking.dll" target="lib\uap10.0.16299" />
     <file src="..\..\MADE.Networking\bin\Release\uap10.0.16299\MADE.Networking.pri" target="lib\uap10.0.16299" />

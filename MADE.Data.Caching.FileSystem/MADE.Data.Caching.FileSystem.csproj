@@ -1,11 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;xamarinios10;monoandroid50;uap10.0.16299</TargetFrameworks>
-    <DefineConstants Condition=" '$(TargetFramework)' == 'netstandard2.0' ">$(DefineConstants);FILESYS</DefineConstants>
-    <DefineConstants Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">$(DefineConstants);FILESYS</DefineConstants>
-    <DefineConstants Condition=" '$(TargetFramework)' == 'monoandroid' ">$(DefineConstants);FILESYS</DefineConstants>
-    <DefineConstants Condition=" '$(TargetFramework)' == 'xamarinios' ">$(DefineConstants);FILESYS</DefineConstants>
+    <TargetFrameworks>netstandard2.0;xamarinios10;monoandroid60;uap10.0.16299</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -17,9 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Condition=" '$(TargetFramework)' == 'uap10.0.16299' " Include="Microsoft.NETCore.UniversalWindowsPlatform " Version="6.0.5" />
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.0-build.23" />
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <PackageReference Condition=" '$(TargetFramework)' == 'uap10.0.16299' " Include="Microsoft.NETCore.UniversalWindowsPlatform " Version="6.0.8" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.2.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.1" />
   </ItemGroup>
 
   <ItemGroup>

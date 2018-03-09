@@ -18,10 +18,10 @@
     <file src="..\..\MADE.UI\bin\Release\netstandard2.0\MADE.UI.dll" target="lib\netstandard2.0" />
     <file src="..\..\MADE.UI\bin\Release\netstandard2.0\MADE.UI.xml" target="lib\netstandard2.0" />
 
-    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.Android.dll" target="lib\MonoAndroid10" />
-    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.Android.xml" target="lib\MonoAndroid10" />
-    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.dll" target="lib\MonoAndroid10" />
-    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.xml" target="lib\MonoAndroid10" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.Android.dll" target="lib\MonoAndroid60" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.Android.xml" target="lib\MonoAndroid60" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.dll" target="lib\MonoAndroid60" />
+    <file src="..\..\MADE.UI.Android\bin\Release\MADE.UI.xml" target="lib\MonoAndroid60" />
 
     <file src="..\..\MADE.UI.iOS\bin\Release\MADE.UI.iOS.dll" target="lib\Xamarin.iOS10" />
     <file src="..\..\MADE.UI.iOS\bin\Release\MADE.UI.iOS.xml" target="lib\Xamarin.iOS10" />

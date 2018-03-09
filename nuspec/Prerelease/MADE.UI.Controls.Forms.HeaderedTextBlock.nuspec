@@ -15,10 +15,10 @@
     <tags>MADE Apps HeaderedTextBlock UI Controls Xamarin Forms Common Extensions Helpers Components Collections Runtime NET UWP Android iOS</tags>
     <dependencies>
         <group targetFramework="netstandard2.0">
-            <dependency id="Xamarin.Forms" version="2.5.0.122203" />
+            <dependency id="Xamarin.Forms" version="2.5.0.280555" />
             <dependency id="MADE.UI" version="#{Build.BuildNumber}#-prerelease" />
             <dependency id="MADE.UI.Controls" version="#{Build.BuildNumber}#-prerelease" />
-            <dependency id="MADE.UI.Forms" version="#{Build.BuildNumber}#-prerelease" />
+            <dependency id="MADE.UI.Controls.Forms" version="#{Build.BuildNumber}#-prerelease" />
             <dependency id="MADE.UI.Controls.HeaderedTextBlock" version="#{Build.BuildNumber}#-prerelease" />
         </group>
     </dependencies>
