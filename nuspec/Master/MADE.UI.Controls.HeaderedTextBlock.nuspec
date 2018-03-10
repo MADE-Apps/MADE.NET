@@ -48,16 +48,27 @@
 
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="lib\uap10.0.16299.0" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.xml" target="lib\uap10.0.16299.0" />
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\Themes\Generic.xaml" target="lib\uap10.0.16299.0\Themes"/>
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\HeaderedTextBlock.xaml" target="lib\uap10.0.16299.0"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="lib\uap10.0.16299.0" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.xr.xml" target="lib\uap10.0.16299.0\MADE.UI.Controls.HeaderedTextBlock.UWP" />    
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.dll" target="lib\uap10.0.16299.0" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.xml" target="lib\uap10.0.16299.0" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\HeaderedTextBlock.xbf" target="lib\uap10.0.16299.0\MADE.UI.Controls.HeaderedTextBlock.UWP" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\Themes\**\*.*" target="lib\uap10.0.16299.0\MADE.UI.Controls.HeaderedTextBlock.UWP\Themes" />
 
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\ARM\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-arm\native"/>
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\ARM\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-arm\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\ARM\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.xr.xml" target="runtimes\win10-arm\native\MADE.UI.Controls.HeaderedTextBlock.UWP"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\ARM\Release\HeaderedTextBlock.xbf" target="runtimes\win10-arm\native\MADE.UI.Controls.HeaderedTextBlock.UWP" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\ARM\Release\Themes\**\*.*" target="runtimes\win10-arm\native\MADE.UI.Controls.HeaderedTextBlock.UWP\Themes" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\x64\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-x64\native"/>
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\x64\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-x64\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\x64\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.xr.xml" target="runtimes\win10-x64\native\MADE.UI.Controls.HeaderedTextBlock.UWP"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\x64\Release\HeaderedTextBlock.xbf" target="runtimes\win10-x64\native\MADE.UI.Controls.HeaderedTextBlock.UWP" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\x64\Release\Themes\**\*.*" target="runtimes\win10-x64\native\MADE.UI.Controls.HeaderedTextBlock.UWP\Themes" />
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.dll" target="runtimes\win10-x86\native"/>
     <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.pri" target="runtimes\win10-x86\native"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\MADE.UI.Controls.HeaderedTextBlock.UWP.xr.xml" target="runtimes\win10-x86\native\MADE.UI.Controls.HeaderedTextBlock.UWP"/>
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\HeaderedTextBlock.xbf" target="runtimes\win10-x86\native\MADE.UI.Controls.HeaderedTextBlock.UWP" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.UWP\bin\Release\Themes\**\*.*" target="runtimes\win10-x86\native\MADE.UI.Controls.HeaderedTextBlock.UWP\Themes" />
   </files>
 </package>
