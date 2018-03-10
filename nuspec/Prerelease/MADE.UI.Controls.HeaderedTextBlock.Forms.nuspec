@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package>
   <metadata>
-    <id>MADE.UI.Controls.Forms.HeaderedTextBlock</id>
+    <id>MADE.UI.Controls.HeaderedTextBlock.Forms</id>
     <version>#{Build.BuildNumber}#-prerelease</version>
     <title>MADE Xamarin.Forms HeaderedTextBlock Control Library</title>
     <authors>MADE Apps</authors>
@@ -24,7 +24,7 @@
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\bin\Release\netstandard2.0\MADE.UI.Controls.Forms.HeaderedTextBlock.dll" target="lib\netstandard2.0" />
-    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\bin\Release\netstandard2.0\MADE.UI.Controls.Forms.HeaderedTextBlock.xml" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\bin\Release\netstandard2.0\MADE.UI.Controls.HeaderedTextBlock.Forms.dll" target="lib\netstandard2.0" />
+    <file src="..\..\MADE.UI.Controls.HeaderedTextBlock.Forms\bin\Release\netstandard2.0\MADE.UI.Controls.HeaderedTextBlock.Forms.xml" target="lib\netstandard2.0" />
   </files>
 </package>
