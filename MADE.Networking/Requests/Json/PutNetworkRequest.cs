@@ -86,7 +86,7 @@ namespace MADE.Networking.Requests.Json
         /// The type of response expected from the request.
         /// </param>
         public PutNetworkRequest(string url, Dictionary<string, string> headers, object content, Type responseType)
-            : base(url, HttpMethod.Post, headers, responseType)
+            : base(url, HttpMethod.Put, headers, responseType)
         {
             if (content == null)
             {
