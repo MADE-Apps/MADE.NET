@@ -28,7 +28,7 @@ Want to highlight a project you've published or are building using the MADE Apps
 | UI.Controls | This package contains assemblies for helping to build custom controls in cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications.  | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.svg)](https://www.nuget.org/packages/MADE.UI.Controls/) |
 | UI.Controls.Forms | This package contains assemblies for helping to build custom controls in Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.Forms.svg)](https://www.nuget.org/packages/MADE.UI.Controls.Forms/) |
 | UI.Controls.HeaderedTextBlock | This package contains a control consisting of a read-only text field with a header for cross-platform applications built with the the .NET framework with support for UWP, Android, iOS and Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.HeaderedTextBlock/) |
-| UI.Controls.Forms.HeaderedTextBlock | This package contains a control consisting of a read-only text field with a header for Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.Forms.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.UI.Controls.Forms.HeaderedTextBlock/) |
+| UI.Controls.HeaderedTextBlock.Forms | This package contains a control consisting of a read-only text field with a header for Xamarin.Forms applications. | N/A | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.HeaderedTextBlock.Forms.svg)](https://www.nuget.org/packages/MADE.UI.Controls.HeaderedTextBlock.Forms/) |
 
 ## Contributing
 
