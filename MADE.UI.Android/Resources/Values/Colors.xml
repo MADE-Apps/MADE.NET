@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<resources>
-  <color name="colorActivated">#caeeff</color>
-  <color name="primary">#C41230</color>
-  <color name="primaryDark">#9E0C24</color>
-  <color name="textPrimary">#000</color>
-  <color name="accent">#FFCCD4</color>
-  <color name="colorHighlight">#ffaaff</color>
-</resources>
