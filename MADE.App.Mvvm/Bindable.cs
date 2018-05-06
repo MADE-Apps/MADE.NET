@@ -68,7 +68,7 @@ namespace MADE.App.Mvvm
         /// The type of property.
         /// </typeparam>
         /// <returns>
-        /// Returns true if the property was updated; else returns false.
+        /// Returns true if the property was updated; otherwise, false.
         /// </returns>
         protected bool Set<T>(Expression<Func<T>> propertyExpression, ref T field, T value)
         {
