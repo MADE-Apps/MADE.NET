@@ -11,7 +11,7 @@
     <AssemblyName>MADE.Samples.Windows</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -128,8 +128,22 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.8</Version>
+      <Version>6.1.4</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.App.Mvvm\MADE.App.Mvvm.csproj">
+      <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
+      <Name>MADE.App.Mvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Views\MADE.App.Views.csproj">
+      <Project>{58a202bc-f697-4e19-ab5f-5013c5203b6b}</Project>
+      <Name>MADE.App.Views</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.App\MADE.App.csproj">
+      <Project>{006114aa-3919-4393-b836-d03995c5e230}</Project>
+      <Name>MADE.App</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

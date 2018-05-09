@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App", "MADE.App\MADE.A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App.Views", "MADE.App.Views\MADE.App.Views.csproj", "{58A202BC-F697-4E19-AB5F-5013C5203B6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.App.Mvvm", "MADE.App.Mvvm\MADE.App.Mvvm.csproj", "{CE1370AE-4985-41E2-8DCE-24B11A5EA177}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App.Mvvm", "MADE.App.Mvvm\MADE.App.Mvvm.csproj", "{CE1370AE-4985-41E2-8DCE-24B11A5EA177}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
