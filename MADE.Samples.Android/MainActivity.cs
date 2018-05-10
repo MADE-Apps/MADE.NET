@@ -1,19 +1,24 @@
-﻿using Android.App;
-using Android.Widget;
-using Android.OS;
-
-namespace MADE.Samples.Android
+﻿namespace MADE.Samples.Android
 {
-    [Activity(Label = "MADE.Samples.Android", MainLauncher = true)]
-    public class MainActivity : Activity
-    {
-        protected override void OnCreate(Bundle savedInstanceState)
-        {
-            base.OnCreate(savedInstanceState);
+    using global::Android.App;
 
-            // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+    using MADE.App.Views.Pages.Navigation;
+    using MADE.Samples.Android.Fragments;
+
+    [Activity(Label = "MADE.Samples.Android", MainLauncher = true)]
+    public class MainActivity : NavigationFrame
+    {
+        public MainActivity()
+        {
+            this.FrameLayoutId = Resource.Layout.Main;
+            this.FragmentFrameLayoutId = Resource.Id.MainContent;
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            this.Navigate(typeof(MainFragment), "Hello Main Fragment!");
+            this.Navigate(typeof(SecondFragment), "Hey Second Fragment!");
         }
     }
 }
-

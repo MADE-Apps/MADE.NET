@@ -3,11 +3,21 @@ namespace MADE.App.Views.Pages.Navigation
 {
     using Windows.UI.Xaml.Controls;
 
-    public partial class NavigationFrame : Frame
+    public class NavigationFrame : Frame, INavigationFrame
     {
-        private bool CanNavigateBackForPlatform()
+        public NavigationFrame()
         {
-            return this.CanGoBack;
+            this.Navigated += this.OnNavigated;
+        }
+
+        /// <summary>
+        /// Occurs when the content that is being navigated to has been found and is available from the Content property, although it may not have completed loading.
+        /// </summary>
+        public event NavigationEventHandler PageNavigated;
+
+        private void OnNavigated(object sender, Windows.UI.Xaml.Navigation.NavigationEventArgs e)
+        {
+            this.PageNavigated?.Invoke(sender, e.ToNavigationEventArgs());
         }
     }
 }
