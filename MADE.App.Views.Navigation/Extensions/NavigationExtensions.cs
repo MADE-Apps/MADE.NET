@@ -15,6 +15,21 @@ namespace MADE.App.Views.Navigation
     public static partial class Extensions
     {
 #if WINDOWS_UWP
+        public static NavigatingCancelEventArgs ToNavigatingCancelEventArgs(
+            this Windows.UI.Xaml.Navigation.NavigatingCancelEventArgs args)
+        {
+            NavigatingCancelEventArgs navArgs =
+                new NavigatingCancelEventArgs(() => args.Cancel = true)
+                    {
+                        NavigationMode =
+                            args.NavigationMode.ToNavigationMode(),
+                        Parameter = args.Parameter,
+                        SourcePageType = args.SourcePageType
+                    };
+
+            return navArgs;
+        }
+
         public static NavigationEventArgs ToNavigationEventArgs(
             this Windows.UI.Xaml.Navigation.NavigationEventArgs args)
         {

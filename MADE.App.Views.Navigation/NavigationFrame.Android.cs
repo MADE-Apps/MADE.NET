@@ -10,7 +10,7 @@ namespace MADE.App.Views.Navigation
 
     public class NavigationFrame : AppCompatActivity, INavigationFrame
     {
-        private Page currentPage;
+        private IPage currentPage;
 
         private readonly Dictionary<int, NavigationEventArgs> navigationEvents;
 
@@ -119,7 +119,7 @@ namespace MADE.App.Views.Navigation
             NavigationEventArgs newNavArgs,
             Action navigationAction)
         {
-            Page previousPage = this.currentPage;
+            IPage previousPage = this.currentPage;
             previousPage?.OnNavigatedFrom(previousNavArgs);
 
             navigationAction?.Invoke();
@@ -159,7 +159,7 @@ namespace MADE.App.Views.Navigation
 
         private bool CanNavigateAway()
         {
-            Page previousPage = this.currentPage;
+            IPage previousPage = this.currentPage;
 
             bool shouldCancel = false;
 
