@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.App.Views
+namespace MADE.App.Views.Navigation
 {
     /// <summary>
     /// Defines a collection of extensions for handling navigation.
@@ -15,11 +15,11 @@ namespace MADE.App.Views
     public static partial class Extensions
     {
 #if WINDOWS_UWP
-        public static Pages.Navigation.NavigationEventArgs ToNavigationEventArgs(
+        public static NavigationEventArgs ToNavigationEventArgs(
             this Windows.UI.Xaml.Navigation.NavigationEventArgs args)
         {
-            Pages.Navigation.NavigationEventArgs navArgs =
-                new Pages.Navigation.NavigationEventArgs
+            NavigationEventArgs navArgs =
+                new NavigationEventArgs
                     {
                         NavigationMode = args.NavigationMode.ToNavigationMode(),
                         Parameter = args.Parameter,
@@ -28,20 +28,20 @@ namespace MADE.App.Views
             return navArgs;
         }
 
-        public static Pages.Navigation.NavigationMode ToNavigationMode(
+        public static NavigationMode ToNavigationMode(
             this Windows.UI.Xaml.Navigation.NavigationMode mode)
         {
             switch (mode)
             {
                 case Windows.UI.Xaml.Navigation.NavigationMode.Back:
-                    return Pages.Navigation.NavigationMode.Back;
+                    return NavigationMode.Back;
                 case Windows.UI.Xaml.Navigation.NavigationMode.Forward:
-                    return Pages.Navigation.NavigationMode.Forward;
+                    return NavigationMode.Forward;
                 case Windows.UI.Xaml.Navigation.NavigationMode.Refresh:
-                    return Pages.Navigation.NavigationMode.Refresh;
+                    return NavigationMode.Refresh;
             }
 
-            return Pages.Navigation.NavigationMode.New;
+            return NavigationMode.New;
         }
 #elif __ANDROID__
         /// <summary>

@@ -2,7 +2,7 @@
 {
     using global::Android.App;
 
-    using MADE.App.Views.Pages.Navigation;
+    using MADE.App.Views.Navigation;
     using MADE.Samples.Android.Fragments;
 
     [Activity(Label = "MADE.Samples.Android", MainLauncher = true)]

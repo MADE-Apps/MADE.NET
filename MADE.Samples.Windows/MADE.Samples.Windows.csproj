@@ -136,10 +136,6 @@
       <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
       <Name>MADE.App.Mvvm</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MADE.App.Views\MADE.App.Views.csproj">
-      <Project>{58a202bc-f697-4e19-ab5f-5013c5203b6b}</Project>
-      <Name>MADE.App.Views</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MADE.App\MADE.App.csproj">
       <Project>{006114aa-3919-4393-b836-d03995c5e230}</Project>
       <Name>MADE.App</Name>

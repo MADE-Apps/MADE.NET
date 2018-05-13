@@ -1,7 +1,5 @@
-﻿namespace MADE.App.Views.Pages
+﻿namespace MADE.App.Views.Navigation
 {
-    using MADE.App.Views.Pages.Navigation;
-
     public interface IPage
     {
         void OnNavigatedFrom(NavigationEventArgs e);

@@ -1,5 +1,5 @@
 ﻿#if WINDOWS_UWP
-namespace MADE.App.Views.Pages.Navigation
+namespace MADE.App.Views.Navigation
 {
     using Windows.UI.Xaml.Controls;
 

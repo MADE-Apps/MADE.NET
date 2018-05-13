@@ -1,15 +1,15 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;uap10.0.16299</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Views.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Views.Navigation.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Navigation.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

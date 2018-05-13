@@ -1,4 +1,4 @@
-﻿namespace MADE.App.Views.Pages.Navigation
+﻿namespace MADE.App.Views.Navigation
 {
     public delegate void NavigationEventHandler(object sender, NavigationEventArgs args);
 }

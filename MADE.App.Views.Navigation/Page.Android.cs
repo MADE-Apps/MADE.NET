@@ -1,9 +1,7 @@
 ﻿#if __ANDROID__
-namespace MADE.App.Views.Pages
+namespace MADE.App.Views.Navigation
 {
     using Android.Support.V4.App;
-
-    using MADE.App.Views.Pages.Navigation;
 
     public class Page : Fragment, IPage
     {
