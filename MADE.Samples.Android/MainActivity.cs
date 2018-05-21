@@ -11,7 +11,7 @@
         public MainActivity()
         {
             this.FrameLayoutId = Resource.Layout.Main;
-            this.FragmentFrameLayoutId = Resource.Id.MainContent;
+            this.FrameFragmentContentId = Resource.Id.MainContent;
         }
 
         protected override void OnResume()

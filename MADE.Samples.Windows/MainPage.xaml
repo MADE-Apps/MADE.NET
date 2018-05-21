@@ -1,13 +1,12 @@
-﻿<Page
+﻿<navigation:Page
     x:Class="MADE.Samples.Windows.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:MADE.Samples.Windows"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:MADE.Samples.Windows"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:navigation="using:MADE.App.Views.Navigation"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
-    </Grid>
-</Page>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+</navigation:Page>

@@ -11,7 +11,7 @@
     <AssemblyName>MADE.Samples.Windows</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>
+    <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.16299.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.16299.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <FileAlignment>512</FileAlignment>
@@ -135,6 +135,10 @@
     <ProjectReference Include="..\MADE.App.Mvvm\MADE.App.Mvvm.csproj">
       <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
       <Name>MADE.App.Mvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Views.Navigation\MADE.App.Views.Navigation.csproj">
+      <Project>{00abf0e3-2ad1-4002-8527-920e9ea6a138}</Project>
+      <Name>MADE.App.Views.Navigation</Name>
     </ProjectReference>
     <ProjectReference Include="..\MADE.App\MADE.App.csproj">
       <Project>{006114aa-3919-4393-b836-d03995c5e230}</Project>

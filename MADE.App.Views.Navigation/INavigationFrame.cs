@@ -32,6 +32,11 @@ namespace MADE.App.Views.Navigation
         Type CurrentSourcePageType { get; }
 
         /// <summary>
+        /// Gets the parameter passed to the current source page on navigated to.
+        /// </summary>
+        object CurrentSourcePageParameter { get; }
+
+        /// <summary>
         /// Gets the number of entries in the navigation back stack.
         /// </summary>
         int BackStackDepth { get; }

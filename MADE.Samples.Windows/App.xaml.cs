@@ -1,26 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
-
-namespace MADE.Samples.Windows
+﻿namespace MADE.Samples.Windows
 {
+    using System;
+
+    using global::Windows.ApplicationModel;
+
+    using global::Windows.ApplicationModel.Activation;
+
+    using global::Windows.UI.Xaml;
+
+    using global::Windows.UI.Xaml.Controls;
+
+    using global::Windows.UI.Xaml.Navigation;
+
+    using MADE.App.Views.Navigation;
+
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -29,7 +26,7 @@ namespace MADE.Samples.Windows
         public App()
         {
             this.InitializeComponent();
-            this.Suspending += OnSuspending;
+            this.Suspending += this.OnSuspending;
         }
 
         /// <summary>
@@ -46,9 +43,9 @@ namespace MADE.Samples.Windows
             if (rootFrame == null)
             {
                 // Create a Frame to act as the navigation context and navigate to the first page
-                rootFrame = new Frame();
+                rootFrame = new NavigationFrame();
 
-                rootFrame.NavigationFailed += OnNavigationFailed;
+                rootFrame.NavigationFailed += this.OnNavigationFailed;
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -59,7 +56,7 @@ namespace MADE.Samples.Windows
                 Window.Current.Content = rootFrame;
             }
 
-            if (e.PrelaunchActivated == false)
+            if (!e.PrelaunchActivated)
             {
                 if (rootFrame.Content == null)
                 {
@@ -68,6 +65,7 @@ namespace MADE.Samples.Windows
                     // parameter
                     rootFrame.Navigate(typeof(MainPage), e.Arguments);
                 }
+
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
@@ -93,6 +91,7 @@ namespace MADE.Samples.Windows
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
             var deferral = e.SuspendingOperation.GetDeferral();
+
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }

@@ -15,6 +15,11 @@ namespace MADE.App.Views.Navigation
     public static partial class Extensions
     {
 #if WINDOWS_UWP
+        /// <summary>
+        /// Converts a Windows NavigatingCancelEventArgs to the internal one.
+        /// </summary>
+        /// <param name="args">The cancellation navigation argument to convert.</param>
+        /// <returns>Returns the converted cancellation navigation argument.</returns>
         public static NavigatingCancelEventArgs ToNavigatingCancelEventArgs(
             this Windows.UI.Xaml.Navigation.NavigatingCancelEventArgs args)
         {
@@ -30,6 +35,11 @@ namespace MADE.App.Views.Navigation
             return navArgs;
         }
 
+        /// <summary>
+        /// Converts a Windows NavigationEventArgs to the internal one.
+        /// </summary>
+        /// <param name="args">The navigation argument to convert.</param>
+        /// <returns>Returns the converted navigation argument.</returns>
         public static NavigationEventArgs ToNavigationEventArgs(
             this Windows.UI.Xaml.Navigation.NavigationEventArgs args)
         {
@@ -43,6 +53,11 @@ namespace MADE.App.Views.Navigation
             return navArgs;
         }
 
+        /// <summary>
+        /// Converts a Windows NavigationMode to the internal one.
+        /// </summary>
+        /// <param name="mode">The navigation mode to convert.</param>
+        /// <returns>Returns the converted navigation mode.</returns>
         public static NavigationMode ToNavigationMode(
             this Windows.UI.Xaml.Navigation.NavigationMode mode)
         {
@@ -58,6 +73,7 @@ namespace MADE.App.Views.Navigation
 
             return NavigationMode.New;
         }
+
 #elif __ANDROID__
         /// <summary>
         /// Gets the currently active support fragment for the given support fragment manager.

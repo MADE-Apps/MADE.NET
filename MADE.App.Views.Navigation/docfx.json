@@ -9,6 +9,7 @@
           "src": "C:\\S\\G\\MADE-App-Components\\MADE.App.Views"
         }
       ],
+      "properties": { "TargetFramework": "netstandard2.0" },
       "dest": "api",
       "disableGitFeatures": false
     }
