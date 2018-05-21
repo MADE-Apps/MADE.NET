@@ -4,5 +4,6 @@
 
     public class SecondFragment : Page
     {
+        public override int LayoutId => Resource.Layout.SecondFragment;
     }
 }

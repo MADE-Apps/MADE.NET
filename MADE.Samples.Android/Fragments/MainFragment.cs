@@ -4,5 +4,6 @@
 
     public class MainFragment : Page
     {
+        public override int LayoutId => Resource.Layout.MainFragment;
     }
 }

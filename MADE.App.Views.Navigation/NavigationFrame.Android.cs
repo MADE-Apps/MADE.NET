@@ -88,10 +88,16 @@ namespace MADE.App.Views.Navigation
             }
 
             NavigationEventArgs currentPageEvent = this.GetNavigationEvent(this.BackStackDepth);
-            currentPageEvent.NavigationMode = NavigationMode.Back;
+            if (currentPageEvent != null)
+            {
+                currentPageEvent.NavigationMode = NavigationMode.Back;
+            }
 
             NavigationEventArgs previousPageEvent = this.GetNavigationEvent(this.BackStackDepth - 1);
-            previousPageEvent.NavigationMode = NavigationMode.Back;
+            if (previousPageEvent != null)
+            {
+                previousPageEvent.NavigationMode = NavigationMode.Back;
+            }
 
             this.HandleNavigation(
                 currentPageEvent,
@@ -99,7 +105,6 @@ namespace MADE.App.Views.Navigation
                 () =>
                     {
                         this.RemoveNavigationEvent(this.BackStackDepth);
-
                         this.SupportFragmentManager.PopBackStackImmediate();
                     });
         }
@@ -203,11 +208,12 @@ namespace MADE.App.Views.Navigation
             navigationAction?.Invoke();
 
             this.currentPage = this.SupportFragmentManager.GetCurrentFragment() as Page;
-            this.currentPage?.OnNavigatedTo(newNavArgs);
-
-            this.CurrentSourcePageParameter = newNavArgs.Parameter;
-
-            this.PageNavigated?.Invoke(this, newNavArgs);
+            if (this.currentPage != null)
+            {
+                this.currentPage.OnNavigatedTo(newNavArgs);
+                this.CurrentSourcePageParameter = newNavArgs.Parameter;
+                this.PageNavigated?.Invoke(this, newNavArgs);
+            }
         }
 
         private NavigationEventArgs GetNavigationEvent(int key)
