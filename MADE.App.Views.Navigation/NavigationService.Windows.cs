@@ -4,6 +4,9 @@ namespace MADE.App.Views.Navigation
     using Windows.Foundation.Metadata;
     using Windows.UI.Core;
 
+    /// <summary>
+    /// Defines the additional Windows logic for the navigation service.
+    /// </summary>
     public partial class NavigationService
     {
         private SystemNavigationManager navigationManager;
