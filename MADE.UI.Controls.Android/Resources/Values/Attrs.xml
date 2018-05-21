@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<resources>
-  <declare-styleable name="HeaderedTextBlock">
-    <attr name="header" format="reference|string" />
-    <attr name="text" format="reference|string" />
-    <attr name="hide_if_empty" format="boolean" />
-  </declare-styleable>
-</resources>

@@ -1,3 +1,5 @@
+<img src="ProjectBanner.png" alt="MADE App Components" />
+
 # Contributing to MADE App Components
 
 These guidelines are designed to help you as a contributor to bring your code and skills to the project to make it better.  
@@ -29,4 +31,3 @@ Even better, if you know how to fix it, follow up your issue with a pull request
 We're including Unit Tests and UI tests for the project. While we will aim to have the best coverage as possible across the entire project, it could always be improved on. If you find an area that is missing tests or could have more tests for, feel free to raise an issue or help out by writing some tests!
 
 As well as testing, we aim to document the entire project in terms of both developer guidelines such as these and our own API documentation. If you find something that is wrong or is missing, again, feel free to raise an issue or contribute towards the documentation.
-
