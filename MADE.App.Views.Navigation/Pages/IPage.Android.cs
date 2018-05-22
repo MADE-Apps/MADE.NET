@@ -4,20 +4,10 @@ namespace MADE.App.Views.Navigation.Pages
     using Android.Views;
 
     /// <summary>
-    /// Defines an interface for an Android page.
+    /// Defines an interface for Android components of an application page.
     /// </summary>
-    public interface IAndroidPage
+    public partial interface IPage
     {
-        /// <summary>
-        /// Gets the view associated with the page's content.
-        /// </summary>
-        View View { get; }
-
-        /// <summary>
-        /// Gets the ID for the Android layout associated with the page.
-        /// </summary>
-        int LayoutId { get; }
-
         /// <summary>
         /// Gets the title for the page.
         /// </summary>

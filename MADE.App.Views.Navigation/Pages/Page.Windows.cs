@@ -3,6 +3,8 @@ namespace MADE.App.Views.Navigation.Pages
 {
     using Windows.ApplicationModel;
 
+    using MADE.App.Views.Extensions;
+
     /// <summary>
     /// Defines a Windows page that is compatible with the application NavigationFrame.
     /// </summary>
@@ -18,7 +20,25 @@ namespace MADE.App.Views.Navigation.Pages
                 return;
             }
 
-            this.Loaded += (sender, args) => this.OnPageLoaded();
+            this.Loaded += (sender, args) =>
+                {
+                    this.ViewLoaded?.Invoke(this, new ViewLoadedEventArgs());
+                    this.OnPageLoaded();
+                };
+        }
+
+        /// <summary>
+        /// Occurs when the view has loaded.
+        /// </summary>
+        public event ViewLoadedEventHandler ViewLoaded;
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the view is visible in the UI.
+        /// </summary>
+        public bool IsVisible
+        {
+            get => this.Visibility == Windows.UI.Xaml.Visibility.Visible;
+            set => this.SetVisible(value);
         }
 
         /// <summary>
