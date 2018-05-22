@@ -8,6 +8,8 @@ namespace MADE.App.Views.Navigation
     using Android.Support.V4.App;
     using Android.Support.V7.App;
 
+    using MADE.App.Views.Navigation.Pages;
+
     /// <summary>
     /// Defines a frame for navigating and displaying page content.
     /// </summary>
@@ -82,25 +84,21 @@ namespace MADE.App.Views.Navigation
                 return;
             }
 
-            if (!this.CanNavigateAway())
+            NavigationEventArgs previousPageEvent = this.GetNavigationEvent(this.BackStackDepth - 1);
+            if (previousPageEvent == null)
+            {
+                // ToDo, if there is no page event, we are at the end of the stack. Should exit app.
+                return;
+            }
+
+            previousPageEvent.NavigationMode = NavigationMode.Back;
+
+            if (!this.CanNavigateAway(previousPageEvent))
             {
                 return;
             }
 
-            NavigationEventArgs currentPageEvent = this.GetNavigationEvent(this.BackStackDepth);
-            if (currentPageEvent != null)
-            {
-                currentPageEvent.NavigationMode = NavigationMode.Back;
-            }
-
-            NavigationEventArgs previousPageEvent = this.GetNavigationEvent(this.BackStackDepth - 1);
-            if (previousPageEvent != null)
-            {
-                previousPageEvent.NavigationMode = NavigationMode.Back;
-            }
-
             this.HandleNavigation(
-                currentPageEvent,
                 previousPageEvent,
                 () =>
                     {
@@ -137,11 +135,6 @@ namespace MADE.App.Views.Navigation
         /// </returns>
         public bool Navigate(Type sourcePageType, object parameter)
         {
-            if (!this.CanNavigateAway())
-            {
-                return false;
-            }
-
             if (!(Activator.CreateInstance(sourcePageType) is Page page))
             {
                 return false;
@@ -153,6 +146,11 @@ namespace MADE.App.Views.Navigation
                                                   Parameter = parameter,
                                                   SourcePageType = sourcePageType
                                               };
+
+            if (!this.CanNavigateAway(navArgs))
+            {
+                return false;
+            }
 
             this.HandleNavigation(
                 navArgs,
@@ -194,25 +192,17 @@ namespace MADE.App.Views.Navigation
 
         private void HandleNavigation(NavigationEventArgs navArgs, Action navigationAction)
         {
-            this.HandleNavigation(navArgs, navArgs, navigationAction);
-        }
-
-        private void HandleNavigation(
-            NavigationEventArgs previousNavArgs,
-            NavigationEventArgs newNavArgs,
-            Action navigationAction)
-        {
             IPage previousPage = this.currentPage;
-            previousPage?.OnNavigatedFrom(previousNavArgs);
+            previousPage?.OnNavigatedFrom(navArgs);
 
             navigationAction?.Invoke();
 
             this.currentPage = this.SupportFragmentManager.GetCurrentFragment() as Page;
             if (this.currentPage != null)
             {
-                this.currentPage.OnNavigatedTo(newNavArgs);
-                this.CurrentSourcePageParameter = newNavArgs.Parameter;
-                this.PageNavigated?.Invoke(this, newNavArgs);
+                this.currentPage.OnNavigatedTo(navArgs);
+                this.CurrentSourcePageParameter = navArgs.Parameter;
+                this.PageNavigated?.Invoke(this, navArgs);
             }
         }
 
@@ -239,7 +229,7 @@ namespace MADE.App.Views.Navigation
             }
         }
 
-        private bool CanNavigateAway()
+        private bool CanNavigateAway(NavigationEventArgs args)
         {
             IPage previousPage = this.currentPage;
 
@@ -248,9 +238,10 @@ namespace MADE.App.Views.Navigation
             NavigatingCancelEventArgs navArgs =
                 new NavigatingCancelEventArgs(() => shouldCancel = true)
                     {
-                        SourcePageType = previousPage?.GetType(),
-                        NavigationMode = NavigationMode.Back
-                    };
+                        SourcePageType = args.SourcePageType,
+                        NavigationMode = args.NavigationMode,
+                        Parameter = args.Parameter
+                };
 
             previousPage?.OnNavigatingFrom(navArgs);
 

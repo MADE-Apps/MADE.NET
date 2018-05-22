@@ -99,6 +99,9 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecondPage.xaml.cs">
+      <DependentUpon>SecondPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -125,16 +128,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="SecondPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="CommonServiceLocator">
+      <Version>2.0.3</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.4</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmLightLibs">
+      <Version>5.4.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MADE.App.Mvvm\MADE.App.Mvvm.csproj">
       <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
       <Name>MADE.App.Mvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Views.Navigation.MvvmLight\MADE.App.Views.Navigation.MvvmLight.csproj">
+      <Project>{ce2d8871-ee52-428d-978a-295883b4384a}</Project>
+      <Name>MADE.App.Views.Navigation.MvvmLight</Name>
     </ProjectReference>
     <ProjectReference Include="..\MADE.App.Views.Navigation\MADE.App.Views.Navigation.csproj">
       <Project>{00abf0e3-2ad1-4002-8527-920e9ea6a138}</Project>
@@ -143,6 +160,10 @@
     <ProjectReference Include="..\MADE.App\MADE.App.csproj">
       <Project>{006114aa-3919-4393-b836-d03995c5e230}</Project>
       <Name>MADE.App</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.Samples\MADE.Samples.csproj">
+      <Project>{03ce46b2-f4fa-4375-a493-f9e37b352299}</Project>
+      <Name>MADE.Samples</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

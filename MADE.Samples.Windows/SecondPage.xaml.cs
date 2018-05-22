@@ -1,10 +1,11 @@
 ﻿namespace MADE.Samples.Windows
 {
+    using MADE.App.Views.Navigation.Pages;
     using MADE.App.Views.Navigation.ViewModels;
 
-    public sealed partial class MainPage : MADE.App.Views.Navigation.Pages.MvvmPage
+    public sealed partial class SecondPage : MvvmPage
     {
-        public MainPage()
+        public SecondPage()
         {
             this.InitializeComponent();
             this.DataContext = new PageViewModel();

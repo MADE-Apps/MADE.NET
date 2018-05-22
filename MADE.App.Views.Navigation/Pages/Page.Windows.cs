@@ -1,5 +1,5 @@
 ﻿#if WINDOWS_UWP
-namespace MADE.App.Views.Navigation
+namespace MADE.App.Views.Navigation.Pages
 {
     using Windows.ApplicationModel;
 

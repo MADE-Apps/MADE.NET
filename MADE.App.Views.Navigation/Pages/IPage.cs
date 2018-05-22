@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.App.Views.Navigation
+namespace MADE.App.Views.Navigation.Pages
 {
     /// <summary>
     /// Defines an interface for an application page.
