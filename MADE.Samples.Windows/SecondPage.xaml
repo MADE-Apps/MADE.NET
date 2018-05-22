@@ -1,5 +1,5 @@
 ﻿<navigation:MvvmPage
-    x:Class="MADE.Samples.Windows.MainPage"
+    x:Class="MADE.Samples.Windows.SecondPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,6 +8,6 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="Main Page" />
+        <TextBlock Text="Second Page" />
     </Grid>
 </navigation:MvvmPage>

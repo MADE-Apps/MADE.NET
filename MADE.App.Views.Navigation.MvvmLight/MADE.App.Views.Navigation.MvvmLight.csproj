@@ -1,0 +1,76 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;uap10.0.16299</TargetFrameworks>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Views.Navigation.MvvmLight.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Navigation.MvvmLight.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="api\**" />
+    <Compile Remove="articles\**" />
+    <Compile Remove="_site\**" />
+    <EmbeddedResource Remove="api\**" />
+    <EmbeddedResource Remove="articles\**" />
+    <EmbeddedResource Remove="_site\**" />
+    <None Remove="api\**" />
+    <None Remove="articles\**" />
+    <None Remove="_site\**" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <LogFile>Docfx-$(TargetFramework).log</LogFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>MADE Apps</Authors>
+    <Company>MADE Apps</Company>
+    <Product>MADE App View Navigation MvvmLight Library</Product>
+    <Description>Making App Development Easier with a collection of easy to use components for building MVVM friendly page to page navigation for .NET projects using MvvmLight across Windows, Android, and iOS.</Description>
+    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
+    <PackageTags>MADE App Development MvvmLight Mvvm View Navigation Service Frame Windows Android iOS Xamarin</PackageTags>
+    <RootNamespace>MADE.App.Views.Navigation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="docfx.json" />
+    <None Remove="index.md" />
+    <None Remove="log.txt" />
+    <None Remove="toc.yml" />
+    <None Remove="Docfx-*.log" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommonServiceLocator" Version="2.0.3" />
+    <PackageReference Include="docfx.console" Version="2.36.0" PrivateAssets="All" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
+    <PackageReference Include="Xamarin.Android.Support.Fragment" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.App.Views.Navigation\MADE.App.Views.Navigation.csproj" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+</Project>
