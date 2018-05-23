@@ -1,4 +1,13 @@
-﻿#if __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NavigationFrame.Android.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a frame for navigating and displaying page content.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __ANDROID__
 namespace MADE.App.Views.Navigation
 {
     using System;
@@ -8,6 +17,7 @@ namespace MADE.App.Views.Navigation
     using Android.Support.V4.App;
     using Android.Support.V7.App;
 
+    using MADE.App.Views.Navigation.Extensions;
     using MADE.App.Views.Navigation.Pages;
 
     /// <summary>

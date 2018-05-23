@@ -1,4 +1,13 @@
-﻿#if WINDOWS_UWP || __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="MvvmPage.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an MVVM friendly page that is compatible with MvvmLight and the application NavigationFrame.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP || __ANDROID__
 namespace MADE.App.Views.Navigation.Pages
 {
     using MADE.App.Views.Navigation.ViewModels;

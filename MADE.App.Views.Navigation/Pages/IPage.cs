@@ -12,7 +12,7 @@ namespace MADE.App.Views.Navigation.Pages
     /// <summary>
     /// Defines an interface for an application page.
     /// </summary>
-    public interface IPage
+    public partial interface IPage : IView
     {
         /// <summary>
         /// Gets or sets the data context for the page.

@@ -1,15 +1,33 @@
-﻿#if __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Page.Android.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an Android support fragment that is compatible with the application NavigationFrame.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __ANDROID__
 namespace MADE.App.Views.Navigation.Pages
 {
+    using Android.Graphics.Drawables;
     using Android.OS;
     using Android.Support.V4.App;
     using Android.Views;
 
+    using MADE.App.Design.Color;
+    using MADE.App.Views.Extensions;
+
     /// <summary>
     /// Defines an Android support fragment that is compatible with the application NavigationFrame.
     /// </summary>
-    public class Page : Fragment, IAndroidPage, IPage
+    public class Page : Fragment, IPage
     {
+        /// <summary>
+        /// Occurs when the view has loaded.
+        /// </summary>
+        public event ViewLoadedEventHandler ViewLoaded;
+
         /// <summary>
         /// Gets or sets the data context for the page.
         /// </summary>
@@ -19,6 +37,48 @@ namespace MADE.App.Views.Navigation.Pages
         /// Gets the ID for the Android layout associated with the page.
         /// </summary>
         public virtual int LayoutId { get; } = 0;
+
+        /// <summary>
+        /// Gets or sets a color that provides the background of the view.
+        /// </summary>
+        public Color BackgroundColor
+        {
+            get
+            {
+                if (this.View == null)
+                {
+                    return Android.Graphics.Color.Transparent;
+                }
+
+                Drawable background = this.View.Background;
+                return background is ColorDrawable drawable ? drawable.Color : Android.Graphics.Color.Transparent;
+            }
+            set => this.View?.SetBackgroundColor(value);
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the view is enabled and can be interacted with.
+        /// </summary>
+        public bool IsEnabled
+        {
+            get => this.View != null && this.View.Enabled;
+            set
+            {
+                if (this.View != null)
+                {
+                    this.View.Enabled = value;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the view is visible in the UI.
+        /// </summary>
+        public new bool IsVisible
+        {
+            get => this.View != null && this.View.Visibility == ViewStates.Visible;
+            set => this.View?.SetVisible(value);
+        }
 
         /// <summary>
         /// Gets the title for the page.
@@ -58,6 +118,7 @@ namespace MADE.App.Views.Navigation.Pages
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             this.View = inflater.Inflate(this.LayoutId, container, false);
+            this.ViewLoaded?.Invoke(this, new ViewLoadedEventArgs());
             this.OnPageLoaded();
 
             this.HasOptionsMenu = this.HasMenu;
@@ -114,6 +175,24 @@ namespace MADE.App.Views.Navigation.Pages
         /// </param>
         public virtual void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
+        }
+
+        /// <summary>
+        /// Retrieves the element from the instantiated view by the given resource identifier.
+        /// </summary>
+        /// <param name="resourceId">
+        /// The view's resource identifier.
+        /// </param>
+        /// <typeparam name="TView">
+        /// The type of view to retrieve.
+        /// </typeparam>
+        /// <returns>
+        /// Returns the view from the layout, if the view is found.
+        /// </returns>
+        public TView GetChildView<TView>(int resourceId)
+            where TView : View
+        {
+            return this.View?.FindViewById<TView>(resourceId);
         }
     }
 }

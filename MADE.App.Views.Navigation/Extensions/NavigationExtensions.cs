@@ -7,12 +7,12 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.App.Views.Navigation
+namespace MADE.App.Views.Navigation.Extensions
 {
     /// <summary>
     /// Defines a collection of extensions for handling navigation.
     /// </summary>
-    public static partial class Extensions
+    public static class NavigationExtensions
     {
 #if WINDOWS_UWP
         /// <summary>
