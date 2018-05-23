@@ -1,4 +1,13 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Control.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a UI element for creating custom controls in Windows applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Views.Controls
 {
     using MADE.App.Design.Color;
@@ -8,6 +17,9 @@ namespace MADE.App.Views.Controls
 
     using MADE.App.Views.Extensions;
 
+    /// <summary>
+    /// Defines a UI element for creating custom controls in Windows applications.
+    /// </summary>
     public class Control : Windows.UI.Xaml.Controls.Control, IControl
     {
         /// <summary>

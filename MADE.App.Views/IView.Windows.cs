@@ -1,8 +1,20 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IView.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an interface for Windows components of a common application user interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Views
 {
     using MADE.App.Design.Color;
 
+    /// <summary>
+    /// Defines an interface for Windows components of a common application user interface.
+    /// </summary>
     public partial interface IView
     {
         /// <summary>

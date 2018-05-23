@@ -1,4 +1,13 @@
-﻿#if __IOS__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NSObjectExtensions.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a collection of extensions for iOS NSObject values.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __IOS__
 namespace MADE.App.Extensions
 {
     using System;
@@ -8,7 +17,10 @@ namespace MADE.App.Extensions
 
     using MADE.App.Enums;
 
-    public static partial class NSObjectExtensions
+    /// <summary>
+    /// Defines a collection of extensions for iOS NSObject values.
+    /// </summary>
+    public static class NSObjectExtensions
     {
         /// <summary>
         /// Associates the given value with the given <see cref="NSObject"/> by the given key.

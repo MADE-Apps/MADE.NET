@@ -1,6 +1,18 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IControl.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an interface for Windows components of a common application control.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Views.Controls
 {
+    /// <summary>
+    /// Defines an interface for Windows components of a common application control.
+    /// </summary>
     public partial interface IControl
     {
         /// <summary>

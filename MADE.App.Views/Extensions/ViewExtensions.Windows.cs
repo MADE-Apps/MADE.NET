@@ -1,6 +1,18 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ViewExtensions.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a collection of extensions for handling Views in Windows applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Views.Extensions
 {
+    /// <summary>
+    /// Defines a collection of extensions for handling Views in Windows applications.
+    /// </summary>
     public static partial class ViewExtensions
     {
         /// <summary>

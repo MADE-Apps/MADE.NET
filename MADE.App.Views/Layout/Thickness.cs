@@ -52,6 +52,12 @@ namespace MADE.App.Views.Layout
         }
 
 #if WINDOWS_UWP
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Thickness"/> class.
+        /// </summary>
+        /// <param name="thickness">
+        /// The thickness value.
+        /// </param>
         public Thickness(Windows.UI.Xaml.Thickness thickness)
         {
             this.Bottom = thickness.Bottom;
@@ -60,11 +66,23 @@ namespace MADE.App.Views.Layout
             this.Top = thickness.Top;
         }
 
+        /// <summary>
+        /// Creates a new <see cref="Thickness"/> object based on the given <see cref="Windows.UI.Xaml.Thickness"/> value.
+        /// </summary>
+        /// <param name="thickness">
+        /// The thickness value.
+        /// </param>
         public static implicit operator Thickness(Windows.UI.Xaml.Thickness thickness)
         {
             return new Thickness(thickness);
         }
 
+        /// <summary>
+        /// Creates a new <see cref="Windows.UI.Xaml.Thickness"/> object based on the given <see cref="Thickness"/> value.
+        /// </summary>
+        /// <param name="thickness">
+        /// The thickness value.
+        /// </param>
         public static implicit operator Windows.UI.Xaml.Thickness(Thickness thickness)
         {
             return new Windows.UI.Xaml.Thickness(thickness.Left, thickness.Top, thickness.Right, thickness.Bottom);

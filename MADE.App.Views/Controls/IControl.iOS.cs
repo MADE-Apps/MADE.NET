@@ -1,10 +1,22 @@
-﻿#if __IOS__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IControl.iOS.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an interface for iOS components of a common application control.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __IOS__
 namespace MADE.App.Views.Controls
 {
     using System.ComponentModel;
 
     using UIKit;
 
+    /// <summary>
+    /// Defines an interface for iOS components of a common application control.
+    /// </summary>
     public partial interface IControl : IView, INotifyPropertyChanged
     {
         /// <summary>

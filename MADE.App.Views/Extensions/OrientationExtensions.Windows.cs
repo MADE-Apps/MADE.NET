@@ -1,10 +1,22 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrientationExtensions.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a collection of extensions for handling control orientations in Windows applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Views.Extensions
 {
     using Windows.UI.Xaml.Controls;
 
     using Orientation = MADE.App.Views.Layout.Orientation;
 
+    /// <summary>
+    /// Defines a collection of extensions for handling control orientations in Windows applications.
+    /// </summary>
     public static partial class OrientationExtensions
     {
         /// <summary>

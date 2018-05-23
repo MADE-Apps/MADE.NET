@@ -1,4 +1,13 @@
-﻿#if __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Control.Android.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a UI element for creating custom controls in Android applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __ANDROID__
 namespace MADE.App.Views.Controls
 {
     using System;
@@ -18,6 +27,9 @@ namespace MADE.App.Views.Controls
     using MADE.App.Design.Color;
     using MADE.App.Views.Extensions;
 
+    /// <summary>
+    /// Defines a UI element for creating custom controls in Android applications.
+    /// </summary>
     public class Control : FrameLayout, IControl
     {
         /// <summary>
@@ -126,6 +138,9 @@ namespace MADE.App.Views.Controls
         /// </summary>
         public virtual int LayoutId { get; } = 0;
 
+        /// <summary>
+        /// Gets or sets a color that provides the background of the view.
+        /// </summary>
         public Color BackgroundColor
         {
             get

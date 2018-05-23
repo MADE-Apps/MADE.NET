@@ -1,6 +1,18 @@
-﻿#if __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrientationExtensions.Android.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a collection of extensions for handling control orientations in Android applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __ANDROID__
 namespace MADE.App.Views.Extensions
 {
+    /// <summary>
+    /// Defines a collection of extensions for handling control orientations in Android applications.
+    /// </summary>
     public static partial class OrientationExtensions
     {
         /// <summary>

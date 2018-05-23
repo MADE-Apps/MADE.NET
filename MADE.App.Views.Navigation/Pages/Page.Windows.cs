@@ -1,4 +1,13 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Page.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a Windows page that is compatible with the application NavigationFrame.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Views.Navigation.Pages
 {
     using Windows.ApplicationModel;
@@ -6,6 +15,7 @@ namespace MADE.App.Views.Navigation.Pages
 
     using MADE.App.Design.Color;
     using MADE.App.Views.Extensions;
+    using MADE.App.Views.Navigation.Extensions;
 
     /// <summary>
     /// Defines a Windows page that is compatible with the application NavigationFrame.

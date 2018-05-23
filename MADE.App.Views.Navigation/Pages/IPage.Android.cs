@@ -1,4 +1,13 @@
-﻿#if __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IPage.Android.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an interface for Android components of an application page.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __ANDROID__
 namespace MADE.App.Views.Navigation.Pages
 {
     using Android.Views;

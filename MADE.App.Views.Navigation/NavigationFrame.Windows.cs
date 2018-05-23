@@ -1,7 +1,18 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NavigationFrame.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a frame for navigating and displaying page content.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Views.Navigation
 {
     using Windows.UI.Xaml.Controls;
+
+    using MADE.App.Views.Navigation.Extensions;
 
     /// <summary>
     /// Defines a frame for navigating and displaying page content.

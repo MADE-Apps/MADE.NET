@@ -1,4 +1,13 @@
-﻿#if __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="IView.Android.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines an interface for Android components of a common application user interface.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __ANDROID__
 namespace MADE.App.Views
 {
     using Android.Views;

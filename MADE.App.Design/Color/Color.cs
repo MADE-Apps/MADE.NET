@@ -114,6 +114,12 @@ namespace MADE.App.Design.Color
 #endif
 
 #if WINDOWS_UWP
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> class with a <see cref="Windows.UI.Color"/>.
+        /// </summary>
+        /// <param name="color">
+        /// The Windows color value.
+        /// </param>
         public Color(Windows.UI.Color color)
         {
             this.A = color.A;
@@ -122,21 +128,45 @@ namespace MADE.App.Design.Color
             this.B = color.B;
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Windows.UI.Color"/> to <see cref="Color"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The Windows color value.
+        /// </param>
         public static implicit operator Color(Windows.UI.Color color)
         {
             return new Color(color);
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Windows.UI.Xaml.Media.SolidColorBrush"/> to <see cref="Color"/> implicitly.
+        /// </summary>
+        /// <param name="colorBrush">
+        /// The Windows solid color brush value.
+        /// </param>
         public static implicit operator Color(Windows.UI.Xaml.Media.SolidColorBrush colorBrush)
         {
             return new Color(colorBrush.Color);
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Color"/> to <see cref="Windows.UI.Color"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The internal color value.
+        /// </param>
         public static implicit operator Windows.UI.Color(Color color)
         {
             return Windows.UI.Color.FromArgb(color.A, color.R, color.G, color.B);
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Color"/> to <see cref="Windows.UI.Xaml.Media.SolidColorBrush"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The internal color value.
+        /// </param>
         public static implicit operator Windows.UI.Xaml.Media.SolidColorBrush(Color color)
         {
             return new Windows.UI.Xaml.Media.SolidColorBrush(color);
@@ -144,6 +174,12 @@ namespace MADE.App.Design.Color
 #endif
 
 #if __IOS__
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> class with a <see cref="UIKit.UIColor"/>.
+        /// </summary>
+        /// <param name="color">
+        /// The iOS color value.
+        /// </param>
         public Color(UIKit.UIColor color)
         {
             if (color != null && color.CGColor != null)
@@ -166,11 +202,23 @@ namespace MADE.App.Design.Color
             }
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="UIKit.UIColor"/> to <see cref="Color"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The iOS color value.
+        /// </param>
         public static implicit operator Color(UIKit.UIColor color)
         {
             return new Color(color);
         }
 
+        /// <summary>
+        /// Supports the conversion of a <see cref="Color"/> to <see cref="UIKit.UIColor"/> implicitly.
+        /// </summary>
+        /// <param name="color">
+        /// The internal color value.
+        /// </param>
         public static implicit operator UIKit.UIColor(Color color)
         {
             return UIKit.UIColor.FromRGBA(color.R, color.G, color.B, color.A);

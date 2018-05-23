@@ -1,4 +1,13 @@
-﻿#if __IOS__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="Control.iOS.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a UI element for creating custom controls in iOS applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __IOS__
 namespace MADE.App.Views.Controls
 {
     using System;
@@ -14,6 +23,9 @@ namespace MADE.App.Views.Controls
 
     using UIKit;
 
+    /// <summary>
+    /// Defines a UI element for creating custom controls in iOS applications.
+    /// </summary>
     public class Control : UIView, IControl, IComponent
     {
         /// <summary>

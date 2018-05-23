@@ -1,4 +1,13 @@
-﻿#if __IOS__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="NSLayoutConstraintExtensions.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a collection of extensions for NSLayoutConstraint values.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __IOS__
 namespace MADE.App.Views.Extensions
 {
     using Foundation;

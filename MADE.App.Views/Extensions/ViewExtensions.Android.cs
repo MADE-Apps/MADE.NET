@@ -1,6 +1,18 @@
-﻿#if __ANDROID__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="ViewExtensions.Android.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a collection of extensions for handling Views in Android applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __ANDROID__
 namespace MADE.App.Views.Extensions
 {
+    /// <summary>
+    /// Defines a collection of extensions for handling Views in Android applications.
+    /// </summary>
     public static partial class ViewExtensions
     {
         /// <summary>

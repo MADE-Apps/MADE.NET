@@ -1,10 +1,22 @@
-﻿#if __IOS__
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="OrientationExtensions.iOS.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a collection of extensions for handling control orientations in iOS applications.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if __IOS__
 namespace MADE.App.Views.Extensions
 {
     using MADE.App.Views.Layout;
 
     using UIKit;
 
+    /// <summary>
+    /// Defines a collection of extensions for handling control orientations in iOS applications.
+    /// </summary>
     public static partial class OrientationExtensions
     {
         /// <summary>
