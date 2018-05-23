@@ -1,21 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <Version>1.0.0.0</Version>
-    <Authors>MADE Apps</Authors>
-    <Company>MADE Apps</Company>
-    <Product>MADE App Common Library</Product>
-    <Description>Making App Development Easier with a collection of common helpers and extensions for .NET projects across Windows, Android, iOS and Web.</Description>
-    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
-    <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
-    <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
-    <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>MADE App Development Windows Android iOS Xamarin Web</PackageTags>
+    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;uap10.0.16299</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -38,16 +24,42 @@
     <None Remove="_site\**" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <LogFile>Docfx-$(TargetFramework).log</LogFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>MADE Apps</Authors>
+    <Company>MADE Apps</Company>
+    <Product>MADE App Common Library</Product>
+    <Description>Making App Development Easier with a collection of common helpers and extensions for .NET projects across Windows, Android, iOS and Web.</Description>
+    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
+    <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
+    <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>MADE App Development Windows Android iOS Xamarin Web</PackageTags>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove=".gitignore" />
     <None Remove="docfx.json" />
     <None Remove="index.md" />
     <None Remove="log.txt" />
     <None Remove="toc.yml" />
+    <None Remove="Docfx-*.log" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="docfx.console" Version="2.36.0" PrivateAssets="All" />
+    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
   </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.4" />
+  </ItemGroup>
+
+  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 
 </Project>

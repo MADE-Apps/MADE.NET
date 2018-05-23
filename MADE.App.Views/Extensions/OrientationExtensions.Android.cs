@@ -1,8 +1,8 @@
-﻿namespace MADE.App.Views.Extensions
+﻿#if __ANDROID__
+namespace MADE.App.Views.Extensions
 {
-    public static class OrientationExtensions
+    public static partial class OrientationExtensions
     {
-#if __ANDROID__
         /// <summary>
         /// Sets the orientation property of the given LinearLayout by the given Orientation option.
         /// </summary>
@@ -27,6 +27,6 @@
 
             layout.Invalidate();
         }
-#endif
     }
 }
+#endif

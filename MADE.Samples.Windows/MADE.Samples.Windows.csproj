@@ -145,6 +145,10 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MADE.App.Design\MADE.App.Design.csproj">
+      <Project>{2373d259-1d56-44c5-a864-b3fdf3bf416a}</Project>
+      <Name>MADE.App.Design</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.App.Mvvm\MADE.App.Mvvm.csproj">
       <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
       <Name>MADE.App.Mvvm</Name>
@@ -156,6 +160,10 @@
     <ProjectReference Include="..\MADE.App.Views.Navigation\MADE.App.Views.Navigation.csproj">
       <Project>{00abf0e3-2ad1-4002-8527-920e9ea6a138}</Project>
       <Name>MADE.App.Views.Navigation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Views\MADE.App.Views.csproj">
+      <Project>{c3ea108d-5a26-402b-a14c-58af985aa5c5}</Project>
+      <Name>MADE.App.Views</Name>
     </ProjectReference>
     <ProjectReference Include="..\MADE.App\MADE.App.csproj">
       <Project>{006114aa-3919-4393-b836-d03995c5e230}</Project>

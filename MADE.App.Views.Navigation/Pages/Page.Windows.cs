@@ -2,7 +2,9 @@
 namespace MADE.App.Views.Navigation.Pages
 {
     using Windows.ApplicationModel;
+    using Windows.UI.Xaml.Media;
 
+    using MADE.App.Design.Color;
     using MADE.App.Views.Extensions;
 
     /// <summary>
@@ -25,6 +27,15 @@ namespace MADE.App.Views.Navigation.Pages
                     this.ViewLoaded?.Invoke(this, new ViewLoadedEventArgs());
                     this.OnPageLoaded();
                 };
+        }
+
+        /// <summary>
+        /// Gets or sets a color that provides the background of the view.
+        /// </summary>
+        public Color BackgroundColor
+        {
+            get => this.Background as SolidColorBrush;
+            set => this.Background = value;
         }
 
         /// <summary>

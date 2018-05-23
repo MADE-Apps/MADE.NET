@@ -1,8 +1,6 @@
 ﻿#if __ANDROID__
 namespace MADE.App.Views
 {
-    using System.ComponentModel;
-
     using Android.Views;
 
     using MADE.App.Design.Color;
