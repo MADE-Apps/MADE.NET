@@ -29,6 +29,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App.Design", "MADE.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App.Views.Xamarin.Forms", "MADE.App.Views.Xamarin.Forms\MADE.App.Views.Xamarin.Forms.csproj", "{C60DF964-C19D-467E-9503-F69B0284D13C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.App.Networking", "MADE.App.Networking\MADE.App.Networking.csproj", "{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -229,6 +231,22 @@ Global
 		{C60DF964-C19D-467E-9503-F69B0284D13C}.Release|x64.Build.0 = Release|Any CPU
 		{C60DF964-C19D-467E-9503-F69B0284D13C}.Release|x86.ActiveCfg = Release|Any CPU
 		{C60DF964-C19D-467E-9503-F69B0284D13C}.Release|x86.Build.0 = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|ARM.Build.0 = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|x64.Build.0 = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Debug|x86.Build.0 = Debug|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|ARM.ActiveCfg = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|ARM.Build.0 = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|x64.ActiveCfg = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|x64.Build.0 = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|x86.ActiveCfg = Release|Any CPU
+		{A509C0DD-BB0C-4624-AB74-82F4FBF5E38F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
