@@ -6,10 +6,9 @@ MADE App Components is a collection of easy to use features aiming to make app d
 
 ## Build status
 
-| Package | Status | NuGet version |
+| Packages | Status | Version |
 | ------ | ------ | ------ |
-| Release | [![Build status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/20/badge)](https://github.com/MADE-Apps/MADE-App-Components) | Coming soon |
-| Pre-release | [![Build status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/18/badge)](https://github.com/MADE-Apps/MADE-App-Components) | Coming soon |
+| NuGet | [![Build status](https://jamesmcroft.visualstudio.com/_apis/public/build/definitions/51429873-1f51-4edf-86fa-aac46053f624/20/badge)](https://github.com/MADE-Apps/MADE-App-Components) | [![NuGet](https://img.shields.io/nuget/v/Nuget.Core.svg)](https://www.nuget.org/packages/MADE.App/) |
 
 ## Made with MADE
 
