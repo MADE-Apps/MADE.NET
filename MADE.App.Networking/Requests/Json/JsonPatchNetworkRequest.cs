@@ -7,16 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-#if WINDOWS_UWP
 namespace MADE.App.Networking.Requests.Json
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
+    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using Windows.Storage.Streams;
-    using Windows.Web.Http;
 
     using MADE.App.Networking.Requests;
 
@@ -142,13 +140,15 @@ namespace MADE.App.Networking.Requests.Json
 
             Uri uri = new Uri(this.Url);
 
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Patch, uri)
-                              {
-                                  Content = new HttpStringContent(
-                                      this.Data,
-                                      UnicodeEncoding.Utf8,
-                                      "application/json")
-                              };
+            HttpRequestMessage request = new HttpRequestMessage
+                                             {
+                                                 Method = new HttpMethod("PATCH"),
+                                                 RequestUri = uri,
+                                                 Content = new StringContent(
+                                                     this.Data,
+                                                     Encoding.UTF8,
+                                                     "application/json")
+                                             };
 
             if (this.Headers != null)
             {
@@ -159,9 +159,13 @@ namespace MADE.App.Networking.Requests.Json
             }
 
             HttpResponseMessage response = cts == null
-                               ? await this.client.SendRequestAsync(request, HttpCompletionOption.ResponseHeadersRead)
-                               : await this.client.SendRequestAsync(request, HttpCompletionOption.ResponseHeadersRead)
-                                     .AsTask(cts.Token);
+                                               ? await this.client.SendAsync(
+                                                     request,
+                                                     HttpCompletionOption.ResponseHeadersRead)
+                                               : await this.client.SendAsync(
+                                                     request,
+                                                     HttpCompletionOption.ResponseHeadersRead,
+                                                     cts.Token);
 
             response.EnsureSuccessStatusCode();
 
@@ -169,4 +173,3 @@ namespace MADE.App.Networking.Requests.Json
         }
     }
 }
-#endif

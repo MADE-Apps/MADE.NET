@@ -9,18 +9,6 @@
 
 namespace MADE.App.Networking.Requests.Json
 {
-#if WINDOWS_UWP
-    using System;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    using Windows.Storage.Streams;
-    using Windows.Web.Http;
-
-    using Newtonsoft.Json;
-
-#else
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
@@ -29,8 +17,6 @@ namespace MADE.App.Networking.Requests.Json
     using System.Threading.Tasks;
 
     using Newtonsoft.Json;
-
-#endif
 
     /// <summary>
     /// Defines a network request for a PUT call with a JSON response.
@@ -115,7 +101,18 @@ namespace MADE.App.Networking.Requests.Json
             return JsonConvert.DeserializeObject<TResponse>(json);
         }
 
-        /// <inheritdoc />
+        /// <summary>
+        /// Executes the network request.
+        /// </summary>
+        /// <param name="expectedResponse">
+        /// The type expected by the response of the request.
+        /// </param>
+        /// <param name="cts">
+        /// The cancellation token source.
+        /// </param>
+        /// <returns>
+        /// Returns the response of the request as an object.
+        /// </returns>
         public override async Task<object> ExecuteAsync(Type expectedResponse, CancellationTokenSource cts = null)
         {
             string json = await this.GetJsonResponse(cts);
@@ -137,16 +134,6 @@ namespace MADE.App.Networking.Requests.Json
 
             Uri uri = new Uri(this.Url);
 
-#if WINDOWS_UWP
-            HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Put, uri)
-                              {
-                                  Content =
-                                      new HttpStringContent(
-                                          this.Data,
-                                          UnicodeEncoding.Utf8,
-                                          "application/json")
-                              };
-#else
             HttpRequestMessage request =
                 new HttpRequestMessage(HttpMethod.Put, uri)
                     {
@@ -155,7 +142,6 @@ namespace MADE.App.Networking.Requests.Json
                             Encoding.UTF8,
                             "application/json")
                     };
-#endif
 
             if (this.Headers != null)
             {
@@ -165,15 +151,6 @@ namespace MADE.App.Networking.Requests.Json
                 }
             }
 
-#if WINDOWS_UWP
-            HttpResponseMessage response = cts == null
-                                               ? await this.client.SendRequestAsync(
-                                                     request,
-                                                     HttpCompletionOption.ResponseHeadersRead)
-                                               : await this.client.SendRequestAsync(
-                                                     request,
-                                                     HttpCompletionOption.ResponseHeadersRead).AsTask(cts.Token);
-#else
             HttpResponseMessage response = cts == null
                                                ? await this.client.SendAsync(
                                                      request,
@@ -182,7 +159,6 @@ namespace MADE.App.Networking.Requests.Json
                                                      request,
                                                      HttpCompletionOption.ResponseHeadersRead,
                                                      cts.Token);
-#endif
 
             response.EnsureSuccessStatusCode();
 

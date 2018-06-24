@@ -9,17 +9,6 @@
 
 namespace MADE.App.Networking.Requests.Json
 {
-#if WINDOWS_UWP
-    using System;
-    using System.Collections.Generic;
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    using Windows.Web.Http;
-
-    using Newtonsoft.Json;
-
-#else
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
@@ -27,7 +16,6 @@ namespace MADE.App.Networking.Requests.Json
     using System.Threading.Tasks;
 
     using Newtonsoft.Json;
-#endif
 
     /// <summary>
     /// Defines a network request for a GET call with a JSON response.
@@ -128,15 +116,6 @@ namespace MADE.App.Networking.Requests.Json
                 }
             }
 
-#if WINDOWS_UWP
-            HttpResponseMessage response = cts == null
-                                               ? await this.client.SendRequestAsync(
-                                                     request,
-                                                     HttpCompletionOption.ResponseHeadersRead)
-                                               : await this.client.SendRequestAsync(
-                                                     request,
-                                                     HttpCompletionOption.ResponseHeadersRead).AsTask(cts.Token);
-#else
             HttpResponseMessage response = cts == null
                                                ? await this.client.SendAsync(
                                                      request,
@@ -145,7 +124,6 @@ namespace MADE.App.Networking.Requests.Json
                                                      request,
                                                      HttpCompletionOption.ResponseHeadersRead,
                                                      cts.Token);
-#endif
 
             response.EnsureSuccessStatusCode();
 

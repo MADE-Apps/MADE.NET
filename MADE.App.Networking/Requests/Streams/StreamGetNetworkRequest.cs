@@ -7,15 +7,13 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-#if WINDOWS_UWP
 namespace MADE.App.Networking.Requests.Streams
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
-
-    using Windows.Web.Http;
 
     using MADE.App.Networking.Requests;
 
@@ -117,14 +115,17 @@ namespace MADE.App.Networking.Requests.Streams
             }
 
             HttpResponseMessage response = cts == null
-                               ? await this.client.SendRequestAsync(request, HttpCompletionOption.ResponseHeadersRead)
-                               : await this.client.SendRequestAsync(request, HttpCompletionOption.ResponseHeadersRead)
-                                     .AsTask(cts.Token);
+                                               ? await this.client.SendAsync(
+                                                     request,
+                                                     HttpCompletionOption.ResponseHeadersRead)
+                                               : await this.client.SendAsync(
+                                                     request,
+                                                     HttpCompletionOption.ResponseHeadersRead,
+                                                     cts.Token);
 
             response.EnsureSuccessStatusCode();
 
-            return await response.Content.ReadAsInputStreamAsync();
+            return await response.Content.ReadAsStreamAsync();
         }
     }
 }
-#endif
