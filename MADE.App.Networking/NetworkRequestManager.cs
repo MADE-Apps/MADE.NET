@@ -23,11 +23,7 @@ namespace MADE.App.Networking
     /// </summary>
     public sealed class NetworkRequestManager : INetworkRequestManager
     {
-#if WINDOWS_UWP
-        private readonly Windows.UI.Xaml.DispatcherTimer processTimer;
-#else
         private Timer processTimer;
-#endif
 
         private bool isProcessingRequests;
 
@@ -37,11 +33,6 @@ namespace MADE.App.Networking
         public NetworkRequestManager()
         {
             this.CurrentQueue = new ConcurrentDictionary<string, NetworkRequestCallback>();
-
-#if WINDOWS_UWP
-            this.processTimer = new Windows.UI.Xaml.DispatcherTimer { Interval = TimeSpan.FromMinutes(1) };
-            this.processTimer.Tick += (sender, o) => this.ProcessCurrentQueue();
-#endif
         }
 
         /// <summary>
@@ -65,14 +56,6 @@ namespace MADE.App.Networking
         /// </param>
         public void Start(TimeSpan processPeriod)
         {
-#if WINDOWS_UWP
-            this.processTimer.Interval = processPeriod;
-
-            if (!this.processTimer.IsEnabled)
-            {
-                this.processTimer.Start();
-            }
-#else
             if (this.processTimer == null)
             {
                 this.processTimer = new Timer(
@@ -85,7 +68,6 @@ namespace MADE.App.Networking
             {
                 this.processTimer.Change(TimeSpan.FromMinutes(0), processPeriod);
             }
-#endif
         }
 
         /// <summary>
@@ -93,14 +75,7 @@ namespace MADE.App.Networking
         /// </summary>
         public void Stop()
         {
-#if WINDOWS_UWP
-            if (this.processTimer.IsEnabled)
-            {
-                this.processTimer.Stop();
-            }
-#else
             this.processTimer?.Change(Timeout.InfiniteTimeSpan, Timeout.InfiniteTimeSpan);
-#endif
         }
 
         /// <summary>
