@@ -53,8 +53,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Resources\**\*.cs" />
-    <None Include="Resources\**\*.*" />
+    <Compile Remove="**\*.designer.cs" />
+    <None Include="Resources\**\*.*;*.xib" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
+    <Compile Include="**\*.designer.cs" />
+    <InterfaceDefinition Include="HeaderedTextBlock.xib">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
