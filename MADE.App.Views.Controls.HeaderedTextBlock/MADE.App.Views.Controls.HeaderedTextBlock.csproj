@@ -15,12 +15,15 @@
   <ItemGroup>
     <Compile Remove="api\**" />
     <Compile Remove="articles\**" />
+    <Compile Remove="obj\**" />
     <Compile Remove="_site\**" />
     <EmbeddedResource Remove="api\**" />
     <EmbeddedResource Remove="articles\**" />
+    <EmbeddedResource Remove="obj\**" />
     <EmbeddedResource Remove="_site\**" />
     <None Remove="api\**" />
     <None Remove="articles\**" />
+    <None Remove="obj\**" />
     <None Remove="_site\**" />
   </ItemGroup>
 
@@ -54,12 +57,13 @@
 
   <ItemGroup>
     <Compile Remove="**\*.designer.cs" />
-    <None Include="Resources\**\*.*;*.xib" />
+    <None Include="Resources\**\*.*;**\*.xib;**\*.designer.cs" />
+    <Page Remove="Themes\*.xaml" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
-    <Compile Include="**\*.designer.cs" />
-    <InterfaceDefinition Include="HeaderedTextBlock.xib">
+    <Compile Include="HeaderedTextBlock.designer.cs" />
+    <InterfaceDefinition Include="*.xib">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
   </ItemGroup>
@@ -70,20 +74,32 @@
     <AndroidResource Include="Resources\**\*.xml" />
   </ItemGroup>
 
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+    <Page Include="Themes\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="docfx.console" Version="2.36.0" PrivateAssets="All" />
+    <PackageReference Include="docfx.console" Version="2.36.2" PrivateAssets="All" />
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
-    <PackageReference Include="Xamarin.Android.Support.Fragment" Version="27.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2" />
-    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2" />
+    <PackageReference Include="Xamarin.Android.Support.Fragment" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
+    <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.4" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
 
   <ItemGroup>

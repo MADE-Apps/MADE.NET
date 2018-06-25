@@ -138,7 +138,7 @@
       <Version>2.0.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.1.4</Version>
+      <Version>6.1.5</Version>
     </PackageReference>
     <PackageReference Include="MvvmLightLibs">
       <Version>5.4.1</Version>
@@ -152,6 +152,10 @@
     <ProjectReference Include="..\MADE.App.Mvvm\MADE.App.Mvvm.csproj">
       <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
       <Name>MADE.App.Mvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Views.Controls.HeaderedTextBlock\MADE.App.Views.Controls.HeaderedTextBlock.csproj">
+      <Project>{0084c2b6-ecac-478f-90e7-ab2664828223}</Project>
+      <Name>MADE.App.Views.Controls.HeaderedTextBlock</Name>
     </ProjectReference>
     <ProjectReference Include="..\MADE.App.Views.Navigation.MvvmLight\MADE.App.Views.Navigation.MvvmLight.csproj">
       <Project>{ce2d8871-ee52-428d-978a-295883b4384a}</Project>

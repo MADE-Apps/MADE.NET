@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App.Design", "MADE.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App.Views.Xamarin.Forms", "MADE.App.Views.Xamarin.Forms\MADE.App.Views.Xamarin.Forms.csproj", "{C60DF964-C19D-467E-9503-F69B0284D13C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.App.Views.Controls.HeaderedTextBlock", "MADE.App.Views.Controls.HeaderedTextBlock\MADE.App.Views.Controls.HeaderedTextBlock.csproj", "{0084C2B6-ECAC-478F-90E7-AB2664828223}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.App.Views.Controls.HeaderedTextBlock", "MADE.App.Views.Controls.HeaderedTextBlock\MADE.App.Views.Controls.HeaderedTextBlock.csproj", "{0084C2B6-ECAC-478F-90E7-AB2664828223}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

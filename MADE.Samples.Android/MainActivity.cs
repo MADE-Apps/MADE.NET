@@ -5,7 +5,7 @@
     using MADE.App.Views.Navigation;
     using MADE.Samples.Android.Fragments;
 
-    [Activity(Label = "MADE.Samples.Android", MainLauncher = true)]
+    [Activity(Label = "MADE.Samples.Android", MainLauncher = true, Theme = "@style/AppTheme")]
     public class MainActivity : NavigationFrame
     {
         public MainActivity()
