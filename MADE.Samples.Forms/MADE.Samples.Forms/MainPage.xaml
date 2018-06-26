@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="MADE.Samples.Forms.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MADE.Samples.Forms"
+    xmlns:views="clr-namespace:MADE.App.Views;assembly=MADE.App.Views.Controls.HeaderedTextBlock.Forms">
+
+    <StackLayout>
+        <views:HeaderedTextBlock
+            Header="Hello, World!"
+            HorizontalOptions="Center"
+            Text="Welcome to Xamarin.Forms!"
+            VerticalOptions="CenterAndExpand" />
+    </StackLayout>
+
+</ContentPage>
