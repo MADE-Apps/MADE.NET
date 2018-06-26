@@ -57,15 +57,7 @@
 
   <ItemGroup>
     <Compile Remove="**\*.designer.cs" />
-    <None Include="Resources\**\*.*;**\*.xib;**\*.designer.cs" />
     <Page Remove="Themes\*.xaml" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
-    <Compile Include="HeaderedTextBlock.designer.cs" />
-    <InterfaceDefinition Include="*.xib">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
@@ -87,7 +79,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="docfx.console" Version="2.36.2" PrivateAssets="All" />
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
   </ItemGroup>
 

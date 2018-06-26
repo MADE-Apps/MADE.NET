@@ -54,7 +54,6 @@
 
   <ItemGroup>
     <PackageReference Include="CommonServiceLocator" Version="2.0.3" />
-    <PackageReference Include="docfx.console" Version="2.36.2" PrivateAssets="All" />
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
     <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
   </ItemGroup>
