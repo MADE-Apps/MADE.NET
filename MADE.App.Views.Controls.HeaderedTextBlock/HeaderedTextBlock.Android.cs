@@ -116,32 +116,32 @@ namespace MADE.App.Views
         /// <summary>
         /// Gets the UI element associated with the container for the header and text content.
         /// </summary>
-        public LinearLayout LayoutContainer { get; private set; }
+        public LinearLayout HeaderTextBlockContainer { get; private set; }
 
         /// <summary>
         /// Gets the UI element associated with the header text.
         /// </summary>
-        public TextView HeaderTextView { get; private set; }
+        public TextView HeaderContent { get; private set; }
 
         /// <summary>
         /// Gets the UI element associated with the content text.
         /// </summary>
-        public TextView ContentTextView { get; private set; }
+        public TextView TextContent { get; private set; }
 
         /// <summary>
         /// Gets or sets the string associated with the header.
         /// </summary>
         public string Header
         {
-            get => this.HeaderTextView?.Text;
+            get => this.HeaderContent?.Text;
             set
             {
-                if (this.HeaderTextView == null || value == this.HeaderTextView.Text)
+                if (this.HeaderContent == null || value == this.HeaderContent.Text)
                 {
                     return;
                 }
 
-                this.HeaderTextView.Text = value;
+                this.HeaderContent.Text = value;
                 this.RaisePropertyChanged();
                 this.UpdateVisibility();
             }
@@ -152,15 +152,15 @@ namespace MADE.App.Views
         /// </summary>
         public string Text
         {
-            get => this.ContentTextView?.Text;
+            get => this.TextContent?.Text;
             set
             {
-                if (this.ContentTextView == null || value == this.ContentTextView.Text)
+                if (this.TextContent == null || value == this.TextContent.Text)
                 {
                     return;
                 }
 
-                this.ContentTextView.Text = value;
+                this.TextContent.Text = value;
                 this.RaisePropertyChanged();
                 this.UpdateVisibility();
             }
@@ -208,13 +208,13 @@ namespace MADE.App.Views
         {
             base.OnApplyTemplate(attrs, defStyleAttr, defStyleRes);
 
-            this.LayoutContainer = this.View?.FindViewById<LinearLayout>(
+            this.HeaderTextBlockContainer = this.View?.FindViewById<LinearLayout>(
                 Controls.HeaderedTextBlock.Resource.Id.HeaderedTextBlock_LayoutContainer);
 
-            this.HeaderTextView = this.View?.FindViewById<TextView>(
+            this.HeaderContent = this.View?.FindViewById<TextView>(
                 Controls.HeaderedTextBlock.Resource.Id.HeaderedTextBlock_HeaderTextView);
 
-            this.ContentTextView = this.View?.FindViewById<TextView>(
+            this.TextContent = this.View?.FindViewById<TextView>(
                 Controls.HeaderedTextBlock.Resource.Id.HeaderedTextBlock_ContentTextView);
 
             if (attrs != null)
@@ -229,18 +229,18 @@ namespace MADE.App.Views
                     Controls.HeaderedTextBlock.Resource.Styleable.HeaderedTextBlock_hide_if_empty,
                     false);
 
-                if (this.HeaderTextView != null)
+                if (this.HeaderContent != null)
                 {
                     string header = typedArray.GetString(
                         Controls.HeaderedTextBlock.Resource.Styleable.HeaderedTextBlock_header);
-                    this.HeaderTextView.Text = header;
+                    this.HeaderContent.Text = header;
                 }
 
-                if (this.ContentTextView != null)
+                if (this.TextContent != null)
                 {
                     string text = typedArray.GetString(
                         Controls.HeaderedTextBlock.Resource.Styleable.HeaderedTextBlock_text);
-                    this.ContentTextView.Text = text;
+                    this.TextContent.Text = text;
                 }
             }
 
@@ -253,7 +253,7 @@ namespace MADE.App.Views
         /// </summary>
         public void UpdateOrientation()
         {
-            this.LayoutContainer?.SetOrientation(this.Orientation);
+            this.HeaderTextBlockContainer?.SetOrientation(this.Orientation);
         }
 
         /// <summary>
@@ -264,14 +264,14 @@ namespace MADE.App.Views
             if (!this.HideIfNullOrWhiteSpace || !string.IsNullOrWhiteSpace(this.Text))
             {
                 this.IsVisible = true;
-                this.HeaderTextView?.SetVisible(!string.IsNullOrWhiteSpace(this.Header));
-                this.ContentTextView?.SetVisible(!string.IsNullOrWhiteSpace(this.Text));
+                this.HeaderContent?.SetVisible(!string.IsNullOrWhiteSpace(this.Header));
+                this.TextContent?.SetVisible(!string.IsNullOrWhiteSpace(this.Text));
             }
             else
             {
                 this.IsVisible = false;
-                this.HeaderTextView?.SetVisible(false);
-                this.ContentTextView?.SetVisible(false);
+                this.HeaderContent?.SetVisible(false);
+                this.TextContent?.SetVisible(false);
             }
         }
     }

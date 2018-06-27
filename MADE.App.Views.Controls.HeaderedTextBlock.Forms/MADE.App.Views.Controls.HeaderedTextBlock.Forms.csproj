@@ -43,7 +43,7 @@
     <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
-    <PackageTags>MADE App Development HeaderedTextBlock Xamarin.Forms View Custom Controls Windows Android iOS Xamarin</PackageTags>
+    <PackageTags>MADE App Development Controls View Header TextBlock TextView Xamarin.Forms Windows Android iOS Xamarin</PackageTags>
     <RootNamespace>MADE.App.Views</RootNamespace>
   </PropertyGroup>
 

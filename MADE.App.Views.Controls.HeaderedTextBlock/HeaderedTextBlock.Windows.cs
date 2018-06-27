@@ -77,9 +77,9 @@ namespace MADE.App.Views
             this.DefaultStyleKey = typeof(HeaderedTextBlock);
         }
 
-        public TextBlock HeaderTextBlock { get; private set; }
+        public TextBlock HeaderContent { get; private set; }
 
-        public TextBlock ContentTextBlock { get; private set; }
+        public TextBlock TextContent { get; private set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether to hide the control if the <see cref="IHeaderedTextBlock.Text"/> is null or whitespace.
@@ -159,14 +159,14 @@ namespace MADE.App.Views
             if (!this.HideIfNullOrWhiteSpace || !string.IsNullOrWhiteSpace(this.Text))
             {
                 this.IsVisible = true;
-                this.HeaderTextBlock?.SetVisible(!string.IsNullOrWhiteSpace(this.Header));
-                this.ContentTextBlock?.SetVisible(!string.IsNullOrWhiteSpace(this.Text));
+                this.HeaderContent?.SetVisible(!string.IsNullOrWhiteSpace(this.Header));
+                this.TextContent?.SetVisible(!string.IsNullOrWhiteSpace(this.Text));
             }
             else
             {
                 this.IsVisible = false;
-                this.HeaderTextBlock?.SetVisible(false);
-                this.ContentTextBlock?.SetVisible(false);
+                this.HeaderContent?.SetVisible(false);
+                this.TextContent?.SetVisible(false);
             }
         }
 
@@ -177,8 +177,8 @@ namespace MADE.App.Views
         {
             base.OnApplyTemplate();
 
-            this.HeaderTextBlock = this.GetChildView<TextBlock>("HeaderContent");
-            this.ContentTextBlock = this.GetChildView<TextBlock>("TextContent");
+            this.HeaderContent = this.GetChildView<TextBlock>("HeaderContent");
+            this.TextContent = this.GetChildView<TextBlock>("TextContent");
 
             this.UpdateVisibility();
             this.UpdateOrientation();
