@@ -9,6 +9,8 @@
 
 namespace MADE.App.Design.Color
 {
+    using System.Globalization;
+
     /// <summary>
     /// Defines a model for a UI element color.
     /// </summary>
@@ -35,6 +37,33 @@ namespace MADE.App.Design.Color
             this.R = r;
             this.G = g;
             this.B = b;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> class.
+        /// </summary>
+        /// <param name="hexValue">
+        /// The ARGB or RGB hex value represented as a string.
+        /// </param>
+        public Color(string hexValue)
+        {
+            string val = hexValue.ToUpper();
+
+            switch (val.Length)
+            {
+                case 7:
+                    this.A = 255;
+                    this.R = byte.Parse(val.Substring(1, 2), NumberStyles.AllowHexSpecifier);
+                    this.G = byte.Parse(val.Substring(3, 2), NumberStyles.AllowHexSpecifier);
+                    this.B = byte.Parse(val.Substring(5, 2), NumberStyles.AllowHexSpecifier);
+                    break;
+                case 9:
+                    this.A = byte.Parse(val.Substring(1, 2), NumberStyles.AllowHexSpecifier);
+                    this.R = byte.Parse(val.Substring(3, 2), NumberStyles.AllowHexSpecifier);
+                    this.G = byte.Parse(val.Substring(5, 2), NumberStyles.AllowHexSpecifier);
+                    this.B = byte.Parse(val.Substring(7, 2), NumberStyles.AllowHexSpecifier);
+                    break;
+            }
         }
 
 #if WINDOWS_UWP || __ANDROID__
@@ -186,7 +215,7 @@ namespace MADE.App.Design.Color
             {
                 if (color.CGColor.NumberOfComponents == 2)
                 {
-                    var rgb = (byte)(color.CGColor.Components[0] * 255);
+                    byte rgb = (byte)(color.CGColor.Components[0] * 255);
                     this.R = rgb;
                     this.G = rgb;
                     this.B = rgb;

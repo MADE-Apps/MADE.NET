@@ -29,6 +29,17 @@ namespace MADE.App.Views.Controls
     public class Control : UIView, IControl, IComponent
     {
         /// <summary>
+        /// Initializes a new instance of the <see cref="Control"/> class.
+        /// </summary>
+        /// <param name="handle">
+        /// The handle.
+        /// </param>
+        protected Control(IntPtr handle)
+            : base(handle)
+        {
+        }
+
+        /// <summary>
         /// Occurs when the view has loaded.
         /// </summary>
         public event ViewLoadedEventHandler ViewLoaded;

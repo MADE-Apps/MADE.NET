@@ -46,8 +46,4 @@
     <None Remove="toc.yml" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="docfx.console" Version="2.36.0" PrivateAssets="All" />
-  </ItemGroup>
-
 </Project>

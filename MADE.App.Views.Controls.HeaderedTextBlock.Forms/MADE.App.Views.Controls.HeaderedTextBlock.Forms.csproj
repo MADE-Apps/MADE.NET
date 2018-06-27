@@ -1,0 +1,70 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="3.1.0.583944" />
+  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Views.Controls.HeaderedTextBlock.Forms.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Controls.HeaderedTextBlock.Forms.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="api\**" />
+    <Compile Remove="articles\**" />
+    <Compile Remove="_site\**" />
+    <EmbeddedResource Remove="api\**" />
+    <EmbeddedResource Remove="articles\**" />
+    <EmbeddedResource Remove="_site\**" />
+    <None Remove="api\**" />
+    <None Remove="articles\**" />
+    <None Remove="_site\**" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <LogFile>Docfx-$(TargetFramework).log</LogFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.0.0.0</Version>
+    <Authors>MADE Apps</Authors>
+    <Company>MADE Apps</Company>
+    <Product>MADE App Xamarin.Forms HeaderedTextBlock Control Library</Product>
+    <Description>Making App Development Easier with a component for showing a read-only text field with a header for Xamarin.Forms projects.</Description>
+    <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
+    <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
+    <PackageTags>MADE App Development Controls View Header TextBlock TextView Xamarin.Forms Windows Android iOS Xamarin</PackageTags>
+    <RootNamespace>MADE.App.Views</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove=".gitignore" />
+    <None Remove="docfx.json" />
+    <None Remove="index.md" />
+    <None Remove="log.txt" />
+    <None Remove="toc.yml" />
+    <None Remove="Docfx-*.log" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.App.Views.Controls.HeaderedTextBlock\MADE.App.Views.Controls.HeaderedTextBlock.csproj" />
+    <ProjectReference Include="..\MADE.App.Views.Xamarin.Forms\MADE.App.Views.Xamarin.Forms.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="HeaderedTextBlock.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>

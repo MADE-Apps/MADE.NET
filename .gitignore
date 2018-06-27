@@ -289,3 +289,13 @@ __pycache__/
 
 # Additionals
 *.bak
+*.yml
+.manifest
+**/DROP/
+**/TEMP/
+**/packages/
+**/bin/
+**/obj/
+**/_site
+**/log.txt
+**/docfx.json
