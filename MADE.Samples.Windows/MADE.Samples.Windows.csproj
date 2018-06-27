@@ -153,6 +153,10 @@
       <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
       <Name>MADE.App.Mvvm</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Networking\MADE.App.Networking.csproj">
+      <Project>{a509c0dd-bb0c-4624-ab74-82f4fbf5e38f}</Project>
+      <Name>MADE.App.Networking</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.App.Views.Controls.HeaderedTextBlock\MADE.App.Views.Controls.HeaderedTextBlock.csproj">
       <Project>{0084c2b6-ecac-478f-90e7-ab2664828223}</Project>
       <Name>MADE.App.Views.Controls.HeaderedTextBlock</Name>
