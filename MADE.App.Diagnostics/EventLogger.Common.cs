@@ -47,7 +47,7 @@ namespace MADE.App.Diagnostics
                 System.Diagnostics.Debug.WriteLine(message);
             }
 
-            string log = string.Format(LogFormat, DateTime.Now, "Debug", Guid.NewGuid(), message);
+            string log = string.Format(LogFormat, DateTime.Now, "Info", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
         }
 
@@ -64,7 +64,7 @@ namespace MADE.App.Diagnostics
                 System.Diagnostics.Debug.WriteLine(message);
             }
 
-            string log = string.Format(LogFormat, DateTime.Now, "Debug", Guid.NewGuid(), message);
+            string log = string.Format(LogFormat, DateTime.Now, "Warning", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
         }
 
@@ -81,7 +81,7 @@ namespace MADE.App.Diagnostics
                 System.Diagnostics.Debug.WriteLine(message);
             }
 
-            string log = string.Format(LogFormat, DateTime.Now, "Debug", Guid.NewGuid(), message);
+            string log = string.Format(LogFormat, DateTime.Now, "Error", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
         }
 
@@ -98,7 +98,7 @@ namespace MADE.App.Diagnostics
                 System.Diagnostics.Debug.WriteLine(message);
             }
 
-            string log = string.Format(LogFormat, DateTime.Now, "Debug", Guid.NewGuid(), message);
+            string log = string.Format(LogFormat, DateTime.Now, "Critical", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
         }
 
