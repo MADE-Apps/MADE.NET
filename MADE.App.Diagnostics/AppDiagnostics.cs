@@ -1,10 +1,22 @@
-﻿namespace MADE.App.Diagnostics
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="AppDiagnostics.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a service for managing application wide event logging for exceptions.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace MADE.App.Diagnostics
 {
     using System.Diagnostics.Tracing;
     using System.Threading.Tasks;
 
     using MADE.App.Dependency;
 
+    /// <summary>
+    /// Defines a service for managing application wide event logging for exceptions.
+    /// </summary>
     public class AppDiagnostics : IAppDiagnostics
     {
         /// <summary>

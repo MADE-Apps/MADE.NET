@@ -1,8 +1,20 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EventLogger.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a service for logging informational messages to the Windows event log.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Diagnostics
 {
     using System.Diagnostics.Tracing;
 
+    /// <summary>
+    /// Defines a service for logging informational messages to the Windows event log.
+    /// </summary>
     public class EventLogger : EventSource, IEventLogger
     {
         /// <summary>

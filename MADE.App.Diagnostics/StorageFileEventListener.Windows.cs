@@ -1,4 +1,13 @@
-﻿#if WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="StorageFileEventListener.Windows.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a Windows event listener for writing event source logs to a storage file.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if WINDOWS_UWP
 namespace MADE.App.Diagnostics
 {
     using System;
@@ -9,24 +18,45 @@ namespace MADE.App.Diagnostics
 
     using Windows.Storage;
 
+    /// <summary>
+    /// Defines a Windows event listener for writing event source logs to a storage file.
+    /// </summary>
     public class StorageFileEventListener : EventListener, IStorageFileEventListener
     {
         private const string Format = "{0:G}\t '{1}'";
 
         private readonly SemaphoreSlim fileWriteSemaphore = new SemaphoreSlim(1);
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageFileEventListener"/> class.
+        /// </summary>
         public StorageFileEventListener()
         {
             this.CreateLogFileAsync();
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StorageFileEventListener"/> class.
+        /// </summary>
+        /// <param name="logFile">
+        /// The log file.
+        /// </param>
         public StorageFileEventListener(StorageFile logFile)
         {
             this.LogFile = logFile;
         }
 
+        /// <summary>
+        /// Gets the storage file associated with current event log.
+        /// </summary>
         public StorageFile LogFile { get; private set; }
 
+        /// <summary>
+        /// Called when an event has been written to the event source.
+        /// </summary>
+        /// <param name="eventData">
+        /// The data associated with the event source log.
+        /// </param>
         protected override async void OnEventWritten(EventWrittenEventArgs eventData)
         {
             if (this.LogFile == null)

@@ -1,4 +1,13 @@
-﻿#if !WINDOWS_UWP
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="EventLogger.Common.cs" company="MADE Apps">
+//   Copyright (c) MADE Apps.
+// </copyright>
+// <summary>
+//   Defines a service for logging informational messages to a log file.
+// </summary>
+// --------------------------------------------------------------------------------------------------------------------
+
+#if !WINDOWS_UWP
 namespace MADE.App.Diagnostics
 {
     using System;
@@ -6,6 +15,9 @@ namespace MADE.App.Diagnostics
     using System.Threading;
     using System.Threading.Tasks;
 
+    /// <summary>
+    /// Defines a service for logging informational messages to a log file.
+    /// </summary>
     public class EventLogger : IEventLogger
     {
         private const string LogFormat = "{0:G}\tLevel: {1}\tId: {2}\tMessage: '{3}'";
