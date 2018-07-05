@@ -3,12 +3,12 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:samples="using:MADE.Samples"
+    xmlns:windows="using:MADE.Samples.Windows"
     RequestedTheme="Light">
 
     <Application.Resources>
-        <ResourceDictionary>
-            <samples:Locator x:Key="Locator" />
-        </ResourceDictionary>
+        <samples:Locator x:Key="Locator" />
+        <windows:WindowsLocator x:Key="WindowsLocator" />
     </Application.Resources>
 
 </Application>
