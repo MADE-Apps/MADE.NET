@@ -9,7 +9,11 @@
     {
         static Locator()
         {
-            ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            if (!ServiceLocator.IsLocationProviderSet)
+            {
+                ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
+            }
+
             SimpleIoc.Default.Register<IMessenger, Messenger>();
         }
     }

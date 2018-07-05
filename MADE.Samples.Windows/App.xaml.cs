@@ -2,6 +2,8 @@
 {
     using System;
 
+    using CommonServiceLocator;
+
     using global::Windows.ApplicationModel;
 
     using global::Windows.ApplicationModel.Activation;
@@ -12,6 +14,8 @@
 
     using global::Windows.UI.Xaml.Navigation;
 
+    using MADE.App.Diagnostics;
+    using MADE.App.Diagnostics.Logging;
     using MADE.App.Views.Navigation;
 
     /// <summary>
@@ -34,7 +38,7 @@
         /// will be used such as when the application is launched to open a specific file.
         /// </summary>
         /// <param name="e">Details about the launch request and process.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -51,6 +55,12 @@
                 {
                     //TODO: Load state from previously suspended application
                 }
+
+                IAppDiagnostics diagnostics = new AppDiagnostics(new EventLogger());
+
+                await diagnostics.StartRecordingDiagnosticsAsync();
+
+                diagnostics.EventLogger.WriteInfo("Hello, World!");
 
                 // Place the frame in the current Window
                 Window.Current.Content = rootFrame;
@@ -92,7 +102,7 @@
         /// <param name="e">Details about the suspend request.</param>
         private void OnSuspending(object sender, SuspendingEventArgs e)
         {
-            var deferral = e.SuspendingOperation.GetDeferral();
+            SuspendingDeferral deferral = e.SuspendingOperation.GetDeferral();
 
             //TODO: Save application state and stop any background activity
             deferral.Complete();

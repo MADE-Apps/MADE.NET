@@ -54,6 +54,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AndroidLocator.cs" />
     <Compile Include="Fragments\SecondFragment.cs" />
     <Compile Include="Fragments\MainFragment.cs" />
     <Compile Include="MainActivity.cs" />
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\MADE.App.Design\MADE.App.Design.csproj">
       <Project>{2373d259-1d56-44c5-a864-b3fdf3bf416a}</Project>
       <Name>MADE.App.Design</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Diagnostics\MADE.App.Diagnostics.csproj">
+      <Project>{77fb7281-f600-4a08-943f-097fd10ae221}</Project>
+      <Name>MADE.App.Diagnostics</Name>
     </ProjectReference>
     <ProjectReference Include="..\MADE.App.Mvvm\MADE.App.Mvvm.csproj">
       <Project>{ce1370ae-4985-41e2-8dce-24b11a5ea177}</Project>
