@@ -11,6 +11,8 @@ namespace MADE.App.Diagnostics
 {
     using System.Threading.Tasks;
 
+    using MADE.App.Diagnostics.Logging;
+
     /// <summary>
     /// Defines an interface for handling application diagnostics.
     /// </summary>

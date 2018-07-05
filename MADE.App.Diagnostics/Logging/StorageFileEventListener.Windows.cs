@@ -8,7 +8,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 #if WINDOWS_UWP
-namespace MADE.App.Diagnostics
+namespace MADE.App.Diagnostics.Logging
 {
     using System;
     using System.Collections.Generic;

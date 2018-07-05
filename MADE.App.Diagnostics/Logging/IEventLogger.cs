@@ -7,7 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace MADE.App.Diagnostics
+namespace MADE.App.Diagnostics.Logging
 {
     /// <summary>
     /// Defines an interface for a logging service.

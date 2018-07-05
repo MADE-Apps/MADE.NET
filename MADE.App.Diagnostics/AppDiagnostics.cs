@@ -9,10 +9,10 @@
 
 namespace MADE.App.Diagnostics
 {
-    using System.Diagnostics.Tracing;
     using System.Threading.Tasks;
 
     using MADE.App.Dependency;
+    using MADE.App.Diagnostics.Logging;
 
     /// <summary>
     /// Defines a service for managing application wide event logging for exceptions.
@@ -89,7 +89,7 @@ namespace MADE.App.Diagnostics
 
 #if WINDOWS_UWP
             this.listener = new StorageFileEventListener();
-            this.listener.EnableEvents(this.EventLogger as EventSource, EventLevel.Verbose);
+            this.listener.EnableEvents(this.EventLogger as System.Diagnostics.Tracing.EventSource, System.Diagnostics.Tracing.EventLevel.Verbose);
 #endif
 
             this.EventLogger.WriteInfo("Application diagnostics initialized.");
