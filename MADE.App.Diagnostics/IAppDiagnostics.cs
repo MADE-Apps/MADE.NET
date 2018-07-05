@@ -17,6 +17,11 @@ namespace MADE.App.Diagnostics
     public interface IAppDiagnostics
     {
         /// <summary>
+        /// Gets the service for logging application event messages.
+        /// </summary>
+        IEventLogger EventLogger { get; }
+
+        /// <summary>
         /// Gets the string path to the file used for capturing application diagnostic messages.
         /// </summary>
         string DiagnosticsFilePath { get; }

@@ -141,20 +141,20 @@ namespace MADE.App.Diagnostics
             {
                 if (string.IsNullOrWhiteSpace(this.LogPath))
                 {
-                    string logFileName = $"Log-{DateTime.Now:yyyyMMdd}.txt";
+                    string logFileName = string.Format(AppDiagnostics.LogFileNameFormat, DateTime.Now);
 
                     string logFileFolderPath = string.Empty;
 
 #if __ANDROID__
                     string appFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    string logsFolderPath = Path.Combine(appFolderPath, "Logs");
+                    string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
 #elif __IOS__
                     string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     string appFolderPath = Path.Combine(documentsPath, "..", "Library");
-                    string logsFolderPath = Path.Combine(appFolderPath, "Logs");
+                    string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
 #else
                     string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
-                    string logsFolderPath = Path.Combine(appFolderPath, "Logs");
+                    string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
 #endif
 
                     if (!string.IsNullOrWhiteSpace(logsFolderPath))
