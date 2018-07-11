@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Diagnostics.xml</DocumentationFile>
+    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Storage.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Diagnostics.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Storage.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -31,15 +31,15 @@
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
     <Company>MADE Apps</Company>
-    <Product>MADE App Diagnostics Library</Product>
-    <Description>Making App Development Easier with a collection of easy to use diagnostic helpers for managing application exceptions and logging for .NET projects across Windows, Android, and iOS.</Description>
+    <Product>MADE App Storage Library</Product>
+    <Description>Making App Development Easier with a collection of easy to use storage helpers for managing application files and settings for .NET projects across Windows, Android, and iOS.</Description>
     <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
     <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
-    <PackageTags>MADE App Development Diagnostics EventSource EventLog Logger Windows Android iOS Xamarin</PackageTags>
+    <PackageTags>MADE App Development Storage StorageFile XPlat Settings Windows Android iOS Xamarin</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
@@ -55,12 +55,20 @@
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(TargetFramework)' == 'xamarin.ios10' ">
+    <PackageReference Include="XPlat.Storage" Version="1.2.18073.5" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
+    <PackageReference Include="XPlat.Storage" Version="1.2.18073.5" />
+  </ItemGroup>
+
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MADE.App\MADE.App.csproj" />
+    <Folder Include="Files\" />
   </ItemGroup>
 
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
