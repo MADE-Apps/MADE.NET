@@ -9,6 +9,7 @@
     using global::Android.Runtime;
 
     using MADE.App.Diagnostics;
+    using MADE.App.Views.Threading;
 
     [Application]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
@@ -46,37 +47,37 @@
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
         {
-            this.appDiagnostics.EventLogger.WriteInfo("An activity was created");
+            this.appDiagnostics?.EventLogger?.WriteInfo("An activity was created");
         }
 
         public void OnActivityDestroyed(Activity activity)
         {
-            this.appDiagnostics.EventLogger.WriteInfo("An activity was destroyed");
+            this.appDiagnostics?.EventLogger?.WriteInfo("An activity was destroyed");
         }
 
         public void OnActivityPaused(Activity activity)
         {
-            this.appDiagnostics.EventLogger.WriteInfo("An activity was paused");
+            this.appDiagnostics?.EventLogger?.WriteInfo("An activity was paused");
         }
 
         public void OnActivityResumed(Activity activity)
         {
-            this.appDiagnostics.EventLogger.WriteInfo("An activity was resumed");
+            this.appDiagnostics?.EventLogger?.WriteInfo("An activity was resumed");
         }
 
         public void OnActivitySaveInstanceState(Activity activity, Bundle outState)
         {
-            this.appDiagnostics.EventLogger.WriteInfo("An activity was saved");
+            this.appDiagnostics?.EventLogger?.WriteInfo("An activity was saved");
         }
 
         public void OnActivityStarted(Activity activity)
         {
-            this.appDiagnostics.EventLogger.WriteInfo("An activity was started");
+            this.appDiagnostics?.EventLogger?.WriteInfo("An activity was started");
         }
 
         public void OnActivityStopped(Activity activity)
         {
-            this.appDiagnostics.EventLogger.WriteInfo("An activity was stopped");
+            this.appDiagnostics?.EventLogger?.WriteInfo("An activity was stopped");
         }
     }
 }

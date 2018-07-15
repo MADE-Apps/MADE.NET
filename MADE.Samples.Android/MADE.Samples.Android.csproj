@@ -101,6 +101,10 @@
       <Project>{0084c2b6-ecac-478f-90e7-ab2664828223}</Project>
       <Name>MADE.App.Views.Controls.HeaderedTextBlock</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MADE.App.Views.Dialogs\MADE.App.Views.Dialogs.csproj">
+      <Project>{0257204f-7cec-4083-aee7-d501544508ee}</Project>
+      <Name>MADE.App.Views.Dialogs</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MADE.App.Views.Navigation.MvvmLight\MADE.App.Views.Navigation.MvvmLight.csproj">
       <Project>{ce2d8871-ee52-428d-978a-295883b4384a}</Project>
       <Name>MADE.App.Views.Navigation.MvvmLight</Name>
@@ -156,6 +160,9 @@
     <AndroidResource Include="Resources\layout\SecondFragment.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\menu\SecondFragmentMenu.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
