@@ -1,16 +1,38 @@
 ﻿namespace MADE.Samples.Android.Fragments
 {
-    using MADE.App.Views.Navigation;
-    using MADE.App.Views.Navigation.Pages;
-    using MADE.App.Views.Navigation.ViewModels;
+    using global::Android.Views;
 
-    public class SecondFragment : Page
+    using MADE.App.Views.Navigation.Pages;
+    using MADE.Samples.ViewModels;
+
+    public class SecondFragment : MvvmPage
     {
         public SecondFragment()
         {
-            this.DataContext = new PageViewModel();
+            this.DataContext = new SecondPageViewModel();
         }
 
+        public SecondPageViewModel ViewModel => this.DataContext as SecondPageViewModel;
+
+        public override bool HasMenu => true;
+
         public override int LayoutId => Resource.Layout.SecondFragment;
+
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        {
+            base.OnCreateOptionsMenu(menu, inflater);
+
+            inflater?.Inflate(Resource.Menu.SecondFragmentMenu, menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            if (item.ItemId == Resource.Id.showdialog)
+            {
+                this.ViewModel.ShowDialogCommand?.Execute(null);
+            }
+
+            return base.OnOptionsItemSelected(item);
+        }
     }
 }

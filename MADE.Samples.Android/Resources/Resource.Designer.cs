@@ -4916,6 +4916,9 @@ namespace MADE.Samples.Android
 			// aapt resource value: 0x7f070025
 			public const int showTitle = 2131165221;
 			
+			// aapt resource value: 0x7f0700c0
+			public const int showdialog = 2131165376;
+			
 			// aapt resource value: 0x7f070098
 			public const int smallLabel = 2131165336;
 			
@@ -5305,6 +5308,22 @@ namespace MADE.Samples.Android
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f0d0000
+			public const int SecondFragmentMenu = 2131558400;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
