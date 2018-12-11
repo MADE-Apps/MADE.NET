@@ -2,34 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;uap10.0.16299</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Views.Controls.HeaderedTextBlock.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Controls.HeaderedTextBlock.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="api\**" />
-    <Compile Remove="articles\**" />
-    <Compile Remove="obj\**" />
-    <Compile Remove="_site\**" />
-    <EmbeddedResource Remove="api\**" />
-    <EmbeddedResource Remove="articles\**" />
-    <EmbeddedResource Remove="obj\**" />
-    <EmbeddedResource Remove="_site\**" />
-    <None Remove="api\**" />
-    <None Remove="articles\**" />
-    <None Remove="obj\**" />
-    <None Remove="_site\**" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <LogFile>Docfx-$(TargetFramework).log</LogFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
@@ -39,36 +15,29 @@
     <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
     <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
     <PackageTags>MADE App Development Controls View Header TextBlock TextView Windows Android iOS Xamarin</PackageTags>
     <RootNamespace>MADE.App.Views.Controls.HeaderedTextBlock</RootNamespace>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageId>MADE.App.Views.Controls.HeaderedTextBlock</PackageId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <None Remove=".gitignore" />
-    <None Remove="docfx.json" />
-    <None Remove="index.md" />
-    <None Remove="log.txt" />
-    <None Remove="toc.yml" />
-    <None Remove="Docfx-*.log" />
-  </ItemGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Controls.HeaderedTextBlock.xml</DocumentationFile>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
+    <AndroidUseManagedDesignTimeResourceGenerator>False</AndroidUseManagedDesignTimeResourceGenerator>
+  </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="**\*.designer.cs" />
     <Page Remove="Themes\*.xaml" />
   </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
-    <Compile Include="Resources\**\*.cs" />
-    <AndroidResource Include="Resources\**\*.axml" />
-    <AndroidResource Include="Resources\**\*.xml" />
-  </ItemGroup>
-
-  <PropertyGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <GenerateLibraryLayout>true</GenerateLibraryLayout>
-  </PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
     <Page Include="Themes\*.xaml">
@@ -78,8 +47,20 @@
     </Page>
   </ItemGroup>
 
+  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
+    <Compile Include="Resources\**\*.cs" />
+    <AndroidResource Include="Resources\**\*.axml" />
+    <AndroidResource Include="Resources\**\*.xml" />
+    <AndroidResource Include="Resources\**\*.png" />
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
@@ -87,10 +68,6 @@
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.Design" Version="27.0.2.1" />
     <PackageReference Include="Xamarin.Android.Support.v4" Version="27.0.2.1" />
-  </ItemGroup>
-
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
   </ItemGroup>
 
   <ItemGroup>

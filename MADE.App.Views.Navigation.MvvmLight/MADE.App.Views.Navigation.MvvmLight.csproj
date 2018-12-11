@@ -2,31 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;uap10.0.16299</TargetFrameworks>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Views.Navigation.MvvmLight.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Navigation.MvvmLight.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Remove="api\**" />
-    <Compile Remove="articles\**" />
-    <Compile Remove="_site\**" />
-    <EmbeddedResource Remove="api\**" />
-    <EmbeddedResource Remove="articles\**" />
-    <EmbeddedResource Remove="_site\**" />
-    <None Remove="api\**" />
-    <None Remove="articles\**" />
-    <None Remove="_site\**" />
-  </ItemGroup>
-
-  <PropertyGroup>
-    <LogFile>Docfx-$(TargetFramework).log</LogFile>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
@@ -41,21 +20,19 @@
     <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
     <PackageTags>MADE App Development MvvmLight Mvvm View Navigation Service Frame Windows Android iOS Xamarin</PackageTags>
     <RootNamespace>MADE.App.Views.Navigation</RootNamespace>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageId>MADE.App.Views.Navigation.MvvmLight</PackageId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Navigation.MvvmLight.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove=".gitignore" />
-    <None Remove="docfx.json" />
-    <None Remove="index.md" />
-    <None Remove="log.txt" />
-    <None Remove="toc.yml" />
-    <None Remove="Docfx-*.log" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="CommonServiceLocator" Version="2.0.3" />
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
-    <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
+    <PackageReference Include="CommonServiceLocator" Version="2.0.3" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
@@ -64,7 +41,7 @@
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.5" />
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.7" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
