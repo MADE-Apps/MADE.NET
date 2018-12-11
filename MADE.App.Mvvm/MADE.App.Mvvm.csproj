@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
@@ -13,13 +16,9 @@
     <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
     <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
-    <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
     <PackageTags>MADE App Development MVVM RelayCommand Data Binding Windows Android iOS Xamarin</PackageTags>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>bin\Debug\netstandard2.0\MADE.App.Mvvm.xml</DocumentationFile>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageId>MADE.App.Mvvm</PackageId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -27,23 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="api\**" />
-    <Compile Remove="articles\**" />
-    <Compile Remove="_site\**" />
-    <EmbeddedResource Remove="api\**" />
-    <EmbeddedResource Remove="articles\**" />
-    <EmbeddedResource Remove="_site\**" />
-    <None Remove="api\**" />
-    <None Remove="articles\**" />
-    <None Remove="_site\**" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Remove=".gitignore" />
-    <None Remove="docfx.json" />
-    <None Remove="index.md" />
-    <None Remove="log.txt" />
-    <None Remove="toc.yml" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
   </ItemGroup>
 
 </Project>
