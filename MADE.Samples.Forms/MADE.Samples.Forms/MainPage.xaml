@@ -4,14 +4,21 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MADE.Samples.Forms"
-    xmlns:views="clr-namespace:MADE.App.Views;assembly=MADE.App.Views.Controls.HeaderedTextBlock.Forms">
+    xmlns:views="clr-namespace:MADE.App.Views;assembly=MADE.App.Views.Controls.HeaderedTextBlock.Forms"
+    xmlns:views1="clr-namespace:MADE.App.Views;assembly=MADE.App.Views.Controls.TextEntry.Forms">
 
     <StackLayout>
         <views:HeaderedTextBlock
             Header="Hello, World!"
             HorizontalOptions="Center"
             Text="Welcome to Xamarin.Forms!"
-            VerticalOptions="CenterAndExpand" />
+            VerticalOptions="CenterAndExpand" 
+            Orientation="Vertical"/>
+        <views1:TextEntry
+            x:Name="TextEntry"
+            Header="Enter text here"
+            Text="Enter text here"
+            Orientation="Vertical"/>
     </StackLayout>
 
 </ContentPage>
