@@ -7,11 +7,19 @@ using Xamarin.Forms;
 
 namespace MADE.Samples.Forms
 {
-	public partial class MainPage : ContentPage
+    using System.Diagnostics;
+
+    public partial class MainPage : ContentPage
 	{
 		public MainPage()
 		{
 			InitializeComponent();
+            this.TextEntry.TextChanged += TextEntry_TextChanged;
 		}
-	}
+
+        private void TextEntry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Debug.WriteLine(e.NewTextValue);
+        }
+    }
 }
