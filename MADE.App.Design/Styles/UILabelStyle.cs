@@ -10,9 +10,9 @@
 #if __IOS__
 namespace MADE.App.Design.Styles
 {
-    using MADE.App.Design.Color;
-
     using UIKit;
+
+    using XPlat.UI;
 
     /// <summary>
     /// Defines the style model for an iOS <see cref="UILabel"/>.
