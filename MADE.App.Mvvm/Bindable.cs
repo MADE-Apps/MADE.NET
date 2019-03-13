@@ -3,7 +3,7 @@
 //   Copyright (c) MADE Apps.
 // </copyright>
 // <summary>
-//   Defines an abstract class for creating bindable objects.
+//   Defines an abstract class for creating objects that notify when their properties change.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ namespace MADE.App.Mvvm
     using System.Runtime.CompilerServices;
 
     /// <summary>
-    /// Defines an abstract class for creating bindable objects.
+    /// Defines an abstract class for creating objects that notify when their properties change.
     /// </summary>
     public abstract class Bindable : INotifyPropertyChanged
     {
