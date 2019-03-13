@@ -164,8 +164,11 @@ namespace MADE.App.Diagnostics.Logging
                     string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
                     string appFolderPath = Path.Combine(documentsPath, "..", "Library");
                     string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
-#else
+#elif NETSTANDARD2_0
                     string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+                    string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
+#else
+                    string appFolderPath = AppContext.BaseDirectory;
                     string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
 #endif
 

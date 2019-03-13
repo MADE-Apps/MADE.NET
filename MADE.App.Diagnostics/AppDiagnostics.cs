@@ -96,7 +96,7 @@ namespace MADE.App.Diagnostics
 
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException += this.OnAppUnhandledException;
-#else
+#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
             System.AppDomain.CurrentDomain.UnhandledException += this.OnAppUnhandledException;
 #endif
             TaskScheduler.UnobservedTaskException += this.OnTaskUnobservedException;
@@ -116,7 +116,7 @@ namespace MADE.App.Diagnostics
 
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException -= this.OnAppUnhandledException;
-#else
+#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
             System.AppDomain.CurrentDomain.UnhandledException -= this.OnAppUnhandledException;
 #endif
             TaskScheduler.UnobservedTaskException -= this.OnTaskUnobservedException;
@@ -144,12 +144,13 @@ namespace MADE.App.Diagnostics
                     ? $"An unhandled exception was thrown. Error: {args.Exception}"
                     : "An unhandled exception was thrown. Error: No exception information was available.");
         }
-#else
+#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
         private void OnAppUnhandledException(object sender, System.UnhandledExceptionEventArgs args)
         {
             if (args.IsTerminating)
             {
-                this.EventLogger.WriteCritical("The application is terminating due to an unhandled exception being thrown.");
+                this.EventLogger.WriteCritical(
+                    "The application is terminating due to an unhandled exception being thrown.");
             }
 
             if (!(args.ExceptionObject is System.Exception ex))
