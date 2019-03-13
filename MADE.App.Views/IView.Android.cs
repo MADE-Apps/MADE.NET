@@ -12,7 +12,7 @@ namespace MADE.App.Views
 {
     using Android.Views;
 
-    using MADE.App.Design.Color;
+    using XPlat.UI;
 
     /// <summary>
     /// Defines an interface for Android components of a common application user interface.

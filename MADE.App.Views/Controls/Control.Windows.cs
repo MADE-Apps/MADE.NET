@@ -10,12 +10,12 @@
 #if WINDOWS_UWP
 namespace MADE.App.Views.Controls
 {
-    using MADE.App.Design.Color;
-
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Media;
 
     using MADE.App.Views.Extensions;
+
+    using XPlat.UI;
 
     /// <summary>
     /// Defines a UI element for creating custom controls in Windows applications.
