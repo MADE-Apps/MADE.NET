@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>netstandard1.4;xamarin.ios10;monoandroid81;uap10.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -31,7 +31,7 @@
     <PackageReference Include="XPlat.UI" Version="1.5.19060.1" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.3" PrivateAssets="All" />
   </ItemGroup>
 
