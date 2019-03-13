@@ -21,6 +21,7 @@ namespace MADE.App.Diagnostics.Logging
     /// <summary>
     /// Defines a Windows event listener for writing event source logs to a storage file.
     /// </summary>
+    [Obsolete("StorageFileEventListener will be removed. This component is no longer required by MADE.App.Diagnostics.")]
     public class StorageFileEventListener : EventListener, IStorageFileEventListener
     {
         private const string Format = "{0:G}\t '{1}'";

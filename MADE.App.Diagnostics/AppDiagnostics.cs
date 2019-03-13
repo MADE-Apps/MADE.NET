@@ -29,10 +29,6 @@ namespace MADE.App.Diagnostics
         /// </summary>
         public const string LogFileNameFormat = "Log-{0:yyyyMMdd}.txt";
 
-#if WINDOWS_UWP
-        private StorageFileEventListener listener;
-#endif
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AppDiagnostics"/> class.
         /// </summary>
@@ -86,11 +82,6 @@ namespace MADE.App.Diagnostics
             }
 
             this.IsRecordingDiagnostics = true;
-
-#if WINDOWS_UWP
-            this.listener = new StorageFileEventListener();
-            this.listener.EnableEvents(this.EventLogger as System.Diagnostics.Tracing.EventSource, System.Diagnostics.Tracing.EventLevel.Verbose);
-#endif
 
             this.EventLogger.WriteInfo("Application diagnostics initialized.");
 
