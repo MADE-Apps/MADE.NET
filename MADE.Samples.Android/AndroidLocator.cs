@@ -7,8 +7,6 @@
     using MADE.App.Views.Dialogs;
     using MADE.App.Views.Threading;
 
-    using XPlat.UI.Core;
-
     public class AndroidLocator
     {
         static AndroidLocator()
