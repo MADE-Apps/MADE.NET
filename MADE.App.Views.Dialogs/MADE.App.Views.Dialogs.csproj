@@ -29,8 +29,8 @@
   <ItemGroup>
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
-    <PackageReference Include="XPlat.UI.Core" Version="1.6.19072.5-alpha" />
-    <PackageReference Include="XPlat.UI.Popups" Version="1.6.19072.5-alpha" />
+    <PackageReference Include="XPlat.UI.Core" Version="1.6.19073.2-alpha" />
+    <PackageReference Include="XPlat.UI.Popups" Version="1.6.19073.2-alpha" />
   </ItemGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">

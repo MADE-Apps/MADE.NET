@@ -9,8 +9,6 @@
 
 namespace MADE.App.Views.Navigation.ViewModels
 {
-    using CommonServiceLocator;
-
     using GalaSoft.MvvmLight;
     using GalaSoft.MvvmLight.Ioc;
     using GalaSoft.MvvmLight.Messaging;
@@ -24,7 +22,7 @@ namespace MADE.App.Views.Navigation.ViewModels
         /// Initializes a new instance of the <see cref="PageViewModel"/> class.
         /// </summary>
         public PageViewModel()
-            : this(ServiceLocator.Current.GetInstance<IMessenger>())
+            : this(SimpleIoc.Default.GetInstance<IMessenger>())
         {
 
         }

@@ -15,6 +15,7 @@ namespace MADE.App.Views.Dialogs
     using System.Threading.Tasks;
 
     using MADE.App.Views.Dialogs.Buttons;
+    using MADE.App.Views.Threading;
 
     using XPlat.UI.Core;
 
@@ -23,7 +24,7 @@ namespace MADE.App.Views.Dialogs
     /// </summary>
     public class AppDialog : IAppDialog, IDisposable
     {
-        private readonly ICoreDispatcher dispatcher;
+        private readonly IUIDispatcher dispatcher;
 
         private SemaphoreSlim dialogSemaphore;
 
@@ -33,7 +34,7 @@ namespace MADE.App.Views.Dialogs
         /// <param name="dispatcher">
         /// The dispatcher for launching dialogs on the UI thread.
         /// </param>
-        public AppDialog(ICoreDispatcher dispatcher)
+        public AppDialog(IUIDispatcher dispatcher)
         {
             this.dispatcher = dispatcher;
 

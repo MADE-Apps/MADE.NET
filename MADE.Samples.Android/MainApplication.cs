@@ -2,14 +2,13 @@
 {
     using System;
 
-    using CommonServiceLocator;
-
     using global::Android.App;
     using global::Android.OS;
     using global::Android.Runtime;
 
+    using GalaSoft.MvvmLight.Ioc;
+
     using MADE.App.Diagnostics;
-    using MADE.App.Views.Threading;
 
     [Application]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
@@ -36,7 +35,7 @@
             locator = new Locator();
             androidLocator = new AndroidLocator();
 
-            this.appDiagnostics = ServiceLocator.Current.GetInstance<IAppDiagnostics>();
+            this.appDiagnostics = SimpleIoc.Default.GetInstance<IAppDiagnostics>();
             if (this.appDiagnostics != null)
             {
                 await this.appDiagnostics.StartRecordingDiagnosticsAsync();

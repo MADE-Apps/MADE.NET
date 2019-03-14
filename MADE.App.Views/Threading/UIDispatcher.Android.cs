@@ -3,7 +3,7 @@
 //   Copyright (c) MADE Apps.
 // </copyright>
 // <summary>
-//   Defines a dispatcher that performs actions on the UI thread.
+//   Defines the Android helper class for dispatching actions on the UI thread.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -15,10 +15,11 @@ namespace MADE.App.Views.Threading
 
     using Android.App;
 
+    using XPlat.UI.Core;
+
     /// <summary>
-    /// Defines a dispatcher that performs actions on the UI thread.
+    /// Defines the Android helper class for dispatching actions on the UI thread.
     /// </summary>
-    [Obsolete("UIDispatcher will be removed. We recommend using XPlat.UI.Core.UIDispatcher.")]
     public class UIDispatcher : IUIDispatcher
     {
         /// <summary>
@@ -26,24 +27,67 @@ namespace MADE.App.Views.Threading
         /// </summary>
         public object Reference { get; private set; }
 
-        private Activity Activity => this.Reference as Activity;
+        /// <summary>
+        /// Gets the instance of the Android CoreDispatcher.
+        /// </summary>
+        internal CoreDispatcher Instance { get; private set; }
 
         /// <summary>
-        /// Sets the <see cref="Android.App.Activity"/> to use as a reference for dispatching actions on the UI thread.
+        /// Sets the platform specific UI object to use as a reference for dispatching actions on the UI thread.
         /// </summary>
         /// <param name="reference">
-        /// The <see cref="Android.App.Activity"/> object.
+        /// The platform specific UI reference object.
         /// </param>
         public void SetReference(object reference)
         {
-            this.Reference = null;
+            this.Instance = null;
 
             if (!(reference is Activity activity))
+            {
+                throw new UIDispatcherException("Cannot initialize the UIDispatcher without an Activity.");
+            }
+
+            this.Reference = activity;
+            this.Instance = new CoreDispatcher(activity);
+        }
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        public void Run(Action action)
+        {
+            this.CheckInitialized();
+
+            if (action == null)
             {
                 return;
             }
 
-            this.Reference = activity;
+            this.Run(CoreDispatcherPriority.Normal, action);
+        }
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        public async void Run(CoreDispatcherPriority priority, Action action)
+        {
+            this.CheckInitialized();
+
+            if (action == null)
+            {
+                return;
+            }
+
+            await this.Instance.RunAsync(() => action());
         }
 
         /// <summary>
@@ -55,24 +99,37 @@ namespace MADE.App.Views.Threading
         /// <returns>
         /// An asynchronous operation.
         /// </returns>
-        public async Task RunAsync(Action action)
+        public Task RunAsync(Action action)
         {
-            UIDispatcher dispatcher = this;
-            dispatcher.CheckInitialized();
-            if (action == null)
-            {
-                return;
-            }
+            this.CheckInitialized();
 
-            await Task.Run(() => { this.Activity?.RunOnUiThread(action); });
+            return action == null ? Task.CompletedTask : this.RunAsync(CoreDispatcherPriority.Normal, action);
+        }
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        /// <returns>
+        /// An asynchronous operation.
+        /// </returns>
+        public Task RunAsync(CoreDispatcherPriority priority, Action action)
+        {
+            this.CheckInitialized();
+
+            return action == null ? Task.CompletedTask : this.Instance.RunAsync(() => action());
         }
 
         private void CheckInitialized()
         {
-            if (this.Reference == null)
+            if (this.Instance == null)
             {
-                throw new InvalidOperationException(
-                    "Cannot run an action as the Activity has not be set as the reference in the SetReference method.");
+                throw new UIDispatcherException("Cannot run an action as the UIDispatcher has no UI reference set.");
             }
         }
     }
