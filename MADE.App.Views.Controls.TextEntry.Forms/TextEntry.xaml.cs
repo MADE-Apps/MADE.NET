@@ -12,11 +12,11 @@ namespace MADE.App.Views
     using System;
 
     using MADE.App.Views.Extensions;
-    using MADE.App.Views.Layout;
 
     using Xamarin.Forms;
-    using Xamarin.Forms.Internals;
     using Xamarin.Forms.Xaml;
+
+    using XPlat.UI.Controls;
 
     /// <summary>
     /// Defines a UI element representing a text entry with a header component.
@@ -156,7 +156,7 @@ namespace MADE.App.Views
         }
 
         /// <summary>
-        /// Updates the layout for the control based on the current <see cref="Views.Layout.Orientation"/> value.
+        /// Updates the layout for the control based on the current <see cref="XPlat.UI.Controls.Orientation"/> value.
         /// </summary>
         public void UpdateOrientation()
         {

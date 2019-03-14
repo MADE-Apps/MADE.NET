@@ -10,10 +10,11 @@
 namespace MADE.App.Views
 {
     using MADE.App.Views.Extensions;
-    using MADE.App.Views.Layout;
 
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
+
+    using XPlat.UI.Controls;
 
     /// <summary>
     /// Defines a UI element representing read-only text with a header component.

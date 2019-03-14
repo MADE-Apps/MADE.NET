@@ -12,7 +12,7 @@ namespace MADE.App.Views.Extensions
 {
     using Windows.UI.Xaml.Controls;
 
-    using Orientation = MADE.App.Views.Layout.Orientation;
+    using Orientation = XPlat.UI.Controls.Orientation;
 
     /// <summary>
     /// Defines a collection of extensions for handling control orientations in Windows applications.

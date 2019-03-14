@@ -21,7 +21,7 @@ namespace MADE.App.Views
     using MADE.App.Views.Controls;
     using MADE.App.Views.Extensions;
 
-    using Orientation = MADE.App.Views.Layout.Orientation;
+    using Orientation = XPlat.UI.Controls.Orientation;
 
     /// <summary>
     /// Defines a UI element representing read-only text with a header component.

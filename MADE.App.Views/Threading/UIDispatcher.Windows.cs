@@ -18,6 +18,7 @@ namespace MADE.App.Views.Threading
     /// <summary>
     /// Defines a dispatcher that performs actions on the UI thread.
     /// </summary>
+    [Obsolete("UIDispatcher will be removed. We recommend using XPlat.UI.Core.UIDispatcher.")]
     public class UIDispatcher : IUIDispatcher
     {
         public object Reference { get; private set; }

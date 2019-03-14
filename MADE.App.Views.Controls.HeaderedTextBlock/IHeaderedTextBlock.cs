@@ -9,7 +9,7 @@
 
 namespace MADE.App.Views
 {
-    using MADE.App.Views.Layout;
+    using XPlat.UI.Controls;
 
     /// <summary>
     /// Defines an interface for a UI element representing read-only text with a header component.

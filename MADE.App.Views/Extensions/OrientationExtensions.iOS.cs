@@ -10,7 +10,7 @@
 #if __IOS__
 namespace MADE.App.Views.Extensions
 {
-    using MADE.App.Views.Layout;
+    using XPlat.UI.Controls;
 
     using UIKit;
 
