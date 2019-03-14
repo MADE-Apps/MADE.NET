@@ -9,9 +9,9 @@
 
 namespace MADE.App.Views.Extensions
 {
-    using MADE.App.Views.Layout;
-
     using Xamarin.Forms;
+
+    using XPlat.UI.Controls;
 
     /// <summary>
     /// Defines a collection of extensions for Xamarin.Forms orientation supported controls.

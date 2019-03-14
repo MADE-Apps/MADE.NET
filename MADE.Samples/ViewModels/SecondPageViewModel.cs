@@ -2,7 +2,7 @@
 {
     using System.Windows.Input;
 
-    using CommonServiceLocator;
+    using GalaSoft.MvvmLight.Ioc;
 
     using MADE.App.Mvvm;
     using MADE.App.Views.Dialogs;
@@ -15,7 +15,7 @@
 
         public SecondPageViewModel()
         {
-            this.dialog = ServiceLocator.Current.GetInstance<IAppDialog>();
+            this.dialog = SimpleIoc.Default.GetInstance<IAppDialog>();
 
             this.ShowDialogCommand = new RelayCommand(this.ShowDialog);
         }

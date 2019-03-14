@@ -126,10 +126,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="CommonServiceLocator">
-      <Version>2.0.4</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmLightLibs">
+    <PackageReference Include="MvvmLightLibsStd10">
       <Version>5.4.1.1</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Android.Support.Constraint.Layout">

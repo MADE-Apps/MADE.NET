@@ -29,10 +29,6 @@ namespace MADE.App.Diagnostics
         /// </summary>
         public const string LogFileNameFormat = "Log-{0:yyyyMMdd}.txt";
 
-#if WINDOWS_UWP
-        private StorageFileEventListener listener;
-#endif
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AppDiagnostics"/> class.
         /// </summary>
@@ -87,16 +83,11 @@ namespace MADE.App.Diagnostics
 
             this.IsRecordingDiagnostics = true;
 
-#if WINDOWS_UWP
-            this.listener = new StorageFileEventListener();
-            this.listener.EnableEvents(this.EventLogger as System.Diagnostics.Tracing.EventSource, System.Diagnostics.Tracing.EventLevel.Verbose);
-#endif
-
             this.EventLogger.WriteInfo("Application diagnostics initialized.");
 
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException += this.OnAppUnhandledException;
-#else
+#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
             System.AppDomain.CurrentDomain.UnhandledException += this.OnAppUnhandledException;
 #endif
             TaskScheduler.UnobservedTaskException += this.OnTaskUnobservedException;
@@ -116,7 +107,7 @@ namespace MADE.App.Diagnostics
 
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException -= this.OnAppUnhandledException;
-#else
+#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
             System.AppDomain.CurrentDomain.UnhandledException -= this.OnAppUnhandledException;
 #endif
             TaskScheduler.UnobservedTaskException -= this.OnTaskUnobservedException;
@@ -144,12 +135,13 @@ namespace MADE.App.Diagnostics
                     ? $"An unhandled exception was thrown. Error: {args.Exception}"
                     : "An unhandled exception was thrown. Error: No exception information was available.");
         }
-#else
+#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
         private void OnAppUnhandledException(object sender, System.UnhandledExceptionEventArgs args)
         {
             if (args.IsTerminating)
             {
-                this.EventLogger.WriteCritical("The application is terminating due to an unhandled exception being thrown.");
+                this.EventLogger.WriteCritical(
+                    "The application is terminating due to an unhandled exception being thrown.");
             }
 
             if (!(args.ExceptionObject is System.Exception ex))

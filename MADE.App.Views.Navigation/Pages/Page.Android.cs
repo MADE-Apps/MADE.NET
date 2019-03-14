@@ -15,8 +15,9 @@ namespace MADE.App.Views.Navigation.Pages
     using Android.Support.V4.App;
     using Android.Views;
 
-    using MADE.App.Design.Color;
     using MADE.App.Views.Extensions;
+
+    using XPlat.UI;
 
     /// <summary>
     /// Defines an Android support fragment that is compatible with the application NavigationFrame.

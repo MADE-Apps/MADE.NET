@@ -1,5 +1,5 @@
 ﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="EventLogger.Common.cs" company="MADE Apps">
+// <copyright file="EventLogger.cs" company="MADE Apps">
 //   Copyright (c) MADE Apps.
 // </copyright>
 // <summary>
@@ -7,13 +7,14 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-#if !WINDOWS_UWP
 namespace MADE.App.Diagnostics.Logging
 {
     using System;
     using System.IO;
     using System.Threading;
     using System.Threading.Tasks;
+
+    using XPlat.Storage;
 
     /// <summary>
     /// Defines a service for logging informational messages to a log file.
@@ -54,11 +55,6 @@ namespace MADE.App.Diagnostics.Logging
         /// </param>
         public async void WriteInfo(string message)
         {
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                System.Diagnostics.Debug.WriteLine(message);
-            }
-
             string log = string.Format(LogFormat, DateTime.Now, "Info", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
         }
@@ -71,11 +67,6 @@ namespace MADE.App.Diagnostics.Logging
         /// </param>
         public async void WriteWarning(string message)
         {
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                System.Diagnostics.Debug.WriteLine(message);
-            }
-
             string log = string.Format(LogFormat, DateTime.Now, "Warning", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
         }
@@ -88,11 +79,6 @@ namespace MADE.App.Diagnostics.Logging
         /// </param>
         public async void WriteError(string message)
         {
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                System.Diagnostics.Debug.WriteLine(message);
-            }
-
             string log = string.Format(LogFormat, DateTime.Now, "Error", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
         }
@@ -105,22 +91,147 @@ namespace MADE.App.Diagnostics.Logging
         /// </param>
         public async void WriteCritical(string message)
         {
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                System.Diagnostics.Debug.WriteLine(message);
-            }
-
             string log = string.Format(LogFormat, DateTime.Now, "Critical", Guid.NewGuid(), message);
             await this.WriteToFileAsync(log);
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a debug message.
+        /// </summary>
+        /// <param name="message">
+        /// The message to write out.
+        /// </param>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteDebug(string message, Exception ex)
+        {
+            this.WriteDebug($"{message} - Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a debug message.
+        /// </summary>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteDebug(Exception ex)
+        {
+            this.WriteDebug($"Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a generic information message.
+        /// </summary>
+        /// <param name="message">
+        /// The message to write out.
+        /// </param>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteInfo(string message, Exception ex)
+        {
+            this.WriteInfo($"{message} - Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a generic information message.
+        /// </summary>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteInfo(Exception ex)
+        {
+            this.WriteInfo($"Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a warning message.
+        /// </summary>
+        /// <param name="message">
+        /// The message to write out.
+        /// </param>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteWarning(string message, Exception ex)
+        {
+            this.WriteWarning($"{message} - Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a warning message.
+        /// </summary>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteWarning(Exception ex)
+        {
+            this.WriteWarning($"Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as an error message.
+        /// </summary>
+        /// <param name="message">
+        /// The message to write out.
+        /// </param>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteError(string message, Exception ex)
+        {
+            this.WriteError($"{message} - Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as an error message.
+        /// </summary>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteError(Exception ex)
+        {
+            this.WriteError($"Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a critical message.
+        /// </summary>
+        /// <param name="message">
+        /// The message to write out.
+        /// </param>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteCritical(string message, Exception ex)
+        {
+            this.WriteCritical($"{message} - Error: '{ex}'");
+        }
+
+        /// <summary>
+        /// Writes an exception to the event log as a critical message.
+        /// </summary>
+        /// <param name="ex">
+        /// The exception to write out.
+        /// </param>
+        public void WriteCritical(Exception ex)
+        {
+            this.WriteCritical($"Error: '{ex}'");
         }
 
         private async Task WriteToFileAsync(string line)
         {
             await this.fileSemaphore.WaitAsync();
 
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                System.Diagnostics.Debug.WriteLine(line);
+            }
+
             if (string.IsNullOrWhiteSpace(this.LogPath))
             {
-                this.SetupLogFile();
+                await this.SetupLogFileAsync();
             }
 
             if (!string.IsNullOrWhiteSpace(this.LogPath))
@@ -147,7 +258,7 @@ namespace MADE.App.Diagnostics.Logging
             }
         }
 
-        private void SetupLogFile()
+        private async Task SetupLogFileAsync()
         {
             try
             {
@@ -157,18 +268,26 @@ namespace MADE.App.Diagnostics.Logging
 
                     string logFileFolderPath = string.Empty;
 
-#if __ANDROID__
-                    string appFolderPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
-#elif __IOS__
-                    string documentsPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-                    string appFolderPath = Path.Combine(documentsPath, "..", "Library");
+#if WINDOWS_UWP || __ANDROID__ || __IOS__
+                    IStorageFolder logsFolder =
+                        await ApplicationData.Current.LocalFolder.CreateFolderAsync(
+                            AppDiagnostics.LogsFolderName,
+                            CreationCollisionOption.OpenIfExists);
+
+                    IStorageFile logFile = await logsFolder.CreateFileAsync(
+                                               logFileName,
+                                               CreationCollisionOption.OpenIfExists);
+
+                    logFileFolderPath = logFile.Path;
+#elif NETSTANDARD2_0
+                    string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
                     string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
 #else
-                    string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
+                    string appFolderPath = AppContext.BaseDirectory;
                     string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
 #endif
 
+#if !(WINDOWS_UWP || __ANDROID__ || __IOS__)
                     if (!string.IsNullOrWhiteSpace(logsFolderPath))
                     {
                         if (!Directory.Exists(logsFolderPath))
@@ -182,11 +301,9 @@ namespace MADE.App.Diagnostics.Logging
                             File.Create(logFileFolderPath);
                         }
                     }
+#endif
 
-                    if (!string.IsNullOrWhiteSpace(logFileFolderPath) && File.Exists(logFileFolderPath))
-                    {
-                        this.LogPath = logFileFolderPath;
-                    }
+                    this.LogPath = logFileFolderPath;
                 }
             }
             catch (Exception ex)
@@ -202,4 +319,3 @@ namespace MADE.App.Diagnostics.Logging
         }
     }
 }
-#endif

@@ -13,9 +13,10 @@ namespace MADE.App.Views.Navigation.Pages
     using Windows.ApplicationModel;
     using Windows.UI.Xaml.Media;
 
-    using MADE.App.Design.Color;
     using MADE.App.Views.Extensions;
     using MADE.App.Views.Navigation.Extensions;
+
+    using XPlat.UI;
 
     /// <summary>
     /// Defines a Windows page that is compatible with the application NavigationFrame.
@@ -27,7 +28,7 @@ namespace MADE.App.Views.Navigation.Pages
         /// </summary>
         public Page()
         {
-            if (DesignMode.DesignModeEnabled || DesignMode.DesignMode2Enabled)
+            if (DesignMode.DesignModeEnabled)
             {
                 return;
             }

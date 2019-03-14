@@ -17,6 +17,8 @@ namespace MADE.App.Views.Dialogs
     using MADE.App.Views.Dialogs.Buttons;
     using MADE.App.Views.Threading;
 
+    using XPlat.UI.Core;
+
     /// <summary>
     /// Defines a service for handling application system alert dialogs.
     /// </summary>
@@ -242,7 +244,9 @@ namespace MADE.App.Views.Dialogs
         {
             TaskCompletionSource<bool> tcs = new TaskCompletionSource<bool>();
 
-#if WINDOWS_UWP
+#if __ANDROID__ || __IOS__ || WINDOWS_UWP
+            tcs.SetException(new PlatformNotSupportedException("The target platform being used is not currently supported."));
+
             if (this.dispatcher != null)
             {
                 await this.dispatcher.RunAsync(
@@ -252,8 +256,8 @@ namespace MADE.App.Views.Dialogs
 
                             try
                             {
-                                Windows.UI.Popups.MessageDialog dialog =
-                                    new Windows.UI.Popups.MessageDialog(message)
+                                XPlat.UI.Popups.MessageDialog dialog =
+                                    new XPlat.UI.Popups.MessageDialog(message)
                                         {
                                             Title = string.IsNullOrWhiteSpace(title)
                                                         ? "System alert!"
@@ -264,11 +268,11 @@ namespace MADE.App.Views.Dialogs
                                 {
                                     foreach (DialogButton button in buttons)
                                     {
-                                        dialog.Commands.Add(new Windows.UI.Popups.UICommand(button.Content, command => button.Invoke()));
+                                        dialog.Commands.Add(new XPlat.UI.Popups.UICommand(button.Content, command => button.Invoke()));
                                     }
                                 }
 
-                                Windows.UI.Popups.IUICommand result = await dialog.ShowAsync();
+                                XPlat.UI.Popups.IUICommand result = await dialog.ShowAsync();
 
                                 if (result == null)
                                 {
@@ -278,91 +282,6 @@ namespace MADE.App.Views.Dialogs
                                 tcs.SetResult(true);
                             }
                             catch (Exception)
-                            {
-                                tcs.SetResult(false);
-                            }
-                            finally
-                            {
-                                this.dialogSemaphore.Release();
-                            }
-                        });
-            }
-            else
-            {
-                tcs.SetResult(false);
-            }
-#elif __ANDROID__
-            if (this.dispatcher !=  null)
-            {
-                await this.dispatcher.RunAsync(
-                    async () =>
-                        {
-                            await this.dialogSemaphore.WaitAsync();
-
-                            Android.App.Activity activity = this.dispatcher.Reference as Android.App.Activity;
-
-                            try
-                            {
-                                Android.App.AlertDialog dialog =
-                                    new Android.App.AlertDialog.Builder(activity)
-                                        .Create();
-                                dialog.SetTitle(string.IsNullOrWhiteSpace(title) ? "Alert!" : title);
-
-                                dialog.SetMessage(message);
-
-                                if (buttons != null)
-                                {
-                                    DialogButton positiveCommand =
-                                        buttons.FirstOrDefault(x => x.Type == DialogButtonType.Positive);
-                                    if (positiveCommand != null)
-                                    {
-                                        dialog.SetButton(
-                                            (int)Android.Content.DialogButtonType.Positive,
-                                            positiveCommand.Content,
-                                            (sender, args) => positiveCommand.Invoke());
-                                    }
-
-                                    DialogButton neutralCommand =
-                                        buttons.FirstOrDefault(x => x.Type == DialogButtonType.Neutral);
-                                    if (neutralCommand != null)
-                                    {
-                                        dialog.SetButton(
-                                            (int)Android.Content.DialogButtonType.Neutral,
-                                            neutralCommand.Content,
-                                            (sender, args) => neutralCommand.Invoke());
-                                    }
-
-                                    DialogButton negativeCommand =
-                                        buttons.FirstOrDefault(x => x.Type == DialogButtonType.Negative);
-                                    if (negativeCommand != null)
-                                    {
-                                        dialog.SetButton(
-                                            (int)Android.Content.DialogButtonType.Negative,
-                                            negativeCommand.Content,
-                                            (sender, args) => negativeCommand.Invoke());
-                                    }
-                                    else
-                                    {
-                                        dialog.SetButton(
-                                            (int)Android.Content.DialogButtonType.Negative,
-                                            "Close",
-                                            (sender, args) => cancelAction?.Invoke());
-                                    }
-                                }
-                                else
-                                {
-                                    dialog.SetButton(
-                                        (int)Android.Content.DialogButtonType.Negative,
-                                        "Close",
-                                        (sender, args) => cancelAction?.Invoke());
-                                }
-
-                                dialog.CancelEvent += (sender, args) => cancelAction?.Invoke();
-                                dialog.DismissEvent += (sender, args) => tcs.SetResult(true);
-
-                                dialog.Show();
-                            }
-                            catch (Exception ex)
                             {
                                 tcs.SetResult(false);
                             }

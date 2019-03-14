@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid81;uap10.0.16299</TargetFrameworks>
+    <TargetFrameworks>netstandard1.4;xamarin.ios10;monoandroid81;uap10.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -22,16 +22,19 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard1.4\MADE.App.Views.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta-63127-02" PrivateAssets="All" />
+    <PackageReference Include="XPlat.UI" Version="1.6.19073.2-alpha" />
+    <PackageReference Include="XPlat.UI.Controls" Version="1.6.19073.2-alpha" />
+    <PackageReference Include="XPlat.UI.Core" Version="1.6.19073.2-alpha" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.3" PrivateAssets="All" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>

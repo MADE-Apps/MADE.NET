@@ -12,6 +12,8 @@ namespace MADE.App.Views.Threading
     using System;
     using System.Threading.Tasks;
 
+    using XPlat.UI.Core;
+
     /// <summary>
     /// Defines an interface for a dispatcher that performs actions on the UI thread.
     /// </summary>
@@ -36,9 +38,42 @@ namespace MADE.App.Views.Threading
         /// <param name="action">
         /// The action to run on the dispatcher.
         /// </param>
+        void Run(Action action);
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        void Run(CoreDispatcherPriority priority, Action action);
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
         /// <returns>
         /// An asynchronous operation.
         /// </returns>
         Task RunAsync(Action action);
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        /// <returns>
+        /// An asynchronous operation.
+        /// </returns>
+        Task RunAsync(CoreDispatcherPriority priority, Action action);
     }
 }

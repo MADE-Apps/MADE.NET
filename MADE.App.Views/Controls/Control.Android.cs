@@ -24,8 +24,9 @@ namespace MADE.App.Views.Controls
     using Android.Views;
     using Android.Widget;
 
-    using MADE.App.Design.Color;
     using MADE.App.Views.Extensions;
+
+    using XPlat.UI;
 
     /// <summary>
     /// Defines a UI element for creating custom controls in Android applications.

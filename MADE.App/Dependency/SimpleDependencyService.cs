@@ -7,8 +7,7 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace
-    MADE.App.Dependency
+namespace MADE.App.Dependency
 {
     using System;
     using System.Collections.Generic;
@@ -49,7 +48,7 @@ namespace
         {
             Type type = typeof(TClass);
 
-            if (type.IsInterface)
+            if (type.GetTypeInfo().IsInterface)
             {
                 throw new InvalidOperationException(
                     "To register with an interface, use the Register<TInterface, TClass> method instead.");
@@ -206,11 +205,11 @@ namespace
                 expectedClassType = serviceType;
             }
 
-            ConstructorInfo[] ctors = expectedClassType.GetConstructors();
+            List<ConstructorInfo> ctors = expectedClassType.GetTypeInfo().DeclaredConstructors.ToList();
 
-            if (ctors.Length > 1)
+            if (ctors.Count > 1)
             {
-                if (ctors.Length > 2)
+                if (ctors.Count > 2)
                 {
                     throw new InvalidOperationException(
                         $"Registration failed. {expectedClassType.Name} contains multiple constructors.");
@@ -233,7 +232,7 @@ namespace
                 return first;
             }
 
-            if (ctors.Length == 0 || (ctors.Length == 1 && !ctors[0].IsPublic))
+            if (ctors.Count == 0 || (ctors.Count == 1 && !ctors[0].IsPublic))
             {
                 throw new InvalidOperationException(
                     $"Registration failed. {expectedClassType.Name} does not contain a public constructor.");

@@ -12,7 +12,7 @@ namespace MADE.App.Diagnostics.Logging
     /// <summary>
     /// Defines an interface for a logging service.
     /// </summary>
-    public interface IEventLogger
+    public interface IEventLogger : IEventLoggerExtras
     {
         /// <summary>
         /// Gets or sets the path to where the log exists.

@@ -3,7 +3,7 @@
 //   Copyright (c) MADE Apps.
 // </copyright>
 // <summary>
-//   Defines a dispatcher that performs actions on the UI thread.
+//   Defines the Windows helper class for dispatching actions on the UI thread.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -13,33 +13,77 @@ namespace MADE.App.Views.Threading
     using System;
     using System.Threading.Tasks;
 
-    using Windows.UI.Core;
+    using XPlat.UI.Core;
 
     /// <summary>
-    /// Defines a dispatcher that performs actions on the UI thread.
+    /// Defines the Windows helper class for dispatching actions on the UI thread.
     /// </summary>
     public class UIDispatcher : IUIDispatcher
     {
+        /// <summary>
+        /// Gets the platform specified UI object to use as a reference.
+        /// </summary>
         public object Reference { get; private set; }
 
-        private CoreDispatcher CoreDispatcher => this.Reference as CoreDispatcher;
+        /// <summary>Gets the instance of the Windows CoreDispatcher.</summary>
+        internal CoreDispatcher Instance { get; private set; }
 
         /// <summary>
-        /// Sets the <see cref="Windows.UI.Core.CoreDispatcher"/> to use as a reference for dispatching actions on the UI thread.
+        /// Sets the platform specific UI object to use as a reference for dispatching actions on the UI thread.
         /// </summary>
         /// <param name="reference">
-        /// The <see cref="Windows.UI.Core.CoreDispatcher"/> object.
+        /// The platform specific UI reference object.
         /// </param>
         public void SetReference(object reference)
         {
-            this.Reference = null;
+            this.Instance = null;
 
-            if (!(reference is CoreDispatcher coreDispatcher))
+            if (!(reference is Windows.UI.Core.CoreDispatcher dispatcher))
+            {
+                throw new UIDispatcherException("Cannot initialize the UIDispatcher without a CoreDispatcher.");
+            }
+
+            this.Reference = dispatcher;
+            this.Instance = new CoreDispatcher(dispatcher);
+        }
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        public void Run(Action action)
+        {
+            this.CheckInitialized();
+
+            if (action == null)
             {
                 return;
             }
 
-            this.Reference = coreDispatcher;
+            this.Run(CoreDispatcherPriority.Normal, action);
+        }
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        public async void Run(CoreDispatcherPriority priority, Action action)
+        {
+            this.CheckInitialized();
+
+            if (action == null)
+            {
+                return;
+            }
+
+            await this.Instance.RunAsync(() => action());
         }
 
         /// <summary>
@@ -51,31 +95,37 @@ namespace MADE.App.Views.Threading
         /// <returns>
         /// An asynchronous operation.
         /// </returns>
-        public async Task RunAsync(Action action)
+        public Task RunAsync(Action action)
         {
-            UIDispatcher dispatcher = this;
-            dispatcher.CheckInitialized();
-            if (action == null)
-            {
-                return;
-            }
+            this.CheckInitialized();
 
-            if (dispatcher.CoreDispatcher.HasThreadAccess)
-            {
-                action.Invoke();
-            }
-            else
-            {
-                await dispatcher.CoreDispatcher.RunAsync(CoreDispatcherPriority.Normal, () => action());
-            }
+            return action == null ? Task.CompletedTask : this.RunAsync(CoreDispatcherPriority.Normal, action);
+        }
+
+        /// <summary>
+        /// Schedules the provided action on the UI thread from a worker thread.
+        /// </summary>
+        /// <param name="priority">
+        /// The priority.
+        /// </param>
+        /// <param name="action">
+        /// The action to run on the dispatcher.
+        /// </param>
+        /// <returns>
+        /// An asynchronous operation.
+        /// </returns>
+        public Task RunAsync(CoreDispatcherPriority priority, Action action)
+        {
+            this.CheckInitialized();
+
+            return action == null ? Task.CompletedTask : this.Instance.RunAsync(() => action());
         }
 
         private void CheckInitialized()
         {
-            if (this.Reference == null)
+            if (this.Instance == null)
             {
-                throw new InvalidOperationException(
-                    "Cannot run an action as the CoreDispatcher has not be set as the reference in the SetReference method.");
+                throw new UIDispatcherException("Cannot run an action as the UIDispatcher has no UI reference set.");
             }
         }
     }

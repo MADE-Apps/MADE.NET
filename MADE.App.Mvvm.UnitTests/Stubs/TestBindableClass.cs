@@ -1,8 +1,6 @@
-﻿namespace MADE.UnitTests.Mocks
+﻿namespace MADE.App.Mvvm.UnitTests.Stubs
 {
-    using MADE.App.Mvvm;
-
-    public class MockBindable : Bindable
+    public class TestBindableClass : Bindable
     {
         private bool bindableBool;
 

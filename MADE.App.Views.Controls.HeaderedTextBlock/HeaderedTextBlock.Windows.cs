@@ -7,7 +7,7 @@ namespace MADE.App.Views
     using MADE.App.Views.Extensions;
 
     using Control = MADE.App.Views.Controls.Control;
-    using Orientation = MADE.App.Views.Layout.Orientation;
+    using Orientation = XPlat.UI.Controls.Orientation;
 
     [TemplatePart(Name = "HeaderContent", Type = typeof(TextBlock))]
     [TemplatePart(Name = "TextContent", Type = typeof(TextBlock))]

@@ -10,7 +10,7 @@
 #if WINDOWS_UWP
 namespace MADE.App.Views
 {
-    using MADE.App.Design.Color;
+    using XPlat.UI;
 
     /// <summary>
     /// Defines an interface for Windows components of a common application user interface.

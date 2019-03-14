@@ -1,9 +1,9 @@
-﻿namespace MADE.UnitTests.Mvvm
+namespace MADE.App.Mvvm.UnitTests
 {
     using System.Collections.Generic;
     using System.ComponentModel;
 
-    using MADE.UnitTests.Mocks;
+    using MADE.App.Mvvm.UnitTests.Stubs;
 
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -13,7 +13,7 @@
         [TestMethod]
         public void Bindable_Set_DifferentValueWillSet()
         {
-            MockBindable bindable = new MockBindable();
+            TestBindableClass bindable = new TestBindableClass();
 
             Assert.AreEqual(bindable.BindableBool, false);
 
@@ -27,7 +27,7 @@
         {
             List<string> receivedEvents = new List<string>();
 
-            MockBindable bindable = new MockBindable();
+            TestBindableClass bindable = new TestBindableClass();
 
             bindable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs e)
                 {
@@ -38,7 +38,7 @@
 
             bindable.BindableBool = true;
             Assert.AreEqual(1, receivedEvents.Count);
-            Assert.AreEqual(nameof(MockBindable.BindableBool), receivedEvents[0]);
+            Assert.AreEqual(nameof(TestBindableClass.BindableBool), receivedEvents[0]);
         }
 
         [TestMethod]
@@ -46,7 +46,7 @@
         {
             List<string> receivedEvents = new List<string>();
 
-            MockBindable bindable = new MockBindable();
+            TestBindableClass bindable = new TestBindableClass();
 
             bindable.PropertyChanged += delegate(object sender, PropertyChangedEventArgs e)
                 {
@@ -56,7 +56,7 @@
             bindable.RaisePropertyChanged(() => bindable.BindableBool);
 
             Assert.AreEqual(1, receivedEvents.Count);
-            Assert.AreEqual(nameof(MockBindable.BindableBool), receivedEvents[0]);
+            Assert.AreEqual(nameof(TestBindableClass.BindableBool), receivedEvents[0]);
         }
     }
 }

@@ -26,14 +26,14 @@ namespace MADE.App.Views.Extensions
         /// </param>
         public static void SetOrientation(
             this Android.Widget.LinearLayout layout,
-            MADE.App.Views.Layout.Orientation orientation)
+            XPlat.UI.Controls.Orientation orientation)
         {
             if (layout == null)
             {
                 return;
             }
 
-            layout.Orientation = orientation == MADE.App.Views.Layout.Orientation.Vertical
+            layout.Orientation = orientation == XPlat.UI.Controls.Orientation.Vertical
                                      ? Android.Widget.Orientation.Vertical
                                      : Android.Widget.Orientation.Horizontal;
 
