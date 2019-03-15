@@ -1,5 +1,7 @@
 ﻿namespace MADE.Samples.ViewModels
 {
+    using System;
+    using System.Threading.Tasks;
     using System.Windows.Input;
 
     using GalaSoft.MvvmLight.Ioc;
@@ -17,21 +19,28 @@
         {
             this.dialog = SimpleIoc.Default.GetInstance<IAppDialog>();
 
-            this.ShowDialogCommand = new RelayCommand(this.ShowDialog);
+            this.ShowDialogCommand = new RelayCommand(async () => await this.ShowDialogAsync());
         }
 
         public ICommand ShowDialogCommand { get; }
 
-        public override void OnNavigatedTo(NavigationEventArgs e)
+        public override async void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
 
-            this.ShowDialog();
+            await this.ShowDialogAsync();
         }
 
-        private void ShowDialog()
+        private async Task ShowDialogAsync()
         {
-            this.dialog?.Show("Hello, World!");
+            try
+            {
+                await this.dialog.ShowAsync("Hello, World!");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+            }
         }
     }
 }

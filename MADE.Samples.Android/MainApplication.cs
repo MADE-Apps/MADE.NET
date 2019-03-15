@@ -39,6 +39,7 @@
             if (this.appDiagnostics != null)
             {
                 await this.appDiagnostics.StartRecordingDiagnosticsAsync();
+
             }
 
             this.RegisterActivityLifecycleCallbacks(this);
