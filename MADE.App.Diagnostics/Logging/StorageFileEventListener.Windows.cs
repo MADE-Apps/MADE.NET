@@ -21,7 +21,8 @@ namespace MADE.App.Diagnostics.Logging
     /// <summary>
     /// Defines a Windows event listener for writing event source logs to a storage file.
     /// </summary>
-    [Obsolete("StorageFileEventListener will be removed. This component is no longer required by MADE.App.Diagnostics.")]
+    [Obsolete(
+        "StorageFileEventListener will be removed. This component is no longer required by MADE.App.Diagnostics.")]
     public class StorageFileEventListener : EventListener, IStorageFileEventListener
     {
         private const string Format = "{0:G}\t '{1}'";
@@ -71,13 +72,13 @@ namespace MADE.App.Diagnostics.Logging
         private async Task CreateLogFileAsync()
         {
             StorageFolder logsFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync(
-                                           AppDiagnostics.LogsFolderName,
+                                           "Logs",
                                            CreationCollisionOption.OpenIfExists);
 
             if (logsFolder != null)
             {
                 this.LogFile = await logsFolder.CreateFileAsync(
-                                   string.Format(AppDiagnostics.LogFileNameFormat, DateTime.Now),
+                                   string.Format("Log-{0:yyyyMMdd}.txt", DateTime.Now),
                                    CreationCollisionOption.OpenIfExists);
             }
         }
