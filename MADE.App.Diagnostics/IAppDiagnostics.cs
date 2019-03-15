@@ -11,6 +11,7 @@ namespace MADE.App.Diagnostics
 {
     using System.Threading.Tasks;
 
+    using MADE.App.Diagnostics.Exceptions;
     using MADE.App.Diagnostics.Logging;
 
     /// <summary>
@@ -18,6 +19,11 @@ namespace MADE.App.Diagnostics
     /// </summary>
     public interface IAppDiagnostics
     {
+        /// <summary>
+        /// Occurs when an exception is observed.
+        /// </summary>
+        event ExceptionObservedEventHandler ExceptionObserved;
+
         /// <summary>
         /// Gets the service for logging application event messages.
         /// </summary>
