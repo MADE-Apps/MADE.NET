@@ -10,10 +10,12 @@
 namespace MADE.App.Views.Dialogs
 {
     using System;
+    using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
 
     using MADE.App.Views.Dialogs.Buttons;
+    using MADE.App.Views.Dialogs.Strings;
     using MADE.App.Views.Threading;
 
     /// <summary>
@@ -253,18 +255,46 @@ namespace MADE.App.Views.Dialogs
                             {
                                 XPlat.UI.Popups.MessageDialog dialog =
                                     new XPlat.UI.Popups.MessageDialog(message)
-                                        {
-                                            Title = string.IsNullOrWhiteSpace(title)
+                                    {
+                                        Title = string.IsNullOrWhiteSpace(title)
                                                         ? "System alert!"
                                                         : title
-                                        };
+                                    };
 
-                                if (buttons != null)
+#if __ANDROID__
+                                dialog.Context = this.dispatcher.Reference as Android.App.Activity;
+#elif __IOS__
+                                dialog.Controller = this.dispatcher.Reference as UIKit.UIViewController;
+#endif
+
+                                if (buttons != null && buttons.Any())
                                 {
-                                    foreach (DialogButton button in buttons)
+                                    for (int index = 0; index < buttons.Length; index++)
                                     {
-                                        dialog.Commands.Add(new XPlat.UI.Popups.UICommand(button.Content, command => button.Invoke()));
+                                        DialogButton button = buttons[index];
+
+                                        switch (button.Type)
+                                        {
+                                            case DialogButtonType.Negative:
+                                                dialog.CancelCommandIndex = (uint)index;
+                                                break;
+                                            case DialogButtonType.Positive:
+                                                dialog.DefaultCommandIndex = (uint)index;
+                                                break;
+                                        }
+
+                                        dialog.Commands.Add(
+                                            new XPlat.UI.Popups.UICommand(button.Content, command => button.Invoke()));
                                     }
+                                }
+                                else
+                                {
+                                    // We need at least one button.
+                                    dialog.DefaultCommandIndex = 0;
+                                    dialog.CancelCommandIndex = 0;
+                                    dialog.Commands.Add(
+                                        new XPlat.UI.Popups.UICommand(
+                                            Resources.ResourceManager.GetString("AppDialog_Close")));
                                 }
 
                                 XPlat.UI.Popups.IUICommand result = await dialog.ShowAsync();
