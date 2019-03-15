@@ -8,6 +8,7 @@
 
     using MADE.App.Mvvm;
     using MADE.App.Views.Dialogs;
+    using MADE.App.Views.Dialogs.Buttons;
     using MADE.App.Views.Navigation;
     using MADE.App.Views.Navigation.ViewModels;
 
@@ -24,18 +25,17 @@
 
         public ICommand ShowDialogCommand { get; }
 
-        public override async void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-
-            await this.ShowDialogAsync();
-        }
-
         private async Task ShowDialogAsync()
         {
             try
             {
-                await this.dialog.ShowAsync("Hello, World!");
+                await this.dialog.ShowAsync(
+                    "Hello, World!",
+                    () => { System.Diagnostics.Debug.WriteLine("Dialog was cancelled"); },
+                    new DialogButton(
+                        DialogButtonType.Positive,
+                        "Hello",
+                        button => { System.Diagnostics.Debug.WriteLine("Thanks!"); }));
             }
             catch (Exception ex)
             {

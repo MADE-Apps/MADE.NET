@@ -269,27 +269,43 @@ namespace MADE.App.Views.Dialogs
 
                                 if (buttons != null && buttons.Any())
                                 {
-                                    for (int index = 0; index < buttons.Length; index++)
+                                    // A negative/cancel button is required. If one doesn't exist, add it.
+                                    DialogButton negativeButton =
+                                        buttons.FirstOrDefault(x => x.Type == DialogButtonType.Negative);
+                                    if (negativeButton == null)
                                     {
-                                        DialogButton button = buttons[index];
+                                        XPlat.UI.Popups.UICommand uiCommand = new XPlat.UI.Popups.UICommand(
+                                            Resources.ResourceManager.GetString("AppDialog_Close"));
+
+                                        dialog.Commands.Add(uiCommand);
+
+                                        dialog.CancelCommandIndex = (uint)dialog.Commands.IndexOf(uiCommand);
+                                    }
+
+                                    foreach (DialogButton button in buttons)
+                                    {
+                                        XPlat.UI.Popups.UICommand uiCommand = new XPlat.UI.Popups.UICommand(
+                                            button.Content,
+                                            command => button.Invoke());
+
+                                        dialog.Commands.Add(uiCommand);
+
+                                        uint buttonIndex = (uint)dialog.Commands.IndexOf(uiCommand);
 
                                         switch (button.Type)
                                         {
                                             case DialogButtonType.Negative:
-                                                dialog.CancelCommandIndex = (uint)index;
+                                                dialog.CancelCommandIndex = buttonIndex;
                                                 break;
                                             case DialogButtonType.Positive:
-                                                dialog.DefaultCommandIndex = (uint)index;
+                                                dialog.DefaultCommandIndex = buttonIndex;
                                                 break;
                                         }
-
-                                        dialog.Commands.Add(
-                                            new XPlat.UI.Popups.UICommand(button.Content, command => button.Invoke()));
                                     }
                                 }
                                 else
                                 {
-                                    // We need at least one button.
+                                    // We need at least a cancel button.
                                     dialog.DefaultCommandIndex = 0;
                                     dialog.CancelCommandIndex = 0;
                                     dialog.Commands.Add(
