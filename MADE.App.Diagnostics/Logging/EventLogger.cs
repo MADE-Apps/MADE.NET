@@ -14,8 +14,6 @@ namespace MADE.App.Diagnostics.Logging
     using System.Threading;
     using System.Threading.Tasks;
 
-    using XPlat.Storage;
-
     /// <summary>
     /// Defines a service for logging informational messages to a log file.
     /// </summary>
@@ -29,6 +27,16 @@ namespace MADE.App.Diagnostics.Logging
         /// Gets or sets the path to where the log exists.
         /// </summary>
         public string LogPath { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the folder where logs are stored locally in the application.
+        /// </summary>
+        public string LogsFolderName { get; set; } = "Logs";
+
+        /// <summary>
+        /// Gets or sets the format for the name of the file where a log is stored locally in the application.
+        /// </summary>
+        public string LogFileNameFormat { get; set; } = "Log-{0:yyyyMMdd}.txt";
 
         /// <summary>
         /// Writes a debug information message to the event log when in DEBUG mode.
@@ -264,27 +272,27 @@ namespace MADE.App.Diagnostics.Logging
             {
                 if (string.IsNullOrWhiteSpace(this.LogPath))
                 {
-                    string logFileName = string.Format(AppDiagnostics.LogFileNameFormat, DateTime.Now);
+                    string logFileName = string.Format(this.LogFileNameFormat, DateTime.Now);
 
                     string logFileFolderPath = string.Empty;
 
 #if WINDOWS_UWP || __ANDROID__ || __IOS__
-                    IStorageFolder logsFolder =
-                        await ApplicationData.Current.LocalFolder.CreateFolderAsync(
-                            AppDiagnostics.LogsFolderName,
-                            CreationCollisionOption.OpenIfExists);
+                    XPlat.Storage.IStorageFolder logsFolder =
+                        await XPlat.Storage.ApplicationData.Current.LocalFolder.CreateFolderAsync(
+                            this.LogsFolderName,
+                            XPlat.Storage.CreationCollisionOption.OpenIfExists);
 
-                    IStorageFile logFile = await logsFolder.CreateFileAsync(
-                                               logFileName,
-                                               CreationCollisionOption.OpenIfExists);
+                    XPlat.Storage.IStorageFile logFile = await logsFolder.CreateFileAsync(
+                                                             logFileName,
+                                                             XPlat.Storage.CreationCollisionOption.OpenIfExists);
 
                     logFileFolderPath = logFile.Path;
 #elif NETSTANDARD2_0
                     string appFolderPath = AppDomain.CurrentDomain.BaseDirectory;
-                    string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
+                    string logsFolderPath = Path.Combine(appFolderPath, this.LogsFolderName);
 #else
                     string appFolderPath = AppContext.BaseDirectory;
-                    string logsFolderPath = Path.Combine(appFolderPath, AppDiagnostics.LogsFolderName);
+                    string logsFolderPath = Path.Combine(appFolderPath, this.LogsFolderName);
 #endif
 
 #if !(WINDOWS_UWP || __ANDROID__ || __IOS__)
@@ -316,6 +324,10 @@ namespace MADE.App.Diagnostics.Logging
                     throw;
                 }
             }
+
+#if !(WINDOWS_UWP || __ANDROID__ || __IOS__)
+            await Task.CompletedTask;
+#endif
         }
     }
 }

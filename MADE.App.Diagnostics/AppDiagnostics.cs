@@ -11,7 +11,6 @@ namespace MADE.App.Diagnostics
 {
     using System.Threading.Tasks;
 
-    using MADE.App.Dependency;
     using MADE.App.Diagnostics.Logging;
 
     /// <summary>
@@ -19,29 +18,6 @@ namespace MADE.App.Diagnostics
     /// </summary>
     public class AppDiagnostics : IAppDiagnostics
     {
-        /// <summary>
-        /// Defines the name of the folder where logs are stored locally in the application.
-        /// </summary>
-        public const string LogsFolderName = "Logs";
-
-        /// <summary>
-        /// Defines the format for the name of the file where a log is stored locally in the application.
-        /// </summary>
-        public const string LogFileNameFormat = "Log-{0:yyyyMMdd}.txt";
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="AppDiagnostics"/> class.
-        /// </summary>
-        public AppDiagnostics()
-        {
-            if (!SimpleDependencyService.Instance.IsRegistered<IEventLogger>())
-            {
-                SimpleDependencyService.Instance.Register<IEventLogger, EventLogger>();
-            }
-
-            this.EventLogger = SimpleDependencyService.Instance.GetInstance<IEventLogger>();
-        }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AppDiagnostics"/> class.
         /// </summary>
@@ -59,6 +35,21 @@ namespace MADE.App.Diagnostics
         public IEventLogger EventLogger { get; }
 
         /// <summary>
+        /// Gets or sets the name of the folder where logs are stored locally in the application.
+        /// </summary>
+        public string LogsFolderName
+        {
+            get => this.EventLogger?.LogsFolderName;
+            set
+            {
+                if (this.EventLogger != null)
+                {
+                    this.EventLogger.LogsFolderName = value;
+                }
+            }
+        }
+
+        /// <summary>
         /// Gets the string path to the file used for capturing application diagnostic messages.
         /// </summary>
         public string DiagnosticsFilePath => this.EventLogger?.LogPath;
@@ -67,6 +58,21 @@ namespace MADE.App.Diagnostics
         /// Gets a value indicating whether application diagnostic messages are being recorded.
         /// </summary>
         public bool IsRecordingDiagnostics { get; private set; }
+
+        /// <summary>
+        /// Gets or sets the format for the name of the file where a log is stored locally in the application.
+        /// </summary>
+        public string LogFileNameFormat
+        {
+            get => this.EventLogger?.LogFileNameFormat;
+            set
+            {
+                if (this.EventLogger != null)
+                {
+                    this.EventLogger.LogFileNameFormat = value;
+                }
+            }
+        }
 
         /// <summary>
         /// Starts tracking and recording the application diagnostic messages.

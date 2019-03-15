@@ -34,6 +34,16 @@ namespace MADE.App.Diagnostics
         bool IsRecordingDiagnostics { get; }
 
         /// <summary>
+        /// Gets or sets the format for the name of the file where a log is stored locally in the application.
+        /// </summary>
+        string LogFileNameFormat { get; set; }
+
+        /// <summary>
+        /// Gets or sets the name of the folder where logs are stored locally in the application.
+        /// </summary>
+        string LogsFolderName { get; set; }
+
+        /// <summary>
         /// Starts tracking and recording the application diagnostic messages.
         /// </summary>
         /// <returns>
