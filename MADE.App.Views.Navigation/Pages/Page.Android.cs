@@ -10,6 +10,8 @@
 #if __ANDROID__
 namespace MADE.App.Views.Navigation.Pages
 {
+    using System;
+
     using Android.Graphics.Drawables;
     using Android.OS;
     using Android.Support.V4.App;
@@ -28,6 +30,16 @@ namespace MADE.App.Views.Navigation.Pages
         /// Occurs when the view has loaded.
         /// </summary>
         public event ViewLoadedEventHandler ViewLoaded;
+
+        /// <summary>
+        /// Occurs when the <see cref="IsVisible"/> state has changed.
+        /// </summary>
+        public event EventHandler<bool> IsVisibleChanged;
+
+        /// <summary>
+        /// Occurs when the <see cref="IsEnabled"/> state has changed.
+        /// </summary>
+        public event EventHandler<bool> IsEnabledChanged;
 
         /// <summary>
         /// Gets or sets the data context for the page.
@@ -60,25 +72,34 @@ namespace MADE.App.Views.Navigation.Pages
         /// <summary>
         /// Gets or sets a value indicating whether the view is enabled and can be interacted with.
         /// </summary>
+        /// <exception cref="T:System.Exception" accessor="set">A delegate callback throws an exception.</exception>
         public bool IsEnabled
         {
             get => this.View != null && this.View.Enabled;
             set
             {
-                if (this.View != null)
+                if (this.View == null)
                 {
-                    this.View.Enabled = value;
+                    return;
                 }
+
+                this.View.Enabled = value;
+                this.IsEnabledChanged?.Invoke(this, value);
             }
         }
 
         /// <summary>
         /// Gets or sets a value indicating whether the view is visible in the UI.
         /// </summary>
+        /// <exception cref="T:System.Exception" accessor="set">A delegate callback throws an exception.</exception>
         public new bool IsVisible
         {
             get => this.View != null && this.View.Visibility == ViewStates.Visible;
-            set => this.View?.SetVisible(value);
+            set
+            {
+                this.View?.SetVisible(value);
+                this.IsVisibleChanged?.Invoke(this, value);
+            }
         }
 
         /// <summary>
@@ -95,6 +116,7 @@ namespace MADE.App.Views.Navigation.Pages
         /// Gets the menu associated with the current page.
         /// </summary>
         public IMenu Menu { get; private set; }
+
 
         /// <summary>
         /// Gets the view associated with the page's content.
