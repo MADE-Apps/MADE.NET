@@ -10,6 +10,8 @@
 #if WINDOWS_UWP
 namespace MADE.App.Views.Controls
 {
+    using System;
+
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Media;
 
@@ -36,6 +38,11 @@ namespace MADE.App.Views.Controls
         public event ViewLoadedEventHandler ViewLoaded;
 
         /// <summary>
+        /// Occurs when the <see cref="IsVisible"/> state has changed.
+        /// </summary>
+        public event EventHandler<bool> IsVisibleChanged;
+
+        /// <summary>
         /// Gets or sets a color that provides the background of the view.
         /// </summary>
         public Color BackgroundColor
@@ -47,10 +54,15 @@ namespace MADE.App.Views.Controls
         /// <summary>
         /// Gets or sets a value indicating whether the view is visible in the UI.
         /// </summary>
+        /// <exception cref="T:System.Exception" accessor="set">A delegate callback throws an exception.</exception>
         public bool IsVisible
         {
             get => this.Visibility == Visibility.Visible;
-            set => this.SetVisible(value);
+            set
+            {
+                this.SetVisible(value);
+                this.IsVisibleChanged?.Invoke(this, value);
+            }
         }
 
         /// <summary>

@@ -120,6 +120,16 @@ namespace MADE.App.Views.Controls
         public event ViewLoadedEventHandler ViewLoaded;
 
         /// <summary>
+        /// Occurs when the <see cref="IsEnabled"/> state has changed.
+        /// </summary>
+        public event EventHandler<bool> IsEnabledChanged;
+
+        /// <summary>
+        /// Occurs when the <see cref="IsVisible"/> state has changed.
+        /// </summary>
+        public event EventHandler<bool> IsVisibleChanged;
+
+        /// <summary>
         /// Occurs when a property value changes.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
@@ -159,6 +169,7 @@ namespace MADE.App.Views.Controls
         /// <summary>
         /// Gets or sets a value indicating whether the view is enabled and can be interacted with.
         /// </summary>
+        /// <exception cref="T:System.Exception" accessor="set">A delegate callback throws an exception.</exception>
         public virtual bool IsEnabled
         {
             get => this.Enabled;
@@ -168,6 +179,7 @@ namespace MADE.App.Views.Controls
                 {
                     this.Enabled = value;
                     this.RaisePropertyChanged();
+                    this.IsEnabledChanged?.Invoke(this, value);
                 }
             }
         }
@@ -175,6 +187,7 @@ namespace MADE.App.Views.Controls
         /// <summary>
         /// Gets or sets a value indicating whether the view is visible in the UI.
         /// </summary>
+        /// <exception cref="T:System.Exception" accessor="set">A delegate callback throws an exception.</exception>
         public bool IsVisible
         {
             get => this.Visibility == ViewStates.Visible;
@@ -182,6 +195,7 @@ namespace MADE.App.Views.Controls
             {
                 this.SetVisible(value);
                 this.RaisePropertyChanged();
+                this.IsVisibleChanged?.Invoke(this, value);
             }
         }
 

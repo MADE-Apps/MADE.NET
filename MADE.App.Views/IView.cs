@@ -9,6 +9,8 @@
 
 namespace MADE.App.Views
 {
+    using System;
+
     /// <summary>
     /// Defines an interface for a common application user interface.
     /// </summary>
@@ -18,6 +20,11 @@ namespace MADE.App.Views
         /// Occurs when the view has loaded.
         /// </summary>
         event ViewLoadedEventHandler ViewLoaded;
+
+        /// <summary>
+        /// Occurs when the <see cref="IsVisible"/> state has changed.
+        /// </summary>
+        event EventHandler<bool> IsVisibleChanged;
 
         /// <summary>
         /// Gets or sets a value indicating whether the view is enabled and can be interacted with.

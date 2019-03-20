@@ -10,6 +10,8 @@
 #if __ANDROID__
 namespace MADE.App.Views
 {
+    using System;
+
     using Android.Views;
 
     using XPlat.UI;
@@ -19,6 +21,11 @@ namespace MADE.App.Views
     /// </summary>
     public partial interface IView
     {
+        /// <summary>
+        /// Occurs when the <see cref="IsEnabled"/> state has changed.
+        /// </summary>
+        event EventHandler<bool> IsEnabledChanged;
+
         /// <summary>
         /// Gets the view associated with the inflated layout.
         /// </summary>
