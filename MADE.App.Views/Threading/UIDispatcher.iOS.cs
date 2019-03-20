@@ -13,7 +13,7 @@ namespace MADE.App.Views.Threading
     using System;
     using System.Threading.Tasks;
 
-    using Foundation;
+    using UIKit;
 
     using XPlat.UI.Core;
 
@@ -40,13 +40,13 @@ namespace MADE.App.Views.Threading
         {
             this.Instance = null;
 
-            if (!(reference is NSObject nsObject))
+            if (!(reference is UIViewController controller))
             {
-                throw new UIDispatcherException("Cannot initialize the UIDispatcher without an NSObject.");
+                throw new UIDispatcherException("Cannot initialize the UIDispatcher without an UIViewController.");
             }
 
-            this.Reference = nsObject;
-            this.Instance = new CoreDispatcher(); // Currently no way to pass NSObject to the XPlat iOS CoreDispatcher.
+            this.Reference = controller;
+            this.Instance = new CoreDispatcher(controller);
         }
 
         /// <summary>

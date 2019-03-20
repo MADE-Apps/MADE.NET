@@ -2,13 +2,14 @@
 {
     using System;
 
+    using GalaSoft.MvvmLight.Ioc;
+
     using global::Android.App;
     using global::Android.OS;
     using global::Android.Runtime;
 
-    using GalaSoft.MvvmLight.Ioc;
-
     using MADE.App.Diagnostics;
+    using MADE.App.Diagnostics.Exceptions;
 
     [Application]
     public class MainApplication : Application, Application.IActivityLifecycleCallbacks
@@ -38,10 +39,18 @@
             this.appDiagnostics = SimpleIoc.Default.GetInstance<IAppDiagnostics>();
             if (this.appDiagnostics != null)
             {
+                this.appDiagnostics.ExceptionObserved += this.OnExceptionObserved;
                 await this.appDiagnostics.StartRecordingDiagnosticsAsync();
+
             }
 
             this.RegisterActivityLifecycleCallbacks(this);
+        }
+
+        private void OnExceptionObserved(object sender, ExceptionObservedEventArgs args)
+        {
+            var exceptionDetails = args?.Exception?.ToString() ?? "No exception details";
+            System.Diagnostics.Debug.WriteLine(exceptionDetails);
         }
 
         public void OnActivityCreated(Activity activity, Bundle savedInstanceState)
