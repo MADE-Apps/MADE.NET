@@ -196,7 +196,7 @@ namespace MADE.App.Views
         /// </summary>
         public double TextBoxHeight
         {
-            get => (double)this.GetValue(TextBoxHeightProperty)'
+            get => (double)this.GetValue(TextBoxHeightProperty);
             set => this.SetValue(TextBoxHeightProperty, value);
         }
 
