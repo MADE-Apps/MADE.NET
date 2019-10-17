@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="TextEntry.xaml.cs" company="MADE Apps">
 //   Copyright (c) MADE Apps.
 // </copyright>
@@ -100,6 +100,20 @@ namespace MADE.App.Views
                 });
 
         /// <summary>
+        /// Defines the bindable property for the <see cref="IsHeaderVisible"/> value.
+        /// </summary>
+        public static readonly BindableProperty HeaderVisibleProperty = BindableProperty.Create(
+            nameof(IsHeaderVisible),
+            typeof(bool),
+            typeof(TextEntry),
+            true,
+            propertyChanged: (bindable, value, newValue) =>
+            {
+                var control = (TextEntry)bindable;
+                control.TextEntryHeader.IsVisible = (bool)newValue;
+            });
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TextEntry"/> class.
         /// </summary>
         public TextEntry()
@@ -153,6 +167,15 @@ namespace MADE.App.Views
         {
             get => (Orientation)this.GetValue(OrientationProperty);
             set => this.SetValue(OrientationProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets whether the header is visible.
+        /// </summary>
+        public bool IsHeaderVisible
+        {
+            get => (bool)this.GetValue(HeaderVisibleProperty);
+            set => this.SetValue(HeaderVisibleProperty, value);
         }
 
         /// <summary>
