@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="TextEntry.xaml.cs" company="MADE Apps">
 //   Copyright (c) MADE Apps.
 // </copyright>
@@ -32,11 +32,11 @@ namespace MADE.App.Views
             typeof(string),
             typeof(TextEntry),
             null,
-            propertyChanged: (bindable, ValueChangedEventArgs, newValue) =>
+            propertyChanged: (bindable, valueChangedEventArgs, newValue) =>
                 {
                     var control = (TextEntry)bindable;
                     control.TextEntryHeader.Text = (string)newValue;
-                    control.TextEntryHeader.IsVisible = !string.IsNullOrWhiteSpace(control.Header);
+                    control.UpdateHeaderVisibility(!string.IsNullOrWhiteSpace(control.Header));
                 });
 
         /// <summary>
@@ -100,6 +100,33 @@ namespace MADE.App.Views
                 });
 
         /// <summary>
+        /// Defines the bindable property for the <see cref="IsHeaderVisible"/> value.
+        /// </summary>
+        public static readonly BindableProperty HeaderVisibleProperty = BindableProperty.Create(
+            nameof(IsHeaderVisible),
+            typeof(bool),
+            typeof(TextEntry),
+            true,
+            propertyChanged: (bindable, value, newValue) =>
+            {
+                var control = (TextEntry)bindable;
+                control.UpdateHeaderVisibility((bool)newValue);
+            });
+
+        /// <summary>
+        /// Defines the bindable property for the <see cref="TextBoxHeight"/> value.
+        /// </summary>
+        public static readonly BindableProperty TextBoxHeightProperty = BindableProperty.Create(
+            nameof(TextBoxHeight),
+            typeof(double),
+            typeof(TextEntry),
+            propertyChanged: (bindable, value, newValue) =>
+            {
+                var control = (TextEntry)bindable;
+                control.TextEntryContent.HeightRequest = (double)newValue;
+            });
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TextEntry"/> class.
         /// </summary>
         public TextEntry()
@@ -153,6 +180,35 @@ namespace MADE.App.Views
         {
             get => (Orientation)this.GetValue(OrientationProperty);
             set => this.SetValue(OrientationProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets whether the header is visible.
+        /// </summary>
+        public bool IsHeaderVisible
+        {
+            get => (bool)this.GetValue(HeaderVisibleProperty);
+            set => this.SetValue(HeaderVisibleProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the height of the text box within the <see cref="TextEntry"/>
+        /// </summary>
+        public double TextBoxHeight
+        {
+            get => (double)this.GetValue(TextBoxHeightProperty);
+            set => this.SetValue(TextBoxHeightProperty, value);
+        }
+
+        /// <summary>
+        /// Updates the header for the control based on the value passed in.
+        /// </summary>
+        /// <param name="isVisible">
+        /// The value indicating whther the header should be visible.
+        /// </param>
+        public void UpdateHeaderVisibility(bool isVisible)
+        {
+            this.TextEntryHeader.SetVisible(isVisible);
         }
 
         /// <summary>
