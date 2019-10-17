@@ -114,6 +114,19 @@ namespace MADE.App.Views
             });
 
         /// <summary>
+        /// Defines the bindable property for the <see cref="TextBoxHeight"/> value.
+        /// </summary>
+        public static readonly BindableProperty TextBoxHeightProperty = BindableProperty.Create(
+            nameof(TextBoxHeight),
+            typeof(double),
+            typeof(TextEntry),
+            propertyChanged: (bindable, value, newValue) =>
+            {
+                var control = (TextEntry)bindable;
+                control.TextEntryContent.HeightRequest = (double)newValue;
+            });
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="TextEntry"/> class.
         /// </summary>
         public TextEntry()
@@ -176,6 +189,15 @@ namespace MADE.App.Views
         {
             get => (bool)this.GetValue(HeaderVisibleProperty);
             set => this.SetValue(HeaderVisibleProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the height of the text box within the <see cref="TextEntry"/>
+        /// </summary>
+        public double TextBoxHeight
+        {
+            get => (double)this.GetValue(TextBoxHeightProperty)'
+            set => this.SetValue(TextBoxHeightProperty, value);
         }
 
         /// <summary>
