@@ -1,5 +1,3 @@
-<img src="ProjectBanner.png" alt="MADE App Components" />
-
 # Made with MADE
 
 We want to showcase all of the awesome apps that have been built with MADE App Components! 

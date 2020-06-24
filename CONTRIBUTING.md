@@ -1,14 +1,14 @@
-<img src="ProjectBanner.png" alt="MADE App Components" />
+# Contributing
 
-# Contributing to MADE App Components
+These guidelines are designed to help you as a contributor to bring your code and skills to the MADE App Components project to make it better.
 
-These guidelines are designed to help you as a contributor to bring your code and skills to the project to make it better.  
-
-## What Can I Contribute To?
+## What can I contribute to?
 
 Our [issue tracker](https://github.com/MADE-Apps/MADE-App-Components/issues) contains a collection of features and issues waiting to be worked on! If you see any item marked with **Help Wanted**, we'd like to see you put your skills to use and contribute whatever you can to help develop the feature.
 
 This can be in the form of contributing to the conversation around the feature or issue, providing code and submitting a pull request, adding a new feature request or bug, or even helping to update our documentation. 
+
+We know that not everyone can do everything, so any little helps. We accept any contribution whether big or small.
 
 ## Code Styling
 

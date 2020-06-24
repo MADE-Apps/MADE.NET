@@ -1,23 +1,18 @@
-<img src="ProjectBanner.png" alt="MADE App Components" />
+<img src="assets/ProjectBanner.png" alt="MADE App Components project banner" />
 
 # MADE App Components
 
 MADE App Components is a collection of easy to use features aiming to make app development easier. It provides the building blocks for creating great user experiences on Windows (UWP), Android and iOS (Xamarin).
 
-## Build status
+## Project status
 
-| Packages | Status | Current | Preview |
-| ------ | ------ | ------ | ------ |
-| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/MADE%20Apps/_apis/build/status/MADE.App.Components.CI)](https://dev.azure.com/jamesmcroft/MADE%20Apps/_build/latest?definitionId=23) | [![Nuget](https://img.shields.io/nuget/v/MADE.App.svg)](https://www.nuget.org/packages/MADE.App/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.svg)](https://www.nuget.org/packages/MADE.App/) |
+| Source | Build |
+| ------ | ------ | 
+| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/MADE%20Apps/_apis/build/status/MADE.App.Components.CI)](https://dev.azure.com/jamesmcroft/MADE%20Apps/_build/latest?definitionId=23) |
 
-## Made with MADE
+## Installation
 
-Got a great project you've built with MADE? [*Add your projects to our collection!*](PROJECTS.md)
-
-## Hands on with MADE
-Looking to get these components in your apps now? Well, you can get your hands on the components via NuGet.
-
-You can also see what's included in MADE through our in progress [API docs](https://made-apps.gitbook.io/docs/)!
+MADE App Components are publicly available via NuGet. Each available package is detailed below. 
 
 | Package | Current | Preview |
 | ------ | ------ | ------ |
@@ -34,16 +29,30 @@ You can also see what's included in MADE through our in progress [API docs](http
 | App.Views.Navigation.MvvmLight | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Navigation.MvvmLight.svg)](https://www.nuget.org/packages/MADE.App.Views.Navigation.MvvmLight/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Navigation.MvvmLight.svg)](https://www.nuget.org/packages/MADE.App.Views.Navigation.MvvmLight/) |
 | App.Views.Xamarin.Forms | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Xamarin.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Xamarin.Forms/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Xamarin.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Xamarin.Forms/) |
 
-## Feature requests and issue tracking
+## Made with MADE
 
-MADE takes advantage of GitHub's issue tracking system to track both feature requests and issues. 
+Got an awesome project you've built with MADE App Components? We'd love you to share with the community!
 
-So whether you've got an awesome idea for the next big components or want to call us out on a mistake, please use log them in [MADE issues](https://github.com/MADE-Apps/MADE-App-Components/issues).
+[*Add your projects to our built with MADE App Components collection!*](PROJECTS.md)
 
-## Contributing to MADE
+## Documentation
 
-Want to get hands on with MADE's code? Check out our [contribution guidelines](CONTRIBUTING.md).
+If you want to deep dive into the MADE App Components with details on how to use the features, you can browse the [documentation](https://made-apps.gitbook.io/docs/) for help getting up and running!
+
+## Contributing 
+
+Looking to help build MADE App Components? Take a look through our [contribution guidelines](CONTRIBUTING.md). We actively encourage you to jump in and help with any issues!
+
+## Building MADE App Components
+
+MADE App Components have been built using .NET Standard, taking advantage of the new SDK-style projects and multi-targeting enabled with the help of [MSBuild.Sdk.Extras](https://github.com/novotnyllc/MSBuildSdkExtras).
+
+You can build the solution using Visual Studio with the following workloads installed:
+- .NET desktop development
+- Universal Windows Platform development
+- Mobile Development with .NET
+- .NET Core cross-platform development
 
 ## License
 
-MADE's source code is made available under the terms and conditions of the [MIT license](LICENSE).
+MADE App Components are made available under the terms and conditions of the [MIT license](LICENSE).
