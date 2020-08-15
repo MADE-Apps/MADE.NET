@@ -1,0 +1,122 @@
+name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:r)$(PreRelease)
+
+trigger:
+  branches:
+    include:
+    - main
+
+pr:
+  branches:
+    include:
+    - main
+
+variables:
+  - name: vmImageName
+    value: 'windows-latest'
+
+stages:
+
+- stage: 'Build'
+  variables:
+    Solution: '**/*.sln'
+    BuildConfiguration: 'Release'
+
+  jobs:
+  - job:
+    pool:
+      vmImage: $(vmImageName)
+
+    workspace:
+      clean: all
+
+    steps:
+    - task: NuGetToolInstaller@1
+      displayName: 'Install NuGet'
+      inputs:
+        versionSpec: '5.6.0'
+    
+    - task: NuGetCommand@2
+      displayName: 'Restore NuGet packages'
+      inputs:
+        command: 'restore'
+        restoreSolution: '$(Solution)'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Build solution'
+      inputs:
+        command: 'build'
+        projects: '$(Solution)'
+        arguments: '--configuration $(BuildConfiguration) -p:Version=$(Build.BuildNumber)'
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Run unit tests'
+      inputs:
+        command: 'test'
+        arguments: '/p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/UnitTests.cobertura.xml'
+        projects: '**/*UnitTests*.csproj'
+        testRunTitle: 'Unit Tests'
+
+    - task: reportgenerator@4
+      displayName: 'Generate code coverage report'
+      inputs:
+        reports: '$(Build.SourcesDirectory)/TestResults/Coverage/*.cobertura.xml'
+        targetdir: '$(Build.SourcesDirectory)/CoverageResults'
+
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Publish code coverage'
+      inputs:
+        codeCoverageTool: Cobertura
+        summaryFileLocation: '$(Build.SourcesDirectory)/CoverageResults/Cobertura.xml'
+
+    - task: CopyFiles@2
+      inputs:
+        SourceFolder: '$(Build.SourcesDirectory)/src'
+        Contents: |
+          **/*.nupkg
+          **/*.snupkg
+        TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
+
+    - publish: '$(Build.ArtifactStagingDirectory)/artifacts'
+      artifact: 'artifacts'
+
+- stage: 'InternalPublish'
+  dependsOn: 'Build'
+  condition: succeeded()
+  jobs:
+    - job:
+      pool:
+        vmImage: $(vmImageName)
+      
+      steps:
+      - checkout: none
+
+      - download: current
+        artifact: 'artifacts'
+
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+          nuGetFeedType: 'internal'
+          publishVstsFeed: 'NuGet-PreRelease'
+
+- stage: 'NuGetPublish'
+  dependsOn: 'InternalPublish'
+  condition: and(succeeded(), eq(variables['NuGetPublish'], 'true'))
+  jobs:
+    - job:
+      pool:
+        vmImage: $(vmImageName)
+
+      steps:
+      - checkout: none
+
+      - download: current
+        artifact: 'artifacts'
+
+      - task: NuGetCommand@2
+        inputs:
+          command: 'push'
+          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
+          nuGetFeedType: 'external'
+          publishFeedCredentials: 'NuGet - MADE Apps'
