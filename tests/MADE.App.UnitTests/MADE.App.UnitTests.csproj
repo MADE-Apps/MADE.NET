@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Bogus" Version="29.0.2" />
+    <PackageReference Include="coverlet.msbuild" Version="2.9.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.2" />
+    <PackageReference Include="Shouldly" Version="3.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MADE.App.Design\MADE.App.Design.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App.Diagnostics\MADE.App.Diagnostics.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App.Mvvm\MADE.App.Mvvm.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App.Networking\MADE.App.Networking.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App.Views.Controls.HeaderedTextBlock\MADE.App.Views.Controls.HeaderedTextBlock.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App.Views.Dialogs\MADE.App.Views.Dialogs.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App.Views.Navigation\MADE.App.Views.Navigation.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App.Views\MADE.App.Views.csproj" />
+    <ProjectReference Include="..\..\src\MADE.App\MADE.App.csproj" />
+  </ItemGroup>
+
+</Project>
