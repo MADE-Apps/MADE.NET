@@ -41,12 +41,22 @@ stages:
         command: 'restore'
         restoreSolution: '$(Solution)'
 
-    - task: DotNetCoreCLI@2
-      displayName: 'Build solution'
+    - task: VersionDotNetCoreAssemblies@2
       inputs:
-        command: 'build'
-        projects: '$(Solution)'
-        arguments: '--configuration $(BuildConfiguration) -p:Version=$(Build.BuildNumber)'
+        Path: '$(Build.SourcesDirectory)'
+        VersionNumber: '$(Build.BuildNumber)'
+        Injectversion: False
+        VersionRegex: '\d+\.\d+\.\d+\.\d+(\-[a-z]+)?'
+        FilenamePattern: '.csproj'
+        SDKNames: 'Microsoft.NET.Sdk,MSBuild.Sdk.Extras'
+        OutputVersion: 'OutputedVersion'
+
+    - task: MSBuild@1
+      inputs:
+        solution: '$(Solution)'
+        platform: 'Any CPU'
+        configuration: $(BuildConfiguration)
+        maximumCpuCount: true
 
     - task: DotNetCoreCLI@2
       displayName: 'Run unit tests'
