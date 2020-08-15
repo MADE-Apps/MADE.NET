@@ -1,11 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.4;xamarin.ios10;monoandroid81;uap10.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid90;uap10.0.16299</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
@@ -13,11 +14,9 @@
     <Product>MADE App View Navigation MvvmLight Library</Product>
     <Description>Making App Development Easier with a collection of easy to use components for building MVVM friendly page to page navigation for .NET projects using MvvmLight across Windows, Android, and iOS.</Description>
     <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/MADE-Apps/MADE-App-Components</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>ProjectIcon.jpg</PackageIcon>
     <PackageTags>MADE App Development MvvmLight Mvvm View Navigation Service Frame Windows Android iOS Xamarin</PackageTags>
     <RootNamespace>MADE.App.Views.Navigation</RootNamespace>
     <NeutralLanguage>en</NeutralLanguage>
@@ -25,27 +24,30 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>bin\Release\netstandard1.4\MADE.App.Views.Navigation.MvvmLight.xml</DocumentationFile>
+    <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Navigation.MvvmLight.xml</DocumentationFile>
   </PropertyGroup>
-
+  
   <ItemGroup>
-    <PackageReference Include="MSBuild.Sdk.Extras" Version="1.5.4" PrivateAssets="All" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19351-01" PrivateAssets="All" />
-    <PackageReference Include="MADE.App.MvvmLightLibs" Version="5.5.19266.1" />
+    <None Include="..\..\assets\ProjectIcon.jpg" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid81' ">
+  <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="MADE.App.MvvmLightLibs" Version="5.5.19286.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'monoandroid90' ">
     <PackageReference Include="Xamarin.Android.Support.Fragment" Version="28.0.0.1" />
     <PackageReference Include="Xamarin.Android.Support.v7.AppCompat" Version="28.0.0.1" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0' ">
-    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.9" PrivateAssets="All" />
+  <ItemGroup Condition=" '$(TargetFramework)' == 'uap10.0.16299' ">
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.2.10" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MADE.App.Views.Navigation\MADE.App.Views.Navigation.csproj" />
   </ItemGroup>
 
-  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>

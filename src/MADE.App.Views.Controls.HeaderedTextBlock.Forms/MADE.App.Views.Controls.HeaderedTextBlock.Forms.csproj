@@ -1,11 +1,12 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
-    <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
@@ -13,24 +14,29 @@
     <Product>MADE App Xamarin.Forms HeaderedTextBlock Control Library</Product>
     <Description>Making App Development Easier with a component for showing a read-only text field with a header for Xamarin.Forms projects.</Description>
     <Copyright>Copyright (C) MADE Apps. All rights reserved.</Copyright>
-    <PackageLicenseUrl>https://github.com/MADE-Apps/MADE-App-Components/blob/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/MADE-Apps/MADE-App-Components</PackageProjectUrl>
-    <PackageIconUrl>https://pbs.twimg.com/profile_images/927154020422160385/6HSRU36P_400x400.jpg</PackageIconUrl>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageIcon>ProjectIcon.jpg</PackageIcon>
     <PackageTags>MADE App Development Controls View Header TextBlock TextView Xamarin.Forms Windows Android iOS Xamarin</PackageTags>
     <RootNamespace>MADE.App.Views</RootNamespace>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageId>MADE.App.Views.Controls.HeaderedTextBlock.Forms</PackageId>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0-beta2-19351-01" PrivateAssets="All" />
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.815419" />
-    <PackageReference Include="XPlat.UI.Controls" Version="1.6.19104.1" />
-  </ItemGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>bin\Release\netstandard2.0\MADE.App.Views.Controls.HeaderedTextBlock.Forms.xml</DocumentationFile>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\assets\ProjectIcon.jpg" Pack="true" PackagePath=""/>
+    <None Include="..\..\LICENSE" Pack="true" PackagePath=""/>
+  </ItemGroup>
+
+    <ItemGroup>
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
+    <PackageReference Include="XPlat.UI.Controls" Version="1.7.20109.1" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MADE.App.Views.Controls.HeaderedTextBlock\MADE.App.Views.Controls.HeaderedTextBlock.csproj" />

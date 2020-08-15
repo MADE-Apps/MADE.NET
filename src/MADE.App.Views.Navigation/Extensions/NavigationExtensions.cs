@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="NavigationExtensions.cs" company="MADE Apps">
 //   Copyright (c) MADE Apps.
 // </copyright>
@@ -84,18 +84,18 @@ namespace MADE.App.Views.Navigation.Extensions
         /// <returns>
         /// Returns the active support fragment, if exists; otherwise, null.
         /// </returns>
-        public static Android.Support.V4.App.Fragment GetCurrentFragment(
-            this Android.Support.V4.App.FragmentManager fragmentManager)
+        public static AndroidX.Fragment.App.Fragment GetCurrentFragment(
+            this AndroidX.Fragment.App.FragmentManager fragmentManager)
         {
             if (fragmentManager == null)
             {
                 return null;
             }
 
-            System.Collections.Generic.IList<Android.Support.V4.App.Fragment> fragments = fragmentManager.Fragments;
+            System.Collections.Generic.IList<AndroidX.Fragment.App.Fragment> fragments = fragmentManager.Fragments;
             for (int i = fragments.Count - 1; i >= 0; i--)
             {
-                Android.Support.V4.App.Fragment fragment = fragments[i];
+                AndroidX.Fragment.App.Fragment fragment = fragments[i];
                 if (fragment != null)
                 {
                     return fragment;

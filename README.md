@@ -33,7 +33,7 @@ MADE App Components are publicly available via NuGet. Each available package is 
 
 Got an awesome project you've built with MADE App Components? We'd love you to share with the community!
 
-[*Add your projects to our built with MADE App Components collection!*](PROJECTS.md)
+[*Add your projects to our built with MADE App Components collection!*](YOUR_PROJECTS.md)
 
 ## Documentation
 

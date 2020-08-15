@@ -1,4 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------------------------
 // <copyright file="Page.Android.cs" company="MADE Apps">
 //   Copyright (c) MADE Apps.
 // </copyright>
@@ -14,9 +14,8 @@ namespace MADE.App.Views.Navigation.Pages
 
     using Android.Graphics.Drawables;
     using Android.OS;
-    using Android.Support.V4.App;
     using Android.Views;
-
+    using AndroidX.Fragment.App;
     using MADE.App.Views.Extensions;
 
     using XPlat.UI;
