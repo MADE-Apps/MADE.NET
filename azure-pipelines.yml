@@ -1,9 +1,10 @@
-name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:r)$(PreRelease)
+name: $(Major).$(Minor).$(Year:yy)$(DayOfYear).$(Rev:r)
 
 trigger:
   branches:
     include:
     - main
+    - refs/tags/release/*
   paths:
     include:
     - src/*
@@ -28,6 +29,10 @@ stages:
   variables:
     Solution: '**/*.sln'
     BuildConfiguration: 'Release'
+    ${{ if ne(startsWith(variables['Build.SourceBranch'], 'refs/tags/release')) }}:
+      Version: '$(Build.BuildNumber)-dev'
+    ${{ if startsWith(variables['Build.SourceBranch'], 'refs/tags/release') }}:
+      Version: '$(Build.BuildNumber)'
 
   jobs:
   - job:
@@ -50,16 +55,18 @@ stages:
         restoreSolution: '$(Solution)'
 
     - task: VersionDotNetCoreAssemblies@2
+      displayName: 'Set assembly version number'
       inputs:
         Path: '$(Build.SourcesDirectory)'
-        VersionNumber: '$(Build.BuildNumber)'
+        VersionNumber: '$(Version)'
         Injectversion: False
-        VersionRegex: '\d+\.\d+\.\d+\.\d+(\-[a-z]+)?'
+        VersionRegex: '\d+\.\d+\.\d+\.\d+(?:-[a-z]+)?'
         FilenamePattern: '.csproj'
         SDKNames: 'Microsoft.NET.Sdk,MSBuild.Sdk.Extras'
         OutputVersion: 'OutputedVersion'
 
     - task: MSBuild@1
+      displayName: 'Build solution'
       inputs:
         solution: '$(Solution)'
         platform: 'Any CPU'
@@ -97,30 +104,9 @@ stages:
     - publish: '$(Build.ArtifactStagingDirectory)/artifacts'
       artifact: 'artifacts'
 
-- stage: 'InternalPublish'
+- stage: 'Publish'
   dependsOn: 'Build'
   condition: succeeded()
-  jobs:
-    - job:
-      pool:
-        vmImage: $(vmImageName)
-      
-      steps:
-      - checkout: none
-
-      - download: current
-        artifact: 'artifacts'
-
-      - task: NuGetCommand@2
-        inputs:
-          command: 'push'
-          packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
-          nuGetFeedType: 'internal'
-          publishVstsFeed: 'NuGet-PreRelease'
-
-- stage: 'NuGetPublish'
-  dependsOn: 'InternalPublish'
-  condition: and(succeeded(), eq(variables['NuGetPublish'], 'true'))
   jobs:
     - job:
       pool:
