@@ -29,7 +29,7 @@ stages:
   variables:
     Solution: '**/*.sln'
     BuildConfiguration: 'Release'
-    ${{ if ne(startsWith(variables['Build.SourceBranch'], 'refs/tags/release')) }}:
+    ${{ if not(startsWith(variables['Build.SourceBranch'], 'refs/tags/release')) }}:
       Version: '$(Build.BuildNumber)-dev'
     ${{ if startsWith(variables['Build.SourceBranch'], 'refs/tags/release') }}:
       Version: '$(Build.BuildNumber)'
