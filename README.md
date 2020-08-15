@@ -8,26 +8,25 @@ MADE App Components is a collection of easy to use features aiming to make app d
 
 | Source | Build |
 | ------ | ------ | 
-| NuGet | [![Build status](https://dev.azure.com/jamesmcroft/MADE%20Apps/_apis/build/status/MADE.App.Components.CI)](https://dev.azure.com/jamesmcroft/MADE%20Apps/_build/latest?definitionId=23) |
+| NuGet | [![Build Status](https://dev.azure.com/jamesmcroft/MADE%20Apps/_apis/build/status/MADE-Apps.MADE-App-Components?branchName=main)](https://dev.azure.com/jamesmcroft/MADE%20Apps/_build/latest?definitionId=38&branchName=main) |
 
 ## Installation
 
 MADE App Components are publicly available via NuGet. Each available package is detailed below. 
 
-| Package | Current | Preview |
-| ------ | ------ | ------ |
-| App | [![Nuget](https://img.shields.io/nuget/v/MADE.App.svg)](https://www.nuget.org/packages/MADE.App/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.svg)](https://www.nuget.org/packages/MADE.App/) |
-| App.Design | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Design.svg)](https://www.nuget.org/packages/MADE.App.Design/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Design.svg)](https://www.nuget.org/packages/MADE.App.Design/) |
-| App.Diagnostics | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Diagnostics.svg)](https://www.nuget.org/packages/MADE.App.Diagnostics/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Diagnostics.svg)](https://www.nuget.org/packages/MADE.App.Diagnostics/) |
-| App.Mvvm | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Mvvm.svg)](https://www.nuget.org/packages/MADE.App.Mvvm/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Mvvm.svg)](https://www.nuget.org/packages/MADE.App.Mvvm/) |
-| App.Networking | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Networking.svg)](https://www.nuget.org/packages/MADE.App.Networking/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Networking.svg)](https://www.nuget.org/packages/MADE.App.Networking/) |
-| App.Views | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.svg)](https://www.nuget.org/packages/MADE.App.Views/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.svg)](https://www.nuget.org/packages/MADE.App.Views/) |
-| App.Views.Controls.HeaderedTextBlock | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.App.Views.Controls.HeaderedTextBlock/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.App.Views.Controls.HeaderedTextBlock/) |
-| App.Views.Controls.HeaderedTextBlock.Forms | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Controls.HeaderedTextBlock.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Controls.HeaderedTextBlock.Forms/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Controls.HeaderedTextBlock.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Controls.HeaderedTextBlock.Forms/) |
-| App.Views.Dialogs | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Dialogs.svg)](https://www.nuget.org/packages/MADE.App.Views.Dialogs/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Dialogs.svg)](https://www.nuget.org/packages/MADE.App.Views.Dialogs/) |
-| App.Views.Navigation | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Navigation.svg)](https://www.nuget.org/packages/MADE.App.Views.Navigation/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Navigation.svg)](https://www.nuget.org/packages/MADE.App.Views.Navigation/) |
-| App.Views.Navigation.MvvmLight | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Navigation.MvvmLight.svg)](https://www.nuget.org/packages/MADE.App.Views.Navigation.MvvmLight/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Navigation.MvvmLight.svg)](https://www.nuget.org/packages/MADE.App.Views.Navigation.MvvmLight/) |
-| App.Views.Xamarin.Forms | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Xamarin.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Xamarin.Forms/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.App.Views.Xamarin.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Xamarin.Forms/) |
+| Package | Current |
+| ------ | ------ |
+| App | [![Nuget](https://img.shields.io/nuget/v/MADE.App.svg)](https://www.nuget.org/packages/MADE.App/) | 
+| App.Design | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Design.svg)](https://www.nuget.org/packages/MADE.App.Design/) |
+| App.Diagnostics | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Diagnostics.svg)](https://www.nuget.org/packages/MADE.App.Diagnostics/) | 
+| App.Mvvm | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Mvvm.svg)](https://www.nuget.org/packages/MADE.App.Mvvm/) | 
+| App.Networking | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Networking.svg)](https://www.nuget.org/packages/MADE.App.Networking/) | 
+| App.Views | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.svg)](https://www.nuget.org/packages/MADE.App.Views/) |
+| App.Views.Controls.HeaderedTextBlock | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Controls.HeaderedTextBlock.svg)](https://www.nuget.org/packages/MADE.App.Views.Controls.HeaderedTextBlock/) | 
+| App.Views.Controls.HeaderedTextBlock.Forms | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Controls.HeaderedTextBlock.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Controls.HeaderedTextBlock.Forms/) | 
+| App.Views.Dialogs | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Dialogs.svg)](https://www.nuget.org/packages/MADE.App.Views.Dialogs/) |
+| App.Views.Navigation | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Navigation.svg)](https://www.nuget.org/packages/MADE.App.Views.Navigation/) | 
+| App.Views.Xamarin.Forms | [![Nuget](https://img.shields.io/nuget/v/MADE.App.Views.Xamarin.Forms.svg)](https://www.nuget.org/packages/MADE.App.Views.Xamarin.Forms/) | 
 
 ## Made with MADE
 
