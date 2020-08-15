@@ -77,7 +77,7 @@ stages:
       displayName: 'Run unit tests'
       inputs:
         command: 'test'
-        arguments: '/p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/UnitTests.cobertura.xml'
+        arguments: '--no-build --configuration $(BuildConfiguration) /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(Build.SourcesDirectory)/TestResults/Coverage/UnitTests.cobertura.xml'
         projects: '**/*UnitTests*.csproj'
         testRunTitle: 'Unit Tests'
 
