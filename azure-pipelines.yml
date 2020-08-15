@@ -4,12 +4,20 @@ trigger:
   branches:
     include:
     - main
+  paths:
+    include:
+    - src/*
+    - tests/*
 
 pr:
   branches:
     include:
     - main
-
+  paths:
+    include:
+    - src/*
+    - tests/*
+    
 variables:
   - name: vmImageName
     value: 'windows-latest'
