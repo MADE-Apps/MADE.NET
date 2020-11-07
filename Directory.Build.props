@@ -1,7 +1,6 @@
 <Project>
 
   <PropertyGroup>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
@@ -14,6 +13,7 @@
     <PackageProjectUrl>https://github.com/MADE-Apps/MADE.NET</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>ProjectIcon.jpg</PackageIcon>
+    <PackageReleaseNotes>https://github.com/MADE-Apps/MADE.NET/releases</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
