@@ -1,6 +1,7 @@
 <Project>
 
   <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
@@ -14,6 +15,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageIcon>ProjectIcon.jpg</PackageIcon>
     <NeutralLanguage>en</NeutralLanguage>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
