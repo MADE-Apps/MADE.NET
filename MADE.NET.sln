@@ -3,9 +3,28 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{01380FB8-F8A7-4416-AABA-5407574B7723}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{69149D0F-BB09-411B-88F0-A1E845058D70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Diagnostics", "src\MADE.Diagnostics\MADE.Diagnostics.csproj", "{713AB96D-1EE2-45CA-A41E-47401EDCC656}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{713AB96D-1EE2-45CA-A41E-47401EDCC656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{713AB96D-1EE2-45CA-A41E-47401EDCC656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{713AB96D-1EE2-45CA-A41E-47401EDCC656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{713AB96D-1EE2-45CA-A41E-47401EDCC656}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{713AB96D-1EE2-45CA-A41E-47401EDCC656} = {01380FB8-F8A7-4416-AABA-5407574B7723}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3921AD86-E6C0-4436-8880-2D9EDFAD6151}

@@ -1,0 +1,14 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;uap10.0.17763;xamarinios10;xamarinmac20;MonoAndroid90</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Diagnostics</Product>
+    <Description>
+      This package includes diagnostics helpers such as:
+      - 
+    </Description>
+    <PackageTags>MADE Diagnostics EventSource EventLog Logger</PackageTags>
+  </PropertyGroup>
+
+</Project>
