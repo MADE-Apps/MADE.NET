@@ -11,4 +11,8 @@
     <PackageTags>MADE Diagnostics EventSource EventLog Logger</PackageTags>
   </PropertyGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763' Or '$(TargetFramework)'=='xamarinios10' Or '$(TargetFramework)'=='MonoAndroid90'">
+    <PackageReference Include="XPlat.Storage" Version="1.7.20109.1" />
+  </ItemGroup>
+
 </Project>
