@@ -16,8 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MADE.Collections\MADE.Collections.csproj" />
-    <ProjectReference Include="..\..\src\MADE.Testing\MADE.Testing.csproj" />
+    <ProjectReference Include="..\..\src\MADE.Data.Converters\MADE.Data.Converters.csproj" />
   </ItemGroup>
 
 </Project>
