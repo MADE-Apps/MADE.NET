@@ -1,0 +1,14 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Networking</Product>
+    <Description>
+      This package includes networking helpers such as:
+      -
+    </Description>
+    <PackageTags>MADE Networking Json Stream</PackageTags>
+  </PropertyGroup>
+
+</Project>

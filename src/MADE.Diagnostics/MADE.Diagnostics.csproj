@@ -6,9 +6,11 @@
     <Product>MADE.NET Diagnostics</Product>
     <Description>
       This package includes diagnostics helpers such as:
-      - 
+      - FileEventLogger for logging debug, info, warning, error, and critical messages to a file.
+      - AppDiagnostics for providing an application-wide exception handler.
+      - StopwatchHelper to help track the time of multiple long running operations.
     </Description>
-    <PackageTags>MADE Diagnostics EventSource EventLog Logger</PackageTags>
+    <PackageTags>MADE Diagnostics EventLog Logger Exception Stopwatch</PackageTags>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763' Or '$(TargetFramework)'=='xamarinios10' Or '$(TargetFramework)'=='MonoAndroid90'">
