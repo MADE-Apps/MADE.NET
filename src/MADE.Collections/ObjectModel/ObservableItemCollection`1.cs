@@ -98,7 +98,9 @@ namespace MADE.Collections.ObjectModel
             this.CheckDisposed();
             this.enableCollectionChanged = false;
 
-            foreach (T item in items)
+            var itemsToAdd = items.ToList();
+
+            foreach (T item in itemsToAdd)
             {
                 this.Add(item);
             }
@@ -106,7 +108,7 @@ namespace MADE.Collections.ObjectModel
             this.enableCollectionChanged = true;
             this.CollectionChanged?.Invoke(
                 this,
-                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, items));
+                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, itemsToAdd));
         }
 
         /// <summary>
@@ -120,7 +122,9 @@ namespace MADE.Collections.ObjectModel
             this.CheckDisposed();
             this.enableCollectionChanged = false;
 
-            foreach (T item in items)
+            var itemsToRemove = items.ToList();
+
+            foreach (T item in itemsToRemove)
             {
                 this.Remove(item);
             }
@@ -128,7 +132,7 @@ namespace MADE.Collections.ObjectModel
             this.enableCollectionChanged = true;
             this.CollectionChanged?.Invoke(
                 this,
-                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, items));
+                new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Remove, itemsToRemove));
         }
 
         /// <summary>

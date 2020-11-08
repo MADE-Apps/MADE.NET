@@ -1,0 +1,15 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Testing</Product>
+    <Description>
+      This package includes automated testing helpers such as:
+      - CollectionAssertExtensions for providing improvements to running automated tests on collections.
+    </Description>
+    <PackageTags>MADE Testing Assert Collections</PackageTags>
+
+  </PropertyGroup>
+
+</Project>
