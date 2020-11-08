@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Threading", "src\MADE.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Runtime", "src\MADE.Runtime\MADE.Runtime.csproj", "{0E535C3C-D2D7-4675-94D9-7E5548111F7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Collections", "src\MADE.Collections\MADE.Collections.csproj", "{C506553C-49CD-48FB-9E5C-CB48B10D6006}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{0E535C3C-D2D7-4675-94D9-7E5548111F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E535C3C-D2D7-4675-94D9-7E5548111F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E535C3C-D2D7-4675-94D9-7E5548111F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C506553C-49CD-48FB-9E5C-CB48B10D6006}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C506553C-49CD-48FB-9E5C-CB48B10D6006}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C506553C-49CD-48FB-9E5C-CB48B10D6006}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C506553C-49CD-48FB-9E5C-CB48B10D6006}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{AA0647A7-110F-4FB8-88F7-A902CBB240A3} = {01380FB8-F8A7-4416-AABA-5407574B7723}
 		{3DE798A8-6B5D-457E-A200-67AAF6FEAE8C} = {01380FB8-F8A7-4416-AABA-5407574B7723}
 		{0E535C3C-D2D7-4675-94D9-7E5548111F7D} = {01380FB8-F8A7-4416-AABA-5407574B7723}
+		{C506553C-49CD-48FB-9E5C-CB48B10D6006} = {01380FB8-F8A7-4416-AABA-5407574B7723}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3921AD86-E6C0-4436-8880-2D9EDFAD6151}

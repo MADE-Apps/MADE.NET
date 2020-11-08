@@ -1,0 +1,14 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Collections</Product>
+    <Description>
+      This package includes collection helpers such as:
+      - GenericEqualityComparer for providing a simple IEqualityComparer for objects.
+    </Description>
+    <PackageTags>MADE Collections Equality</PackageTags>
+  </PropertyGroup>
+
+</Project>
