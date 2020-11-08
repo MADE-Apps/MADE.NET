@@ -6,9 +6,19 @@
     <Product>MADE.NET Networking</Product>
     <Description>
       This package includes networking helpers such as:
-      -
+      - NetworkRequestManager for handling an HTTP network request queue with success and error callbacks.
+      - NetworkRequest instances for simplifying JSON GET, POST, PUT, PATCH, and DELETE requests.
     </Description>
-    <PackageTags>MADE Networking Json Stream</PackageTags>
+    <PackageTags>MADE Networking Json Stream HttpClient</PackageTags>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.Runtime\MADE.Runtime.csproj" />
+    <ProjectReference Include="..\MADE.Threading\MADE.Threading.csproj" />
+  </ItemGroup>
 
 </Project>

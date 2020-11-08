@@ -1,0 +1,15 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Runtime</Product>
+    <Description>
+      This package includes runtime helpers such as:
+      - WeakReferenceCallback for providing an approach to callbacks with a WeakReference.
+    </Description>
+    <PackageTags>MADE Threading Timer</PackageTags>
+
+  </PropertyGroup>
+
+</Project>
