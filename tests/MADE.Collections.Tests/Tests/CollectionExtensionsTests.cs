@@ -2,8 +2,13 @@ namespace MADE.Collections.Tests.Tests
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Collections.Specialized;
     using System.Diagnostics.CodeAnalysis;
+    using System.Linq;
+    using System.Threading.Tasks;
 
+    using MADE.Collections.ObjectModel;
     using MADE.Collections.Tests.Fakes;
     using MADE.Testing;
 
@@ -106,6 +111,49 @@ namespace MADE.Collections.Tests.Tests
 
                 // Assert
                 list.ShouldBeEquivalentTo(update);
+            }
+        }
+
+        public class WhenAddingRangeOfItems
+        {
+            [Test]
+            public void ShouldAddRangeOfItems()
+            {
+                // Arrange
+                List<TestObject> objectsToAdd = TestObjectFaker.Create().Generate(10);
+
+                var collection = new ObservableCollection<TestObject>();
+
+                // Act
+                collection.AddRange(objectsToAdd);
+
+                // Assert
+                foreach (TestObject item in objectsToAdd)
+                {
+                    collection.ShouldContain(item);
+                }
+            }
+        }
+
+        public class WhenRemovingRangeOfItems
+        {
+            [Test]
+            public void ShouldRemoveRangeOfItems()
+            {
+                // Arrange
+                List<TestObject> items = TestObjectFaker.Create().Generate(10);
+                var itemsToRemove = items.Take(5).ToList();
+
+                var collection = new ObservableCollection<TestObject>(items);
+
+                // Act
+                collection.RemoveRange(itemsToRemove);
+
+                // Assert
+                foreach (TestObject item in itemsToRemove)
+                {
+                    collection.ShouldNotContain(item);
+                }
             }
         }
     }

@@ -31,6 +31,7 @@ namespace MADE.Collections
         /// True if the item has been updated; otherwise, false.
         /// </returns>
         /// <exception cref="T:System.ArgumentNullException">The <paramref name="item"/> or <paramref name="collection"/> is <see langword="null"/>.</exception>
+        /// <exception cref="T:System.Exception">The <paramref name="predicate"/> delegate callback throws an exception.</exception>
         public static bool Update<T>(this IList<T> collection, T item, Func<T, T, bool> predicate)
         {
             if (item == null)
@@ -79,6 +80,71 @@ namespace MADE.Collections
             foreach (T item in sourceList.Except(destination).ToList())
             {
                 destination.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Adds a collection of items to another.
+        /// </summary>
+        /// <param name="collection">
+        /// The collection to add to.
+        /// </param>
+        /// <param name="itemsToAdd">
+        /// The items to add.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of items in the collection.
+        /// </typeparam>
+        /// <exception cref="T:System.ArgumentNullException">The <paramref name="collection"/> or <paramref name="itemsToAdd"/> is <see langword="null"/></exception>
+        public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> itemsToAdd)
+        {
+            if (collection == null)
+            {
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (itemsToAdd == null)
+            {
+                throw new ArgumentNullException(nameof(itemsToAdd));
+            }
+
+            foreach (T item in itemsToAdd)
+            {
+                collection.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Removes a collection of items from another.
+        /// </summary>
+        /// <param name="collection">
+        /// The collection to remove from.
+        /// </param>
+        /// <param name="itemsToRemove">
+        /// The items to remove from the collection.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of items in the collection.
+        /// </typeparam>
+        /// <exception cref="T:System.ArgumentNullException">The <paramref name="collection"/> or <paramref name="itemsToRemove"/> is <see langword="null"/></exception>
+        public static void RemoveRange<T>(this ICollection<T> collection, IEnumerable<T> itemsToRemove)
+        {
+            if (collection == null)
+            {
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (itemsToRemove == null)
+            {
+                throw new ArgumentNullException(nameof(itemsToRemove));
+            }
+
+            foreach (T item in itemsToRemove)
+            {
+                if (collection.Contains(item))
+                {
+                    collection.Remove(item);
+                }
             }
         }
     }
