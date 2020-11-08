@@ -6,6 +6,7 @@
     <Product>MADE.NET Collections</Product>
     <Description>
       This package includes collection helpers such as:
+      - ObservableItemCollection for providing an ObservableCollection that manages both collection changed and item property changed events.
       - GenericEqualityComparer for providing a simple IEqualityComparer for objects.
     </Description>
     <PackageTags>MADE Collections Equality</PackageTags>
