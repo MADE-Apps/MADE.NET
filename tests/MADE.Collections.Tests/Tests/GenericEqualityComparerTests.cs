@@ -76,7 +76,7 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldReturnTrueIfObjectsDifferentAndComparingOnPropertyWithSameValue()
             {
                 // Arrange
-                var count = 10;
+                int count = 10;
                 var first = new TestObject { Name = "Hello, World", Count = count };
                 var second = new TestObject { Name = "World, Hello", Count = count };
 
