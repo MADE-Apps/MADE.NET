@@ -5,6 +5,7 @@ namespace MADE.Collections.Tests.Tests
     using System.Diagnostics.CodeAnalysis;
 
     using MADE.Collections.Tests.Fakes;
+    using MADE.Testing;
 
     using NUnit.Framework;
 
@@ -68,6 +69,43 @@ namespace MADE.Collections.Tests.Tests
 
                 // Assert
                 updated.ShouldBeFalse();
+            }
+        }
+
+        public class WhenUpdatingCollectionEqualToAnother
+        {
+            [Test]
+            public void ShouldThrowArgumentNullExceptionIfNullCollection()
+            {
+                // Arrange
+                List<string> list = null;
+
+                // Act & Assert
+                Assert.Throws<ArgumentNullException>(() => list.MakeEqualTo(null));
+            }
+
+            [Test]
+            public void ShouldThrowArgumentNullExceptionIfNullSource()
+            {
+                // Arrange
+                var list = new List<string> { "Hello" };
+
+                // Act & Assert
+                Assert.Throws<ArgumentNullException>(() => list.MakeEqualTo(null));
+            }
+
+            [Test]
+            public void ShouldUpdateCollectionToBeEqualOther()
+            {
+                // Arrange
+                var list = new List<string> { "Hello" };
+                var update = new List<string> { "New", "List" };
+
+                // Act
+                list.MakeEqualTo(update);
+
+                // Assert
+                list.ShouldBeEquivalentTo(update);
             }
         }
     }

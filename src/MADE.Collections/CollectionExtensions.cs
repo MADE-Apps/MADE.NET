@@ -55,5 +55,31 @@ namespace MADE.Collections
             collection.Insert(idx, item);
             return true;
         }
+
+        /// <summary>
+        /// Makes the given destination collection items equal to the items in the given source collection by adding or removing items from the destination.
+        /// </summary>
+        /// <param name="destination">
+        /// The destination collection to add or remove items to.
+        /// </param>
+        /// <param name="source">
+        /// The source collection to provide the items.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of item within the collection.
+        /// </typeparam>
+        public static void MakeEqualTo<T>(this ICollection<T> destination, IEnumerable<T> source)
+        {
+            var sourceList = source.ToList();
+            foreach (T item in destination.Except(sourceList).ToList())
+            {
+                destination.Remove(item);
+            }
+
+            foreach (T item in sourceList.Except(destination).ToList())
+            {
+                destination.Add(item);
+            }
+        }
     }
 }
