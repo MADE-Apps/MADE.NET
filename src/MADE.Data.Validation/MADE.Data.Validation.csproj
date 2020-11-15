@@ -8,8 +8,9 @@
       This package includes data validation helpers such as:
       - AlphaValidator for validating whether a string contains only alpha characters.
       - AlphaNumericValidator for validating whether a string contains only alphanumeric characters.
+      - BetweenValidator for validating whether a value is within a minimum and maximum range.
     </Description>
-    <PackageTags>MADE Data Validation RegEx Alpha</PackageTags>
+    <PackageTags>MADE Data Validation RegEx Range</PackageTags>
   </PropertyGroup>
 
 </Project>
