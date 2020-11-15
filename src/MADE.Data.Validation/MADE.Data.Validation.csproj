@@ -11,6 +11,7 @@
       - BetweenValidator for validating whether a value is within a minimum and maximum range.
       - EmailValidator for validating whether a value is an email address.
       - IpAddressValidator for validating whether a value is a valid IP address.
+      - MinValueValidator for validating whether a value is above a minimum value.
     </Description>
     <PackageTags>MADE Data Validation RegEx Range Email</PackageTags>
   </PropertyGroup>

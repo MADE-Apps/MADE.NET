@@ -6,33 +6,28 @@ namespace MADE.Data.Validation.Validators
     using System;
     using MADE.Data.Validation.Extensions;
 
-    /// <summary>
-    /// Defines a data validator for ensuring a value is within a minimum and maximum range.
-    /// </summary>
-    public class BetweenValidator : IValidator
+    public class MinValueValidator : IValidator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="BetweenValidator"/> class.
+        /// Initializes a new instance of the <see cref="MinValueValidator"/> class.
         /// </summary>
-        public BetweenValidator()
+        public MinValueValidator()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BetweenValidator"/> class with a minimum and maximum range.
+        /// Initializes a new instance of the <see cref="MinValueValidator"/> class with a minimum value.
         /// </summary>
-        /// <param name="min">The minimum value within the range.</param>
-        /// <param name="max">The maximum value within the range.</param>
-        public BetweenValidator(IComparable min, IComparable max)
+        /// <param name="min">The minimum value.</param>
+        public MinValueValidator(IComparable min)
         {
             this.Min = min;
-            this.Max = max;
         }
 
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
-        public string Key { get; set; } = nameof(BetweenValidator);
+        public string Key { get; set; } = nameof(MinValueValidator);
 
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
@@ -45,14 +40,9 @@ namespace MADE.Data.Validation.Validators
         public bool IsDirty { get; set; }
 
         /// <summary>
-        /// Gets or sets the minimum value within the range.
+        /// Gets or sets the minimum value.
         /// </summary>
         public IComparable Min { get; set; }
-
-        /// <summary>
-        /// Gets or sets the maximum value within the range.
-        /// </summary>
-        public IComparable Max { get; set; }
 
         /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.
@@ -64,7 +54,7 @@ namespace MADE.Data.Validation.Validators
 
             if (value is IComparable comparable)
             {
-                isInvalid = comparable.IsLessThan(this.Min) || comparable.IsGreaterThan(this.Max);
+                isInvalid = comparable.IsLessThan(this.Min);
             }
 
             this.IsInvalid = isInvalid;
