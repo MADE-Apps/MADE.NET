@@ -10,6 +10,7 @@
       - AlphaNumericValidator for validating whether a string contains only alphanumeric characters.
       - BetweenValidator for validating whether a value is within a minimum and maximum range.
       - EmailValidator for validating whether a value is an email address.
+      - IpAddressValidator for validating whether a value is a valid IP address.
     </Description>
     <PackageTags>MADE Data Validation RegEx Range Email</PackageTags>
   </PropertyGroup>

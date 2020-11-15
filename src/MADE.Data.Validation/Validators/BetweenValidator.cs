@@ -31,7 +31,7 @@ namespace MADE.Data.Validation.Validators
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
-        public string Key { get; set; }
+        public string Key { get; set; } = nameof(BetweenValidator);
 
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.

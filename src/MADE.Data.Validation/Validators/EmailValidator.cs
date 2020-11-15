@@ -13,6 +13,7 @@ namespace MADE.Data.Validation.Validators
         /// </summary>
         public EmailValidator()
         {
+            this.Key = nameof(EmailValidator);
             this.Pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
         }
     }

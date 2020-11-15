@@ -13,6 +13,7 @@ namespace MADE.Data.Validation.Validators
         /// </summary>
         public AlphaNumericValidator()
         {
+            this.Key = nameof(AlphaNumericValidator);
             this.Pattern = "^[a-zA-Z0-9]*$";
         }
     }

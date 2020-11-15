@@ -3,17 +3,18 @@
 
 namespace MADE.Data.Validation.Validators
 {
+    using System.Linq;
     using System.Text.RegularExpressions;
 
     /// <summary>
-    /// Defines a generic regular expression data validator.
+    /// Defines a data validator for ensuring a value is a valid IP address.
     /// </summary>
-    public class RegexValidator : IValidator
+    public class IpAddressValidator : IValidator
     {
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
-        public string Key { get; set; } = nameof(RegexValidator);
+        public string Key { get; set; } = nameof(IpAddressValidator);
 
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
@@ -26,19 +27,37 @@ namespace MADE.Data.Validation.Validators
         public bool IsDirty { get; set; }
 
         /// <summary>
-        /// Gets or sets the RegEx pattern to match on.
-        /// </summary>
-        public string Pattern { get; set; }
-
-        /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
         public void Validate(object value)
         {
             string str = value?.ToString() ?? string.Empty;
-            this.IsInvalid = !Regex.IsMatch(str, this.Pattern);
+
+            string[] nibbles = str.Split('.');
+            this.IsInvalid = nibbles.Length != 4 || !nibbles.All(IsNibbleValid);
             this.IsDirty = true;
+        }
+
+        private static bool IsNibbleValid(string nibble)
+        {
+            if (nibble.Length > 3 || nibble.Length == 0)
+            {
+                return false;
+            }
+
+            if (nibble[0] == '0' && nibble != "0")
+            {
+                return false;
+            }
+
+            if (!Regex.IsMatch(nibble, @"^\d+$"))
+            {
+                return false;
+            }
+
+            int.TryParse(nibble, out int numeric);
+            return numeric >= 0 && numeric <= 255;
         }
     }
 }
