@@ -7,8 +7,11 @@
     <Description>
       This package includes data conversion helpers such as:
       - DateTimeToStringValueConverter for converting between a DateTime and string value.
+      - DateTimeExtensions for extending the DateTime object with methods for getting current age or setting time.
+      - MathExtensions for providing additional mathematical functions such as Degrees to Radians.
+      - StringExtensions for converting a string to other value types such as int, float, double, or boolean.
     </Description>
-    <PackageTags>MADE Data Converter DateTime</PackageTags>
+    <PackageTags>MADE Data Converter DateTime Math</PackageTags>
   </PropertyGroup>
 
 </Project>
