@@ -7,30 +7,30 @@ namespace MADE.Data.Validation.Validators
     using MADE.Data.Validation.Extensions;
 
     /// <summary>
-    /// Defines a data validator for ensuring a value is greater than a minimum value.
+    /// Defines a data validator for ensuring a value is less than a maximum value.
     /// </summary>
-    public class MinValueValidator : IValidator
+    public class MaxValueValidator : IValidator
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MinValueValidator"/> class.
+        /// Initializes a new instance of the <see cref="MaxValueValidator"/> class.
         /// </summary>
-        public MinValueValidator()
+        public MaxValueValidator()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MinValueValidator"/> class with a minimum value.
+        /// Initializes a new instance of the <see cref="MaxValueValidator"/> class with a maximum value.
         /// </summary>
-        /// <param name="min">The minimum value.</param>
-        public MinValueValidator(IComparable min)
+        /// <param name="max">The maximum value.</param>
+        public MaxValueValidator(IComparable max)
         {
-            this.Min = min;
+            this.Max = max;
         }
 
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
-        public string Key { get; set; } = nameof(MinValueValidator);
+        public string Key { get; set; } = nameof(MaxValueValidator);
 
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
@@ -45,7 +45,7 @@ namespace MADE.Data.Validation.Validators
         /// <summary>
         /// Gets or sets the minimum value.
         /// </summary>
-        public IComparable Min { get; set; }
+        public IComparable Max { get; set; }
 
         /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.
@@ -57,7 +57,7 @@ namespace MADE.Data.Validation.Validators
 
             if (value is IComparable comparable)
             {
-                isInvalid = comparable.IsLessThan(this.Min);
+                isInvalid = comparable.IsGreaterThan(this.Max);
             }
 
             this.IsInvalid = isInvalid;

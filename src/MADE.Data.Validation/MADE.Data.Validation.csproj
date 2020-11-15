@@ -12,8 +12,9 @@
       - EmailValidator for validating whether a value is an email address.
       - IpAddressValidator for validating whether a value is a valid IP address.
       - MinValueValidator for validating whether a value is above a minimum value.
+      - MaxValueValidator for validating whether a value is below a maximum value.
     </Description>
-    <PackageTags>MADE Data Validation RegEx Range Email</PackageTags>
+    <PackageTags>MADE Data Validation RegEx Range Email IpAddress Min Max</PackageTags>
   </PropertyGroup>
 
 </Project>
