@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\MADE.Data.Validation\MADE.Data.Validation.csproj" />
     <ProjectReference Include="..\..\src\MADE.Testing\MADE.Testing.csproj" />
+    <ProjectReference Include="..\..\src\MADE.Web\MADE.Web.csproj" />
   </ItemGroup>
 
 </Project>

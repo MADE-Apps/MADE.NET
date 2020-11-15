@@ -3,9 +3,10 @@ namespace MADE.Data.Validation.Tests.Tests
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using MADE.Data.Validation.Validators;
+    using MADE.Testing;
     using NUnit.Framework;
     using Shouldly;
-    using Validators;
 
     [ExcludeFromCodeCoverage]
     [TestFixture]
