@@ -1,0 +1,14 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Data Validation</Product>
+    <Description>
+      This package includes data validation helpers such as:
+      - AlphaValidator for validating whether a string contains only alpha characters.
+    </Description>
+    <PackageTags>MADE Data Validation RegEx Alpha</PackageTags>
+  </PropertyGroup>
+
+</Project>

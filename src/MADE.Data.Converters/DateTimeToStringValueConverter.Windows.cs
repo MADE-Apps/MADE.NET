@@ -7,6 +7,9 @@ namespace MADE.Data.Converters
     using System;
     using Windows.UI.Xaml.Data;
 
+    /// <summary>
+    /// Defines a Windows components for a XAML value converter from <see cref="DateTime"/> to <see cref="string"/> with an optional format string.
+    /// </summary>
     public partial class DateTimeToStringValueConverter : IValueConverter
     {
         /// <summary>

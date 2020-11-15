@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive"/>
   </ItemGroup>
 
 </Project>

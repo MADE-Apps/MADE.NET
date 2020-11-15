@@ -1,12 +1,12 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;uap10.0.17763;xamarinios10;xamarinmac20;MonoAndroid90</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;uap10.0.17763</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Data Converters</Product>
     <Description>
       This package includes data conversion helpers such as:
-      - DateTimeToStringValueConverter
+      - DateTimeToStringValueConverter for converting between a DateTime and string value.
     </Description>
     <PackageTags>MADE Data Converter DateTime</PackageTags>
   </PropertyGroup>
