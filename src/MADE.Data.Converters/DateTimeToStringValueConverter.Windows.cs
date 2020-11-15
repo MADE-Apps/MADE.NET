@@ -1,15 +1,13 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
+#if WINDOWS_UWP
 namespace MADE.Data.Converters
 {
     using System;
-    using System.Globalization;
+    using Windows.UI.Xaml.Data;
 
-    /// <summary>
-    /// Defines a value converter from <see cref="DateTime"/> to <see cref="string"/> with an optional format string.
-    /// </summary>
-    public partial class DateTimeToStringValueConverter : IValueConverter<DateTime, string>
+    public partial class DateTimeToStringValueConverter : IValueConverter
     {
         /// <summary>
         /// Converts the <paramref name="value">value</paramref> to the <see cref="string"/> type.
@@ -23,12 +21,15 @@ namespace MADE.Data.Converters
         /// <returns>
         /// The converted <see cref="string"/> object.
         /// </returns>
-        public string Convert(DateTime value, object parameter = default)
+        public object Convert(object value, Type targetType, object parameter, string language)
         {
-            string format = parameter?.ToString();
-            return !string.IsNullOrWhiteSpace(format)
-                       ? value.ToString(format, CultureInfo.InvariantCulture)
-                       : value.ToString(CultureInfo.InvariantCulture);
+            switch (value)
+            {
+                case DateTime dateTime:
+                    return this.Convert(dateTime, parameter?.ToString());
+                default:
+                    return value;
+            }
         }
 
         /// <summary>
@@ -43,15 +44,11 @@ namespace MADE.Data.Converters
         /// <returns>
         /// The converted <see cref="DateTime"/> object.
         /// </returns>
-        public DateTime ConvertBack(string value, object parameter = default)
+        public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return DateTime.MinValue;
-            }
-
-            bool parsed = DateTime.TryParse(value, out DateTime dateTime);
-            return parsed ? dateTime : DateTime.MinValue;
+            string dateTimeString = value?.ToString();
+            return this.ConvertBack(dateTimeString);
         }
     }
 }
+#endif
