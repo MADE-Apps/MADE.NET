@@ -8,7 +8,7 @@
       This package includes runtime helpers such as:
       - WeakReferenceCallback for providing an approach to callbacks with a WeakReference.
     </Description>
-    <PackageTags>MADE Threading Timer</PackageTags>
+    <PackageTags>MADE Runtime WeakReference</PackageTags>
 
   </PropertyGroup>
 
