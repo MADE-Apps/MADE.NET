@@ -1,0 +1,19 @@
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
+namespace MADE.Data.Validation.Validators
+{
+    /// <summary>
+    /// Defines a data validator for ensuring a value is an email address.
+    /// </summary>
+    public class EmailValidator : RegexValidator
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmailValidator"/> class.
+        /// </summary>
+        public EmailValidator()
+        {
+            this.Pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)" + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$";
+        }
+    }
+}
