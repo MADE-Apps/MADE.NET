@@ -1,13 +1,13 @@
 namespace MADE.Data.Validation.Tests.Tests
 {
     using System.Diagnostics.CodeAnalysis;
+    using MADE.Data.Validation.Validators;
     using NUnit.Framework;
     using Shouldly;
-    using Validators;
 
     [ExcludeFromCodeCoverage]
     [TestFixture]
-    public class AlphaValidatorTests
+    public class AlphaNumericValidatorTests
     {
         public class WhenValidating
         {
@@ -16,7 +16,7 @@ namespace MADE.Data.Validation.Tests.Tests
             {
                 // Arrange
                 string value = "Test";
-                var validator = new AlphaValidator();
+                var validator = new AlphaNumericValidator();
 
                 // Act
                 validator.Validate(value);
@@ -25,12 +25,12 @@ namespace MADE.Data.Validation.Tests.Tests
                 validator.IsDirty.ShouldBe(true);
             }
 
-            [Test]
-            public void ShouldBeValidIfContainsOnlyAlphaCharacters()
+            [TestCase("Test")]
+            [TestCase("Test1")]
+            public void ShouldBeValidIfContainsAlphaNumericCharacters(string value)
             {
                 // Arrange
-                string value = "Test";
-                var validator = new AlphaValidator();
+                var validator = new AlphaNumericValidator();
 
                 // Act
                 validator.Validate(value);
@@ -39,12 +39,11 @@ namespace MADE.Data.Validation.Tests.Tests
                 validator.IsInvalid.ShouldBe(false);
             }
 
-            [TestCase("Test1")]
             [TestCase("Test!")]
-            public void ShouldBeInvalidIfContainsNonAlphaCharacters(string value)
+            public void ShouldBeInvalidIfContainsNonAlphaNumericCharacters(string value)
             {
                 // Arrange
-                var validator = new AlphaValidator();
+                var validator = new AlphaNumericValidator();
 
                 // Act
                 validator.Validate(value);
