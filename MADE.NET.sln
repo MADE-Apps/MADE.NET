@@ -34,6 +34,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.Data.Validation", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Data.Validation.Tests", "tests\MADE.Data.Validation.Tests\MADE.Data.Validation.Tests.csproj", "{64021F1D-1F8C-488C-A729-1439BD84B94A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MADE.Diagnostics.Tests", "tests\MADE.Diagnostics.Tests\MADE.Diagnostics.Tests.csproj", "{BA699DAD-25FA-4AAB-85FD-34D4E57DE920}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{64021F1D-1F8C-488C-A729-1439BD84B94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64021F1D-1F8C-488C-A729-1439BD84B94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{64021F1D-1F8C-488C-A729-1439BD84B94A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA699DAD-25FA-4AAB-85FD-34D4E57DE920}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA699DAD-25FA-4AAB-85FD-34D4E57DE920}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA699DAD-25FA-4AAB-85FD-34D4E57DE920}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA699DAD-25FA-4AAB-85FD-34D4E57DE920}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{7C544F50-A3D5-4116-83B6-29199E41DA76} = {69149D0F-BB09-411B-88F0-A1E845058D70}
 		{72B5F9E3-B979-4516-95C0-188BBF178331} = {01380FB8-F8A7-4416-AABA-5407574B7723}
 		{64021F1D-1F8C-488C-A729-1439BD84B94A} = {69149D0F-BB09-411B-88F0-A1E845058D70}
+		{BA699DAD-25FA-4AAB-85FD-34D4E57DE920} = {69149D0F-BB09-411B-88F0-A1E845058D70}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3921AD86-E6C0-4436-8880-2D9EDFAD6151}
