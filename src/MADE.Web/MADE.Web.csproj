@@ -8,8 +8,9 @@
       This package includes web API helpers such as:
       - PaginatedRequest for providing an expected paginated request from an API controller.
       - PaginatedResponse for providing an result paginated response from an API controller request.
+      - HttpContextExceptionsMiddleware for handling web application exceptions with JSON responses for different exception types.
     </Description>
-    <PackageTags>MADE Web API Requests Responses</PackageTags>
+    <PackageTags>MADE Web API Requests Responses Exception Handling JSON</PackageTags>
 
   </PropertyGroup>
 
