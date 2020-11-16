@@ -16,6 +16,7 @@
     <PackageReleaseNotes>https://github.com/MADE-Apps/MADE.NET/releases</PackageReleaseNotes>
     <NeutralLanguage>en</NeutralLanguage>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
