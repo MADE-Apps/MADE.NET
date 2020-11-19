@@ -9,6 +9,7 @@ namespace MADE.UI.Controls
     using MADE.Data.Validation.Extensions;
     using Windows.Foundation;
     using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Automation.Peers;
     using Windows.UI.Xaml.Controls;
     using Windows.UI.Xaml.Controls.Primitives;
     using Windows.UI.Xaml.Media;
@@ -365,6 +366,11 @@ namespace MADE.UI.Controls
 
             this.SetSelectionMode();
             this.DetermineDropDownButtonContent();
+        }
+
+        protected override AutomationPeer OnCreateAutomationPeer()
+        {
+            return new DropDownListAutomationPeer(this);
         }
 
         private void OnSizeChanged(object sender, SizeChangedEventArgs e)
