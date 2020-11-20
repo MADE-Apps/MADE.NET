@@ -1,0 +1,33 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>uap10.0.17763</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET UI DropDownList Control</Product>
+    <Description>
+      This package includes UI components for UWP such as:
+      - Validator providing a wrapper for content to provide validation over input controls.
+    </Description>
+    <PackageTags>MADE UI Views Controls UWP Validator Validation</PackageTags>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <RootNamespace>MADE.UI.Controls</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Themes\Generic.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.Data.Validation\MADE.Data.Validation.csproj" />
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj" />
+  </ItemGroup>
+
+</Project>

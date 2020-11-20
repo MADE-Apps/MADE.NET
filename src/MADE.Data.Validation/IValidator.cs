@@ -24,6 +24,11 @@ namespace MADE.Data.Validation
         bool IsDirty { get; set; }
 
         /// <summary>
+        /// Gets or sets the feedback message to display when <see cref="IsInvalid"/> is true.
+        /// </summary>
+        string FeedbackMessage { get; set; }
+
+        /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>

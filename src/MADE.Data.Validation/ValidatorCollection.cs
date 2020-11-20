@@ -5,6 +5,7 @@ namespace MADE.Data.Validation
 {
     using System.Collections.Generic;
     using System.Linq;
+    using Extensions;
 
     /// <summary>
     /// Defines a list of <see cref="IValidator"/> objects that can be accessed by index.
@@ -34,6 +35,11 @@ namespace MADE.Data.Validation
         }
 
         /// <summary>
+        /// Occurs when the input value is validated against the collection of validators.
+        /// </summary>
+        public event InputValidatedEventHandler Validated;
+
+        /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
         /// </summary>
         public bool IsInvalid
@@ -52,12 +58,18 @@ namespace MADE.Data.Validation
         }
 
         /// <summary>
+        /// Gets the validator feedback messages for ones which are invalid.
+        /// </summary>
+        public IEnumerable<string> FeedbackMessages => this.Where(x => x.IsInvalid).Select(x => x.FeedbackMessage).Where(x => !x.IsNullOrWhiteSpace());
+
+        /// <summary>
         /// Executes data validation on the provided <paramref name="value"/> against the validators provided.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
         public void Validate(object value)
         {
             this.ForEach(validator => validator.Validate(value));
+            this.Validated?.Invoke(this, new InputValidatedEventArgs(this.IsInvalid, this.IsDirty));
         }
     }
 }

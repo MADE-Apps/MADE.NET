@@ -5,12 +5,16 @@ namespace MADE.Data.Validation.Validators
 {
     using System.Linq;
     using System.Text.RegularExpressions;
+    using MADE.Data.Validation.Extensions;
+    using MADE.Data.Validation.Strings;
 
     /// <summary>
     /// Defines a data validator for ensuring a value is a valid IP address.
     /// </summary>
     public class IpAddressValidator : IValidator
     {
+        private string feedbackMessage;
+
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
@@ -25,6 +29,15 @@ namespace MADE.Data.Validation.Validators
         /// Gets or sets a value indicating whether the data is dirty.
         /// </summary>
         public bool IsDirty { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback message to display when <see cref="IValidator.IsInvalid"/> is true.
+        /// </summary>
+        public string FeedbackMessage
+        {
+            get => this.feedbackMessage.IsNullOrWhiteSpace() ? Resources.IpAddressValidator_FeedbackMessage : this.feedbackMessage;
+            set => this.feedbackMessage = value;
+        }
 
         /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.

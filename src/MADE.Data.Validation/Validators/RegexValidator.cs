@@ -4,12 +4,16 @@
 namespace MADE.Data.Validation.Validators
 {
     using System.Text.RegularExpressions;
+    using MADE.Data.Validation.Extensions;
+    using MADE.Data.Validation.Strings;
 
     /// <summary>
     /// Defines a generic regular expression data validator.
     /// </summary>
     public class RegexValidator : IValidator
     {
+        private string feedbackMessage;
+
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
@@ -24,6 +28,15 @@ namespace MADE.Data.Validation.Validators
         /// Gets or sets a value indicating whether the data is dirty.
         /// </summary>
         public bool IsDirty { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback message to display when <see cref="IValidator.IsInvalid"/> is true.
+        /// </summary>
+        public virtual string FeedbackMessage
+        {
+            get => this.feedbackMessage.IsNullOrWhiteSpace() ? Resources.RegexValidator_FeedbackMessage : this.feedbackMessage;
+            set => this.feedbackMessage = value;
+        }
 
         /// <summary>
         /// Gets or sets the RegEx pattern to match on.

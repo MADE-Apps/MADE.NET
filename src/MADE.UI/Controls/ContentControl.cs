@@ -1,22 +1,18 @@
-// MADE Apps licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
-
 namespace MADE.UI.Controls
 {
     using System;
     using MADE.UI.Extensions;
-    using MADE.UI;
     using Windows.UI.Xaml;
 
     /// <summary>
-    /// Defines a UI element for creating custom controls in Windows applications.
+    /// Defines a UI element for creating custom controls with content in Windows applications.
     /// </summary>
-    public class Control : Windows.UI.Xaml.Controls.Control, IControl
+    public class ContentControl : Windows.UI.Xaml.Controls.ContentControl, IControl
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Control"/> class.
+        /// Initializes a new instance of the <see cref="ContentControl"/> class.
         /// </summary>
-        public Control()
+        public ContentControl()
         {
             this.Loaded += this.OnLoaded;
         }

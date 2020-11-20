@@ -5,12 +5,15 @@ namespace MADE.Data.Validation.Validators
 {
     using System.Collections;
     using MADE.Data.Validation.Extensions;
+    using MADE.Data.Validation.Strings;
 
     /// <summary>
     /// Defines a data validator for ensuring a value is provided.
     /// </summary>
     public class RequiredValidator : IValidator
     {
+        private string feedbackMessage = Resources.ResourceManager.GetString("RequiredValidator_FeedbackMessage");
+
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
@@ -25,6 +28,15 @@ namespace MADE.Data.Validation.Validators
         /// Gets or sets a value indicating whether the data is dirty.
         /// </summary>
         public bool IsDirty { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback message to display when <see cref="IValidator.IsInvalid"/> is true.
+        /// </summary>
+        public string FeedbackMessage
+        {
+            get => this.feedbackMessage.IsNullOrWhiteSpace() ? Resources.RequiredValidator_FeedbackMessage : this.feedbackMessage;
+            set => this.feedbackMessage = value;
+        }
 
         /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.

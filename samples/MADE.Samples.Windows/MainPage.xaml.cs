@@ -1,6 +1,8 @@
 namespace MADE.Samples.Windows
 {
     using System.Collections.Generic;
+    using Data.Validation;
+    using MADE.Data.Validation.Validators;
     using global::Windows.UI.Xaml.Controls;
 
     /// <summary>
@@ -11,7 +13,20 @@ namespace MADE.Samples.Windows
         public MainPage()
         {
             this.InitializeComponent();
-            this.DropDownList.ItemsSource = new List<string> { "Hello", "World", "New", "DropDown", "List", "Control" };
+            this.DropDownList.ItemsSource = new List<string>
+            {
+                "Hello",
+                "World",
+                "New",
+                "DropDown",
+                "List",
+                "Control"
+            };
+
+            this.TextBoxValidator.Validators = new ValidatorCollection
+            {
+                new RequiredValidator(), new AlphaNumericValidator(),
+            };
         }
     }
 }

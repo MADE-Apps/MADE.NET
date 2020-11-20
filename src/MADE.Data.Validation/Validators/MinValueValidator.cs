@@ -5,12 +5,15 @@ namespace MADE.Data.Validation.Validators
 {
     using System;
     using MADE.Data.Validation.Extensions;
+    using MADE.Data.Validation.Strings;
 
     /// <summary>
     /// Defines a data validator for ensuring a value is greater than a minimum value.
     /// </summary>
     public class MinValueValidator : IValidator
     {
+        private string feedbackMessage;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MinValueValidator"/> class.
         /// </summary>
@@ -41,6 +44,15 @@ namespace MADE.Data.Validation.Validators
         /// Gets or sets a value indicating whether the data is dirty.
         /// </summary>
         public bool IsDirty { get; set; }
+
+        /// <summary>
+        /// Gets or sets the feedback message to display when <see cref="IValidator.IsInvalid"/> is true.
+        /// </summary>
+        public string FeedbackMessage
+        {
+            get => this.feedbackMessage.IsNullOrWhiteSpace() ? string.Format(Resources.MinValueValidator_FeedbackMessage, this.Min) : this.feedbackMessage;
+            set => this.feedbackMessage = value;
+        }
 
         /// <summary>
         /// Gets or sets the minimum value.

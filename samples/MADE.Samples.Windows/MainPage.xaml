@@ -2,13 +2,29 @@
     x:Class="MADE.Samples.Windows.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MADE.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:controls="using:MADE.UI.Controls"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
 
-    <Grid Padding="12">
-        <controls:DropDownList x:Name="DropDownList" Header="MultiDropDownList" SelectionMode="Multiple" />
-    </Grid>
+    <RelativePanel Padding="12">
+        <controls:DropDownList
+            x:Name="DropDownList"
+            Header="MultiDropDownList"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.AlignTopWithPanel="True"
+            SelectionMode="Multiple" />
+
+        <controls:InputValidator
+            x:Name="TextBoxValidator"
+            Margin="0,12,0,0"
+            Input="{x:Bind TextBox.Text, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="DropDownList">
+            <TextBox x:Name="TextBox" />
+        </controls:InputValidator>
+    </RelativePanel>
 </Page>

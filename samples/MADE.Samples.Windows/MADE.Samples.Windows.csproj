@@ -193,6 +193,10 @@
       <Project>{347cdc37-e140-42fa-8710-a0f3297d2b6b}</Project>
       <Name>MADE.UI.Controls.DropDownList</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\MADE.UI.Controls.Validator\MADE.UI.Controls.Validator.csproj">
+      <Project>{e2b20928-dae2-4a9c-bdaf-d787b4f48391}</Project>
+      <Name>MADE.UI.Controls.Validator</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\MADE.UI\MADE.UI.csproj">
       <Project>{79afd8fc-7789-47b7-b808-26e03d0f1e05}</Project>
       <Name>MADE.UI</Name>

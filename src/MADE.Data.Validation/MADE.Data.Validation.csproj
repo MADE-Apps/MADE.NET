@@ -18,4 +18,16 @@
     <PackageTags>MADE Data Validation RegEx Range Email IpAddress Min Max Required</PackageTags>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Strings\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Strings\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
 </Project>
