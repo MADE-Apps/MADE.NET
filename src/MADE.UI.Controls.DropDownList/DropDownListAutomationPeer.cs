@@ -17,7 +17,7 @@ namespace MADE.UI.Controls
         /// Initializes a new instance of the <see cref="DropDownListAutomationPeer"/> class.
         /// </summary>
         /// <param name="owner">
-        /// The <see cref="DropDownList" /> that is associated with this <see cref="T:Windows.UI.Xaml.Automation.Peers.CarouselAutomationPeer" />.
+        /// The <see cref="DropDownList" /> that is associated with this <see cref="AutomationPeer"/>.
         /// </param>
         public DropDownListAutomationPeer(DropDownList owner)
             : base(owner)

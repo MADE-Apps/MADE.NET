@@ -6,6 +6,7 @@ namespace MADE.UI.Controls
     using System.Text;
     using MADE.Data.Validation;
     using Windows.UI.Xaml;
+    using Windows.UI.Xaml.Automation.Peers;
     using Windows.UI.Xaml.Controls;
     using Data.Validation.Extensions;
     using Extensions;
@@ -99,6 +100,11 @@ namespace MADE.UI.Controls
 
             this.ValidatorFeedbackMessage = this.GetChildView<TextBlock>(ValidatorFeedbackMessagePart);
             this.InvokeValidators();
+        }
+
+        protected override AutomationPeer OnCreateAutomationPeer()
+        {
+            return new InputValidatorAutomationPeer(this);
         }
 
         private void InvokeValidators()
