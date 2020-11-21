@@ -25,7 +25,7 @@ namespace MADE.Samples.Windows
 
             this.TextBoxValidator.Validators = new ValidatorCollection
             {
-                new RequiredValidator(), new AlphaNumericValidator(),
+                new RequiredValidator(), new EmailValidator()
             };
         }
     }

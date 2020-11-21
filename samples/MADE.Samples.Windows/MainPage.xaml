@@ -24,7 +24,7 @@
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.Below="DropDownList">
-            <TextBox x:Name="TextBox" />
+            <TextBox x:Name="TextBox" Header="TextBox with InputValidator" />
         </controls:InputValidator>
     </RelativePanel>
 </Page>
