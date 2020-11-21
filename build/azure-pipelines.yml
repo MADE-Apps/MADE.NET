@@ -2,12 +2,14 @@ trigger:
   branches:
     include:
     - main
+    - preview/*
     - release/*
 
 pr:
   branches:
     include:
     - main
+    - preview/*
     - release/*
 
 variables:
@@ -53,6 +55,7 @@ stages:
     - powershell: |
         mkdir $(Build.ArtifactStagingDirectory)\Packages
         $version = .\nbgv.exe get-version -f json | ConvertFrom-Json
+        Write-Host "##vso[task.setvariable variable=versionNumber;]$version.NuGetPackageVersion"
       displayName: Get version
 
     - task: DotNetCoreCLI@2
@@ -60,7 +63,7 @@ stages:
       inputs:
         command: 'build'
         projects: '$(solution)'
-        arguments: '--configuration $(buildConfiguration) -p:Version=$($version.NuGetPackageVersion)'
+        arguments: '--configuration $(buildConfiguration) -p:Version=$(versionNumber)'
 
     - task: DotNetCoreCLI@2
       displayName: Run tests
@@ -95,7 +98,7 @@ stages:
 
 - stage: 'Publish'
   dependsOn: 'Build'
-  condition: and(succeeded(), or(eq(variables['Build.SourceBranch'], 'refs/heads/main'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')))
+  condition: and(succeeded(), or(startsWith(variables['Build.SourceBranch'], 'refs/heads/preview/'), startsWith(variables['Build.SourceBranch'], 'refs/heads/release/')))
   jobs:
   - job:
     pool:
