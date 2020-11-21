@@ -31,6 +31,11 @@ stages:
       clean: all
 
     steps:
+    - task: UseDotNet@2
+      inputs:
+        packageType: 'sdk'
+        version: '3.x'
+        
     - task: NuGetToolInstaller@1
       displayName: Use NuGet 5.6.0
       inputs:
