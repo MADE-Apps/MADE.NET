@@ -50,7 +50,7 @@ stages:
         mkdir $(Build.ArtifactStagingDirectory)\Packages
         $version = .\nbgv.exe get-version -f json | ConvertFrom-Json
         Write-Host "Version: $version"
-        Write-Host "##vso[task.setvariable variable=VERSION_NUMBER;]$version.NuGetPackageVersion"
+        Write-Host "##vso[task.setvariable variable=VERSION_NUMBER;]$($version.NuGetPackageVersion)"
         Write-Host "NuGet Package Version: $env:VERSION_NUMBER"
       displayName: Get version
 
