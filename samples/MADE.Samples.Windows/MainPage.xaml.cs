@@ -1,5 +1,6 @@
 namespace MADE.Samples.Windows
 {
+    using System;
     using System.Collections.Generic;
     using Data.Validation;
     using MADE.Data.Validation.Validators;
@@ -23,9 +24,11 @@ namespace MADE.Samples.Windows
                 "Control"
             };
 
-            this.TextBoxValidator.Validators = new ValidatorCollection
+            this.TextBoxValidator.Validators = new ValidatorCollection { new RequiredValidator(), new EmailValidator() };
+
+            this.DatePickerValidator.Validators = new ValidatorCollection
             {
-                new RequiredValidator(), new EmailValidator()
+                new RequiredValidator(), new BetweenValidator(DateTimeOffset.Now, DateTimeOffset.Now.AddDays(7)),
             };
         }
     }

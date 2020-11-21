@@ -1,10 +1,11 @@
 namespace MADE.UI.Controls
 {
-    using System.Linq;
     using System.Text;
     using MADE.Data.Validation;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Controls;
+    using Data.Validation.Extensions;
+    using Extensions;
 
     /// <summary>
     /// Defines a component which validates an input.
@@ -33,6 +34,15 @@ namespace MADE.UI.Controls
             new PropertyMetadata(default(ValidatorCollection), (o, args) => ((InputValidator)o).InvokeValidators()));
 
         /// <summary>
+        /// Identifies the <see cref="FeedbackMessageStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty FeedbackMessageStyleProperty = DependencyProperty.Register(
+            nameof(FeedbackMessageStyle),
+            typeof(Style),
+            typeof(InputValidator),
+            new PropertyMetadata(default(Style)));
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="InputValidator"/> class.
         /// </summary>
         public InputValidator()
@@ -44,6 +54,15 @@ namespace MADE.UI.Controls
         /// Occurs when the input value is validated against the collection of validators.
         /// </summary>
         public event InputValidatedEventHandler Validated;
+
+        /// <summary>
+        /// Gets or sets the style associated with the feedback message.
+        /// </summary>
+        public Style FeedbackMessageStyle
+        {
+            get => (Style)this.GetValue(FeedbackMessageStyleProperty);
+            set => this.SetValue(FeedbackMessageStyleProperty, value);
+        }
 
         /// <summary>
         /// Gets or sets the input to run validation against.
@@ -100,6 +119,7 @@ namespace MADE.UI.Controls
                 }
 
                 this.ValidatorFeedbackMessage.Text = builder.ToString();
+                this.ValidatorFeedbackMessage.SetVisible(!this.ValidatorFeedbackMessage.Text.IsNullOrWhiteSpace());
             }
         }
     }

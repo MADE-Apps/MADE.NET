@@ -26,5 +26,15 @@
             RelativePanel.Below="DropDownList">
             <TextBox x:Name="TextBox" Header="TextBox with InputValidator" />
         </controls:InputValidator>
+
+        <controls:InputValidator
+            x:Name="DatePickerValidator"
+            Margin="0,12,0,0"
+            Input="{Binding SelectedDate, Mode=TwoWay, ElementName=DatePicker, UpdateSourceTrigger=PropertyChanged}"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="TextBoxValidator">
+            <DatePicker x:Name="DatePicker" Header="DatePicker with InputValidator" />
+        </controls:InputValidator>
     </RelativePanel>
 </Page>
