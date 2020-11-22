@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0-preview",
+  "version": "1.0.0",
   "publicReleaseRefSpec": [
     "^refs/heads/release/\\d+\\.\\d+\\.\\d+"
   ],
