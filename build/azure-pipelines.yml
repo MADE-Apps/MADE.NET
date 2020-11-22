@@ -35,7 +35,7 @@ stages:
       inputs:
         packageType: 'sdk'
         version: '3.x'
-        
+
     - task: NuGetToolInstaller@1
       displayName: Use NuGet 5.6.0
       inputs:
@@ -54,6 +54,7 @@ stages:
     - powershell: |
         mkdir $(Build.ArtifactStagingDirectory)\Packages
         $version = .\nbgv.exe get-version -f json | ConvertFrom-Json
+        Write-Host "Build version: $version"
         Write-Host "##vso[task.setvariable variable=VERSION_NUMBER;]$($version.NuGetPackageVersion)"
       displayName: Get version
 
