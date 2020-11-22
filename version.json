@@ -1,8 +1,9 @@
 {
-  "version": "1.0.0-preview.{height}",
+  "version": "1.0.0-preview",
   "publicReleaseRefSpec": [
     "^refs/heads/release/\\d+\\.\\d+\\.\\d+"
   ],
+  "gitCommitIdShortAutoMinimum": 7,
   "nugetPackageVersion":{
     "semVer": 2
   }
