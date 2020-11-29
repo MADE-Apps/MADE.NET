@@ -8,15 +8,27 @@ The project is a home to all of those bits of code that you know you'll reuse in
 
 | Branch | Status | Packages |
 | ------ | ------ | ------ |
-| main | Coming soon. | Coming soon. |
+| release | [![Build Status](https://dev.azure.com/jamesmcroft/MADE%20Apps/_apis/build/status/MADE-Apps.MADE.NET)](https://dev.azure.com/jamesmcroft/MADE%20Apps/_build/latest?definitionId=39) | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/profiles/made-apps) |
+| preview | [![Build Status](https://dev.azure.com/jamesmcroft/MADE%20Apps/_apis/build/status/MADE-Apps.MADE.NET)](https://dev.azure.com/jamesmcroft/MADE%20Apps/_build/latest?definitionId=39) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Runtime)](https://www.nuget.org/profiles/made-apps) |
 
 ## Installation
 
-MADE.NET components are publicly available via NuGet. Each available package is detailed below. 
+[MADE.NET](https://www.nuget.org/profiles/made-apps) components are publicly available via NuGet. Each available package is detailed below. 
 
 | Package | Current |
 | ------ | ------ |
-| Coming soon. | Coming soon. |
+| Collections | [![NuGet](https://img.shields.io/nuget/v/MADE.Collections)](https://www.nuget.org/packages/MADE.Collections/) |
+| Data.Converters | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Converters)](https://www.nuget.org/packages/MADE.Data.Converters/) |
+| Data.Validation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) |
+| Diagnostics | [![NuGet](https://img.shields.io/nuget/v/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) |
+| Networking | [![NuGet](https://img.shields.io/nuget/v/MADE.Networking)](https://www.nuget.org/packages/MADE.Networking/) |
+| Runtime | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/packages/MADE.Runtime/) |
+| Testing | [![NuGet](https://img.shields.io/nuget/v/MADE.Testing)](https://www.nuget.org/packages/MADE.Testing/) |
+| Threading | [![NuGet](https://img.shields.io/nuget/v/MADE.Threading)](https://www.nuget.org/packages/MADE.Threading/) |
+| UI | [![NuGet](https://img.shields.io/nuget/v/MADE.UI)](https://www.nuget.org/packages/MADE.UI/) |
+| UI.Controls.DropDownList | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.DropDownList)](https://www.nuget.org/packages/MADE.UI.Controls.DropDownList/) |
+| UI.Controls.Validator | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.Validator)](https://www.nuget.org/packages/MADE.UI.Controls.Validator/) |
+| Web | [![NuGet](https://img.shields.io/nuget/v/MADE.Web)](https://www.nuget.org/packages/MADE.Web/) |
 
 ## Contributing 
 
