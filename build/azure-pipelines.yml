@@ -32,6 +32,7 @@ stages:
 
     steps:
     - task: UseDotNet@2
+      displayName: Use latest dotnet 3.x
       inputs:
         packageType: 'sdk'
         version: '3.x'
@@ -41,22 +42,12 @@ stages:
       inputs:
         versionSpec: '5.6.0'
 
-    - task: DotNetCoreCLI@2
-      displayName: Install NBGV tool
-      inputs:
-        command: custom
-        custom: tool
-        arguments: install --tool-path . nbgv
-
-    - script: nbgv cloud
-      displayName: Set version
-
     - powershell: |
-        mkdir $(Build.ArtifactStagingDirectory)\Packages
-        $version = .\nbgv.exe get-version -f json | ConvertFrom-Json
+        Import-Module $(Build.SourcesDirectory)/build/SetBuildVersion.ps1
+        $version = SetBuildVersion -VersionString $(Build.SourceBranchName)
         Write-Host "Build version: $version"
-        Write-Host "##vso[task.setvariable variable=VERSION_NUMBER;]$($version.NuGetPackageVersion)"
-      displayName: Get version
+        Write-Host "##vso[task.setvariable variable=VERSION_NUMBER;]$($version)"
+      displayName: Get build version
 
     - task: NuGetCommand@2
       displayName: Restore NuGet packages
@@ -65,7 +56,7 @@ stages:
         restoreSolution: '$(solution)'
 
     - task: MSBuild@1
-      displayName: 'Build solution'
+      displayName: Build solution
       inputs:
         solution: '$(solution)'
         platform: 'Any CPU'
@@ -88,12 +79,13 @@ stages:
         targetdir: '$(Build.SourcesDirectory)/CoverageResults'
 
     - task: PublishCodeCoverageResults@1
-      displayName: 'Publish code coverage'
+      displayName: Publish code coverage
       inputs:
         codeCoverageTool: Cobertura
         summaryFileLocation: '$(Build.SourcesDirectory)/CoverageResults/Cobertura.xml'
 
     - task: CopyFiles@2
+      displayName: Copy NuGet packages to artifacts
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/src'
         Contents: |
@@ -120,6 +112,7 @@ stages:
       artifact: 'artifacts'
 
     - task: NuGetCommand@2
+      displayName: Deploy NuGet packages to nuget.org
       inputs:
         command: 'push'
         packagesToPush: '$(Pipeline.Workspace)/**/*.nupkg'
