@@ -69,7 +69,8 @@ stages:
       inputs:
         solution: '$(solution)'
         platform: 'Any CPU'
-        configuration: $(buildConfiguration)
+        configuration: '$(buildConfiguration)'
+        msbuildArguments: '-p:Version=$(VERSION_NUMBER)'
         maximumCpuCount: true
 
     - task: DotNetCoreCLI@2
@@ -96,8 +97,8 @@ stages:
       inputs:
         SourceFolder: '$(Build.SourcesDirectory)/src'
         Contents: |
-          **/*.nupkg
-          **/*.snupkg
+          **/[Rr]elease/**/*.nupkg
+          **/[Rr]elease/**/*.snupkg
         TargetFolder: '$(Build.ArtifactStagingDirectory)/artifacts'
 
     - publish: '$(Build.ArtifactStagingDirectory)/artifacts'
