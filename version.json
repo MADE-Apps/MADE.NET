@@ -1,10 +1,26 @@
 {
-  "version": "1.0.0-build.{height}",
+  "version": "1.0.0",
+  "nugetPackageVersion": {
+    "semVer": 2
+  },
+  "gitCommitIdShortAutoMinimum": 7,
   "publicReleaseRefSpec": [
+    "^refs/heads/main$",
     "^refs/heads/release/\\d+\\.\\d+\\.\\d+"
   ],
-  "gitCommitIdShortAutoMinimum": 7,
-  "nugetPackageVersion":{
-    "semVer": 2
+  "cloudBuild": {
+    "setVersionVariables": true,
+    "buildNumber": {
+      "enabled": false,
+      "includeCommitId": {
+        "when": "nonPublicReleaseOnly",
+        "where": "buildMetadata"
+      }
+    }
+  },
+  "release" : {
+    "branchName" : "{version}",
+    "versionIncrement" : "minor",
+    "firstUnstableTag" : "preview"
   }
 }
