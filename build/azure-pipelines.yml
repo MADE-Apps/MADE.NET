@@ -4,6 +4,12 @@ trigger:
     - main
     - preview/*
     - release/*
+  paths:
+    include:
+    - build/*
+    - src/*
+    - tests/*
+    - MADE.NET.sln
 
 pr:
   branches:
@@ -11,6 +17,12 @@ pr:
     - main
     - preview/*
     - release/*
+  paths:
+    include:
+    - build/*
+    - src/*
+    - tests/*
+    - MADE.NET.sln
 
 variables:
   - name: vmImageName
