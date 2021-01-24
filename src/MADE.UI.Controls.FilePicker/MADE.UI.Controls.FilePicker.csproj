@@ -1,0 +1,30 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>uap10.0.17763</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET UI FilePicker Control</Product>
+    <Description>
+      This package includes UI components for UWP such as:
+      - FilePicker providing an input control that allows a user to pick files.
+    </Description>
+    <PackageTags>MADE UI Views Controls UWP FilePicker Input File</PackageTags>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <RootNamespace>MADE.UI.Controls</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.Collections\MADE.Collections.csproj" />
+    <ProjectReference Include="..\MADE.Data.Validation\MADE.Data.Validation.csproj" />
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj" />
+  </ItemGroup>
+
+</Project>

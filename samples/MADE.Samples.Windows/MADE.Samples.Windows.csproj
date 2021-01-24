@@ -193,6 +193,10 @@
       <Project>{347cdc37-e140-42fa-8710-a0f3297d2b6b}</Project>
       <Name>MADE.UI.Controls.DropDownList</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\MADE.UI.Controls.FilePicker\MADE.UI.Controls.FilePicker.csproj">
+      <Project>{774fd8d5-ccc1-4eed-aa14-f7069bfae5ce}</Project>
+      <Name>MADE.UI.Controls.FilePicker</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\MADE.UI.Controls.Validator\MADE.UI.Controls.Validator.csproj">
       <Project>{e2b20928-dae2-4a9c-bdaf-d787b4f48391}</Project>
       <Name>MADE.UI.Controls.Validator</Name>

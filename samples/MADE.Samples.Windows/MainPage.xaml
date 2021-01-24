@@ -36,5 +36,12 @@
             RelativePanel.Below="TextBoxValidator">
             <DatePicker x:Name="DatePicker" Header="DatePicker with InputValidator" />
         </controls:InputValidator>
+
+        <controls:FilePicker
+            x:Name="FilePickerValidator"
+            Margin="0,12,0,0"
+            RelativePanel.AlignLeftWithPanel="True"
+            RelativePanel.AlignRightWithPanel="True"
+            RelativePanel.Below="DatePickerValidator" />
     </RelativePanel>
 </Page>
