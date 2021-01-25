@@ -177,6 +177,10 @@
       <Project>{713ab96d-1ee2-45ca-a41e-47401edcc656}</Project>
       <Name>MADE.Diagnostics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\MADE.Media.Image\MADE.Media.Image.csproj">
+      <Project>{3038eda8-3068-45ad-99a2-36986627b880}</Project>
+      <Name>MADE.Media.Image</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\MADE.Networking\MADE.Networking.csproj">
       <Project>{aa0647a7-110f-4fb8-88f7-a902cbb240a3}</Project>
       <Name>MADE.Networking</Name>

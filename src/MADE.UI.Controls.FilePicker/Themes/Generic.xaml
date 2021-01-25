@@ -18,7 +18,40 @@
                             Content="{TemplateBinding ChooseFileButtonContent}"
                             ContentTemplate="{TemplateBinding ChooseFileButtonContentTemplate}" />
 
-                        <GridView x:Name="FilePickerItemsView" Grid.Row="1" />
+                        <GridView
+                            x:Name="FilePickerItemsView"
+                            Grid.Row="1"
+                            Margin="0,8,0,0"
+                            ItemsSource="{TemplateBinding Files}"
+                            Style="{TemplateBinding ItemsViewStyle}">
+                            <GridView.ItemTemplate>
+                                <DataTemplate>
+                                    <RelativePanel Width="128" Height="128">
+                                        <Image
+                                            RelativePanel.AlignBottomWithPanel="True"
+                                            RelativePanel.AlignLeftWithPanel="True"
+                                            RelativePanel.AlignRightWithPanel="True"
+                                            RelativePanel.AlignTopWithPanel="True"
+                                            Source="{Binding Thumbnail}"
+                                            Stretch="UniformToFill" />
+
+                                        <Border
+                                            MaxHeight="48"
+                                            Padding="8"
+                                            Background="{StaticResource SystemControlAcrylicElementBrush}"
+                                            RelativePanel.AlignBottomWithPanel="True"
+                                            RelativePanel.AlignLeftWithPanel="True"
+                                            RelativePanel.AlignRightWithPanel="True">
+                                            <TextBlock
+                                                VerticalAlignment="Bottom"
+                                                Style="{StaticResource CaptionTextBlockStyle}"
+                                                Text="{Binding Name}"
+                                                TextTrimming="CharacterEllipsis" />
+                                        </Border>
+                                    </RelativePanel>
+                                </DataTemplate>
+                            </GridView.ItemTemplate>
+                        </GridView>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

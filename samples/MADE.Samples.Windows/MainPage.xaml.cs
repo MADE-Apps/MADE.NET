@@ -2,9 +2,11 @@ namespace MADE.Samples.Windows
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using Data.Validation;
-    using MADE.Data.Validation.Validators;
     using global::Windows.UI.Xaml.Controls;
+    using MADE.Data.Validation.Validators;
+    using UI.Controls;
 
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
@@ -31,5 +33,7 @@ namespace MADE.Samples.Windows
                 new RequiredValidator(), new BetweenValidator(DateTimeOffset.Now, DateTimeOffset.Now.AddDays(7)),
             };
         }
+
+        public ObservableCollection<FilePickerItem> FilePickerFiles { get; } = new ObservableCollection<FilePickerItem>();
     }
 }

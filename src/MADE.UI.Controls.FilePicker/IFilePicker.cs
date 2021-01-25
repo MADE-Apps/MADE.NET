@@ -3,6 +3,7 @@
 
 namespace MADE.UI.Controls
 {
+    using System.Collections;
     using Windows.UI.Xaml;
 
     /// <summary>
@@ -23,5 +24,25 @@ namespace MADE.UI.Controls
         /// Gets or sets the file picker selection mode.
         /// </summary>
         FilePickerSelectionMode SelectionMode { get; set; }
+
+        /// <summary>
+        /// Gets or sets the file types supported by the input.
+        /// </summary>
+        IEnumerable FileTypes { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to append files with subsequent file choices.
+        /// </summary>
+        bool AppendFiles { get; set; }
+
+        /// <summary>
+        /// Gets or sets the files chosen.
+        /// </summary>
+        IList Files { get; set; }
+
+        /// <summary>
+        /// Gets or sets the style of the items view.
+        /// </summary>
+        Style ItemsViewStyle { get; set; }
     }
 }

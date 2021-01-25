@@ -4,7 +4,9 @@
 namespace MADE.UI.Controls
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Windows.Storage;
     using Windows.Storage.Pickers;
     using Windows.UI.Xaml;
@@ -50,6 +52,42 @@ namespace MADE.UI.Controls
             new PropertyMetadata(default(FilePickerSelectionMode)));
 
         /// <summary>
+        /// Identifies the <see cref="FileTypes"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty FileTypesProperty = DependencyProperty.Register(
+            nameof(FileTypes),
+            typeof(IEnumerable),
+            typeof(FilePicker),
+            new PropertyMetadata(new List<string> { "*" }));
+
+        /// <summary>
+        /// Identifies the <see cref="AppendFiles"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty AppendFilesProperty = DependencyProperty.Register(
+            nameof(AppendFiles),
+            typeof(bool),
+            typeof(FilePicker),
+            new PropertyMetadata(default(bool)));
+
+        /// <summary>
+        /// Identifies the <see cref="Files"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty FilesProperty = DependencyProperty.Register(
+            nameof(Files),
+            typeof(IList),
+            typeof(FilePicker),
+            new PropertyMetadata(default(IList)));
+
+        /// <summary>
+        /// Identifies the <see cref="ItemsViewStyle"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty ItemsViewStyleProperty = DependencyProperty.Register(
+            nameof(ItemsViewStyle),
+            typeof(Style),
+            typeof(FilePicker),
+            new PropertyMetadata(default(Style)));
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="FilePicker"/> class.
         /// </summary>
         public FilePicker()
@@ -81,6 +119,42 @@ namespace MADE.UI.Controls
         {
             get => (FilePickerSelectionMode)this.GetValue(SelectionModeProperty);
             set => this.SetValue(SelectionModeProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the file types supported by the input.
+        /// </summary>
+        public IEnumerable FileTypes
+        {
+            get => (IEnumerable)this.GetValue(FileTypesProperty);
+            set => this.SetValue(FileTypesProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to append files with subsequent file choices.
+        /// </summary>
+        public bool AppendFiles
+        {
+            get => (bool)this.GetValue(AppendFilesProperty);
+            set => this.SetValue(AppendFilesProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the files chosen.
+        /// </summary>
+        public IList Files
+        {
+            get => (IList)this.GetValue(FilesProperty);
+            set => this.SetValue(FilesProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the style of the items view.
+        /// </summary>
+        public Style ItemsViewStyle
+        {
+            get => (Style)this.GetValue(ItemsViewStyleProperty);
+            set => this.SetValue(ItemsViewStyleProperty, value);
         }
 
         /// <summary>
@@ -119,26 +193,58 @@ namespace MADE.UI.Controls
             return new FilePickerAutomationPeer(this);
         }
 
+        private static async Task<FilePickerItem> CreateFilePickerItemAsync(StorageFile file)
+        {
+            var filePickerItem = new FilePickerItem { File = file };
+            await filePickerItem.LoadThumbnailAsync();
+            return filePickerItem;
+        }
+
         private async void OnChooseFileButtonClick(object sender, RoutedEventArgs e)
         {
-            var fileOpenPicker = new FileOpenPicker {ViewMode = PickerViewMode.Thumbnail};
-            fileOpenPicker.FileTypeFilter.Add(".jpg");
+            var fileOpenPicker = new FileOpenPicker { ViewMode = PickerViewMode.Thumbnail };
 
-            var selectedFiles = new List<StorageFile>();
+            if (this.FileTypes != null)
+            {
+                foreach (object fileType in this.FileTypes)
+                {
+                    fileOpenPicker.FileTypeFilter.Add(fileType.ToString());
+                }
+            }
+
             if (this.SelectionMode == FilePickerSelectionMode.Single)
             {
                 StorageFile file = await fileOpenPicker.PickSingleFileAsync();
-                if (file != null)
+                if (file == null || this.Files == null)
                 {
-                    selectedFiles.Add(file);
+                    return;
                 }
+
+                if (!this.AppendFiles)
+                {
+                    this.Files.Clear();
+                }
+
+                FilePickerItem filePickerItem = await CreateFilePickerItemAsync(file);
+                this.Files.Add(filePickerItem);
             }
             else
             {
                 IReadOnlyList<StorageFile> files = await fileOpenPicker.PickMultipleFilesAsync();
-                if (files != null)
+                if (files == null || this.Files == null)
                 {
-                    selectedFiles.AddRange(files);
+                    return;
+                }
+
+                if (!this.AppendFiles)
+                {
+                    this.Files.Clear();
+                }
+
+                foreach (StorageFile file in files)
+                {
+                    FilePickerItem filePickerItem = await CreateFilePickerItemAsync(file);
+                    this.Files.Add(filePickerItem);
                 }
             }
         }
