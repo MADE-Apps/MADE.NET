@@ -6,6 +6,7 @@ namespace MADE.UI.Controls
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
     using Windows.Storage;
@@ -77,7 +78,7 @@ namespace MADE.UI.Controls
             nameof(Files),
             typeof(IList),
             typeof(FilePicker),
-            new PropertyMetadata(default(IList)));
+            new PropertyMetadata(new ObservableCollection<FilePickerItem>()));
 
         /// <summary>
         /// Identifies the <see cref="ItemsViewStyle"/> dependency property.
