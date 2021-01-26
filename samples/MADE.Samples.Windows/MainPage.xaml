@@ -38,7 +38,7 @@
         </controls:InputValidator>
 
         <controls:FilePicker
-            x:Name="FilePickerValidator"
+            x:Name="FilePickerControl"
             Margin="0,12,0,0"
             AppendFiles="True"
             Files="{x:Bind FilePickerFiles}"

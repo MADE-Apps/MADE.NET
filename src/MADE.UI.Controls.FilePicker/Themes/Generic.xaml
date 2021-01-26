@@ -22,7 +22,9 @@
                             x:Name="FilePickerItemsView"
                             Grid.Row="1"
                             Margin="0,8,0,0"
+                            IsItemClickEnabled="True"
                             ItemsSource="{TemplateBinding Files}"
+                            SelectionMode="None"
                             Style="{TemplateBinding ItemsViewStyle}">
                             <GridView.ItemTemplate>
                                 <DataTemplate>

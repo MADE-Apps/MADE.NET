@@ -12,6 +12,11 @@ namespace MADE.UI.Controls
     public interface IFilePicker
     {
         /// <summary>
+        /// Occurs when an item in the list receives an interaction.
+        /// </summary>
+        event FilePickerItemClickEventHandler ItemClick;
+
+        /// <summary>
         /// Gets or sets the content of the choose file button.</summary>
         object ChooseFileButtonContent { get; set; }
 

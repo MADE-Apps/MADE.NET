@@ -97,6 +97,11 @@ namespace MADE.UI.Controls
         }
 
         /// <summary>
+        /// Occurs when an item in the list receives an interaction.
+        /// </summary>
+        public event FilePickerItemClickEventHandler ItemClick;
+
+        /// <summary>
         /// Gets or sets the content of the choose file button.</summary>
         public object ChooseFileButtonContent
         {
@@ -178,6 +183,11 @@ namespace MADE.UI.Controls
                 this.ChooseFileButton.Click -= this.OnChooseFileButtonClick;
             }
 
+            if (this.ItemsView != null)
+            {
+                this.ItemsView.ItemClick -= this.OnItemsViewItemClick;
+            }
+
             base.OnApplyTemplate();
 
             this.ChooseFileButton = this.GetChildView<Button>(FilePickerChooseFileButtonPart);
@@ -186,6 +196,11 @@ namespace MADE.UI.Controls
             if (this.ChooseFileButton != null)
             {
                 this.ChooseFileButton.Click += this.OnChooseFileButtonClick;
+            }
+
+            if (this.ItemsView != null)
+            {
+                this.ItemsView.ItemClick += this.OnItemsViewItemClick;
             }
         }
 
@@ -199,6 +214,48 @@ namespace MADE.UI.Controls
             var filePickerItem = new FilePickerItem { File = file };
             await filePickerItem.LoadThumbnailAsync();
             return filePickerItem;
+        }
+
+        private void OnItemsViewItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (e?.ClickedItem == null)
+            {
+                return;
+            }
+
+            if (this.CanRemoveFilePickerItem(e.ClickedItem as FilePickerItem))
+            {
+                this.Files.Remove(e.ClickedItem);
+            }
+        }
+
+        private bool CanRemoveFilePickerItem(FilePickerItem item)
+        {
+            if (item == null)
+            {
+                return false;
+            }
+
+            bool canRemove = true;
+
+            FilePickerItemClickEventHandler itemClick = this.ItemClick;
+            if (itemClick == null)
+            {
+                return true;
+            }
+
+            var args = new FilePickerItemClickEventArgs(item);
+            foreach (Delegate d in itemClick.GetInvocationList())
+            {
+                var handler = (FilePickerItemClickEventHandler)d;
+                handler(this, args);
+                if (args.CancelRemove)
+                {
+                    canRemove = false;
+                }
+            }
+
+            return canRemove;
         }
 
         private async void OnChooseFileButtonClick(object sender, RoutedEventArgs e)

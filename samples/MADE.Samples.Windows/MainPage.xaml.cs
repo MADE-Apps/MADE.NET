@@ -3,6 +3,7 @@ namespace MADE.Samples.Windows
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Diagnostics;
     using Data.Validation;
     using global::Windows.UI.Xaml.Controls;
     using MADE.Data.Validation.Validators;
@@ -32,6 +33,17 @@ namespace MADE.Samples.Windows
             {
                 new RequiredValidator(), new BetweenValidator(DateTimeOffset.Now, DateTimeOffset.Now.AddDays(7)),
             };
+
+            this.FilePickerControl.ItemClick += OnFilePickerItemClick;
+            this.FilePickerControl.ItemClick += (sender, args) => Debug.WriteLine(args.ClickedItem);
+        }
+
+        private static void OnFilePickerItemClick(object sender, FilePickerItemClickEventArgs args)
+        {
+            if (args.ClickedItem is FilePickerItem item && item.Name.Contains("Prod", StringComparison.CurrentCultureIgnoreCase))
+            {
+                args.CancelRemove = true;
+            }
         }
 
         public ObservableCollection<FilePickerItem> FilePickerFiles { get; } = new ObservableCollection<FilePickerItem>();
