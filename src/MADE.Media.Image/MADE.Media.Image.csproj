@@ -6,9 +6,9 @@
     <Product>MADE.NET Images</Product>
     <Description>
       This package includes image helpers such as:
-      - StorageFileThumbnailConverter for providing the ability to show a thumbnail for a storage file.
+      - LoadStorageFileThumbnailImageBehavior for providing the ability to show a thumbnail for a storage file on an Image.
     </Description>
-    <PackageTags>MADE UI Views Controls UWP FilePicker Input File</PackageTags>
+    <PackageTags>MADE Media Images Thumbnail StorageFile</PackageTags>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763'">
