@@ -2,6 +2,9 @@ namespace MADE.Data.Validation.Tests.Tests
 {
     using System.Diagnostics.CodeAnalysis;
     using Extensions;
+
+    using MADE.Data.Validation.Exceptions;
+
     using NUnit.Framework;
     using Shouldly;
 
@@ -216,6 +219,110 @@ namespace MADE.Data.Validation.Tests.Tests
 
                 // Assert
                 isGreaterThan.ShouldBeFalse();
+            }
+        }
+
+        public class WhenCheckingIfValueIsInRange
+        {
+            [TestCase(0, 0, 2)]
+            [TestCase(1, 0, 2)]
+            [TestCase(2, 0, 2)]
+            public void ShouldReturnTrueIfIntInRange(int value, int lower, int upper)
+            {
+                // Act
+                bool isInRange = value.IsInRange(lower, upper);
+
+                // Assert
+                isInRange.ShouldBeTrue();
+            }
+
+            [TestCase(-1, 0, 1)]
+            [TestCase(2, 0, 1)]
+            public void ShouldReturnFalseIfIntNotInRange(int value, int lower, int upper)
+            {
+                // Act
+                bool isInRange = value.IsInRange(lower, upper);
+
+                // Assert
+                isInRange.ShouldBeFalse();
+            }
+
+            [Test]
+            public void ShouldThrowInvalidRangeExceptionIfIntRangeInvalid()
+            {
+                Assert.Throws<InvalidRangeException>(
+                    () =>
+                    {
+                        bool isInRange = 0.IsInRange(3, 1);
+                    });
+            }
+
+            [TestCase(0, 0, 1)]
+            [TestCase(1, 0, 1)]
+            [TestCase(0.0000001f, 0, 1)]
+            [TestCase(0.9999999f, 0, 1)]
+            public void ShouldReturnTrueIfFloatInRange(float value, float lower, float upper)
+            {
+                // Act
+                bool isInRange = value.IsInRange(lower, upper);
+
+                // Assert
+                isInRange.ShouldBeTrue();
+            }
+
+            [TestCase(-0.0000001f, 0, 1)]
+            [TestCase(1.0000001f, 0, 1)]
+            public void ShouldReturnFalseIfFloatNotInRange(float value, float lower, float upper)
+            {
+                // Act
+                bool isInRange = value.IsInRange(lower, upper);
+
+                // Assert
+                isInRange.ShouldBeFalse();
+            }
+
+            [Test]
+            public void ShouldThrowInvalidRangeExceptionIfFloatRangeInvalid()
+            {
+                Assert.Throws<InvalidRangeException>(
+                    () =>
+                    {
+                        bool isInRange = 0f.IsInRange(3, 1);
+                    });
+            }
+
+            [TestCase(0, 0, 1)]
+            [TestCase(1, 0, 1)]
+            [TestCase(0.0000001d, 0, 1)]
+            [TestCase(0.9999999d, 0, 1)]
+            public void ShouldReturnTrueIfDoubleInRange(double value, double lower, double upper)
+            {
+                // Act
+                bool isInRange = value.IsInRange(lower, upper);
+
+                // Assert
+                isInRange.ShouldBeTrue();
+            }
+
+            [TestCase(-0.0000001d, 0, 1)]
+            [TestCase(1.0000001d, 0, 1)]
+            public void ShouldReturnFalseIfDoubleNotInRange(double value, double lower, double upper)
+            {
+                // Act
+                bool isInRange = value.IsInRange(lower, upper);
+
+                // Assert
+                isInRange.ShouldBeFalse();
+            }
+
+            [Test]
+            public void ShouldThrowInvalidRangeExceptionIfDoubleRangeInvalid()
+            {
+                Assert.Throws<InvalidRangeException>(
+                    () =>
+                    {
+                        bool isInRange = 0d.IsInRange(3, 1);
+                    });
             }
         }
     }

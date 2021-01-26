@@ -3,6 +3,8 @@
 
 namespace MADE.Data.Validation.Extensions
 {
+    using MADE.Data.Validation.Exceptions;
+
     /// <summary>
     /// Defines a collection of extensions for common mathematics expressions.
     /// </summary>
@@ -203,6 +205,60 @@ namespace MADE.Data.Validation.Extensions
         public static bool IsLessThan(this double value, double compare)
         {
             return value < compare && !value.IsCloseTo(compare);
+        }
+
+        /// <summary>
+        /// Checks whether a value is within a range.
+        /// </summary>
+        /// <param name="value">The value to check is in range.</param>
+        /// <param name="lower">The lower range band.</param>
+        /// <param name="upper">The upper range band.</param>
+        /// <returns>True if the value is in the range; otherwise, false.</returns>
+        /// <exception cref="T:MADE.Data.Validation.Exceptions.InvalidRangeException">Thrown if the range is invalid.</exception>
+        public static bool IsInRange(this int value, int lower, int upper)
+        {
+            if (lower > upper)
+            {
+                throw new InvalidRangeException($"Lower value, {lower}, must be less than upper value, {upper}");
+            }
+
+            return value >= lower && value <= upper;
+        }
+
+        /// <summary>
+        /// Checks whether a value is within a range.
+        /// </summary>
+        /// <param name="value">The value to check is in range.</param>
+        /// <param name="lower">The lower range band.</param>
+        /// <param name="upper">The upper range band.</param>
+        /// <returns>True if the value is in the range; otherwise, false.</returns>
+        /// <exception cref="T:MADE.Data.Validation.Exceptions.InvalidRangeException">Thrown if the range is invalid.</exception>
+        public static bool IsInRange(this float value, float lower, float upper)
+        {
+            if (lower > upper)
+            {
+                throw new InvalidRangeException($"Lower value, {lower}, must be less than upper value, {upper}");
+            }
+
+            return value >= lower && value <= upper;
+        }
+
+        /// <summary>
+        /// Checks whether a value is within a range.
+        /// </summary>
+        /// <param name="value">The value to check is in range.</param>
+        /// <param name="lower">The lower range band.</param>
+        /// <param name="upper">The upper range band.</param>
+        /// <returns>True if the value is in the range; otherwise, false.</returns>
+        /// <exception cref="T:MADE.Data.Validation.Exceptions.InvalidRangeException">Thrown if the range is invalid.</exception>
+        public static bool IsInRange(this double value, double lower, double upper)
+        {
+            if (lower > upper)
+            {
+                throw new InvalidRangeException($"Lower value, {lower}, must be less than upper value, {upper}");
+            }
+
+            return value >= lower && value <= upper;
         }
     }
 }
