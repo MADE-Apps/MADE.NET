@@ -58,10 +58,5 @@ namespace MADE.UI.Controls
 
             return name;
         }
-
-        protected override object GetPatternCore(PatternInterface patternInterface)
-        {
-            return base.GetPatternCore(patternInterface);
-        }
     }
 }

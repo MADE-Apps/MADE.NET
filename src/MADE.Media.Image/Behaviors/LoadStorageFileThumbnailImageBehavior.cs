@@ -1,8 +1,9 @@
+// MADE Apps licenses this file to you under the MIT license.
+// See the LICENSE file in the project root for more information.
+
 namespace MADE.Media.Image.Behaviors
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.Xaml.Interactivity;
     using Windows.Storage;
@@ -28,8 +29,6 @@ namespace MADE.Media.Image.Behaviors
                 async (d, e) =>
                     await ((LoadStorageFileThumbnailImageBehavior)d).UpdateImageSourceAsync((StorageFile)e.NewValue)));
 
-        private IReadOnlyList<string> supportedImageTypes;
-
         /// <summary>
         /// Gets or sets the storage file to retrieve a thumbnail for.
         /// </summary>
@@ -39,39 +38,28 @@ namespace MADE.Media.Image.Behaviors
             set => this.SetValue(FileProperty, value);
         }
 
-        private IReadOnlyList<string> SupportedImageTypes => this.supportedImageTypes ??= new List<string> { ".jpg", ".png", ".jpeg", ".tiff", ".bmp" };
-
-        private async Task UpdateImageSourceAsync(StorageFile storageFile)
+        private async Task UpdateImageSourceAsync(IStorageItemProperties file)
         {
-            if (storageFile == null)
+            if (file == null)
             {
                 return;
             }
 
-            string fileType = storageFile.FileType;
-
-            ThumbnailMode thumbnailMode = ThumbnailMode.SingleItem;
-
-            if (this.SupportedImageTypes.Contains(fileType))
-            {
-                thumbnailMode = ThumbnailMode.PicturesView;
-            }
-
-            StorageItemThumbnail thumbnailStorageItem = await storageFile.GetThumbnailAsync(
-                thumbnailMode,
-                64,
+            StorageItemThumbnail thumbnail = await file.GetThumbnailAsync(
+                ThumbnailMode.SingleItem,
+                256,
                 ThumbnailOptions.ResizeThumbnail);
 
-            if (thumbnailStorageItem == null)
+            if (thumbnail == null)
             {
                 return;
             }
-
-            var bitmapImage = new BitmapImage();
-            bitmapImage.SetSource(thumbnailStorageItem.CloneStream());
 
             if (this.AssociatedObject != null)
             {
+                var bitmapImage = new BitmapImage();
+                bitmapImage.SetSource(thumbnail.CloneStream());
+
                 this.AssociatedObject.Source = bitmapImage;
             }
         }
