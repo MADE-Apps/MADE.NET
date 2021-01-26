@@ -6,6 +6,7 @@ namespace MADE.Collections
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// Defines a collection of extensions for enumerables, lists, and collections.
@@ -146,6 +147,21 @@ namespace MADE.Collections
                     collection.Remove(item);
                 }
             }
+        }
+
+        /// <summary>
+        /// Determines whether two collections are equivalent, containing all the same items with no regard to order.
+        /// </summary>
+        /// <typeparam name="T">The type of item.</typeparam>
+        /// <param name="expected">The expected collection.</param>
+        /// <param name="actual">The actual collection.</param>
+        /// <returns>True if the collections are equivalent; otherwise, false.</returns>
+        public static bool AreEquivalent<T>(this ICollection<T> expected, ICollection<T> actual)
+        {
+            return (expected == null && actual == null)
+                   || (expected != null && actual != null
+                                        && expected.All(actual.Contains)
+                                        && expected.Count == actual.Count);
         }
     }
 }
