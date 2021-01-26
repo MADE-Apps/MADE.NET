@@ -6,6 +6,7 @@ namespace MADE.UI.Controls
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Windows.Storage;
     using Windows.Storage.Pickers;
@@ -225,8 +226,7 @@ namespace MADE.UI.Controls
                     this.Files.Clear();
                 }
 
-                FilePickerItem filePickerItem = await CreateFilePickerItemAsync(file);
-                this.Files.Add(filePickerItem);
+                await this.AddFileAsync(file);
             }
             else
             {
@@ -243,10 +243,21 @@ namespace MADE.UI.Controls
 
                 foreach (StorageFile file in files)
                 {
-                    FilePickerItem filePickerItem = await CreateFilePickerItemAsync(file);
-                    this.Files.Add(filePickerItem);
+                    await this.AddFileAsync(file);
                 }
             }
+        }
+
+        private async Task AddFileAsync(StorageFile file)
+        {
+            FilePickerItem existingFile = this.Files.Cast<FilePickerItem>().FirstOrDefault(item => item.Path == file.Path);
+            if (existingFile != null)
+            {
+                return;
+            }
+
+            FilePickerItem filePickerItem = await CreateFilePickerItemAsync(file);
+            this.Files.Add(filePickerItem);
         }
     }
 }

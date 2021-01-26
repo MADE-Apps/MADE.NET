@@ -41,6 +41,13 @@ namespace MADE.UI.Controls
         /// </summary>
         public string Path => this.File?.Path;
 
+        /// <summary>Returns a string that represents the current object.</summary>
+        /// <returns>A string that represents the current object.</returns>
+        public override string ToString()
+        {
+            return this.Name;
+        }
+
         internal async Task LoadThumbnailAsync()
         {
             if (this.File != null)
