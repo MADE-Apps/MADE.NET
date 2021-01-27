@@ -1,7 +1,7 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;uap10.0.17763;xamarinios10;xamarinmac20;MonoAndroid90</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;uap10.0.17763;xamarinios10;xamarinmac20;MonoAndroid10.0</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Diagnostics</Product>
     <Description>
@@ -13,7 +13,7 @@
     <PackageTags>MADE Diagnostics EventLog Logger Exception Stopwatch</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763' Or '$(TargetFramework)'=='xamarinios10' Or '$(TargetFramework)'=='MonoAndroid90'">
+  <ItemGroup Condition="'$(TargetFramework)'=='uap10.0.17763' Or '$(TargetFramework)'=='xamarinios10' Or '$(TargetFramework)'=='MonoAndroid10.0'">
     <PackageReference Include="XPlat.Storage" Version="1.7.20109.1" />
   </ItemGroup>
 

@@ -5,17 +5,17 @@ namespace MADE.UI.Controls
 {
     using System.Text;
     using MADE.Data.Validation;
+    using MADE.Data.Validation.Extensions;
+    using MADE.UI.Extensions;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Automation.Peers;
     using Windows.UI.Xaml.Controls;
-    using Data.Validation.Extensions;
-    using Extensions;
 
     /// <summary>
     /// Defines a component which validates an input.
     /// </summary>
     [TemplatePart(Name = ValidatorFeedbackMessagePart, Type = typeof(TextBlock))]
-    public class InputValidator : ContentControl, IInputValidator
+    public partial class InputValidator : ContentControl, IInputValidator
     {
         private const string ValidatorFeedbackMessagePart = "ValidatorFeedbackMessage";
 

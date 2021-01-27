@@ -28,7 +28,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
 
-                        <ContentPresenter x:Name="ContentPresenter" />
+                        <ContentPresenter x:Name="ContentPresenter" Content="{TemplateBinding Content}" />
 
                         <TextBlock
                             x:Name="ValidatorFeedbackMessage"

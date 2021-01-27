@@ -4,14 +4,16 @@
 namespace MADE.UI.Controls
 {
     using System;
-    using MADE.UI.Extensions;
+
     using MADE.UI;
+    using MADE.UI.Extensions;
+
     using Windows.UI.Xaml;
 
     /// <summary>
     /// Defines a UI element for creating custom controls in Windows applications.
     /// </summary>
-    public class Control : Windows.UI.Xaml.Controls.Control, IControl
+    public partial class Control : Windows.UI.Xaml.Controls.Control, IControl
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Control"/> class.
