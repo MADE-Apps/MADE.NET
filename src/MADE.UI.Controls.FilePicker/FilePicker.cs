@@ -9,6 +9,7 @@ namespace MADE.UI.Controls
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
+    using MADE.Data.Validation.Extensions;
     using Windows.Storage;
     using Windows.Storage.Pickers;
     using Windows.UI.Xaml;
@@ -20,11 +21,32 @@ namespace MADE.UI.Controls
     /// </summary>
     [TemplatePart(Name = FilePickerChooseFileButtonPart, Type = typeof(Button))]
     [TemplatePart(Name = FilePickerItemsViewPart, Type = typeof(ListViewBase))]
+    [TemplatePart(Name = FilePickerHeaderPresenterPart, Type = typeof(ContentPresenter))]
     public class FilePicker : Control, IFilePicker
     {
         private const string FilePickerChooseFileButtonPart = "FilePickerChooseFileButton";
 
         private const string FilePickerItemsViewPart = "FilePickerItemsView";
+
+        private const string FilePickerHeaderPresenterPart = "FilePickerHeaderPresenter";
+
+        /// <summary>
+        /// Identifies the <see cref="Header"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HeaderProperty = DependencyProperty.Register(
+            nameof(Header),
+            typeof(object),
+            typeof(FilePicker),
+            new PropertyMetadata(null, (o, args) => ((FilePicker)o).SetHeaderVisibility()));
+
+        /// <summary>
+        /// Identifies the <see cref="HeaderTemplate"/> dependency property.
+        /// </summary>
+        public static readonly DependencyProperty HeaderTemplateProperty = DependencyProperty.Register(
+            nameof(HeaderTemplate),
+            typeof(DataTemplate),
+            typeof(FilePicker),
+            new PropertyMetadata(null));
 
         /// <summary>
         /// Identifies the <see cref="ChooseFileButtonContent"/> dependency property.
@@ -101,6 +123,24 @@ namespace MADE.UI.Controls
         /// Occurs when an item in the list receives an interaction.
         /// </summary>
         public event FilePickerItemClickEventHandler ItemClick;
+
+        /// <summary>
+        /// Gets or sets the data used for the header of the control.
+        /// </summary>
+        public object Header
+        {
+            get => this.GetValue(HeaderProperty);
+            set => this.SetValue(HeaderProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the template used to display the content of the control's header.
+        /// </summary>
+        public DataTemplate HeaderTemplate
+        {
+            get => (DataTemplate)this.GetValue(HeaderTemplateProperty);
+            set => this.SetValue(HeaderTemplateProperty, value);
+        }
 
         /// <summary>
         /// Gets or sets the content of the choose file button.</summary>
@@ -215,6 +255,27 @@ namespace MADE.UI.Controls
             var filePickerItem = new FilePickerItem { File = file };
             await filePickerItem.LoadThumbnailAsync();
             return filePickerItem;
+        }
+
+        private void SetHeaderVisibility()
+        {
+            if (!(this.GetTemplateChild(FilePickerHeaderPresenterPart) is FrameworkElement headerPresenter))
+            {
+                return;
+            }
+
+            if (this.Header is string headerText)
+            {
+                headerPresenter.Visibility = headerText.IsNullOrWhiteSpace()
+                    ? Visibility.Collapsed
+                    : Visibility.Visible;
+            }
+            else
+            {
+                headerPresenter.Visibility = this.Header != null
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+            }
         }
 
         private void OnItemsViewItemClick(object sender, ItemClickEventArgs e)

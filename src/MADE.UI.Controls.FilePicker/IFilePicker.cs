@@ -17,6 +17,16 @@ namespace MADE.UI.Controls
         event FilePickerItemClickEventHandler ItemClick;
 
         /// <summary>
+        /// Gets or sets the data used for the header of each control.
+        /// </summary>
+        object Header { get; set; }
+
+        /// <summary>
+        /// Gets or sets the template used to display the content of the control's header.
+        /// </summary>
+        DataTemplate HeaderTemplate { get; set; }
+
+        /// <summary>
         /// Gets or sets the content of the choose file button.</summary>
         object ChooseFileButtonContent { get; set; }
 

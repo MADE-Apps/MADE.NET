@@ -5,10 +5,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI</Product>
     <Description>
-      This package includes UI components for UWP such as:
+      This package includes UI components for UWP and Uno such as:
       - Control for simplifying visibility and retrieving child elements.
     </Description>
-    <PackageTags>MADE UI Views Controls UWP</PackageTags>
+    <PackageTags>MADE UI Views Controls UWP Uno</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
   </PropertyGroup>
 

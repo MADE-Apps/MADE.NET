@@ -42,6 +42,7 @@
             Margin="0,12,0,0"
             AppendFiles="True"
             Files="{x:Bind FilePickerFiles}"
+            Header="FilePicker"
             RelativePanel.AlignLeftWithPanel="True"
             RelativePanel.AlignRightWithPanel="True"
             RelativePanel.Below="DatePickerValidator"
