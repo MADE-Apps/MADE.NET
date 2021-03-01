@@ -121,13 +121,7 @@ namespace MADE.UI.Controls
 
             if (this.ValidatorFeedbackMessage != null)
             {
-                var builder = new StringBuilder();
-                foreach (string message in this.Validators.FeedbackMessages)
-                {
-                    builder.AppendLine(message);
-                }
-
-                this.ValidatorFeedbackMessage.Text = builder.ToString();
+                this.ValidatorFeedbackMessage.Text = string.Join("\r\n", this.Validators.FeedbackMessages);
                 this.ValidatorFeedbackMessage.SetVisible(!this.ValidatorFeedbackMessage.Text.IsNullOrWhiteSpace());
             }
         }
