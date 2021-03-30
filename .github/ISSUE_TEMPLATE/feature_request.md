@@ -1,16 +1,13 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: feature
+about: Suggest an idea for MADE
+title: '[Feature] '
+labels: feature-request
 assignees: ''
 ---
 
-**Describe the feature**
-A clear and concise description of what you want.
+## Describe the feature and how it will be used
+<!-- Please describe the idea you'd like to see implemented -->
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+## Other information
+<!-- Please provide any additional information, links, or screenshots below if applicable -->

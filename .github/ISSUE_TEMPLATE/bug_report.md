@@ -1,22 +1,24 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
+about: Create a report to help us improve MADE
+title: '[Bug] '
 labels: bug
 assignees: ''
 ---
 
-**Which package(s) and version of MADE.NET are you using?**
-<!-- e.g. MADE.NET 1.0.0.1 -->
+## Describe the bug
+<!-- Please describe below the details of the issue and steps taken to reproduce -->
 
-**Which platform is the issue related to?**
-<!-- e.g. .NET Standard 2.0 -->
+## What is the expected behavior?
+<!-- Please describe below the expected behavior -->
 
-**Repro steps**
-A clear and concise description of what the bug is and how it can be reproduced.
+## Additional detail
 
-**Expected behavior**
-A clear and concise description of what you expected to happen (or code).
+Package(s): 
 
-**Additional context**
-Add any other context about the problem here, such as logs and/or screenshots.
+Package Version(s): 
+
+Platform(s) affected: 
+
+## Other information
+<!-- Please provide any additional information, links, screenshots, or projects with reproduced issues below if applicable -->
