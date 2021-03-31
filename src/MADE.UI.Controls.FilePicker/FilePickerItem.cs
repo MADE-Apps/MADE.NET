@@ -55,8 +55,13 @@ namespace MADE.UI.Controls
         {
             if (this.File != null)
             {
-                StorageItemThumbnail thumbnail =
-                    await this.File.GetThumbnailAsync(ThumbnailMode.SingleItem, 256, ThumbnailOptions.ResizeThumbnail);
+                StorageItemThumbnail thumbnail;
+
+#if WINDOWS_UWP
+                thumbnail = await this.File.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem, 256, ThumbnailOptions.ResizeThumbnail);
+#else
+                thumbnail = null;
+#endif
 
                 if (thumbnail == null)
                 {

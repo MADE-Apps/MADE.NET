@@ -4,10 +4,10 @@ namespace MADE.Samples.Windows
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Diagnostics;
-    using Data.Validation;
     using global::Windows.UI.Xaml.Controls;
+    using MADE.Data.Validation;
     using MADE.Data.Validation.Validators;
-    using UI.Controls;
+    using MADE.UI.Controls;
 
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

@@ -5,12 +5,12 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI DropDownList Control</Product>
     <Description>
-      This package includes UI components for UWP such as:
+      This package includes UI components for Windows and Uno Platform such as:
       - Validator providing a wrapper for content to provide validation over input controls.
     </Description>
-    <PackageTags>MADE UI Views Controls UWP Validator Validation</PackageTags>
+    <PackageTags>MADE UI Views Controls Validator Validation Windows Android iOS macOS Xamarin Uno</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
-    <RootNamespace>MADE.UI.Controls</RootNamespace>
+    <RootNamespace>MADE.UI.Controls.ValidatorControl</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">

@@ -1,10 +1,13 @@
 namespace MADE.Samples
 {
     using System;
-
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Diagnostics;
     using MADE.Data.Validation;
+    using MADE.Data.Validation.Extensions;
     using MADE.Data.Validation.Validators;
-
+    using MADE.UI.Controls;
     using Windows.UI.Xaml.Controls;
 
     /// <summary>
@@ -25,6 +28,10 @@ namespace MADE.Samples
                                                           DateTimeOffset.Now,
                                                           DateTimeOffset.Now.AddDays(7)),
                                                   };
+
+            this.FilePickerControl.ItemClick += (sender, args) => System.Diagnostics.Debug.WriteLine(args.ClickedItem);
         }
+        
+        public ObservableCollection<FilePickerItem> FilePickerFiles { get; } = new ObservableCollection<FilePickerItem>();
     }
 }

@@ -22,7 +22,7 @@ namespace MADE.UI.Controls
     [TemplatePart(Name = FilePickerChooseFileButtonPart, Type = typeof(Button))]
     [TemplatePart(Name = FilePickerItemsViewPart, Type = typeof(ListViewBase))]
     [TemplatePart(Name = FilePickerHeaderPresenterPart, Type = typeof(ContentPresenter))]
-    public class FilePicker : Control, IFilePicker
+    public partial class FilePicker : Control, IFilePicker
     {
         private const string FilePickerChooseFileButtonPart = "FilePickerChooseFileButton";
 
