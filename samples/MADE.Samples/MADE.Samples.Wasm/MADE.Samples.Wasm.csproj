@@ -52,6 +52,7 @@
     <ProjectReference Include="..\..\..\src\MADE.Networking\MADE.Networking.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.Runtime\MADE.Runtime.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.Threading\MADE.Threading.csproj" />
+    <ProjectReference Include="..\..\..\src\MADE.UI.Controls.FilePicker\MADE.UI.Controls.FilePicker.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.UI.Controls.Validator\MADE.UI.Controls.Validator.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.UI\MADE.UI.csproj" />
   </ItemGroup>

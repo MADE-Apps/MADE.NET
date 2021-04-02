@@ -10,7 +10,7 @@
     </Description>
     <PackageTags>MADE UI Views Controls UWP DropDown List Multiselect</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
-    <RootNamespace>MADE.UI.Controls</RootNamespace>
+    <RootNamespace>MADE.UI.Controls.DropDownListControl</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
