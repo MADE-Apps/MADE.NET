@@ -1,4 +1,4 @@
-Function SetBuildVersion {
+Function GetBuildVersion {
     Param (
         [string]$VersionString
     )
