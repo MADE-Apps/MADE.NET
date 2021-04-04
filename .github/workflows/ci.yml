@@ -61,7 +61,7 @@ jobs:
       run: msbuild $env:SOLUTION /p:Configuration=$env:BUILD_CONFIG /p:Platform="Any CPU" -p:Version=$env:BUILD_VERSION
 
     - name: Run tests
-      run: dotnet test /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --no-restore --verbosity normal
+      run: dotnet test /p:Configuration=$env:BUILD_CONFIG /p:CollectCoverage=true /p:CoverletOutputFormat=cobertura --no-restore --no-build --verbosity normal
 
     - name: Publish
       if: startsWith(github.ref, 'refs/heads/release')
