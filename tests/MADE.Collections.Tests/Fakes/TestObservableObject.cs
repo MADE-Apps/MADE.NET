@@ -4,8 +4,6 @@ namespace MADE.Collections.Tests.Fakes
     using System.Diagnostics.CodeAnalysis;
     using System.Runtime.CompilerServices;
 
-    using MADE.Collections.Tests.Annotations;
-
     [ExcludeFromCodeCoverage]
     public class TestObservableObject : INotifyPropertyChanged
     {
@@ -45,7 +43,6 @@ namespace MADE.Collections.Tests.Fakes
             }
         }
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
