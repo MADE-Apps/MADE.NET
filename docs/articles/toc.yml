@@ -1,0 +1,42 @@
+- name: Overview
+  topicHref: intro.md
+- name: Get started
+  items:
+    - name: Installing MADE.NET packages
+      href: available-packages.md
+- name: Features
+  items:
+    - name: Collections
+      href: features/collections.md
+    - name: Data Converters
+      href: features/data-converters.md
+    - name: Data Validation
+      href: features/data-validation.md
+    - name: Diagnostics
+      href: features/diagnostics.md
+    - name: Media Image
+      href: features/media-image.md
+    - name: Networking
+      href: features/networking.md
+    - name: Runtime
+      href: features/runtime.md
+    - name: Testing
+      href: features/testing.md
+    - name: Threading
+      href: features/threading.md
+    - name: UI
+      items:
+        - name: Overview
+          href: features/ui.md
+        - name: Controls
+          items:
+            - name: DropDownList
+              href: features/ui-controls-dropdownlist.md
+            - name: FilePicker
+              href: features/ui-controls-filepicker.md
+            - name: Validator
+              href: features/ui-controls-validator.md
+    - name: Web
+      href: features/web.md
+    - name: Web MVC
+      href: features/web-mvc.md
