@@ -12,7 +12,7 @@ title: MADE.NET Documentation
 Have you ever built applications and found yourself copying common code, extensions or helpers, from one to another?
 </p>
 <p>
-That's why I built MADE.NET. This is a toolkit of easy-to-use extensions, helpers, and controls to make app development easier, taken straight from the projects I've worked on over the years.
+That's why I built MADE.NET. This is a toolkit of easy-to-use extensions, helpers, and controls to make app development easier for you, taken straight from the projects I've worked on over the years.
 </p>
 <span class="button">
 
@@ -26,7 +26,7 @@ That's why I built MADE.NET. This is a toolkit of easy-to-use extensions, helper
 Take advantage of what is available for MADE.NET in your applications.
 </p>
 <p>
-You'll discover what packages are available from NuGet.org, plus how to use them.
+You'll discover what packages are available for you from NuGet.org, plus how you can use them.
 </p>
 <span class="button">
 
@@ -43,7 +43,7 @@ You'll discover what packages are available from NuGet.org, plus how to use them
 Do you have reusable code you want to share with the world?
 </p>
 <p>
-MADE.NET is available as an open-source project on GitHub! Dive into the codebase and help make improvements.
+MADE.NET is available as an open-source project on GitHub! Dive into the codebase and bring your improvements.
 </p>
 <span class="button">
 
