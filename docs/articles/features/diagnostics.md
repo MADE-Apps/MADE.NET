@@ -11,11 +11,11 @@ Using the `MADE.Diagnostics.Logging.FileEventLogger`, you can quickly and easily
 
 The `FileEventLogger` will append event logs to a file on disk. The logs folder and file name can be configured using the `LogsFolderName` (default is `Logs`) and `LogFileNameFormat` (default is `Log-{0:yyyyMMdd}.txt`) properties.
 
-The `LogFileNameFormat` has a `DateTime` parameter which can used to ensure logs are created based on a date, for example, daily using the `yyyyMMdd` format.
+The `LogFileNameFormat` has a `DateTime` parameter that can used to ensure logs are created based on a date, for example, daily using the `yyyyMMdd` format.
 
 By default, the logs are stored in the application's root directory, however, this can also be overridden completely using the `LogPath` property which requires a full directory path including log file name.
 
-The implementation also has platform specific code, so if you're building applications for Windows, Android, or iOS, the `FileEventLogger` will ensure the logs are stored within the application's data store.
+The implementation also has platform-specific code, so if you're building applications for Windows, Android, or iOS, the `FileEventLogger` will ensure the logs are stored within the application's data store.
 
 Here's an example of the output using the default configuration.
 
@@ -59,6 +59,6 @@ Logs will be created for each handle of an unhandled exception from one or more 
 
 ### Observing the unhandled exceptions
 
-The `AppDiagnostics` helper exposes its own event handler `ExceptionObserved` which can be used in your own application code if you wish to perform additional actions when an exception is logged. 
+The `AppDiagnostics` helper exposes its own event handler `ExceptionObserved` that can be used in your own application code if you wish to perform additional actions when an exception is logged. 
 
 The event argument provided by this handler will include the correlation ID to the event in the log, as well as the exception that was thrown.
