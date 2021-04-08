@@ -9,7 +9,7 @@ The Data Validation package is designed to provide out-of-the-box data validatio
 
 ## Validating an object using the ValidatorCollection
 
-Data validation can be implemented in so many different ways. MADE provides the capability to perform data validation through it's own `IValidator` interface which can be used to create consistent data validators.
+Data validation can be implemented in so many different ways. MADE provides the capability to perform data validation through its own `IValidator` interface that can be used to create consistent data validators.
 
 Using the `MADE.Data.Validation.ValidatorCollection` based on a `List` type, you can construct a collection of `IValidator` instances which can be used to validate values.
 
