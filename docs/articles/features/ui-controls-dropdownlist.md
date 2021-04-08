@@ -43,7 +43,7 @@ Shown below is the visuals for the control in its default state, in a multiple s
 
 ## Customizing the DropDownList
 
-The control has many customization properties that are exposed to tailor the experience to your application. 
+The control has many customization properties that are exposed to tailor the experience for your application. 
 
 ### HeaderTemplate
 
