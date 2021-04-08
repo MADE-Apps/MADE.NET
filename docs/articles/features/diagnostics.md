@@ -5,6 +5,8 @@ title: Using the Diagnostics package | MADE.NET
 
 # Using the Diagnostics package
 
+The Diagnostic package contains a set of simple application logging mechanisms for applications.
+
 ## Logging events to files on disk with FileEventLogger
 
 Using the `MADE.Diagnostics.Logging.FileEventLogger`, you can quickly and easily get up and running with event logging for your application's diagnostic needs.

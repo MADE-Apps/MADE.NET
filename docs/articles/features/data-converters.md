@@ -5,6 +5,8 @@ title: Using the Data Converters package | MADE.NET
 
 # Using the Data Converters package
 
+The Data Converters package provides a collection of value converters and extensions to manipulate data in your applications.
+
 ## Converting a DateTime to a String using the DateTimeToStringValueConverter
 
 Value converters are a common coding practice for building XAML applications that allow values to be bound to a view, converted to a different type and back depending on the binding mode.

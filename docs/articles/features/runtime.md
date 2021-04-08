@@ -5,6 +5,8 @@ title: Using the Runtime package | MADE.NET
 
 # Using the Runtime package
 
+The Runtime package provides additional types for .NET to provide extensibility over existing `System` types.
+
 ## Improving callback memory management with WeakReferenceCallback
 
 The `MADE.Runtime.WeakReferenceCallback` is a wrapper type for a `WeakReference`. It is capable of taking a delegate action and ensuring that it is available to be garbage collected if the referring object is disposed. 

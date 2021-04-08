@@ -5,6 +5,8 @@ title: Using the Collections package | MADE.NET
 
 # Using the Collections package
 
+The Collections package is designed to provide helpful extensions and additional types for working with enumerable objects in your applications.
+
 ## Comparing objects using the GenericEqualityComparer
 
 The `MADE.Collections.Compare.GenericEqualityComparer` is a simple to use `IEqualityComparer` that takes a function as a parameter when constructed.

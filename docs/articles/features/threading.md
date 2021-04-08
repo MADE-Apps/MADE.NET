@@ -5,6 +5,8 @@ title: Using the Threading package | MADE.NET
 
 # Using the Threading package
 
+The Threading package contains a collection of `System.Threading` extensions and helpers to improve the developer experience.
+
 ## Modernizing System.Threading.Timer with the MADE.Threading.Timer
 
 Setting up and managing a `System.Threading.Timer` can sometimes be cumbersome. How do you control the start and stop state? 

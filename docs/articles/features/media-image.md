@@ -5,6 +5,8 @@ title: Using the Media Image package | MADE.NET
 
 # Using the Media Image package
 
+The Media Image package is designed to be used in applications that require image processing.
+
 ## Loading Windows StorageFile thumbnails into an Image with LoadStorageFileThumbnailImageBehavior
 
 The `MADE.Media.Image.Behaviors.LoadStorageFileThumbnailImageBehavior` is a custom behavior built on the [Microsoft XAML behaviors SDK](https://github.com/Microsoft/XamlBehaviors). 

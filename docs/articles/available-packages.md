@@ -226,12 +226,12 @@ Taking advantage of the Data Validation library, you can simply and easily setup
 
 ## Web
 
-The Web library contains a collection of helpers and extensions that sit on top of ASP.NET Core, to provide useful components to compliment your web applications.
+The Web library contains a collection of helpers and extensions that sit on top of ASP.NET Core, to provide useful components to complement your web applications.
 
 This includes features such as:
 
 - PaginatedRequest, a simple request object that provides the expected return type, with properties for the current `Page`, the `PageSize`, and the number of items to `Skip` and `Take`.
-- PaginatedResponse, a complimentary response return type for the `PaginatedRequest`, with properties including the `Items` collection, the current `Page` and `PageSize`, plus the `AvailableCount` of requestable items, and the `TotalPages` based on the available count and page size requested.
+- PaginatedResponse, a complementary response return type for the `PaginatedRequest`, with properties including the `Items` collection, the current `Page` and `PageSize`, plus the `AvailableCount` of requestable items, and the `TotalPages` based on the available count and page size requested.
 - HttpContextExceptionsMiddleware, a middleware that manages the handling of exceptions thrown within a `HttpContext` to serve up meaningful exception details to the requesting client using exception handlers.
 
 <span class="button">
@@ -242,7 +242,7 @@ This includes features such as:
 
 ## Web.Mvc
 
-The Web MVC library is a complimentary extension package to ASP.NET Core MVC applications, providing additional helpers for building applications following the MVC pattern.
+The Web MVC library is a complementary extension package to ASP.NET Core MVC applications, providing additional helpers for building applications following the MVC pattern.
 
 Included in this package is:
 

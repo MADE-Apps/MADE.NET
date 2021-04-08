@@ -5,6 +5,8 @@ title: Using the Data Validation package | MADE.NET
 
 # Using the Data Validation package
 
+The Data Validation package is designed to provide out-of-the-box data validation to applications built with C#. 
+
 ## Validating an object using the ValidatorCollection
 
 Data validation can be implemented in so many different ways. MADE provides the capability to perform data validation through it's own `IValidator` interface which can be used to create consistent data validators.

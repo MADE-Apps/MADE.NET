@@ -5,6 +5,8 @@ title: Using the Networking package | MADE.NET
 
 # Using the Networking package
 
+The Networking package contains a collection of helpers for applications that use `HttpClient` for making network requests to APIs.
+
 ## Making simple network requests using NetworkRequest instances
 
 The Network package comes with a variety of `NetworkRequest` types that can be used to perform network requests without a lot of additional overhead.
