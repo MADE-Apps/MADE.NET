@@ -16,7 +16,8 @@ As many developers know, projects like MADE.NET are built and maintained in spar
 
 | Build | Status | Current Version |
 | ------ | ------ | ------ |
-| GitHub Actions | [![CI](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml/badge.svg)](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml) | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/profiles/made-apps) |
+| Packages | [![CI](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml/badge.svg)](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml) | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/profiles/made-apps) |
+| Docs | [![Docs](https://github.com/MADE-Apps/MADE.NET/actions/workflows/docs.yml/badge.svg)](https://github.com/MADE-Apps/MADE.NET/actions/workflows/docs.yml) | N/A |
 
 ## Installation 💾
 
