@@ -22,6 +22,7 @@ title: Available packages | MADE.NET
 | UI.Controls.DropDownList | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.DropDownList)](https://www.nuget.org/packages/MADE.UI.Controls.DropDownList/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.UI.Controls.DropDownList)](https://www.nuget.org/packages/MADE.UI.Controls.DropDownList/) |
 | UI.Controls.FilePicker | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.FilePicker)](https://www.nuget.org/packages/MADE.UI.Controls.FilePicker/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.UI.Controls.FilePicker)](https://www.nuget.org/packages/MADE.UI.Controls.FilePicker/) |
 | UI.Controls.Validator | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Controls.Validator)](https://www.nuget.org/packages/MADE.UI.Controls.Validator/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.UI.Controls.Validator)](https://www.nuget.org/packages/MADE.UI.Controls.Validator/) |
+| UI.Styling | [![NuGet](https://img.shields.io/nuget/v/MADE.UI.Styling)](https://www.nuget.org/packages/MADE.UI.Styling/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.UI.Styling)](https://www.nuget.org/packages/MADE.UI.Styling/) |
 | Web | [![NuGet](https://img.shields.io/nuget/v/MADE.Web)](https://www.nuget.org/packages/MADE.Web/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Web)](https://www.nuget.org/packages/MADE.Web/) |
 | Web.Mvc | [![NuGet](https://img.shields.io/nuget/v/MADE.Web.Mvc)](https://www.nuget.org/packages/MADE.Web.Mvc/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Web.Mvc)](https://www.nuget.org/packages/MADE.Web.Mvc/) |
 
@@ -221,6 +222,16 @@ Taking advantage of the Data Validation library, you can simply and easily setup
 <span class="button">
 
 [Discover UI.Controls.Validator](features/ui-controls-validator.md)
+
+</span>
+
+## UI.Styling
+
+The UI Styling library contains a collection of cross-platform UI styling components for improving the designing of applications.
+
+<span class="button">
+
+[Discover UI.Styling](features/ui-styling.md)
 
 </span>
 

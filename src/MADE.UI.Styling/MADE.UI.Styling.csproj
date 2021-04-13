@@ -6,7 +6,8 @@
     <Product>MADE.NET UI Styling</Product>
     <Description>
       This package includes UI styling components for Windows and Uno Platform such as:
-      - 
+      - SystemColorExtensions, a collection of extensions for styling System colors in applications.
+      - WindowsColorExtensions, a collection of extensions for styling Windows colors in applications.
     </Description>
     <PackageTags>MADE UI Views Styling Windows Android iOS macOS Xamarin Uno</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
