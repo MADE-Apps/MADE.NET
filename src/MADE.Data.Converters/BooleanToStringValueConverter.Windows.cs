@@ -6,6 +6,7 @@ namespace MADE.Data.Converters
 {
     using System;
     using MADE.Data.Converters.Exceptions;
+    using MADE.Data.Converters.Strings;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Data;
 
@@ -22,7 +23,7 @@ namespace MADE.Data.Converters
                 nameof(TrueValue),
                 typeof(string),
                 typeof(BooleanToStringValueConverter),
-                new PropertyMetadata("Yes"));
+                new PropertyMetadata(Resources.BooleanToStringValueConverter_TrueValue));
 
         /// <summary>
         /// Defines the dependency property for <see cref="FalseValue"/>.
@@ -32,7 +33,7 @@ namespace MADE.Data.Converters
                 nameof(FalseValue),
                 typeof(string),
                 typeof(BooleanToStringValueConverter),
-                new PropertyMetadata("No"));
+                new PropertyMetadata(Resources.BooleanToStringValueConverter_FalseValue));
 
         /// <summary>
         /// Gets or sets the positive/true value.
