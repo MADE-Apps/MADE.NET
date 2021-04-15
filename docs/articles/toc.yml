@@ -36,6 +36,10 @@
               href: features/ui-controls-filepicker.md
             - name: Validator
               href: features/ui-controls-validator.md
+        - name: Styling
+          href: features/ui-styling.md
+        - name: View Management
+          href: features/ui-view-management.md
     - name: Web
       href: features/web.md
     - name: Web MVC
