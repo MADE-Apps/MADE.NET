@@ -163,5 +163,69 @@ namespace MADE.Collections
                                         && expected.All(actual.Contains)
                                         && expected.Count == actual.Count);
         }
+
+        /// <summary>
+        /// Takes a number of elements from the specified collection from the specified starting index.
+        /// </summary>
+        /// <param name="list">
+        /// The <see cref="List{T}"/> to take items from.
+        /// </param>
+        /// <param name="startingIndex">
+        /// The index to start at in the <see cref="List{T}"/>.
+        /// </param>
+        /// <param name="takeCount">
+        /// The number of items to take from the starting index of the <see cref="List{T}"/>.
+        /// </param>
+        /// <typeparam name="T">
+        /// The type of elements in the collection.
+        /// </typeparam>
+        /// <returns>
+        /// A collection of <typeparamref name="T"/> items.
+        /// </returns>
+        public static IEnumerable<T> TakeFrom<T>(this List<T> list, int startingIndex, int takeCount)
+        {
+            var results = new List<T>();
+
+            int itemsToTake = takeCount;
+
+            if (list.Count - 1 - startingIndex > itemsToTake)
+            {
+                List<T> items = list.GetRange(startingIndex, itemsToTake);
+                results.AddRange(items);
+            }
+            else
+            {
+                itemsToTake = list.Count - startingIndex;
+                if (itemsToTake <= 0)
+                {
+                    return results;
+                }
+
+                List<T> items = list.GetRange(startingIndex, itemsToTake);
+                results.AddRange(items);
+            }
+
+            return results;
+        }
+
+        /// <summary>
+        /// Performs the specified action on each item in the collection.
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of item in the collection.
+        /// </typeparam>
+        /// <param name="collection">
+        /// The collection to action on.
+        /// </param>
+        /// <param name="action">
+        /// The action to perform.
+        /// </param>
+        public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
+        {
+            foreach (T item in collection)
+            {
+                action?.Invoke(item);
+            }
+        }
     }
 }
