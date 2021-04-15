@@ -7,6 +7,7 @@
     <Description>
       This package includes runtime helpers such as:
       - WeakReferenceCallback for providing an approach to callbacks with a WeakReference.
+      - WeakReferenceEventHandler for providing an approach to event handlers with a WeakReference.
     </Description>
     <PackageTags>MADE Runtime WeakReference</PackageTags>
 
