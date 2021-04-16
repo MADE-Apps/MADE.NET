@@ -121,3 +121,21 @@ public void RemoveAdminPermissions(IEnumerable<Permission> permissions)
     AdminPermissions.RemoveRange<Permission>(permissions);
 }
 ```
+
+## Performing actions over collections using the ForEach extension
+
+Just a quick and easy extension to have at your disposal, `ForEach` is an `IEnumerable` extension that allows you to perform an action on each element in the collection. 
+
+Simply call `ForEach` on your collection passing an action to perform on the items, for example:
+
+```csharp
+private void Update()
+{
+    myStrings.ForEach(s => VerifyString(s));
+}
+
+private void VerifyString(string val)
+{
+   // Do verification
+}
+```
