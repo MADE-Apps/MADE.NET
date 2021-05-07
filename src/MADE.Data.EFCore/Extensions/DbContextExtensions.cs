@@ -1,11 +1,13 @@
 namespace MADE.Data.EFCore.Extensions
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
+    using Microsoft.EntityFrameworkCore.ChangeTracking;
 
     /// <summary>
     /// Defines a collection of extensions for <see cref="DbContext"/> types.
@@ -24,7 +26,10 @@ namespace MADE.Data.EFCore.Extensions
         /// <exception cref="DbUpdateConcurrencyException">A concurrency violation is encountered while saving to the database.
         ///                 A concurrency violation occurs when an unexpected number of rows are affected during save.
         ///                 This is usually because the data in the database has been modified since it was loaded into memory.</exception>
-        public static async Task UpdateAsync<T>(this DbContext context, T entity, CancellationToken cancellationToken = default)
+        public static async Task UpdateAsync<T>(
+            this DbContext context,
+            T entity,
+            CancellationToken cancellationToken = default)
         {
             context.Update(entity);
             await context.SaveChangesAsync(cancellationToken);
@@ -41,6 +46,35 @@ namespace MADE.Data.EFCore.Extensions
         {
             IQueryable<T> toRemove = set.Where(predicate);
             set.RemoveRange(toRemove);
+        }
+
+        /// <summary>
+        /// Sets the dates of <see cref="EntityBase"/> entities being tracked in an added or modified state.
+        /// <para>
+        /// It is best to call this method in an override of the DbContext.SaveChangesAsync method in your data context.
+        /// </para>
+        /// </summary>
+        /// <param name="context">The <see cref="DbContext"/> to update entity dates for.</param>
+        public static void SetEntityDates(this DbContext context)
+        {
+            IEnumerable<EntityEntry> entries = context.ChangeTracker
+                .Entries()
+                .Where(
+                    entry => entry.Entity is EntityBase &&
+                             (entry.State == EntityState.Added || entry.State == EntityState.Modified));
+
+            DateTime now = DateTime.UtcNow;
+
+            foreach (EntityEntry entry in entries)
+            {
+                var entity = (EntityBase)entry.Entity;
+                entity.UpdatedDate = now;
+
+                if (entry.State == EntityState.Added && entity.CreatedDate == DateTime.MinValue)
+                {
+                    entity.CreatedDate = now;
+                }
+            }
         }
     }
 }

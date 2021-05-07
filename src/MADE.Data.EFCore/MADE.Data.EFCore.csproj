@@ -6,6 +6,8 @@
     <Product>MADE.NET Data EF Core</Product>
     <Description>
       This package includes Entity Framework Core helpers such as:
+      - DbContextExtensions, for additional helpers to EF data contexts.
+      - EntityBase, for providing a base definition for entities.
       - UtcDateTimeConverter, to help with the storing of dates in a UTC format.
     </Description>
     <PackageTags>MADE EFCore EntityFramework</PackageTags>
