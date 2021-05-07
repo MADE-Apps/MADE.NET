@@ -10,6 +10,8 @@
       href: features/collections.md
     - name: Data Converters
       href: features/data-converters.md
+    - name: Data EF Core
+      href: features/data-efcore.md
     - name: Data Validation
       href: features/data-validation.md
     - name: Diagnostics

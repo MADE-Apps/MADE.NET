@@ -11,6 +11,7 @@ title: Available packages | MADE.NET
 | ------ | ------ | ------ |
 | Collections | [![NuGet](https://img.shields.io/nuget/v/MADE.Collections)](https://www.nuget.org/packages/MADE.Collections/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.Collections.svg)](https://www.nuget.org/packages/MADE.Collections/) |
 | Data.Converters | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Converters)](https://www.nuget.org/packages/MADE.Data.Converters/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.Converters)](https://www.nuget.org/packages/MADE.Data.Converters/) |
+| Data.EFCore | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.EFCore)](https://www.nuget.org/packages/MADE.Data.EFCore/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.EFCore)](https://www.nuget.org/packages/MADE.Data.EFCore/) |
 | Data.Validation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) |
 | Diagnostics | [![NuGet](https://img.shields.io/nuget/v/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) |
 | Media.Image | [![NuGet](https://img.shields.io/nuget/v/MADE.Media.Image)](https://www.nuget.org/packages/MADE.Media.Image/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Media.Image)](https://www.nuget.org/packages/MADE.Media.Image/) |
@@ -57,6 +58,22 @@ It includes features such as:
 <span class="button">
 
 [Discover Data.Converters](features/data-converters.md)
+
+</span>
+
+## Data.EFCore
+
+The Data Entity Framework Core package provides a collection of helpers, extensions, and converters for applications taking advantage of the `Microsoft.EntityFrameworkCore` library.
+
+It includes features such as:
+
+- DbContextExtensions, for additional helpers to EF data contexts such as asynchronous update & save.
+- EntityBase, for providing a base definition for entities including a GUID identifier, created, and updated dates.
+- UtcDateTimeConverter, to help with the storing of entity model dates in a UTC format.
+
+<span class="button">
+
+[Discover Data.EFCore](features/data-efcore.md)
 
 </span>
 
