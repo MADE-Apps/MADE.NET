@@ -227,5 +227,20 @@ namespace MADE.Collections
                 action?.Invoke(item);
             }
         }
+
+        /// <summary>
+        /// Chunks a collection of items into a collection of collections grouped into the specified chunk size.
+        /// </summary>
+        /// <typeparam name="T">The type of item.</typeparam>
+        /// <param name="source">The source collection to chunk.</param>
+        /// <param name="chunkSize">The chunk size.</param>
+        /// <returns>A collection of collections containing the chunked items.</returns>
+        public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> source, int chunkSize = 25)
+        {
+            return source
+                .Select((v, i) => new { Index = i, Value = v })
+                .GroupBy(x => x.Index / chunkSize)
+                .Select(x => x.Select(v => v.Value));
+        }
     }
 }

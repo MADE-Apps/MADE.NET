@@ -139,3 +139,22 @@ private void VerifyString(string val)
    // Do verification
 }
 ```
+
+## Breaking collections up into chunks using the Chunk extension
+
+When you want to process your data in limited sets, you need to split your collection up. The `Chunk` extension allows you to achieve this by splitting your lists up into datasets by a specified size for you.
+
+Here's how you can do this in your projects.
+
+```csharp
+public async Task ProcessMessagesAsync(IEnumerable<Message> messages, CancellationToken cancellationToken = default )
+{
+    foreach ( var messageChunk in messages.Chunk( 10 ) )
+    {
+        foreach ( var message in messageChunk )
+        {
+            await this.processor.SendMessageAsync( message, cancellationToken );
+        }
+    }
+}
+```
