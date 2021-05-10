@@ -9,7 +9,7 @@ namespace MADE.Threading
     /// <summary>
     /// Defines a timer to use for performing actions on a tick.
     /// </summary>
-    public class Timer : ITimer
+    public class Timer : ITimer, IDisposable
     {
         private System.Threading.Timer timer;
 
@@ -117,12 +117,31 @@ namespace MADE.Threading
             this.IsRunning = false;
         }
 
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        public void Dispose()
+        {
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         /// <summary>
         /// Invokes the <see cref="Tick"/> event, if attached.
         /// </summary>
         protected virtual void InvokeTick()
         {
             this.Tick?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
+        /// <param name="disposing">
+        /// A value indicating whether the object is being disposed by the <see cref="IDisposable.Dispose"/> method.
+        /// </param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.timer?.Dispose();
+            }
         }
     }
 }
