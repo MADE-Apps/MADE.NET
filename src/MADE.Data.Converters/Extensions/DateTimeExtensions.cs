@@ -31,6 +31,105 @@ namespace MADE.Data.Converters.Extensions
         }
 
         /// <summary>
+        /// Rounds a <see cref="DateTime"/> value to its nearest hour.
+        /// <para>
+        /// This is determined by the half hour of each hour, rounding up or down.
+        /// </para>
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/> to round.</param>
+        /// <returns>The updated <see cref="DateTime"/>.</returns>
+        public static DateTime ToNearestHour(this DateTime dateTime)
+        {
+            int hour = dateTime.Minute < 30
+                ? dateTime.Hour
+                : dateTime.Hour + 1;
+
+            return hour == 24
+                ? new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, 0, 0, 0).AddDays(1)
+                : new DateTime(dateTime.Year, dateTime.Month, dateTime.Day, hour, 0, 0);
+        }
+
+        /// <summary>
+        /// Gets the start of the day represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the same date as this instance, and the time value set to midnight.</returns>
+        public static DateTime StartOfDay(this DateTime dateTime)
+        {
+            return dateTime.Date;
+        }
+
+        /// <summary>
+        /// Gets the end of the day represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the same date as this instance, and the time value set to just before midnight of the next day.</returns>
+        public static DateTime EndOfDay(this DateTime dateTime)
+        {
+            return dateTime.StartOfDay().AddDays(1).AddTicks(-1);
+        }
+
+        /// <summary>
+        /// Gets the first day of the week represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the first day of the week for this instance, and the time value set to midnight.</returns>
+        public static DateTime StartOfWeek(this DateTime dateTime)
+        {
+            return dateTime.AddDays(-(int)dateTime.DayOfWeek).StartOfDay();
+        }
+
+        /// <summary>
+        /// Gets the last day of the week represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the last day of the week for this instance, and the time value set to just before midnight of the next day.</returns>
+        public static DateTime EndOfWeek(this DateTime dateTime)
+        {
+            return dateTime.StartOfWeek().AddDays(7).EndOfDay();
+        }
+
+        /// <summary>
+        /// Gets the first day of the month represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the first day of the month for this instance, and the time value set to midnight.</returns>
+        public static DateTime StartOfMonth(this DateTime dateTime)
+        {
+            return new DateTime(dateTime.Year, dateTime.Month, 1);
+        }
+
+        /// <summary>
+        /// Gets the last day of the month represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the last day of the month for this instance, and the time value set to just before midnight of the next day.</returns>
+        public static DateTime EndOfMonth(this DateTime dateTime)
+        {
+            return dateTime.StartOfMonth().AddMonths(1).AddDays(-1).EndOfDay();
+        }
+
+        /// <summary>
+        /// Gets the first day of the year represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the first day of the year for this instance, and the time value set to midnight.</returns>
+        public static DateTime StartOfYear(this DateTime dateTime)
+        {
+            return new DateTime(dateTime.Year, 1, 1);
+        }
+
+        /// <summary>
+        /// Gets the last day of the year represented by the specified <see cref="DateTime"/> object.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/>.</param>
+        /// <returns>A new object with the last day of the year for this instance, and the time value set to just before midnight of the next day.</returns>
+        public static DateTime EndOfYear(this DateTime dateTime)
+        {
+            return dateTime.StartOfYear().AddYears(1).AddDays(-1).EndOfDay();
+        }
+
+        /// <summary>
         /// Sets the time value of a nullable date/time value.
         /// </summary>
         /// <param name="dateTime">The nullable date/time value to add a time to.</param>
