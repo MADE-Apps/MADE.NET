@@ -76,5 +76,64 @@ namespace MADE.Data.EFCore.Extensions
                 }
             }
         }
+
+        /// <summary>
+        /// Attempts to save all changes made in this context to the database.
+        /// </summary>
+        /// <param name="context">The <see cref="DbContext"/>.</param>
+        /// <param name="onError">An exception for handling the exception thrown, for example, event logging.</param>
+        /// <param name="cancellationToken"> A <see cref="CancellationToken" /> to observe while waiting for the task to complete. </param>
+        /// <returns>
+        ///  True if the changes saved successfully; otherwise, false.
+        /// </returns>
+        public static async Task<bool> TrySaveChangesAsync(
+            this DbContext context,
+            Action<Exception> onError = null,
+            CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                await context.SaveChangesAsync(cancellationToken);
+                return true;
+            }
+            catch (DbUpdateException ex)
+            {
+                onError?.Invoke(ex);
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Attempts to perform an action on the data context.
+        /// </summary>
+        /// <param name="context">The <see cref="DbContext"/>.</param>
+        /// <param name="action">The action to run.</param>
+        /// <param name="onError">An exception for handling the exception thrown, for example, event logging.</param>
+        /// <typeparam name="TContext">The type of data context.</typeparam>
+        /// <returns>True if the action ran successfully; otherwise, false.</returns>
+        public static async Task<bool> TryAsync<TContext>(
+            this TContext context,
+            Func<TContext, Task> action,
+            Action<Exception> onError = null)
+            where TContext : DbContext
+        {
+            if (action == null)
+            {
+                return false;
+            }
+
+            try
+            {
+                await action.Invoke(context);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                onError?.Invoke(ex);
+            }
+
+            return false;
+        }
     }
 }
