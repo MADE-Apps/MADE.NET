@@ -22,6 +22,7 @@ on:
     - tests/**
     - build/**
     - .github/workflows/ci.yml
+  workflow_dispatch:
 
 jobs:
   build:
