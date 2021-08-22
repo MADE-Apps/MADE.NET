@@ -4,6 +4,7 @@
 namespace MADE.Threading
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     /// <summary>
@@ -50,6 +51,26 @@ namespace MADE.Threading
                 TaskContinuationOptions.OnlyOnFaulted);
 
             return task;
+        }
+
+        /// <summary>
+        /// Creates a task that will complete when all of the <see cref="Task"/> objects in the collection have completed.
+        /// </summary>
+        /// <param name="tasks">The tasks to wait on for completion.</param>
+        /// <returns>A task that represents the completion of all of the supplied tasks.</returns>
+        public static async Task WhenAll(this IEnumerable<Task> tasks)
+        {
+            await Task.WhenAll(tasks);
+        }
+
+        /// <summary>
+        /// Creates a task that will complete when any of the <see cref="Task"/> objects in the collection have completed.
+        /// </summary>
+        /// <param name="tasks">The tasks to wait on for completion.</param>
+        /// <returns>A task that represents the completion of one of the supplied tasks.</returns>
+        public static async Task WhenAny(this IEnumerable<Task> tasks)
+        {
+            await Task.WhenAny(tasks);
         }
     }
 }
