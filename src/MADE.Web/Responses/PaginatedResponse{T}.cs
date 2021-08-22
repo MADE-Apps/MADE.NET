@@ -1,8 +1,9 @@
-﻿// MADE Apps licenses this file to you under the MIT license.
+// MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
 namespace MADE.Web.Responses
 {
+    using System;
     using System.Collections.Generic;
     using MADE.Web.Requests;
 
@@ -50,7 +51,6 @@ namespace MADE.Web.Responses
         /// <summary>
         /// Gets the total number of pages for the available items based on the page size.
         /// </summary>
-        public int TotalPages =>
-            this.AvailableCount == 0 || this.PageSize == 0 ? 0 : this.AvailableCount / this.PageSize;
+        public int TotalPages => this.AvailableCount == 0 || this.PageSize == 0 ? 0 : (int)Math.Ceiling((double)this.AvailableCount / this.PageSize);
     }
 }

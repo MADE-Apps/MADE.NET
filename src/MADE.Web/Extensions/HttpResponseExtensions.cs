@@ -7,6 +7,7 @@ namespace MADE.Web.Extensions
     using System.Text;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.Net.Http.Headers;
     using Newtonsoft.Json;
 
     /// <summary>
@@ -43,7 +44,7 @@ namespace MADE.Web.Extensions
             object value,
             JsonSerializerSettings serializerSettings)
         {
-            response.ContentType = "application/json";
+            response.ContentType = new MediaTypeHeaderValue("application/json") { Encoding = Encoding.UTF8 }.ToString();
             response.StatusCode = (int)statusCode;
 
             string json = JsonConvert.SerializeObject(value, Formatting.Indented, serializerSettings);
