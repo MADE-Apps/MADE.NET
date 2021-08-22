@@ -32,11 +32,19 @@ namespace MADE.UI.Controls
             return AutomationControlType.Custom;
         }
 
+        /// <summary>
+        /// Provides the type name of the <see cref="FilePicker"/> when a Microsoft UI Automation client calls GetClassName or an equivalent Microsoft UI Automation client API.
+        /// </summary>
+        /// <returns>The type name of the <see cref="FilePicker"/>.</returns>
         protected override string GetClassNameCore()
         {
             return this.Owner.GetType().Name;
         }
 
+        /// <summary>
+        /// Provides the name given to the <see cref="FilePicker"/> when a Microsoft UI Automation client calls GetName or an equivalent Microsoft UI Automation client API.
+        /// </summary>
+        /// <returns>The name of the <see cref="FilePicker"/>.</returns>
         protected override string GetNameCore()
         {
             string name = string.Empty;

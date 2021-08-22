@@ -23,11 +23,6 @@ namespace MADE.UI.Controls
     [TemplatePart(Name = DropDownContentPart, Type = typeof(ListView))]
     public class DropDownList : Control, IDropDownList
     {
-        private const string DropDownButtonPart = "DropDownButton";
-        private const string DropDownPart = "DropDown";
-        private const string DropDownBorderPart = "DropDownBorder";
-        private const string DropDownContentPart = "DropDownContent";
-
         /// <summary>
         /// Identifies the <see cref="Header"/> dependency property.
         /// </summary>
@@ -144,6 +139,14 @@ namespace MADE.UI.Controls
             typeof(double),
             typeof(DropDownList),
             new PropertyMetadata(248D));
+
+        private const string DropDownButtonPart = "DropDownButton";
+
+        private const string DropDownPart = "DropDown";
+
+        private const string DropDownBorderPart = "DropDownBorder";
+
+        private const string DropDownContentPart = "DropDownContent";
 
         private readonly List<object> selectedItems;
 
@@ -368,6 +371,10 @@ namespace MADE.UI.Controls
             this.DetermineDropDownButtonContent();
         }
 
+        /// <summary>
+        /// Provides the class-specific <see cref="DropDownListAutomationPeer"/> implementation for the Microsoft UI Automation infrastructure.
+        /// </summary>
+        /// <returns>The class-specific <see cref="DropDownListAutomationPeer"/> instance.</returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
             return new DropDownListAutomationPeer(this);

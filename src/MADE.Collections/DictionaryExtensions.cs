@@ -29,7 +29,7 @@ namespace MADE.Collections
         /// <typeparam name="TValue">
         /// The type of value item within the dictionary.
         /// </typeparam>
-        /// <exception cref="T:System.ArgumentNullException">The <paramref name="dictionary"/> or <paramref name="key"/> is <see langword="null"/></exception>
+        /// <exception cref="T:System.ArgumentNullException">The <paramref name="dictionary"/> or <paramref name="key"/> is <see langword="null"/>.</exception>
         public static void AddOrUpdate<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue value)
         {
             if (dictionary == null)

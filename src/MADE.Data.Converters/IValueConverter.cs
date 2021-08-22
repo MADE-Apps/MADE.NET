@@ -4,7 +4,7 @@
 namespace MADE.Data.Converters
 {
     /// <summary>
-    /// Defines an interface for a value converter from <see cref="TFrom"/> to <see cref="TTo"/>.
+    /// Defines an interface for a value converter from <typeparamref name="TFrom"/> to <typeparamref name="TTo"/>.
     /// </summary>
     /// <typeparam name="TFrom">
     /// The type of object to convert from.
@@ -15,7 +15,7 @@ namespace MADE.Data.Converters
     public interface IValueConverter<TFrom, TTo>
     {
         /// <summary>
-        /// Converts the <paramref name="value">value</paramref> to the <see cref="TTo"/> type.
+        /// Converts the <paramref name="value">value</paramref> to the <typeparamref name="TTo"/> type.
         /// </summary>
         /// <param name="value">
         /// The value to convert.
@@ -24,12 +24,12 @@ namespace MADE.Data.Converters
         /// The optional parameter used to help with conversion.
         /// </param>
         /// <returns>
-        /// The converted <see cref="TTo"/> object.
+        /// The converted <typeparamref name="TTo"/> object.
         /// </returns>
         TTo Convert(TFrom value, object parameter = default);
 
         /// <summary>
-        /// Converts the <paramref name="value">value</paramref> back to the <see cref="TFrom"/> type.
+        /// Converts the <paramref name="value">value</paramref> back to the <typeparamref name="TFrom"/> type.
         /// </summary>
         /// <param name="value">
         /// The value to convert.
@@ -38,7 +38,7 @@ namespace MADE.Data.Converters
         /// The optional parameter used to help with conversion.
         /// </param>
         /// <returns>
-        /// The converted <see cref="TFrom"/> object.
+        /// The converted <typeparamref name="TFrom"/> object.
         /// </returns>
         TFrom ConvertBack(TTo value, object parameter = default);
     }

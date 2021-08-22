@@ -18,9 +18,11 @@ namespace MADE.Data.Converters
         /// <param name="value">
         /// The value to convert.
         /// </param>
+        /// <param name="targetType">The target type (unused).</param>
         /// <param name="parameter">
-        /// The optional parameter used to help with conversion.
+        /// The optional <see cref="DateTime"/> string format parameter used to help with conversion.
         /// </param>
+        /// <param name="language">The display language for the conversion (unused).</param>
         /// <returns>
         /// The converted <see cref="string"/> object.
         /// </returns>
@@ -38,12 +40,10 @@ namespace MADE.Data.Converters
         /// <summary>
         /// Converts the <paramref name="value">value</paramref> back to the <see cref="DateTime"/> type.
         /// </summary>
-        /// <param name="value">
-        /// The value to convert.
-        /// </param>
-        /// <param name="parameter">
-        /// The optional parameter used to help with conversion.
-        /// </param>
+        /// <param name="value">The value to convert.</param>
+        /// <param name="targetType">The target type (unused).</param>
+        /// <param name="parameter">The optional parameter used to help with conversion (unused).</param>
+        /// <param name="language">The display language for the conversion (unused).</param>
         /// <returns>
         /// The converted <see cref="DateTime"/> object.
         /// </returns>

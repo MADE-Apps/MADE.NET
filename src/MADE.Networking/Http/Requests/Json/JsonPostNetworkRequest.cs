@@ -136,7 +136,7 @@ namespace MADE.Networking.Http.Requests.Json
 
             var request = new HttpRequestMessage(HttpMethod.Post, uri)
             {
-                Content = new StringContent(this.Data, Encoding.UTF8, "application/json")
+                Content = new StringContent(this.Data, Encoding.UTF8, "application/json"),
             };
 
             if (this.Headers != null)

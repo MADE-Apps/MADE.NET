@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29102.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31612.314
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{01380FB8-F8A7-4416-AABA-5407574B7723}"
 EndProject
@@ -18,11 +18,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.Collections", "..\src\MADE.Collections\MADE.Collections.csproj", "{C506553C-49CD-48FB-9E5C-CB48B10D6006}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.Collections.Tests", "..\tests\MADE.Collections.Tests\MADE.Collections.Tests.csproj", "{A3D57C41-6BB7-4826-AD16-6D9DE5736D6F}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F1EFAF60-F4AA-45B1-ABE2-EDEFA21B449D}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MADE.Testing", "..\src\MADE.Testing\MADE.Testing.csproj", "{34CB8818-2A12-41FE-A8BD-80FBB225E87C}"
 EndProject

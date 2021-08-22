@@ -16,6 +16,9 @@ namespace MADE.Testing
         /// <summary>
         /// Tests whether two collections contain the same elements and throws an exception if either collection contains an element not in the other collection.
         /// </summary>
+        /// <typeparam name="TItem">
+        /// The type of item in the collection.
+        /// </typeparam>
         /// <param name="expected">
         /// The first collection to compare. This contains the elements the test expects.
         /// </param>
@@ -58,6 +61,9 @@ namespace MADE.Testing
         /// <summary>
         /// Tests whether two collections do not contain the same elements.
         /// </summary>
+        /// <typeparam name="TItem">
+        /// The type of item in the collection.
+        /// </typeparam>
         /// <param name="expected">
         /// The first collection to compare. This contains the elements the test expects.
         /// </param>
@@ -196,7 +202,10 @@ namespace MADE.Testing
 
         private class AssertFailedException : Exception
         {
-            public AssertFailedException(string message) : base(message) { }
+            public AssertFailedException(string message)
+                : base(message)
+            {
+            }
         }
     }
 }

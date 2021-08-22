@@ -3,7 +3,7 @@
 
 namespace MADE.UI.Controls
 {
-    using UI;
+    using MADE.UI;
 
     /// <summary>
     /// Defines an interface for components of a common application control.

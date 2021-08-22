@@ -5,7 +5,7 @@ namespace MADE.Data.Validation
 {
     using System.Collections.Generic;
     using System.Linq;
-    using Extensions;
+    using MADE.Data.Validation.Extensions;
 
     /// <summary>
     /// Defines a list of <see cref="IValidator"/> objects that can be accessed by index.

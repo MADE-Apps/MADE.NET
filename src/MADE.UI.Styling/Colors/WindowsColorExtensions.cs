@@ -66,14 +66,14 @@ namespace MADE.UI.Styling.Colors
                     A = byte.MaxValue,
                     R = byte.Parse(upper.Substring(1, 2), NumberStyles.AllowHexSpecifier),
                     G = byte.Parse(upper.Substring(3, 2), NumberStyles.AllowHexSpecifier),
-                    B = byte.Parse(upper.Substring(5, 2), NumberStyles.AllowHexSpecifier)
+                    B = byte.Parse(upper.Substring(5, 2), NumberStyles.AllowHexSpecifier),
                 },
                 9 => new Windows.UI.Color
                 {
                     A = byte.Parse(upper.Substring(1, 2), NumberStyles.AllowHexSpecifier),
                     R = byte.Parse(upper.Substring(3, 2), NumberStyles.AllowHexSpecifier),
                     G = byte.Parse(upper.Substring(5, 2), NumberStyles.AllowHexSpecifier),
-                    B = byte.Parse(upper.Substring(7, 2), NumberStyles.AllowHexSpecifier)
+                    B = byte.Parse(upper.Substring(7, 2), NumberStyles.AllowHexSpecifier),
                 },
                 _ => Windows.UI.Colors.Transparent
             };

@@ -12,6 +12,6 @@ namespace MADE.UI.Controls
         Single,
 
         /// <summary>The user can select multiple items.</summary>
-        Multiple
+        Multiple,
     }
 }

@@ -96,7 +96,7 @@ namespace MADE.Collections
         /// <typeparam name="T">
         /// The type of items in the collection.
         /// </typeparam>
-        /// <exception cref="T:System.ArgumentNullException">The <paramref name="collection"/> or <paramref name="itemsToAdd"/> is <see langword="null"/></exception>
+        /// <exception cref="T:System.ArgumentNullException">The <paramref name="collection"/> or <paramref name="itemsToAdd"/> is <see langword="null"/>.</exception>
         public static void AddRange<T>(this ICollection<T> collection, IEnumerable<T> itemsToAdd)
         {
             if (collection == null)
@@ -127,7 +127,7 @@ namespace MADE.Collections
         /// <typeparam name="T">
         /// The type of items in the collection.
         /// </typeparam>
-        /// <exception cref="T:System.ArgumentNullException">The <paramref name="collection"/> or <paramref name="itemsToRemove"/> is <see langword="null"/></exception>
+        /// <exception cref="T:System.ArgumentNullException">The <paramref name="collection"/> or <paramref name="itemsToRemove"/> is <see langword="null"/>.</exception>
         public static void RemoveRange<T>(this ICollection<T> collection, IEnumerable<T> itemsToRemove)
         {
             if (collection == null)

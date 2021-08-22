@@ -138,7 +138,7 @@ namespace MADE.Networking.Http.Requests.Json
             {
                 Method = new HttpMethod("PATCH"),
                 RequestUri = uri,
-                Content = new StringContent(this.Data, Encoding.UTF8, "application/json")
+                Content = new StringContent(this.Data, Encoding.UTF8, "application/json"),
             };
 
             if (this.Headers != null)

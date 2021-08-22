@@ -56,12 +56,11 @@ namespace MADE.Data.Converters
         /// <summary>
         /// Converts the <paramref name="value">value</paramref> to the <see cref="string"/> type.
         /// </summary>
-        /// <param name="value">
-        /// The value to convert.
-        /// </param>
-        /// <returns>
-        /// The converted <see cref="string"/> object.
-        /// </returns>
+        /// <param name="value">The value to convert.</param>
+        /// <param name="targetType">The target type (unused).</param>
+        /// <param name="parameter">The optional parameter used to help with conversion (unused).</param>
+        /// <param name="language">The display language for the conversion (unused).</param>
+        /// <returns>The converted <see cref="string"/> object.</returns>
         public object Convert(object value, Type targetType, object parameter, string language)
         {
             return value switch
@@ -74,12 +73,11 @@ namespace MADE.Data.Converters
         /// <summary>
         /// Converts the <paramref name="value">value</paramref> back to the <see cref="bool"/> type.
         /// </summary>
-        /// <param name="value">
-        /// The value to convert.
-        /// </param>
-        /// <returns>
-        /// The converted <see cref="bool"/> object.
-        /// </returns>
+        /// <param name="value">The value to convert.</param>
+        /// <param name="targetType">The target type (unused).</param>
+        /// <param name="parameter">The optional parameter used to help with conversion (unused).</param>
+        /// <param name="language">The display language for the conversion (unused).</param>
+        /// <returns>The converted <see cref="bool"/> object.</returns>
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
             if (!(value is string b))

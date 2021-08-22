@@ -1,7 +1,4 @@
-// MADE Apps licenses this file to you under the MIT license.
-// See the LICENSE file in the project root for more information.
-
-namespace MADE.Runtime
+﻿namespace MADE.Runtime
 {
     using System;
 
@@ -14,13 +11,16 @@ namespace MADE.Runtime
     /// <typeparam name="TSource">
     /// The source type.
     /// </typeparam>
-    public sealed class WeakReferenceEventListener<TInstance, TSource>
+    /// <typeparam name="TEventArgs">
+    /// The event argument type.
+    /// </typeparam>
+    public sealed class WeakReferenceEventListener<TInstance, TSource, TEventArgs>
         where TInstance : class
     {
-        private readonly WeakReference weakReference;
+        private readonly WeakReference weakInstance;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="WeakReferenceEventListener{TInstance,TSource}"/> class.
+        /// Initializes a new instance of the <see cref="WeakReferenceEventListener{TInstance,TSource,TEventArgs}"/> class.
         /// </summary>
         /// <param name="instance">
         /// The instance.
@@ -32,18 +32,18 @@ namespace MADE.Runtime
                 throw new ArgumentNullException(nameof(instance));
             }
 
-            this.weakReference = new WeakReference(instance);
+            this.weakInstance = new WeakReference(instance);
         }
 
         /// <summary>
         /// Gets or sets the action to be fired when the event is triggered.
         /// </summary>
-        public Action<TInstance, TSource> OnEventAction { get; set; }
+        public Action<TInstance, TSource, TEventArgs> OnEventAction { get; set; }
 
         /// <summary>
         /// Gets or sets the action to be fired when the listener is detached.
         /// </summary>
-        public Action<TInstance, WeakReferenceEventListener<TInstance, TSource>> OnDetachAction { get; set; }
+        public Action<TInstance, WeakReferenceEventListener<TInstance, TSource, TEventArgs>> OnDetachAction { get; set; }
 
         /// <summary>
         /// Called when the event is fired.
@@ -51,12 +51,15 @@ namespace MADE.Runtime
         /// <param name="source">
         /// The source of the event.
         /// </param>
-        public void OnEvent(TSource source)
+        /// <param name="eventArgs">
+        /// The event arguments.
+        /// </param>
+        public void OnEvent(TSource source, TEventArgs eventArgs)
         {
-            var target = (TInstance)this.weakReference.Target;
+            var target = (TInstance)this.weakInstance.Target;
             if (target != null)
             {
-                this.OnEventAction?.Invoke(target, source);
+                this.OnEventAction?.Invoke(target, source, eventArgs);
             }
             else
             {
@@ -69,7 +72,7 @@ namespace MADE.Runtime
         /// </summary>
         public void Detach()
         {
-            var target = (TInstance)this.weakReference.Target;
+            var target = (TInstance)this.weakInstance.Target;
             if (this.OnDetachAction == null)
             {
                 return;

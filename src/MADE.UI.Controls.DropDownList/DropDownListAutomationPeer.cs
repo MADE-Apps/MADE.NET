@@ -24,12 +24,12 @@ namespace MADE.UI.Controls
         {
         }
 
-        /// <summary>Gets a value that indicates whether the Microsoft UI Automation provider allows more than one child element to be selected concurrently.</summary>
+        /// <summary>Gets a value indicating whether the Microsoft UI Automation provider allows more than one child element to be selected concurrently.</summary>
         /// <returns>True if multiple selection is allowed; otherwise, false.</returns>
         public bool CanSelectMultiple => this.OwningDropDownList != null &&
                                          this.OwningDropDownList.SelectionMode == DropDownListSelectionMode.Multiple;
 
-        /// <summary>Gets a value that indicates whether the UI Automation provider requires at least one child element to be selected.</summary>
+        /// <summary>Gets a value indicating whether the UI Automation provider requires at least one child element to be selected.</summary>
         /// <returns>False.</returns>
         public bool IsSelectionRequired => false;
 
@@ -62,11 +62,19 @@ namespace MADE.UI.Controls
             return AutomationControlType.ComboBox;
         }
 
+        /// <summary>
+        /// Provides the type name of the <see cref="DropDownList"/> when a Microsoft UI Automation client calls GetClassName or an equivalent Microsoft UI Automation client API.
+        /// </summary>
+        /// <returns>The type name of the <see cref="DropDownList"/>.</returns>
         protected override string GetClassNameCore()
         {
             return this.Owner.GetType().Name;
         }
 
+        /// <summary>
+        /// Provides the name given to the <see cref="DropDownList"/> when a Microsoft UI Automation client calls GetName or an equivalent Microsoft UI Automation client API.
+        /// </summary>
+        /// <returns>The name of the <see cref="DropDownList"/>.</returns>
         protected override string GetNameCore()
         {
             string name = string.Empty;
@@ -89,6 +97,11 @@ namespace MADE.UI.Controls
             return name;
         }
 
+        /// <summary>
+        /// Provides the interaction patterns associated with the <see cref="DropDownList"/> when a Microsoft UI Automation client calls GetPattern or an equivalent Microsoft UI Automation client API.
+        /// </summary>
+        /// <param name="patternInterface">A value from the PatternInterface enumeration.</param>
+        /// <returns>This if it supports the pattern interface; otherwise, null.</returns>
         protected override object GetPatternCore(PatternInterface patternInterface)
         {
             switch (patternInterface)

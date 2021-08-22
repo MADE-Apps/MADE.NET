@@ -24,12 +24,6 @@ namespace MADE.UI.Controls
     [TemplatePart(Name = FilePickerHeaderPresenterPart, Type = typeof(ContentPresenter))]
     public partial class FilePicker : Control, IFilePicker
     {
-        private const string FilePickerChooseFileButtonPart = "FilePickerChooseFileButton";
-
-        private const string FilePickerItemsViewPart = "FilePickerItemsView";
-
-        private const string FilePickerHeaderPresenterPart = "FilePickerHeaderPresenter";
-
         /// <summary>
         /// Identifies the <see cref="Header"/> dependency property.
         /// </summary>
@@ -110,6 +104,12 @@ namespace MADE.UI.Controls
             typeof(Style),
             typeof(FilePicker),
             new PropertyMetadata(default(Style)));
+
+        private const string FilePickerChooseFileButtonPart = "FilePickerChooseFileButton";
+
+        private const string FilePickerItemsViewPart = "FilePickerItemsView";
+
+        private const string FilePickerHeaderPresenterPart = "FilePickerHeaderPresenter";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FilePicker"/> class.
@@ -245,6 +245,10 @@ namespace MADE.UI.Controls
             }
         }
 
+        /// <summary>
+        /// Provides the class-specific <see cref="FilePickerAutomationPeer"/> implementation for the Microsoft UI Automation infrastructure.
+        /// </summary>
+        /// <returns>The class-specific <see cref="FilePickerAutomationPeer"/> instance.</returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
             return new FilePickerAutomationPeer(this);

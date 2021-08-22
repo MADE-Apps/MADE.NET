@@ -48,6 +48,11 @@ namespace MADE.Web.Exceptions
             this.defaultExceptionHandler = defaultExceptionHandler;
         }
 
+        /// <summary>
+        /// Invokes the middleware to perform the request and handle any exceptions thrown.
+        /// </summary>
+        /// <param name="context">The <see cref="HttpContext"/> to make a request with.</param>
+        /// <returns>An asynchronous operation.</returns>
         public async Task Invoke(HttpContext context)
         {
             try

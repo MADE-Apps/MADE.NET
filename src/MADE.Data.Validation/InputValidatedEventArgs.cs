@@ -13,13 +13,23 @@ namespace MADE.Data.Validation
         /// <summary>
         /// Initializes a new instance of the <see cref="InputValidatedEventArgs"/> class.
         /// </summary>
-        public InputValidatedEventArgs(bool isInvalid) : this(isInvalid, true)
+        /// <param name="isInvalid">
+        /// A value indicating whether the input is invalid.
+        /// </param>
+        public InputValidatedEventArgs(bool isInvalid)
+            : this(isInvalid, true)
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputValidatedEventArgs"/> class.
         /// </summary>
+        /// <param name="isInvalid">
+        /// A value indicating whether the input is invalid.
+        /// </param>
+        /// <param name="isDirty">
+        /// A value indicating whether the input is dirty.
+        /// </param>
         public InputValidatedEventArgs(bool isInvalid, bool isDirty)
         {
             this.IsInvalid = isInvalid;

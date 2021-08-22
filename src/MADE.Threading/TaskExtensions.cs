@@ -33,6 +33,9 @@ namespace MADE.Threading
         /// <summary>
         /// Observes the exceptions of faulted tasks.
         /// </summary>
+        /// <typeparam name="T">
+        /// The instance type for the listener.
+        /// </typeparam>
         /// <param name="task">The task to observe for exceptions.</param>
         /// <param name="onException">An action invoked when an exception is caught.</param>
         /// <returns>An asynchronous operation.</returns>

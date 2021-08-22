@@ -3,8 +3,8 @@
 
 namespace MADE.Data.Validation.Validators
 {
-    using Extensions;
-    using Strings;
+    using MADE.Data.Validation.Extensions;
+    using MADE.Data.Validation.Strings;
 
     /// <summary>
     /// Defines a data validator for ensuring a value is an email address.

@@ -22,7 +22,7 @@ namespace MADE.Runtime.Actions
         /// Concatenates the current instances in the chain with the specified instances.
         /// </summary>
         /// <param name="instances">The instances to chain.</param>
-        /// <returns>The updated <see cref="Chain{T}"/></returns>
+        /// <returns>The updated <see cref="Chain{T}"/>.</returns>
         Chain<T> With(IEnumerable<T> instances);
 
         /// <summary>

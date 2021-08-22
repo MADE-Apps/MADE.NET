@@ -47,7 +47,7 @@ namespace MADE.Runtime.Actions
         /// Concatenates the current instances in the chain with the specified instances.
         /// </summary>
         /// <param name="instances">The instances to chain.</param>
-        /// <returns>The updated <see cref="Chain{T}"/></returns>
+        /// <returns>The updated <see cref="Chain{T}"/>.</returns>
         public Chain<T> With(IEnumerable<T> instances)
         {
             this.chain.AddRange(instances.Select(i => new WeakReference<T>(i)));

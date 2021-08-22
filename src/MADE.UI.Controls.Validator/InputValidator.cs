@@ -3,7 +3,6 @@
 
 namespace MADE.UI.Controls
 {
-    using System.Text;
     using MADE.Data.Validation;
     using MADE.Data.Validation.Extensions;
     using MADE.UI.Extensions;
@@ -17,8 +16,6 @@ namespace MADE.UI.Controls
     [TemplatePart(Name = ValidatorFeedbackMessagePart, Type = typeof(TextBlock))]
     public partial class InputValidator : ContentControl, IInputValidator
     {
-        private const string ValidatorFeedbackMessagePart = "ValidatorFeedbackMessage";
-
         /// <summary>
         /// Identifies the <see cref="Input"/> dependency property.
         /// </summary>
@@ -45,6 +42,8 @@ namespace MADE.UI.Controls
             typeof(Style),
             typeof(InputValidator),
             new PropertyMetadata(default(Style)));
+
+        private const string ValidatorFeedbackMessagePart = "ValidatorFeedbackMessage";
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InputValidator"/> class.
@@ -102,6 +101,10 @@ namespace MADE.UI.Controls
             this.InvokeValidators();
         }
 
+        /// <summary>
+        /// Provides the class-specific <see cref="InputValidatorAutomationPeer"/> implementation for the Microsoft UI Automation infrastructure.
+        /// </summary>
+        /// <returns>The class-specific <see cref="InputValidatorAutomationPeer"/> instance.</returns>
         protected override AutomationPeer OnCreateAutomationPeer()
         {
             return new InputValidatorAutomationPeer(this);

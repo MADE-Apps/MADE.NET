@@ -29,7 +29,7 @@ namespace MADE.Web.Mvc.Responses
         /// Initializes a new instance of the <see cref="InternalServerErrorObjectResult"/> class.
         /// </summary>
         /// <param name="modelState">The <see cref="ModelStateDictionary"/> containing the validation errors.</param>
-        /// <exception cref="T:System.ArgumentNullException">Thrown if the <paramref name="modelState"/> is <see langword="null"/></exception>
+        /// <exception cref="T:System.ArgumentNullException">Thrown if the <paramref name="modelState"/> is <see langword="null"/>.</exception>
         public InternalServerErrorObjectResult(ModelStateDictionary modelState)
             : base(new SerializableError(modelState))
         {
