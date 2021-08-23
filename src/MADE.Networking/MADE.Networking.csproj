@@ -8,6 +8,7 @@
       This package includes networking helpers such as:
       - NetworkRequestManager for handling an HTTP network request queue with success and error callbacks.
       - NetworkRequest instances for simplifying JSON GET, POST, PUT, PATCH, and DELETE requests.
+      - HttpResponseMessage{T} for deserializing content of a HttpResponseMessage to a specified type.
     </Description>
     <PackageTags>MADE Networking Json Stream HttpClient</PackageTags>
   </PropertyGroup>
