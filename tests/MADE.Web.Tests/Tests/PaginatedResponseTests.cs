@@ -1,5 +1,6 @@
 namespace MADE.Web.Tests.Tests
 {
+    using System;
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using MADE.Testing;
@@ -21,7 +22,7 @@ namespace MADE.Web.Tests.Tests
                 int pageSize = 3;
                 int totalItemCount = 10;
 
-                int expectedPageCount = totalItemCount / pageSize;
+                int expectedPageCount = (int)Math.Ceiling((double)totalItemCount / pageSize);
 
                 var items = new List<string> { "Hello", "World", "Test" };
 
