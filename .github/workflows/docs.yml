@@ -5,11 +5,13 @@ on:
     branches:
     - main
     paths:
+    - src/**
     - docs/**
   pull_request:
     branches:
     - main
     paths:
+    - src/**
     - docs/**
   workflow_dispatch:
 
