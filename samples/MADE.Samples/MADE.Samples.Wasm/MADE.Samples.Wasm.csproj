@@ -54,6 +54,7 @@
     <ProjectReference Include="..\..\..\src\MADE.Threading\MADE.Threading.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.UI.Controls.FilePicker\MADE.UI.Controls.FilePicker.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.UI.Controls.Validator\MADE.UI.Controls.Validator.csproj" />
+    <ProjectReference Include="..\..\..\src\MADE.UI.Views.Dialogs\MADE.UI.Views.Dialogs.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.UI\MADE.UI.csproj" />
   </ItemGroup>
   <Import Project="..\MADE.Samples.Shared\MADE.Samples.Shared.projitems" Label="Shared" Condition="Exists('..\MADE.Samples.Shared\MADE.Samples.Shared.projitems')" />
