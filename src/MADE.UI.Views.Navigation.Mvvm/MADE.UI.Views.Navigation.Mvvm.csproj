@@ -1,0 +1,36 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0;xamarinmac20</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET UI View Navigation for MVVM Toolkit</Product>
+    <Description>
+      This package includes enhancements to build page to page navigation with support for the Windows Community Toolkit MVVM library for Windows and Uno Platform such as:
+      - 
+    </Description>
+    <PackageTags>MADE UI View Page Navigation MVVM WCT Windows Android iOS macOS Xamarin Uno</PackageTags>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+    <RootNamespace>MADE.UI.Views.Navigation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+    <PackageReference Include="Uno.UI" Version="3.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="7.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.UI.Views.Navigation\MADE.UI.Views.Navigation.csproj" />
+  </ItemGroup>
+
+</Project>

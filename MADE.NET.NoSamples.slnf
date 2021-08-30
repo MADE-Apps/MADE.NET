@@ -1,0 +1,34 @@
+{
+  "solution": {
+    "path": "MADE.NET.sln",
+    "projects": [
+      "src\\MADE.Collections\\MADE.Collections.csproj",
+      "src\\MADE.Data.Converters\\MADE.Data.Converters.csproj",
+      "src\\MADE.Data.EFCore\\MADE.Data.EFCore.csproj",
+      "src\\MADE.Data.Validation\\MADE.Data.Validation.csproj",
+      "src\\MADE.Diagnostics\\MADE.Diagnostics.csproj",
+      "src\\MADE.Media.Image\\MADE.Media.Image.csproj",
+      "src\\MADE.Networking\\MADE.Networking.csproj",
+      "src\\MADE.Runtime\\MADE.Runtime.csproj",
+      "src\\MADE.Testing\\MADE.Testing.csproj",
+      "src\\MADE.Threading\\MADE.Threading.csproj",
+      "src\\MADE.UI.Controls.DropDownList\\MADE.UI.Controls.DropDownList.csproj",
+      "src\\MADE.UI.Controls.FilePicker\\MADE.UI.Controls.FilePicker.csproj",
+      "src\\MADE.UI.Controls.Validator\\MADE.UI.Controls.Validator.csproj",
+      "src\\MADE.UI.Styling\\MADE.UI.Styling.csproj",
+      "src\\MADE.UI.ViewManagement\\MADE.UI.ViewManagement.csproj",
+      "src\\MADE.UI.Views.Dialogs\\MADE.UI.Views.Dialogs.csproj",
+      "src\\MADE.UI.Views.Navigation.Mvvm\\MADE.UI.Views.Navigation.Mvvm.csproj",
+      "src\\MADE.UI.Views.Navigation\\MADE.UI.Views.Navigation.csproj",
+      "src\\MADE.UI\\MADE.UI.csproj",
+      "src\\MADE.Web.Mvc\\MADE.Web.Mvc.csproj",
+      "src\\MADE.Web\\MADE.Web.csproj",
+      "tests\\MADE.Collections.Tests\\MADE.Collections.Tests.csproj",
+      "tests\\MADE.Data.Converters.Tests\\MADE.Data.Converters.Tests.csproj",
+      "tests\\MADE.Data.Validation.Tests\\MADE.Data.Validation.Tests.csproj",
+      "tests\\MADE.Diagnostics.Tests\\MADE.Diagnostics.Tests.csproj",
+      "tests\\MADE.Networking.Tests\\MADE.Networking.Tests.csproj",
+      "tests\\MADE.Web.Tests\\MADE.Web.Tests.csproj"
+    ]
+  }
+}

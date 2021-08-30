@@ -1,0 +1,32 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0;xamarinmac20</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET UI View Navigation</Product>
+    <Description>
+      This package includes enhancements to build page to page navigation for Windows and Uno Platform such as:
+      - Page, an extension to the app Page type to improve the page experience
+      - NavigationService providing an easy to use, MVVM friendly, page-to-page navigation service
+    </Description>
+    <PackageTags>MADE UI View Page Navigation Windows Android iOS macOS Xamarin Uno</PackageTags>
+    <GenerateLibraryLayout>true</GenerateLibraryLayout>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFrameworkIdentifier)' == 'MonoAndroid' or '$(TargetFrameworkIdentifier)' == 'Xamarin.iOS' or '$(TargetFrameworkIdentifier)' == '.NETStandard' or '$(TargetFrameworkIdentifier)' == 'Xamarin.Mac'">
+    <PackageReference Include="Uno.UI" Version="3.9.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="**\*.xaml" Exclude="bin\**\*.xaml;obj\**\*.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.UI\MADE.UI.csproj" />
+  </ItemGroup>
+
+</Project>
