@@ -8,7 +8,7 @@ namespace MADE.UI.Views.Navigation.Pages
     /// <summary>
     /// Defines an extended page implementation.
     /// </summary>
-    public class Page : Windows.UI.Xaml.Controls.Page
+    public partial class Page : Windows.UI.Xaml.Controls.Page
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Page"/> class.

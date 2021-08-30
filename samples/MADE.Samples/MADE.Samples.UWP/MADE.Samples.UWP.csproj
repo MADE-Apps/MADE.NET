@@ -2,6 +2,12 @@
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm">
+      <Version>7.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>5.0.2</Version>
+    </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <!--
 			If, in the same solution, you are referencing a project that uses https://github.com/onovotny/MSBuildSdkExtras,
@@ -12,8 +18,6 @@
     </PackageReference>
     <PackageReference Include="Uno.Core" Version="2.4.0" />
     <PackageReference Include="Uno.UI" Version="3.9.7" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.2" />
   </ItemGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -171,9 +175,25 @@
       <Project>{e2b20928-dae2-4a9c-bdaf-d787b4f48391}</Project>
       <Name>MADE.UI.Controls.Validator</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\src\MADE.UI.Styling\MADE.UI.Styling.csproj">
+      <Project>{f8d00106-0598-45e7-b92e-ef408249c02e}</Project>
+      <Name>MADE.UI.Styling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\MADE.UI.ViewManagement\MADE.UI.ViewManagement.csproj">
+      <Project>{442d1e25-ffd1-405d-a1fc-40cafcad190c}</Project>
+      <Name>MADE.UI.ViewManagement</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\MADE.UI.Views.Dialogs\MADE.UI.Views.Dialogs.csproj">
       <Project>{2b5c0bea-18d8-4b82-af64-ede15505e793}</Project>
       <Name>MADE.UI.Views.Dialogs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\MADE.UI.Views.Navigation.Mvvm\MADE.UI.Views.Navigation.Mvvm.csproj">
+      <Project>{0ca60466-059c-42d3-9b68-6bbb75a75090}</Project>
+      <Name>MADE.UI.Views.Navigation.Mvvm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\src\MADE.UI.Views.Navigation\MADE.UI.Views.Navigation.csproj">
+      <Project>{99e31579-1168-4983-bced-e7853e33ef5b}</Project>
+      <Name>MADE.UI.Views.Navigation</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\src\MADE.UI\MADE.UI.csproj">
       <Project>{79afd8fc-7789-47b7-b808-26e03d0f1e05}</Project>

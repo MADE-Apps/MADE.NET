@@ -3,7 +3,9 @@
 
 namespace MADE.UI.Views.Navigation.ViewModels
 {
+    using System.Windows.Input;
     using CommunityToolkit.Mvvm.ComponentModel;
+    using CommunityToolkit.Mvvm.Input;
     using CommunityToolkit.Mvvm.Messaging;
     using Windows.UI.Xaml.Navigation;
 
@@ -15,18 +17,30 @@ namespace MADE.UI.Views.Navigation.ViewModels
         /// <summary>
         /// Initializes a new instance of the <see cref="PageViewModel"/> class.
         /// </summary>
+        /// <param name="navigationService">The <see cref="INavigationService"/> for navigating from page to page.</param>
         /// <param name="messenger">
         /// The <see cref="IMessenger"/> for exchanging messages between objects.
         /// </param>
-        public PageViewModel(IMessenger messenger)
+        public PageViewModel(INavigationService navigationService, IMessenger messenger)
         {
+            this.NavigationService = navigationService;
             this.Messenger = messenger;
         }
+
+        /// <summary>
+        /// Gets the <see cref="INavigationService"/> for navigating from page to page.
+        /// </summary>
+        public INavigationService NavigationService { get; }
 
         /// <summary>
         /// Gets the <see cref="IMessenger"/> for exchanging messages between objects.
         /// </summary>
         public IMessenger Messenger { get; }
+
+        /// <summary>
+        /// Gets the <see cref="ICommand"/> associated with navigating back.
+        /// </summary>
+        public ICommand GoBackCommand => new RelayCommand(this.GoBack);
 
         /// <summary>
         /// Called when the page has loaded.
@@ -63,6 +77,11 @@ namespace MADE.UI.Views.Navigation.ViewModels
         /// </param>
         public virtual void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
+        }
+
+        protected virtual void GoBack()
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

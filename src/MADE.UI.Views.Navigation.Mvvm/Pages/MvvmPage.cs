@@ -9,7 +9,7 @@ namespace MADE.UI.Views.Navigation.Pages
     /// <summary>
     /// Defines an MVVM friendly page that is compatible with the Windows Community Toolkit MVVM library.
     /// </summary>
-    public class MvvmPage : Page
+    public partial class MvvmPage : Page
     {
         /// <summary>
         /// Called when the page has loaded.
