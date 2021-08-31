@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -132,8 +132,14 @@
   <data name="IpAddressValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be a valid IP address, e.g. 192.168.0.1.</value>
   </data>
+  <data name="MaxLengthValidator_FeedbackMessage" xml:space="preserve">
+    <value>The length must be less than {0}.</value>
+  </data>
   <data name="MaxValueValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be less than {0}.</value>
+  </data>
+  <data name="MinLengthValidator_FeedbackMessage" xml:space="preserve">
+    <value>The length must be greater than {0}.</value>
   </data>
   <data name="MinValueValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be greater than {0}.</value>
@@ -142,6 +148,6 @@
     <value>The value does not match the valid mask.</value>
   </data>
   <data name="RequiredValidator_FeedbackMessage" xml:space="preserve">
-    <value>Please fill out this field.</value>
+    <value>A value is required.</value>
   </data>
 </root>
