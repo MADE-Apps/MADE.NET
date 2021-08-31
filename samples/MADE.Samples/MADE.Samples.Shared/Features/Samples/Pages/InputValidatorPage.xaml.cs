@@ -6,16 +6,16 @@ namespace MADE.Samples.Features.Samples.Pages
     using MADE.UI.Views.Navigation.Pages;
     using Microsoft.Extensions.DependencyInjection;
 
-    public sealed partial class FilePickerPage : MvvmPage
+    public sealed partial class InputValidatorPage : MvvmPage
     {
-        public FilePickerPage()
+        public InputValidatorPage()
         {
             this.InitializeComponent();
-            this.DataContext = new FileInputSamplePageViewModel(
+            this.DataContext = new InputValidatorPageViewModel(
                 App.Services.GetService<INavigationService>(),
                 App.Services.GetService<IMessenger>());
         }
 
-        public FileInputSamplePageViewModel ViewModel => this.DataContext as FileInputSamplePageViewModel;
+        public InputValidatorPageViewModel ViewModel => this.DataContext as InputValidatorPageViewModel;
     }
 }

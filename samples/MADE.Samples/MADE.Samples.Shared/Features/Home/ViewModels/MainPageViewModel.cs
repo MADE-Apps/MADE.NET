@@ -17,7 +17,7 @@ namespace MADE.Samples.Features.Home.ViewModels
         {
         }
 
-        public ICommand NavigateToSampleCommand => new RelayCommand<Sample>(this.NavigateToSample);
+        public ICommand NavigateToSampleCommand => new RelayCommand<Sample>(NavigateToSample);
 
         public ICollection<SampleGroup> SampleGroups { get; } = new List<SampleGroup>
         {
@@ -30,7 +30,12 @@ namespace MADE.Samples.Features.Home.ViewModels
                         "FilePicker",
                         typeof(FilePickerPage),
                         string.Empty,
-                        "/Features/Samples/Assets/FilePicker.png")
+                        "/Features/Samples/Assets/FilePicker.png"),
+                    new Sample(
+                        "InputValidator",
+                        typeof(InputValidatorPage),
+                        string.Empty,
+                        "/Features/Samples/Assets/InputValidator.png"),
                 }
             }
         };
@@ -39,7 +44,7 @@ namespace MADE.Samples.Features.Home.ViewModels
 
         private void NavigateToSample(Sample sample)
         {
-            this.NavigationService.NavigateTo(sample.Page);
+            NavigationService.NavigateTo(sample.Page);
         }
     }
 }

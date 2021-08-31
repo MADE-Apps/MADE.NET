@@ -14,7 +14,7 @@
     <Grid Padding="12">
         <controls:AdaptiveGridView
             extensions:ListViewBaseExtensions.ItemClickCommand="{x:Bind ViewModel.NavigateToSampleCommand}"
-            DesiredWidth="400"
+            DesiredWidth="340"
             IsItemClickEnabled="true"
             ItemsSource="{x:Bind ViewModel.Samples}"
             OneRowModeEnabled="False"

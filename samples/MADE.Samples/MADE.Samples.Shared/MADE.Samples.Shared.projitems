@@ -27,7 +27,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\Pages\FilePickerPage.xaml.cs">
       <DependentUpon>FilePickerPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\Pages\InputValidatorPage.xaml.cs">
+      <DependentUpon>InputValidatorPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\ViewModels\FilePickerPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\ViewModels\InputValidatorPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\ViewModels\ViewModelExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -39,17 +43,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="$(MSBuildThisFileDirectory)Assets\SharedAssets.md" />
+    <Page Include="$(MSBuildThisFileDirectory)Features\Samples\Pages\InputValidatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Features\Home\Pages\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Infrastructure\Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Infrastructure\Validation\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\FilePicker.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator.png" />
   </ItemGroup>
 </Project>

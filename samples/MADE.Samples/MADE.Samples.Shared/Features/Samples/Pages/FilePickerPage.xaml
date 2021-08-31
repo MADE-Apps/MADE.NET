@@ -37,13 +37,13 @@
 
             <TextBlock
                 Margin="0,0,0,12"
-                Style="{StaticResource HeaderTextBlockStyle}"
+                Style="{StaticResource TitleTextBlockStyle}"
                 Text="FilePicker control" />
 
             <TextBlock
                 Grid.Row="1"
-                Margin="0,0,0,12"
-                Style="{StaticResource SubtitleTextBlockStyle}"
+                Margin="0,0,0,48"
+                Style="{StaticResource BaseTextBlockStyle}"
                 Text="The FilePicker is a custom-built UI element that provides a file selection user experience. The control works in a similar way to the file input element in web applications." />
 
             <ScrollViewer Grid.Row="2">
