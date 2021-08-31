@@ -1,6 +1,7 @@
 namespace MADE.Samples.Features.Home.ViewModels
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Windows.Input;
     using CommunityToolkit.Mvvm.Input;
     using CommunityToolkit.Mvvm.Messaging;
@@ -18,7 +19,7 @@ namespace MADE.Samples.Features.Home.ViewModels
 
         public ICommand NavigateToSampleCommand => new RelayCommand<Sample>(this.NavigateToSample);
 
-        public ICollection<SampleGroup> Samples { get; } = new List<SampleGroup>
+        public ICollection<SampleGroup> SampleGroups { get; } = new List<SampleGroup>
         {
             new SampleGroup
             {
@@ -33,6 +34,8 @@ namespace MADE.Samples.Features.Home.ViewModels
                 }
             }
         };
+
+        public ICollection<Sample> Samples => SampleGroups.SelectMany(x => x.Samples).ToList();
 
         private void NavigateToSample(Sample sample)
         {
