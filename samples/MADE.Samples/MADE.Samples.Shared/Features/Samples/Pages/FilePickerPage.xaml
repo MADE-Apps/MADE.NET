@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:MADE.UI.Views.Navigation.Pages"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
@@ -15,8 +16,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <CommandBar>
-            <CommandBar.Content>
+        <win:CommandBar>
+            <win:CommandBar.Content>
                 <Button
                     x:Name="BackButton"
                     VerticalAlignment="Top"
@@ -24,8 +25,8 @@
                     IsEnabled="{x:Bind Frame.CanGoBack, Mode=OneWay}"
                     Style="{StaticResource NavigationBackButtonNormalStyle}"
                     ToolTipService.ToolTip="Back" />
-            </CommandBar.Content>
-        </CommandBar>
+            </win:CommandBar.Content>
+        </win:CommandBar>
 
         <Grid Grid.Row="1" Padding="12">
             <Grid.RowDefinitions>
@@ -51,6 +52,7 @@
                         x:Name="FilePickerControl"
                         Margin="0,12,0,0"
                         AppendFiles="True"
+                        FileTypes="{x:Bind ViewModel.FilePickerTypes}"
                         Files="{x:Bind ViewModel.FilePickerFiles}"
                         Header="FilePicker with multiple item selection"
                         SelectionMode="Multiple" />

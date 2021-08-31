@@ -1,7 +1,6 @@
 namespace MADE.Samples
 {
     using System;
-    using System.Threading.Tasks;
     using CommunityToolkit.Mvvm.DependencyInjection;
     using CommunityToolkit.Mvvm.Messaging;
     using MADE.Diagnostics;
@@ -43,14 +42,9 @@ namespace MADE.Samples
         }
 
 
-        protected override async void OnLaunched(LaunchActivatedEventArgs e)
+        protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
-            await this.ActivateAsync(e.PrelaunchActivated);
-        }
-
-        protected override async void OnActivated(IActivatedEventArgs args)
-        {
-            await this.ActivateAsync(false);
+            this.Activate(e.PrelaunchActivated);
         }
 
         private static IServiceProvider ConfigureServices(Frame rootFrame)
@@ -72,7 +66,7 @@ namespace MADE.Samples
             throw new InvalidOperationException($"Failed to load page {e.SourcePageType.FullName}.");
         }
 
-        private async Task ActivateAsync(bool isPrelaunch)
+        private void Activate(bool isPrelaunch)
         {
 #if NET5_0 && WINDOWS
 			var window = new Window();
@@ -91,11 +85,10 @@ namespace MADE.Samples
                 this.serviceProvider = ConfigureServices(rootFrame);
 
                 IAppDiagnostics diagnostics = this.serviceProvider.GetService<IAppDiagnostics>();
-                if (diagnostics != null)
-                {
-                    await diagnostics.StartRecordingDiagnosticsAsync();
-                }
+                diagnostics?.StartRecordingDiagnosticsAsync();
             }
+
+            Console.WriteLine($"Launching. IsPreLaunch: {isPrelaunch}. Content: {rootFrame.Content}");
 
             if (!isPrelaunch)
             {

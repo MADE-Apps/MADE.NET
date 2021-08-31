@@ -5,9 +5,9 @@ namespace MADE.Samples.Features.Home.ViewModels
     using CommunityToolkit.Mvvm.Input;
     using CommunityToolkit.Mvvm.Messaging;
     using MADE.Samples.Features.Samples.Data;
+    using MADE.Samples.Features.Samples.Pages;
     using MADE.UI.Views.Navigation;
     using MADE.UI.Views.Navigation.ViewModels;
-    using MADE.Samples.Features.Samples.Pages;
 
     public class MainPageViewModel : PageViewModel
     {
@@ -18,13 +18,19 @@ namespace MADE.Samples.Features.Home.ViewModels
 
         public ICommand NavigateToSampleCommand => new RelayCommand<Sample>(this.NavigateToSample);
 
-        public ICollection<Sample> Samples { get; } = new List<Sample>
+        public ICollection<SampleGroup> Samples { get; } = new List<SampleGroup>
         {
-            new Sample
+            new SampleGroup
             {
-                Name = "FileInput",
-                Category = "Controls",
-                Page = typeof(FilePickerPage)
+                Name = "Controls",
+                Samples = new List<Sample>
+                {
+                    new Sample(
+                        "FilePicker",
+                        typeof(FilePickerPage),
+                        string.Empty,
+                        "/Features/Samples/Assets/FilePicker.png")
+                }
             }
         };
 
