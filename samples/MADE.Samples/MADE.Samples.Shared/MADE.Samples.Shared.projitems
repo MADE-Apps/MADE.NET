@@ -43,6 +43,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\ViewModels\ViewModelExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\AppDialog\AppDialog.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\AppDialog\AppDialogCode.txt">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </Content>
     <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\FilePicker\FilePickerCode.txt">
       <SubType>Designer</SubType>
       <Generator>
@@ -80,7 +86,6 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Features\Home\Pages\" />
     <Folder Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\AppDialog\" />
     <Folder Include="$(MSBuildThisFileDirectory)Infrastructure\Validation\" />
   </ItemGroup>
   <ItemGroup>

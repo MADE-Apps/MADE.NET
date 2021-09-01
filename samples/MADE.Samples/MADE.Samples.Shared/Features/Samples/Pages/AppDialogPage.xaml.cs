@@ -2,6 +2,7 @@ namespace MADE.Samples.Features.Samples.Pages
 {
     using CommunityToolkit.Mvvm.Messaging;
     using MADE.Samples.Features.Samples.ViewModels;
+    using MADE.UI.Views.Dialogs;
     using MADE.UI.Views.Navigation;
     using MADE.UI.Views.Navigation.Pages;
     using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,7 @@ namespace MADE.Samples.Features.Samples.Pages
         {
             this.InitializeComponent();
             this.DataContext = new AppDialogPageViewModel(
+                App.Services.GetService<IAppDialog>(),
                 App.Services.GetService<INavigationService>(),
                 App.Services.GetService<IMessenger>());
         }

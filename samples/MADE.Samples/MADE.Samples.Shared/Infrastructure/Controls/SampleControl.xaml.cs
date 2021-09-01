@@ -160,6 +160,8 @@ namespace MADE.Samples.Infrastructure.Controls
         {
             if (source != null && source.AbsolutePath.EndsWith("txt"))
             {
+                presenter.Visibility = Visibility.Visible;
+
                 var absoluteSourceUri = GetApplicationSourceUri(source);
                 var file = await StorageFile.GetFileFromApplicationUriAsync(absoluteSourceUri);
                 var content = await FileIO.ReadTextAsync(file);

@@ -7,6 +7,7 @@ namespace MADE.Samples
     using MADE.Diagnostics.Logging;
     using MADE.Samples.Features.Home.Pages;
     using MADE.Samples.Infrastructure.ViewModels;
+    using MADE.UI.Views.Dialogs;
     using MADE.UI.Views.Navigation;
     using Microsoft.Extensions.DependencyInjection;
     using Windows.ApplicationModel.Activation;
@@ -52,6 +53,7 @@ namespace MADE.Samples
             Ioc.Default.ConfigureServices(
                 new ServiceCollection()
                     .AddSingleton<IMessenger>(provider => WeakReferenceMessenger.Default)
+                    .AddSingleton<IAppDialog>(provider => new AppDialog(rootFrame.Dispatcher))
                     .AddSingleton<IEventLogger, FileEventLogger>()
                     .AddSingleton<IAppDiagnostics, AppDiagnostics>()
                     .AddSingleton<INavigationService>(provider => new NavigationService(rootFrame))

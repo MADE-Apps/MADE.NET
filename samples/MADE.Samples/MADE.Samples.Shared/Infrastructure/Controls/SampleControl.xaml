@@ -19,13 +19,12 @@
             Style="{ThemeResource SubtitleTextBlockStyle}"
             Text="{x:Bind SampleName}" />
 
-        <TextBlock
+        <Grid
             Grid.Row="1"
-            Margin="0,0,0,16"
-            Style="{ThemeResource BaseTextBlockStyle}"
-            Text="{x:Bind SampleDescription}" />
-
-        <Grid Grid.Row="2">
+            Background="#F0F0F0"
+            BorderBrush="#E9E9E9"
+            BorderThickness="2"
+            CornerRadius="8">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
@@ -34,19 +33,25 @@
 
             <ContentPresenter
                 x:Name="SamplePresenter"
-                Margin="0,0,0,16"
+                Padding="16"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 HorizontalContentAlignment="Stretch"
-                BorderBrush="{ThemeResource SystemControlBackgroundListLowBrush}"
                 Content="{x:Bind Sample}" />
 
             <Grid
                 x:Name="SampleXamlPresenter"
                 Grid.Row="1"
-                Margin="0,0,0,16" />
+                Padding="16"
+                Background="#F9F9F9"
+                Visibility="Collapsed" />
 
-            <Grid x:Name="SampleCodePresenter" Grid.Row="2" />
+            <Grid
+                x:Name="SampleCodePresenter"
+                Grid.Row="2"
+                Padding="16"
+                Background="#F9F9F9"
+                Visibility="Collapsed" />
         </Grid>
     </Grid>
 </UserControl>

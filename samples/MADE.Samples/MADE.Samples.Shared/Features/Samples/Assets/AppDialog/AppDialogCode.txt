@@ -1,0 +1,25 @@
+private async Task ShowAppDialogAsync()
+{
+    // This can be registered globally in a service collection and made available through dependency injection.
+    IAppDialog appDialog = new AppDialog(this.Dispatcher);
+
+    await appDialog.ShowAsync(
+        "Title",
+        "Message",
+        () => { Console.WriteLine("App dialog was dismissed!") },
+        new DialogButton(DialogButtonType.Confirm)
+        {
+            Content = "Confirm",
+            InvokeAction = button => Console.WriteLine("App dialog confirm button clicked!")
+        },
+        new DialogButton(DialogButtonType.Cancel)
+        {
+            Content = "Cancel",
+            InvokeAction = button => Console.WriteLine("App dialog cancel button clicked!")
+        },
+        new DialogButton(DialogButtonType.Neutral)
+        {
+            Content = "Help",
+            InvokeAction = button => Console.WriteLine("App dialog help button clicked!")
+        });
+}
