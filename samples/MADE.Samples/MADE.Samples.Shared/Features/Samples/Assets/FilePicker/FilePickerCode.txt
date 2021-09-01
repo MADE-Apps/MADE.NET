@@ -1,0 +1,4 @@
+public ObservableCollection<FilePickerItem> FilePickerFiles { get; } =
+    new ObservableCollection<FilePickerItem>();
+
+public ICollection<string> FilePickerTypes => new List<string> { ".jpg" };

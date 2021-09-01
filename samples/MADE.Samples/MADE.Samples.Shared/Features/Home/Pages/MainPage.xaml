@@ -11,10 +11,10 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
 
-    <Grid Padding="12">
+    <Grid Padding="16">
         <controls:AdaptiveGridView
             extensions:ListViewBaseExtensions.ItemClickCommand="{x:Bind ViewModel.NavigateToSampleCommand}"
-            DesiredWidth="340"
+            DesiredWidth="336"
             IsItemClickEnabled="true"
             ItemsSource="{x:Bind ViewModel.Samples}"
             OneRowModeEnabled="False"
@@ -22,33 +22,19 @@
             StretchContentForSingleRow="False">
             <controls:AdaptiveGridView.ItemTemplate>
                 <DataTemplate x:DataType="data:Sample">
-                    <StackPanel Padding="12" Background="Transparent">
+                    <StackPanel Padding="16" Background="Transparent">
                         <Grid>
                             <Border>
                                 <Image Source="{Binding IconPath}" />
                             </Border>
                         </Grid>
 
-                        <Grid Margin="0,12,0,0">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-
-                            <TextBlock
-                                VerticalAlignment="Center"
-                                Style="{StaticResource BodyTextBlockStyle}"
-                                Text="{Binding Name}"
-                                TextTrimming="CharacterEllipsis" />
-
-                            <TextBlock
-                                Grid.Row="1"
-                                VerticalAlignment="Center"
-                                MaxLines="2"
-                                Style="{StaticResource CaptionTextBlockStyle}"
-                                Text="{Binding Description}"
-                                TextTrimming="CharacterEllipsis" />
-                        </Grid>
+                        <TextBlock
+                            Margin="0,16,0,0"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource BodyTextBlockStyle}"
+                            Text="{Binding Name}"
+                            TextTrimming="CharacterEllipsis" />
                     </StackPanel>
                 </DataTemplate>
             </controls:AdaptiveGridView.ItemTemplate>

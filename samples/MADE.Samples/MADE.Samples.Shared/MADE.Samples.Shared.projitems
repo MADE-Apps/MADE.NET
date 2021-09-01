@@ -24,18 +24,40 @@
     <Compile Include="$(MSBuildThisFileDirectory)Features\Home\ViewModels\MainPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\Data\Sample.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\Data\SampleGroup.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\Pages\AppDialogPage.xaml.cs">
+      <DependentUpon>AppDialogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\Pages\FilePickerPage.xaml.cs">
       <DependentUpon>FilePickerPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\Pages\InputValidatorPage.xaml.cs">
       <DependentUpon>InputValidatorPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\ViewModels\AppDialogPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\ViewModels\FilePickerPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Features\Samples\ViewModels\InputValidatorPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\Controls\SampleControl.xaml.cs">
+      <DependentUpon>SampleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\Styling\ThemeHelper.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Infrastructure\ViewModels\ViewModelExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\FilePicker\FilePickerCode.txt">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </Content>
     <Page Include="$(MSBuildThisFileDirectory)Features\Home\Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\FilePicker\FilePickerXaml.txt">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </Content>
+    <Page Include="$(MSBuildThisFileDirectory)Features\Samples\Pages\AppDialogPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -47,17 +69,22 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Infrastructure\Controls\SampleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Features\Home\Pages\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Infrastructure\Controls\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\AppDialog\" />
     <Folder Include="$(MSBuildThisFileDirectory)Infrastructure\Validation\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\FilePicker.png" />
-    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\FilePicker\FilePicker.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\InputValidator.png" />
   </ItemGroup>
 </Project>

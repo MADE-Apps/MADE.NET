@@ -1,12 +1,11 @@
 <pages:MvvmPage
-    x:Class="MADE.Samples.Features.Samples.Pages.FilePickerPage"
+    x:Class="MADE.Samples.Features.Samples.Pages.AppDialogPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:MADE.UI.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:made="using:MADE.UI.Controls"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:MADE.UI.Views.Navigation.Pages"
-    xmlns:samples="using:MADE.Samples.Infrastructure.Controls"
     xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
     mc:Ignorable="d">
@@ -39,7 +38,7 @@
             <TextBlock
                 Margin="0,0,0,16"
                 Style="{StaticResource TitleTextBlockStyle}"
-                Text="FilePicker" />
+                Text="AppDialog helper" />
 
             <TextBlock
                 Grid.Row="1"
@@ -49,23 +48,19 @@
 
             <ScrollViewer Grid.Row="2">
                 <Grid>
-                    <samples:SampleControl
-                        CodeSource="FilePicker/FilePickerCode.txt"
-                        SampleName="A basic FilePicker with multiple files, append on add, and jpg file type support"
-                        XamlSource="FilePicker/FilePickerXaml.txt">
-                        <samples:SampleControl.Sample>
-                            <made:FilePicker
-                                x:Name="FilePickerControl"
-                                Margin="0,12,0,0"
-                                AppendFiles="True"
-                                FileTypes="{x:Bind ViewModel.FilePickerTypes}"
-                                Files="{x:Bind ViewModel.FilePickerFiles}"
-                                Header="FilePicker"
-                                SelectionMode="Multiple" />
-                        </samples:SampleControl.Sample>
-                    </samples:SampleControl>
+                    <!--<controls:FilePicker
+                        x:Name="FilePickerControl"
+                        Margin="0,16,0,0"
+                        AppendFiles="True"
+                        FileTypes="{x:Bind ViewModel.FilePickerTypes}"
+                        Files="{x:Bind ViewModel.FilePickerFiles}"
+                        Header="FilePicker with multiple item selection"
+                        SelectionMode="Multiple" />-->
                 </Grid>
             </ScrollViewer>
+
         </Grid>
+
+
     </Grid>
 </pages:MvvmPage>

@@ -121,6 +121,9 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection">
       <Version>5.0.2</Version>
     </PackageReference>
+    <PackageReference Include="Uno.ColorCode.UWP">
+      <Version>2.0.8-gd42a883502</Version>
+    </PackageReference>
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls.Primitives">
       <Version>7.0.0</Version>
     </PackageReference>

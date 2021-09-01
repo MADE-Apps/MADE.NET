@@ -30,12 +30,24 @@ namespace MADE.Samples.Features.Home.ViewModels
                         "FilePicker",
                         typeof(FilePickerPage),
                         string.Empty,
-                        "/Features/Samples/Assets/FilePicker.png"),
+                        "/Features/Samples/Assets/FilePicker/FilePicker.png"),
                     new Sample(
                         "InputValidator",
                         typeof(InputValidatorPage),
                         string.Empty,
-                        "/Features/Samples/Assets/InputValidator.png"),
+                        "/Features/Samples/Assets/InputValidator/InputValidator.png")
+                }
+            },
+            new SampleGroup
+            {
+                Name = "Helpers",
+                Samples = new List<Sample>
+                {
+                    new Sample(
+                        "AppDialog",
+                        typeof(AppDialogPage),
+                        string.Empty,
+                        "/Features/Samples/Assets/AppDialog/AppDialog.png")
                 }
             }
         };
