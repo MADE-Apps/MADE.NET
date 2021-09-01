@@ -1,0 +1,7 @@
+public ValidatorCollection InputDateValidators { get; } = new ValidatorCollection { new RequiredValidator(), new BetweenValidator(DateTimeOffset.Now.AddDays(-7), DateTimeOffset.Now.AddDays(7)) };
+
+public DateTimeOffset? InputDate
+{
+    get => inputDate;
+    set => this.SetProperty(ref inputDate, value);
+}

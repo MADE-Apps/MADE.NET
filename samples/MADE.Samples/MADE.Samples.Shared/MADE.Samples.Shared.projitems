@@ -54,6 +54,26 @@
       <Generator>
       </Generator>
     </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\InputValidatorDatePickerCode.txt">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\InputValidatorTextBoxCode.txt">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\InputValidatorDatePickerXaml.txt">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </Content>
+    <Content Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\InputValidatorTextBoxXaml.txt">
+      <SubType>Designer</SubType>
+      <Generator>
+      </Generator>
+    </Content>
     <Page Include="$(MSBuildThisFileDirectory)Features\Home\Pages\MainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -85,7 +105,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Features\Home\Pages\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Features\Samples\Assets\InputValidator\" />
     <Folder Include="$(MSBuildThisFileDirectory)Infrastructure\Validation\" />
   </ItemGroup>
   <ItemGroup>

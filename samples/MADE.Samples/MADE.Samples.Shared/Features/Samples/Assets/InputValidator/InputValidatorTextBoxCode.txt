@@ -1,0 +1,7 @@
+public ValidatorCollection InputTextValidators { get; } = new ValidatorCollection { new RequiredValidator(), new MaxLengthValidator(16) };
+
+public string InputText
+{
+    get => inputText;
+    set => this.SetProperty(ref inputText, value);
+}
