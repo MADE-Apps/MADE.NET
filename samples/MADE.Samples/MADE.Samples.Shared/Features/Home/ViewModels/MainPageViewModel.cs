@@ -29,12 +29,10 @@ namespace MADE.Samples.Features.Home.ViewModels
                     new Sample(
                         "FilePicker",
                         typeof(FilePickerPage),
-                        string.Empty,
                         "/Features/Samples/Assets/FilePicker/FilePicker.png"),
                     new Sample(
                         "InputValidator",
                         typeof(InputValidatorPage),
-                        string.Empty,
                         "/Features/Samples/Assets/InputValidator/InputValidator.png")
                 }
             },
@@ -46,8 +44,11 @@ namespace MADE.Samples.Features.Home.ViewModels
                     new Sample(
                         "AppDialog",
                         typeof(AppDialogPage),
-                        string.Empty,
-                        "/Features/Samples/Assets/AppDialog/AppDialog.png")
+                        "/Features/Samples/Assets/AppDialog/AppDialog.png"),
+                    new Sample(
+                        "WindowManager",
+                        typeof(WindowManagerPage),
+                        "/Features/Samples/Assets/WindowManager/WindowManager.png")
                 }
             }
         };

@@ -1,5 +1,5 @@
 <pages:MvvmPage
-    x:Class="MADE.Samples.Features.Samples.Pages.FilePickerPage"
+    x:Class="MADE.Samples.Features.Samples.Pages.WindowManagerPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -39,28 +39,19 @@
             <TextBlock
                 Margin="0,0,0,16"
                 Style="{StaticResource TitleTextBlockStyle}"
-                Text="FilePicker control" />
+                Text="WindowManager helper" />
 
             <TextBlock
                 Grid.Row="1"
                 Margin="0,0,0,48"
                 Style="{StaticResource BaseTextBlockStyle}"
-                Text="The FilePicker is a custom-built UI element that provides a file selection user experience. The control works in a similar way to the file input element in web applications." />
+                Text="The WindowManager is UI helper that provides a mechanism to launch additional windows for an application through a similar implementation to navigating from page to page with the Frame. The WindowManager takes advantage of the ViewServiceManager approach by registering necessary view specific dependencies within a container that can be referenced anywhere in an application. This allows multiple application windows to be able to communicate with each other seamlessly." />
 
             <ScrollViewer Grid.Row="2">
                 <Grid>
-                    <samples:SampleControl
-                        CodeSource="FilePicker/FilePickerCode.txt"
-                        SampleName="A basic FilePicker with multiple files, append on add, and jpg file type support"
-                        XamlSource="FilePicker/FilePickerXaml.txt">
+                    <samples:SampleControl CodeSource="WindowManager/WindowManagerCode.txt" SampleName="Launch additional application windows">
                         <samples:SampleControl.Sample>
-                            <made:FilePicker
-                                x:Name="FilePickerControl"
-                                AppendFiles="True"
-                                FileTypes="{x:Bind ViewModel.FilePickerTypes}"
-                                Files="{x:Bind ViewModel.FilePickerFiles}"
-                                Header="FilePicker"
-                                SelectionMode="Multiple" />
+                            <Button Command="{x:Bind ViewModel.ShowNewWindowCommand}" Content="Launch new window" />
                         </samples:SampleControl.Sample>
                     </samples:SampleControl>
                 </Grid>
