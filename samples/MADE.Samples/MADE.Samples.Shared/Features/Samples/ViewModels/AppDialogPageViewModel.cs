@@ -73,7 +73,7 @@ namespace MADE.Samples.Features.Samples.ViewModels
                 new DialogButton(DialogButtonType.Confirm)
                 {
                     Content = AppDialogConfirmText,
-                    InvokeAction = button => Console.WriteLine("")
+                    InvokeAction = this.OnDialogButtonInvoked
                 },
                 new DialogButton(DialogButtonType.Cancel)
                 {
