@@ -151,6 +151,10 @@
       <Project>{713ab96d-1ee2-45ca-a41e-47401edcc656}</Project>
       <Name>MADE.Diagnostics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\src\MADE.Foundation\MADE.Foundation.csproj">
+      <Project>{c8df10b0-d157-47cf-bd10-9ee1d06beb9a}</Project>
+      <Name>MADE.Foundation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\MADE.Media.Image\MADE.Media.Image.csproj">
       <Project>{3038eda8-3068-45ad-99a2-36986627b880}</Project>
       <Name>MADE.Media.Image</Name>

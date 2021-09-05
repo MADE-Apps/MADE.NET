@@ -51,6 +51,7 @@
     <ProjectReference Include="..\..\..\src\MADE.Data.Converters\MADE.Data.Converters.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.Data.Validation\MADE.Data.Validation.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.Diagnostics\MADE.Diagnostics.csproj" />
+    <ProjectReference Include="..\..\..\src\MADE.Foundation\MADE.Foundation.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.Networking\MADE.Networking.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.Runtime\MADE.Runtime.csproj" />
     <ProjectReference Include="..\..\..\src\MADE.Threading\MADE.Threading.csproj" />

@@ -24,4 +24,8 @@
     </Page>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.Foundation\MADE.Foundation.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -115,6 +115,10 @@
       <Project>{713ab96d-1ee2-45ca-a41e-47401edcc656}</Project>
       <Name>MADE.Diagnostics</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\src\MADE.Foundation\MADE.Foundation.csproj">
+      <Project>{c8df10b0-d157-47cf-bd10-9ee1d06beb9a}</Project>
+      <Name>MADE.Foundation</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\src\MADE.Networking\MADE.Networking.csproj">
       <Project>{aa0647a7-110f-4fb8-88f7-a902cbb240a3}</Project>
       <Name>MADE.Networking</Name>

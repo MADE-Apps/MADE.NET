@@ -5,10 +5,12 @@ namespace MADE.Samples.Features.Home.ViewModels
     using System.Windows.Input;
     using CommunityToolkit.Mvvm.Input;
     using CommunityToolkit.Mvvm.Messaging;
+    using Foundation.Platform;
     using MADE.Samples.Features.Samples.Data;
     using MADE.Samples.Features.Samples.Pages;
     using MADE.UI.Views.Navigation;
     using MADE.UI.Views.Navigation.ViewModels;
+    using UI.ViewManagement;
 
     public class MainPageViewModel : PageViewModel
     {
@@ -19,12 +21,14 @@ namespace MADE.Samples.Features.Home.ViewModels
 
         public ICommand NavigateToSampleCommand => new RelayCommand<Sample>(NavigateToSample);
 
-        public ICollection<SampleGroup> SampleGroups { get; } = new List<SampleGroup>
+        public ICollection<SampleGroup> SampleGroups { get; } = GetSampleGroups();
+
+        private static ICollection<SampleGroup> GetSampleGroups()
         {
-            new SampleGroup
+            var controls = new SampleGroup
             {
                 Name = "Controls",
-                Samples = new List<Sample>
+                Samples =
                 {
                     new Sample(
                         "FilePicker",
@@ -35,23 +39,37 @@ namespace MADE.Samples.Features.Home.ViewModels
                         typeof(InputValidatorPage),
                         "/Features/Samples/Assets/InputValidator/InputValidator.png")
                 }
-            },
-            new SampleGroup
+            };
+
+            var helpers = new SampleGroup
             {
                 Name = "Helpers",
-                Samples = new List<Sample>
+                Samples =
                 {
                     new Sample(
                         "AppDialog",
                         typeof(AppDialogPage),
                         "/Features/Samples/Assets/AppDialog/AppDialog.png"),
+                }
+            };
+
+            if (PlatformApiHelper.IsTypeSupported(typeof(WindowManager)))
+            {
+                helpers.Samples.Add(
                     new Sample(
                         "WindowManager",
                         typeof(WindowManagerPage),
-                        "/Features/Samples/Assets/WindowManager/WindowManager.png")
-                }
+                        "/Features/Samples/Assets/WindowManager/WindowManager.png"));
             }
-        };
+
+            var list = new List<SampleGroup>
+            {
+                controls,
+                helpers
+            };
+
+            return list;
+        }
 
         public ICollection<Sample> Samples => SampleGroups.SelectMany(x => x.Samples).ToList();
 
