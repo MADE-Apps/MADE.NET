@@ -7,15 +7,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="5329834f-bf4c-4fdd-b591-53acb280b6b5"
+    Name="com.made.samplegallery"
     Publisher="CN=jmcro"
     Version="1.0.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="8d058a36-3f6f-4d35-925e-3321931918db" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>MADE.Samples</DisplayName>
-    <PublisherDisplayName>MADE.Samples</PublisherDisplayName>
+    <DisplayName>MADE Sample Gallery</DisplayName>
+    <PublisherDisplayName>MADE Apps</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -32,10 +32,10 @@
       Executable="MADE.Samples.exe"
       EntryPoint="MADE.Samples.App">
       <uap:VisualElements
-        DisplayName="MADE.Samples"
+        DisplayName="MADE Sample Gallery"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="MADE.Samples"
+        Description="A sample gallery application for features in the MADE.NET libraries"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />

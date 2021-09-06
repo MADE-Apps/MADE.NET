@@ -1,7 +1,6 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-#if WINDOWS_UWP
 namespace MADE.UI.ViewManagement
 {
     using System;
@@ -16,6 +15,9 @@ namespace MADE.UI.ViewManagement
     /// <summary>
     /// Defines helper methods for handling multiple windows for an application.
     /// </summary>
+#if __ANDROID__ || __WASM__ || __IOS__ || __MACOS__ || NETSTANDARD
+    [Foundation.Platform.PlatformNotSupported]
+#endif
     public static class WindowManager
     {
         /// <summary>
@@ -86,6 +88,10 @@ namespace MADE.UI.ViewManagement
             object parameter,
             Size desiredSize)
         {
+#if __ANDROID__ || __WASM__ || __IOS__ || __MACOS__ || NETSTANDARD
+            throw new Foundation.Platform.PlatformNotSupportedException($"{nameof(CreateNewWindowForPageAsync)} is not supported yet by this platform.");
+#endif
+
             CoreApplicationView newApplicationView = CoreApplication.CreateNewView();
 
             CoreWindow coreWindow = CoreApplication.GetCurrentView().CoreWindow;
@@ -201,4 +207,3 @@ namespace MADE.UI.ViewManagement
         }
     }
 }
-#endif

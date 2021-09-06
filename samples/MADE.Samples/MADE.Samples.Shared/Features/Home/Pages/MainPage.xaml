@@ -1,0 +1,43 @@
+<pages:MvvmPage
+    x:Class="MADE.Samples.Features.Home.Pages.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:data="using:MADE.Samples.Features.Samples.Data"
+    xmlns:extensions="using:MADE.UI.Extensions"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="using:MADE.UI.Views.Navigation.Pages"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid Padding="16">
+        <controls:AdaptiveGridView
+            extensions:ListViewBaseExtensions.ItemClickCommand="{x:Bind ViewModel.NavigateToSampleCommand}"
+            DesiredWidth="336"
+            IsItemClickEnabled="true"
+            ItemsSource="{x:Bind ViewModel.Samples}"
+            OneRowModeEnabled="False"
+            SelectionMode="None"
+            StretchContentForSingleRow="False">
+            <controls:AdaptiveGridView.ItemTemplate>
+                <DataTemplate x:DataType="data:Sample">
+                    <StackPanel Padding="16" Background="Transparent">
+                        <Grid>
+                            <Border>
+                                <Image Source="{Binding IconPath}" />
+                            </Border>
+                        </Grid>
+
+                        <TextBlock
+                            Margin="0,16,0,0"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource BodyTextBlockStyle}"
+                            Text="{Binding Name}"
+                            TextTrimming="CharacterEllipsis" />
+                    </StackPanel>
+                </DataTemplate>
+            </controls:AdaptiveGridView.ItemTemplate>
+        </controls:AdaptiveGridView>
+    </Grid>
+</pages:MvvmPage>

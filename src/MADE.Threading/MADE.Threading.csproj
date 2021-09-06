@@ -5,10 +5,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Threading</Product>
     <Description>
-      This package includes threading helpers such as:
-      - Timer for providing an easier to use alternative to the System.Threading.Timer.
+      This package includes:
+      - TaskExtensions for extending Task objects with helper methods, such as observing thrown exceptions and ensuring a task collection has completed running.
+      - Timer for providing an easier to use alternative to the System.Threading.Timer, including start and stop methods.
     </Description>
-    <PackageTags>MADE Threading Timer</PackageTags>
+    <PackageTags>MADE Threading Timer Task</PackageTags>
 
   </PropertyGroup>
 

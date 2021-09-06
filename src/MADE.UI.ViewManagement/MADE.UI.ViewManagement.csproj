@@ -5,8 +5,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI View Management</Product>
     <Description>
-      This package includes UI view management components for Windows and Uno Platform such as:
-      -
+      This package includes UI components for Windows and Uno Platform applications such as:
+      - ViewServiceManager for providing centralized management for services that are required per window/view.
+      - WindowManager for providing a simple mechanism for managing windows and their content by launching based on a page type.
     </Description>
     <PackageTags>MADE UI Views Management Windowing Windows Android iOS macOS Xamarin Uno</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
@@ -22,6 +23,10 @@
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.Foundation\MADE.Foundation.csproj" />
   </ItemGroup>
 
 </Project>

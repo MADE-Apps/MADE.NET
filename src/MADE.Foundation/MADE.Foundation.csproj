@@ -1,0 +1,15 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFrameworks>uap10.0.17763;MonoAndroid10.0;xamarinios10;netstandard2.0;xamarinmac20</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Foundation</Product>
+    <Description>
+      This package includes:
+      - PlatformApiHelper for providing a mechanism of ensuring cross-platform functionality in MADE libraries can be coded safely where APIs are not supported.
+    </Description>
+    <PackageTags>MADE Foundation Helpers Type Check Platform Uno</PackageTags>
+
+  </PropertyGroup>
+
+</Project>

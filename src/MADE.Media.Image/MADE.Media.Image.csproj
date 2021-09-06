@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Images</Product>
     <Description>
-      This package includes image helpers such as:
+      This package includes:
       - LoadStorageFileThumbnailImageBehavior for providing the ability to show a thumbnail for a storage file on an Image.
     </Description>
     <PackageTags>MADE Media Images Thumbnail StorageFile</PackageTags>

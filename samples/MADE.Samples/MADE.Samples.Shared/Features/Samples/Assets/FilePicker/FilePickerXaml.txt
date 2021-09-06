@@ -1,0 +1,21 @@
+<Page
+    x:Class="MADE.Samples.Features.Samples.Pages.FilePickerPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:made="using:MADE.UI.Controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:win="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Grid>
+        <made:FilePicker
+            x:Name="FilePickerControl"
+            AppendFiles="True"
+            FileTypes="{x:Bind FilePickerTypes}"
+            Files="{x:Bind FilePickerFiles}"
+            Header="FilePicker with multiple item selection"
+            SelectionMode="Multiple" />
+    </Grid>
+</Page>

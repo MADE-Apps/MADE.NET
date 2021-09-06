@@ -107,11 +107,29 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The length must be less than {0}..
+        /// </summary>
+        public static string MaxLengthValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("MaxLengthValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value must be less than {0}..
         /// </summary>
         public static string MaxValueValidator_FeedbackMessage {
             get {
                 return ResourceManager.GetString("MaxValueValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The length must be greater than {0}..
+        /// </summary>
+        public static string MinLengthValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("MinLengthValidator_FeedbackMessage", resourceCulture);
             }
         }
         
@@ -134,7 +152,7 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please fill out this field..
+        ///   Looks up a localized string similar to A value is required..
         /// </summary>
         public static string RequiredValidator_FeedbackMessage {
             get {

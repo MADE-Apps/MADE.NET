@@ -6,7 +6,6 @@ namespace MADE.Collections
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Runtime.CompilerServices;
 
     /// <summary>
     /// Defines a collection of extensions for enumerables, lists, and collections.
@@ -241,6 +240,44 @@ namespace MADE.Collections
                 .Select((v, i) => new { Index = i, Value = v })
                 .GroupBy(x => x.Index / chunkSize)
                 .Select(x => x.Select(v => v.Value));
+        }
+
+        /// <summary>Inserts an item to the specified <paramref name="source"/> at the potential index determined by the <paramref name="predicate"/>.</summary>
+        /// <param name="source">The source where the <paramref name="value" /> should be inserted.</param>
+        /// <param name="value">The object to insert into the <paramref name="source"/>.</param>
+        /// <param name="predicate">The action to run to determine the position of the item based on the provided <paramref name="value"/> and an item in the collection.</param>
+        /// <typeparam name="T">The type of items in the collection.</typeparam>
+        /// <returns>The inserted index of the item.</returns>
+        /// <exception cref="T:System.NotSupportedException">The <see cref="T:System.Collections.Generic.IList`1" /> is read-only.</exception>
+        public static int InsertAtPotentialIndex<T>(this IList<T> source, T value, Func<T, T, bool> predicate)
+        {
+            var potentialIndex = source.PotentialIndexOf(value, predicate);
+            source.Insert(potentialIndex, value);
+            return potentialIndex;
+        }
+
+        /// <summary>Gets the potential index of an item that does not currently exist within a collection based on the specified criteria.</summary>
+        /// <param name="source">The collection to get the index from.</param>
+        /// <param name="value">The object to determine an index for in the <paramref name="source"/>.</param>
+        /// <param name="predicate">The action to run to determine the position of the item based on the provided <paramref name="value"/> and an item in the collection.</param>
+        /// <typeparam name="T">The type of items in the collection.</typeparam>
+        /// <returns>The potential index of the item.</returns>
+        public static int PotentialIndexOf<T>(this IList<T> source, T value, Func<T, T, bool> predicate)
+        {
+            var result = 0;
+
+            foreach (var item in source)
+            {
+                if (predicate(value, item))
+                {
+                    result = source.IndexOf(item) + 1;
+                    continue;
+                }
+
+                break;
+            }
+
+            return result;
         }
     }
 }

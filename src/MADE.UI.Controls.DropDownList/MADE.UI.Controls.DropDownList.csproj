@@ -5,10 +5,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI DropDownList Control</Product>
     <Description>
-      This package includes UI components for UWP such as:
-      - DropDownList providing a selection control that provides a drop-down list box that allows users to select one or multiple items from a list.
+      This package includes UI components for Windows applications such as:
+      - DropDownList for providing a selection control that provides a drop-down combo box that allows users to select one or multiple items from a list.
     </Description>
-    <PackageTags>MADE UI Views Controls UWP DropDown List Multiselect</PackageTags>
+    <PackageTags>MADE UI Views Controls UWP DropDown List Multiselect ComboBox</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
     <RootNamespace>MADE.UI.Controls.DropDownListControl</RootNamespace>
   </PropertyGroup>

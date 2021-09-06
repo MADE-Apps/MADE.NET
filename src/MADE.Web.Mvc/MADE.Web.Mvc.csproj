@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Web MVC</Product>
     <Description>
-      This package includes web MVC API helpers such as:
+      This package includes:
       - InternalServerErrorObjectResult for providing an expected 500 response from an API controller.
     </Description>
     <PackageTags>MADE Web MVC API Requests Responses Exception Handling JSON</PackageTags>

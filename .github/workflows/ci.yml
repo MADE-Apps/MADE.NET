@@ -29,7 +29,7 @@ jobs:
 
     env:
       BUILD_CONFIG: 'Release'
-      SOLUTION: 'MADE.NET.sln'
+      SOLUTION: 'MADE.NET.NoSamples.slnf'
 
     runs-on: windows-latest
 

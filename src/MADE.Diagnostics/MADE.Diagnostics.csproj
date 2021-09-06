@@ -5,9 +5,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Diagnostics</Product>
     <Description>
-      This package includes diagnostics helpers such as:
-      - FileEventLogger for logging debug, info, warning, error, and critical messages to a file.
+      This package includes:
       - AppDiagnostics for providing an application-wide exception handler.
+      - FileEventLogger for logging debug, info, warning, error, and critical messages to a file.
       - StopwatchHelper to help track the time of multiple long running operations.
     </Description>
     <PackageTags>MADE Diagnostics EventLog Logger Exception Stopwatch</PackageTags>
