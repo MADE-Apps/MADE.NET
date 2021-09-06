@@ -6,6 +6,6 @@ namespace MADE.Samples.Features.Samples.Data
     {
         public string Name { get; set; }
 
-        public ICollection<Sample> Samples { get; } = new List<Sample>();
+        public IList<Sample> Samples { get; } = new List<Sample>();
     }
 }

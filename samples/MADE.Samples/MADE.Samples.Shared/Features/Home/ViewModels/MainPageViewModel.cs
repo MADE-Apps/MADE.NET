@@ -5,12 +5,14 @@ namespace MADE.Samples.Features.Home.ViewModels
     using System.Windows.Input;
     using CommunityToolkit.Mvvm.Input;
     using CommunityToolkit.Mvvm.Messaging;
-    using Foundation.Platform;
+    using MADE.Collections;
+    using MADE.Data.Validation.Extensions;
+    using MADE.Foundation.Platform;
     using MADE.Samples.Features.Samples.Data;
     using MADE.Samples.Features.Samples.Pages;
+    using MADE.UI.ViewManagement;
     using MADE.UI.Views.Navigation;
     using MADE.UI.Views.Navigation.ViewModels;
-    using UI.ViewManagement;
 
     public class MainPageViewModel : PageViewModel
     {
@@ -49,24 +51,21 @@ namespace MADE.Samples.Features.Home.ViewModels
                     new Sample(
                         "AppDialog",
                         typeof(AppDialogPage),
-                        "/Features/Samples/Assets/AppDialog/AppDialog.png"),
+                        "/Features/Samples/Assets/AppDialog/AppDialog.png")
                 }
             };
 
             if (PlatformApiHelper.IsTypeSupported(typeof(WindowManager)))
             {
-                helpers.Samples.Add(
+                helpers.Samples.InsertAtPotentialIndex(
                     new Sample(
                         "WindowManager",
                         typeof(WindowManagerPage),
-                        "/Features/Samples/Assets/WindowManager/WindowManager.png"));
+                        "/Features/Samples/Assets/WindowManager/WindowManager.png"),
+                    (item, compare) => compare.Name.IsLessThanOrEqualTo(item.Name));
             }
 
-            var list = new List<SampleGroup>
-            {
-                controls,
-                helpers
-            };
+            var list = new List<SampleGroup> { controls, helpers };
 
             return list;
         }
