@@ -5,11 +5,12 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Runtime</Product>
     <Description>
-      This package includes runtime helpers such as:
+      This package includes:
+      - ReflectionExtensions for extending objects with helper methods, such as retrieving the value by property name string.
       - WeakReferenceCallback for providing an approach to callbacks with a WeakReference.
       - WeakReferenceEventHandler for providing an approach to event handlers with a WeakReference.
     </Description>
-    <PackageTags>MADE Runtime WeakReference</PackageTags>
+    <PackageTags>MADE Runtime WeakReference Reflection</PackageTags>
 
   </PropertyGroup>
 

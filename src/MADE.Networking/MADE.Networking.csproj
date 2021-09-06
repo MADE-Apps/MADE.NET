@@ -5,10 +5,13 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Networking</Product>
     <Description>
-      This package includes networking helpers such as:
-      - NetworkRequestManager for handling an HTTP network request queue with success and error callbacks.
-      - NetworkRequest instances for simplifying JSON GET, POST, PUT, PATCH, and DELETE requests.
+      This package includes:
       - HttpResponseMessage{T} for deserializing content of a HttpResponseMessage to a specified type.
+      - HttpResponseMessageExtensions for extending HttpResponseMessage objects with helper methods, such as deserializing the content.
+      - JsonNetworkRequest instances for simplifying JSON GET, POST, PUT, PATCH, and DELETE requests.
+      - NetworkRequestManager for handling an HTTP network request queue with success and error callbacks.
+      - StreamNetworkRequest instances for simplifying data stream GET requests.
+      - UriExtensions for extending Uri objects with helper methods, such as retrieving a query value.
     </Description>
     <PackageTags>MADE Networking Json Stream HttpClient</PackageTags>
   </PropertyGroup>

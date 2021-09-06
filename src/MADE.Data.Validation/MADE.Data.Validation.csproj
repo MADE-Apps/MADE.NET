@@ -5,17 +5,20 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Data Validation</Product>
     <Description>
-      This package includes data validation helpers such as:
-      - AlphaValidator for validating whether a string contains only alpha characters.
+      This package includes:
       - AlphaNumericValidator for validating whether a string contains only alphanumeric characters.
+      - AlphaValidator for validating whether a string contains only alpha characters.
       - BetweenValidator for validating whether a value is within a minimum and maximum range.
       - EmailValidator for validating whether a value is an email address.
       - IpAddressValidator for validating whether a value is a valid IP address.
-      - MinValueValidator for validating whether a value is above a minimum value.
+      - MaxLengthValidator for validating whether a value is below a maximum length.
       - MaxValueValidator for validating whether a value is below a maximum value.
+      - MinLengthValidator for validating whether a value is above a minimum length.
+      - MinValueValidator for validating whether a value is above a minimum value.
+      - RegexValidator for validating whether a value matches a regular expression.
       - RequiredValidator for validating whether a value has been provided.
     </Description>
-    <PackageTags>MADE Data Validation RegEx Range Email IpAddress Min Max Required</PackageTags>
+    <PackageTags>MADE Data Validation RegEx Range Email IpAddress Min Max Required Length</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

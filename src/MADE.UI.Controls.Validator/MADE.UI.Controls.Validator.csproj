@@ -5,8 +5,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI DropDownList Control</Product>
     <Description>
-      This package includes UI components for Windows and Uno Platform such as:
-      - Validator providing a wrapper for content to provide validation over input controls.
+      This package includes UI components for Windows and Uno Platform applications such as:
+      - Validator for providing a wrapper for input control to provide validation over their current value using validators.
     </Description>
     <PackageTags>MADE UI Views Controls Validator Validation Windows Android iOS macOS Xamarin Uno</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>

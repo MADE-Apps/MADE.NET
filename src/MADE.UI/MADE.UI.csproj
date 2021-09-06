@@ -5,8 +5,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI</Product>
     <Description>
-      This package includes UI components for UWP and Uno such as:
+      This package includes UI components for Windows and Uno Platform applications such as:
+      - ContentControl for simplifying visibility and retrieving child elements.
       - Control for simplifying visibility and retrieving child elements.
+      - ViewExtensions for extending UIElement objects with helper methods, such as updating the visiblity based on a boolean including child elements.
     </Description>
     <PackageTags>MADE UI Views Controls UWP Uno</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>

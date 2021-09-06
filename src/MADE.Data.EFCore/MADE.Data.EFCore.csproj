@@ -3,12 +3,12 @@
   <PropertyGroup>
     <TargetFrameworks>net5.0;netcoreapp3.1</TargetFrameworks>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>MADE.NET Data EF Core</Product>
+    <Product>MADE.NET Entity Framework</Product>
     <Description>
-      This package includes Entity Framework Core helpers such as:
-      - DbContextExtensions, for additional helpers to EF data contexts.
-      - EntityBase, for providing a base definition for entities.
-      - UtcDateTimeConverter, to help with the storing of dates in a UTC format.
+      This package includes:
+      - DbContextExtensions for extending DbContext objects with helper methods, such as updating an item asynchronously and removing items matching a specified criteria.
+      - EntityBase for providing a base definition for an entity within a DbContext, including a primary key, created and updated dates.
+      - UtcDateTimeConverter for ensuring that DateTime values are stored and retrieving in UTC format.
     </Description>
     <PackageTags>MADE EFCore EntityFramework</PackageTags>
 

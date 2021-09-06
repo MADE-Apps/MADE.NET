@@ -5,11 +5,11 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI View Navigation</Product>
     <Description>
-      This package includes enhancements to build page to page navigation for Windows and Uno Platform such as:
-      - Page, an extension to the app Page type to improve the page experience
-      - NavigationService providing an easy to use, MVVM friendly, page-to-page navigation service
+      This package includes UI components for Windows and Uno Platform applications such as:
+      - NavigationService for providing an easy to use, MVVM friendly, page-to-page navigation service.
+      - Page for providing an extension to the Windows Page type to improve the page experience.
     </Description>
-    <PackageTags>MADE UI View Page Navigation Windows Android iOS macOS Xamarin Uno</PackageTags>
+    <PackageTags>MADE UI View Page Navigation Windows Android iOS macOS Xamarin Uno MVVM</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
   </PropertyGroup>
 

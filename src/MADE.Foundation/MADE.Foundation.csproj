@@ -5,10 +5,10 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Foundation</Product>
     <Description>
-      This package includes foundational helpers for other MADE libraries such as:
-      -
+      This package includes:
+      - PlatformApiHelper for providing a mechanism of ensuring cross-platform functionality in MADE libraries can be coded safely where APIs are not supported.
     </Description>
-    <PackageTags>MADE Foundation Helpers</PackageTags>
+    <PackageTags>MADE Foundation Helpers Type Check Platform Uno</PackageTags>
 
   </PropertyGroup>
 

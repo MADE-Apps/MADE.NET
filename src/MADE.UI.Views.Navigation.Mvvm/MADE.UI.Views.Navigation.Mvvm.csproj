@@ -5,8 +5,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET UI View Navigation for MVVM Toolkit</Product>
     <Description>
-      This package includes enhancements to build page to page navigation with support for the Windows Community Toolkit MVVM library for Windows and Uno Platform such as:
-      - 
+      This package includes UI components for Windows and Uno Platform applications such as:
+      - MvvmPage for providing a Page object that supports the PageViewModel implementation including navigation event handling.
+      - PageViewModel for providing a simple ViewModel implementation that supports navigation.
     </Description>
     <PackageTags>MADE UI View Page Navigation MVVM WCT Windows Android iOS macOS Xamarin Uno</PackageTags>
     <GenerateLibraryLayout>true</GenerateLibraryLayout>
