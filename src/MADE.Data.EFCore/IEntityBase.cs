@@ -1,25 +1,26 @@
-namespace MADE.Data.EFCore
+﻿namespace MADE.Data.EFCore
 {
     using System;
 
     /// <summary>
     /// Defines a base definition for an entity.
     /// </summary>
-    public abstract class EntityBase : IEntityBase
+    public interface IEntityBase
     {
         /// <summary>
         /// Gets or sets the identifier of the entity.
         /// </summary>
-        public Guid Id { get; set; }
+        Guid Id { get; set; }
 
         /// <summary>
         /// Gets or sets the date of the entity's creation.
         /// </summary>
-        public virtual DateTime CreatedDate { get; set; } = DateTime.UtcNow;
+         DateTime CreatedDate { get; set; }
 
         /// <summary>
         /// Gets or sets the date of the entity's last update.
         /// </summary>
-        public virtual DateTime? UpdatedDate { get; set; } = DateTime.UtcNow;
+         DateTime? UpdatedDate { get; set; }
+
     }
 }
