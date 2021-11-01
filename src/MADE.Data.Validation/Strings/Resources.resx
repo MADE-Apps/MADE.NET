@@ -126,6 +126,9 @@
   <data name="BetweenValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be between {0} and {1}.</value>
   </data>
+  <data name="DateTimeValidator_FeedbackMessage" xml:space="preserve">
+    <value>The value is not a valid date/time.</value>
+  </data>
   <data name="EmailValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be a valid email address, e.g. test@example.com.</value>
   </data>
