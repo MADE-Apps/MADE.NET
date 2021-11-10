@@ -6,7 +6,6 @@ namespace MADE.UI.Controls
     using System;
     using System.Threading.Tasks;
     using Windows.Storage;
-    using Windows.Storage.FileProperties;
     using Windows.UI.Xaml.Media.Imaging;
 
     /// <summary>
@@ -53,15 +52,10 @@ namespace MADE.UI.Controls
 
         internal async Task LoadThumbnailAsync()
         {
+#if WINDOWS_UWP
             if (this.File != null)
             {
-                StorageItemThumbnail thumbnail;
-
-#if WINDOWS_UWP
-                thumbnail = await this.File.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem, 256, ThumbnailOptions.ResizeThumbnail);
-#else
-                thumbnail = null;
-#endif
+                var thumbnail = await this.File.GetThumbnailAsync(Windows.Storage.FileProperties.ThumbnailMode.SingleItem, 256, Windows.Storage.FileProperties.ThumbnailOptions.ResizeThumbnail);
 
                 if (thumbnail == null)
                 {
@@ -71,6 +65,9 @@ namespace MADE.UI.Controls
                 this.Thumbnail = new BitmapImage();
                 this.Thumbnail.SetSource(thumbnail.CloneStream());
             }
+#else
+            await Task.CompletedTask;
+#endif
         }
     }
 }
