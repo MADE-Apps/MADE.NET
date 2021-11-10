@@ -1,4 +1,4 @@
-﻿namespace MADE.Data.EFCore
+namespace MADE.Data.EFCore
 {
     using System;
 
@@ -15,12 +15,11 @@
         /// <summary>
         /// Gets or sets the date of the entity's creation.
         /// </summary>
-         DateTime CreatedDate { get; set; }
+        DateTime CreatedDate { get; set; }
 
         /// <summary>
         /// Gets or sets the date of the entity's last update.
         /// </summary>
-         DateTime? UpdatedDate { get; set; }
-
+        DateTime? UpdatedDate { get; set; }
     }
 }
