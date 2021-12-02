@@ -41,7 +41,7 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
     <PackageReference Include="Uno.ColorCode.UWP" Version="2.0.8-gd42a883502" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls.Primitives" Version="7.0.0" />
-    <PackageReference Include="Uno.UI.WebAssembly" Version="3.10.11" />
+    <PackageReference Include="Uno.UI.WebAssembly" Version="4.0.8" />
     <PackageReference Include="Uno.UI.RemoteControl" Version="3.10.11" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.Wasm.Bootstrap" Version="3.0.0" />
     <PackageReference Include="Uno.Wasm.Bootstrap.DevServer" Version="3.0.0" />
