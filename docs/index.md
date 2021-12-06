@@ -5,6 +5,22 @@ title: MADE.NET Documentation
 
 <img src="images/ProjectBanner.png" alt="MADE project banner" />
 
+<div class="hero-layout">
+<h1 class="hero-title">
+Make app development easier with reusable code
+</h1>
+<div class="hero-subtitle">
+MADE.NET is a toolkit of reusable code libraries building applications. It streamlines the approach to get projects going.
+</div>
+<div class="hero-actions">
+<span class="button accent-button">
+
+[Learn more](articles/intro.md)
+
+</span>
+</div>
+</div>
+
 <div class="row">
 <div class="col-md-6 col-xs-12">
 <h2>Why MADE.NET?</h2>

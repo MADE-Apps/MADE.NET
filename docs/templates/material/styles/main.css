@@ -1,9 +1,9 @@
 /* COLOR VARIABLES*/
 :root {
-  --header-bg-color: #0d47a1;
+  --header-bg-color: #3B75BB;
   --header-ft-color: #fff;
-  --highlight-light: #5e92f3;
-  --highlight-dark: #002171;
+  --highlight-light: #8AA1CF;
+  --highlight-dark: #2C77CC;
   --accent-dim: #e0e0e0;
   --accent-super-dim: #f3f3f3;
   --font-color: #34393e;
@@ -306,6 +306,8 @@ pre {
   max-width: 700px;
 }
 
+/* STYLE FOR BUTTONS */
+
 .button {
   display: inline-block;
 }
@@ -317,6 +319,11 @@ pre {
     border-radius: 8px;
     transition: color 0.2s ease-in-out,
     background-color 0.2s ease-in-out;
+}
+
+.accent-button a {
+  background-color: var(--header-bg-color);
+  color: var(--header-ft-color);
 }
 
 .sponsor-button .octicon {
@@ -332,4 +339,25 @@ pre {
 .octicon {
 	display: inline-block;
 	fill: currentcolor;
+}
+
+/* STYLE FOR HERO */
+
+.hero-layout {
+  margin-bottom: 8px;
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+.hero-title {
+  font-size: 48px;
+  line-height: 52px;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 20px;
+  line-height: 32px;
+  margin-bottom: 1.5rem;
 }
