@@ -3,10 +3,22 @@
   "version": "1.0.0",
   "scripts": {
     "docfx": "npm-watch build_serve",
-    "build_serve": "docfx .\\docfx.json --serve"
+    "build_serve": "docfx build .\\docfx.json --serve"
   },
   "watch": {
-
+    "build_serve": {
+      "patterns": [
+        "templates/**/*",
+        "api/**/*",
+        "articles/**/*",
+        "./*.md"
+      ],
+      "extensions": "md,yml,css,partial",
+      "quiet": true,
+      "legacyWatch": true,
+      "delay": 500,
+      "runOnChangeOnly": false
+    }
   },
   "devDependencies": {
     "npm-watch": "^0.11.0"
