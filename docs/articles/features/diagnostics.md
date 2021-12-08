@@ -1,6 +1,6 @@
 ---
 uid: package-diagnostics
-title: Using the Diagnostics package | MADE.NET
+title: Using the Diagnostics package
 ---
 
 # Using the Diagnostics package

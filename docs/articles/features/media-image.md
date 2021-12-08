@@ -1,6 +1,6 @@
 ---
 uid: package-media-image
-title: Using the Media Image package | MADE.NET
+title: Using the Media Image package
 ---
 
 # Using the Media Image package

@@ -1,6 +1,6 @@
 ---
 uid: package-web-mvc
-title: Using the Web MVC package | MADE.NET
+title: Using the Web MVC package
 ---
 
 # Using the Web MVC package

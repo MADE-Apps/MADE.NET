@@ -1,6 +1,6 @@
 ---
 uid: package-ui-controls-dropdownlist
-title: Using the DropDownList control | MADE.NET
+title: Using the DropDownList control
 ---
 
 # Using the DropDownList control

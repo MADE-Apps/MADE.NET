@@ -1,6 +1,6 @@
 ---
 uid: package-threading
-title: Using the Threading package | MADE.NET
+title: Using the Threading package
 ---
 
 # Using the Threading package

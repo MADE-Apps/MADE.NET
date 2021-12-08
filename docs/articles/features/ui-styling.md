@@ -1,6 +1,6 @@
 ---
 uid: package-ui-styling
-title: Using the UI Styling package | MADE.NET
+title: Using the UI Styling package
 ---
 
 # Using the UI Styling package

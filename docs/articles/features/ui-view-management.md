@@ -1,6 +1,6 @@
 ---
 uid: package-ui-view-management
-title: Using the UI View Management package | MADE.NET
+title: Using the UI View Management package
 ---
 
 # Using the UI View Management package
