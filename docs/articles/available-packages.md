@@ -1,6 +1,6 @@
 ---
 uid: available-packages
-title: Available packages | MADE.NET
+title: Available packages
 ---
 
 # Available MADE.NET packages

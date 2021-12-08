@@ -1,6 +1,6 @@
 ---
 uid: package-ui-controls-filepicker
-title: Using the FilePicker control | MADE.NET
+title: Using the FilePicker control
 ---
 
 # Using the FilePicker control

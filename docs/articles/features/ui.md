@@ -1,6 +1,6 @@
 ---
 uid: package-ui
-title: Using the UI package | MADE.NET
+title: Using the UI package
 ---
 
 # Using the UI package

@@ -1,6 +1,6 @@
 ---
 uid: package-data-validation
-title: Using the Data Validation package | MADE.NET
+title: Using the Data Validation package
 ---
 
 # Using the Data Validation package

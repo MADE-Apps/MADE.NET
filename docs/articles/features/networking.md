@@ -1,6 +1,6 @@
 ---
 uid: package-networking
-title: Using the Networking package | MADE.NET
+title: Using the Networking package
 ---
 
 # Using the Networking package

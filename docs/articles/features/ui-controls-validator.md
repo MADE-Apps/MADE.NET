@@ -1,6 +1,6 @@
 ---
 uid: package-ui-controls-validator
-title: Using the InputValidator control | MADE.NET
+title: Using the InputValidator control
 ---
 
 # Using the InputValidator control

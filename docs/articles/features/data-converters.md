@@ -1,6 +1,6 @@
 ---
 uid: package-data-converters
-title: Using the Data Converters package | MADE.NET
+title: Using the Data Converters package
 ---
 
 # Using the Data Converters package

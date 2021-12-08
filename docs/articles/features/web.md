@@ -1,6 +1,6 @@
 ---
 uid: package-web
-title: Using the Web package | MADE.NET
+title: Using the Web package
 ---
 
 # Using the Web package

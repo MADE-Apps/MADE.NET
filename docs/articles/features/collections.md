@@ -1,6 +1,6 @@
 ---
 uid: package-collections
-title: Using the Collections package | MADE.NET
+title: Using the Collections package
 ---
 
 # Using the Collections package

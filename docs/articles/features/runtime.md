@@ -1,6 +1,6 @@
 ---
 uid: package-runtime
-title: Using the Runtime package | MADE.NET
+title: Using the Runtime package
 ---
 
 # Using the Runtime package

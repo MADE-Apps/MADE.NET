@@ -1,6 +1,6 @@
 ---
 uid: made-intro
-title: Overview | MADE.NET
+title: Overview
 ---
 
 <img src="../images/ProjectBanner.png" alt="MADE project banner" />
