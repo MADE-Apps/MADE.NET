@@ -170,7 +170,7 @@ title: Make App Development Easier
 
 <div class="row home-row">
   <div class="grid-col col-lg-6 d-flex flex-column">
-    <div class="grid-item grid-bottom grid-right d-flex flex-column align-items-center text-center">
+    <div class="grid-item grid-border-bottom grid-border-right d-flex flex-column align-items-center text-center">
       <img src="images/icons/validation.png" alt="A validation icon" />
       <h2 class="sm-header">
         Get data validation in seconds
@@ -179,7 +179,7 @@ title: Make App Development Easier
         MADE provides a lightweight, extensible data validation framework for input values in your applications
       </div>
     </div>
-    <div class="grid-item grid-right d-flex flex-column align-items-center text-center">
+    <div class="grid-item grid-border-right d-flex flex-column align-items-center text-center">
       <img src="images/icons/data.png" alt="A database icon" />
       <h2 class="sm-header">
         Improve data access with EF Core helpers
@@ -190,7 +190,7 @@ title: Make App Development Easier
     </div>
   </div>
   <div class="grid-col col-lg-6 d-flex flex-column">
-    <div class="grid-item grid-bottom d-flex flex-column align-items-center text-center">
+    <div class="grid-item grid-border-bottom d-flex flex-column align-items-center text-center">
       <img src="images/icons/network.png" alt="A network icon" />
       <h2 class="sm-header">
         Simplify your API requests
@@ -234,7 +234,7 @@ title: Make App Development Easier
 
 <div class="row home-row">
   <div class="grid-col col-lg-6 d-flex flex-column">
-    <div class="grid-item grid-right d-flex flex-column align-items-center text-center">
+    <div class="grid-item grid-border-right d-flex flex-column align-items-center text-center">
       <img src="images/icons/love.png" alt="Hands holding a heart icon" />
       <h2 class="sm-header">
         Support MADE.NET

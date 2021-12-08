@@ -479,11 +479,11 @@ a.stat {
 }
 
 @media (min-width: 992px) {
-  .grid-bottom {
+  .grid-border-bottom {
     border-bottom: var(--light-border);
   }
 
-  .grid-right {
+  .grid-border-right {
     border-right: var(--light-border);
   }
 
