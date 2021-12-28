@@ -1,0 +1,12 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm_install_docs",
+      "type": "npm",
+      "script": "install",
+      "path": "docs/",
+      "problemMatcher": [],
+    }
+  ]
+}

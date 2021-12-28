@@ -1,9 +1,5 @@
-- name: Overview
+- name: Getting Started
   topicHref: intro.md
-- name: Get started
-  items:
-    - name: Installing MADE.NET packages
-      href: available-packages.md
 - name: Features
   items:
     - name: Collections
