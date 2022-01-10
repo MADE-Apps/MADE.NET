@@ -42,7 +42,7 @@
   <ItemGroup>
     <!-- Note that for WebAssembly version 1.1.1 of the console logger required -->
     <PackageReference Include="CommunityToolkit.Mvvm" Version="7.1.2" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Windows.Compatibility" Version="5.0.0" />
     <PackageReference Include="Uno.ColorCode.UWP" Version="2.1.0-uno.32" />
     <PackageReference Include="Uno.Microsoft.Toolkit.Uwp.UI.Controls.Primitives" Version="7.1.10" />
