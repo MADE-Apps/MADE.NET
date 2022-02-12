@@ -155,20 +155,6 @@ title: Make App Development Easier
 ---
 
 <div class="row home-row">
-  <div class="d-flex flex-column my-auto col-lg-7">
-    <h2 class="md-header">
-      UI Components
-    </h2>
-    <div class="md-content">
-      MADE.NET provides a set of cross-platform UI components for Windows, WebAssembly, Android, iOS, macOS, and Linux.
-    </div>
-  </div>
-  <div class="col-lg-5">
-    <img src="images/FilePickerSample.png" alt="A File Picker UI component example on Windows" />
-  </div>
-</div>
-
-<div class="row home-row">
   <div class="grid-col col-lg-6 d-flex flex-column">
     <div class="grid-item grid-border-bottom grid-border-right d-flex flex-column align-items-center text-center">
       <img src="images/icons/validation.png" alt="A validation icon" />
@@ -202,10 +188,10 @@ title: Make App Development Easier
     <div class="grid-item d-flex flex-column align-items-center text-center">
       <img src="images/icons/model.png" alt="A model icon" />
       <h2 class="sm-header">
-        Easy cross-platform page-to-page navigation
+        Cross-platform by default
       </h2>
       <div class="sm-content">
-        Ease your approach to cross-platform page-to-page navigation using MADE's page navigation service built on top of the MVVM Toolkit
+        No matter what platform your app is running on, MADE.NET provides a consistent set of APIs for any .NET application
       </div>
     </div>
   </div>
