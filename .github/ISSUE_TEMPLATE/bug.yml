@@ -1,0 +1,46 @@
+name: Bug
+description: Log a bug to help us improve
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Describe the bug
+      description: Please describe below the details of the issue and steps taken to reproduce.
+  - type: textarea
+    attributes:
+      label: What is the expected behavior?
+      description: Please describe below what you expected to happen.
+  - type: dropdown
+    attributes:
+      label: Package
+      options:
+        - "Collections"
+        - "Data.Converters"
+        - "Data.EFCore"
+        - "Data.Security"
+        - "Data.Validation"
+        - "Diagnostics"
+        - "Foundation"
+        - "Media.Image"
+        - "Networking"
+        - "Runtime"
+        - "Testing"
+        - "Threading"
+        - "UI"
+        - "UI.Controls.DropDownList"
+        - "UI.Controls.FilePicker"
+        - "UI.Controls.Validator"
+        - "UI.Styling"
+        - "UI.ViewManagement"
+        - "UI.Views.Dialogs"
+        - "UI.Views.Navigation"
+        - "UI.Views.Navigation.Mvvm"
+        - "Web"
+        - "Web.Mvc"
+  - type: textarea
+    attributes:
+      label: Other information
+      description: Please provide any additional information, links, screenshots, or projects with reproduced issues below if applicable
