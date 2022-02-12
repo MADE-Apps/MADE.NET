@@ -1,0 +1,29 @@
+name: Feature
+description: Suggest a new feature or idea
+title: "[Feature] "
+labels: [feature-request]
+body:
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Describe the feature
+      description: Please describe below a summary of your feature request.
+  - type: textarea
+    validations:
+      required: true
+    attributes:
+      label: Rationale for the feature
+      description: Please describe a list of reasons why the feature should be added.
+  - type: textarea
+    attributes:
+      label: Scope of the feature
+      description: Please describe a list of must, should, could, and won't capabilities for the feature.
+  - type: textarea
+    attributes:
+      label: Open questions
+      description: Please provide any questions that you may have around this feature that are not currently answered.
+  - type: textarea
+    attributes:
+      label: Other information
+      description: Please provide any additional information, links, screenshots, or samples below if applicable.
