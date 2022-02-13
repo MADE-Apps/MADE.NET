@@ -1,4 +1,0 @@
-private async Task ShowNewWindowAsync()
-{
-    await WindowManager.CreateNewWindowForPageAsync(typeof(WindowManagerPage));
-}
