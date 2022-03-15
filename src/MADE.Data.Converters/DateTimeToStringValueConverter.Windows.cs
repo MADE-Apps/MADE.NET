@@ -10,6 +10,7 @@ namespace MADE.Data.Converters
     /// <summary>
     /// Defines a Windows components for a XAML value converter from <see cref="DateTime"/> to <see cref="string"/> with an optional format string.
     /// </summary>
+    [Obsolete("DateTimeToStringValueConverter has been migrated to MADE.UI.Data.Converters package. This will no longer be maintained and may be removed in a future update.")]
     public partial class DateTimeToStringValueConverter : IValueConverter
     {
         /// <summary>

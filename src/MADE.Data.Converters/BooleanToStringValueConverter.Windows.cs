@@ -13,6 +13,7 @@ namespace MADE.Data.Converters
     /// <summary>
     /// Defines a Windows components for a XAML value converter from <see cref="bool"/> to <see cref="string"/>.
     /// </summary>
+    [Obsolete("BooleanToStringValueConverter has been migrated to MADE.UI.Data.Converters package. This will no longer be maintained and may be removed in a future update.")]
     public class BooleanToStringValueConverter : DependencyObject, IValueConverter, IValueConverter<bool, string>
     {
         /// <summary>
