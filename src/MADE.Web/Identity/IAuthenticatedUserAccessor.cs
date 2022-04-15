@@ -11,5 +11,10 @@ namespace MADE.Web.Identity
         /// Gets the authenticated user's claims principal.
         /// </summary>
         ClaimsPrincipal ClaimsPrincipal { get; }
+
+        /// <summary>
+        /// Gets the authenticated user model for the specified <see cref="ClaimsPrincipal"/>/
+        /// </summary>
+        AuthenticatedUser AuthenticatedUser { get; }
     }
 }
