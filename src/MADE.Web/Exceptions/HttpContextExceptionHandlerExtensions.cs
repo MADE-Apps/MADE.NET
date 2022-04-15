@@ -26,6 +26,17 @@ namespace MADE.Web.Extensions
         }
 
         /// <summary>
+        /// Adds the default <see cref="Exception"/> handlers to the service collection.
+        /// </summary>
+        /// <param name="serviceCollection">The service collection.</param>
+        /// <returns>The configured service collection.</returns>
+        public static IServiceCollection AddDefaultHttpContextExceptionHandler(this IServiceCollection serviceCollection)
+        {
+            serviceCollection.AddHttpContextExceptionHandler<Exception, DefaultExceptionHandler>();
+            return serviceCollection;
+        }
+
+        /// <summary>
         /// Adds a <see cref="HttpContext"/> exception handler to the service collection.
         /// </summary>
         /// <typeparam name="TException">The type of exception handled.</typeparam>
