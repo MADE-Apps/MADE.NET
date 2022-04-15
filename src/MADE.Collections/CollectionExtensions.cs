@@ -13,6 +13,31 @@ namespace MADE.Collections
     public static class CollectionExtensions
     {
         /// <summary>
+        /// Adds the specified item to the collection based on the specified condition being true.
+        /// </summary>
+        /// <param name="collection">The collection to add the item to.</param>
+        /// <param name="item">The item to add.</param>
+        /// <param name="condition">The condition required to add the item.</param>
+        /// <typeparam name="T">The type of item within the collection.</typeparam>
+        public static void AddIf<T>(this IList<T> collection, T item, Func<bool> condition)
+        {
+            if (collection == null)
+            {
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (condition == null)
+            {
+                throw new ArgumentNullException(nameof(condition));
+            }
+
+            if (condition())
+            {
+                collection.Add(item);
+            }
+        }
+
+        /// <summary>
         /// Updates an item within the collection.
         /// </summary>
         /// <typeparam name="T">
@@ -115,6 +140,29 @@ namespace MADE.Collections
         }
 
         /// <summary>
+        /// Adds the specified collection of items to the collection based on the specified condition being true.
+        /// </summary>
+        /// <param name="collection">The collection to add the items to.</param>
+        /// <param name="itemsToAdd">The items to add.</param>
+        /// <param name="condition">The condition required to add the items.</param>
+        /// <typeparam name="T">The type of item within the collection.</typeparam>
+        public static void AddRangeIf<T>(
+            this ICollection<T> collection,
+            IEnumerable<T> itemsToAdd,
+            Func<bool> condition)
+        {
+            if (condition == null)
+            {
+                throw new ArgumentNullException(nameof(condition));
+            }
+
+            if (condition())
+            {
+                collection.AddRange(itemsToAdd);
+            }
+        }
+
+        /// <summary>
         /// Removes a collection of items from another.
         /// </summary>
         /// <param name="collection">
@@ -145,6 +193,29 @@ namespace MADE.Collections
                 {
                     collection.Remove(item);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Removes the specified collection of items from the collection based on the specified condition being true.
+        /// </summary>
+        /// <param name="collection">The collection to remove the items from.</param>
+        /// <param name="itemsToRemove">The items to remove.</param>
+        /// <param name="condition">The condition required to remove the items.</param>
+        /// <typeparam name="T">The type of item within the collection.</typeparam>
+        public static void RemoveRangeIf<T>(
+            this ICollection<T> collection,
+            IEnumerable<T> itemsToRemove,
+            Func<bool> condition)
+        {
+            if (condition == null)
+            {
+                throw new ArgumentNullException(nameof(condition));
+            }
+
+            if (condition())
+            {
+                collection.RemoveRange(itemsToRemove);
             }
         }
 
@@ -237,7 +308,7 @@ namespace MADE.Collections
         public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> source, int chunkSize = 25)
         {
             return source
-                .Select((v, i) => new { Index = i, Value = v })
+                .Select((v, i) => new {Index = i, Value = v})
                 .GroupBy(x => x.Index / chunkSize)
                 .Select(x => x.Select(v => v.Value));
         }
