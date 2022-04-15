@@ -40,6 +40,28 @@ namespace MADE.Data.Converters.Extensions
         }
 
         /// <summary>
+        /// Truncates a string value to the specified length with an ellipsis.
+        /// </summary>
+        /// <param name="value">The value to truncate.</param>
+        /// <param name="maxLength">The maximum length of the value.</param>
+        /// <returns>A truncated string with ellipsis if the value's length is greater than the <paramref name="maxLength"/>.</returns>
+        public static string Truncate(this string value, int maxLength)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            if (value.Length <= maxLength)
+            {
+                return value;
+            }
+
+            const string suffix = "...";
+            return value.Substring(0, maxLength - suffix.Length) + suffix;
+        }
+
+        /// <summary>
         /// Converts a value to default case using the case rules of the invariant culture.
         /// </summary>
         /// <param name="value">

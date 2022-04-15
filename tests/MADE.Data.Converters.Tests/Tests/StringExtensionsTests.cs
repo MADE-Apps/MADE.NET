@@ -9,6 +9,37 @@ namespace MADE.Data.Converters.Tests.Tests
     [TestFixture]
     public class StringExtensionsTests
     {
+        public class WhenTruncatingStrings
+        {
+            [Test]
+            public void ShouldReturnTruncatedIfGreaterThanMaxLength()
+            {
+                // Arrange
+                const string input = "Hello, World!";
+                const int maxLength = 8;
+
+                // Act
+                var result = input.Truncate(maxLength);
+
+                // Assert
+                result.ShouldBe("Hello...");
+            }
+
+            [Test]
+            public void ShouldReturnOriginalIfLessThanMaxLength()
+            {
+                // Arrange
+                const string input = "Hello, World!";
+                int maxLength = input.Length;
+
+                // Act
+                var result = input.Truncate(maxLength);
+
+                // Assert
+                result.ShouldBe(input);
+            }
+        }
+
         public class WhenConvertingToTitleCase
         {
             [TestCase("", "")]
