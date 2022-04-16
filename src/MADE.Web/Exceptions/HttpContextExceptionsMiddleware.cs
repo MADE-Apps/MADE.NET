@@ -105,7 +105,7 @@ namespace MADE.Web.Exceptions
 
             try
             {
-                if (!(handleMethod is null))
+                if (handleMethod is not null)
                 {
                     await handleMethod.Invoke(exceptionHandler, new object[] { context, exception });
                 }

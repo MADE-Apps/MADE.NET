@@ -15,7 +15,7 @@ namespace MADE.Diagnostics.Logging
     {
         private const string LogFormat = "{0:G}\tLevel: {1}\tId: {2}\tMessage: '{3}'";
 
-        private readonly SemaphoreSlim fileSemaphore = new SemaphoreSlim(1, 1);
+        private readonly SemaphoreSlim fileSemaphore = new(1, 1);
 
         /// <summary>
         /// Gets or sets the full file path to where the current log exists.
@@ -240,10 +240,8 @@ namespace MADE.Diagnostics.Logging
             {
                 try
                 {
-                    using (StreamWriter sw = File.AppendText(this.LogPath))
-                    {
-                        await sw.WriteLineAsync(line);
-                    }
+                    using StreamWriter sw = File.AppendText(this.LogPath);
+                    await sw.WriteLineAsync(line);
                 }
                 catch (Exception ex)
                 {

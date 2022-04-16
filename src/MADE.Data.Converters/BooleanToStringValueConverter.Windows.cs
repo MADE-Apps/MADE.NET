@@ -80,7 +80,7 @@ namespace MADE.Data.Converters
         /// <returns>The converted <see cref="bool"/> object.</returns>
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            if (!(value is string b))
+            if (value is not string b)
             {
                 return value;
             }

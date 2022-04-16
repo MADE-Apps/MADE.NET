@@ -34,7 +34,9 @@ namespace MADE.Data.Validation.Validators
         /// </summary>
         public string FeedbackMessage
         {
-            get => this.feedbackMessage.IsNullOrWhiteSpace() ? Resources.RequiredValidator_FeedbackMessage : this.feedbackMessage;
+            get => this.feedbackMessage.IsNullOrWhiteSpace()
+                ? Resources.RequiredValidator_FeedbackMessage
+                : this.feedbackMessage;
             set => this.feedbackMessage = value;
         }
 
@@ -50,19 +52,14 @@ namespace MADE.Data.Validation.Validators
 
         private static bool DetermineIsInvalid(object value)
         {
-            switch (value)
+            return value switch
             {
-                case null:
-                    return true;
-                case ICollection collection:
-                    return collection.Count <= 0;
-                case bool isTrue:
-                    return !isTrue;
-                case string str:
-                    return str.IsNullOrWhiteSpace();
-                default:
-                    return false;
-            }
+                null => true,
+                ICollection collection => collection.Count <= 0,
+                bool isTrue => !isTrue,
+                string str => str.IsNullOrWhiteSpace(),
+                _ => false
+            };
         }
     }
 }

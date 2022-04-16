@@ -3,8 +3,8 @@
 
 namespace MADE.Data.Validation.Extensions
 {
-    using System;
     using System.Globalization;
+    using System.Text.RegularExpressions;
 
     /// <summary>
     /// Defines a collection of extensions for string values.
@@ -41,6 +41,43 @@ namespace MADE.Data.Validation.Extensions
         public static bool Contains(this string phrase, string value, CompareOptions compareOption)
         {
             return CultureInfo.CurrentCulture.CompareInfo.IndexOf(phrase, value, compareOption) >= 0;
+        }
+
+        /// <summary>
+        /// Compares a string value against a wildcard pattern, similar to the Visual Basic like operator.
+        /// </summary>
+        /// <remarks>
+        /// An example of this in use comparing strings with * wildcard pattern.
+        /// <code>
+        ///   // result is true
+        ///   bool result = "MyValue".IsLike("My*");
+        ///   // result is false
+        ///   result = "MyValue".IsLike("Hello");
+        /// </code>
+        /// </remarks>
+        /// <param name="value">The value to compare is like.</param>
+        /// <param name="likePattern">The wildcard like pattern to match on.</param>
+        /// <returns>True if the value is like the pattern; otherwise, false.</returns>
+        /// <exception cref="RegexMatchTimeoutException">Throw if a Regex time-out occurred.</exception>
+        public static bool IsLike(this string value, string likePattern)
+        {
+            if (value.IsNullOrWhiteSpace() || likePattern.IsNullOrWhiteSpace())
+            {
+                return false;
+            }
+
+            // Escape any special characters in pattern
+            var regex = "^" + Regex.Escape(likePattern) + "$";
+
+            // Replace wildcard characters with regular expression equivalents
+            regex = regex.Replace(@"\[!", "[^")
+                .Replace(@"\[", "[")
+                .Replace(@"\]", "]")
+                .Replace(@"\?", ".")
+                .Replace(@"\*", ".*")
+                .Replace(@"\#", @"\d");
+
+            return Regex.IsMatch(value, regex);
         }
 
         /// <summary>

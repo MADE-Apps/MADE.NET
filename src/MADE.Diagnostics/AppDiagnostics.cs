@@ -64,7 +64,7 @@ namespace MADE.Diagnostics
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException += this.OnAppUnhandledException;
 #elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
-            System.AppDomain.CurrentDomain.UnhandledException += this.OnAppUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException += this.OnAppUnhandledException;
 #endif
 
 #if __ANDROID__
@@ -92,7 +92,7 @@ namespace MADE.Diagnostics
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException -= this.OnAppUnhandledException;
 #elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
-            System.AppDomain.CurrentDomain.UnhandledException -= this.OnAppUnhandledException;
+            AppDomain.CurrentDomain.UnhandledException -= this.OnAppUnhandledException;
 #endif
 
 #if __ANDROID__
@@ -137,7 +137,7 @@ namespace MADE.Diagnostics
                     "The application is terminating due to an unhandled exception being thrown.");
             }
 
-            if (!(args.ExceptionObject is Exception ex))
+            if (args.ExceptionObject is not Exception ex)
             {
                 return;
             }

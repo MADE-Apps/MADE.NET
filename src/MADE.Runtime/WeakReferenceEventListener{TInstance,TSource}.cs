@@ -1,4 +1,4 @@
-﻿// MADE Apps licenses this file to you under the MIT license.
+// MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
 namespace MADE.Runtime
@@ -25,6 +25,7 @@ namespace MADE.Runtime
         /// <param name="instance">
         /// The instance.
         /// </param>
+        /// <exception cref="ArgumentNullException">Thrown if the <paramref name="instance"/> is <see langword="null"/>.</exception>
         public WeakReferenceEventListener(TInstance instance)
         {
             if (instance == null)
@@ -51,6 +52,7 @@ namespace MADE.Runtime
         /// <param name="source">
         /// The source of the event.
         /// </param>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="OnEventAction"/> delegate callback.</exception>
         public void OnEvent(TSource source)
         {
             var target = (TInstance)this.weakReference.Target;
@@ -67,6 +69,7 @@ namespace MADE.Runtime
         /// <summary>
         /// Called when detaching the event listener.
         /// </summary>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="OnDetachAction"/> delegate callback.</exception>
         public void Detach()
         {
             var target = (TInstance)this.weakReference.Target;

@@ -127,6 +127,7 @@ namespace MADE.Threading
         /// <summary>
         /// Invokes the <see cref="Tick"/> event, if attached.
         /// </summary>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="Tick"/> delegate callback.</exception>
         protected virtual void InvokeTick()
         {
             this.Tick?.Invoke(this, EventArgs.Empty);

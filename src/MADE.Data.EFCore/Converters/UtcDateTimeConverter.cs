@@ -12,7 +12,7 @@ namespace MADE.Data.EFCore.Converters
     public static class UtcDateTimeConverter
     {
         internal static readonly ValueConverter<DateTime, DateTime> UtcConverter =
-            new ValueConverter<DateTime, DateTime>(
+            new(
                 value => value,
                 value => DateTime.SpecifyKind(value, DateTimeKind.Utc));
 

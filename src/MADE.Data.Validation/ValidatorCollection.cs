@@ -3,6 +3,7 @@
 
 namespace MADE.Data.Validation
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using MADE.Data.Validation.Extensions;
@@ -66,6 +67,7 @@ namespace MADE.Data.Validation
         /// Executes data validation on the provided <paramref name="value"/> against the validators provided.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="Validated"/> delegate callback.</exception>
         public void Validate(object value)
         {
             this.ForEach(validator => validator.Validate(value));

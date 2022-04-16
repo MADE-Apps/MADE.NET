@@ -11,6 +11,39 @@ namespace MADE.Data.Converters.Tests.Tests
     [TestFixture]
     public class DateTimeExtensionsTests
     {
+        public class WhenConvertingDateToDaySuffix
+        {
+            private static object[] TestCases =
+            {
+                new object[] {new DateTime(2022, 3, 1), "st"}, new object[] {new DateTime(2022, 3, 2), "nd"},
+                new object[] {new DateTime(2022, 3, 3), "rd"}, new object[] {new DateTime(2022, 3, 4), "th"},
+                new object[] {new DateTime(2022, 3, 5), "th"}, new object[] {new DateTime(2022, 3, 6), "th"},
+                new object[] {new DateTime(2022, 3, 7), "th"}, new object[] {new DateTime(2022, 3, 8), "th"},
+                new object[] {new DateTime(2022, 3, 9), "th"}, new object[] {new DateTime(2022, 3, 10), "th"},
+                new object[] {new DateTime(2022, 3, 11), "th"}, new object[] {new DateTime(2022, 3, 12), "th"},
+                new object[] {new DateTime(2022, 3, 13), "th"}, new object[] {new DateTime(2022, 3, 14), "th"},
+                new object[] {new DateTime(2022, 3, 15), "th"}, new object[] {new DateTime(2022, 3, 16), "th"},
+                new object[] {new DateTime(2022, 3, 17), "th"}, new object[] {new DateTime(2022, 3, 18), "th"},
+                new object[] {new DateTime(2022, 3, 19), "th"}, new object[] {new DateTime(2022, 3, 20), "th"},
+                new object[] {new DateTime(2022, 3, 21), "st"}, new object[] {new DateTime(2022, 3, 22), "nd"},
+                new object[] {new DateTime(2022, 3, 23), "rd"}, new object[] {new DateTime(2022, 3, 24), "th"},
+                new object[] {new DateTime(2022, 3, 25), "th"}, new object[] {new DateTime(2022, 3, 26), "th"},
+                new object[] {new DateTime(2022, 3, 27), "th"}, new object[] {new DateTime(2022, 3, 28), "th"},
+                new object[] {new DateTime(2022, 3, 29), "th"}, new object[] {new DateTime(2022, 3, 30), "th"},
+                new object[] {new DateTime(2022, 3, 31), "st"},
+            };
+
+            [TestCaseSource(nameof(TestCases))]
+            public void ShouldReturnCorrectDaySuffix(DateTime dateTime, string expected)
+            {
+                // Act
+                var result = dateTime.ToDaySuffix();
+
+                // Assert
+                result.ShouldBe(expected);
+            }
+        }
+
         public class WhenSettingTime
         {
             [Test]

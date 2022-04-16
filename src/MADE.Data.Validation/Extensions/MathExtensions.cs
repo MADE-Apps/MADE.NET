@@ -3,6 +3,7 @@
 
 namespace MADE.Data.Validation.Extensions
 {
+    using System;
     using MADE.Data.Validation.Exceptions;
 
     /// <summary>
@@ -26,7 +27,7 @@ namespace MADE.Data.Validation.Extensions
         /// </returns>
         public static bool IsZero(this double value)
         {
-            return System.Math.Abs(value) < Epsilon;
+            return Math.Abs(value) < Epsilon;
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace MADE.Data.Validation.Extensions
         /// </returns>
         public static bool IsZero(this float value)
         {
-            return System.Math.Abs(value) < Epsilon;
+            return Math.Abs(value) < Epsilon;
         }
 
         /// <summary>
@@ -55,14 +56,15 @@ namespace MADE.Data.Validation.Extensions
         /// <returns>
         /// True if the values are close; otherwise, false.
         /// </returns>
+        /// <exception cref="OverflowException">Thrown if the value equals <see cref="int.MinValue"></see>.</exception>
         public static bool IsCloseTo(this int value, int compare)
         {
-            if (System.Math.Abs(value - compare) < 1)
+            if (Math.Abs(value - compare) < 1)
             {
                 return true;
             }
 
-            double a = (System.Math.Abs(value) + System.Math.Abs(compare) + 10.0) * Epsilon;
+            double a = (Math.Abs(value) + Math.Abs(compare) + 10.0) * Epsilon;
             int b = value - compare;
             return -a < b && a > b;
         }
@@ -81,12 +83,12 @@ namespace MADE.Data.Validation.Extensions
         /// </returns>
         public static bool IsCloseTo(this double value, double compare)
         {
-            if (System.Math.Abs(value - compare) < Epsilon)
+            if (Math.Abs(value - compare) < Epsilon)
             {
                 return true;
             }
 
-            double a = (System.Math.Abs(value) + System.Math.Abs(compare) + 10.0) * Epsilon;
+            double a = (Math.Abs(value) + Math.Abs(compare) + 10.0) * Epsilon;
             double b = value - compare;
             return -a < b && a > b;
         }
@@ -110,12 +112,12 @@ namespace MADE.Data.Validation.Extensions
                 return false;
             }
 
-            if (System.Math.Abs(value.Value - compare.Value) < Epsilon)
+            if (Math.Abs(value.Value - compare.Value) < Epsilon)
             {
                 return true;
             }
 
-            double a = (System.Math.Abs(value.Value) + System.Math.Abs(compare.Value) + 10.0) * Epsilon;
+            double a = (Math.Abs(value.Value) + Math.Abs(compare.Value) + 10.0) * Epsilon;
             double? b = value - compare;
             return -a < b && a > b;
         }
@@ -134,12 +136,12 @@ namespace MADE.Data.Validation.Extensions
         /// </returns>
         public static bool IsCloseTo(this float value, float compare)
         {
-            if (System.Math.Abs(value - compare) < Epsilon)
+            if (Math.Abs(value - compare) < Epsilon)
             {
                 return true;
             }
 
-            double a = (System.Math.Abs(value) + System.Math.Abs(compare) + 10.0) * Epsilon;
+            double a = (Math.Abs(value) + Math.Abs(compare) + 10.0) * Epsilon;
             float b = value - compare;
             return -a < b && a > b;
         }
@@ -163,12 +165,12 @@ namespace MADE.Data.Validation.Extensions
                 return false;
             }
 
-            if (System.Math.Abs(value.Value - compare.Value) < Epsilon)
+            if (Math.Abs(value.Value - compare.Value) < Epsilon)
             {
                 return true;
             }
 
-            double a = (System.Math.Abs(value.Value) + System.Math.Abs(compare.Value) + 10.0) * Epsilon;
+            double a = (Math.Abs(value.Value) + Math.Abs(compare.Value) + 10.0) * Epsilon;
             float? b = value - compare;
             return -a < b && a > b;
         }

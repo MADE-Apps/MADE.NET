@@ -3,7 +3,10 @@
 
 namespace MADE.Data.Converters.Extensions
 {
+    using System;
+    using System.IO;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Defines a collection of extensions for string values.
@@ -40,6 +43,28 @@ namespace MADE.Data.Converters.Extensions
         }
 
         /// <summary>
+        /// Truncates a string value to the specified length with an ellipsis.
+        /// </summary>
+        /// <param name="value">The value to truncate.</param>
+        /// <param name="maxLength">The maximum length of the value.</param>
+        /// <returns>A truncated string with ellipsis if the value's length is greater than the <paramref name="maxLength"/>.</returns>
+        public static string Truncate(this string value, int maxLength)
+        {
+            if (string.IsNullOrEmpty(value))
+            {
+                return string.Empty;
+            }
+
+            if (value.Length <= maxLength)
+            {
+                return value;
+            }
+
+            const string suffix = "...";
+            return value.Substring(0, maxLength - suffix.Length) + suffix;
+        }
+
+        /// <summary>
         /// Converts a value to default case using the case rules of the invariant culture.
         /// </summary>
         /// <param name="value">
@@ -60,6 +85,48 @@ namespace MADE.Data.Converters.Extensions
 
             string result = value.Substring(0, 1).ToUpperInvariant() + value.Substring(1).ToLowerInvariant();
             return result;
+        }
+
+        /// <summary>
+        /// Converts a value to a Base64 string using the specified encoding.
+        /// <para>
+        /// Default encoding is UTF-8.
+        /// </para>
+        /// </summary>
+        /// <param name="value">The string value to convert.</param>
+        /// <param name="encoding">The encoding to get the value bytes while converting.</param>
+        /// <returns>The Base64 string representing the value.</returns>
+        public static string ToBase64(this string value, Encoding encoding = default)
+        {
+            encoding ??= Encoding.UTF8;
+            return Convert.ToBase64String(encoding.GetBytes(value));
+        }
+
+        /// <summary>
+        /// Converts a Base64 string to a value using the specified encoding.
+        /// </summary>
+        /// <param name="base64Value">The Base64 value to convert.</param>
+        /// <param name="encoding">The encoding to get the value string while converting.</param>
+        /// <returns>The string value representing the Base64 string.</returns>
+        public static string FromBase64(this string base64Value, Encoding encoding = default)
+        {
+            encoding ??= Encoding.UTF8;
+            return encoding.GetString(Convert.FromBase64String(base64Value));
+        }
+
+        /// <summary>
+        /// Converts a string value to a <see cref="MemoryStream"/>.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>A <see cref="MemoryStream"/> representing the string value.</returns>
+        public static async Task<MemoryStream> ToMemoryStreamAsync(this string value)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            await writer.WriteAsync(value);
+            await writer.FlushAsync();
+            stream.Position = 0;
+            return stream;
         }
 
         /// <summary>
@@ -99,7 +166,7 @@ namespace MADE.Data.Converters.Extensions
             }
 
             bool parsed = int.TryParse(value, out int intValue);
-            return parsed ? (int?)intValue : null;
+            return parsed ? intValue : null;
         }
 
         /// <summary>
@@ -159,7 +226,7 @@ namespace MADE.Data.Converters.Extensions
             }
 
             bool parsed = float.TryParse(value, out float floatValue);
-            return parsed ? (float?)floatValue : null;
+            return parsed ? floatValue : null;
         }
 
         /// <summary>
@@ -199,7 +266,7 @@ namespace MADE.Data.Converters.Extensions
             }
 
             bool parsed = double.TryParse(value, out double doubleValue);
-            return parsed ? (double?)doubleValue : null;
+            return parsed ? doubleValue : null;
         }
     }
 }

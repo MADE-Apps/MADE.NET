@@ -62,7 +62,7 @@ namespace MADE.Networking.Http.Requests.Streams
         /// </returns>
         public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
         {
-            return (TResponse)await this.GetStreamResponse(cancellationToken);
+            return (TResponse)await this.GetStreamResponseAsync(cancellationToken);
         }
 
         /// <summary>
@@ -81,10 +81,10 @@ namespace MADE.Networking.Http.Requests.Streams
             Type expectedResponse,
             CancellationToken cancellationToken = default)
         {
-            return await this.GetStreamResponse(cancellationToken);
+            return await this.GetStreamResponseAsync(cancellationToken);
         }
 
-        private async Task<object> GetStreamResponse(CancellationToken cancellationToken = default)
+        private async Task<object> GetStreamResponseAsync(CancellationToken cancellationToken = default)
         {
             if (this.client == null)
             {

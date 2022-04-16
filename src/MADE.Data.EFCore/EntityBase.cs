@@ -1,6 +1,7 @@
 namespace MADE.Data.EFCore
 {
     using System;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     /// <summary>
     /// Defines a base definition for an entity.
@@ -10,6 +11,7 @@ namespace MADE.Data.EFCore
         /// <summary>
         /// Gets or sets the identifier of the entity.
         /// </summary>
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
 
         /// <summary>

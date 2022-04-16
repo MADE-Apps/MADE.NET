@@ -11,6 +11,30 @@ namespace MADE.Data.Converters.Extensions
     public static class DateTimeExtensions
     {
         /// <summary>
+        /// Gets the day suffix for the specified date, i.e. st, nd, rd, or th.
+        /// </summary>
+        /// <param name="dateTime">The date to get a day suffix for.</param>
+        /// <returns>The day suffix as a string.</returns>
+        public static string ToDaySuffix(this DateTime dateTime)
+        {
+            switch (dateTime.Day)
+            {
+                case 1:
+                case 21:
+                case 31:
+                    return "st";
+                case 2:
+                case 22:
+                    return "nd";
+                case 3:
+                case 23:
+                    return "rd";
+                default:
+                    return "th";
+            }
+        }
+
+        /// <summary>
         /// Gets the current age in years based on the specified starting date and today's date.
         /// </summary>
         /// <param name="startingDate">
@@ -206,7 +230,7 @@ namespace MADE.Data.Converters.Extensions
         /// </returns>
         public static DateTime? SetTime(this DateTime? dateTime, int hours, int minutes, int seconds, int milliseconds)
         {
-            return dateTime == null ? (DateTime?)null : SetTime(dateTime.Value, hours, minutes, seconds, milliseconds);
+            return dateTime == null ? null : SetTime(dateTime.Value, hours, minutes, seconds, milliseconds);
         }
 
         /// <summary>

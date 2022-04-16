@@ -15,6 +15,7 @@ namespace MADE.Runtime.Extensions
         /// <param name="property">The name of the property to retrieve a value for.</param>
         /// <typeparam name="T">The type of expected value.</typeparam>
         /// <returns>The value of the property.</returns>
+        /// <exception cref="AmbiguousMatchException">More than one property is found with the specified name.</exception>
         public static T GetPropertyValue<T>(this object obj, string property)
             where T : class
         {

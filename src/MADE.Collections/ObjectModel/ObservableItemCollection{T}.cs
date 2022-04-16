@@ -27,6 +27,7 @@ namespace MADE.Collections.ObjectModel
         /// <summary>
         /// Initializes a new instance of the <see cref="ObservableItemCollection{T}"/> class that is empty and has a default initial capacity.
         /// </summary>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="CollectionChanged"/> callback.</exception>
         public ObservableItemCollection()
         {
             base.CollectionChanged += (s, e) =>
@@ -46,6 +47,7 @@ namespace MADE.Collections.ObjectModel
         /// The collection whose elements are copied to the new list.
         /// </param>
         /// <exception cref="T:System.ArgumentNullException">The <paramref name="collection">collection</paramref> parameter cannot be null.</exception>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="CollectionChanged"/> callback.</exception>
         public ObservableItemCollection(IEnumerable<T> collection)
             : base(collection)
         {
@@ -65,6 +67,7 @@ namespace MADE.Collections.ObjectModel
         /// The list whose elements are copied to the new list.
         /// </param>
         /// <exception cref="T:System.ArgumentNullException">The <paramref name="list">list</paramref> parameter cannot be null.</exception>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="CollectionChanged"/> callback.</exception>
         public ObservableItemCollection(List<T> list)
             : base(list)
         {
@@ -93,6 +96,7 @@ namespace MADE.Collections.ObjectModel
         /// <param name="items">
         /// The objects to add to the end of the collection.
         /// </param>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="CollectionChanged"/> callback.</exception>
         public void AddRange(IEnumerable<T> items)
         {
             this.CheckDisposed();
@@ -117,6 +121,7 @@ namespace MADE.Collections.ObjectModel
         /// <param name="items">
         /// The objects to remove from the collection.
         /// </param>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="CollectionChanged"/> callback.</exception>
         public void RemoveRange(IEnumerable<T> items)
         {
             this.CheckDisposed();

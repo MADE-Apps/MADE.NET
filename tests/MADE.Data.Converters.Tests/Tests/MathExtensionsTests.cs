@@ -2,7 +2,7 @@ namespace MADE.Data.Converters.Tests.Tests
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-    using Extensions;
+    using MADE.Data.Converters.Extensions;
     using NUnit.Framework;
     using Shouldly;
 

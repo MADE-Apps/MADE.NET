@@ -1,10 +1,8 @@
 namespace MADE.Data.Validation.Tests.Tests
 {
     using System.Diagnostics.CodeAnalysis;
-    using Extensions;
-
     using MADE.Data.Validation.Exceptions;
-
+    using MADE.Data.Validation.Extensions;
     using NUnit.Framework;
     using Shouldly;
 

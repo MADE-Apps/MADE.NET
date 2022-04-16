@@ -1,9 +1,9 @@
 namespace MADE.Data.Validation.Tests.Tests
 {
     using System.Diagnostics.CodeAnalysis;
+    using MADE.Data.Validation.Validators;
     using NUnit.Framework;
     using Shouldly;
-    using Validators;
 
     [ExcludeFromCodeCoverage]
     [TestFixture]
