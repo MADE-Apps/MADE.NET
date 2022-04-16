@@ -2,7 +2,7 @@ namespace MADE.Data.Validation.Tests.Tests
 {
     using System.Diagnostics.CodeAnalysis;
     using System.Globalization;
-    using Extensions;
+    using MADE.Data.Validation.Extensions;
     using NUnit.Framework;
     using Shouldly;
 
@@ -10,6 +10,27 @@ namespace MADE.Data.Validation.Tests.Tests
     [TestFixture]
     public class StringExtensionsTests
     {
+        public class WhenValidatingIfStringIsLike
+        {
+            [TestCase("*", "abc", true)]
+            [TestCase("a*", "abc", true)]
+            [TestCase("a?c", "abc", true)]
+            [TestCase("[a-z][a-z][a-z]", "abc", true)]
+            [TestCase("###", "123", true)]
+            [TestCase("###", "abc", false)]
+            [TestCase("*###", "123abc", false)]
+            [TestCase("[a-z][a-z][a-z]", "ABC", false)]
+            [TestCase("a?c", "aba", false)]
+            public void ShouldMatchPattern(string pattern, string input, bool expected)
+            {
+                // Act
+                var actual = input.IsLike(pattern);
+
+                // Assert
+                actual.ShouldBe(expected);
+            }
+        }
+
         public class WhenCheckingIfStringContainsValue
         {
             [TestCase("Hello, World", "ello", CompareOptions.None)]
