@@ -350,5 +350,16 @@ namespace MADE.Collections
 
             return result;
         }
+
+        /// <summary>
+        /// Shuffles the elements of a sequence randomly.
+        /// </summary>
+        /// <param name="source">The collection to shuffle.</param>
+        /// <typeparam name="T">The type of item in the collection.</typeparam>
+        /// <returns>The shuffled collection of items.</returns>
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
+        {
+            return source.OrderBy(x => Guid.NewGuid());
+        }
     }
 }

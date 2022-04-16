@@ -7,9 +7,7 @@ namespace MADE.Collections.Tests.Tests
     using System.Linq;
     using MADE.Collections.Tests.Fakes;
     using MADE.Testing;
-
     using NUnit.Framework;
-
     using Shouldly;
     using CollectionExtensions = Collections.CollectionExtensions;
 
@@ -17,6 +15,49 @@ namespace MADE.Collections.Tests.Tests
     [TestFixture]
     public class CollectionExtensionsTests
     {
+        public class WhenShufflingItems
+        {
+            [Test]
+            public void ShouldShuffleItemOrderRandomly()
+            {
+                // Arrange
+                var items = new List<int>
+                {
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                };
+
+                // Act
+                var shuffledItems = items.Shuffle();
+
+                // Assert
+                shuffledItems.ShouldNotBeSameAs(items);
+            }
+
+            [Test]
+            public void ShouldContainSameItemsAfterShuffle()
+            {
+                // Arrange
+                var items = new List<int>
+                {
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                };
+
+                // Act
+                var shuffledItems = items.Shuffle();
+
+                // Assert
+                shuffledItems.ShouldBeEquivalentTo(items);
+            }
+        }
+
         public class WhenUpdatingACollectionItem
         {
             [Test]
@@ -34,7 +75,7 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldThrowArgumentNullExceptionIfNullItem()
             {
                 // Arrange
-                var list = new List<string> { "Hello" };
+                var list = new List<string> {"Hello"};
                 string item = null;
 
                 // Act & Assert
@@ -48,7 +89,7 @@ namespace MADE.Collections.Tests.Tests
                 TestObject objectToAdd = TestObjectFaker.Create().Generate();
                 TestObject objectToUpdateWith = TestObjectFaker.Create().Generate();
 
-                var list = new List<TestObject> { objectToAdd };
+                var list = new List<TestObject> {objectToAdd};
 
                 // Act
                 bool updated = list.Update(objectToUpdateWith, (s, i) => s.Name == objectToAdd.Name);
@@ -64,7 +105,7 @@ namespace MADE.Collections.Tests.Tests
                 TestObject objectToAdd = TestObjectFaker.Create().Generate();
                 TestObject objectToUpdateWith = TestObjectFaker.Create().Generate();
 
-                var list = new List<TestObject> { objectToAdd };
+                var list = new List<TestObject> {objectToAdd};
 
                 // Act
                 bool updated = list.Update(objectToUpdateWith, (s, i) => s.Name == objectToUpdateWith.Name);
@@ -90,7 +131,7 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldThrowArgumentNullExceptionIfNullSource()
             {
                 // Arrange
-                var list = new List<string> { "Hello" };
+                var list = new List<string> {"Hello"};
 
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => list.MakeEqualTo(null));
@@ -100,8 +141,8 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldUpdateCollectionToBeEqualOther()
             {
                 // Arrange
-                var list = new List<string> { "Hello" };
-                var update = new List<string> { "New", "List" };
+                var list = new List<string> {"Hello"};
+                var update = new List<string> {"New", "List"};
 
                 // Act
                 list.MakeEqualTo(update);
@@ -170,17 +211,17 @@ namespace MADE.Collections.Tests.Tests
 
             private static object[] ValidCases =
             {
-                new object[] { (Collection<int>)null, (Collection<int>)null },
-                new object[] { new ObservableCollection<int> { 1, 2, 3 }, new ObservableCollection<int> { 1, 2, 3 } },
-                new object[] { new ObservableCollection<int> { 1, 2, 3 }, new ObservableCollection<int> { 3, 2, 1 } },
+                new object[] {(Collection<int>)null, (Collection<int>)null},
+                new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {1, 2, 3}},
+                new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {3, 2, 1}},
             };
 
             private static object[] InvalidCases =
             {
-                new object[] { (Collection<int>)null, new ObservableCollection<int>() },
-                new object[] { new ObservableCollection<int>(), (Collection<int>)null },
-                new object[] { new ObservableCollection<int> { 1, 2, 3 }, new ObservableCollection<int> { 4, 5, 6 } },
-                new object[] { new ObservableCollection<int> { 1, 2, 3 }, new ObservableCollection<int> { 1, 2, 3, 4 } },
+                new object[] {(Collection<int>)null, new ObservableCollection<int>()},
+                new object[] {new ObservableCollection<int>(), (Collection<int>)null},
+                new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {4, 5, 6}},
+                new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {1, 2, 3, 4}},
             };
         }
     }
