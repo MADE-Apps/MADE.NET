@@ -9,7 +9,7 @@ namespace MADE.Collections.Tests.Tests
     using MADE.Testing;
     using NUnit.Framework;
     using Shouldly;
-    using CollectionExtensions = Collections.CollectionExtensions;
+    using CollectionExtensions = MADE.Collections.CollectionExtensions;
 
     [ExcludeFromCodeCoverage]
     [TestFixture]
