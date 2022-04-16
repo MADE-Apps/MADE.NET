@@ -4,7 +4,9 @@
 namespace MADE.Data.Converters.Extensions
 {
     using System;
+    using System.IO;
     using System.Text;
+    using System.Threading.Tasks;
 
     /// <summary>
     /// Defines a collection of extensions for string values.
@@ -110,6 +112,21 @@ namespace MADE.Data.Converters.Extensions
         {
             encoding ??= Encoding.UTF8;
             return encoding.GetString(Convert.FromBase64String(base64Value));
+        }
+
+        /// <summary>
+        /// Converts a string value to a <see cref="MemoryStream"/>.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>A <see cref="MemoryStream"/> representing the string value.</returns>
+        public static async Task<MemoryStream> ToMemoryStreamAsync(this string value)
+        {
+            var stream = new MemoryStream();
+            var writer = new StreamWriter(stream);
+            await writer.WriteAsync(value);
+            await writer.FlushAsync();
+            stream.Position = 0;
+            return stream;
         }
 
         /// <summary>
