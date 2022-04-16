@@ -3,6 +3,7 @@
 
 namespace MADE.Data.Converters.Extensions
 {
+    using System;
     using System.Text;
 
     /// <summary>
@@ -82,6 +83,33 @@ namespace MADE.Data.Converters.Extensions
 
             string result = value.Substring(0, 1).ToUpperInvariant() + value.Substring(1).ToLowerInvariant();
             return result;
+        }
+
+        /// <summary>
+        /// Converts a value to a Base64 string using the specified encoding.
+        /// <para>
+        /// Default encoding is UTF-8.
+        /// </para>
+        /// </summary>
+        /// <param name="value">The string value to convert.</param>
+        /// <param name="encoding">The encoding to get the value bytes while converting.</param>
+        /// <returns>The Base64 string representing the value.</returns>
+        public static string ToBase64(this string value, Encoding encoding = default)
+        {
+            encoding ??= Encoding.UTF8;
+            return Convert.ToBase64String(encoding.GetBytes(value));
+        }
+
+        /// <summary>
+        /// Converts a Base64 string to a value using the specified encoding.
+        /// </summary>
+        /// <param name="base64Value">The Base64 value to convert.</param>
+        /// <param name="encoding">The encoding to get the value string while converting.</param>
+        /// <returns>The string value representing the Base64 string.</returns>
+        public static string FromBase64(this string base64Value, Encoding encoding = default)
+        {
+            encoding ??= Encoding.UTF8;
+            return encoding.GetString(Convert.FromBase64String(base64Value));
         }
 
         /// <summary>
