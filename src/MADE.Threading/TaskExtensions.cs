@@ -18,6 +18,7 @@ namespace MADE.Threading
         /// <param name="task">The task to observe for exceptions.</param>
         /// <param name="onException">An action invoked when an exception is caught.</param>
         /// <returns>An asynchronous operation.</returns>
+        /// <exception cref="Exception">Potentially thrown by the <paramref name="onException"/> delegate callback.</exception>
         public static Task AndObserveExceptions(this Task task, Action<Exception> onException = null)
         {
             task?.ContinueWith(
@@ -40,6 +41,7 @@ namespace MADE.Threading
         /// <param name="task">The task to observe for exceptions.</param>
         /// <param name="onException">An action invoked when an exception is caught.</param>
         /// <returns>An asynchronous operation.</returns>
+        /// <exception cref="Exception">Potentially thrown by the <paramref name="onException"/> delegate callback.</exception>
         public static Task<T> AndObserveExceptions<T>(this Task<T> task, Action<Exception> onException = null)
         {
             task?.ContinueWith(

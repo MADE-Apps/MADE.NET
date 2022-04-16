@@ -26,7 +26,7 @@ namespace MADE.Data.Validation.Extensions
         /// <returns>True if the day of week is between Monday and Friday; otherwise, false.</returns>
         public static bool IsWeekday(this DateTime date)
         {
-            return date.DayOfWeek >= DayOfWeek.Monday && date.DayOfWeek <= DayOfWeek.Friday;
+            return date.DayOfWeek is >= DayOfWeek.Monday and <= DayOfWeek.Friday;
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace MADE.Data.Validation.Extensions
         /// <returns>True if the day of week is Saturday or Sunday; otherwise, false.</returns>
         public static bool IsWeekend(this DateTime date)
         {
-            return date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday;
+            return date.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday;
         }
     }
 }

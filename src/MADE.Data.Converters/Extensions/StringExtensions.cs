@@ -166,7 +166,7 @@ namespace MADE.Data.Converters.Extensions
             }
 
             bool parsed = int.TryParse(value, out int intValue);
-            return parsed ? (int?)intValue : null;
+            return parsed ? intValue : null;
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace MADE.Data.Converters.Extensions
             }
 
             bool parsed = float.TryParse(value, out float floatValue);
-            return parsed ? (float?)floatValue : null;
+            return parsed ? floatValue : null;
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace MADE.Data.Converters.Extensions
             }
 
             bool parsed = double.TryParse(value, out double doubleValue);
-            return parsed ? (double?)doubleValue : null;
+            return parsed ? doubleValue : null;
         }
     }
 }

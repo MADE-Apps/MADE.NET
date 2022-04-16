@@ -1,4 +1,4 @@
-﻿namespace MADE.Runtime
+namespace MADE.Runtime
 {
     using System;
 
@@ -25,6 +25,7 @@
         /// <param name="instance">
         /// The instance.
         /// </param>
+        /// <exception cref="ArgumentNullException">Thrown if the <paramref name="instance"/> is <see langword="null"/>.</exception>
         public WeakReferenceEventListener(TInstance instance)
         {
             if (instance == null)
@@ -54,6 +55,7 @@
         /// <param name="eventArgs">
         /// The event arguments.
         /// </param>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="OnEventAction"/> delegate callback.</exception>
         public void OnEvent(TSource source, TEventArgs eventArgs)
         {
             var target = (TInstance)this.weakInstance.Target;
@@ -70,6 +72,7 @@
         /// <summary>
         /// Called when detaching the event listener.
         /// </summary>
+        /// <exception cref="Exception">Potentially thrown by the <see cref="OnDetachAction"/> delegate callback.</exception>
         public void Detach()
         {
             var target = (TInstance)this.weakInstance.Target;

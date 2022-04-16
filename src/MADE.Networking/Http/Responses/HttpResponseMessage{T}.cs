@@ -120,17 +120,19 @@ namespace MADE.Networking.Http.Responses
         /// <param name="disposing">A value indicating whether to release both managed and unmanaged resources.</param>
         protected virtual void Dispose(bool disposing)
         {
-            if (!this.disposed)
+            if (this.disposed)
             {
-                if (disposing)
-                {
-                    this.response.Dispose();
-                }
-
-                this.response = null;
-                this.DeserializedContent = default;
-                this.disposed = true;
+                return;
             }
+
+            if (disposing)
+            {
+                this.response.Dispose();
+            }
+
+            this.response = null;
+            this.DeserializedContent = default;
+            this.disposed = true;
         }
     }
 }

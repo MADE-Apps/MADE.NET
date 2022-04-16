@@ -14,7 +14,7 @@ namespace MADE.Diagnostics
     /// </summary>
     public static class StopwatchHelper
     {
-        private static readonly Dictionary<string, Stopwatch> Stopwatches = new Dictionary<string, Stopwatch>();
+        private static readonly Dictionary<string, Stopwatch> Stopwatches = new();
 
         /// <summary>
         /// Starts a <see cref="Stopwatch"/> with the specified <paramref name="caller"/> and <paramref name="name"/>.

@@ -3,7 +3,6 @@
 
 namespace MADE.Data.Validation.Extensions
 {
-    using System;
     using System.Globalization;
     using System.Text.RegularExpressions;
 
@@ -52,7 +51,6 @@ namespace MADE.Data.Validation.Extensions
         /// <code>
         ///   // result is true
         ///   bool result = "MyValue".IsLike("My*");
-        ///
         ///   // result is false
         ///   result = "MyValue".IsLike("Hello");
         /// </code>
@@ -60,6 +58,7 @@ namespace MADE.Data.Validation.Extensions
         /// <param name="value">The value to compare is like.</param>
         /// <param name="likePattern">The wildcard like pattern to match on.</param>
         /// <returns>True if the value is like the pattern; otherwise, false.</returns>
+        /// <exception cref="RegexMatchTimeoutException">Throw if a Regex time-out occurred.</exception>
         public static bool IsLike(this string value, string likePattern)
         {
             if (value.IsNullOrWhiteSpace() || likePattern.IsNullOrWhiteSpace())

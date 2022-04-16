@@ -3,6 +3,7 @@
 
 namespace MADE.Data.Validation.Validators
 {
+    using System;
     using System.Linq;
     using System.Text.RegularExpressions;
     using MADE.Data.Validation.Extensions;
@@ -43,6 +44,7 @@ namespace MADE.Data.Validation.Validators
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
+        /// <exception cref="OverflowException">The array is multidimensional and contains more than <see cref="int.MaxValue"></see> elements.</exception>
         public void Validate(object value)
         {
             string str = value?.ToString() ?? string.Empty;
@@ -54,7 +56,7 @@ namespace MADE.Data.Validation.Validators
 
         private static bool IsNibbleValid(string nibble)
         {
-            if (nibble.Length > 3 || nibble.Length == 0)
+            if (nibble.Length is > 3 or 0)
             {
                 return false;
             }
@@ -70,7 +72,7 @@ namespace MADE.Data.Validation.Validators
             }
 
             int.TryParse(nibble, out int numeric);
-            return numeric >= 0 && numeric <= 255;
+            return numeric is >= 0 and <= 255;
         }
     }
 }

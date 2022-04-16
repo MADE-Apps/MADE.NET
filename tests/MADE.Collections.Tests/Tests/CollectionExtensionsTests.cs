@@ -211,15 +211,15 @@ namespace MADE.Collections.Tests.Tests
 
             private static object[] ValidCases =
             {
-                new object[] {(Collection<int>)null, (Collection<int>)null},
+                new object[] {null, null},
                 new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {1, 2, 3}},
                 new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {3, 2, 1}},
             };
 
             private static object[] InvalidCases =
             {
-                new object[] {(Collection<int>)null, new ObservableCollection<int>()},
-                new object[] {new ObservableCollection<int>(), (Collection<int>)null},
+                new object[] {null, new ObservableCollection<int>()},
+                new object[] {new ObservableCollection<int>(), null},
                 new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {4, 5, 6}},
                 new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {1, 2, 3, 4}},
             };

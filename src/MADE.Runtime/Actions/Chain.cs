@@ -12,7 +12,7 @@ namespace MADE.Runtime.Actions
     public class Chain<T> : IChain<T>
         where T : class
     {
-        private readonly List<WeakReference<T>> chain = new List<WeakReference<T>>();
+        private readonly List<WeakReference<T>> chain = new();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Chain{T}"/> class with an instance.

@@ -91,7 +91,7 @@ namespace MADE.Networking.Http.Requests.Json
         /// </returns>
         public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
         {
-            string json = await this.GetJsonResponse(cancellationToken);
+            string json = await this.GetJsonResponseAsync(cancellationToken);
             return JsonConvert.DeserializeObject<TResponse>(json);
         }
 
@@ -111,11 +111,11 @@ namespace MADE.Networking.Http.Requests.Json
             Type expectedResponse,
             CancellationToken cancellationToken = default)
         {
-            string json = await this.GetJsonResponse(cancellationToken);
+            string json = await this.GetJsonResponseAsync(cancellationToken);
             return JsonConvert.DeserializeObject(json, expectedResponse);
         }
 
-        private async Task<string> GetJsonResponse(CancellationToken cancellationToken = default)
+        private async Task<string> GetJsonResponseAsync(CancellationToken cancellationToken = default)
         {
             if (this.client == null)
             {

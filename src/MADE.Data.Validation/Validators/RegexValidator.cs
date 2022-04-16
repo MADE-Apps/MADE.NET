@@ -47,6 +47,7 @@ namespace MADE.Data.Validation.Validators
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
+        /// <exception cref="RegexMatchTimeoutException">Thrown if a Regex time-out occurred.</exception>
         public void Validate(object value)
         {
             string str = value?.ToString() ?? string.Empty;

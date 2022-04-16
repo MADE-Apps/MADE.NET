@@ -230,7 +230,7 @@ namespace MADE.Data.Converters.Extensions
         /// </returns>
         public static DateTime? SetTime(this DateTime? dateTime, int hours, int minutes, int seconds, int milliseconds)
         {
-            return dateTime == null ? (DateTime?)null : SetTime(dateTime.Value, hours, minutes, seconds, milliseconds);
+            return dateTime == null ? null : SetTime(dateTime.Value, hours, minutes, seconds, milliseconds);
         }
 
         /// <summary>

@@ -26,6 +26,7 @@ namespace MADE.Data.EFCore.Extensions
         /// <exception cref="DbUpdateConcurrencyException">A concurrency violation is encountered while saving to the database.
         ///                 A concurrency violation occurs when an unexpected number of rows are affected during save.
         ///                 This is usually because the data in the database has been modified since it was loaded into memory.</exception>
+        /// <exception cref="OperationCanceledException">If the <see cref="CancellationToken" /> is canceled.</exception>
         public static async Task UpdateAsync<T>(
             this DbContext context,
             T entity,
@@ -61,7 +62,7 @@ namespace MADE.Data.EFCore.Extensions
                 .Entries()
                 .Where(
                     entry => entry.Entity is IEntityBase &&
-                             (entry.State == EntityState.Added || entry.State == EntityState.Modified));
+                             entry.State is EntityState.Added or EntityState.Modified);
 
             DateTime now = DateTime.UtcNow;
 
@@ -86,6 +87,8 @@ namespace MADE.Data.EFCore.Extensions
         /// <returns>
         ///  True if the changes saved successfully; otherwise, false.
         /// </returns>
+        /// <exception cref="OperationCanceledException">If the <see cref="CancellationToken" /> is canceled.</exception>
+        /// <exception cref="Exception">Potentially thrown by the <paramref name="onError"/> delegate callback.</exception>
         public static async Task<bool> TrySaveChangesAsync(
             this DbContext context,
             Action<Exception> onError = null,
@@ -112,6 +115,7 @@ namespace MADE.Data.EFCore.Extensions
         /// <param name="onError">An exception for handling the exception thrown, for example, event logging.</param>
         /// <typeparam name="TContext">The type of data context.</typeparam>
         /// <returns>True if the action ran successfully; otherwise, false.</returns>
+        /// <exception cref="Exception">Potentially thrown by the <paramref name="onError"/> delegate callback.</exception>
         public static async Task<bool> TryAsync<TContext>(
             this TContext context,
             Func<TContext, Task> action,

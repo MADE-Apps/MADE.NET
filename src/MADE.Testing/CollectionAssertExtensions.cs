@@ -25,6 +25,7 @@ namespace MADE.Testing
         /// <param name="actual">
         /// The second collection to compare. This is the collection produced by the code under test.
         /// </param>
+        /// <exception cref="AssertFailedException">Thrown if the condition of equivalency could not be met.</exception>
         public static void ShouldBeEquivalentTo<TItem>(this IEnumerable<TItem> expected, IEnumerable<TItem> actual)
         {
             if ((expected == null) != (actual == null))
@@ -70,6 +71,7 @@ namespace MADE.Testing
         /// <param name="actual">
         /// The second collection to compare. This is the collection produced by the code under test.
         /// </param>
+        /// <exception cref="AssertFailedException">Thrown if the condition of equivalency could not be met.</exception>
         public static void ShouldNotBeEquivalentTo<TItem>(this IEnumerable<TItem> expected, IEnumerable<TItem> actual)
         {
             if ((expected == null) != (actual == null))
@@ -131,8 +133,8 @@ namespace MADE.Testing
         /// True if a mismatched element was found; false otherwise.
         /// </returns>
         private static bool FindMismatchedElement(
-            ICollection expected,
-            ICollection actual,
+            IEnumerable expected,
+            IEnumerable actual,
             out int expectedCount,
             out int actualCount,
             out object mismatchedElement)

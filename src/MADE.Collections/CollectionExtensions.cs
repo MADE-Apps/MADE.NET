@@ -19,6 +19,8 @@ namespace MADE.Collections
         /// <param name="item">The item to add.</param>
         /// <param name="condition">The condition required to add the item.</param>
         /// <typeparam name="T">The type of item within the collection.</typeparam>
+        /// <exception cref="ArgumentNullException">Thrown if the <paramref name="collection"/> or <paramref name="condition"/> is <see langword="null"/>.</exception>
+        /// <exception cref="Exception">Potentially thrown by the delegate callback.</exception>
         public static void AddIf<T>(this IList<T> collection, T item, Func<bool> condition)
         {
             if (collection == null)
@@ -34,6 +36,33 @@ namespace MADE.Collections
             if (condition())
             {
                 collection.Add(item);
+            }
+        }
+
+        /// <summary>
+        /// Removes the specified item from the collection based on the specified condition being true.
+        /// </summary>
+        /// <param name="collection">The collection to remove the item from.</param>
+        /// <param name="item">The item to remove.</param>
+        /// <param name="condition">The condition required to remove the item.</param>
+        /// <typeparam name="T">The type of item within the collection.</typeparam>
+        /// <exception cref="ArgumentNullException">Thrown if the <paramref name="collection"/> or <paramref name="condition"/> is <see langword="null"/>.</exception>
+        /// <exception cref="Exception">Potentially thrown by the delegate callback.</exception>
+        public static void RemoveIf<T>(this IList<T> collection, T item, Func<bool> condition)
+        {
+            if (collection == null)
+            {
+                throw new ArgumentNullException(nameof(collection));
+            }
+
+            if (condition == null)
+            {
+                throw new ArgumentNullException(nameof(condition));
+            }
+
+            if (condition())
+            {
+                collection.Remove(item);
             }
         }
 
@@ -146,6 +175,8 @@ namespace MADE.Collections
         /// <param name="itemsToAdd">The items to add.</param>
         /// <param name="condition">The condition required to add the items.</param>
         /// <typeparam name="T">The type of item within the collection.</typeparam>
+        /// <exception cref="ArgumentNullException">Thrown if the <paramref name="collection"/>, <paramref name="itemsToAdd"/> or <paramref name="condition"/> is <see langword="null"/>.</exception>
+        /// <exception cref="Exception">Potentially thrown by the delegate callback.</exception>
         public static void AddRangeIf<T>(
             this ICollection<T> collection,
             IEnumerable<T> itemsToAdd,
@@ -203,6 +234,8 @@ namespace MADE.Collections
         /// <param name="itemsToRemove">The items to remove.</param>
         /// <param name="condition">The condition required to remove the items.</param>
         /// <typeparam name="T">The type of item within the collection.</typeparam>
+        /// <exception cref="ArgumentNullException">Thrown if the <paramref name="collection"/>, <paramref name="itemsToRemove"/> or <paramref name="condition"/> is <see langword="null"/>.</exception>
+        /// <exception cref="Exception">Potentially thrown by the delegate callback.</exception>
         public static void RemoveRangeIf<T>(
             this ICollection<T> collection,
             IEnumerable<T> itemsToRemove,
@@ -290,6 +323,7 @@ namespace MADE.Collections
         /// <param name="action">
         /// The action to perform.
         /// </param>
+        /// <exception cref="Exception">Potentially thrown by the delegate callback.</exception>
         public static void ForEach<T>(this IEnumerable<T> collection, Action<T> action)
         {
             foreach (T item in collection)
@@ -308,7 +342,7 @@ namespace MADE.Collections
         public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> source, int chunkSize = 25)
         {
             return source
-                .Select((v, i) => new {Index = i, Value = v})
+                .Select((v, i) => new { Index = i, Value = v })
                 .GroupBy(x => x.Index / chunkSize)
                 .Select(x => x.Select(v => v.Value));
         }
@@ -333,6 +367,7 @@ namespace MADE.Collections
         /// <param name="predicate">The action to run to determine the position of the item based on the provided <paramref name="value"/> and an item in the collection.</param>
         /// <typeparam name="T">The type of items in the collection.</typeparam>
         /// <returns>The potential index of the item.</returns>
+        /// <exception cref="Exception">Potentially thrown by the delegate callback.</exception>
         public static int PotentialIndexOf<T>(this IList<T> source, T value, Func<T, T, bool> predicate)
         {
             var result = 0;
