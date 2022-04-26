@@ -106,7 +106,7 @@ title: Make App Development Easier
         <div class="stat-container">
           <div class="stat-header">
             <span>
-              v1.4.0
+              v1.5.0
             </span>
           </div>
           <div class="stat-content">
@@ -122,7 +122,7 @@ title: Make App Development Easier
         <div class="stat-container">
           <div class="stat-header">
             <span>
-              225k+
+              275k+
             </span>
           </div>
           <div class="stat-content">
