@@ -1,0 +1,22 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Data Validation (FluentValidation)</Product>
+    <Description>
+      This package includes extended support for FluentValidation validators in MADE.NET.
+    </Description>
+    <PackageTags>MADE Data Validation FluentValidation</PackageTags>
+    <RootNamespace>MADE.Data.Validation</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MADE.Data.Validation\MADE.Data.Validation.csproj" />
+  </ItemGroup>
+
+</Project>
