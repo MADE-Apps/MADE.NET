@@ -5,7 +5,7 @@ title: Using the Data Validation package
 
 # Using the Data Validation package
 
-The Data Validation package is designed to provide out-of-the-box data validation to applications built with C#. 
+The Data Validation package is designed to provide out-of-the-box data validation to applications built with C#.
 
 ## Validating an object using the ValidatorCollection
 
@@ -13,7 +13,7 @@ Data validation can be implemented in so many different ways. MADE provides the 
 
 Using the `MADE.Data.Validation.ValidatorCollection` based on a `List` type, you can construct a collection of `IValidator` instances which can be used to validate values.
 
-For example, you might want a collection of validators that ensure that a value is provided, it has a minimum length, and it contains only alphanumeric characters. 
+For example, you might want a collection of validators that ensure that a value is provided, it has a minimum length, and it contains only alphanumeric characters.
 
 Instead of implementing your own custom validation in your application, you can take advantage of the built-in `IValidator` implementation of this package and utilize them with the `ValidatorCollection`.
 
@@ -102,7 +102,7 @@ The implementation splits the IP address into each nibble and validates them bas
 
 ### MaxValueValidator
 
-The `MaxValueValidator` validates an `IComparable` value is less than a configurable maximum value. 
+The `MaxValueValidator` validates an `IComparable` value is less than a configurable maximum value.
 
 The maximum can be configured by setting the `Max` value.
 
@@ -110,7 +110,7 @@ The in-box `System` types which implement the `IComparable` interface can be [fo
 
 ### MinValueValidator
 
-The `MinValueValidator` validates an `IComparable` value is greater than a configurable minimum value. 
+The `MinValueValidator` validates an `IComparable` value is greater than a configurable minimum value.
 
 The minimum can be configured by setting the `Min` value.
 
@@ -191,3 +191,13 @@ namespace MADE.Data.Validation.Validators
 ```
 
 If there is a common data validator you think is missing from MADE.NET, [raise a tracking item on GitHub](https://github.com/MADE-Apps/MADE.NET/issues/new/choose) and we'll get it implemented.
+
+## Using FluentValidation with MADE.NET
+
+The `MADE.Data.Validation.FluentValidation` package provides an easy way to take advantage of validation with the [FluentValidation](https://fluentvalidation.net/) library validator framework.
+
+### Validating an object using the FluentValidatorCollection
+
+Using the `MADE.Data.Validation.FluentValidatorCollection<T>` based on a `List` type, you can construct a collection of `AbstractValidator` instances which can be used to validate values.
+
+This way, you can bring FluentValidation's out-of-the-box validators or your own custom validators based on the `AbstractValidator` type and get all the benefits of using the existing MADE.NET validation framework. This is great for example with input validator controls that currently support the MADE.NET validation framework!

@@ -5,32 +5,34 @@ namespace MADE.Data.Validation
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using MADE.Data.Validation.Extensions;
+    using FluentValidation;
 
     /// <summary>
-    /// Defines a list of <see cref="IValidator"/> objects that can be accessed by index.
+    /// Defines a list of <see cref="FluentValidation.IValidator"/> objects that can be accessed by index.
     /// </summary>
-    public class ValidatorCollection : List<IValidator>, IValidatorCollection
+    /// <typeparam name="T">The type of item being validated.</typeparam>
+    public class FluentValidatorCollection<T> : List<IValidator<T>>, IValidatorCollection
     {
-        /// <summary>Initializes a new instance of the <see cref="ValidatorCollection"/> class that is empty and has the default initial capacity.</summary>
-        public ValidatorCollection()
+        private readonly List<string> feedbackMessages = new();
+
+        /// <summary>Initializes a new instance of the <see cref="FluentValidatorCollection{T}"/> class that is empty and has the default initial capacity.</summary>
+        public FluentValidatorCollection()
         {
         }
 
-        /// <summary>Initializes a new instance of the <see cref="ValidatorCollection"/> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</summary>
+        /// <summary>Initializes a new instance of the <see cref="FluentValidatorCollection{T}"/> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</summary>
         /// <param name="collection">The collection whose elements are copied to the new list.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="collection">collection</paramref> is null.</exception>
-        public ValidatorCollection(IEnumerable<IValidator> collection)
+        public FluentValidatorCollection(IEnumerable<AbstractValidator<T>> collection)
             : base(collection)
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ValidatorCollection"/> class that is empty and has the specified initial capacity.</summary>
+        /// Initializes a new instance of the <see cref="FluentValidatorCollection{T}"/> class that is empty and has the specified initial capacity.</summary>
         /// <param name="capacity">The number of elements that the new list can initially store.</param>
         /// <exception cref="T:System.ArgumentOutOfRangeException"><paramref name="capacity">capacity</paramref> is less than 0.</exception>
-        public ValidatorCollection(int capacity)
+        public FluentValidatorCollection(int capacity)
             : base(capacity)
         {
         }
@@ -43,25 +45,17 @@ namespace MADE.Data.Validation
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
         /// </summary>
-        public bool IsInvalid
-        {
-            get => this.Any(validator => validator.IsInvalid);
-            set => this.ForEach(validator => validator.IsInvalid = value);
-        }
+        public bool IsInvalid { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the data is dirty.
         /// </summary>
-        public bool IsDirty
-        {
-            get => this.Any(validator => validator.IsDirty);
-            set => this.ForEach(validator => validator.IsDirty = value);
-        }
+        public bool IsDirty { get; set; }
 
         /// <summary>
         /// Gets the validator feedback messages for ones which are invalid.
         /// </summary>
-        public IEnumerable<string> FeedbackMessages => this.Where(x => x.IsInvalid).Select(x => x.FeedbackMessage).Where(x => !x.IsNullOrWhiteSpace());
+        public IEnumerable<string> FeedbackMessages => this.feedbackMessages;
 
         /// <summary>
         /// Executes data validation on the provided <paramref name="value"/> against the validators provided.
@@ -70,7 +64,27 @@ namespace MADE.Data.Validation
         /// <exception cref="Exception">Potentially thrown by the <see cref="Validated"/> delegate callback.</exception>
         public void Validate(object value)
         {
-            this.ForEach(validator => validator.Validate(value));
+            this.feedbackMessages.Clear();
+
+            this.IsDirty = true;
+
+            this.ForEach(validator =>
+            {
+                var result = validator.Validate((T)value);
+                if (!result.IsValid)
+                {
+                    IsInvalid = true;
+                }
+
+                if (result.Errors != null)
+                {
+                    foreach (var message in result.Errors)
+                    {
+                        this.feedbackMessages.Add(message.ErrorMessage);
+                    }
+                }
+            });
+
             this.Validated?.Invoke(this, new InputValidatedEventArgs(this.IsInvalid, this.IsDirty));
         }
     }

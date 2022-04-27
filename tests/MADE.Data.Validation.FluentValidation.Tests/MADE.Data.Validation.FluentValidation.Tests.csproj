@@ -19,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\MADE.Data.Converters\MADE.Data.Converters.csproj" />
+    <ProjectReference Include="..\..\src\MADE.Data.Validation.FluentValidation\MADE.Data.Validation.FluentValidation.csproj" />
     <ProjectReference Include="..\..\src\MADE.Testing\MADE.Testing.csproj" />
-    <ProjectReference Include="..\..\src\MADE.Web\MADE.Web.csproj" />
   </ItemGroup>
 
 </Project>

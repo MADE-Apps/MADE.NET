@@ -29,6 +29,7 @@ dotnet add package MADE.Collections
 | MADE.Data.Converters | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Converters)](https://www.nuget.org/packages/MADE.Data.Converters/) |
 | MADE.Data.EFCore | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.EFCore)](https://www.nuget.org/packages/MADE.Data.EFCore/) |
 | MADE.Data.Validation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) |
+| MADE.Data.Validation.FluentValidation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.FluentValidation)](https://www.nuget.org/packages/MADE.Data.Validation.FluentValidation/) |
 | MADE.Diagnostics | [![NuGet](https://img.shields.io/nuget/v/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) |
 | MADE.Media.Image | [![NuGet](https://img.shields.io/nuget/v/MADE.Media.Image)](https://www.nuget.org/packages/MADE.Media.Image/) |
 | MADE.Networking | [![NuGet](https://img.shields.io/nuget/v/MADE.Networking)](https://www.nuget.org/packages/MADE.Networking/) |
