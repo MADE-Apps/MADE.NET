@@ -31,7 +31,6 @@ dotnet add package MADE.Collections
 | MADE.Data.Validation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) |
 | MADE.Data.Validation.FluentValidation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.FluentValidation)](https://www.nuget.org/packages/MADE.Data.Validation.FluentValidation/) |
 | MADE.Diagnostics | [![NuGet](https://img.shields.io/nuget/v/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) |
-| MADE.Media.Image | [![NuGet](https://img.shields.io/nuget/v/MADE.Media.Image)](https://www.nuget.org/packages/MADE.Media.Image/) |
 | MADE.Networking | [![NuGet](https://img.shields.io/nuget/v/MADE.Networking)](https://www.nuget.org/packages/MADE.Networking/) |
 | MADE.Runtime | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/packages/MADE.Runtime/) |
 | MADE.Testing | [![NuGet](https://img.shields.io/nuget/v/MADE.Testing)](https://www.nuget.org/packages/MADE.Testing/) |
@@ -123,20 +122,6 @@ It includes features such as:
 <span class="button">
 
 [Discover Diagnostics](features/diagnostics.md)
-
-</span>
-
-#### Media.Image
-
-The Media Image package is designed to be used in applications that require image processing.
-
-It provides capabilities, such as:
-
-- LoadStorageFileThumbnailImageBehavior, a UWP XAML behavior for loading a thumbnail from a `StorageFile` on an `Image` element.
-
-<span class="button">
-
-[Discover Media.Image](features/media-image.md)
 
 </span>
 
