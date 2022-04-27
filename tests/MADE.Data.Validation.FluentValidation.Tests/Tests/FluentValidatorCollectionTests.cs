@@ -4,7 +4,10 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
     using System.Collections.Generic;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
+    using System.Threading;
+    using System.Threading.Tasks;
     using global::FluentValidation;
+    using global::FluentValidation.Results;
     using MADE.Testing;
     using NUnit.Framework;
     using Shouldly;
@@ -147,6 +150,32 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
                 collection.FeedbackMessages.Count().ShouldBe(1);
                 collection.FeedbackMessages.FirstOrDefault().ShouldBe(PersonValidator.DateOfBirthValidationMessage);
             }
+
+            [Test]
+            public void ShouldValidateComplexObjectWithMultipleValidators()
+            {
+                // Arrange
+                var value = new Staff
+                {
+                    Name = "Joe Bloggs",
+                    JobTitle = null, // Invalid job title
+                    Department = "Build",
+                    DateOfBirth = DateTime.UtcNow.AddDays(1) // Invalid birth date
+                };
+
+                var collection = new FluentValidatorCollection<Person> { new PersonValidator(), new StaffValidator() };
+
+                // Act
+                collection.Validate(value);
+
+                // Assert
+                collection.FeedbackMessages.ShouldNotBeEmpty();
+                collection.FeedbackMessages.Count().ShouldBe(2);
+                collection.FeedbackMessages.FirstOrDefault(x => x.Equals(PersonValidator.DateOfBirthValidationMessage,
+                    StringComparison.InvariantCultureIgnoreCase)).ShouldNotBeNull();
+                collection.FeedbackMessages.FirstOrDefault(x => x.Equals(StaffValidator.JobTitleValidationMessage,
+                    StringComparison.InvariantCultureIgnoreCase)).ShouldNotBeNull();
+            }
         }
     }
 
@@ -155,6 +184,13 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
         public string Name { get; set; }
 
         public DateTime? DateOfBirth { get; set; }
+    }
+
+    public class Staff : Person
+    {
+        public string JobTitle { get; set; }
+
+        public string Department { get; set; }
     }
 
     public class PersonValidator : AbstractValidator<Person>
@@ -168,6 +204,27 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
                 .NotNull()
                 .LessThanOrEqualTo(DateTime.UtcNow)
                 .WithMessage(DateOfBirthValidationMessage);
+        }
+    }
+
+    public class StaffValidator : AbstractValidator<Staff>, IValidator<Person>
+    {
+        public const string JobTitleValidationMessage = "Please specify a job title";
+
+        public StaffValidator()
+        {
+            this.RuleFor(x => x.JobTitle).NotEmpty().WithMessage(JobTitleValidationMessage);
+            this.RuleFor(x => x.Department).NotEmpty();
+        }
+
+        public ValidationResult Validate(Person instance)
+        {
+            return base.Validate(instance as Staff);
+        }
+
+        public Task<ValidationResult> ValidateAsync(Person instance, CancellationToken cancellation = new())
+        {
+            return base.ValidateAsync(instance as Staff, cancellation);
         }
     }
 }

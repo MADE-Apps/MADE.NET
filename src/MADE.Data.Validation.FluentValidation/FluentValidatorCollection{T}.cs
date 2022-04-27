@@ -11,8 +11,7 @@ namespace MADE.Data.Validation
     /// Defines a list of <see cref="FluentValidation.IValidator"/> objects that can be accessed by index.
     /// </summary>
     /// <typeparam name="T">The type of item being validated.</typeparam>
-    public class FluentValidatorCollection<T> : List<AbstractValidator<T>>, IValidatorCollection
-        where T : class
+    public class FluentValidatorCollection<T> : List<IValidator<T>>, IValidatorCollection
     {
         private readonly List<string> feedbackMessages = new();
 
@@ -71,7 +70,7 @@ namespace MADE.Data.Validation
 
             this.ForEach(validator =>
             {
-                var result = validator.Validate(value as T);
+                var result = validator.Validate((T)value);
                 if (!result.IsValid)
                 {
                     IsInvalid = true;
