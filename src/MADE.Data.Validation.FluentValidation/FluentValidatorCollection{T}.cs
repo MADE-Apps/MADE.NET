@@ -23,7 +23,7 @@ namespace MADE.Data.Validation
         /// <summary>Initializes a new instance of the <see cref="FluentValidatorCollection{T}"/> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</summary>
         /// <param name="collection">The collection whose elements are copied to the new list.</param>
         /// <exception cref="T:System.ArgumentNullException"><paramref name="collection">collection</paramref> is null.</exception>
-        public FluentValidatorCollection(IEnumerable<AbstractValidator<T>> collection)
+        public FluentValidatorCollection(IEnumerable<IValidator<T>> collection)
             : base(collection)
         {
         }
