@@ -9,6 +9,7 @@
       - DbContextExtensions for extending DbContext objects with helper methods, such as updating an item asynchronously and removing items matching a specified criteria.
       - EntityBase for providing a base definition for an entity within a DbContext, including a primary key, created and updated dates.
       - UtcDateTimeConverter for ensuring that DateTime values are stored and retrieving in UTC format.
+      - QueryableExtensions for extending IQueryable objects with helper methods, such as filtering, ordering, and paging.
     </Description>
     <PackageTags>MADE EFCore EntityFramework</PackageTags>
 
@@ -16,10 +17,12 @@
 
   <ItemGroup Condition="'$(TargetFramework)'=='net6.0'">
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
+    <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="6.13.18" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='net5.0'">
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.16" />
+    <PackageReference Include="Z.EntityFramework.Plus.EFCore" Version="5.13.18" />
   </ItemGroup>
 
 </Project>
