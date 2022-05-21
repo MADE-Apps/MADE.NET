@@ -8,6 +8,8 @@
       href: features/data-converters.md
     - name: Data EF Core
       href: features/data-efcore.md
+    - name: Data Serialization
+      href: features/data-serialization.md
     - name: Data Validation
       href: features/data-validation.md
     - name: Diagnostics
