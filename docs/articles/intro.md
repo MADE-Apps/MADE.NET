@@ -28,9 +28,11 @@ dotnet add package MADE.Collections
 | MADE.Collections | [![NuGet](https://img.shields.io/nuget/v/MADE.Collections)](https://www.nuget.org/packages/MADE.Collections/) |
 | MADE.Data.Converters | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Converters)](https://www.nuget.org/packages/MADE.Data.Converters/) |
 | MADE.Data.EFCore | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.EFCore)](https://www.nuget.org/packages/MADE.Data.EFCore/) |
+| MADE.Data.Serialization | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Serialization)](https://www.nuget.org/packages/MADE.Data.Serialization/) |
 | MADE.Data.Validation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) |
 | MADE.Data.Validation.FluentValidation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.FluentValidation)](https://www.nuget.org/packages/MADE.Data.Validation.FluentValidation/) |
 | MADE.Diagnostics | [![NuGet](https://img.shields.io/nuget/v/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) |
+| MADE.Foundation | [![NuGet](https://img.shields.io/nuget/v/MADE.Foundation)](https://www.nuget.org/packages/MADE.Foundation/) |
 | MADE.Networking | [![NuGet](https://img.shields.io/nuget/v/MADE.Networking)](https://www.nuget.org/packages/MADE.Networking/) |
 | MADE.Runtime | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/packages/MADE.Runtime/) |
 | MADE.Testing | [![NuGet](https://img.shields.io/nuget/v/MADE.Testing)](https://www.nuget.org/packages/MADE.Testing/) |
@@ -84,6 +86,20 @@ It includes features such as:
 <span class="button">
 
 [Discover Data.EFCore](features/data-efcore.md)
+
+</span>
+
+#### Data.Serialization
+
+The Data Serialization package provides a collection of helpers and extensions for data serialization in different types, e.g. JSON.
+
+It includes features such as:
+
+- JsonTypeMigrationSerializationBinder, for migrating type names within a serialized JSON object.
+
+<span class="button">
+
+[Discover Data.Serialization](features/data-serialization.md)
 
 </span>
 
