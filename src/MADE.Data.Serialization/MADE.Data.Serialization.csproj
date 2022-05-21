@@ -1,0 +1,18 @@
+<Project Sdk="MSBuild.Sdk.Extras">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Product>MADE.NET Data Serialization</Product>
+    <Description>
+      This package includes:
+      - JsonTypeMigrationSerializationBinder for migrating type names within a serialized JSON object.
+    </Description>
+    <PackageTags>MADE Data Serialization JSON</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+</Project>
