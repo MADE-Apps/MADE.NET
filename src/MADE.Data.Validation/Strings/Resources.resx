@@ -144,6 +144,9 @@
   <data name="MinValueValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be greater than {0}.</value>
   </data>
+  <data name="PredicateValidator_FeedbackMessage" xml:space="preserve">
+    <value>The value is not valid.</value>
+  </data>
   <data name="RegexValidator_FeedbackMessage" xml:space="preserve">
     <value>The value does not match the valid mask.</value>
   </data>
