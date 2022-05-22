@@ -106,6 +106,15 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid GUID..
+        /// </summary>
+        public static string GuidValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("GuidValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value must be a valid IP address, e.g. 192.168.0.1..
         /// </summary>
         public static string IpAddressValidator_FeedbackMessage {

@@ -132,6 +132,9 @@
   <data name="EmailValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be a valid email address, e.g. test@example.com.</value>
   </data>
+  <data name="GuidValidator_FeedbackMessage" xml:space="preserve">
+    <value>The value must be a valid GUID.</value>
+  </data>
   <data name="IpAddressValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be a valid IP address, e.g. 192.168.0.1.</value>
   </data>
