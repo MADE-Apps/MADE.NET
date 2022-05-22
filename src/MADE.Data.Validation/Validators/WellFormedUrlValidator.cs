@@ -54,8 +54,8 @@ namespace MADE.Data.Validation.Validators
             }
             else
             {
-                var valStr = value.ToString();
-                isInvalid = !Uri.IsWellFormedUriString(valStr, UriKind.Absolute);
+                var stringValue = value?.ToString() ?? string.Empty;
+                isInvalid = !Uri.IsWellFormedUriString(stringValue, UriKind.Absolute);
             }
 
             this.IsInvalid = isInvalid;

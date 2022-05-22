@@ -124,6 +124,15 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid MAC address, e.g. 00:11:22:33:44:55..
+        /// </summary>
+        public static string MacAddressValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("MacAddressValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The length must be less than {0}..
         /// </summary>
         public static string MaxLengthValidator_FeedbackMessage {

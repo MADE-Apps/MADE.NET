@@ -56,7 +56,7 @@ namespace MADE.Data.Validation.Validators
         /// <param name="value">The value to be validated.</param>
         public void Validate(object value)
         {
-            bool parsed = double.TryParse(value.ToString(), out double latitude);
+            bool parsed = double.TryParse(value?.ToString() ?? string.Empty, out double latitude);
             this.IsInvalid = !parsed || latitude is < Min or > Max;
             this.IsDirty = true;
         }

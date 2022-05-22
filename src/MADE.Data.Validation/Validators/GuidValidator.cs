@@ -54,7 +54,7 @@ namespace MADE.Data.Validation.Validators
             }
             else
             {
-                var stringValue = value.ToString();
+                var stringValue = value?.ToString() ?? string.Empty;
                 isInvalid = !Guid.TryParse(stringValue, out _);
             }
 

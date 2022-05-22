@@ -4,30 +4,21 @@
 namespace MADE.Data.Validation.Validators
 {
     using System;
+    using System.Net.NetworkInformation;
     using MADE.Data.Validation.Extensions;
     using MADE.Data.Validation.Strings;
 
     /// <summary>
-    /// Defines a data validator for ensuring a value is within the valid range for a longitude value.
+    /// Defines a data validator for ensuring a value is a valid MAC address.
     /// </summary>
-    public class LongitudeValidator : IValidator
+    public class MacAddressValidator : IValidator
     {
-        /// <summary>
-        /// The minimum valid longitude value.
-        /// </summary>
-        public const double Min = -180;
-
-        /// <summary>
-        /// The maximum valid longitude value.
-        /// </summary>
-        public const double Max = 180;
-
         private string feedbackMessage;
 
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
-        public virtual string Key { get; set; } = nameof(LongitudeValidator);
+        public string Key { get; set; } = nameof(MacAddressValidator);
 
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
@@ -42,10 +33,10 @@ namespace MADE.Data.Validation.Validators
         /// <summary>
         /// Gets or sets the feedback message to display when <see cref="IValidator.IsInvalid"/> is true.
         /// </summary>
-        public virtual string FeedbackMessage
+        public string FeedbackMessage
         {
             get => this.feedbackMessage.IsNullOrWhiteSpace()
-                ? string.Format(Resources.BetweenValidator_FeedbackMessage, Min, Max)
+                ? Resources.MacAddressValidator_FeedbackMessage
                 : this.feedbackMessage;
             set => this.feedbackMessage = value;
         }
@@ -54,10 +45,23 @@ namespace MADE.Data.Validation.Validators
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
+        /// <exception cref="OverflowException">The array is multidimensional and contains more than <see cref="int.MaxValue"></see> elements.</exception>
         public void Validate(object value)
         {
-            bool parsed = double.TryParse(value?.ToString() ?? string.Empty, out double longitude);
-            this.IsInvalid = !parsed || longitude is < Min or > Max;
+            bool isInvalid;
+            var stringValue = value?.ToString() ?? string.Empty;
+
+            try
+            {
+                PhysicalAddress newAddress = PhysicalAddress.Parse(stringValue);
+                isInvalid = PhysicalAddress.None.Equals(newAddress);
+            }
+            catch (FormatException)
+            {
+                isInvalid = true;
+            }
+
+            this.IsInvalid = isInvalid;
             this.IsDirty = true;
         }
     }

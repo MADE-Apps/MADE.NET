@@ -138,6 +138,9 @@
   <data name="IpAddressValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be a valid IP address, e.g. 192.168.0.1.</value>
   </data>
+  <data name="MacAddressValidator_FeedbackMessage" xml:space="preserve">
+    <value>The value must be a valid MAC address, e.g. 00:11:22:33:44:55.</value>
+  </data>
   <data name="MaxLengthValidator_FeedbackMessage" xml:space="preserve">
     <value>The length must be less than {0}.</value>
   </data>

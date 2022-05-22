@@ -41,7 +41,7 @@ namespace MADE.Data.Validation.Validators
         /// <exception cref="RegexMatchTimeoutException">Thrown if a Regex time-out occurred.</exception>
         public override void Validate(object value)
         {
-            var stringValue = value.ToString();
+            var stringValue = value?.ToString() ?? string.Empty;
             if (stringValue.Length % 4 != 0)
             {
                 this.IsInvalid = true;

@@ -11,9 +11,11 @@
       - Base64Validator for ensuring a string is a valid base64 string.
       - BetweenValidator for ensuring a value is within a minimum and maximum range.
       - EmailValidator for ensuring a value is an email address.
+      - GuidValidator for ensuring a value is a GUID.
       - IpAddressValidator for ensuring a value is a valid IP address.
       - LatitudeValidator for ensuring a value is a valid latitude.
       - LongitudeValidator for ensuring a value is a valid longitude.
+      - MacAddressValidator for ensuring a value is a valid MAC address.
       - MaxLengthValidator for ensuring a value is below a maximum length.
       - MaxValueValidator for ensuring a value is below a maximum value.
       - MinLengthValidator for ensuring a value is above a minimum length.
