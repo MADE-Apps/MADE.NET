@@ -123,6 +123,9 @@
   <data name="AlphaValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must only contain letters.</value>
   </data>
+  <data name="Base64Validator_FeedbackMessage" xml:space="preserve">
+    <value>The value must be a valid base64 string.</value>
+  </data>
   <data name="BetweenValidator_FeedbackMessage" xml:space="preserve">
     <value>The value must be between {0} and {1}.</value>
   </data>

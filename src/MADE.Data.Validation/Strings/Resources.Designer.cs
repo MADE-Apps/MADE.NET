@@ -79,6 +79,15 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid base64 string..
+        /// </summary>
+        public static string Base64Validator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("Base64Validator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value must be between {0} and {1}..
         /// </summary>
         public static string BetweenValidator_FeedbackMessage {

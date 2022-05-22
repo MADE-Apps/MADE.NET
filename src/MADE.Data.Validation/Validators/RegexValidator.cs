@@ -48,7 +48,7 @@ namespace MADE.Data.Validation.Validators
         /// </summary>
         /// <param name="value">The value to be validated.</param>
         /// <exception cref="RegexMatchTimeoutException">Thrown if a Regex time-out occurred.</exception>
-        public void Validate(object value)
+        public virtual void Validate(object value)
         {
             string str = value?.ToString() ?? string.Empty;
             this.IsInvalid = !Regex.IsMatch(str, this.Pattern);
