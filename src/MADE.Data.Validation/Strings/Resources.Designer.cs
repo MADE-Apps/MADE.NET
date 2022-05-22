@@ -167,5 +167,14 @@ namespace MADE.Data.Validation.Strings {
                 return ResourceManager.GetString("RequiredValidator_FeedbackMessage", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid URL, e.g. https://example.com..
+        /// </summary>
+        public static string UrlValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("UrlValidator_FeedbackMessage", resourceCulture);
+            }
+        }
     }
 }

@@ -153,4 +153,7 @@
   <data name="RequiredValidator_FeedbackMessage" xml:space="preserve">
     <value>A value is required.</value>
   </data>
+  <data name="UrlValidator_FeedbackMessage" xml:space="preserve">
+    <value>The value must be a valid URL, e.g. https://example.com.</value>
+  </data>
 </root>
