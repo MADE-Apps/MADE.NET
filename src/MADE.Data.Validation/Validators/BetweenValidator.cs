@@ -52,7 +52,9 @@ namespace MADE.Data.Validation.Validators
         /// </summary>
         public string FeedbackMessage
         {
-            get => this.feedbackMessage.IsNullOrWhiteSpace() ? string.Format(Resources.BetweenValidator_FeedbackMessage, this.Min, this.Max) : this.feedbackMessage;
+            get => this.feedbackMessage.IsNullOrWhiteSpace()
+                ? string.Format(Resources.BetweenValidator_FeedbackMessage, this.Min, this.Max)
+                : this.feedbackMessage;
             set => this.feedbackMessage = value;
         }
 
@@ -67,6 +69,14 @@ namespace MADE.Data.Validation.Validators
         public IComparable Max { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether the range is inclusive.
+        /// </summary>
+        /// <remarks>
+        /// By default, the value is <c>true</c>.
+        /// </remarks>
+        public bool Inclusive { get; set; } = true;
+
+        /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
@@ -76,7 +86,14 @@ namespace MADE.Data.Validation.Validators
 
             if (value is IComparable comparable)
             {
-                isInvalid = comparable.IsLessThan(this.Min) || comparable.IsGreaterThan(this.Max);
+                if (this.Inclusive)
+                {
+                    isInvalid = comparable.IsLessThan(this.Min) || comparable.IsGreaterThan(this.Max);
+                }
+                else
+                {
+                    isInvalid = comparable.IsLessThanOrEqualTo(this.Min) || comparable.IsGreaterThanOrEqualTo(this.Max);
+                }
             }
 
             this.IsInvalid = isInvalid;

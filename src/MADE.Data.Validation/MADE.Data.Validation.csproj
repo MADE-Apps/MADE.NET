@@ -6,17 +6,24 @@
     <Product>MADE.NET Data Validation</Product>
     <Description>
       This package includes:
-      - AlphaNumericValidator for validating whether a string contains only alphanumeric characters.
-      - AlphaValidator for validating whether a string contains only alpha characters.
-      - BetweenValidator for validating whether a value is within a minimum and maximum range.
-      - EmailValidator for validating whether a value is an email address.
-      - IpAddressValidator for validating whether a value is a valid IP address.
-      - MaxLengthValidator for validating whether a value is below a maximum length.
-      - MaxValueValidator for validating whether a value is below a maximum value.
-      - MinLengthValidator for validating whether a value is above a minimum length.
-      - MinValueValidator for validating whether a value is above a minimum value.
-      - RegexValidator for validating whether a value matches a regular expression.
-      - RequiredValidator for validating whether a value has been provided.
+      - AlphaNumericValidator for ensuring a string contains only alphanumeric characters.
+      - AlphaValidator for ensuring a string contains only alpha characters.
+      - Base64Validator for ensuring a string is a valid base64 string.
+      - BetweenValidator for ensuring a value is within a minimum and maximum range.
+      - EmailValidator for ensuring a value is an email address.
+      - GuidValidator for ensuring a value is a GUID.
+      - IpAddressValidator for ensuring a value is a valid IP address.
+      - LatitudeValidator for ensuring a value is a valid latitude.
+      - LongitudeValidator for ensuring a value is a valid longitude.
+      - MacAddressValidator for ensuring a value is a valid MAC address.
+      - MaxLengthValidator for ensuring a value is below a maximum length.
+      - MaxValueValidator for ensuring a value is below a maximum value.
+      - MinLengthValidator for ensuring a value is above a minimum length.
+      - MinValueValidator for ensuring a value is above a minimum value.
+      - PredicateValidator for ensuring a value meets the condition of a value predicate.
+      - RegexValidator for ensuring a value matches a regular expression.
+      - RequiredValidator for ensuring a value has been provided.
+      - WellFormedUrlValidator for ensuring a value is a well-formed URL.
     </Description>
     <PackageTags>MADE Data Validation RegEx Range Email IpAddress Min Max Required Length</PackageTags>
   </PropertyGroup>

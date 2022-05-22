@@ -3,21 +3,21 @@
 
 namespace MADE.Data.Validation.Validators
 {
-    using System.Text.RegularExpressions;
+    using System;
     using MADE.Data.Validation.Extensions;
     using MADE.Data.Validation.Strings;
 
     /// <summary>
-    /// Defines a generic regular expression data validator.
+    /// Defines a data validator for ensuring a value is a <see cref="Guid"/>.
     /// </summary>
-    public class RegexValidator : IValidator
+    public class GuidValidator : IValidator
     {
         private string feedbackMessage;
 
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
-        public string Key { get; set; } = nameof(RegexValidator);
+        public string Key { get; set; } = nameof(GuidValidator);
 
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
@@ -32,26 +32,33 @@ namespace MADE.Data.Validation.Validators
         /// <summary>
         /// Gets or sets the feedback message to display when <see cref="IValidator.IsInvalid"/> is true.
         /// </summary>
-        public virtual string FeedbackMessage
+        public string FeedbackMessage
         {
-            get => this.feedbackMessage.IsNullOrWhiteSpace() ? Resources.RegexValidator_FeedbackMessage : this.feedbackMessage;
+            get => this.feedbackMessage.IsNullOrWhiteSpace()
+                ? Resources.GuidValidator_FeedbackMessage
+                : this.feedbackMessage;
             set => this.feedbackMessage = value;
         }
-
-        /// <summary>
-        /// Gets or sets the RegEx pattern to match on.
-        /// </summary>
-        public string Pattern { get; set; }
 
         /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
-        /// <exception cref="RegexMatchTimeoutException">Thrown if a Regex time-out occurred.</exception>
-        public virtual void Validate(object value)
+        public void Validate(object value)
         {
-            string str = value?.ToString() ?? string.Empty;
-            this.IsInvalid = !Regex.IsMatch(str, this.Pattern);
+            bool isInvalid;
+
+            if (value is Guid)
+            {
+                isInvalid = false;
+            }
+            else
+            {
+                var stringValue = value?.ToString() ?? string.Empty;
+                isInvalid = !Guid.TryParse(stringValue, out _);
+            }
+
+            this.IsInvalid = isInvalid;
             this.IsDirty = true;
         }
     }

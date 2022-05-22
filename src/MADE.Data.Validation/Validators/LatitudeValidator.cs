@@ -3,21 +3,31 @@
 
 namespace MADE.Data.Validation.Validators
 {
-    using System.Text.RegularExpressions;
+    using System;
     using MADE.Data.Validation.Extensions;
     using MADE.Data.Validation.Strings;
 
     /// <summary>
-    /// Defines a generic regular expression data validator.
+    /// Defines a data validator for ensuring a value is within the valid range for a latitude value.
     /// </summary>
-    public class RegexValidator : IValidator
+    public class LatitudeValidator : IValidator
     {
+        /// <summary>
+        /// The minimum valid latitude value.
+        /// </summary>
+        public const double Min = -90;
+
+        /// <summary>
+        /// The maximum valid latitude value.
+        /// </summary>
+        public const double Max = 90;
+
         private string feedbackMessage;
 
         /// <summary>
         /// Gets or sets the key associated with the validator.
         /// </summary>
-        public string Key { get; set; } = nameof(RegexValidator);
+        public virtual string Key { get; set; } = nameof(LatitudeValidator);
 
         /// <summary>
         /// Gets or sets a value indicating whether the data provided is in an invalid state.
@@ -34,24 +44,20 @@ namespace MADE.Data.Validation.Validators
         /// </summary>
         public virtual string FeedbackMessage
         {
-            get => this.feedbackMessage.IsNullOrWhiteSpace() ? Resources.RegexValidator_FeedbackMessage : this.feedbackMessage;
+            get => this.feedbackMessage.IsNullOrWhiteSpace()
+                ? string.Format(Resources.BetweenValidator_FeedbackMessage, Min, Max)
+                : this.feedbackMessage;
             set => this.feedbackMessage = value;
         }
-
-        /// <summary>
-        /// Gets or sets the RegEx pattern to match on.
-        /// </summary>
-        public string Pattern { get; set; }
 
         /// <summary>
         /// Executes data validation on the provided <paramref name="value"/>.
         /// </summary>
         /// <param name="value">The value to be validated.</param>
-        /// <exception cref="RegexMatchTimeoutException">Thrown if a Regex time-out occurred.</exception>
-        public virtual void Validate(object value)
+        public void Validate(object value)
         {
-            string str = value?.ToString() ?? string.Empty;
-            this.IsInvalid = !Regex.IsMatch(str, this.Pattern);
+            bool parsed = double.TryParse(value?.ToString() ?? string.Empty, out double latitude);
+            this.IsInvalid = !parsed || latitude is < Min or > Max;
             this.IsDirty = true;
         }
     }

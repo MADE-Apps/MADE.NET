@@ -10,7 +10,6 @@
 
 namespace MADE.Data.Validation.Strings {
     using System;
-    using System.Reflection;
     
     
     /// <summary>
@@ -20,7 +19,7 @@ namespace MADE.Data.Validation.Strings {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -40,7 +39,7 @@ namespace MADE.Data.Validation.Strings {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MADE.Data.Validation.Strings.Resources", typeof(Resources).GetTypeInfo().Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("MADE.Data.Validation.Strings.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -80,6 +79,15 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid base64 string..
+        /// </summary>
+        public static string Base64Validator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("Base64Validator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value must be between {0} and {1}..
         /// </summary>
         public static string BetweenValidator_FeedbackMessage {
@@ -98,11 +106,29 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid GUID..
+        /// </summary>
+        public static string GuidValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("GuidValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value must be a valid IP address, e.g. 192.168.0.1..
         /// </summary>
         public static string IpAddressValidator_FeedbackMessage {
             get {
                 return ResourceManager.GetString("IpAddressValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid MAC address, e.g. 00:11:22:33:44:55..
+        /// </summary>
+        public static string MacAddressValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("MacAddressValidator_FeedbackMessage", resourceCulture);
             }
         }
         
@@ -143,6 +169,15 @@ namespace MADE.Data.Validation.Strings {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The value is not valid..
+        /// </summary>
+        public static string PredicateValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("PredicateValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The value does not match the valid mask..
         /// </summary>
         public static string RegexValidator_FeedbackMessage {
@@ -157,6 +192,15 @@ namespace MADE.Data.Validation.Strings {
         public static string RequiredValidator_FeedbackMessage {
             get {
                 return ResourceManager.GetString("RequiredValidator_FeedbackMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value must be a valid URL, e.g. https://example.com..
+        /// </summary>
+        public static string UrlValidator_FeedbackMessage {
+            get {
+                return ResourceManager.GetString("UrlValidator_FeedbackMessage", resourceCulture);
             }
         }
     }
