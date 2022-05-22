@@ -69,11 +69,15 @@ If the value contains only letters, the validator will report valid; otherwise, 
 
 Similar to the `AlphaValidator`, the `AlphaNumericValidator` extends the characters in the validation to include numbers also.
 
+### Base64Validator
+
+The `Base64Validator` checks whether a string value is a valid Base64 encoded string.
+
 ### BetweenValidator
 
 The `BetweenValidator` validates an `IComparable` value is between a configurable minimum and maximum range.
 
-The range can be configured by setting the `Min` and `Max` values.
+The range can be configured by setting the `Min` and `Max` values, as well as an `Inclusive` flag to configure whether the minimum and maximum values are included in the range (defaults to `true`).
 
 The in-box `System` types which implement the `IComparable` interface can be [found in the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=net-5.0).
 
@@ -89,6 +93,12 @@ this.Pattern = @"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|" + @"([-a-zA-Z0-9!#$%&'*+/
 
 MADE.NET has a comprehensive set of test cases which validate the implementation with a variety of different valid and invalid email addresses.
 
+### GuidValidator
+
+The `GuidValidator` checks whether a string value is a valid GUID. 
+
+The underlying implementation uses the `Guid.TryParse` method to validate the string.
+
 ### IpAddressValidator
 
 The `IpAddressValidator` is a simple data validator which ensures that a value is a valid IP address.
@@ -99,6 +109,22 @@ The implementation splits the IP address into each nibble and validates them bas
 - Is greater than 0 characters
 - Is a digit
 - Is a numeric value between 0 and 255
+
+### LatitudeValidator
+
+The `LatitudeValidator` validates a value is within the valid range for a latitude value (-90 and 90).
+
+### LongitudeValidator
+
+The `LongitudeValidator` validates a value is within the valid range for a longitude value (-180 and 180).
+
+### MacAddressValidator
+
+The `MacAddressValidator` is a simple data validator which ensures that a value is a valid MAC address.
+
+The implementation uses the .NET `PhysicalAddress` class to parse the provided value.
+
+For more information on the `PhysicalAddress` class, see the [Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.net.networkinformation.physicaladdress?view=net-6.0).
 
 ### MaxValueValidator
 
@@ -115,6 +141,10 @@ The `MinValueValidator` validates an `IComparable` value is greater than a confi
 The minimum can be configured by setting the `Min` value.
 
 The in-box `System` types which implement the `IComparable` interface can be [found in the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=net-5.0).
+
+### PredicateValidator
+
+The `PredicateValidator` validates a value using a custom predicate to ensure that a condition is met.
 
 ### RegexValidator
 
