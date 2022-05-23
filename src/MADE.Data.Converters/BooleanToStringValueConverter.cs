@@ -1,6 +1,7 @@
 namespace MADE.Data.Converters
 {
     using MADE.Data.Converters.Exceptions;
+    using MADE.Data.Converters.Extensions;
 
     /// <summary>
     /// Defines a value converter from <see cref="bool"/> to <see cref="string"/> with a pre-determined <see cref="TrueValue"/> and <see cref="FalseValue"/>.
@@ -33,7 +34,7 @@ namespace MADE.Data.Converters
         /// </returns>
         public string Convert(bool value, object parameter = default)
         {
-            return value ? this.TrueValue : this.FalseValue;
+            return value.ToFormattedString(this.TrueValue, this.FalseValue);
         }
 
         /// <summary>
