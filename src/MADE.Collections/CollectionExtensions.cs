@@ -290,8 +290,6 @@ namespace MADE.Collections
         {
             var results = new List<T>();
 
-            results.Sort();
-
             int itemsToTake = takeCount;
 
             if (list.Count - 1 - startingIndex > itemsToTake)
