@@ -5,7 +5,6 @@
 namespace MADE.Data.Converters
 {
     using System;
-    using MADE.Data.Converters.Exceptions;
     using MADE.Data.Converters.Strings;
     using Windows.UI.Xaml;
     using Windows.UI.Xaml.Data;
@@ -13,7 +12,8 @@ namespace MADE.Data.Converters
     /// <summary>
     /// Defines a Windows components for a XAML value converter from <see cref="bool"/> to <see cref="string"/>.
     /// </summary>
-    public class BooleanToStringValueConverter : DependencyObject, IValueConverter, IValueConverter<bool, string>
+    [Obsolete("BooleanToStringValueConverter for Windows will be removed in a future major release. Use the replicated BooleanToStringValueConverter type from the MADE.UI.Data.Converters library instead.")]
+    public partial class BooleanToStringValueConverter : DependencyObject, IValueConverter, IValueConverter<bool, string>
     {
         /// <summary>
         /// Defines the dependency property for <see cref="TrueValue"/>.
@@ -86,50 +86,6 @@ namespace MADE.Data.Converters
             }
 
             return this.ConvertBack(b, parameter);
-        }
-
-        /// <summary>
-        /// Converts the <paramref name="value">value</paramref> to the <see cref="string"/> type.
-        /// </summary>
-        /// <param name="value">
-        /// The value to convert.
-        /// </param>
-        /// <param name="parameter">
-        /// The optional parameter used to help with conversion.
-        /// </param>
-        /// <returns>
-        /// The converted <see cref="string"/> object.
-        /// </returns>
-        public string Convert(bool value, object parameter = default)
-        {
-            return value ? this.TrueValue : this.FalseValue;
-        }
-
-        /// <summary>
-        /// Converts the <paramref name="value">value</paramref> back to the <see cref="bool"/> type.
-        /// </summary>
-        /// <param name="value">
-        /// The value to convert.
-        /// </param>
-        /// <param name="parameter">
-        /// The optional parameter used to help with conversion.
-        /// </param>
-        /// <returns>
-        /// The converted <see cref="bool"/> object.
-        /// </returns>
-        public bool ConvertBack(string value, object parameter = default)
-        {
-            if (value == this.TrueValue)
-            {
-                return true;
-            }
-
-            if (value == this.FalseValue)
-            {
-                return false;
-            }
-
-            throw new InvalidDataConversionException(nameof(BooleanToStringValueConverter), value, $"The value to convert back is not of the expected {nameof(this.TrueValue)} or {nameof(this.FalseValue)}");
         }
     }
 }
