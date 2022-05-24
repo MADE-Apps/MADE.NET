@@ -445,5 +445,16 @@ namespace MADE.Collections
                 idx++;
             }
         }
+
+        /// <summary>Indicates whether the specified collection is <see langword="null" /> or empty (containing no items).</summary>
+        /// <param name="source">The collection to test.</param>
+        /// <typeparam name="T">The type of item in the collection.</typeparam>
+        /// <returns>
+        /// <see langword="true" /> if the <paramref name="source" /> parameter is <see langword="null" /> or empty (containing no items); otherwise, <see langword="false" />.
+        /// </returns>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+        {
+            return source is null || !source.Any();
+        }
     }
 }

@@ -225,6 +225,69 @@ namespace MADE.Collections.Tests.Tests
             };
         }
 
+        public class WhenValidatingIfCollectionIsNullOrEmpty
+        {
+            [TestCaseSource(nameof(ValidEnumerableCases))]
+            public void ShouldReturnTrueIfEnumerableIsNullOrEmpty(IEnumerable<int> collection)
+            {
+                // Act
+                bool isEmpty = collection.IsNullOrEmpty();
+
+                // Assert
+                isEmpty.ShouldBeTrue();
+            }
+
+            [TestCaseSource(nameof(ValidDictionaryCases))]
+            public void ShouldReturnTrueIfDictionaryIsNullOrEmpty(Dictionary<int, string> collection)
+            {
+                // Act
+                bool isEmpty = collection.IsNullOrEmpty();
+
+                // Assert
+                isEmpty.ShouldBeTrue();
+            }
+
+            [TestCaseSource(nameof(InvalidEnumerableCases))]
+            public void ShouldReturnFalseIfEnumerableIsNotNullOrEmpty(IEnumerable<int> collection)
+            {
+                // Act
+                bool isEmpty = collection.IsNullOrEmpty();
+
+                // Assert
+                isEmpty.ShouldBeFalse();
+            }
+
+            [TestCaseSource(nameof(InvalidDictionaryCases))]
+            public void ShouldReturnFalseIfDictionaryIsNotNullOrEmpty(Dictionary<int, string> collection)
+            {
+                // Act
+                bool isEmpty = collection.IsNullOrEmpty();
+
+                // Assert
+                isEmpty.ShouldBeFalse();
+            }
+
+            private static object[] ValidEnumerableCases =
+            {
+                new object[] {null}, new object[] {new ObservableCollection<int>()},
+            };
+
+            private static object[] ValidDictionaryCases =
+            {
+                new object[] {null}, new object[] {new Dictionary<int, string>()},
+            };
+
+            private static object[] InvalidEnumerableCases =
+            {
+                new object[] {new ObservableCollection<int> {1, 2, 3}},
+            };
+
+            private static object[] InvalidDictionaryCases =
+            {
+                new object[] {new Dictionary<int, string> {{1, "A"}, {2, "B"}, {3, "C"}}},
+            };
+        }
+
         public class WhenSortingObservableCollections
         {
             [Test]
@@ -294,10 +357,8 @@ namespace MADE.Collections.Tests.Tests
                 // Assert
                 collection.ShouldBe(new ComplexObject[]
                 {
-                    new() {Id = 1, Name = "James Croft"},
-                    new() {Id = 3, Name = "Guy Wilmer"},
-                    new() {Id = 0, Name = "Ben Hartley"},
-                    new() {Id = 2, Name = "Adam Llewellyn"},
+                    new() {Id = 1, Name = "James Croft"}, new() {Id = 3, Name = "Guy Wilmer"},
+                    new() {Id = 0, Name = "Ben Hartley"}, new() {Id = 2, Name = "Adam Llewellyn"},
                 });
             }
 
