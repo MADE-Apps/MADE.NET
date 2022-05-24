@@ -224,5 +224,86 @@ namespace MADE.Collections.Tests.Tests
                 new object[] {new ObservableCollection<int> {1, 2, 3}, new ObservableCollection<int> {1, 2, 3, 4}},
             };
         }
+
+        public class WhenSortingObservableCollections
+        {
+            [Test]
+            public void ShouldSortBySimpleType()
+            {
+                // Arrange
+                var collection = new ObservableCollection<int> {3, 2, 1};
+
+                // Act
+                collection.Sort(x => x);
+
+                // Assert
+                collection.ShouldBe(new[] {1, 2, 3});
+            }
+
+            [Test]
+            public void ShouldSortByComplexType()
+            {
+                // Arrange
+                var collection = new ObservableCollection<ComplexObject>
+                {
+                    new() {Id = 0, Name = "James Croft"},
+                    new() {Id = 1, Name = "Guy Wilmer"},
+                    new() {Id = 2, Name = "Ben Hartley"},
+                    new() {Id = 3, Name = "Adam Llewellyn"},
+                };
+
+                // Act
+                collection.Sort(x => x.Name);
+
+                // Assert
+                collection.ShouldBe(new ComplexObject[]
+                {
+                    new() {Id = 3, Name = "Adam Llewellyn"}, new() {Id = 2, Name = "Ben Hartley"},
+                    new() {Id = 1, Name = "Guy Wilmer"}, new() {Id = 0, Name = "James Croft"},
+                });
+            }
+
+            private class ComplexObject : IEquatable<ComplexObject>
+            {
+                public int Id { get; set; }
+
+                public string Name { get; set; }
+
+                public bool Equals(ComplexObject other)
+                {
+                    if (ReferenceEquals(null, other))
+                    {
+                        return false;
+                    }
+
+                    if (ReferenceEquals(this, other))
+                    {
+                        return true;
+                    }
+
+                    return this.Id == other.Id && this.Name == other.Name;
+                }
+
+                public override bool Equals(object obj)
+                {
+                    if (ReferenceEquals(null, obj))
+                    {
+                        return false;
+                    }
+
+                    if (ReferenceEquals(this, obj))
+                    {
+                        return true;
+                    }
+
+                    return obj.GetType() == this.GetType() && this.Equals((ComplexObject)obj);
+                }
+
+                public override int GetHashCode()
+                {
+                    return HashCode.Combine(this.Id, this.Name);
+                }
+            }
+        }
     }
 }
