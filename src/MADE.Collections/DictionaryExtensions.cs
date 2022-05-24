@@ -49,5 +49,29 @@ namespace MADE.Collections
 
             dictionary.Add(key, value);
         }
+
+        /// <summary>
+        /// Gets a value from a dictionary by the specified key, or returns a default value.
+        /// </summary>
+        /// <typeparam name="TKey">The type of key item within the dictionary.</typeparam>
+        /// <typeparam name="TValue">The type of value item within the dictionary.</typeparam>
+        /// <param name="dictionary">The dictionary to get a value from.</param>
+        /// <param name="key">The key to get a value for.</param>
+        /// <param name="defaultValue">The default value to return if not exists. Default, null.</param>
+        /// <returns>The value if it exists for the key; otherwise, null.</returns>
+        public static TValue GetValueOrDefault<TKey, TValue>(
+            this Dictionary<TKey, TValue> dictionary,
+            TKey key,
+            TValue defaultValue = default)
+        {
+            var result = defaultValue;
+
+            if (dictionary != null && dictionary.ContainsKey(key))
+            {
+                result = dictionary[key];
+            }
+
+            return result;
+        }
     }
 }

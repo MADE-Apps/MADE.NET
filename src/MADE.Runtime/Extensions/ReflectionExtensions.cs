@@ -1,6 +1,7 @@
 namespace MADE.Runtime.Extensions
 {
     using System;
+    using System.Collections.Generic;
     using System.Reflection;
 
     /// <summary>
@@ -22,6 +23,20 @@ namespace MADE.Runtime.Extensions
             Type type = obj.GetType();
             PropertyInfo prop = type.GetProperty(property);
             return prop?.GetValue(obj) as T;
+        }
+
+        /// <summary>
+        /// Gets all the property names declared for the specified object.
+        /// </summary>
+        /// <param name="obj">The object to retrieve property names from.</param>
+        /// <returns>A collection of object property names as a string.</returns>
+        public static IEnumerable<string> GetPropertyNames(this object obj)
+        {
+            Type type = obj.GetType();
+            foreach (PropertyInfo property in type.GetTypeInfo().DeclaredProperties)
+            {
+                yield return property.Name;
+            }
         }
     }
 }

@@ -5,6 +5,7 @@ namespace MADE.Collections
 {
     using System;
     using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     using System.Linq;
 
     /// <summary>
@@ -395,6 +396,65 @@ namespace MADE.Collections
         public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
         {
             return source.OrderBy(x => Guid.NewGuid());
+        }
+
+        /// <summary>Sorts the elements in the entire <see cref="ObservableCollection{T}"/> using the specified comparer.</summary>
+        /// <param name="source">The source collection to sort.</param>
+        /// <param name="comparer">The implementation to use when comparing elements.</param>
+        /// <typeparam name="T">The type of item in the collection.</typeparam>
+        /// <typeparam name="TKey">The key value of the item to sort on.</typeparam>
+        public static void Sort<T, TKey>(this ObservableCollection<T> source, Func<T, TKey> comparer)
+        {
+            if (source is not { Count: > 1 })
+            {
+                return;
+            }
+
+            var idx = 0;
+            foreach (var originalIdx in source.OrderBy(comparer).Select(source.IndexOf))
+            {
+                if (originalIdx != idx)
+                {
+                    source.Move(originalIdx, idx);
+                }
+
+                idx++;
+            }
+        }
+
+        /// <summary>Sorts the elements in the entire <see cref="ObservableCollection{T}"/> using the specified comparer in descending order.</summary>
+        /// <param name="source">The source collection to sort.</param>
+        /// <param name="comparer">The implementation to use when comparing elements.</param>
+        /// <typeparam name="T">The type of item in the collection.</typeparam>
+        /// <typeparam name="TKey">The key value of the item to sort on.</typeparam>
+        public static void SortDescending<T, TKey>(this ObservableCollection<T> source, Func<T, TKey> comparer)
+        {
+            if (source is not { Count: > 1 })
+            {
+                return;
+            }
+
+            var idx = 0;
+            foreach (var originalIdx in source.OrderByDescending(comparer).Select(source.IndexOf))
+            {
+                if (originalIdx != idx)
+                {
+                    source.Move(originalIdx, idx);
+                }
+
+                idx++;
+            }
+        }
+
+        /// <summary>Indicates whether the specified collection is <see langword="null" /> or empty (containing no items).</summary>
+        /// <param name="source">The collection to test.</param>
+        /// <typeparam name="T">The type of item in the collection.</typeparam>
+        /// <returns>
+        /// <see langword="true" /> if the <paramref name="source" /> parameter is <see langword="null" /> or empty (containing no items); otherwise, <see langword="false" />.
+        /// </returns>
+        public static bool IsNullOrEmpty<T>(this IEnumerable<T> source)
+        {
+            return source is null || !source.Any();
         }
     }
 }
