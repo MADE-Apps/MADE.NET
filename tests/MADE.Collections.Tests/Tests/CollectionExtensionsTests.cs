@@ -75,7 +75,7 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldThrowArgumentNullExceptionIfNullItem()
             {
                 // Arrange
-                var list = new List<string> {"Hello"};
+                var list = new List<string> { "Hello" };
                 string item = null;
 
                 // Act & Assert
@@ -89,7 +89,7 @@ namespace MADE.Collections.Tests.Tests
                 TestObject objectToAdd = TestObjectFaker.Create().Generate();
                 TestObject objectToUpdateWith = TestObjectFaker.Create().Generate();
 
-                var list = new List<TestObject> {objectToAdd};
+                var list = new List<TestObject> { objectToAdd };
 
                 // Act
                 bool updated = list.Update(objectToUpdateWith, (s, i) => s.Name == objectToAdd.Name);
@@ -105,7 +105,7 @@ namespace MADE.Collections.Tests.Tests
                 TestObject objectToAdd = TestObjectFaker.Create().Generate();
                 TestObject objectToUpdateWith = TestObjectFaker.Create().Generate();
 
-                var list = new List<TestObject> {objectToAdd};
+                var list = new List<TestObject> { objectToAdd };
 
                 // Act
                 bool updated = list.Update(objectToUpdateWith, (s, i) => s.Name == objectToUpdateWith.Name);
@@ -131,7 +131,7 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldThrowArgumentNullExceptionIfNullSource()
             {
                 // Arrange
-                var list = new List<string> {"Hello"};
+                var list = new List<string> { "Hello" };
 
                 // Act & Assert
                 Assert.Throws<ArgumentNullException>(() => list.MakeEqualTo(null));
@@ -141,8 +141,8 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldUpdateCollectionToBeEqualOther()
             {
                 // Arrange
-                var list = new List<string> {"Hello"};
-                var update = new List<string> {"New", "List"};
+                var list = new List<string> { "Hello" };
+                var update = new List<string> { "New", "List" };
 
                 // Act
                 list.MakeEqualTo(update);
@@ -231,13 +231,13 @@ namespace MADE.Collections.Tests.Tests
             public void ShouldSortBySimpleType()
             {
                 // Arrange
-                var collection = new ObservableCollection<int> {3, 2, 1};
+                var collection = new ObservableCollection<int> { 3, 2, 1 };
 
                 // Act
                 collection.Sort(x => x);
 
                 // Assert
-                collection.ShouldBe(new[] {1, 2, 3});
+                collection.ShouldBe(new[] { 1, 2, 3 });
             }
 
             [Test]
@@ -260,6 +260,44 @@ namespace MADE.Collections.Tests.Tests
                 {
                     new() {Id = 3, Name = "Adam Llewellyn"}, new() {Id = 2, Name = "Ben Hartley"},
                     new() {Id = 1, Name = "Guy Wilmer"}, new() {Id = 0, Name = "James Croft"},
+                });
+            }
+
+            [Test]
+            public void ShouldSortDescendingBySimpleType()
+            {
+                // Arrange
+                var collection = new ObservableCollection<int> { 2, 1, 3 };
+
+                // Act
+                collection.SortDescending(x => x);
+
+                // Assert
+                collection.ShouldBe(new[] { 3, 2, 1 });
+            }
+
+            [Test]
+            public void ShouldSortDescendingByComplexType()
+            {
+                // Arrange
+                var collection = new ObservableCollection<ComplexObject>
+                {
+                    new() {Id = 0, Name = "Ben Hartley"},
+                    new() {Id = 1, Name = "James Croft"},
+                    new() {Id = 2, Name = "Adam Llewellyn"},
+                    new() {Id = 3, Name = "Guy Wilmer"},
+                };
+
+                // Act
+                collection.SortDescending(x => x.Name);
+
+                // Assert
+                collection.ShouldBe(new ComplexObject[]
+                {
+                    new() {Id = 1, Name = "James Croft"},
+                    new() {Id = 3, Name = "Guy Wilmer"},
+                    new() {Id = 0, Name = "Ben Hartley"},
+                    new() {Id = 2, Name = "Adam Llewellyn"},
                 });
             }
 
