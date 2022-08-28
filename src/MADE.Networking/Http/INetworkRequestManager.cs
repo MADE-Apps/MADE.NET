@@ -82,6 +82,24 @@ namespace MADE.Networking.Http
             where TRequest : NetworkRequest;
 
         /// <summary>
+        /// Removes a network request from the queue.
+        /// <para>
+        /// If the request is no longer in the queue, this method does nothing.
+        /// </para>
+        /// </summary>
+        /// <param name="request">The request to remove from the queue.</param>
+        void Remove(INetworkRequest request);
+
+        /// <summary>
+        /// Removes a network request from the queue by the registered key identifier.
+        /// <para>
+        /// If the request is no longer in the queue, this method does nothing.
+        /// </para>
+        /// </summary>
+        /// <param name="key">The key corresponding to the network request to remove from the queue.</param>
+        void RemoveByKey(string key);
+
+        /// <summary>
         /// Processes the current queue of network requests.
         /// </summary>
         void ProcessCurrentQueue();

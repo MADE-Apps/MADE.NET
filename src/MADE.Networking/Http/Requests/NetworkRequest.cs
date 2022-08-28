@@ -11,7 +11,7 @@ namespace MADE.Networking.Http.Requests
     /// <summary>
     /// Defines the model for a network request.
     /// </summary>
-    public abstract class NetworkRequest
+    public abstract class NetworkRequest : INetworkRequest
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="NetworkRequest"/> class.
