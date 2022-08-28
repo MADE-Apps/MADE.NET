@@ -75,8 +75,6 @@ namespace MADE.Networking.Http
                 return;
             }
 
-
-
             this.isProcessingRequests = true;
 
             try
