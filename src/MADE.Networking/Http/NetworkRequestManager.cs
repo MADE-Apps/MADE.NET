@@ -70,15 +70,12 @@ namespace MADE.Networking.Http
         /// </summary>
         public void ProcessCurrentQueue()
         {
-            if (this.isProcessingRequests)
+            if (this.CurrentQueue.Count == 0 || this.isProcessingRequests)
             {
                 return;
             }
 
-            if (this.CurrentQueue.Count > 0)
-            {
-                return;
-            }
+
 
             this.isProcessingRequests = true;
 
