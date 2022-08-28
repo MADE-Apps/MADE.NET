@@ -1,7 +1,6 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-#if NET5_0
 namespace MADE.Web.Extensions
 {
     using Microsoft.AspNetCore.Mvc;
@@ -20,7 +19,10 @@ namespace MADE.Web.Extensions
         /// <param name="defaultMajor">The default major version of the API. Default, 1.</param>
         /// <param name="defaultMinor">The default minor version of the API. Default, 0.</param>
         /// <returns>The configured <paramref name="services"/> object.</returns>
-        public static IServiceCollection AddApiVersionSupport(this IServiceCollection services, int defaultMajor = 1, int defaultMinor = 0)
+        public static IServiceCollection AddApiVersionSupport(
+            this IServiceCollection services,
+            int defaultMajor = 1,
+            int defaultMinor = 0)
         {
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
@@ -42,7 +44,11 @@ namespace MADE.Web.Extensions
         /// <param name="defaultMajor">The default major version of the API. Default, 1.</param>
         /// <param name="defaultMinor">The default minor version of the API. Default, 0.</param>
         /// <returns>The configured <paramref name="services"/> object.</returns>
-        public static IServiceCollection AddApiVersionHeaderSupport(this IServiceCollection services, string apiHeaderName = "x-api-version", int defaultMajor = 1, int defaultMinor = 0)
+        public static IServiceCollection AddApiVersionHeaderSupport(
+            this IServiceCollection services,
+            string apiHeaderName = "x-api-version",
+            int defaultMajor = 1,
+            int defaultMinor = 0)
         {
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
@@ -58,4 +64,3 @@ namespace MADE.Web.Extensions
         }
     }
 }
-#endif

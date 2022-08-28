@@ -9,10 +9,8 @@ namespace MADE.Networking.Http
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
-
     using MADE.Networking.Http.Requests;
     using MADE.Runtime;
-
     using Timer = MADE.Threading.Timer;
 
     /// <summary>
@@ -72,12 +70,7 @@ namespace MADE.Networking.Http
         /// </summary>
         public void ProcessCurrentQueue()
         {
-            if (this.isProcessingRequests)
-            {
-                return;
-            }
-
-            if (this.CurrentQueue.Count > 0)
+            if (this.CurrentQueue.Count == 0 || this.isProcessingRequests)
             {
                 return;
             }
@@ -93,8 +86,8 @@ namespace MADE.Networking.Http
                 while (this.CurrentQueue.Count > 0)
                 {
                     if (this.CurrentQueue.TryRemove(
-                        this.CurrentQueue.FirstOrDefault().Key,
-                        out NetworkRequestCallback request))
+                            this.CurrentQueue.FirstOrDefault().Key,
+                            out NetworkRequestCallback request))
                     {
                         requestCallbacks.Add(request);
                     }
@@ -164,13 +157,39 @@ namespace MADE.Networking.Http
             where TRequest : NetworkRequest
         {
             var weakSuccessCallback = new WeakReferenceCallback(successCallback, typeof(TResponse));
-            var weakErrorCallback = new WeakReferenceCallback(errorCallback, typeof(TErrorResponse));
+            var weakErrorCallback = errorCallback == null
+                ? null
+                : new WeakReferenceCallback(errorCallback, typeof(TErrorResponse));
             var requestCallback = new NetworkRequestCallback(request, weakSuccessCallback, weakErrorCallback);
 
             this.CurrentQueue.AddOrUpdate(
                 request.Identifier.ToString(),
                 requestCallback,
                 (s, callback) => requestCallback);
+        }
+
+        /// <summary>
+        /// Removes a network request from the queue.
+        /// <para>
+        /// If the request is no longer in the queue, this method does nothing.
+        /// </para>
+        /// </summary>
+        /// <param name="request">The request to remove from the queue.</param>
+        public void Remove(INetworkRequest request)
+        {
+            RemoveByKey(request.Identifier.ToString());
+        }
+
+        /// <summary>
+        /// Removes a network request from the queue by the registered key identifier.
+        /// <para>
+        /// If the request is no longer in the queue, this method does nothing.
+        /// </para>
+        /// </summary>
+        /// <param name="key">The key corresponding to the network request to remove from the queue.</param>
+        public void RemoveByKey(string key)
+        {
+            this.CurrentQueue.TryRemove(key, out NetworkRequestCallback _);
         }
 
         private static async Task ExecuteRequestsAsync(
@@ -200,7 +219,7 @@ namespace MADE.Networking.Http
             catch (Exception ex)
             {
                 successCallback.Invoke(Activator.CreateInstance(successCallback.Type));
-                errorCallback.Invoke(ex);
+                errorCallback?.Invoke(ex);
             }
         }
 
