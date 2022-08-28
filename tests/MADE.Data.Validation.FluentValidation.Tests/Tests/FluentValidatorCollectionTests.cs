@@ -179,6 +179,7 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public class Person
     {
         public string Name { get; set; }
@@ -186,6 +187,7 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
         public DateTime? DateOfBirth { get; set; }
     }
 
+    [ExcludeFromCodeCoverage]
     public class Staff : Person
     {
         public string JobTitle { get; set; }
@@ -193,6 +195,7 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
         public string Department { get; set; }
     }
 
+    [ExcludeFromCodeCoverage]
     public class PersonValidator : AbstractValidator<Person>
     {
         public const string DateOfBirthValidationMessage = "Please specify a valid date of birth";
@@ -207,6 +210,7 @@ namespace MADE.Data.Validation.FluentValidation.Tests.Tests
         }
     }
 
+    [ExcludeFromCodeCoverage]
     public class StaffValidator : AbstractValidator<Staff>, IValidator<Person>
     {
         public const string JobTitleValidationMessage = "Please specify a job title";

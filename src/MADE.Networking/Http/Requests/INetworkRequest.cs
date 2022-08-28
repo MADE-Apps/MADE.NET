@@ -9,51 +9,24 @@ namespace MADE.Networking.Http.Requests
     using System.Threading.Tasks;
 
     /// <summary>
-    /// Defines the model for a network request.
+    /// Defines an interface for a basic network request.
     /// </summary>
-    public abstract class NetworkRequest : INetworkRequest
+    public interface INetworkRequest
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NetworkRequest"/> class.
-        /// </summary>
-        /// <param name="url">
-        /// The URL for the request.
-        /// </param>
-        protected NetworkRequest(string url)
-            : this(url, null)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="NetworkRequest"/> class.
-        /// </summary>
-        /// <param name="url">
-        /// The URL for the request.
-        /// </param>
-        /// <param name="headers">
-        /// Additional headers for the request.
-        /// </param>
-        protected NetworkRequest(string url, Dictionary<string, string> headers)
-        {
-            this.Identifier = Guid.NewGuid();
-            this.Url = url;
-            this.Headers = headers ?? new Dictionary<string, string>();
-        }
-
         /// <summary>
         /// Gets the identifier for the request.
         /// </summary>
-        public Guid Identifier { get; }
+        Guid Identifier { get; }
 
         /// <summary>
         /// Gets or sets the URL for the request.
         /// </summary>
-        public string Url { get; set; }
+        string Url { get; set; }
 
         /// <summary>
         /// Gets the headers for the request.
         /// </summary>
-        public Dictionary<string, string> Headers { get; }
+        Dictionary<string, string> Headers { get; }
 
         /// <summary>
         /// Executes the network request.
@@ -67,7 +40,7 @@ namespace MADE.Networking.Http.Requests
         /// <returns>
         /// Returns the response of the request as the specified type.
         /// </returns>
-        public abstract Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default);
+        Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Executes the network request.
@@ -81,6 +54,6 @@ namespace MADE.Networking.Http.Requests
         /// <returns>
         /// Returns the response of the request as an object.
         /// </returns>
-        public abstract Task<object> ExecuteAsync(Type expectedResponse, CancellationToken cancellationToken = default);
+        Task<object> ExecuteAsync(Type expectedResponse, CancellationToken cancellationToken = default);
     }
 }
