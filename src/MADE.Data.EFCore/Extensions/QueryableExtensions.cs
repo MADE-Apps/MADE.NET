@@ -34,9 +34,12 @@ namespace MADE.Data.EFCore.Extensions
         /// <returns>The ordered query.</returns>
         public static IQueryable<T> OrderBy<T>(this IQueryable<T> query, string sortName, bool sortDesc)
         {
-            return string.IsNullOrWhiteSpace(sortName)
-                ? query
-                : (!sortDesc ? query.AddOrAppendOrderBy(sortName) : query.AddOrAppendOrderByDescending(sortName));
+            if (string.IsNullOrWhiteSpace(sortName))
+            {
+                return query;
+            }
+
+            return !sortDesc ? query.AddOrAppendOrderBy(sortName) : query.AddOrAppendOrderByDescending(sortName);
         }
     }
 }

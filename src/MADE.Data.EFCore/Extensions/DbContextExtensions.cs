@@ -64,14 +64,14 @@ namespace MADE.Data.EFCore.Extensions
             IEnumerable<EntityEntry> entries = context.ChangeTracker
                 .Entries()
                 .Where(
-                    entry => entry.Entity is IEntityBase &&
+                    entry => entry.Entity is IDatedEntity &&
                              entry.State is EntityState.Added or EntityState.Modified);
 
             DateTime now = DateTime.UtcNow;
 
             foreach (EntityEntry entry in entries)
             {
-                var entity = (IEntityBase)entry.Entity;
+                var entity = (IDatedEntity)entry.Entity;
                 entity.UpdatedDate = now;
 
                 if (entry.State == EntityState.Added && entity.CreatedDate == DateTime.MinValue)
