@@ -29,6 +29,9 @@ jobs:
       with:
         dotnet-version: 6.0.x
 
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+
     - name: Setup DocFX
       uses: crazy-max/ghaction-chocolatey@v1
       with:
