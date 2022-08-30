@@ -2,15 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Threading</Product>
     <Description>
-      This package includes:
-      - TaskExtensions for extending Task objects with helper methods, such as observing thrown exceptions and ensuring a task collection has completed running.
-      - Timer for providing an easier to use alternative to the System.Threading.Timer, including start and stop methods.
+      MADE.NET Threading provides helpers and extensions that help with application scenarios that care about threads.
+      Amongst the features, you'll find an improved take on the .NET `Timer` implementation to make it easier for you to use in your apps!
     </Description>
-    <PackageTags>MADE Threading Timer Task</PackageTags>
-
+    <PackageTags>MADE Threading Extensions Timer Task</PackageTags>
   </PropertyGroup>
 
 </Project>

@@ -2,16 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Runtime</Product>
     <Description>
-      This package includes:
-      - ReflectionExtensions for extending objects with helper methods, such as retrieving the value by property name string.
-      - WeakReferenceCallback for providing an approach to callbacks with a WeakReference.
-      - WeakReferenceEventHandler for providing an approach to event handlers with a WeakReference.
+      MADE.NET Runtime is a base library that builds on .NET to provide additional types and extensions that you might expect to find in the BCL, but might not exist, such as a WeakReferenceCallback.
     </Description>
-    <PackageTags>MADE Runtime WeakReference Reflection</PackageTags>
-
+    <PackageTags>MADE Runtime Extensions Chain WeakReference Reflection BCL</PackageTags>
   </PropertyGroup>
 
 </Project>

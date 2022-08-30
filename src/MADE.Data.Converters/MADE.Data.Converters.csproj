@@ -2,17 +2,12 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;uap10.0.17763</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Data Converters</Product>
     <Description>
-      This package includes:
-      - BooleanToStringValueConverter for converting between a boolean and a given string value.
-      - DateTimeExtensions for extending DateTime objects with helper methods, such as getting current age or setting time.
-      - DateTimeToStringValueConverter for converting between a DateTime and string value.
-      - MathExtensions for providing additional mathematical functions such as Degrees to Radians.
-      - StringExtensions for converting a string to other value types such as int, float, double, or boolean.
+      MADE.NET Data Converters provide out-of-the-box value converters for taking values of one type and changing them to another.
+      The advantage of the IValueConverter is that they can be chained together. The library also contains extension helpers for converting values directly.
     </Description>
-    <PackageTags>MADE Data Value Converter DateTime Math</PackageTags>
+    <PackageTags>MADE Data Converter ValueConverter Boolean Collection DateTime String Extensions</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
