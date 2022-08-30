@@ -2,17 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Collections</Product>
     <Description>
-      This package includes:
-      - CollectionExtensions for extending collection objects with helper methods, such as updating an item or making two collections equal.
-      - DictionaryExtensions for extending dictionary objects with helper methods, such as adding or updating an item based on a key.
-      - GenericEqualityComparer for providing a simple IEqualityComparer for objects.
-      - ObservableItemCollection for providing an ObservableCollection that manages both collection changed and item property changed events.
-      - QueryableExtensions for extending queryable objects with helper methods, such as chunking the query into batched sizes.
+      MADE.NET Collections allows you to easily interact with collections, lists, arrays, and dictionaries.
     </Description>
-    <PackageTags>MADE Collections Observable Equality Extensions Dictionary Chunk</PackageTags>
+    <PackageTags>MADE Collection List Array Dictionary Queryable Observable Equality Extensions Chunk</PackageTags>
   </PropertyGroup>
 
 </Project>

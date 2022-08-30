@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>MADE.NET Data Validation (FluentValidation)</Product>
+    <Product>MADE.NET Data Validation for FluentValidation</Product>
     <Description>
-      This package includes extended support for FluentValidation validators in MADE.NET.
+      MADE.NET Data Validation for FluentValidation builds on the base FluentValidation library to provide an easy-to-use validator collection implementation that can chain together validators for a single value.
+      Built on top of the MADE.NET Data Validation library, you also get all the goodness of the two validation libraries in one place. Bring the best of both worlds together!
     </Description>
-    <PackageTags>MADE Data Validation FluentValidation</PackageTags>
+    <PackageTags>MADE Data Validation Extensions FluentValidation</PackageTags>
     <RootNamespace>MADE.Data.Validation</RootNamespace>
   </PropertyGroup>
 

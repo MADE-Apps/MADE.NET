@@ -2,14 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>MADE.NET Web MVC</Product>
+    <Product>MADE.NET for ASP.NET Core MVC</Product>
     <Description>
-      This package includes:
-      - InternalServerErrorObjectResult for providing an expected 500 response from an API controller.
+      MADE.NET for ASP.NET Core MVC builds on features of ASP.NET Core MVC to provide additional MVC-specific functionality to improve your web applications.
     </Description>
-    <PackageTags>MADE Web MVC API Requests Responses Exception Handling JSON</PackageTags>
-
+    <PackageTags>MADE Web ASP MVC API Extensions Response Exception Handling JSON Controller</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

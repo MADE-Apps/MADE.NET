@@ -2,17 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>MADE.NET Entity Framework</Product>
+    <Product>MADE.NET for EF Core</Product>
     <Description>
-      This package includes:
-      - DbContextExtensions for extending DbContext objects with helper methods, such as updating an item asynchronously and removing items matching a specified criteria.
-      - EntityBase for providing a base definition for an entity within a DbContext, including a primary key, created and updated dates.
-      - UtcDateTimeConverter for ensuring that DateTime values are stored and retrieving in UTC format.
-      - QueryableExtensions for extending IQueryable objects with helper methods, such as filtering, ordering, and paging.
+      MADE.NET for EF Core builds on the base Entity Framework library to provide base classes and helpers for maintaining data in databases.
     </Description>
-    <PackageTags>MADE EFCore EntityFramework</PackageTags>
-
+    <PackageTags>MADE EFCore Entity Framework Extensions Queryable DbContext</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

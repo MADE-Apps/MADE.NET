@@ -2,16 +2,11 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0</TargetFrameworks>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Product>MADE.NET Web</Product>
+    <Product>MADE.NET for ASP.NET Core</Product>
     <Description>
-      This package includes:
-      - HttpContextExceptionsMiddleware for handling web application exceptions with JSON responses for different exception types.
-      - PaginatedRequest for providing an expected paginated request from an API controller.
-      - PaginatedResponse for providing an result paginated response from an API controller request.
+      MADE.NET for ASP.NET Core builds on features of ASP.NET Core to provide better support for your web API or MVC applications, including standardized pagination support, global authenticated user accessor, standardized exception handling with JSON responses, and API versioning.
     </Description>
-    <PackageTags>MADE Web API Requests Responses Exception Handling JSON</PackageTags>
-
+    <PackageTags>MADE Web ASP MVC API Extensions Request Response Exception Handling JSON Pagination Versioning Authentication Identity</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

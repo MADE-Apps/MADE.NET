@@ -24,11 +24,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup .NET 5.0
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
-
     - name: Setup .NET 6.0
       uses: actions/setup-dotnet@v1
       with:
@@ -39,12 +34,17 @@ jobs:
       with:
         args: install docfx
 
-    - name: DocFX Build
+    - name: Generate DocFX metadata
+      working-directory: docs
+      run: docfx metadata .\docfx.json
+      continue-on-error: false
+
+    - name: Build DocFX site
       working-directory: docs
       run: docfx .\docfx.json
       continue-on-error: false
 
-    - name: Publish
+    - name: Publish DocFX site
       if: github.event_name == 'push'
       uses: peaceiris/actions-gh-pages@v3
       with:

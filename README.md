@@ -2,47 +2,46 @@
 
 # MADE.NET
 
-MADE.NET is a toolkit of easy-to-use extensions, helpers, and controls to make app development easier for .NET developers.
+[![GitHub release](https://img.shields.io/github/release/MADE-Apps/MADE.NET.svg)](https://github.com/MADE-Apps/MADE.NET/releases)
+[![Build status](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml)
+[![Twitter Followers](https://img.shields.io/twitter/follow/jamesmcroft?label=follow%20%40jamesmcroft&style=flat)](https://twitter.com/jamesmcroft)
+[![Nuget](https://img.shields.io/nuget/v/MADE.Collections.svg)](https://www.nuget.org/profiles/made-apps)
+[![MADE.NET docs](https://img.shields.io/badge/docs-MADE.NET-blue.svg)](https://made-apps.github.io/MADE.NET/)
 
-Whether you're building an ASP.NET Core Web API or a native UI application with Uno Platform, MADE.NET has something for everyone.
+MADE.NET is a suite of libraries built on the boilerplate, reusable components, services, extensions, and helpers that we all drop into our projects. With MADE.NET, you can get all of these in one place, easy to use and consume, to make app development easier for you.
 
-MADE.NET has been built on common code from projects built by the MADE team, and is now a home for all those bits of code that you know you will reuse in another project!
+Whether you're building an ASP.NET Core API or a native app experience with MAUI, MADE.NET has something for everyone.
 
-## Support MADE.NET ♥
+**[Discover what's new in MADE.NET](https://github.com/MADE-Apps/MADE.NET/releases)**
 
-As many developers know, projects like MADE.NET are built and maintained in spare time. If you find this project useful, please **Star** the repo and if possible, sponsor the project development on GitHub.
+## Getting started ⭐
 
-## Build Status
+To start building your own applications with the MADE.NET libraries, you can install any of the libraries into your dotnet application.
 
-| Build | Status | Current Version |
-| ------ | ------ | ------ |
-| Packages | [![CI](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml/badge.svg)](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml) | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/profiles/made-apps) |
-| Docs | [![Docs](https://github.com/MADE-Apps/MADE.NET/actions/workflows/docs.yml/badge.svg)](https://github.com/MADE-Apps/MADE.NET/actions/workflows/docs.yml) | N/A |
+```bash
+dotnet add package MADE.{Package}
+```
 
-## Installation 💾
+Or by adding any of the MADE.NET packages in your NuGet package manager of choice.
 
-[MADE.NET](https://www.nuget.org/profiles/made-apps) components are publicly available via NuGet. Each available package is detailed below.
+Here's a complete list of available packages:
 
-| Package | Current | Preview | Downloads |
-| ------ | ------ | ------ | ------ |
-| Collections | [![NuGet](https://img.shields.io/nuget/v/MADE.Collections)](https://www.nuget.org/packages/MADE.Collections/) | [![Nuget](https://img.shields.io/nuget/vpre/MADE.Collections.svg)](https://www.nuget.org/packages/MADE.Collections/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Collections.svg)](https://www.nuget.org/packages/MADE.Collections) |
-| Data.Converters | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Converters)](https://www.nuget.org/packages/MADE.Data.Converters/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.Converters)](https://www.nuget.org/packages/MADE.Data.Converters/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Converters.svg)](https://www.nuget.org/packages/MADE.Data.Converters) |
-| Data.EFCore | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.EFCore)](https://www.nuget.org/packages/MADE.Data.EFCore/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.EFCore)](https://www.nuget.org/packages/MADE.Data.EFCore/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.EFCore.svg)](https://www.nuget.org/packages/MADE.Data.EFCore) |
-| Data.Serialization | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Serialization)](https://www.nuget.org/packages/MADE.Data.Serialization/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.Serialization)](https://www.nuget.org/packages/MADE.Data.Serialization/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Serialization.svg)](https://www.nuget.org/packages/MADE.Data.Serialization) |
-| Data.Validation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.Validation)](https://www.nuget.org/packages/MADE.Data.Validation/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Validation.svg)](https://www.nuget.org/packages/MADE.Data.Validation) |
-| Data.Validation.FluentValidation | [![NuGet](https://img.shields.io/nuget/v/MADE.Data.Validation.FluentValidation)](https://www.nuget.org/packages/MADE.Data.Validation.FluentValidation/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Data.Validation.FluentValidation)](https://www.nuget.org/packages/MADE.Data.Validation.FluentValidation/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Validation.FluentValidation.svg)](https://www.nuget.org/packages/MADE.Data.Validation.FluentValidation) |
-| Diagnostics | [![NuGet](https://img.shields.io/nuget/v/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Diagnostics)](https://www.nuget.org/packages/MADE.Diagnostics/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Diagnostics.svg)](https://www.nuget.org/packages/MADE.Diagnostics) |
-| Foundation | [![NuGet](https://img.shields.io/nuget/v/MADE.Foundation)](https://www.nuget.org/packages/MADE.Foundation/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Foundation)](https://www.nuget.org/packages/MADE.Foundation/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Foundation.svg)](https://www.nuget.org/packages/MADE.Foundation) |
-| Networking | [![NuGet](https://img.shields.io/nuget/v/MADE.Networking)](https://www.nuget.org/packages/MADE.Networking/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Networking)](https://www.nuget.org/packages/MADE.Networking/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Networking.svg)](https://www.nuget.org/packages/MADE.Networking) |
-| Runtime | [![NuGet](https://img.shields.io/nuget/v/MADE.Runtime)](https://www.nuget.org/packages/MADE.Runtime/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Runtime)](https://www.nuget.org/packages/MADE.Runtime/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Runtime.svg)](https://www.nuget.org/packages/MADE.Runtime) |
-| Testing | [![NuGet](https://img.shields.io/nuget/v/MADE.Testing)](https://www.nuget.org/packages/MADE.Testing/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Testing)](https://www.nuget.org/packages/MADE.Testing/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Testing.svg)](https://www.nuget.org/packages/MADE.Testing) |
-| Threading | [![NuGet](https://img.shields.io/nuget/v/MADE.Threading)](https://www.nuget.org/packages/MADE.Threading/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Threading)](https://www.nuget.org/packages/MADE.Threading/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Threading.svg)](https://www.nuget.org/packages/MADE.Threading) |
-| Web | [![NuGet](https://img.shields.io/nuget/v/MADE.Web)](https://www.nuget.org/packages/MADE.Web/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Web)](https://www.nuget.org/packages/MADE.Web/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Web.svg)](https://www.nuget.org/packages/MADE.Web) |
-| Web.Mvc | [![NuGet](https://img.shields.io/nuget/v/MADE.Web.Mvc)](https://www.nuget.org/packages/MADE.Web.Mvc/) | [![NuGet](https://img.shields.io/nuget/vpre/MADE.Web.Mvc)](https://www.nuget.org/packages/MADE.Web.Mvc/) | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Web.Mvc.svg)](https://www.nuget.org/packages/MADE.Web.Mvc) |
-
-## Contributing 🚀
-
-Looking to help build MADE.NET? Take a look through our [contribution guidelines](CONTRIBUTING.md). We actively encourage you to jump in and help with any issues!
+| Package | Download |
+| --- | --- |
+| Collections | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Collections.svg)](https://www.nuget.org/packages/MADE.Collections) |
+| Data.Converters | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Converters.svg)](https://www.nuget.org/packages/MADE.Data.Converters) |
+| Data.EFCore | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.EFCore.svg)](https://www.nuget.org/packages/MADE.Data.EFCore) |
+| Data.Serialization | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Serialization.svg)](https://www.nuget.org/packages/MADE.Data.Serialization) |
+| Data.Validation | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Validation.svg)](https://www.nuget.org/packages/MADE.Data.Validation) |
+| Data.Validation.FluentValidation | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Data.Validation.FluentValidation.svg)](https://www.nuget.org/packages/MADE.Data.Validation.FluentValidation) |
+| Diagnostics | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Diagnostics.svg)](https://www.nuget.org/packages/MADE.Diagnostics) |
+| Foundation | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Foundation.svg)](https://www.nuget.org/packages/MADE.Foundation) |
+| Networking | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Networking.svg)](https://www.nuget.org/packages/MADE.Networking) |
+| Runtime | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Runtime.svg)](https://www.nuget.org/packages/MADE.Runtime) |
+| Testing | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Testing.svg)](https://www.nuget.org/packages/MADE.Testing) |
+| Threading | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Threading.svg)](https://www.nuget.org/packages/MADE.Threading) |
+| Web | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Web.svg)](https://www.nuget.org/packages/MADE.Web) |
+| Web.Mvc | [![NuGet Downloads](https://img.shields.io/nuget/dt/MADE.Web.Mvc.svg)](https://www.nuget.org/packages/MADE.Web.Mvc) |
 
 ## Building MADE.NET 🛠
 
@@ -54,6 +53,18 @@ You can build the solution using Visual Studio with the following workloads inst
 - Universal Windows Platform development
 - Mobile Development with .NET
 - .NET Core cross-platform development
+
+## Contributing 🤝
+
+Contributions, issues, and feature requests are welcome to MADE.NET!
+
+Feel free to check the [issues page](https://github.com/MADE-Apps/MADE.NET/issues). You can also take a look at the [contributing guide](CONTRIBUTING.md).
+
+We actively encourage you to jump in and help with any issues, and if you find one, don't forget to log it!
+
+## Support MADE.NET ♥
+
+As many developers know, projects like MADE.NET are built and maintained in spare time. If you find this project useful, please **Star** the repo and if possible, sponsor the project development on GitHub.
 
 ## License
 

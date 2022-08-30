@@ -2,14 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Testing</Product>
     <Description>
-      This package includes:
-      - CollectionAssertExtensions for extending collection objects with helper methods, such as asserting whether a collection is equivalent to another.
+      MADE.NET Testing provides test framework agnostic helpers and extensions to perform assertions on your defined scenarios.
+      Whether you like to use MSTest, NUnit, or xUnit, this library will follow you wherever you go!
     </Description>
-    <PackageTags>MADE Testing Assert Collections</PackageTags>
-
+    <PackageTags>MADE Testing Extensions Assert Collections MSTest NUnit xUnit</PackageTags>
   </PropertyGroup>
 
 </Project>

@@ -2,13 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Data Serialization</Product>
     <Description>
-      This package includes:
-      - JsonTypeMigrationSerializationBinder for migrating type names within a serialized JSON object.
+      MADE.NET Data Serialization provides out-of-the-box serialization helpers and extensions for ensuring data quality when serializing to and from different formats such as JSON and XML.
     </Description>
-    <PackageTags>MADE Data Serialization JSON</PackageTags>
+    <PackageTags>MADE Data Serialization Extensions JSON XML</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

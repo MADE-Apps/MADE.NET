@@ -1,9 +1,9 @@
 /* COLOR VARIABLES*/
 :root {
-  --header-bg-color: #3B75BB;
-  --header-ft-color: #fff;
-  --highlight-light: #8AA1CF;
-  --highlight-dark: #2C77CC;
+  --header-bg-color: #fff;
+  --header-ft-color: #3b75bb;
+  --highlight-light: #8aa1cf;
+  --highlight-dark: #2c77cc;
   --accent-dim: #e0e0e0;
   --accent-super-dim: #f3f3f3;
   --font-color: #34393e;

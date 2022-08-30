@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "docfx": "npm-watch build_serve",
-    "build_serve": "docfx build .\\docfx.json --serve"
+    "build_serve": "docfx metadata .\\docfx.json && docfx build .\\docfx.json --serve"
   },
   "watch": {
     "build_serve": {

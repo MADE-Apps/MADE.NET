@@ -2,13 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Product>MADE.NET Foundation</Product>
     <Description>
-      This package includes:
-      - PlatformApiHelper for providing a mechanism of ensuring cross-platform functionality in MADE libraries can be coded safely where APIs are not supported.
+      MADE.NET Foundation is a base library for MADE.NET that allows platform-specific logic to be defined with a helper for ensuring your code can continue to execute with API availability checks.
+      You can even use this in your own projects!
     </Description>
-    <PackageTags>MADE Foundation Helpers Type Check Platform Uno</PackageTags>
+    <PackageTags>MADE Foundation Extensions Helpers Type Check Platform Uno</PackageTags>
 
   </PropertyGroup>
 
