@@ -11,7 +11,7 @@ Whether you're building an ASP.NET Core Web API or a native UI application with 
 
 MADE.NET has been built on common code from projects built by the MADE team, and is now a home for all those bits of code that you know you will reuse in another project!
 
-Most packages support the `netstandard2.0` target framework, with some packages opting to support platform specific frameworks such as .NET 6, UWP, and Xamarin.
+Most packages support the `netstandard2.0` target framework, with some packages opting to support platform specific frameworks such as .NET 6/7/8 and UWP.
 
 ## Installation
 

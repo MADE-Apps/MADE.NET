@@ -39,7 +39,7 @@ title: Make App Development Easier
           </div>
           <div class="stat-content">
             <span>
-              Standard 2.0+, 5, 6
+              Standard 2.0+, 6, 7, 8
             </span>
           </div>
         </div>
@@ -66,12 +66,12 @@ title: Make App Development Easier
         <div class="stat-container">
           <div class="stat-header">
             <span>
-              Xamarin
+              MAUI
             </span>
           </div>
           <div class="stat-content">
             <span>
-              Android, iOS, macOS, Forms
+              Android, iOS
             </span>
           </div>
         </div>
@@ -93,62 +93,6 @@ title: Make App Development Easier
         </div>
       </span>
     </div>
-  </div>
-</div>
-
-<div class="highlight-section home-row">
-  <span class="small-heading">
-    Stats
-  </span>
-  <div class="stats-container d-flex flex-row flex-wrap">
-    <a class="stat" href="https://github.com/MADE-Apps/MADE.NET/releases" target="_blank">
-      <span>
-        <div class="stat-container">
-          <div class="stat-header">
-            <span>
-              v1.5.0
-            </span>
-          </div>
-          <div class="stat-content">
-            <span>
-              Latest release
-            </span>
-          </div>
-        </div>
-      </span>
-    </a>
-    <a class="stat" href="https://www.nuget.org/profiles/made-apps" target="_blank">
-      <span>
-        <div class="stat-container">
-          <div class="stat-header">
-            <span>
-              300k+
-            </span>
-          </div>
-          <div class="stat-content">
-            <span>
-              Total downloads
-            </span>
-          </div>
-        </div>
-      </span>
-    </a>
-    <a class="stat" href="https://www.nuget.org/profiles/made-apps" target="_blank">
-      <span>
-        <div class="stat-container">
-          <div class="stat-header">
-            <span>
-              27
-            </span>
-          </div>
-          <div class="stat-content">
-            <span>
-              NuGet packages
-            </span>
-          </div>
-        </div>
-      </span>
-    </a>
   </div>
 </div>
 
