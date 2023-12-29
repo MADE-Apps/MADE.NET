@@ -1,7 +1,7 @@
 <Project Sdk="MSBuild.Sdk.Extras">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;uap10.0.17763</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;uap10.0.19041</TargetFrameworks>
     <Product>MADE.NET Data Converters</Product>
     <Description>
       MADE.NET Data Converters provide out-of-the-box value converters for taking values of one type and changing them to another.

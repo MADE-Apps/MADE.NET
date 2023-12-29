@@ -14,10 +14,6 @@ namespace MADE.Diagnostics
     /// </summary>
     public class AppDiagnostics : IAppDiagnostics
     {
-#if __ANDROID__
-        private UncaughtExceptionHandler javaExceptionHandler;
-#endif
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AppDiagnostics"/> class.
         /// </summary>
@@ -63,17 +59,9 @@ namespace MADE.Diagnostics
 
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException += this.OnAppUnhandledException;
-#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
+#elif NETSTANDARD2_0
             AppDomain.CurrentDomain.UnhandledException += this.OnAppUnhandledException;
 #endif
-
-#if __ANDROID__
-            Android.Runtime.AndroidEnvironment.UnhandledExceptionRaiser += this.OnAndroidAppUnhandledException;
-
-            this.javaExceptionHandler = new UncaughtExceptionHandler(this.OnJavaUncaughtException);
-            Java.Lang.Thread.DefaultUncaughtExceptionHandler = this.javaExceptionHandler;
-#endif
-
             TaskScheduler.UnobservedTaskException += this.OnTaskUnobservedException;
 
             await Task.CompletedTask;
@@ -91,14 +79,9 @@ namespace MADE.Diagnostics
 
 #if WINDOWS_UWP
             Windows.UI.Xaml.Application.Current.UnhandledException -= this.OnAppUnhandledException;
-#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
+#elif NETSTANDARD2_0
             AppDomain.CurrentDomain.UnhandledException -= this.OnAppUnhandledException;
 #endif
-
-#if __ANDROID__
-            Android.Runtime.AndroidEnvironment.UnhandledExceptionRaiser -= this.OnAndroidAppUnhandledException;
-#endif
-
             TaskScheduler.UnobservedTaskException -= this.OnTaskUnobservedException;
 
             this.IsRecordingDiagnostics = false;
@@ -128,7 +111,7 @@ namespace MADE.Diagnostics
                     ? $"An unhandled exception was thrown. Error: {args.Exception}"
                     : "An unhandled exception was thrown. Error: No exception information was available.");
         }
-#elif NETSTANDARD2_0 || __ANDROID__ || __IOS__
+#elif NETSTANDARD2_0
         private void OnAppUnhandledException(object sender, UnhandledExceptionEventArgs args)
         {
             if (args.IsTerminating)
@@ -145,30 +128,6 @@ namespace MADE.Diagnostics
             var correlationId = Guid.NewGuid();
 
             this.EventLogger.WriteCritical($"An unhandled exception was thrown. Correlation ID: {correlationId}. Error: {ex}");
-
-            this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, ex));
-        }
-#endif
-
-#if __ANDROID__
-        private void OnAndroidAppUnhandledException(object sender, Android.Runtime.RaiseThrowableEventArgs args)
-        {
-            args.Handled = true;
-
-            var correlationId = Guid.NewGuid();
-
-            this.EventLogger.WriteCritical($"An unhandled exception was thrown. Correlation ID: {correlationId}. Error: {args.Exception}.");
-            this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, args.Exception));
-        }
-
-        private void OnJavaUncaughtException(Exception ex)
-        {
-            var correlationId = Guid.NewGuid();
-
-            this.EventLogger.WriteCritical(
-                ex != null
-                    ? $"An unhandled exception was thrown. Correlation ID: {correlationId}. Error: {ex}."
-                    : $"An unhandled exception was thrown. Correlation ID: {correlationId}. Error: No exception information was available.");
 
             this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, ex));
         }
