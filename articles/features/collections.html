@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using the Collections package | MADE.NET </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Using the Collections package | MADE.NET ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/Logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap-grid.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="package-collections">
+<h1 id="using-the-collections-package">Using the Collections package</h1>
+
+<p>The Collections package is designed to provide helpful extensions and additional types for working with enumerable objects in your applications.</p>
+<h2 id="comparing-objects-using-the-genericequalitycomparer">Comparing objects using the GenericEqualityComparer</h2>
+<p>The <code>MADE.Collections.Compare.GenericEqualityComparer</code> is a simple to use <code>IEqualityComparer</code> that takes a function as a parameter when constructed.</p>
+<p>This function is used when comparing for equality to validate that the two objects under test are equal.</p>
+<p>It allows you to go over equality based on the <code>Equals</code> method and provide your own equality comparison.</p>
+<p>Here's an example of it in use, combining multiple collections together with distinct objects by comparing based on the ID of the items.</p>
+<pre><code class="lang-csharp">namespace App.Permissions
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using MADE.Collections.Compare;
+
+    public static class ApplicationPermissions
+    {
+        private static readonly GenericEqualityComparer&lt;Permission&gt; PermissionComparer = new GenericEqualityComparer&lt;Permission&gt;( permission =&gt; permission.Id );
+
+        private static readonly IEnumerable&lt;Permission&gt; AdminPermissions = new List&lt;Permission&gt;();
+
+        private static readonly IEnumerable&lt;Permission&gt; UserPermissions = new List&lt;Permission&gt;();
+
+        public static IEnumerable&lt;Permission&gt; GetAllPermissions()
+        {
+            return AdminPermissions.Union(UserPermissions, PermissionComparer);
+        }
+    }
+}
+</code></pre>
+<h2 id="make-a-collection-of-items-equal-to-another-using-the-makeequalto-extension">Make a collection of items equal to another using the MakeEqualTo extension</h2>
+<p>The <code>MADE.Collections.CollectionExtensions</code> static class contains a <code>MakeEqualTo&lt;T&gt;</code> extension method for <code>ICollection&lt;T&gt;</code> objects that will add or remove items from the destination collection to match the source.</p>
+<p>You can use this in your projects similar to our example below.</p>
+<pre><code class="lang-csharp">public void UpdateAdminPermissions(IEnumerable&lt;Permission&gt; permissions)
+{
+    AdminPermissions.MakeEqualTo&lt;Permission&gt;(permissions);
+}
+</code></pre>
+<h2 id="ensuring-a-collection-of-items-is-equivalent-to-another-using-the-areequivalent-extension">Ensuring a collection of items is equivalent to another using the AreEquivalent extension</h2>
+<p>The <code>MADE.Collections.CollectionExtensions</code> static class contains an <code>AreEquivalent&lt;T&gt;</code> extension method for <code>ICollection&lt;T&gt;</code> objects that will ensure the expected and actual collections contain the same items with no regard to order.</p>
+<p>Here's an example of this in use.</p>
+<pre><code class="lang-csharp">public void UpdateAdminPermissions(IEnumerable&lt;Permission&gt; permissions)
+{
+    AdminPermissions.MakeEqualTo&lt;Permission&gt;(permissions);
+
+    if (!AdminPermission.AreEquivalent&lt;Permission&gt;(permissions))
+    {
+        throw new InvalidOperationException(&quot;Permissions were not updated successfully.&quot;);
+    }
+}
+</code></pre>
+<h2 id="adding-a-collection-of-items-to-another-using-the-addrange-extension">Adding a collection of items to another using the AddRange extension</h2>
+<p><code>ICollection&lt;T&gt;</code> objects don't contain a method for adding a collection of items to it.</p>
+<p>This extension method takes a collection of items with the same item type and adds them all in order to the end of the destination collection.</p>
+<p>You can use this extension in your own code like this example.</p>
+<pre><code class="lang-csharp">public void AddAdminPermissions(IEnumerable&lt;Permission&gt; permissions)
+{
+    AdminPermissions.AddRange&lt;Permission&gt;(permissions);
+}
+</code></pre>
+<h2 id="updating-an-item-in-a-collection-using-the-update-extension">Updating an item in a collection using the Update extension</h2>
+<p>The <code>MADE.Collections.CollectionExtensions</code> static class contains an <code>Update&lt;T&gt;</code> extension method for <code>IList&lt;T&gt;</code> objects that allows an item to be updated in the collection based on a predicate.</p>
+<p>The predicate will find the item in the collection, and ensure that it is updated, returning true once executed.</p>
+<p>If the item can't be found, it will return false.</p>
+<p>You can use this extension in your application like the example below.</p>
+<pre><code class="lang-csharp">public void UpdatePermission(Permission permissionToUpdate)
+{
+    var updated = AdminPermissions.Update&lt;Permission&gt;(permissionToUpdate, (p1, p2) =&gt; p1.Id == p2.Id);
+    if (updated)
+    {
+        // Update UI
+    }
+}
+</code></pre>
+<h2 id="removing-a-collection-of-items-from-another-using-the-removerange-extension">Removing a collection of items from another using the RemoveRange extension</h2>
+<p><code>ICollection&lt;T&gt;</code> objects don't contain a method for removing a collection of items from it.</p>
+<p>This extension method takes a collection of items with the same item type and removes them from the destination collection.</p>
+<p>Here's an example of this in use.</p>
+<pre><code class="lang-csharp">public void RemoveAdminPermissions(IEnumerable&lt;Permission&gt; permissions)
+{
+    AdminPermissions.RemoveRange&lt;Permission&gt;(permissions);
+}
+</code></pre>
+<h2 id="performing-actions-over-collections-using-the-foreach-extension">Performing actions over collections using the ForEach extension</h2>
+<p>Just a quick and easy extension to have at your disposal, <code>ForEach</code> is an <code>IEnumerable</code> extension that allows you to perform an action on each element in the collection.</p>
+<p>Simply call <code>ForEach</code> on your collection passing an action to perform on the items, for example:</p>
+<pre><code class="lang-csharp">private void Update()
+{
+    myStrings.ForEach(s =&gt; VerifyString(s));
+}
+
+private void VerifyString(string val)
+{
+   // Do verification
+}
+</code></pre>
+<h2 id="breaking-collections-up-into-chunks-using-the-chunk-extension">Breaking collections up into chunks using the Chunk extension</h2>
+<p>When you want to process your data in limited sets, you need to split your collection up. The <code>Chunk</code> extension allows you to achieve this by splitting your lists up into datasets by a specified size for you.</p>
+<p>Here's how you can do this in your projects.</p>
+<pre><code class="lang-csharp">public async Task ProcessMessagesAsync(IEnumerable&lt;Message&gt; messages, CancellationToken cancellationToken = default )
+{
+    foreach ( var messageChunk in messages.Chunk( 10 ) )
+    {
+        foreach ( var message in messageChunk )
+        {
+            await this.processor.SendMessageAsync( message, cancellationToken );
+        }
+    }
+}
+</code></pre>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/features/collections.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) MADE Apps
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

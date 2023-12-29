@@ -1,0 +1,277 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using the Data Validation package | MADE.NET </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Using the Data Validation package | MADE.NET ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/Logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap-grid.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="package-data-validation">
+<h1 id="using-the-data-validation-package">Using the Data Validation package</h1>
+
+<p>The Data Validation package is designed to provide out-of-the-box data validation to applications built with C#.</p>
+<h2 id="validating-an-object-using-the-validatorcollection">Validating an object using the ValidatorCollection</h2>
+<p>Data validation can be implemented in so many different ways. MADE provides the capability to perform data validation through its own <code>IValidator</code> interface that can be used to create consistent data validators.</p>
+<p>Using the <code>MADE.Data.Validation.ValidatorCollection</code> based on a <code>List</code> type, you can construct a collection of <code>IValidator</code> instances which can be used to validate values.</p>
+<p>For example, you might want a collection of validators that ensure that a value is provided, it has a minimum length, and it contains only alphanumeric characters.</p>
+<p>Instead of implementing your own custom validation in your application, you can take advantage of the built-in <code>IValidator</code> implementation of this package and utilize them with the <code>ValidatorCollection</code>.</p>
+<p>This can be achieved like the example below.</p>
+<pre><code class="lang-csharp">namespace App.Validations
+{
+    using MADE.Data.Converters;
+
+    public class ApplicationConverters
+    {
+        private readonly ValidatorCollection RequiredAlphaNumericValidators = new ValidatorCollection
+                {
+                    new RequiredValidator { Key = &quot;Required&quot; },
+                    new AlphaNumericValidator { Key = &quot;AlphaNumericOnly&quot; },
+                };
+
+        public void EnsureValid(string value)
+        {
+            RequiredAlphaNumericValidators.Validate(value);
+
+            if (RequiredAlphaNumericValidators.IsInvalid)
+            {
+                throw new InvalidOperationException(string.Join(&quot;, &quot;, RequiredAlphaNumericValidators.FeedbackMessages)));
+            }
+        }
+    }
+}
+</code></pre>
+<p>The <code>ValidatorCollection</code> will loop through all of the <code>IValidator</code> instances that have been registered with it and validate the value with each one.</p>
+<p>When there are errors, this will result in the <code>FeedbackMessages</code> collection being populated with validation messages which can be used to display to the user.</p>
+<p>You also have the <code>IsInvalid</code> property which exposes where there are any validators that are invalid.</p>
+<p>There is also control through a <code>Validated</code> event handler which you can use to trigger actions based on whether the validations have run in the collection.</p>
+<h2 id="available-ivalidator-types">Available IValidator types</h2>
+<p><code>IValidator</code> types can be used on their own, as well as with the <code>ValidatorCollection</code>.</p>
+<p>Here is a list of the in-box <code>IValidators</code> that you can use in your applications.</p>
+<h3 id="alphavalidator">AlphaValidator</h3>
+<p>The <code>AlphaValidator</code> checks a string value contains only letter characters, i.e. a-z, ignoring casing.</p>
+<p>If the value contains only letters, the validator will report valid; otherwise, it will report invalid.</p>
+<h3 id="alphanumericvalidator">AlphaNumericValidator</h3>
+<p>Similar to the <code>AlphaValidator</code>, the <code>AlphaNumericValidator</code> extends the characters in the validation to include numbers also.</p>
+<h3 id="base64validator">Base64Validator</h3>
+<p>The <code>Base64Validator</code> checks whether a string value is a valid Base64 encoded string.</p>
+<h3 id="betweenvalidator">BetweenValidator</h3>
+<p>The <code>BetweenValidator</code> validates an <code>IComparable</code> value is between a configurable minimum and maximum range.</p>
+<p>The range can be configured by setting the <code>Min</code> and <code>Max</code> values, as well as an <code>Inclusive</code> flag to configure whether the minimum and maximum values are included in the range (defaults to <code>true</code>).</p>
+<p>The in-box <code>System</code> types which implement the <code>IComparable</code> interface can be <a href="https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=net-5.0">found in the Microsoft documentation</a>.</p>
+<h3 id="emailvalidator">EmailValidator</h3>
+<p>The <code>EmailValidator</code> extends the in-box <code>RegexValidator</code> type to provide validating a string is a valid e-mail address.</p>
+<p>The current pattern used to validate e-mail addresses is:</p>
+<pre><code class="lang-csharp">this.Pattern = @&quot;^(?!\.)(&quot;&quot;([^&quot;&quot;\r\\]|\\[&quot;&quot;\r\\])*&quot;&quot;|&quot; + @&quot;([-a-zA-Z0-9!#$%&amp;'*+/=?^_`{|}~]|(?&lt;!\.)\.)*)(?&lt;!\.)&quot; + @&quot;@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$&quot;;
+</code></pre>
+<p>MADE.NET has a comprehensive set of test cases which validate the implementation with a variety of different valid and invalid email addresses.</p>
+<h3 id="guidvalidator">GuidValidator</h3>
+<p>The <code>GuidValidator</code> checks whether a string value is a valid GUID.</p>
+<p>The underlying implementation uses the <code>Guid.TryParse</code> method to validate the string.</p>
+<h3 id="ipaddressvalidator">IpAddressValidator</h3>
+<p>The <code>IpAddressValidator</code> is a simple data validator which ensures that a value is a valid IP address.</p>
+<p>The implementation splits the IP address into each nibble and validates them based on the following criteria:</p>
+<ul>
+<li>Is less than 4 characters</li>
+<li>Is greater than 0 characters</li>
+<li>Is a digit</li>
+<li>Is a numeric value between 0 and 255</li>
+</ul>
+<h3 id="latitudevalidator">LatitudeValidator</h3>
+<p>The <code>LatitudeValidator</code> validates a value is within the valid range for a latitude value (-90 and 90).</p>
+<h3 id="longitudevalidator">LongitudeValidator</h3>
+<p>The <code>LongitudeValidator</code> validates a value is within the valid range for a longitude value (-180 and 180).</p>
+<h3 id="macaddressvalidator">MacAddressValidator</h3>
+<p>The <code>MacAddressValidator</code> is a simple data validator which ensures that a value is a valid MAC address.</p>
+<p>The implementation uses the .NET <code>PhysicalAddress</code> class to parse the provided value.</p>
+<p>For more information on the <code>PhysicalAddress</code> class, see the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.net.networkinformation.physicaladdress?view=net-6.0">Microsoft documentation</a>.</p>
+<h3 id="maxvaluevalidator">MaxValueValidator</h3>
+<p>The <code>MaxValueValidator</code> validates an <code>IComparable</code> value is less than a configurable maximum value.</p>
+<p>The maximum can be configured by setting the <code>Max</code> value.</p>
+<p>The in-box <code>System</code> types which implement the <code>IComparable</code> interface can be <a href="https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=net-5.0">found in the Microsoft documentation</a>.</p>
+<h3 id="minvaluevalidator">MinValueValidator</h3>
+<p>The <code>MinValueValidator</code> validates an <code>IComparable</code> value is greater than a configurable minimum value.</p>
+<p>The minimum can be configured by setting the <code>Min</code> value.</p>
+<p>The in-box <code>System</code> types which implement the <code>IComparable</code> interface can be <a href="https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=net-5.0">found in the Microsoft documentation</a>.</p>
+<h3 id="predicatevalidator">PredicateValidator</h3>
+<p>The <code>PredicateValidator</code> validates a value using a custom predicate to ensure that a condition is met.</p>
+<h3 id="regexvalidator">RegexValidator</h3>
+<p>The <code>RegexValidator</code> is a generic data validator which validates a value based on a configurable regular expression pattern.</p>
+<p>The pattern can be configured by setting the <code>Pattern</code> value.</p>
+<h3 id="requiredvalidator">RequiredValidator</h3>
+<p>The <code>RequiredValidator</code> is a data validator that ensures that the value provided exists.</p>
+<p>This is determined based on the following criteria:</p>
+<ul>
+<li>The value is not null</li>
+<li>The value is a collection and contains items</li>
+<li>The value is a boolean and is true</li>
+<li>The value is a string and is not null or whitespace</li>
+</ul>
+<h2 id="creating-your-own-custom-data-validators">Creating your own custom data validators</h2>
+<p>There are likely to be more advanced, custom scenarios for your own applications that need to extend the capabilities past the in-box <code>IValidator</code> types.</p>
+<p>If you want to take advantage of what goes into a data validator, you can build your own using the <code>MADE.Data.Validation.IValidator</code> interface.</p>
+<p>You can then build out your own, similar to our validators such as the <code>RequiredValidator</code>.</p>
+<pre><code class="lang-csharp">namespace MADE.Data.Validation.Validators
+{
+    using System.Collections;
+    using MADE.Data.Validation.Extensions;
+    using MADE.Data.Validation.Strings;
+
+    public class RequiredValidator : IValidator
+    {
+        private string feedbackMessage = Resources.ResourceManager.GetString(&quot;RequiredValidator_FeedbackMessage&quot;);
+
+        public string Key { get; set; } = nameof(RequiredValidator);
+
+        public bool IsInvalid { get; set; }
+
+        public bool IsDirty { get; set; }
+
+        public string FeedbackMessage
+        {
+            get =&gt; this.feedbackMessage.IsNullOrWhiteSpace() ? Resources.RequiredValidator_FeedbackMessage : this.feedbackMessage;
+            set =&gt; this.feedbackMessage = value;
+        }
+
+        public void Validate(object value)
+        {
+            this.IsInvalid = DetermineIsInvalid(value);
+            this.IsDirty = true;
+        }
+
+        private static bool DetermineIsInvalid(object value)
+        {
+            switch (value)
+            {
+                case null:
+                    return true;
+                case ICollection collection:
+                    return collection.Count &lt;= 0;
+                case bool isTrue:
+                    return !isTrue;
+                case string str:
+                    return str.IsNullOrWhiteSpace();
+                default:
+                    return false;
+            }
+        }
+    }
+}
+</code></pre>
+<p>If there is a common data validator you think is missing from MADE.NET, <a href="https://github.com/MADE-Apps/MADE.NET/issues/new/choose">raise a tracking item on GitHub</a> and we'll get it implemented.</p>
+<h2 id="using-fluentvalidation-with-madenet">Using FluentValidation with MADE.NET</h2>
+<p>The <code>MADE.Data.Validation.FluentValidation</code> package provides an easy way to take advantage of validation with the <a href="https://fluentvalidation.net/">FluentValidation</a> library validator framework.</p>
+<h3 id="validating-an-object-using-the-fluentvalidatorcollection">Validating an object using the FluentValidatorCollection</h3>
+<p>Using the <code>MADE.Data.Validation.FluentValidatorCollection&lt;T&gt;</code> based on a <code>List</code> type, you can construct a collection of <code>AbstractValidator</code> instances which can be used to validate values.</p>
+<p>This way, you can bring FluentValidation's out-of-the-box validators or your own custom validators based on the <code>AbstractValidator</code> type and get all the benefits of using the existing MADE.NET validation framework. This is great for example with input validator controls that currently support the MADE.NET validation framework!</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/features/data-validation.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) MADE Apps
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

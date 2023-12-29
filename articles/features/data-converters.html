@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Using the Data Converters package | MADE.NET </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Using the Data Converters package | MADE.NET ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../../images/Logo.png">
+    <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../../styles/docfx.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap-grid.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta property="docfx:navrel" content="../../toc.html">
+    <meta property="docfx:tocrel" content="../toc.html">
+    
+    <meta property="docfx:rel" content="../../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="package-data-converters">
+<h1 id="using-the-data-converters-package">Using the Data Converters package</h1>
+
+<p>The Data Converters package provides a collection of value converters and extensions to manipulate data in your applications.</p>
+<h2 id="converting-a-datetime-to-a-string-using-the-datetimetostringvalueconverter">Converting a DateTime to a String using the DateTimeToStringValueConverter</h2>
+<p>Value converters are a common coding practice for building XAML applications that allow values to be bound to a view, converted to a different type and back depending on the binding mode.</p>
+<p>Why should that be limited to just XAML applications though?</p>
+<p>The <code>MADE.Data.Converters.DateTimeToStringValueConverter</code> works across any .NET application, including your XAML bindings.</p>
+<p>It converts a <code>DateTime</code> value to a <code>String</code> using a format parameter. The format parameter must be a valid <code>DateTime</code> string format <a href="https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings">based on the Microsoft documentation</a>.</p>
+<p>Below is an example of this in use in any C# application.</p>
+<pre><code class="lang-csharp">namespace App.Conversions
+{
+    using MADE.Data.Converters;
+
+    public class ApplicationConverters
+    {
+        private readonly DateTimeToStringValueConverter DateTimeToStringConverter = new DateTimeToStringValueConverter();
+
+        public string ConvertDateToString(DateTime date)
+        {
+            return DateTimeToStringConverter.Convert(date, &quot;g&quot;);
+        }
+
+        public DateTime ConvertStringToDate(string dateString)
+        {
+            return DateTimeToStringConverter.ConvertBack(dateString, &quot;g&quot;);
+        }
+    }
+}
+</code></pre>
+<p>You can also take advantage of this converter in your XAML applications too.</p>
+<pre><code class="lang-xml">&lt;Page
+    x:Class=&quot;App.Conversions.MainPage&quot;
+    xmlns=&quot;http://schemas.microsoft.com/winfx/2006/xaml/presentation&quot;
+    xmlns:x=&quot;http://schemas.microsoft.com/winfx/2006/xaml&quot;
+    xmlns:d=&quot;http://schemas.microsoft.com/expression/blend/2008&quot;
+    xmlns:mc=&quot;http://schemas.openxmlformats.org/markup-compatibility/2006&quot;
+    xmlns:converters=&quot;using:MADE.Data.Converters&quot;
+    Background=&quot;{ThemeResource ApplicationPageBackgroundThemeBrush}&quot;
+    mc:Ignorable=&quot;d&quot;&gt;
+
+    &lt;Page.Resources&gt;
+        &lt;converters:DateTimeToStringValueConverter x:Key=&quot;DateTimeToStringValueConverter&quot; /&gt;
+    &lt;/Page.Resources&gt;
+
+    &lt;RelativePanel Padding=&quot;12&quot;&gt;
+        &lt;TextBlock Text=&quot;{x:Bind ViewModel.Date, Converter={StaticResource DateTimeToStringValueConverter}, ConverterParameter='g'}&quot; /&gt;
+    &lt;/RelativePanel&gt;
+&lt;/Page&gt;
+</code></pre>
+<h2 id="creating-your-own-custom-value-converters">Creating your own custom value converters</h2>
+<p>If you want to take advantage of what goes into a value converter, you can build your own using the <code>MADE.Data.Converters.IValueConverter</code> interface which provides the signatures for the <code>Convert</code> and <code>ConvertBack</code> methods.</p>
+<p>These can be used to convert any type to another. Whatever data conversion you think you may need, you'll be able to build out a value converter to satisfy that need for your project.</p>
+<p>You can then build out your own, similar to our <code>DateTimeToStringValueConverter</code>.</p>
+<pre><code class="lang-csharp">namespace MADE.Data.Converters
+{
+    using System;
+    using System.Globalization;
+
+    public partial class DateTimeToStringValueConverter : IValueConverter&lt;DateTime, string&gt;
+    {
+        public string Convert(DateTime value, object parameter = default)
+        {
+            string format = parameter?.ToString();
+            return !string.IsNullOrWhiteSpace(format)
+                       ? value.ToString(format, CultureInfo.InvariantCulture)
+                       : value.ToString(CultureInfo.InvariantCulture);
+        }
+
+        public DateTime ConvertBack(string value, object parameter = default)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return DateTime.MinValue;
+            }
+
+            bool parsed = DateTime.TryParse(value, out DateTime dateTime);
+            return parsed ? dateTime : DateTime.MinValue;
+        }
+    }
+}
+</code></pre>
+<p>If you want to build a XAML specific value converter, you can also apply the <code>Windows.UI.Xaml.Data.IValueConverter</code> to your class and implement the additional methods calling directly into your <code>Convert</code> and <code>ConvertBack</code> methods.</p>
+<p>If there is a common value converter you think is missing from MADE.NET, <a href="https://github.com/MADE-Apps/MADE.NET/issues/new/choose">raise a tracking item on GitHub</a> and we'll get it implemented.</p>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/features/data-converters.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) MADE Apps
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
+  </body>
+</html>

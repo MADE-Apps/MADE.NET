@@ -1,0 +1,624 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Class HttpResponseMessage&lt;T&gt;
+   | MADE.NET </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Class HttpResponseMessage&lt;T&gt;
+   | MADE.NET ">
+    <meta name="generator" content="docfx 2.59.4.0">
+    
+    <link rel="shortcut icon" href="../images/Logo.png">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap-grid.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    <meta property="docfx:newtab" content="true">
+  </head>  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../images/Logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1">
+  
+  
+  <h1 id="MADE_Networking_Http_Responses_HttpResponseMessage_1" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1" class="text-break">Class HttpResponseMessage&lt;T&gt;
+  </h1>
+  <div class="markdown level0 summary"><p>Defines a HTTP response message that includes a deserializing option for the response data.</p>
+</div>
+  <div class="markdown level0 conceptual"></div>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">HttpResponseMessage&lt;T&gt;</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="MADE.Networking.Http.Responses.html">MADE.Networking.Http.Responses</a></h6>
+  <h6><strong>Assembly</strong>: MADE.Networking.dll</h6>
+  <h5 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class HttpResponseMessage&lt;T&gt; : IDisposable</code></pre>
+  </div>
+  <h5 class="typeParameters">Type Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="parametername">T</span></td>
+        <td><p>The type of response expected.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="constructors">Constructors
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1__ctor_MADE_Networking_Http_Responses_HttpResponseMessage_.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.%23ctor(MADE.Networking.Http.Responses.HttpResponseMessage)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L26">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1__ctor_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.#ctor*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1__ctor_MADE_Networking_Http_Responses_HttpResponseMessage_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.#ctor(MADE.Networking.Http.Responses.HttpResponseMessage)">HttpResponseMessage(HttpResponseMessage)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html">HttpResponseMessage&lt;T&gt;</a> class with the original <see cref="!:HttpResponseMessage"></see>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HttpResponseMessage(HttpResponseMessage response)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">MADE.Networking.Http.Responses.HttpResponseMessage</span></td>
+        <td><span class="parametername">response</span></td>
+        <td><p>The original <see cref="!:HttpResponseMessage"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="properties">Properties
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_Content.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.Content%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L34">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Content_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Content*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Content" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Content">Content</h4>
+  <div class="markdown level1 summary"><p>Gets the content of the HTTP response message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HttpContent Content { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HttpContent</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializedContent.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.DeserializedContent%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L72">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializedContent_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.DeserializedContent*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializedContent" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.DeserializedContent">DeserializedContent</h4>
+  <div class="markdown level1 summary"><p>Gets the deserialized content of the original <see cref="!:HttpResponseMessage"></see> as the specified <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> type.</p>
+<p>
+Note, ensure that <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html#MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializeAsync">DeserializeAsync()</a> has been called first, otherwise this value will be default.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public T DeserializedContent { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">T</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_Headers.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.Headers%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L39">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Headers_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Headers*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Headers" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Headers">Headers</h4>
+  <div class="markdown level1 summary"><p>Gets the collection of HTTP response headers.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HttpResponseHeaders Headers { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HttpResponseHeaders</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_IsSuccessStatusCode.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.IsSuccessStatusCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L44">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_IsSuccessStatusCode_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.IsSuccessStatusCode*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_IsSuccessStatusCode" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.IsSuccessStatusCode">IsSuccessStatusCode</h4>
+  <div class="markdown level1 summary"><p>Gets a value indicating whether the HTTP response was successful.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsSuccessStatusCode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_ReasonPhrase.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.ReasonPhrase%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L49">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_ReasonPhrase_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.ReasonPhrase*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_ReasonPhrase" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.ReasonPhrase">ReasonPhrase</h4>
+  <div class="markdown level1 summary"><p>Gets the reason phrase that typically is sent by servers together with the status code.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string ReasonPhrase { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_RequestMessage.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.RequestMessage%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L54">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_RequestMessage_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.RequestMessage*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_RequestMessage" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.RequestMessage">RequestMessage</h4>
+  <div class="markdown level1 summary"><p>Gets the request message which led to this response message.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HttpRequestMessage RequestMessage { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HttpRequestMessage</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_StatusCode.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.StatusCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L59">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_StatusCode_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.StatusCode*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_StatusCode" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.StatusCode">StatusCode</h4>
+  <div class="markdown level1 summary"><p>Gets the status code of the HTTP response.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HttpStatusCode StatusCode { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">HttpStatusCode</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_Version.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.Version%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L64">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Version_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Version*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Version" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Version">Version</h4>
+  <div class="markdown level1 summary"><p>Gets the HTTP message version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Version Version { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Version</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializeAsync.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.DeserializeAsync%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L92">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializeAsync_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.DeserializeAsync*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializeAsync" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.DeserializeAsync">DeserializeAsync()</h4>
+  <div class="markdown level1 summary"><p>Deserializes the content of the <see cref="!:HttpResponseMessage"></see> into the <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html#MADE_Networking_Http_Responses_HttpResponseMessage_1_DeserializedContent">DeserializedContent</a> value.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public async Task&lt;T&gt; DeserializeAsync()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">Task</span>&lt;T&gt;</td>
+        <td><p>A <see cref="!:Task"></see> representing the result of the asynchronous operation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_Dispose.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.Dispose%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L111">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Dispose_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Dispose*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Dispose" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Dispose">Dispose()</h4>
+  <div class="markdown level1 summary"><p>Releases the unmanaged resources and disposes of unmanaged resources used by the <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html">HttpResponseMessage&lt;T&gt;</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_Dispose_System_Boolean_.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.Dispose(System.Boolean)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L121">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Dispose_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Dispose*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_Dispose_System_Boolean_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.Dispose(System.Boolean)">Dispose(Boolean)</h4>
+  <div class="markdown level1 summary"><p>Releases the unmanaged resources used by the <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html">HttpResponseMessage&lt;T&gt;</a> and optionally disposes of the managed resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><span class="parametername">disposing</span></td>
+        <td><p>A value indicating whether to release both managed and unmanaged resources.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_EnsureSuccessStatusCode.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.EnsureSuccessStatusCode%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L102">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_EnsureSuccessStatusCode_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.EnsureSuccessStatusCode*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_EnsureSuccessStatusCode" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.EnsureSuccessStatusCode">EnsureSuccessStatusCode()</h4>
+  <div class="markdown level1 summary"><p>Throws an exception if the <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html#MADE_Networking_Http_Responses_HttpResponseMessage_1_IsSuccessStatusCode">IsSuccessStatusCode</a> property for the HTTP response is false.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public HttpResponseMessage&lt;T&gt; EnsureSuccessStatusCode()</code></pre>
+  </div>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html">HttpResponseMessage</a>&lt;T&gt;</td>
+        <td><p>The HTTP response message if the call is successful.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="operators">Operators
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1_op_Implicit_MADE_Networking_Http_Responses_HttpResponseMessage__MADE_Networking_Http_Responses_HttpResponseMessage__0_.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601.op_Implicit(MADE.Networking.Http.Responses.HttpResponseMessage)~MADE.Networking.Http.Responses.HttpResponseMessage%7B%600%7D%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L83">View Source</a>
+  </span>
+  <a id="MADE_Networking_Http_Responses_HttpResponseMessage_1_op_Implicit_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.op_Implicit*"></a>
+  <h4 id="MADE_Networking_Http_Responses_HttpResponseMessage_1_op_Implicit_MADE_Networking_Http_Responses_HttpResponseMessage__MADE_Networking_Http_Responses_HttpResponseMessage__0_" data-uid="MADE.Networking.Http.Responses.HttpResponseMessage`1.op_Implicit(MADE.Networking.Http.Responses.HttpResponseMessage)~MADE.Networking.Http.Responses.HttpResponseMessage{`0}">Implicit(HttpResponseMessage to HttpResponseMessage&lt;T&gt;)</h4>
+  <div class="markdown level1 summary"><p>Allows conversion of a <see cref="!:HttpResponseMessage"></see> to the <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html">HttpResponseMessage&lt;T&gt;</a> without direct casting.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static implicit operator HttpResponseMessage&lt;T&gt;(HttpResponseMessage response)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">MADE.Networking.Http.Responses.HttpResponseMessage</span></td>
+        <td><span class="parametername">response</span></td>
+        <td><p>The <see cref="!:HttpResponseMessage"></see>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html">HttpResponseMessage</a>&lt;T&gt;</td>
+        <td><p>The <a class="xref" href="MADE.Networking.Http.Responses.HttpResponseMessage-1.html">HttpResponseMessage&lt;T&gt;</a>.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_">ReflectionExtensions.GetPropertyValue&lt;T&gt;(Object, String)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyNames_System_Object_">ReflectionExtensions.GetPropertyNames(Object)</a>
+  </div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_Responses_HttpResponseMessage_1.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.Responses.HttpResponseMessage%601%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/Responses/HttpResponseMessage{T}.cs/#L17" class="contribution-link">View Source</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            Copyright (c) MADE Apps
+            
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
