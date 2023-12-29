@@ -3,8 +3,7 @@
 
 namespace MADE.Web.Extensions
 {
-    using Microsoft.AspNetCore.Mvc;
-    using Microsoft.AspNetCore.Mvc.Versioning;
+    using Asp.Versioning;
     using Microsoft.Extensions.DependencyInjection;
 
     /// <summary>
@@ -24,14 +23,14 @@ namespace MADE.Web.Extensions
             int defaultMajor = 1,
             int defaultMinor = 0)
         {
-            services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
-
-            services.AddApiVersioning(options =>
+            var apiVersioningBuilder = services.AddApiVersioning(options =>
             {
                 options.DefaultApiVersion = new ApiVersion(defaultMajor, defaultMinor);
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
             });
+
+            apiVersioningBuilder.AddApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
             return services;
         }
@@ -50,15 +49,15 @@ namespace MADE.Web.Extensions
             int defaultMajor = 1,
             int defaultMinor = 0)
         {
-            services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
-
-            services.AddApiVersioning(options =>
+            var apiVersioningBuilder = services.AddApiVersioning(options =>
             {
                 options.DefaultApiVersion = new ApiVersion(defaultMajor, defaultMinor);
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
                 options.ApiVersionReader = new HeaderApiVersionReader(apiHeaderName);
             });
+
+            apiVersioningBuilder.AddApiExplorer(options => options.GroupNameFormat = "'v'VVV");
 
             return services;
         }
