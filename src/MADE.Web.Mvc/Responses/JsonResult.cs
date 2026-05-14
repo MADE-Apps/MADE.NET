@@ -11,10 +11,10 @@ namespace MADE.Web.Mvc.Responses
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Infrastructure;
-    using Newtonsoft.Json;
+    using System.Text.Json;
 
     /// <summary>
-    /// Defines a model for a result of a request that is serialized as JSON using Json.NET.
+    /// Defines a model for a result of a request that is serialized as JSON.
     /// </summary>
     public class JsonResult : ActionResult, IStatusCodeActionResult
     {
@@ -23,15 +23,15 @@ namespace MADE.Web.Mvc.Responses
         /// </summary>
         /// <param name="value">The value object to serialize.</param>
         /// <param name="statusCode">The expected result HTTP status code.</param>
-        /// <param name="serializerSettings">The Json.Net serializer settings for serializing the result.</param>
+        /// <param name="serializerOptions">The JSON serializer options for serializing the result.</param>
         public JsonResult(
             object value,
             HttpStatusCode statusCode = HttpStatusCode.OK,
-            JsonSerializerSettings serializerSettings = default)
+            JsonSerializerOptions serializerOptions = default)
         {
             this.Value = value;
             this.StatusCode = (int)statusCode;
-            this.SerializerSettings = serializerSettings;
+            this.SerializerOptions = serializerOptions;
         }
 
         /// <summary>
@@ -45,9 +45,9 @@ namespace MADE.Web.Mvc.Responses
         public int? StatusCode { get; }
 
         /// <summary>
-        /// Gets the Json.Net serializer settings for serializing the result.
+        /// Gets the JSON serializer options for serializing the result.
         /// </summary>
-        public JsonSerializerSettings SerializerSettings { get; }
+        public JsonSerializerOptions SerializerOptions { get; }
 
         /// <summary>
         /// Executes the result operation of the action method asynchronously writing the <see cref="Value"/> to the response.
@@ -70,7 +70,7 @@ namespace MADE.Web.Mvc.Responses
                 await response.WriteJsonAsync(
                     this.StatusCode.GetValueOrDefault((int)HttpStatusCode.OK),
                     this.Value,
-                    this.SerializerSettings);
+                    this.SerializerOptions);
             }
             catch (Exception ex)
             {

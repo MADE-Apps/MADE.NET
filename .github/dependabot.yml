@@ -21,7 +21,6 @@ updates:
       entity-framework:
         patterns:
           - "Microsoft.EntityFrameworkCore*"
-          - "Z.EntityFramework*"
       aspnet:
         patterns:
           - "Asp.Versioning*"

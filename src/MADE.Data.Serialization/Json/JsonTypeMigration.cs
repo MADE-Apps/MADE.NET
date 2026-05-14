@@ -4,10 +4,10 @@
 namespace MADE.Data.Serialization.Json
 {
     using System;
-    using MADE.Data.Serialization.Json.Binders;
+    using MADE.Data.Serialization.Json.Converters;
 
     /// <summary>
-    /// Defines the detail for migrating from one type to another using the <see cref="JsonTypeMigrationSerializationBinder"/>.
+    /// Defines the detail for migrating from one type to another using the <see cref="JsonTypeMigrationConverter"/>.
     /// </summary>
     public class JsonTypeMigration
     {

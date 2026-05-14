@@ -10,7 +10,7 @@ namespace MADE.Networking.Http.Requests.Json
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Newtonsoft.Json;
+    using System.Text.Json;
 
     /// <summary>
     /// Defines a network request for a PATCH call with a JSON response.
@@ -96,7 +96,7 @@ namespace MADE.Networking.Http.Requests.Json
         public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
         {
             string json = await this.GetJsonResponseAsync(cancellationToken);
-            return JsonConvert.DeserializeObject<TResponse>(json);
+            return JsonSerializer.Deserialize<TResponse>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace MADE.Networking.Http.Requests.Json
             CancellationToken cancellationToken = default)
         {
             string json = await this.GetJsonResponseAsync(cancellationToken);
-            return JsonConvert.DeserializeObject(json, expectedResponse);
+            return JsonSerializer.Deserialize(json, expectedResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         private async Task<string> GetJsonResponseAsync(CancellationToken cancellationToken = default)

@@ -1,10 +1,10 @@
 namespace MADE.Data.Serialization.Tests.Tests
 {
     using System.Diagnostics.CodeAnalysis;
+    using System.Text.Json;
     using System.Threading.Tasks;
     using MADE.Data.Serialization.Json;
-    using MADE.Data.Serialization.Json.Binders;
-    using Newtonsoft.Json;
+    using MADE.Data.Serialization.Json.Converters;
     using NUnit.Framework;
     using Shouldly;
 
@@ -18,18 +18,27 @@ namespace MADE.Data.Serialization.Tests.Tests
             public async Task ShouldMigrateFromTypeToType()
             {
                 // Arrange
-                var binder = new JsonTypeMigrationSerializationBinder();
-                await binder.AddTypeMigrationAsync(new JsonTypeMigration(typeof(OldType), typeof(NewType)));
+                var converter = new JsonTypeMigrationConverter();
+                await converter.AddTypeMigrationAsync(new JsonTypeMigration(typeof(OldType), typeof(NewType)));
 
                 var oldType = new OldType();
-                var serialized = JsonConvert.SerializeObject(
-                    oldType,
-                    new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.All});
+
+                // Simulate JSON with $type metadata (as previously serialized by Newtonsoft.Json with TypeNameHandling.All)
+                string serialized = JsonSerializer.Serialize(new
+                {
+                    @__type = typeof(OldType).FullName + ", " + typeof(OldType).Assembly.GetName().Name,
+                    oldType.Name,
+                    oldType.Number
+                });
+
+                // Replace __type with $type since $ isn't valid in anonymous type member names
+                serialized = serialized.Replace("\"__type\"", "\"$type\"");
+
+                var options = new JsonSerializerOptions();
+                options.Converters.Add(converter);
 
                 // Act
-                var deserialized = JsonConvert.DeserializeObject(
-                    serialized,
-                    new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.All, SerializationBinder = binder});
+                var deserialized = JsonSerializer.Deserialize<object>(serialized, options);
 
                 // Assert
                 deserialized.ShouldBeOfType(typeof(NewType));
@@ -43,21 +52,29 @@ namespace MADE.Data.Serialization.Tests.Tests
             public async Task ShouldMigrateFromAssemblyAndTypeNameToType()
             {
                 // Arrange
-                var binder = new JsonTypeMigrationSerializationBinder();
-                await binder.AddTypeMigrationAsync(new JsonTypeMigration(
+                var converter = new JsonTypeMigrationConverter();
+                await converter.AddTypeMigrationAsync(new JsonTypeMigration(
                     "MADE.Data.Serialization.Tests",
                     "MADE.Data.Serialization.Tests.Tests.JsonTypeMigrationSerializationBinderTests+OldType",
                     typeof(NewType)));
 
                 var oldType = new OldType();
-                var serialized = JsonConvert.SerializeObject(
-                    oldType,
-                    new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.All});
+
+                // Simulate JSON with $type metadata
+                string serialized = JsonSerializer.Serialize(new
+                {
+                    @__type = "MADE.Data.Serialization.Tests.Tests.JsonTypeMigrationSerializationBinderTests+OldType, MADE.Data.Serialization.Tests",
+                    oldType.Name,
+                    oldType.Number
+                });
+
+                serialized = serialized.Replace("\"__type\"", "\"$type\"");
+
+                var options = new JsonSerializerOptions();
+                options.Converters.Add(converter);
 
                 // Act
-                var deserialized = JsonConvert.DeserializeObject(
-                    serialized,
-                    new JsonSerializerSettings {TypeNameHandling = TypeNameHandling.All, SerializationBinder = binder});
+                var deserialized = JsonSerializer.Deserialize<object>(serialized, options);
 
                 // Assert
                 deserialized.ShouldBeOfType(typeof(NewType));

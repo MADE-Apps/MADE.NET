@@ -6,7 +6,7 @@ namespace MADE.Networking.Tests.Tests
     using System.Threading;
     using MADE.Networking.Http;
     using MADE.Networking.Http.Requests.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json.Nodes;
     using NUnit.Framework;
     using Shouldly;
 
@@ -146,7 +146,7 @@ namespace MADE.Networking.Tests.Tests
 
                 actualResponse.ShouldNotBeNull();
                 actualResponse.Url.ShouldBe(requestUrl);
-                actualResponse.Args.Value<bool>(query).ShouldBe(queryValue);
+                bool.Parse(actualResponse.Args[query].ToString()).ShouldBe(queryValue);
             }
         }
 
@@ -192,7 +192,7 @@ namespace MADE.Networking.Tests.Tests
 
         public class RequestResponse
         {
-            public JObject Args { get; set; }
+            public JsonObject Args { get; set; }
 
             public string Url { get; set; }
         }

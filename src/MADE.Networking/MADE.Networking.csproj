@@ -11,10 +11,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MADE.Runtime\MADE.Runtime.csproj" />
     <ProjectReference Include="..\MADE.Threading\MADE.Threading.csproj" />
   </ItemGroup>

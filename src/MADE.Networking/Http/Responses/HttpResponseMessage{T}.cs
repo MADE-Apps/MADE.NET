@@ -8,7 +8,7 @@ namespace MADE.Networking.Http.Responses
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
-    using Newtonsoft.Json;
+    using System.Text.Json;
 
     /// <summary>
     /// Defines a HTTP response message that includes a deserializing option for the response data.
@@ -91,7 +91,9 @@ namespace MADE.Networking.Http.Responses
         /// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
         public async Task<T> DeserializeAsync()
         {
-            this.DeserializedContent = JsonConvert.DeserializeObject<T>(await this.Content.ReadAsStringAsync());
+            this.DeserializedContent = JsonSerializer.Deserialize<T>(
+                await this.Content.ReadAsStringAsync(),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             return this.DeserializedContent;
         }
 

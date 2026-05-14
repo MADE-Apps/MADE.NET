@@ -9,8 +9,4 @@
     <PackageTags>MADE Data Serialization Extensions JSON XML</PackageTags>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
 </Project>

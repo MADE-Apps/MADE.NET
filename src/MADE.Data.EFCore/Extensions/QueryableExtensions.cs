@@ -3,8 +3,9 @@
 
 namespace MADE.Data.EFCore.Extensions
 {
+    using System;
     using System.Linq;
-    using Z.EntityFramework.Plus;
+    using System.Linq.Expressions;
 
     /// <summary>
     /// Defines a collection of extensions for Entity Framework queries.
@@ -39,7 +40,20 @@ namespace MADE.Data.EFCore.Extensions
                 return query;
             }
 
-            return !sortDesc ? query.AddOrAppendOrderBy(sortName) : query.AddOrAppendOrderByDescending(sortName);
+            ParameterExpression parameter = Expression.Parameter(typeof(T), "x");
+            MemberExpression property = Expression.Property(parameter, sortName);
+            LambdaExpression lambda = Expression.Lambda(property, parameter);
+
+            string methodName = sortDesc ? "OrderByDescending" : "OrderBy";
+
+            MethodCallExpression call = Expression.Call(
+                typeof(Queryable),
+                methodName,
+                new[] { typeof(T), property.Type },
+                query.Expression,
+                Expression.Quote(lambda));
+
+            return query.Provider.CreateQuery<T>(call);
         }
     }
 }

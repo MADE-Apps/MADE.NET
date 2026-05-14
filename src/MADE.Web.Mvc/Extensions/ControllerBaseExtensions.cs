@@ -9,7 +9,7 @@ namespace MADE.Web.Mvc.Extensions
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.ModelBinding;
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using JsonResult = MADE.Web.Mvc.Responses.JsonResult;
 
     /// <summary>
@@ -23,21 +23,21 @@ namespace MADE.Web.Mvc.Extensions
         /// <param name="controller">The controller that is performing the response.</param>
         /// <param name="value">The value object to serialize.</param>
         /// <param name="statusCode">The expected result HTTP status code.</param>
-        /// <param name="serializerSettings">The Json.NET serializer settings for serializing the result.</param>
+        /// <param name="serializerOptions">The JSON serializer options for serializing the result.</param>
         /// <returns>The created <see cref="JsonResult"/> for the response.</returns>
         /// <exception cref="ArgumentNullException">Thrown if the <paramref name="controller"/> is <see langword="null"/>.</exception>
         public static IActionResult Json(
             this ControllerBase controller,
             object value,
             HttpStatusCode statusCode = HttpStatusCode.OK,
-            JsonSerializerSettings serializerSettings = null)
+            JsonSerializerOptions serializerOptions = null)
         {
             if (controller == null)
             {
                 throw new ArgumentNullException(nameof(controller));
             }
 
-            return new JsonResult(value, statusCode, serializerSettings);
+            return new JsonResult(value, statusCode, serializerOptions);
         }
 
         /// <summary>

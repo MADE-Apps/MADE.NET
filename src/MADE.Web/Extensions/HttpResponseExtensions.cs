@@ -8,7 +8,7 @@ namespace MADE.Web.Extensions
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Net.Http.Headers;
-    using Newtonsoft.Json;
+    using System.Text.Json;
 
     /// <summary>
     /// Defines a collection of extensions for a <see cref="HttpResponse" /> object.
@@ -51,15 +51,15 @@ namespace MADE.Web.Extensions
         /// <param name="response">The HTTP response to write to.</param>
         /// <param name="statusCode">The status code of the response.</param>
         /// <param name="value">The object to serialize as JSON.</param>
-        /// <param name="serializerSettings">The JSON serializer settings.</param>
+        /// <param name="serializerOptions">The JSON serializer options.</param>
         /// <returns>An asynchronous operation.</returns>
         public static async Task WriteJsonAsync(
             this HttpResponse response,
             HttpStatusCode statusCode,
             object value,
-            JsonSerializerSettings serializerSettings)
+            JsonSerializerOptions serializerOptions)
         {
-            await WriteJsonAsync(response, (int)statusCode, value, serializerSettings);
+            await WriteJsonAsync(response, (int)statusCode, value, serializerOptions);
         }
 
         /// <summary>
@@ -68,18 +68,20 @@ namespace MADE.Web.Extensions
         /// <param name="response">The HTTP response to write to.</param>
         /// <param name="statusCode">The status code of the response.</param>
         /// <param name="value">The object to serialize as JSON.</param>
-        /// <param name="serializerSettings">The JSON serializer settings.</param>
+        /// <param name="serializerOptions">The JSON serializer options.</param>
         /// <returns>An asynchronous operation.</returns>
         public static async Task WriteJsonAsync(
             this HttpResponse response,
             int statusCode,
             object value,
-            JsonSerializerSettings serializerSettings)
+            JsonSerializerOptions serializerOptions)
         {
             response.ContentType = new MediaTypeHeaderValue("application/json") { Encoding = Encoding.UTF8 }.ToString();
             response.StatusCode = statusCode;
 
-            string json = JsonConvert.SerializeObject(value, Formatting.Indented, serializerSettings);
+            var options = serializerOptions ?? new JsonSerializerOptions { WriteIndented = true };
+
+            string json = JsonSerializer.Serialize(value, options);
 
             await response.WriteAsync(json, Encoding.UTF8);
         }

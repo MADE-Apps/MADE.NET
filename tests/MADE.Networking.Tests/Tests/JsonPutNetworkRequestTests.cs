@@ -5,8 +5,8 @@ namespace MADE.Networking.Tests.Tests
     using System.Net.Http;
     using System.Threading.Tasks;
     using MADE.Networking.Http.Requests.Json;
-    using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
+    using System.Text.Json.Nodes;
     using NUnit.Framework;
     using Shouldly;
 
@@ -26,7 +26,7 @@ namespace MADE.Networking.Tests.Tests
                 var request = new JsonPutNetworkRequest(
                     new HttpClient(),
                     requestUrl,
-                    JsonConvert.SerializeObject(requestData));
+                    JsonSerializer.Serialize(requestData));
 
                 // Act
                 var response = await request.ExecuteAsync<RequestResponse>();
@@ -36,7 +36,7 @@ namespace MADE.Networking.Tests.Tests
                 response.Url.ShouldBe(requestUrl);
                 response.Data.ShouldNotBeNull();
 
-                var responseData = JsonConvert.DeserializeObject<RequestData>(response.Data);
+                var responseData = JsonSerializer.Deserialize<RequestData>(response.Data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
                 responseData.ShouldNotBeNull();
                 responseData.Key.ShouldBe(requestData.Key);
                 responseData.Enabled.ShouldBe(requestData.Enabled);
@@ -52,7 +52,7 @@ namespace MADE.Networking.Tests.Tests
                 var request = new JsonPatchNetworkRequest(
                     new HttpClient(),
                     requestUrl,
-                    JsonConvert.SerializeObject(requestData));
+                    JsonSerializer.Serialize(requestData));
 
                 // Act
                 var exception = await request.ExecuteAsync<RequestResponse>().ShouldThrowAsync<HttpRequestException>();
@@ -71,7 +71,7 @@ namespace MADE.Networking.Tests.Tests
 
         public class RequestResponse
         {
-            public JObject Args { get; set; }
+            public JsonObject Args { get; set; }
 
             public string Data { get; set; }
 
