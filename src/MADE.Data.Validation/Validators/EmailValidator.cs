@@ -11,7 +11,7 @@ namespace MADE.Data.Validation.Validators;
 /// </summary>
 public class EmailValidator : RegexValidator
 {
-    private string feedbackMessage;
+    private string feedbackMessage = string.Empty;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="EmailValidator"/> class.

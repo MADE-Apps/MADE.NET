@@ -6,6 +6,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);CA2007;CA1869;CA1861</NoWarn>
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
     <Company>MADE Apps</Company>

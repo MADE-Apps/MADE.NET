@@ -14,7 +14,7 @@ namespace MADE.Data.Validation.Validators;
 /// <typeparam name="T">The type of value being validated.</typeparam>
 public class PredicateValidator<T> : IValidator
 {
-    private string feedbackMessage;
+    private string feedbackMessage = string.Empty;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="PredicateValidator{T}"/> class.

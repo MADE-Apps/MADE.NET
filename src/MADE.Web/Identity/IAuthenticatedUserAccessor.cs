@@ -13,7 +13,7 @@ public interface IAuthenticatedUserAccessor
     /// <summary>
     /// Gets the authenticated user's claims principal.
     /// </summary>
-    ClaimsPrincipal ClaimsPrincipal { get; }
+    ClaimsPrincipal? ClaimsPrincipal { get; }
 
     /// <summary>
     /// Gets the authenticated user model for the specified <see cref="ClaimsPrincipal"/>/

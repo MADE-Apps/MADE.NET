@@ -27,7 +27,7 @@ public class JsonResult : ActionResult, IStatusCodeActionResult
     public JsonResult(
         object value,
         HttpStatusCode statusCode = HttpStatusCode.OK,
-        JsonSerializerOptions serializerOptions = default)
+        JsonSerializerOptions? serializerOptions = default)
     {
         this.Value = value;
         this.StatusCode = (int)statusCode;
@@ -47,7 +47,7 @@ public class JsonResult : ActionResult, IStatusCodeActionResult
     /// <summary>
     /// Gets the JSON serializer options for serializing the result.
     /// </summary>
-    public JsonSerializerOptions SerializerOptions { get; }
+    public JsonSerializerOptions? SerializerOptions { get; }
 
     /// <summary>
     /// Executes the result operation of the action method asynchronously writing the <see cref="Value"/> to the response.

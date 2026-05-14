@@ -12,7 +12,7 @@ namespace MADE.Data.Validation.Validators;
 /// </summary>
 public class RequiredValidator : IValidator
 {
-    private string feedbackMessage = Resources.ResourceManager.GetString("RequiredValidator_FeedbackMessage");
+    private string feedbackMessage = Resources.ResourceManager.GetString("RequiredValidator_FeedbackMessage") ?? string.Empty;
 
     /// <summary>
     /// Gets or sets the key associated with the validator.

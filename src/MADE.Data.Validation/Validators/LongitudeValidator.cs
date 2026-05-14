@@ -22,7 +22,7 @@ public class LongitudeValidator : IValidator
     /// </summary>
     public const double Max = 180;
 
-    private string feedbackMessage;
+    private string feedbackMessage = string.Empty;
 
     /// <summary>
     /// Gets or sets the key associated with the validator.

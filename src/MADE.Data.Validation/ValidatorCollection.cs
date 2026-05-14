@@ -38,7 +38,7 @@ public class ValidatorCollection : List<IValidator>, IValidatorCollection
     /// <summary>
     /// Occurs when the input value is validated against the collection of validators.
     /// </summary>
-    public event InputValidatedEventHandler Validated;
+    public event InputValidatedEventHandler? Validated;
 
     /// <summary>
     /// Gets or sets a value indicating whether the data provided is in an invalid state.

@@ -23,7 +23,7 @@ public class DateTimeToStringValueConverter : IValueConverter<DateTime, string>
     /// <returns>
     /// The converted <see cref="string"/> object.
     /// </returns>
-    public string Convert(DateTime value, object parameter = default)
+    public string Convert(DateTime value, object? parameter = default)
     {
         string format = parameter?.ToString();
         return !string.IsNullOrWhiteSpace(format)
@@ -43,7 +43,7 @@ public class DateTimeToStringValueConverter : IValueConverter<DateTime, string>
     /// <returns>
     /// The converted <see cref="DateTime"/> object.
     /// </returns>
-    public DateTime ConvertBack(string value, object parameter = default)
+    public DateTime ConvertBack(string value, object? parameter = default)
     {
         if (string.IsNullOrWhiteSpace(value))
         {

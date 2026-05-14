@@ -15,6 +15,8 @@ namespace MADE.Web.Extensions;
 /// </summary>
 public static class HttpResponseExtensions
 {
+    private static readonly JsonSerializerOptions DefaultSerializerOptions = new() { WriteIndented = true };
+
     /// <summary>
     /// Writes an object value as JSON to the specified <paramref name="response" />.
     /// </summary>
@@ -57,7 +59,7 @@ public static class HttpResponseExtensions
         this HttpResponse response,
         HttpStatusCode statusCode,
         object value,
-        JsonSerializerOptions serializerOptions)
+        JsonSerializerOptions? serializerOptions)
     {
         await WriteJsonAsync(response, (int)statusCode, value, serializerOptions).ConfigureAwait(false);
     }
@@ -74,12 +76,12 @@ public static class HttpResponseExtensions
         this HttpResponse response,
         int statusCode,
         object value,
-        JsonSerializerOptions serializerOptions)
+        JsonSerializerOptions? serializerOptions)
     {
         response.ContentType = new MediaTypeHeaderValue("application/json") { Encoding = Encoding.UTF8 }.ToString();
         response.StatusCode = statusCode;
 
-        var options = serializerOptions ?? new JsonSerializerOptions { WriteIndented = true };
+        var options = serializerOptions ?? DefaultSerializerOptions;
 
         string json = JsonSerializer.Serialize(value, options);
 

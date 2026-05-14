@@ -25,7 +25,7 @@ public class AuthenticatedUserAccessor : IAuthenticatedUserAccessor
     /// <summary>
     /// Gets the authenticated user's claims principal.
     /// </summary>
-    public ClaimsPrincipal ClaimsPrincipal => this.httpContextAccessor?.HttpContext?.User;
+    public ClaimsPrincipal? ClaimsPrincipal => this.httpContextAccessor?.HttpContext?.User;
 
     /// <summary>
     /// Gets the authenticated user model for the specified <see cref="ClaimsPrincipal"/>/

@@ -27,7 +27,7 @@ public class AppDiagnostics : IAppDiagnostics
     /// <summary>
     /// Occurs when an exception is observed.
     /// </summary>
-    public event ExceptionObservedEventHandler ExceptionObserved;
+    public event ExceptionObservedEventHandler? ExceptionObserved;
 
     /// <summary>
     /// Gets the service for logging application event messages.

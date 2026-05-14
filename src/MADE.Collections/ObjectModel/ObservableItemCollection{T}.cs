@@ -83,12 +83,12 @@ public class ObservableItemCollection<T> : ObservableCollection<T>, IDisposable
     /// <summary>
     /// Occurs when an item is added, removed, changed, moved, or the entire list is refreshed.
     /// </summary>
-    public override event NotifyCollectionChangedEventHandler CollectionChanged;
+    public override event NotifyCollectionChangedEventHandler? CollectionChanged;
 
     /// <summary>
     /// Occurs when an item's <see cref="INotifyPropertyChanged.PropertyChanged"/> event is invoked.
     /// </summary>
-    public event ObservableItemCollectionPropertyChangedEventHandler ItemPropertyChanged;
+    public event ObservableItemCollectionPropertyChangedEventHandler? ItemPropertyChanged;
 
     /// <summary>
     /// Adds a range of objects to the end of the collection.

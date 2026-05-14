@@ -30,7 +30,7 @@ public static class ControllerBaseExtensions
         this ControllerBase controller,
         object value,
         HttpStatusCode statusCode = HttpStatusCode.OK,
-        JsonSerializerOptions serializerOptions = null)
+        JsonSerializerOptions? serializerOptions = null)
     {
         ArgumentNullException.ThrowIfNull(controller);
 

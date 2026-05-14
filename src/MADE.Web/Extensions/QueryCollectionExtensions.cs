@@ -39,7 +39,7 @@ public static class QueryCollectionExtensions
     /// <returns>The integer value for the specified <paramref name="key"/>.</returns>
     public static int GetIntValueOrDefault(this IQueryCollection query, string key, int defaultValue, bool treatZeroAsEmpty = true)
     {
-        string stringValue = GetStringValueOrDefault(query, key);
+        string? stringValue = GetStringValueOrDefault(query, key);
 
         if (string.IsNullOrWhiteSpace(stringValue)
             || !int.TryParse(stringValue, out int intValue)
@@ -60,7 +60,7 @@ public static class QueryCollectionExtensions
     /// <returns>The <see cref="DateTime"/> value for the specified <paramref name="key"/>.</returns>
     public static DateTime GetDateTimeValueOrDefault(this IQueryCollection query, string key, DateTime defaultValue)
     {
-        string stringValue = GetStringValueOrDefault(query, key);
+        string? stringValue = GetStringValueOrDefault(query, key);
 
         if (string.IsNullOrWhiteSpace(stringValue) || !DateTime.TryParse(stringValue, out DateTime dateTimeValue))
         {

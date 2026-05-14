@@ -23,7 +23,7 @@ public partial class StringToBase64StringValueConverter : IValueConverter<string
     /// <returns>
     /// The converted Base64 <see cref="string"/> object.
     /// </returns>
-    public string Convert(string value, object parameter = default)
+    public string Convert(string value, object? parameter = default)
     {
         return value.ToBase64(parameter as Encoding ?? Encoding.UTF8);
     }
@@ -40,7 +40,7 @@ public partial class StringToBase64StringValueConverter : IValueConverter<string
     /// <returns>
     /// The converted <see cref="string"/> object.
     /// </returns>
-    public string ConvertBack(string value, object parameter = default)
+    public string ConvertBack(string value, object? parameter = default)
     {
         return value.FromBase64(parameter as Encoding ?? Encoding.UTF8);
     }

@@ -14,12 +14,12 @@ public class BooleanToStringValueConverter : IValueConverter<bool, string>
     /// <summary>
     /// Gets or sets the positive/true value.
     /// </summary>
-    public string TrueValue { get; set; }
+    public string TrueValue { get; set; } = string.Empty;
 
     /// <summary>
     /// Gets or sets the negative/false value.
     /// </summary>
-    public string FalseValue { get; set; }
+    public string FalseValue { get; set; } = string.Empty;
 
     /// <summary>
     /// Converts the <paramref name="value">value</paramref> to the <see cref="string"/> type.
@@ -33,7 +33,7 @@ public class BooleanToStringValueConverter : IValueConverter<bool, string>
     /// <returns>
     /// The converted <see cref="string"/> object.
     /// </returns>
-    public string Convert(bool value, object parameter = default)
+    public string Convert(bool value, object? parameter = default)
     {
         return value.ToFormattedString(this.TrueValue, this.FalseValue);
     }
@@ -50,7 +50,7 @@ public class BooleanToStringValueConverter : IValueConverter<bool, string>
     /// <returns>
     /// The converted <see cref="bool"/> object.
     /// </returns>
-    public bool ConvertBack(string value, object parameter = default)
+    public bool ConvertBack(string value, object? parameter = default)
     {
         if (value == this.TrueValue)
         {

@@ -26,7 +26,7 @@ public interface IValueConverter<TFrom, TTo>
     /// <returns>
     /// The converted <typeparamref name="TTo"/> object.
     /// </returns>
-    TTo Convert(TFrom value, object parameter = default);
+    TTo Convert(TFrom value, object? parameter = default);
 
     /// <summary>
     /// Converts the <paramref name="value">value</paramref> back to the <typeparamref name="TFrom"/> type.
@@ -40,5 +40,5 @@ public interface IValueConverter<TFrom, TTo>
     /// <returns>
     /// The converted <typeparamref name="TFrom"/> object.
     /// </returns>
-    TFrom ConvertBack(TTo value, object parameter = default);
+    TFrom ConvertBack(TTo value, object? parameter = default);
 }

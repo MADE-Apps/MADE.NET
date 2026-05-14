@@ -83,7 +83,7 @@ public class HttpContextExceptionsMiddleware
         context.Response.Clear();
 
         Type exceptionHandlerType = ExceptionHandlerInterfaceType.MakeGenericType(exception.GetType());
-        dynamic exceptionHandler;
+        dynamic? exceptionHandler;
 
         try
         {
@@ -101,7 +101,7 @@ public class HttpContextExceptionsMiddleware
             return;
         }
 
-        MethodInfo handleMethod = exceptionHandlerType.GetTypeInfo().GetMethod("HandleAsync");
+        MethodInfo? handleMethod = exceptionHandlerType.GetTypeInfo().GetMethod("HandleAsync");
 
         try
         {
@@ -112,8 +112,8 @@ public class HttpContextExceptionsMiddleware
         }
         catch (Exception handleException)
         {
-            string exceptionName = handleException.GetType().FullName;
-            string originalExceptionName = exception.GetType().FullName;
+            string? exceptionName = handleException.GetType().FullName;
+            string? originalExceptionName = exception.GetType().FullName;
 
             if (!this.hostEnvironment.IsProduction())
             {
@@ -133,7 +133,7 @@ public class HttpContextExceptionsMiddleware
 
     private async Task HandleWithDefaultHandlerAsync(HttpContext context, Exception exception)
     {
-        string originalExceptionName = exception.GetType().FullName;
+        string? originalExceptionName = exception.GetType().FullName;
 
         try
         {
@@ -141,7 +141,7 @@ public class HttpContextExceptionsMiddleware
         }
         catch (Exception handlerException)
         {
-            string exceptionName = handlerException.GetType().FullName;
+            string? exceptionName = handlerException.GetType().FullName;
 
             if (!this.hostEnvironment.IsProduction())
             {

@@ -19,13 +19,16 @@ public static class TaskExtensions
     /// <param name="onException">An action invoked when an exception is caught.</param>
     /// <returns>An asynchronous operation.</returns>
     /// <exception cref="Exception">Potentially thrown by the <paramref name="onException"/> delegate callback.</exception>
-    public static Task AndObserveExceptions(this Task task, Action<Exception> onException = null)
+    public static Task AndObserveExceptions(this Task task, Action<Exception>? onException = null)
     {
         task?.ContinueWith(
             t =>
             {
-                AggregateException aggregateException = t.Exception?.Flatten();
-                onException?.Invoke(aggregateException);
+                AggregateException? aggregateException = t.Exception?.Flatten();
+                if (aggregateException is not null)
+                {
+                    onException?.Invoke(aggregateException);
+                }
             },
             TaskContinuationOptions.OnlyOnFaulted);
 
@@ -42,13 +45,16 @@ public static class TaskExtensions
     /// <param name="onException">An action invoked when an exception is caught.</param>
     /// <returns>An asynchronous operation.</returns>
     /// <exception cref="Exception">Potentially thrown by the <paramref name="onException"/> delegate callback.</exception>
-    public static Task<T> AndObserveExceptions<T>(this Task<T> task, Action<Exception> onException = null)
+    public static Task<T> AndObserveExceptions<T>(this Task<T> task, Action<Exception>? onException = null)
     {
         task?.ContinueWith(
             t =>
             {
-                AggregateException aggregateException = t.Exception?.Flatten();
-                onException?.Invoke(aggregateException);
+                AggregateException? aggregateException = t.Exception?.Flatten();
+                if (aggregateException is not null)
+                {
+                    onException?.Invoke(aggregateException);
+                }
             },
             TaskContinuationOptions.OnlyOnFaulted);
 

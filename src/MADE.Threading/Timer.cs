@@ -16,7 +16,7 @@ public class Timer : ITimer, IDisposable
     /// <summary>
     /// Occurs when the timer ticks over the specified <see cref="Interval"/>.
     /// </summary>
-    public event EventHandler<object> Tick;
+    public event EventHandler<object>? Tick;
 
     /// <summary>
     /// Gets or sets the interval between initiating the <see cref="Tick"/> event.

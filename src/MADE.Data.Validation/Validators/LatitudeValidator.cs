@@ -22,7 +22,7 @@ public class LatitudeValidator : IValidator
     /// </summary>
     public const double Max = 90;
 
-    private string feedbackMessage;
+    private string feedbackMessage = string.Empty;
 
     /// <summary>
     /// Gets or sets the key associated with the validator.

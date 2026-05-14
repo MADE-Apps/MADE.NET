@@ -50,20 +50,20 @@ public class AuthenticatedUser
     /// <summary>
     /// Gets the authenticated user's identity.
     /// </summary>
-    public string Subject { get; }
+    public string? Subject { get; }
 
     /// <summary>
     /// Gets the authenticated user's preferred email address.
     /// </summary>
-    public string Email { get; }
+    public string? Email { get; }
 
     /// <summary>
     /// Gets the collection of the authenticated user's assigned roles.
     /// </summary>
-    public IEnumerable<string> Roles { get; }
+    public IEnumerable<string>? Roles { get; }
 
     /// <summary>
     /// Gets the collection of the authenticated user's claims.
     /// </summary>
-    public IImmutableList<Claim> Claims { get; }
+    public IImmutableList<Claim>? Claims { get; }
 }

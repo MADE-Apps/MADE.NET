@@ -12,7 +12,7 @@ namespace MADE.Data.Validation.Validators;
 /// </summary>
 public class MinValueValidator : IValidator
 {
-    private string feedbackMessage;
+    private string feedbackMessage = string.Empty;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="MinValueValidator"/> class.

@@ -12,7 +12,7 @@ namespace MADE.Data.Validation.Validators;
 /// </summary>
 public class GuidValidator : IValidator
 {
-    private string feedbackMessage;
+    private string feedbackMessage = string.Empty;
 
     /// <summary>
     /// Gets or sets the key associated with the validator.

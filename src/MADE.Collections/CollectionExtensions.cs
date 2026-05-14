@@ -78,7 +78,7 @@ public static class CollectionExtensions
         ArgumentNullException.ThrowIfNull(item);
         ArgumentNullException.ThrowIfNull(collection);
 
-        T existing = collection.FirstOrDefault(x => predicate.Invoke(x, item));
+        T? existing = collection.FirstOrDefault(x => predicate.Invoke(x, item));
         if (existing == null)
         {
             return false;
