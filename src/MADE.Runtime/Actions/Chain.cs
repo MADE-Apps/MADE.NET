@@ -66,7 +66,7 @@ public class Chain<T> : IChain<T>
     {
         foreach (WeakReference<T> instance in this.chain)
         {
-            if (instance.TryGetTarget(out T i))
+            if (instance.TryGetTarget(out T? i))
             {
                 func(i);
             }
@@ -83,7 +83,7 @@ public class Chain<T> : IChain<T>
     {
         foreach (WeakReference<T> instance in this.chain)
         {
-            if (instance.TryGetTarget(out T i))
+            if (instance.TryGetTarget(out T? i))
             {
                 await func(i).ConfigureAwait(false);
             }

@@ -21,7 +21,7 @@ public static class TaskExtensions
     /// <exception cref="Exception">Potentially thrown by the <paramref name="onException"/> delegate callback.</exception>
     public static Task AndObserveExceptions(this Task task, Action<Exception>? onException = null)
     {
-        task?.ContinueWith(
+        task.ContinueWith(
             t =>
             {
                 AggregateException? aggregateException = t.Exception?.Flatten();
@@ -47,7 +47,7 @@ public static class TaskExtensions
     /// <exception cref="Exception">Potentially thrown by the <paramref name="onException"/> delegate callback.</exception>
     public static Task<T> AndObserveExceptions<T>(this Task<T> task, Action<Exception>? onException = null)
     {
-        task?.ContinueWith(
+        task.ContinueWith(
             t =>
             {
                 AggregateException? aggregateException = t.Exception?.Flatten();

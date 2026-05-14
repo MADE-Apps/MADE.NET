@@ -38,8 +38,8 @@ public static class CollectionAssertExtensions
             return;
         }
 
-        var expectedList = expected.ToList();
-        var actualList = actual.ToList();
+        var expectedList = expected!.ToList();
+        var actualList = actual!.ToList();
         if (expectedList.Count != actualList.Count)
         {
             throw new AssertFailedException($"{nameof(ShouldBeEquivalentTo)} failed. The number of elements are different.");
@@ -51,7 +51,7 @@ public static class CollectionAssertExtensions
                                     actualList,
                                     out _,
                                     out _,
-                                    out object mismatchedElement))
+                                    out object? mismatchedElement))
         {
             return;
         }
@@ -84,8 +84,8 @@ public static class CollectionAssertExtensions
             throw new AssertFailedException($"{nameof(ShouldNotBeEquivalentTo)} failed. Cannot compare enumerables for equivalency as {nameof(expected)} and {nameof(actual)} are equal.");
         }
 
-        var expectedList = expected.ToList();
-        var actualList = actual.ToList();
+        var expectedList = expected!.ToList();
+        var actualList = actual!.ToList();
         if (expectedList.Count != actualList.Count)
         {
             // The counts are different so cannot possibly be the same.
@@ -137,7 +137,7 @@ public static class CollectionAssertExtensions
         IEnumerable actual,
         out int expectedCount,
         out int actualCount,
-        out object mismatchedElement)
+        out object? mismatchedElement)
     {
         Dictionary<object, int> elementCounts1 = GetElementCounts(expected, out int nullCount1);
         Dictionary<object, int> elementCounts2 = GetElementCounts(actual, out int nullCount2);

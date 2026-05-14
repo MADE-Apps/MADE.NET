@@ -16,7 +16,9 @@ namespace MADE.Networking.Http.Responses;
 /// <typeparam name="T">The type of response expected.</typeparam>
 public class HttpResponseMessage<T> : IDisposable
 {
-    private HttpResponseMessage? response;
+    private static readonly JsonSerializerOptions DefaultJsonOptions = new() { PropertyNameCaseInsensitive = true };
+
+    private HttpResponseMessage response;
     private bool disposed;
 
     /// <summary>
@@ -93,7 +95,7 @@ public class HttpResponseMessage<T> : IDisposable
     {
         this.DeserializedContent = JsonSerializer.Deserialize<T>(
             await this.Content.ReadAsStringAsync().ConfigureAwait(false),
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            DefaultJsonOptions)!;
         return this.DeserializedContent;
     }
 
@@ -129,11 +131,11 @@ public class HttpResponseMessage<T> : IDisposable
 
         if (disposing)
         {
-            this.response.Dispose();
+            this.response?.Dispose();
         }
 
-        this.response = null;
-        this.DeserializedContent = default;
+        this.response = null!;
+        this.DeserializedContent = default!;
         this.disposed = true;
     }
 }

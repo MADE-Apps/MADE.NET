@@ -52,7 +52,7 @@ public sealed class WeakReferenceEventListener<TInstance, TSource>
     /// <exception cref="Exception">Potentially thrown by the <see cref="OnEventAction"/> delegate callback.</exception>
     public void OnEvent(TSource source)
     {
-        var target = (TInstance)this.weakReference.Target;
+        var target = this.weakReference.Target as TInstance;
         if (target != null)
         {
             this.OnEventAction?.Invoke(target, source);
@@ -69,8 +69,8 @@ public sealed class WeakReferenceEventListener<TInstance, TSource>
     /// <exception cref="Exception">Potentially thrown by the <see cref="OnDetachAction"/> delegate callback.</exception>
     public void Detach()
     {
-        var target = (TInstance)this.weakReference.Target;
-        if (this.OnDetachAction == null)
+        var target = this.weakReference.Target as TInstance;
+        if (this.OnDetachAction == null || target == null)
         {
             return;
         }

@@ -30,5 +30,5 @@ public class AuthenticatedUserAccessor : IAuthenticatedUserAccessor
     /// <summary>
     /// Gets the authenticated user model for the specified <see cref="ClaimsPrincipal"/>/
     /// </summary>
-    public AuthenticatedUser AuthenticatedUser => new(this.ClaimsPrincipal);
+    public AuthenticatedUser AuthenticatedUser => new(this.ClaimsPrincipal!);
 }

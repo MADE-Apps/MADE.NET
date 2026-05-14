@@ -20,11 +20,11 @@ public static class ReflectionExtensions
     /// <typeparam name="T">The type of expected value.</typeparam>
     /// <returns>The value of the property.</returns>
     /// <exception cref="AmbiguousMatchException">More than one property is found with the specified name.</exception>
-    public static T GetPropertyValue<T>(this object obj, string property)
+    public static T? GetPropertyValue<T>(this object obj, string property)
         where T : class
     {
         Type type = obj.GetType();
-        PropertyInfo prop = type.GetProperty(property);
+        PropertyInfo? prop = type.GetProperty(property);
         return prop?.GetValue(obj) as T;
     }
 
