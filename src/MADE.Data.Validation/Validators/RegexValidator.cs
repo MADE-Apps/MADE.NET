@@ -41,7 +41,7 @@ public class RegexValidator : IValidator
     /// <summary>
     /// Gets or sets the RegEx pattern to match on.
     /// </summary>
-    public string Pattern { get; set; }
+    public string Pattern { get; set; } = default!;
 
     /// <summary>
     /// Executes data validation on the provided <paramref name="value"/>.

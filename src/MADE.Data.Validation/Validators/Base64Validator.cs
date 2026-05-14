@@ -48,7 +48,7 @@ public class Base64Validator : RegexValidator
         }
         else
         {
-            base.Validate(value);
+            base.Validate(value!);
         }
 
         this.IsDirty = true;

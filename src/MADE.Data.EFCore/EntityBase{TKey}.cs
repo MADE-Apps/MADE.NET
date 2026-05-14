@@ -16,7 +16,7 @@ public abstract class EntityBase<TKey> : IEntityBase<TKey>
     /// Gets or sets the identifier of the entity.
     /// </summary>
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public TKey Id { get; set; }
+    public TKey Id { get; set; } = default!;
 
     /// <summary>
     /// Gets or sets the date of the entity's creation.

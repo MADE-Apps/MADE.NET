@@ -11,14 +11,14 @@ namespace MADE.Diagnostics.Logging;
 /// <summary>
 /// Defines a service for logging events to a log file.
 /// </summary>
-public class FileEventLogger : IEventLogger
+public class FileEventLogger : IEventLogger, IDisposable
 {
     private readonly SemaphoreSlim fileSemaphore = new(1, 1);
 
     /// <summary>
     /// Gets or sets the full file path to where the current log exists.
     /// </summary>
-    public string LogPath { get; set; }
+    public string LogPath { get; set; } = string.Empty;
 
     /// <summary>
     /// Gets or sets the name of the folder where log files are stored.
@@ -220,6 +220,27 @@ public class FileEventLogger : IEventLogger
         return this.WriteCritical($"Error: '{ex}'");
     }
 
+    /// <summary>
+    /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+    /// </summary>
+    public void Dispose()
+    {
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Releases unmanaged and optionally managed resources.
+    /// </summary>
+    /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            this.fileSemaphore.Dispose();
+        }
+    }
+
     private async Task WriteToFileAsync(string line)
     {
         await this.fileSemaphore.WaitAsync().ConfigureAwait(false);
@@ -303,7 +324,7 @@ public class FileEventLogger : IEventLogger
         }
 
 #if !(WINDOWS_UWP || __ANDROID__ || __IOS__)
-        await Task.CompletedTask;
+        await Task.CompletedTask.ConfigureAwait(false);
 #endif
     }
 }

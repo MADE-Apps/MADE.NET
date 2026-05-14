@@ -145,12 +145,26 @@ public class ObservableItemCollection<T> : ObservableCollection<T>, IDisposable
     /// </summary>
     public void Dispose()
     {
+        this.Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    /// <summary>
+    /// Releases unmanaged and optionally managed resources.
+    /// </summary>
+    /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+    protected virtual void Dispose(bool disposing)
+    {
         if (this.disposed)
         {
             return;
         }
 
-        this.ClearItems();
+        if (disposing)
+        {
+            this.ClearItems();
+        }
+
         this.disposed = true;
     }
 
@@ -178,11 +192,19 @@ public class ObservableItemCollection<T> : ObservableCollection<T>, IDisposable
         switch (e.Action)
         {
             case NotifyCollectionChangedAction.Add:
-                this.RegisterPropertyChangedEvents(e.NewItems);
+                if (e.NewItems != null)
+                {
+                    this.RegisterPropertyChangedEvents(e.NewItems);
+                }
+
                 break;
             case NotifyCollectionChangedAction.Remove:
             case NotifyCollectionChangedAction.Replace:
-                this.UnregisterPropertyChangedEvents(e.OldItems);
+                if (e.OldItems != null)
+                {
+                    this.UnregisterPropertyChangedEvents(e.OldItems);
+                }
+
                 if (e.NewItems != null)
                 {
                     this.RegisterPropertyChangedEvents(e.NewItems);
@@ -223,11 +245,11 @@ public class ObservableItemCollection<T> : ObservableCollection<T>, IDisposable
         }
     }
 
-    private void OnItemPropertyChanged(object sender, PropertyChangedEventArgs e)
+    private void OnItemPropertyChanged(object? sender, PropertyChangedEventArgs e)
     {
         this.CheckDisposed();
         this.ItemPropertyChanged?.Invoke(
             this,
-            new ObservableItemCollectionPropertyChangedEventArgs(sender, this.IndexOf((T)sender), e));
+            new ObservableItemCollectionPropertyChangedEventArgs(sender!, this.IndexOf((T)sender!), e));
     }
 }

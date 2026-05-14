@@ -31,6 +31,7 @@ public static class DictionaryExtensions
     /// </typeparam>
     /// <exception cref="T:System.ArgumentNullException">The <paramref name="dictionary"/> or <paramref name="key"/> is <see langword="null"/>.</exception>
     public static void AddOrUpdate<TKey, TValue>(this Dictionary<TKey, TValue> dictionary, TKey key, TValue value)
+        where TKey : notnull
     {
         ArgumentNullException.ThrowIfNull(dictionary);
         ArgumentNullException.ThrowIfNull(key);
@@ -52,18 +53,17 @@ public static class DictionaryExtensions
     /// <param name="key">The key to get a value for.</param>
     /// <param name="defaultValue">The default value to return if not exists. Default, null.</param>
     /// <returns>The value if it exists for the key; otherwise, null.</returns>
-    public static TValue GetValueOrDefault<TKey, TValue>(
+    public static TValue? GetValueOrDefault<TKey, TValue>(
         this Dictionary<TKey, TValue> dictionary,
         TKey key,
-        TValue defaultValue = default)
+        TValue? defaultValue = default)
+        where TKey : notnull
     {
-        var result = defaultValue;
-
-        if (dictionary != null && dictionary.ContainsKey(key))
+        if (dictionary != null && dictionary.TryGetValue(key, out var result))
         {
-            result = dictionary[key];
+            return result;
         }
 
-        return result;
+        return defaultValue;
     }
 }

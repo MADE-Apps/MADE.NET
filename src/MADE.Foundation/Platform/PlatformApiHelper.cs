@@ -70,7 +70,7 @@ public static class PlatformApiHelper
         return result;
     }
 
-    private static bool IsSupported(ICustomAttributeProvider attributeProvider)
+    private static bool IsSupported(ICustomAttributeProvider? attributeProvider)
     {
         return (attributeProvider?.GetCustomAttributes(typeof(PlatformNotSupportedAttribute), false).Length ?? -1) == 0;
     }

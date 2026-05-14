@@ -61,12 +61,12 @@ public class BetweenValidator : IValidator
     /// <summary>
     /// Gets or sets the minimum value within the range.
     /// </summary>
-    public IComparable Min { get; set; }
+    public IComparable Min { get; set; } = default!;
 
     /// <summary>
     /// Gets or sets the maximum value within the range.
     /// </summary>
-    public IComparable Max { get; set; }
+    public IComparable Max { get; set; } = default!;
 
     /// <summary>
     /// Gets or sets a value indicating whether the range is inclusive.

@@ -61,7 +61,7 @@ public class PredicateValidator<T> : IValidator
     /// <summary>
     /// Gets or sets the logic for performing validation on the value.
     /// </summary>
-    public Func<T, bool> Predicate { get; set; }
+    public Func<T, bool> Predicate { get; set; } = default!;
 
     /// <summary>
     /// Executes data validation on the provided <paramref name="value"/>.

@@ -76,7 +76,7 @@ public class AppDiagnostics : IAppDiagnostics
         this.IsRecordingDiagnostics = false;
     }
 
-    private async void OnTaskUnobservedException(object sender, UnobservedTaskExceptionEventArgs args)
+    private async void OnTaskUnobservedException(object? sender, UnobservedTaskExceptionEventArgs args)
     {
         args.SetObserved();
 
@@ -87,7 +87,10 @@ public class AppDiagnostics : IAppDiagnostics
                 ? $"An unobserved task exception was thrown. Correlation ID: {correlationId}. Error: {args.Exception}."
                 : $"An unobserved task exception was thrown. Correlation ID: {correlationId}. Error: No exception information was available.").ConfigureAwait(false);
 
-        this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, args.Exception));
+        if (args.Exception != null)
+        {
+            this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, args.Exception));
+        }
     }
 
     private async void OnAppUnhandledException(object sender, UnhandledExceptionEventArgs args)

@@ -35,7 +35,7 @@ public static class DbContextExtensions
         T entity,
         CancellationToken cancellationToken = default)
     {
-        context.Update(entity);
+        context.Update(entity!);
         await context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
     }
 

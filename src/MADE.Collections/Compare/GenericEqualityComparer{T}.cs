@@ -43,6 +43,11 @@ public class GenericEqualityComparer<T> : IEqualityComparer<T>
     /// <exception cref="T:System.Exception">The <see cref="Comparison"/> callback throws an exception.</exception>
     public bool Equals(T? x, T? y)
     {
+        if (x == null || y == null)
+        {
+            return x == null && y == null;
+        }
+
         object first = this.Comparison.Invoke(x);
         object second = this.Comparison.Invoke(y);
 

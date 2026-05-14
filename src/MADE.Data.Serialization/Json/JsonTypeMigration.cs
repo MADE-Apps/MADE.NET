@@ -18,8 +18,8 @@ public class JsonTypeMigration
     /// <param name="toType">The type being migrated to.</param>
     public JsonTypeMigration(Type fromType, Type toType)
     {
-        this.FromAssemblyName = fromType.Assembly.GetName().Name;
-        this.FromTypeName = fromType.FullName;
+        this.FromAssemblyName = fromType.Assembly.GetName().Name ?? string.Empty;
+        this.FromTypeName = fromType.FullName ?? string.Empty;
         this.ToType = toType;
     }
 

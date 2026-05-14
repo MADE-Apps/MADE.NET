@@ -32,7 +32,7 @@ public class JsonTypeMigrationConverter : JsonConverter<object>
     /// To add migrations, call the <see cref="AddTypeMigration"/> method.
     /// </remarks>
     public JsonTypeMigrationConverter()
-        : this(null)
+        : this(Array.Empty<JsonTypeMigration>())
     {
     }
 
@@ -42,7 +42,7 @@ public class JsonTypeMigrationConverter : JsonConverter<object>
     /// <param name="migrations">The type migrations to initialize with.</param>
     public JsonTypeMigrationConverter(params JsonTypeMigration[] migrations)
     {
-        if (migrations != null && migrations.Any())
+        if (migrations != null && migrations.Length > 0)
         {
             this.migrations.AddRange(migrations);
         }
@@ -60,7 +60,7 @@ public class JsonTypeMigrationConverter : JsonConverter<object>
 
         lock (this.migrationLock)
         {
-            JsonTypeMigration existingMigration = this.migrations.FirstOrDefault(
+            JsonTypeMigration? existingMigration = this.migrations.FirstOrDefault(
                 m =>
                     m.FromAssemblyName == migration.FromAssemblyName &&
                     m.FromTypeName == migration.FromTypeName);
@@ -85,11 +85,14 @@ public class JsonTypeMigrationConverter : JsonConverter<object>
 
         if (root.ValueKind == JsonValueKind.Object && root.TryGetProperty("$type", out JsonElement typeElement))
         {
-            string typeString = typeElement.GetString();
-            resolvedType = this.ResolveType(typeString) ?? typeToConvert;
+            string? typeString = typeElement.GetString();
+            if (typeString != null)
+            {
+                resolvedType = this.ResolveType(typeString) ?? typeToConvert;
+            }
         }
 
-        return root.Deserialize(resolvedType, this.GetInnerOptions(options));
+        return root.Deserialize(resolvedType, this.GetInnerOptions(options))!;
     }
 
     /// <inheritdoc/>
@@ -110,13 +113,13 @@ public class JsonTypeMigrationConverter : JsonConverter<object>
         return this.innerOptions;
     }
 
-    private Type ResolveType(string typeString)
+    private Type? ResolveType(string typeString)
     {
         int commaIndex = typeString.IndexOf(',');
         string typeName = commaIndex >= 0 ? typeString[..commaIndex].Trim() : typeString.Trim();
-        string assemblyName = commaIndex >= 0 ? typeString[(commaIndex + 1)..].Trim() : null;
+        string? assemblyName = commaIndex >= 0 ? typeString[(commaIndex + 1)..].Trim() : null;
 
-        JsonTypeMigration migration;
+        JsonTypeMigration? migration;
         lock (this.migrationLock)
         {
             migration = this.migrations.FirstOrDefault(

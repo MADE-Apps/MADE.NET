@@ -59,7 +59,7 @@ public class MaxLengthValidator : IValidator
     /// <summary>
     /// Gets or sets the maximum value.
     /// </summary>
-    public IComparable Max { get; set; }
+    public IComparable Max { get; set; } = default!;
 
     /// <summary>
     /// Executes data validation on the provided <paramref name="value"/>.

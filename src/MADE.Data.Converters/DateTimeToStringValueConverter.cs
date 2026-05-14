@@ -25,7 +25,7 @@ public class DateTimeToStringValueConverter : IValueConverter<DateTime, string>
     /// </returns>
     public string Convert(DateTime value, object? parameter = default)
     {
-        string format = parameter?.ToString();
+        string? format = parameter?.ToString();
         return !string.IsNullOrWhiteSpace(format)
                    ? value.ToString(format, CultureInfo.InvariantCulture)
                    : value.ToString(CultureInfo.InvariantCulture);

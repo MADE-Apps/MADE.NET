@@ -57,7 +57,7 @@ public class MinValueValidator : IValidator
     /// <summary>
     /// Gets or sets the minimum value.
     /// </summary>
-    public IComparable Min { get; set; }
+    public IComparable Min { get; set; } = default!;
 
     /// <summary>
     /// Executes data validation on the provided <paramref name="value"/>.

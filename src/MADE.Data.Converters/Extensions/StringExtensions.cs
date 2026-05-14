@@ -61,7 +61,7 @@ public static class StringExtensions
         }
 
         const string suffix = "...";
-        return value.Substring(0, maxLength - suffix.Length) + suffix;
+        return string.Concat(value.AsSpan(0, maxLength - suffix.Length), suffix);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static class StringExtensions
     /// <param name="value">The string value to convert.</param>
     /// <param name="encoding">The encoding to get the value bytes while converting.</param>
     /// <returns>The Base64 string representing the value.</returns>
-    public static string ToBase64(this string value, Encoding encoding = default)
+    public static string ToBase64(this string value, Encoding? encoding = default)
     {
         encoding ??= Encoding.UTF8;
         return Convert.ToBase64String(encoding.GetBytes(value));
@@ -108,7 +108,7 @@ public static class StringExtensions
     /// <param name="base64Value">The Base64 value to convert.</param>
     /// <param name="encoding">The encoding to get the value string while converting.</param>
     /// <returns>The string value representing the Base64 string.</returns>
-    public static string FromBase64(this string base64Value, Encoding encoding = default)
+    public static string FromBase64(this string base64Value, Encoding? encoding = default)
     {
         encoding ??= Encoding.UTF8;
         return encoding.GetString(Convert.FromBase64String(base64Value));
