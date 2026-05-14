@@ -1,26 +1,25 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-namespace MADE.Networking.Extensions
-{
-    using System;
-    using System.Collections.Specialized;
+using System;
+using System.Collections.Specialized;
 
+namespace MADE.Networking.Extensions;
+
+/// <summary>
+/// Defines a collection of extensions for <see cref="Uri"/> objects.
+/// </summary>
+public static class UriExtensions
+{
     /// <summary>
-    /// Defines a collection of extensions for <see cref="Uri"/> objects.
+    /// Gets a value from a query in the specified <paramref name="uri"/> with the specified query parameter key.
     /// </summary>
-    public static class UriExtensions
+    /// <param name="uri">The <see cref="Uri"/> to extract a query value from.</param>
+    /// <param name="queryParam">The key of the parameter in the query to extract the value for.</param>
+    /// <returns>The value for the query parameter.</returns>
+    public static string GetQueryValue(this Uri uri, string queryParam)
     {
-        /// <summary>
-        /// Gets a value from a query in the specified <paramref name="uri"/> with the specified query parameter key.
-        /// </summary>
-        /// <param name="uri">The <see cref="Uri"/> to extract a query value from.</param>
-        /// <param name="queryParam">The key of the parameter in the query to extract the value for.</param>
-        /// <returns>The value for the query parameter.</returns>
-        public static string GetQueryValue(this Uri uri, string queryParam)
-        {
-            NameValueCollection queryDictionary = System.Web.HttpUtility.ParseQueryString(uri.Query);
-            return queryDictionary.Get(queryParam);
-        }
+        NameValueCollection queryDictionary = System.Web.HttpUtility.ParseQueryString(uri.Query);
+        return queryDictionary.Get(queryParam);
     }
 }

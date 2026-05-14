@@ -1,72 +1,71 @@
-namespace MADE.Data.EFCore.Tests.Data
+using System.Diagnostics.CodeAnalysis;
+using System.Threading;
+using System.Threading.Tasks;
+using MADE.Data.EFCore.Converters;
+using MADE.Data.EFCore.Extensions;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace MADE.Data.EFCore.Tests.Data;
+
+[ExcludeFromCodeCoverage]
+public class TestDbContext : DbContext
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Threading;
-    using System.Threading.Tasks;
-    using Converters;
-    using Extensions;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    public DbSet<TestEntity> Entities { get; set; }
 
-    [ExcludeFromCodeCoverage]
-    public class TestDbContext : DbContext
+    public DbSet<TestKeyedEntity> KeyEntities { get; set; }
+
+    public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
+
+    public static TestDbContext CreateInMemoryContext(string dbName)
     {
-        public DbSet<TestEntity> Entities { get; set; }
-
-        public DbSet<TestKeyedEntity> KeyEntities { get; set; }
-
-        public TestDbContext(DbContextOptions<TestDbContext> options) : base(options) { }
-
-        public static TestDbContext CreateInMemoryContext(string dbName)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<TestDbContext>();
-            DbContextOptions<TestDbContext> options = optionsBuilder.UseInMemoryDatabase(dbName).Options;
-            return new TestDbContext(options);
-        }
-
-        public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            this.SetEntityDates();
-            return base.SaveChangesAsync(cancellationToken);
-        }
-
-        public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
-        {
-            this.SetEntityDates();
-            return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
-        }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.HasDefaultSchema("dbo");
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TestDbContext).Assembly);
-            modelBuilder.ApplyUtcDateTimeConverter();
-        }
+        var optionsBuilder = new DbContextOptionsBuilder<TestDbContext>();
+        DbContextOptions<TestDbContext> options = optionsBuilder.UseInMemoryDatabase(dbName).Options;
+        return new TestDbContext(options);
     }
 
-    public class TestEntity : EntityBase
+    public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        public string Name { get; set; }
+        this.SetEntityDates();
+        return base.SaveChangesAsync(cancellationToken);
     }
 
-    public class TestKeyedEntity : EntityBase<int>
+    public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
     {
-        public string Name { get; set; }
+        this.SetEntityDates();
+        return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
     }
 
-    public class TestEntityTypeConfiguration : IEntityTypeConfiguration<TestEntity>
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public void Configure(EntityTypeBuilder<TestEntity> builder)
-        {
-            builder.Configure();
-        }
+        modelBuilder.HasDefaultSchema("dbo");
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(TestDbContext).Assembly);
+        modelBuilder.ApplyUtcDateTimeConverter();
     }
+}
 
-    public class TestKeyedEntityTypeConfiguration : IEntityTypeConfiguration<TestKeyedEntity>
+public class TestEntity : EntityBase
+{
+    public string Name { get; set; }
+}
+
+public class TestKeyedEntity : EntityBase<int>
+{
+    public string Name { get; set; }
+}
+
+public class TestEntityTypeConfiguration : IEntityTypeConfiguration<TestEntity>
+{
+    public void Configure(EntityTypeBuilder<TestEntity> builder)
     {
-        public void Configure(EntityTypeBuilder<TestKeyedEntity> builder)
-        {
-            builder.ConfigureWithKey<TestKeyedEntity, int>();
-        }
+        builder.Configure();
+    }
+}
+
+public class TestKeyedEntityTypeConfiguration : IEntityTypeConfiguration<TestKeyedEntity>
+{
+    public void Configure(EntityTypeBuilder<TestKeyedEntity> builder)
+    {
+        builder.ConfigureWithKey<TestKeyedEntity, int>();
     }
 }

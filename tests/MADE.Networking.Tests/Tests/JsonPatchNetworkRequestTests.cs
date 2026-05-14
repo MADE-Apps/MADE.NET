@@ -1,81 +1,80 @@
-namespace MADE.Networking.Tests.Tests
+using System.Diagnostics.CodeAnalysis;
+using System.Net;
+using System.Net.Http;
+using System.Threading.Tasks;
+using MADE.Networking.Http.Requests.Json;
+using System.Text.Json;
+using System.Text.Json.Nodes;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Networking.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class JsonPatchNetworkRequestTests
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using MADE.Networking.Http.Requests.Json;
-    using System.Text.Json;
-    using System.Text.Json.Nodes;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class JsonPatchNetworkRequestTests
+    public class WhenExecutingRequest
     {
-        public class WhenExecutingRequest
+        [Test]
+        public async Task ShouldReturnSuccessFromPatchEndpointWithResponse()
         {
-            [Test]
-            public async Task ShouldReturnSuccessFromPatchEndpointWithResponse()
-            {
-                // Arrange
-                var requestData = new RequestData { Key = "test", Enabled = true };
+            // Arrange
+            var requestData = new RequestData { Key = "test", Enabled = true };
 
-                const string requestUrl = "https://httpbin.org/patch";
-                var request = new JsonPatchNetworkRequest(
-                    new HttpClient(),
-                    requestUrl,
-                    JsonSerializer.Serialize(requestData));
+            const string requestUrl = "https://httpbin.org/patch";
+            var request = new JsonPatchNetworkRequest(
+                new HttpClient(),
+                requestUrl,
+                JsonSerializer.Serialize(requestData));
 
-                // Act
-                var response = await request.ExecuteAsync<RequestResponse>();
+            // Act
+            var response = await request.ExecuteAsync<RequestResponse>();
 
-                // Assert
-                response.ShouldNotBeNull();
-                response.Url.ShouldBe(requestUrl);
-                response.Data.ShouldNotBeNull();
+            // Assert
+            response.ShouldNotBeNull();
+            response.Url.ShouldBe(requestUrl);
+            response.Data.ShouldNotBeNull();
 
-                var responseData = JsonSerializer.Deserialize<RequestData>(response.Data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
-                responseData.ShouldNotBeNull();
-                responseData.Key.ShouldBe(requestData.Key);
-                responseData.Enabled.ShouldBe(requestData.Enabled);
-            }
-
-            [Test]
-            public async Task ShouldReturnErrorFromGetEndpoint()
-            {
-                // Arrange
-                var requestData = new RequestData { Key = "test", Enabled = true };
-
-                const string requestUrl = "https://httpbin.org/get";
-                var request = new JsonPatchNetworkRequest(
-                    new HttpClient(),
-                    requestUrl,
-                    JsonSerializer.Serialize(requestData));
-
-                // Act
-                var exception = await request.ExecuteAsync<RequestResponse>().ShouldThrowAsync<HttpRequestException>();
-
-                // Assert
-                exception.StatusCode.ShouldBe(HttpStatusCode.MethodNotAllowed);
-            }
+            var responseData = JsonSerializer.Deserialize<RequestData>(response.Data, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+            responseData.ShouldNotBeNull();
+            responseData.Key.ShouldBe(requestData.Key);
+            responseData.Enabled.ShouldBe(requestData.Enabled);
         }
 
-        public class RequestData
+        [Test]
+        public async Task ShouldReturnErrorFromGetEndpoint()
         {
-            public string Key { get; set; }
+            // Arrange
+            var requestData = new RequestData { Key = "test", Enabled = true };
 
-            public bool Enabled { get; set; }
+            const string requestUrl = "https://httpbin.org/get";
+            var request = new JsonPatchNetworkRequest(
+                new HttpClient(),
+                requestUrl,
+                JsonSerializer.Serialize(requestData));
+
+            // Act
+            var exception = await request.ExecuteAsync<RequestResponse>().ShouldThrowAsync<HttpRequestException>();
+
+            // Assert
+            exception.StatusCode.ShouldBe(HttpStatusCode.MethodNotAllowed);
         }
+    }
 
-        public class RequestResponse
-        {
-            public JsonObject Args { get; set; }
+    public class RequestData
+    {
+        public string Key { get; set; }
 
-            public string Data { get; set; }
+        public bool Enabled { get; set; }
+    }
 
-            public string Url { get; set; }
-        }
+    public class RequestResponse
+    {
+        public JsonObject Args { get; set; }
+
+        public string Data { get; set; }
+
+        public string Url { get; set; }
     }
 }

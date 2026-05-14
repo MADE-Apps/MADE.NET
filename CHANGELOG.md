@@ -87,11 +87,26 @@ var result = JsonConvert.DeserializeObject<object>(json, settings);
 using MADE.Data.Serialization.Json.Converters;
 
 var converter = new JsonTypeMigrationConverter();
-await converter.AddTypeMigrationAsync(new JsonTypeMigration("OldAssembly", "OldNamespace.OldType", typeof(NewType)));
+converter.AddTypeMigration(new JsonTypeMigration("OldAssembly", "OldNamespace.OldType", typeof(NewType)));
 
 var options = new JsonSerializerOptions();
 options.Converters.Add(converter);
 var result = JsonSerializer.Deserialize<object>(json, options);
 ```
 
-Note: `AddTypeMigration` has been renamed to `AddTypeMigrationAsync` and is now asynchronous.
+#### IEventLogger Methods Changed from void to Task
+
+All 15 methods on `IEventLogger` (`WriteDebug`, `WriteInfo`, `WriteWarning`, `WriteError`, `WriteCritical` and their overloads) now return `Task` instead of `void`. Implementations must be updated accordingly.
+
+#### JsonTypeMigrationConverter Simplified
+
+- `AddTypeMigrationAsync` has been renamed to `AddTypeMigration` and is now synchronous (uses `lock` instead of `SemaphoreSlim`).
+
+### Code Quality Improvements
+
+- **File-scoped namespaces**: All source files converted to file-scoped namespace declarations.
+- **ConfigureAwait(false)**: Added to all `await` expressions in library code (52 locations across 17 files) to prevent deadlocks in synchronization-context-bound environments.
+- **ArgumentNullException.ThrowIfNull**: Replaced manual null-check-and-throw patterns with `ArgumentNullException.ThrowIfNull()` (22 locations across 7 files).
+- **Nullable reference type annotations**: Added `?` annotations to parameters, return types, fields, and properties that accept or return `null` (17 fixes across 10 files).
+- **Async correctness**: `FileEventLogger` and `AppDiagnostics` rewritten for proper async patterns, removing `async void` methods.
+- **Comprehensive .editorconfig**: Added modern .NET analysis rules including CA2007, CA1822, CA1849, and async naming conventions.

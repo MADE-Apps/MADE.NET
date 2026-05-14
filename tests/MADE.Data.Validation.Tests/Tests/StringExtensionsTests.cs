@@ -1,165 +1,164 @@
-namespace MADE.Data.Validation.Tests.Tests
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using MADE.Data.Validation.Extensions;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Data.Validation.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class StringExtensionsTests
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using MADE.Data.Validation.Extensions;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class StringExtensionsTests
+    public class WhenValidatingIfStringIsLike
     {
-        public class WhenValidatingIfStringIsLike
+        [TestCase("*", "abc", true)]
+        [TestCase("a*", "abc", true)]
+        [TestCase("a?c", "abc", true)]
+        [TestCase("[a-z][a-z][a-z]", "abc", true)]
+        [TestCase("###", "123", true)]
+        [TestCase("###", "abc", false)]
+        [TestCase("*###", "123abc", false)]
+        [TestCase("[a-z][a-z][a-z]", "ABC", false)]
+        [TestCase("a?c", "aba", false)]
+        public void ShouldMatchPattern(string pattern, string input, bool expected)
         {
-            [TestCase("*", "abc", true)]
-            [TestCase("a*", "abc", true)]
-            [TestCase("a?c", "abc", true)]
-            [TestCase("[a-z][a-z][a-z]", "abc", true)]
-            [TestCase("###", "123", true)]
-            [TestCase("###", "abc", false)]
-            [TestCase("*###", "123abc", false)]
-            [TestCase("[a-z][a-z][a-z]", "ABC", false)]
-            [TestCase("a?c", "aba", false)]
-            public void ShouldMatchPattern(string pattern, string input, bool expected)
-            {
-                // Act
-                var actual = input.IsLike(pattern);
+            // Act
+            var actual = input.IsLike(pattern);
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
+        }
+    }
+
+    public class WhenCheckingIfStringContainsValue
+    {
+        [TestCase("Hello, World", "ello", CompareOptions.None)]
+        [TestCase("Hello, World", "hello", CompareOptions.IgnoreCase)]
+        public void ShouldReturnTrueIfDoesContain(string phrase, string value, CompareOptions compare)
+        {
+            // Act
+            bool contains = phrase.Contains(value, compare);
+
+            // Assert
+            contains.ShouldBeTrue();
         }
 
-        public class WhenCheckingIfStringContainsValue
+        [TestCase("Hello, World", "Hey", CompareOptions.None)]
+        [TestCase("Hello, World", "hello", CompareOptions.None)]
+        public void ShouldReturnFalseIfDoesNotContain(string phrase, string value, CompareOptions compare)
         {
-            [TestCase("Hello, World", "ello", CompareOptions.None)]
-            [TestCase("Hello, World", "hello", CompareOptions.IgnoreCase)]
-            public void ShouldReturnTrueIfDoesContain(string phrase, string value, CompareOptions compare)
-            {
-                // Act
-                bool contains = phrase.Contains(value, compare);
+            // Act
+            bool contains = phrase.Contains(value, compare);
 
-                // Assert
-                contains.ShouldBeTrue();
-            }
+            // Assert
+            contains.ShouldBeFalse();
+        }
+    }
 
-            [TestCase("Hello, World", "Hey", CompareOptions.None)]
-            [TestCase("Hello, World", "hello", CompareOptions.None)]
-            public void ShouldReturnFalseIfDoesNotContain(string phrase, string value, CompareOptions compare)
-            {
-                // Act
-                bool contains = phrase.Contains(value, compare);
+    public class WhenCheckingIfStringIsInt
+    {
+        [TestCase("10")]
+        [TestCase("-10")]
+        public void ShouldReturnTrueIfInt(string value)
+        {
+            // Act
+            bool actual = value.IsInt();
 
-                // Assert
-                contains.ShouldBeFalse();
-            }
+            // Assert
+            actual.ShouldBeTrue();
         }
 
-        public class WhenCheckingIfStringIsInt
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("Hello, World")]
+        public void ShouldReturnFalseIfNotInt(string value)
         {
-            [TestCase("10")]
-            [TestCase("-10")]
-            public void ShouldReturnTrueIfInt(string value)
-            {
-                // Act
-                bool actual = value.IsInt();
+            // Act
+            bool actual = value.IsInt();
 
-                // Assert
-                actual.ShouldBeTrue();
-            }
+            // Assert
+            actual.ShouldBeFalse();
+        }
+    }
 
-            [TestCase(null)]
-            [TestCase("")]
-            [TestCase("Hello, World")]
-            public void ShouldReturnFalseIfNotInt(string value)
-            {
-                // Act
-                bool actual = value.IsInt();
+    public class WhenCheckingIfStringIsDouble
+    {
+        [TestCase("10.5")]
+        [TestCase("-10.5")]
+        public void ShouldReturnTrueIfDouble(string value)
+        {
+            // Act
+            bool actual = value.IsDouble();
 
-                // Assert
-                actual.ShouldBeFalse();
-            }
+            // Assert
+            actual.ShouldBeTrue();
         }
 
-        public class WhenCheckingIfStringIsDouble
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("Hello, World")]
+        public void ShouldReturnFalseIfNotDouble(string value)
         {
-            [TestCase("10.5")]
-            [TestCase("-10.5")]
-            public void ShouldReturnTrueIfDouble(string value)
-            {
-                // Act
-                bool actual = value.IsDouble();
+            // Act
+            bool actual = value.IsDouble();
 
-                // Assert
-                actual.ShouldBeTrue();
-            }
+            // Assert
+            actual.ShouldBeFalse();
+        }
+    }
 
-            [TestCase(null)]
-            [TestCase("")]
-            [TestCase("Hello, World")]
-            public void ShouldReturnFalseIfNotDouble(string value)
-            {
-                // Act
-                bool actual = value.IsDouble();
+    public class WhenCheckingIfStringIsBoolean
+    {
+        [TestCase("True")]
+        [TestCase("true")]
+        [TestCase("False")]
+        [TestCase("false")]
+        public void ShouldReturnTrueIfBoolean(string value)
+        {
+            // Act
+            bool actual = value.IsBoolean();
 
-                // Assert
-                actual.ShouldBeFalse();
-            }
+            // Assert
+            actual.ShouldBeTrue();
         }
 
-        public class WhenCheckingIfStringIsBoolean
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("Hello, World")]
+        public void ShouldReturnFalseIfNotBoolean(string value)
         {
-            [TestCase("True")]
-            [TestCase("true")]
-            [TestCase("False")]
-            [TestCase("false")]
-            public void ShouldReturnTrueIfBoolean(string value)
-            {
-                // Act
-                bool actual = value.IsBoolean();
+            // Act
+            bool actual = value.IsBoolean();
 
-                // Assert
-                actual.ShouldBeTrue();
-            }
+            // Assert
+            actual.ShouldBeFalse();
+        }
+    }
 
-            [TestCase(null)]
-            [TestCase("")]
-            [TestCase("Hello, World")]
-            public void ShouldReturnFalseIfNotBoolean(string value)
-            {
-                // Act
-                bool actual = value.IsBoolean();
+    public class WhenCheckingIfStringIsFloat
+    {
+        [TestCase("10.5")]
+        [TestCase("-10.5")]
+        public void ShouldReturnTrueIfFloat(string value)
+        {
+            // Act
+            bool actual = value.IsFloat();
 
-                // Assert
-                actual.ShouldBeFalse();
-            }
+            // Assert
+            actual.ShouldBeTrue();
         }
 
-        public class WhenCheckingIfStringIsFloat
+        [TestCase(null)]
+        [TestCase("")]
+        [TestCase("Hello, World")]
+        public void ShouldReturnFalseIfNotFloat(string value)
         {
-            [TestCase("10.5")]
-            [TestCase("-10.5")]
-            public void ShouldReturnTrueIfFloat(string value)
-            {
-                // Act
-                bool actual = value.IsFloat();
+            // Act
+            bool actual = value.IsFloat();
 
-                // Assert
-                actual.ShouldBeTrue();
-            }
-
-            [TestCase(null)]
-            [TestCase("")]
-            [TestCase("Hello, World")]
-            public void ShouldReturnFalseIfNotFloat(string value)
-            {
-                // Act
-                bool actual = value.IsFloat();
-
-                // Assert
-                actual.ShouldBeFalse();
-            }
+            // Assert
+            actual.ShouldBeFalse();
         }
     }
 }

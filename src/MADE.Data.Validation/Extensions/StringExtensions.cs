@@ -1,139 +1,138 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-namespace MADE.Data.Validation.Extensions
+using System.Globalization;
+using System.Text.RegularExpressions;
+
+namespace MADE.Data.Validation.Extensions;
+
+/// <summary>
+/// Defines a collection of extensions for string values.
+/// </summary>
+public static class StringExtensions
 {
-    using System.Globalization;
-    using System.Text.RegularExpressions;
+    /// <summary>
+    /// Indicates whether a specified string is null, empty, or consists only of white-space characters.
+    /// </summary>
+    /// <param name="value">The string to test.</param>
+    /// <returns>
+    /// True if the <paramref name="value" /> parameter is null or empty, or if <paramref name="value" /> consists exclusively of white-space characters.
+    /// </returns>
+    public static bool IsNullOrWhiteSpace(this string value)
+    {
+        return string.IsNullOrWhiteSpace(value);
+    }
 
     /// <summary>
-    /// Defines a collection of extensions for string values.
+    /// Checks whether a phrase contains a specified value using a comparison option.
     /// </summary>
-    public static class StringExtensions
+    /// <param name="phrase">
+    /// The phrase to check.
+    /// </param>
+    /// <param name="value">
+    /// The value to find.
+    /// </param>
+    /// <param name="compareOption">
+    /// The compare option.
+    /// </param>
+    /// <returns>
+    /// True if the phrase contains the value; otherwise, false.
+    /// </returns>
+    public static bool Contains(this string phrase, string value, CompareOptions compareOption)
     {
-        /// <summary>
-        /// Indicates whether a specified string is null, empty, or consists only of white-space characters.
-        /// </summary>
-        /// <param name="value">The string to test.</param>
-        /// <returns>
-        /// True if the <paramref name="value" /> parameter is null or empty, or if <paramref name="value" /> consists exclusively of white-space characters.
-        /// </returns>
-        public static bool IsNullOrWhiteSpace(this string value)
+        return CultureInfo.CurrentCulture.CompareInfo.IndexOf(phrase, value, compareOption) >= 0;
+    }
+
+    /// <summary>
+    /// Compares a string value against a wildcard pattern, similar to the Visual Basic like operator.
+    /// </summary>
+    /// <remarks>
+    /// An example of this in use comparing strings with * wildcard pattern.
+    /// <code>
+    ///   // result is true
+    ///   bool result = "MyValue".IsLike("My*");
+    ///   // result is false
+    ///   result = "MyValue".IsLike("Hello");
+    /// </code>
+    /// </remarks>
+    /// <param name="value">The value to compare is like.</param>
+    /// <param name="likePattern">The wildcard like pattern to match on.</param>
+    /// <returns>True if the value is like the pattern; otherwise, false.</returns>
+    /// <exception cref="RegexMatchTimeoutException">Throw if a Regex time-out occurred.</exception>
+    public static bool IsLike(this string value, string likePattern)
+    {
+        if (value.IsNullOrWhiteSpace() || likePattern.IsNullOrWhiteSpace())
         {
-            return string.IsNullOrWhiteSpace(value);
+            return false;
         }
 
-        /// <summary>
-        /// Checks whether a phrase contains a specified value using a comparison option.
-        /// </summary>
-        /// <param name="phrase">
-        /// The phrase to check.
-        /// </param>
-        /// <param name="value">
-        /// The value to find.
-        /// </param>
-        /// <param name="compareOption">
-        /// The compare option.
-        /// </param>
-        /// <returns>
-        /// True if the phrase contains the value; otherwise, false.
-        /// </returns>
-        public static bool Contains(this string phrase, string value, CompareOptions compareOption)
-        {
-            return CultureInfo.CurrentCulture.CompareInfo.IndexOf(phrase, value, compareOption) >= 0;
-        }
+        // Escape any special characters in pattern
+        var regex = "^" + Regex.Escape(likePattern) + "$";
 
-        /// <summary>
-        /// Compares a string value against a wildcard pattern, similar to the Visual Basic like operator.
-        /// </summary>
-        /// <remarks>
-        /// An example of this in use comparing strings with * wildcard pattern.
-        /// <code>
-        ///   // result is true
-        ///   bool result = "MyValue".IsLike("My*");
-        ///   // result is false
-        ///   result = "MyValue".IsLike("Hello");
-        /// </code>
-        /// </remarks>
-        /// <param name="value">The value to compare is like.</param>
-        /// <param name="likePattern">The wildcard like pattern to match on.</param>
-        /// <returns>True if the value is like the pattern; otherwise, false.</returns>
-        /// <exception cref="RegexMatchTimeoutException">Throw if a Regex time-out occurred.</exception>
-        public static bool IsLike(this string value, string likePattern)
-        {
-            if (value.IsNullOrWhiteSpace() || likePattern.IsNullOrWhiteSpace())
-            {
-                return false;
-            }
+        // Replace wildcard characters with regular expression equivalents
+        regex = regex.Replace(@"\[!", "[^")
+            .Replace(@"\[", "[")
+            .Replace(@"\]", "]")
+            .Replace(@"\?", ".")
+            .Replace(@"\*", ".*")
+            .Replace(@"\#", @"\d");
 
-            // Escape any special characters in pattern
-            var regex = "^" + Regex.Escape(likePattern) + "$";
+        return Regex.IsMatch(value, regex);
+    }
 
-            // Replace wildcard characters with regular expression equivalents
-            regex = regex.Replace(@"\[!", "[^")
-                .Replace(@"\[", "[")
-                .Replace(@"\]", "]")
-                .Replace(@"\?", ".")
-                .Replace(@"\*", ".*")
-                .Replace(@"\#", @"\d");
+    /// <summary>
+    /// Checks whether a string value is an integer.
+    /// </summary>
+    /// <param name="value">
+    /// The value to check.
+    /// </param>
+    /// <returns>
+    /// True if safely parses to an integer; otherwise, false.
+    /// </returns>
+    public static bool IsInt(this string value)
+    {
+        return int.TryParse(value, out int _);
+    }
 
-            return Regex.IsMatch(value, regex);
-        }
+    /// <summary>
+    /// Checks whether a string value is a double.
+    /// </summary>
+    /// <param name="value">
+    /// The value to check.
+    /// </param>
+    /// <returns>
+    /// True if safely parses to a double; otherwise, false.
+    /// </returns>
+    public static bool IsDouble(this string value)
+    {
+        return double.TryParse(value, out double _);
+    }
 
-        /// <summary>
-        /// Checks whether a string value is an integer.
-        /// </summary>
-        /// <param name="value">
-        /// The value to check.
-        /// </param>
-        /// <returns>
-        /// True if safely parses to an integer; otherwise, false.
-        /// </returns>
-        public static bool IsInt(this string value)
-        {
-            return int.TryParse(value, out int _);
-        }
+    /// <summary>
+    /// Checks whether a string value is a boolean.
+    /// </summary>
+    /// <param name="value">
+    /// The value to check.
+    /// </param>
+    /// <returns>
+    /// True if safely parses to a boolean; otherwise, false.
+    /// </returns>
+    public static bool IsBoolean(this string value)
+    {
+        return bool.TryParse(value, out bool _);
+    }
 
-        /// <summary>
-        /// Checks whether a string value is a double.
-        /// </summary>
-        /// <param name="value">
-        /// The value to check.
-        /// </param>
-        /// <returns>
-        /// True if safely parses to a double; otherwise, false.
-        /// </returns>
-        public static bool IsDouble(this string value)
-        {
-            return double.TryParse(value, out double _);
-        }
-
-        /// <summary>
-        /// Checks whether a string value is a boolean.
-        /// </summary>
-        /// <param name="value">
-        /// The value to check.
-        /// </param>
-        /// <returns>
-        /// True if safely parses to a boolean; otherwise, false.
-        /// </returns>
-        public static bool IsBoolean(this string value)
-        {
-            return bool.TryParse(value, out bool _);
-        }
-
-        /// <summary>
-        /// Checks whether a string value is a float.
-        /// </summary>
-        /// <param name="value">
-        /// The value to check.
-        /// </param>
-        /// <returns>
-        /// True if safely parses to a float; otherwise, false.
-        /// </returns>
-        public static bool IsFloat(this string value)
-        {
-            return float.TryParse(value, out float _);
-        }
+    /// <summary>
+    /// Checks whether a string value is a float.
+    /// </summary>
+    /// <param name="value">
+    /// The value to check.
+    /// </param>
+    /// <returns>
+    /// True if safely parses to a float; otherwise, false.
+    /// </returns>
+    public static bool IsFloat(this string value)
+    {
+        return float.TryParse(value, out float _);
     }
 }

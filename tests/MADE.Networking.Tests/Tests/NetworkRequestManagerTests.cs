@@ -1,200 +1,199 @@
-namespace MADE.Networking.Tests.Tests
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Net.Http;
+using System.Threading;
+using MADE.Networking.Http;
+using MADE.Networking.Http.Requests.Json;
+using System.Text.Json.Nodes;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Networking.Tests.Tests;
+
+[TestFixture]
+[ExcludeFromCodeCoverage]
+public class NetworkRequestManagerTests
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Net.Http;
-    using System.Threading;
-    using MADE.Networking.Http;
-    using MADE.Networking.Http.Requests.Json;
-    using System.Text.Json.Nodes;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [TestFixture]
-    [ExcludeFromCodeCoverage]
-    public class NetworkRequestManagerTests
+    public class WhenAddingOrUpdatingQueueRequests
     {
-        public class WhenAddingOrUpdatingQueueRequests
+        [Test]
+        public void ShouldAddToQueue()
         {
-            [Test]
-            public void ShouldAddToQueue()
-            {
-                // Arrange
-                const string query = "test";
-                const bool queryValue = true;
+            // Arrange
+            const string query = "test";
+            const bool queryValue = true;
 
-                var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
+            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
 
-                var manager = new NetworkRequestManager();
+            var manager = new NetworkRequestManager();
 
-                // Act
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
-                    request,
-                    _ => { });
+            // Act
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
+                request,
+                _ => { });
 
-                // Assert
-                manager.CurrentQueue.Count.ShouldBe(1);
-                manager.CurrentQueue.Keys.ShouldContain(request.Identifier.ToString());
-            }
-
-            [Test]
-            public void ShouldUpdateExistingInQueue()
-            {
-                // Arrange
-                const string query = "test";
-                const bool queryValue = true;
-
-                var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
-
-                var manager = new NetworkRequestManager();
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
-                    request,
-                    _ => { });
-
-                // Act
-                request.Url = $"https://httpbin.org/get?{query}={!queryValue}";
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
-                    request,
-                    _ => { });
-
-                // Assert
-                manager.CurrentQueue.Count.ShouldBe(1);
-                manager.CurrentQueue.Keys.ShouldContain(request.Identifier.ToString());
-            }
+            // Assert
+            manager.CurrentQueue.Count.ShouldBe(1);
+            manager.CurrentQueue.Keys.ShouldContain(request.Identifier.ToString());
         }
 
-        public class WhenRemovingQueueRequests
+        [Test]
+        public void ShouldUpdateExistingInQueue()
         {
-            [Test]
-            public void ShouldRemoveByRequest()
-            {
-                // Arrange
-                const string query = "test";
-                const bool queryValue = true;
+            // Arrange
+            const string query = "test";
+            const bool queryValue = true;
 
-                var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
+            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
 
-                var manager = new NetworkRequestManager();
+            var manager = new NetworkRequestManager();
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
+                request,
+                _ => { });
 
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
-                    request,
-                    _ => { });
+            // Act
+            request.Url = $"https://httpbin.org/get?{query}={!queryValue}";
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
+                request,
+                _ => { });
 
-                // Act
-                manager.Remove(request);
+            // Assert
+            manager.CurrentQueue.Count.ShouldBe(1);
+            manager.CurrentQueue.Keys.ShouldContain(request.Identifier.ToString());
+        }
+    }
 
-                // Assert
-                manager.CurrentQueue.Count.ShouldBe(0);
-            }
+    public class WhenRemovingQueueRequests
+    {
+        [Test]
+        public void ShouldRemoveByRequest()
+        {
+            // Arrange
+            const string query = "test";
+            const bool queryValue = true;
 
-            [Test]
-            public void ShouldRemoveByRequestId()
-            {
-                // Arrange
-                const string query = "test";
-                const bool queryValue = true;
+            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
+            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
 
-                var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+            var manager = new NetworkRequestManager();
 
-                var manager = new NetworkRequestManager();
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
+                request,
+                _ => { });
 
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
-                    request,
-                    _ => { });
+            // Act
+            manager.Remove(request);
 
-                // Act
-                manager.RemoveByKey(request.Identifier.ToString());
-
-                // Assert
-                manager.CurrentQueue.Count.ShouldBe(0);
-            }
+            // Assert
+            manager.CurrentQueue.Count.ShouldBe(0);
         }
 
-        public class WhenProcessingQueueRequests
+        [Test]
+        public void ShouldRemoveByRequestId()
         {
-            [Test]
-            public void ShouldProcessQueue()
+            // Arrange
+            const string query = "test";
+            const bool queryValue = true;
+
+            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
+            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+
+            var manager = new NetworkRequestManager();
+
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
+                request,
+                _ => { });
+
+            // Act
+            manager.RemoveByKey(request.Identifier.ToString());
+
+            // Assert
+            manager.CurrentQueue.Count.ShouldBe(0);
+        }
+    }
+
+    public class WhenProcessingQueueRequests
+    {
+        [Test]
+        public void ShouldProcessQueue()
+        {
+            // Arrange
+            AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+
+            const string query = "test";
+            const bool queryValue = true;
+
+            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
+            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+
+            var manager = new NetworkRequestManager();
+
+            RequestResponse actualResponse = null;
+
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(request, response =>
             {
-                // Arrange
-                AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+                actualResponse = response;
+                autoResetEvent.Set();
+            });
 
-                const string query = "test";
-                const bool queryValue = true;
+            // Act
+            manager.Start();
 
-                var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+            // Assert
+            autoResetEvent.WaitOne(TimeSpan.FromSeconds(60));
 
-                var manager = new NetworkRequestManager();
+            actualResponse.ShouldNotBeNull();
+            actualResponse.Url.ShouldBe(requestUrl);
+            bool.Parse(actualResponse.Args[query].ToString()).ShouldBe(queryValue);
+        }
+    }
 
-                RequestResponse actualResponse = null;
+    public class WhenProcessingQueueRequestsStopped
+    {
+        [Test]
+        public void ShouldStopProcessingQueue()
+        {
+            // Arrange
+            AutoResetEvent autoResetEvent = new AutoResetEvent(false);
 
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(request, response =>
+            const string query = "test";
+            const bool queryValue = true;
+
+            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
+            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+
+            var manager = new NetworkRequestManager();
+
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
+                request,
+                _ =>
                 {
-                    actualResponse = response;
                     autoResetEvent.Set();
                 });
 
-                // Act
-                manager.Start();
+            manager.Start();
 
-                // Assert
-                autoResetEvent.WaitOne(TimeSpan.FromSeconds(60));
+            autoResetEvent.WaitOne(TimeSpan.FromSeconds(60));
 
-                actualResponse.ShouldNotBeNull();
-                actualResponse.Url.ShouldBe(requestUrl);
-                bool.Parse(actualResponse.Args[query].ToString()).ShouldBe(queryValue);
-            }
+            // Act
+            manager.Stop();
+
+            manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
+                request,
+                _ => { });
+
+            // Assert
+            manager.CurrentQueue.Count.ShouldBe(1);
+            manager.CurrentQueue.Keys.ShouldContain(request.Identifier.ToString());
         }
+    }
 
-        public class WhenProcessingQueueRequestsStopped
-        {
-            [Test]
-            public void ShouldStopProcessingQueue()
-            {
-                // Arrange
-                AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+    public class RequestResponse
+    {
+        public JsonObject Args { get; set; }
 
-                const string query = "test";
-                const bool queryValue = true;
-
-                var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
-
-                var manager = new NetworkRequestManager();
-
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
-                    request,
-                    _ =>
-                    {
-                        autoResetEvent.Set();
-                    });
-
-                manager.Start();
-
-                autoResetEvent.WaitOne(TimeSpan.FromSeconds(60));
-
-                // Act
-                manager.Stop();
-
-                manager.AddOrUpdate<JsonGetNetworkRequest, RequestResponse>(
-                    request,
-                    _ => { });
-
-                // Assert
-                manager.CurrentQueue.Count.ShouldBe(1);
-                manager.CurrentQueue.Keys.ShouldContain(request.Identifier.ToString());
-            }
-        }
-
-        public class RequestResponse
-        {
-            public JsonObject Args { get; set; }
-
-            public string Url { get; set; }
-        }
+        public string Url { get; set; }
     }
 }
