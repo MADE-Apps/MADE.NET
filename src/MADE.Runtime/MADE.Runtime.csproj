@@ -1,7 +1,7 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Product>MADE.NET Runtime</Product>
     <Description>
       MADE.NET Runtime is a base library that builds on .NET to provide additional types and extensions that you might expect to find in the BCL, but might not exist, such as a WeakReferenceCallback.

@@ -9,7 +9,7 @@ namespace MADE.Data.Converters
     /// <summary>
     /// Defines a value converter from <see cref="DateTime"/> to <see cref="string"/> with an optional format string.
     /// </summary>
-    public partial class DateTimeToStringValueConverter : IValueConverter<DateTime, string>
+    public class DateTimeToStringValueConverter : IValueConverter<DateTime, string>
     {
         /// <summary>
         /// Converts the <paramref name="value">value</paramref> to the <see cref="string"/> type.

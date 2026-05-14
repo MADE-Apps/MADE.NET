@@ -1,7 +1,7 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Product>MADE.NET Data Validation for FluentValidation</Product>
     <Description>
       MADE.NET Data Validation for FluentValidation builds on the base FluentValidation library to provide an easy-to-use validator collection implementation that can chain together validators for a single value.

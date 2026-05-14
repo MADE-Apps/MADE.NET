@@ -9,9 +9,8 @@ namespace MADE.Data.Converters
     /// <summary>
     /// Defines a value converter from <see cref="bool"/> to <see cref="string"/> with a pre-determined <see cref="TrueValue"/> and <see cref="FalseValue"/>.
     /// </summary>
-    public partial class BooleanToStringValueConverter : IValueConverter<bool, string>
+    public class BooleanToStringValueConverter : IValueConverter<bool, string>
     {
-#if !WINDOWS_UWP
         /// <summary>
         /// Gets or sets the positive/true value.
         /// </summary>
@@ -21,7 +20,6 @@ namespace MADE.Data.Converters
         /// Gets or sets the negative/false value.
         /// </summary>
         public string FalseValue { get; set; }
-#endif
 
         /// <summary>
         /// Converts the <paramref name="value">value</paramref> to the <see cref="string"/> type.

@@ -1,7 +1,43 @@
 version: 2
 updates:
-- package-ecosystem: nuget
-  directory: "/"
-  schedule:
-    interval: daily
-  open-pull-requests-limit: 10
+  - package-ecosystem: nuget
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 10
+    commit-message:
+      prefix: "chore"
+      include: "scope"
+    groups:
+      testing:
+        patterns:
+          - "coverlet*"
+          - "Microsoft.NET.Test*"
+          - "NUnit*"
+          - "Shouldly"
+          - "Bogus"
+          - "Moq"
+      entity-framework:
+        patterns:
+          - "Microsoft.EntityFrameworkCore*"
+          - "Z.EntityFramework*"
+      aspnet:
+        patterns:
+          - "Asp.Versioning*"
+      analyzers:
+        patterns:
+          - "Microsoft.SourceLink*"
+      validation:
+        patterns:
+          - "FluentValidation*"
+
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"

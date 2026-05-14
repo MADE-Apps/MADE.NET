@@ -1,7 +1,7 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Product>MADE.NET Threading</Product>
     <Description>
       MADE.NET Threading provides helpers and extensions that help with application scenarios that care about threads.

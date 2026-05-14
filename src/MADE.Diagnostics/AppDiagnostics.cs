@@ -57,11 +57,7 @@ namespace MADE.Diagnostics
 
             this.EventLogger.WriteInfo("Application diagnostics initialized.");
 
-#if WINDOWS_UWP
-            Windows.UI.Xaml.Application.Current.UnhandledException += this.OnAppUnhandledException;
-#elif NETSTANDARD2_0
             AppDomain.CurrentDomain.UnhandledException += this.OnAppUnhandledException;
-#endif
             TaskScheduler.UnobservedTaskException += this.OnTaskUnobservedException;
 
             await Task.CompletedTask;
@@ -77,11 +73,7 @@ namespace MADE.Diagnostics
                 return;
             }
 
-#if WINDOWS_UWP
-            Windows.UI.Xaml.Application.Current.UnhandledException -= this.OnAppUnhandledException;
-#elif NETSTANDARD2_0
             AppDomain.CurrentDomain.UnhandledException -= this.OnAppUnhandledException;
-#endif
             TaskScheduler.UnobservedTaskException -= this.OnTaskUnobservedException;
 
             this.IsRecordingDiagnostics = false;
@@ -101,17 +93,6 @@ namespace MADE.Diagnostics
             this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, args.Exception));
         }
 
-#if WINDOWS_UWP
-        private void OnAppUnhandledException(object sender, Windows.UI.Xaml.UnhandledExceptionEventArgs args)
-        {
-            args.Handled = true;
-
-            this.EventLogger.WriteCritical(
-                args.Exception != null
-                    ? $"An unhandled exception was thrown. Error: {args.Exception}"
-                    : "An unhandled exception was thrown. Error: No exception information was available.");
-        }
-#elif NETSTANDARD2_0
         private void OnAppUnhandledException(object sender, UnhandledExceptionEventArgs args)
         {
             if (args.IsTerminating)
@@ -131,6 +112,5 @@ namespace MADE.Diagnostics
 
             this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, ex));
         }
-#endif
     }
 }

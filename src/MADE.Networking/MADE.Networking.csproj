@@ -1,7 +1,7 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Product>MADE.NET Networking</Product>
     <Description>
       MADE.NET Networking comes fully loaded with wrappers for easily executing network requests from applications, handling the responses, as well as providing extensions for common URI scenarios.
