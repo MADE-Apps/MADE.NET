@@ -97,7 +97,6 @@ public sealed class NetworkRequestManager : INetworkRequestManager
         {
             using var cts = new CancellationTokenSource();
             var requestTasks = new List<Task>();
-            var requestCallbacks = new List<NetworkRequestCallback>();
 
             while (this.CurrentQueue.Count > 0)
             {
@@ -105,13 +104,8 @@ public sealed class NetworkRequestManager : INetworkRequestManager
                         this.CurrentQueue.FirstOrDefault().Key,
                         out NetworkRequestCallback request))
                 {
-                    requestCallbacks.Add(request);
+                    requestTasks.Add(ExecuteRequestsAsync(this.CurrentQueue, request, cts.Token));
                 }
-            }
-
-            foreach (NetworkRequestCallback container in requestCallbacks)
-            {
-                requestTasks.Add(ExecuteRequestsAsync(this.CurrentQueue, container, cts.Token));
             }
 
             Task.WhenAll(requestTasks).GetAwaiter().GetResult();
