@@ -36,6 +36,7 @@ public class RetryDelegatingHandler : DelegatingHandler
     public RetryDelegatingHandler(int maxRetries = 3, TimeSpan? initialDelay = null)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(maxRetries);
+        ArgumentOutOfRangeException.ThrowIfNegative(initialDelay?.TotalMilliseconds ?? 0);
 
         this.InnerHandler = new HttpClientHandler();
         this.MaxRetries = maxRetries;
@@ -52,6 +53,7 @@ public class RetryDelegatingHandler : DelegatingHandler
         : base(innerHandler)
     {
         ArgumentOutOfRangeException.ThrowIfNegative(maxRetries);
+        ArgumentOutOfRangeException.ThrowIfNegative(initialDelay?.TotalMilliseconds ?? 0);
 
         this.MaxRetries = maxRetries;
         this.InitialDelay = initialDelay ?? TimeSpan.FromSeconds(1);

@@ -16,7 +16,7 @@ namespace MADE.Networking.Http;
 /// <summary>
 /// Defines a manager for executing queued network requests.
 /// </summary>
-public sealed class NetworkRequestManager : INetworkRequestManager
+public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
 {
     private readonly Timer processTimer;
 
