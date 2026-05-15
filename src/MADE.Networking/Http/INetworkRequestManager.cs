@@ -10,7 +10,7 @@ namespace MADE.Networking.Http;
 /// <summary>
 /// Defines an interface for a network request manager.
 /// </summary>
-public interface INetworkRequestManager
+public interface INetworkRequestManager : IDisposable
 {
     /// <summary>
     /// Gets the current queue of network requests.

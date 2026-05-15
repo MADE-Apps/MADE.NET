@@ -125,9 +125,13 @@ public static class StringExtensions
     public static async Task<MemoryStream> ToMemoryStreamAsync(this string value, CancellationToken cancellationToken = default)
     {
         var stream = new MemoryStream();
-        var writer = new StreamWriter(stream);
-        await writer.WriteAsync(value.AsMemory(), cancellationToken).ConfigureAwait(false);
-        await writer.FlushAsync(cancellationToken).ConfigureAwait(false);
+        var writer = new StreamWriter(stream, leaveOpen: true);
+        await using (writer.ConfigureAwait(false))
+        {
+            await writer.WriteAsync(value.AsMemory(), cancellationToken).ConfigureAwait(false);
+            await writer.FlushAsync(cancellationToken).ConfigureAwait(false);
+        }
+
         stream.Position = 0;
         return stream;
     }

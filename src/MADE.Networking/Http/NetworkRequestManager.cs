@@ -21,6 +21,7 @@ public sealed class NetworkRequestManager : INetworkRequestManager
     private readonly Timer processTimer;
 
     private bool isProcessingRequests;
+    private bool disposed;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="NetworkRequestManager"/> class.
@@ -65,6 +66,21 @@ public sealed class NetworkRequestManager : INetworkRequestManager
         this.processTimer.Stop();
     }
 
+    /// <inheritdoc />
+    public void Dispose()
+    {
+        if (this.disposed)
+        {
+            return;
+        }
+
+        this.processTimer.Tick -= this.OnProcessTimerTick;
+        this.processTimer.Stop();
+        this.processTimer.Dispose();
+        this.disposed = true;
+        GC.SuppressFinalize(this);
+    }
+
     /// <summary>
     /// Processes the current queue of network requests.
     /// </summary>
@@ -79,7 +95,7 @@ public sealed class NetworkRequestManager : INetworkRequestManager
 
         try
         {
-            var cts = new CancellationTokenSource();
+            using var cts = new CancellationTokenSource();
             var requestTasks = new List<Task>();
             var requestCallbacks = new List<NetworkRequestCallback>();
 
@@ -97,6 +113,8 @@ public sealed class NetworkRequestManager : INetworkRequestManager
             {
                 requestTasks.Add(ExecuteRequestsAsync(this.CurrentQueue, container, cts.Token));
             }
+
+            Task.WhenAll(requestTasks).GetAwaiter().GetResult();
         }
         finally
         {

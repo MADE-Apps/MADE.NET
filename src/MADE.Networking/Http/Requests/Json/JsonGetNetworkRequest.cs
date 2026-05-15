@@ -101,7 +101,7 @@ public sealed class JsonGetNetworkRequest : NetworkRequest
         }
 
         var uri = new Uri(this.Url);
-        var request = new HttpRequestMessage(HttpMethod.Get, uri);
+        using var request = new HttpRequestMessage(HttpMethod.Get, uri);
 
         if (this.Headers != null)
         {
@@ -111,10 +111,10 @@ public sealed class JsonGetNetworkRequest : NetworkRequest
             }
         }
 
-        HttpResponseMessage response = await this.client.SendAsync(
-                                           request,
-                                           HttpCompletionOption.ResponseHeadersRead,
-                                           cancellationToken).ConfigureAwait(false);
+        using HttpResponseMessage response = await this.client.SendAsync(
+                                                 request,
+                                                 HttpCompletionOption.ResponseHeadersRead,
+                                                 cancellationToken).ConfigureAwait(false);
 
         response.EnsureSuccessStatusCode();
 

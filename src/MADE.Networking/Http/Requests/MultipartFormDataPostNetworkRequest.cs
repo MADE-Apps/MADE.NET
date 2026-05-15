@@ -120,7 +120,7 @@ public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
         }
 
         var uri = new Uri(this.Url);
-        var request = new HttpRequestMessage(HttpMethod.Post, uri) { Content = this.Content };
+        using var request = new HttpRequestMessage(HttpMethod.Post, uri) { Content = this.Content };
 
         if (this.Headers != null)
         {
@@ -130,7 +130,7 @@ public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
             }
         }
 
-        HttpResponseMessage response = await this.client.SendAsync(request, cancellationToken).ConfigureAwait(false);
+        using HttpResponseMessage response = await this.client.SendAsync(request, cancellationToken).ConfigureAwait(false);
         response.EnsureSuccessStatusCode();
 
         return await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
