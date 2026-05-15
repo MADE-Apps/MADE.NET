@@ -1,9 +1,7 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using MADE.Networking.Http.Requests.Json;
 using System.Text.Json.Nodes;
+using MADE.Networking.Http.Requests.Json;
 using NUnit.Framework;
 using Shouldly;
 
@@ -35,14 +33,11 @@ public class JsonDeleteNetworkRequestTests
         }
 
         [Test]
-        public async Task ShouldReturnErrorFromGetEndpoint()
+        public async Task ShouldThrowWhenMethodNotAllowed()
         {
             // Arrange
-            const string query = "test";
-            const bool queryValue = true;
-
-            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-            var request = new JsonDeleteNetworkRequest(new HttpClient(), requestUrl);
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.MethodNotAllowed);
+            var request = new JsonDeleteNetworkRequest(new HttpClient(mockHandler), "http://localhost/get");
 
             // Act
             var exception = await request.ExecuteAsync<RequestResponse>().ShouldThrowAsync<HttpRequestException>();

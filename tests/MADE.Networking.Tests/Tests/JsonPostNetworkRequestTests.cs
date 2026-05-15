@@ -1,10 +1,8 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
-using MADE.Networking.Http.Requests.Json;
 using System.Text.Json;
 using System.Text.Json.Nodes;
+using MADE.Networking.Http.Requests.Json;
 using NUnit.Framework;
 using Shouldly;
 
@@ -43,16 +41,14 @@ public class JsonPostNetworkRequestTests
         }
 
         [Test]
-        public async Task ShouldReturnErrorFromGetEndpoint()
+        public async Task ShouldThrowWhenMethodNotAllowed()
         {
             // Arrange
-            var requestData = new RequestData { Key = "test", Enabled = true };
-
-            const string requestUrl = "https://httpbin.org/get";
-            var request = new JsonPatchNetworkRequest(
-                new HttpClient(),
-                requestUrl,
-                JsonSerializer.Serialize(requestData));
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.MethodNotAllowed);
+            var request = new JsonPostNetworkRequest(
+                new HttpClient(mockHandler),
+                "http://localhost/get",
+                JsonSerializer.Serialize(new RequestData { Key = "test" }));
 
             // Act
             var exception = await request.ExecuteAsync<RequestResponse>().ShouldThrowAsync<HttpRequestException>();
