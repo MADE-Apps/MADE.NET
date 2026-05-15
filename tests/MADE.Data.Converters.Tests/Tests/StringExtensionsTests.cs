@@ -1,189 +1,205 @@
-namespace MADE.Data.Converters.Tests.Tests
+using System.Diagnostics.CodeAnalysis;
+using MADE.Data.Converters.Extensions;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Data.Converters.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class StringExtensionsTests
 {
-    using System.Diagnostics.CodeAnalysis;
-    using MADE.Data.Converters.Extensions;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class StringExtensionsTests
+    public class WhenTruncatingStrings
     {
-        public class WhenTruncatingStrings
+        [Test]
+        public void ShouldReturnTruncatedIfGreaterThanMaxLength()
         {
-            [Test]
-            public void ShouldReturnTruncatedIfGreaterThanMaxLength()
-            {
-                // Arrange
-                const string input = "Hello, World!";
-                const int maxLength = 8;
+            // Arrange
+            const string input = "Hello, World!";
+            const int maxLength = 8;
 
-                // Act
-                var result = input.Truncate(maxLength);
+            // Act
+            var result = input.Truncate(maxLength);
 
-                // Assert
-                result.ShouldBe("Hello...");
-            }
-
-            [Test]
-            public void ShouldReturnOriginalIfLessThanMaxLength()
-            {
-                // Arrange
-                const string input = "Hello, World!";
-                int maxLength = input.Length;
-
-                // Act
-                var result = input.Truncate(maxLength);
-
-                // Assert
-                result.ShouldBe(input);
-            }
+            // Assert
+            result.ShouldBe("Hello...");
         }
 
-        public class WhenConvertingToTitleCase
+        [Test]
+        public void ShouldReturnOriginalIfLessThanMaxLength()
         {
-            [TestCase("", "")]
-            [TestCase("HELLO, WORLD", "Hello, World")]
-            [TestCase("HeLlO, WoRlD", "Hello, World")]
-            [TestCase("hello, world", "Hello, World")]
-            public void ShouldConvert(string value, string expected)
-            {
-                // Act
-                string actual = value.ToTitleCase();
+            // Arrange
+            const string input = "Hello, World!";
+            int maxLength = input.Length;
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Act
+            var result = input.Truncate(maxLength);
+
+            // Assert
+            result.ShouldBe(input);
         }
+    }
 
-        public class WhenConvertingToDefaultCase
+    public class WhenConvertingToTitleCase
+    {
+        [TestCase("", "")]
+        [TestCase("HELLO, WORLD", "Hello, World")]
+        [TestCase("HeLlO, WoRlD", "Hello, World")]
+        [TestCase("hello, world", "Hello, World")]
+        public void ShouldConvert(string value, string expected)
         {
-            [TestCase("", "")]
-            [TestCase("HELLO, WORLD", "Hello, world")]
-            [TestCase("HeLlO, WoRlD", "Hello, world")]
-            [TestCase("hello, world", "Hello, world")]
-            public void ShouldConvert(string value, string expected)
-            {
-                // Act
-                string actual = value.ToDefaultCase();
+            // Act
+            string actual = value.ToTitleCase();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
         }
+    }
 
-        public class WhenConvertingToInt
+    public class WhenConvertingToDefaultCase
+    {
+        [TestCase("", "")]
+        [TestCase("HELLO, WORLD", "Hello, world")]
+        [TestCase("HeLlO, WoRlD", "Hello, world")]
+        [TestCase("hello, world", "Hello, world")]
+        public void ShouldConvert(string value, string expected)
         {
-            [TestCase(null, 0)]
-            [TestCase("", 0)]
-            [TestCase("10", 10)]
-            [TestCase("-10", -10)]
-            public void ShouldConvert(string value, int expected)
-            {
-                // Act
-                int actual = value.ToInt();
+            // Act
+            string actual = value.ToDefaultCase();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
         }
+    }
 
-        public class WhenConvertingToNullableInt
+    public class WhenConvertingToInt
+    {
+        [TestCase(null, 0)]
+        [TestCase("", 0)]
+        [TestCase("10", 10)]
+        [TestCase("-10", -10)]
+        public void ShouldConvert(string value, int expected)
         {
-            [TestCase(null, null)]
-            [TestCase("", null)]
-            [TestCase("10", 10)]
-            [TestCase("-10", -10)]
-            public void ShouldConvert(string value, int? expected)
-            {
-                // Act
-                int? actual = value.ToNullableInt();
+            // Act
+            int actual = value.ToInt();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
         }
+    }
 
-        public class WhenConvertingToBoolean
+    public class WhenConvertingToNullableInt
+    {
+        [TestCase(null, null)]
+        [TestCase("", null)]
+        [TestCase("10", 10)]
+        [TestCase("-10", -10)]
+        public void ShouldConvert(string value, int? expected)
         {
-            [TestCase(null, false)]
-            [TestCase("", false)]
-            [TestCase("True", true)]
-            [TestCase("False", false)]
-            [TestCase("true", true)]
-            [TestCase("false", false)]
-            public void ShouldConvert(string value, bool expected)
-            {
-                // Act
-                bool actual = value.ToBoolean();
+            // Act
+            int? actual = value.ToNullableInt();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
         }
+    }
 
-        public class WhenConvertingToFloat
+    public class WhenConvertingToBoolean
+    {
+        [TestCase(null, false)]
+        [TestCase("", false)]
+        [TestCase("True", true)]
+        [TestCase("False", false)]
+        [TestCase("true", true)]
+        [TestCase("false", false)]
+        public void ShouldConvert(string value, bool expected)
         {
-            [TestCase(null, 0f)]
-            [TestCase("", 0f)]
-            [TestCase("10.5", 10.5f)]
-            [TestCase("-10.5", -10.5f)]
-            public void ShouldConvert(string value, float expected)
-            {
-                // Act
-                float actual = value.ToFloat();
+            // Act
+            bool actual = value.ToBoolean();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
         }
+    }
 
-        public class WhenConvertingToNullableFloat
+    public class WhenConvertingToFloat
+    {
+        [TestCase(null, 0f)]
+        [TestCase("", 0f)]
+        [TestCase("10.5", 10.5f)]
+        [TestCase("-10.5", -10.5f)]
+        public void ShouldConvert(string value, float expected)
         {
-            [TestCase(null, null)]
-            [TestCase("", null)]
-            [TestCase("10.5", 10.5f)]
-            [TestCase("-10.5", -10.5f)]
-            public void ShouldConvert(string value, float? expected)
-            {
-                // Act
-                float? actual = value.ToNullableFloat();
+            // Act
+            float actual = value.ToFloat();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
         }
+    }
 
-        public class WhenConvertingToDouble
+    public class WhenConvertingToNullableFloat
+    {
+        [TestCase(null, null)]
+        [TestCase("", null)]
+        [TestCase("10.5", 10.5f)]
+        [TestCase("-10.5", -10.5f)]
+        public void ShouldConvert(string value, float? expected)
         {
-            [TestCase(null, 0d)]
-            [TestCase("", 0d)]
-            [TestCase("10.5", 10.5d)]
-            [TestCase("-10.5", -10.5d)]
-            public void ShouldConvert(string value, double expected)
-            {
-                // Act
-                double actual = value.ToDouble();
+            // Act
+            float? actual = value.ToNullableFloat();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
         }
+    }
 
-        public class WhenConvertingToNullableDouble
+    public class WhenConvertingToDouble
+    {
+        [TestCase(null, 0d)]
+        [TestCase("", 0d)]
+        [TestCase("10.5", 10.5d)]
+        [TestCase("-10.5", -10.5d)]
+        public void ShouldConvert(string value, double expected)
         {
-            [TestCase(null, null)]
-            [TestCase("", null)]
-            [TestCase("10.5", 10.5d)]
-            [TestCase("-10.5", -10.5d)]
-            public void ShouldConvert(string value, double? expected)
-            {
-                // Act
-                double? actual = value.ToNullableDouble();
+            // Act
+            double actual = value.ToDouble();
 
-                // Assert
-                actual.ShouldBe(expected);
-            }
+            // Assert
+            actual.ShouldBe(expected);
+        }
+    }
+
+    public class WhenConvertingToNullableDouble
+    {
+        [TestCase(null, null)]
+        [TestCase("", null)]
+        [TestCase("10.5", 10.5d)]
+        [TestCase("-10.5", -10.5d)]
+        public void ShouldConvert(string value, double? expected)
+        {
+            // Act
+            double? actual = value.ToNullableDouble();
+
+            // Assert
+            actual.ShouldBe(expected);
+        }
+    }
+
+    public class WhenConvertingToSlug
+    {
+        [TestCase("Hello World", "hello-world")]
+        [TestCase("Hello, World!", "hello-world")]
+        [TestCase("  Multiple   Spaces  ", "multiple-spaces")]
+        [TestCase("Caf\u00e9 Latt\u00e9", "cafe-latte")]
+        [TestCase("C# is GREAT!", "c-is-great")]
+        [TestCase("already-a-slug", "already-a-slug")]
+        [TestCase("", "")]
+        [TestCase("   ", "")]
+        public void ShouldConvert(string value, string expected)
+        {
+            string actual = value.ToSlug();
+            actual.ShouldBe(expected);
         }
     }
 }

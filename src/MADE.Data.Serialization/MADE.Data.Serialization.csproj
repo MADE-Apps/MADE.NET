@@ -1,16 +1,12 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Product>MADE.NET Data Serialization</Product>
     <Description>
       MADE.NET Data Serialization provides out-of-the-box serialization helpers and extensions for ensuring data quality when serializing to and from different formats such as JSON and XML.
     </Description>
     <PackageTags>MADE Data Serialization Extensions JSON XML</PackageTags>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
 
 </Project>

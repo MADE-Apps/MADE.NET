@@ -11,7 +11,7 @@ Whether you're building an ASP.NET Core Web API or a native UI application with 
 
 MADE.NET has been built on common code from projects built by the MADE team, and is now a home for all those bits of code that you know you will reuse in another project!
 
-Most packages support the `netstandard2.0` target framework, with some packages opting to support platform specific frameworks such as .NET 6/7/8 and UWP.
+All packages target `net8.0` and `net10.0`.
 
 ## Installation
 
@@ -48,7 +48,9 @@ It includes features such as:
 
 - GenericEqualityComparer, a `IEqualityComparer` implementation for comparing two objects using a simple comparison function.
 - ObservableItemCollection, a `ObservableCollection` implementation that takes a `INotifyPropertyChanged` item type which manages and surfaces up property changed events.
-- CollectionExtensions, a collection of extensions for enumerable objects including `Update` (to update an existing item), `MakeEqualTo` (to update a collection's items to be equal to another), and `AreEquivalent` (to compare two collections contain the same items ignoring order).
+- CollectionExtensions, a collection of extensions for enumerable objects including `Update` (to update an existing item), `MakeEqualTo` (to update a collection's items to be equal to another), `AreEquivalent` (to compare two collections contain the same items ignoring order), `AddIf`/`RemoveIf` (conditional add/remove), `Shuffle`, `Sort`/`SortDescending` for `ObservableCollection`, and `IsNullOrEmpty`.
+- DictionaryExtensions, providing `AddOrUpdate` and `GetValueOrDefault` for dictionaries.
+- QueryableExtensions, providing `Chunk` for splitting `IQueryable` sources into smaller queries.
 
 <span class="button">
 
@@ -62,10 +64,17 @@ The Data Converters package provides a collection of value converters and extens
 
 It includes features such as:
 
+- BooleanToStringValueConverter, a value converter for converting `bool` values to configurable `String` representations, with the capability to convert back.
 - DateTimeToStringValueConverter, a value converter that takes a `DateTime` string format parameter to convert a `DateTime` value to a `String`, with the capability to convert back.
-- DateTimeExtensions, a collection of useful extensions for interacting with `DateTime` values including `ToCurrentAge` (to get an age in years based on a given date from today) and `SetTime` (to override the time part of a `DateTime` value).
-- MathExtensions, a collection of extensions for common mathematic expressions including `ToRadians` (to convert a degrees value to radians).
-- StringExtensions, a collection of extensions for manipulating `String` values such as `ToTitleCase`, `ToDefaultCase`, `ToInt`, `ToBoolean`, `ToFloat`, and `ToDouble`.
+- StringToEnumValueConverter, a generic value converter for converting between `String` and any `Enum` type with case-insensitive matching.
+- DateTimeToUnixTimestampValueConverter, a value converter between `DateTime` and Unix timestamps.
+- DateTimeExtensions, a collection of useful extensions for interacting with `DateTime` values including `ToCurrentAge`, `StartOfDay`/`EndOfDay`, `StartOfWeek`/`EndOfWeek`, `StartOfMonth`/`EndOfMonth`, `StartOfYear`/`EndOfYear`, and `ToNearestHour`.
+- TimeSpanExtensions, providing `ToHumanReadableString` and `TotalWeeks`.
+- MathExtensions, providing `ToRadians` and `ToDegrees` for angle conversions.
+- StringExtensions, a collection of extensions for manipulating `String` values such as `ToTitleCase`, `ToDefaultCase`, `Truncate`, `ToBase64`, `FromBase64`, `ToSlug`, `ToInt`, `ToBoolean`, `ToFloat`, and `ToDouble`.
+- LengthExtensions, for converting between miles, meters, kilometers, feet, and inches.
+- FileSizeExtensions, for converting byte counts to human-readable file size strings.
+- BooleanExtensions, for formatting `bool` values to custom string representations with `ToFormattedString`.
 
 <span class="button">
 
@@ -79,9 +88,14 @@ The Data Entity Framework Core package provides a collection of helpers, extensi
 
 It includes features such as:
 
-- DbContextExtensions, for additional helpers to EF data contexts such as asynchronous update & save.
-- EntityBase, for providing a base definition for entities including a GUID identifier, created, and updated dates.
+- IEntityBase, interfaces for defining entities with a typed identifier and date tracking.
+- EntityBase, providing a base definition for entities including a typed identifier, created, and updated dates.
+- DbContextExtensions, for additional helpers to EF data contexts such as asynchronous update and save, and automatic entity date management.
+- EntityBaseExtensions, for configuring entity types with EF Core model builders including UTC date property configuration.
+- QueryableExtensions, for pagination and dynamic ordering of queries.
 - UtcDateTimeConverter, to help with the storing of entity model dates in a UTC format.
+- ISoftDeletable, for adding soft-delete support to entities with automatic query filtering and deletion interception.
+- IAuditableEntity, for tracking who created and last updated entities with automatic audit info management.
 
 <span class="button">
 
@@ -95,7 +109,7 @@ The Data Serialization package provides a collection of helpers and extensions f
 
 It includes features such as:
 
-- JsonTypeMigrationSerializationBinder, for migrating type names within a serialized JSON object.
+- JsonTypeMigrationConverter, a `System.Text.Json` converter for migrating type names within a serialized JSON object that contains `$type` metadata.
 
 <span class="button">
 
@@ -116,8 +130,11 @@ It provides easy-to-use validation helpers such as:
 - IpAddressValidator, for validating whether a value is a valid IP address.
 - MaxValueValidator, for validating whether a value is below a maximum value.
 - MinValueValidator, for validating whether a value is above a minimum value.
+- MinLengthValidator, for validating whether a string meets a minimum length requirement.
+- MaxLengthValidator, for validating whether a string is within a maximum length limit.
 - RegexValidator, for validating a value based on a specified regular expression.
 - RequiredValidator, for validating a value is not null, false, whitespace, or empty.
+- WellFormedUrlValidator, for validating a value is a well-formed URL.
 
 <span class="button">
 
@@ -147,6 +164,7 @@ The Networking package contains a collection of helpers for applications that us
 
 It includes features such as:
 
+- INetworkRequestFactory, a DI-friendly factory for creating network requests without manual HttpClient management. Register with `services.AddNetworkRequestFactory()`.
 - NetworkRequestManager, for managing a queue of HTTP network requests with success and error callbacks.
 - JsonGetNetworkRequest, for making a HTTP GET request with a JSON response, deserializing to a specified type.
 - JsonPostNetworkRequest, for making a HTTP POST request with a JSON payload, and a JSON response.
@@ -154,6 +172,8 @@ It includes features such as:
 - JsonPatchNetworkRequest, for making a HTTP PATCH request with a JSON payload, and a JSON response.
 - JsonDeleteNetworkRequest, for making a HTTP DELETE request with a JSON response.
 - StreamGetNetworkRequest, for making a HTTP GET request with a data stream response.
+- MultipartFormDataPostNetworkRequest, for making a HTTP POST request with multipart form data content including file uploads.
+- RetryDelegatingHandler, a delegating handler for adding automatic retry with exponential backoff to HttpClient instances.
 
 <span class="button">
 
@@ -181,7 +201,12 @@ The Testing package is an extension library for assertions in unit testing proje
 
 It provides additional assertions such as:
 
-- CollectionAssertExtensions, a collection of extensions for asserting enumerable objects including `ShouldBeEquivalentTo` (comparing two collections to ensure they contain the same items ignoring order), and `ShouldNotBeEquivalentTo` (comparing two collection to ensure they do not contain the same items ignoring order).
+- CollectionAssertExtensions, a collection of extensions for asserting enumerable objects including `ShouldBeEquivalentTo` and `ShouldNotBeEquivalentTo`.
+- ObjectAssertExtensions, providing `ShouldBeNull` and `ShouldNotBeNull` assertions.
+- BooleanAssertExtensions, providing `ShouldBeTrue` and `ShouldBeFalse` assertions.
+- ComparableAssertExtensions, providing `ShouldBeGreaterThan`, `ShouldBeLessThan`, and related comparison assertions.
+- StringAssertExtensions, providing `ShouldContain`, `ShouldNotContain`, `ShouldStartWith`, and `ShouldEndWith` assertions.
+- ExceptionAssertExtensions, providing `ShouldThrow` and `ShouldNotThrow` assertions with async variants.
 
 <span class="button">
 
@@ -196,6 +221,9 @@ The Threading package contains a collection of `System.Threading` extensions and
 It includes features such as:
 
 - Timer, a modern take on `System.Threading.Timer` providing properties for configuring the `Interval` and `DueTime`, plus an event handler for `Tick`. It includes simple methods to `Start` and `Stop` the timer running.
+- AsyncLazy, a provider for lazy asynchronous initialization of a value.
+- Debouncer, for delaying execution until a period of inactivity has elapsed, useful for search-as-you-type scenarios.
+- Throttler, for limiting execution to at most once per time interval.
 
 <span class="button">
 
@@ -212,6 +240,8 @@ This includes features such as:
 - PaginatedRequest, a simple request object that provides the expected return type, with properties for the current `Page`, the `PageSize`, and the number of items to `Skip` and `Take`.
 - PaginatedResponse, a complementary response return type for the `PaginatedRequest`, with properties including the `Items` collection, the current `Page` and `PageSize`, plus the `AvailableCount` of requestable items, and the `TotalPages` based on the available count and page size requested.
 - HttpContextExceptionsMiddleware, a middleware that manages the handling of exceptions thrown within a `HttpContext` to serve up meaningful exception details to the requesting client using exception handlers.
+- AuthenticatedUser, a model for extracting claims-based identity information such as Subject, Email, and Roles from a `ClaimsPrincipal`.
+- ApiVersioningExtensions, for adding API versioning support to ASP.NET Core applications using URL or header-based versioning.
 
 <span class="button">
 
@@ -226,6 +256,9 @@ The Web MVC library is a complementary extension package to ASP.NET Core MVC app
 Included in this package is:
 
 - InternalServerErrorObjectResult, an `ObjectResult` type that returns an Internal Server Error (500) with the optional `ModelStateDictionary` of validation errors.
+- JsonResult, a custom `ActionResult` that serializes a value as JSON with a configurable HTTP status code.
+- ForbiddenObjectResult, an `ObjectResult` type that returns a Forbidden (403) response.
+- ControllerBaseExtensions, providing `Json`, `InternalServerError`, and `Forbidden` helper methods for controller actions.
 
 <span class="button">
 

@@ -1,62 +1,56 @@
-namespace MADE.Networking.Tests.Tests
+using System.Diagnostics.CodeAnalysis;
+using System.Net;
+using System.Text.Json.Nodes;
+using MADE.Networking.Http.Requests.Json;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Networking.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class JsonGetNetworkRequestTests
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Net;
-    using System.Net.Http;
-    using System.Threading.Tasks;
-    using MADE.Networking.Http.Requests.Json;
-    using Newtonsoft.Json.Linq;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class JsonGetNetworkRequestTests
+    public class WhenExecutingRequest
     {
-        public class WhenExecutingRequest
+        [Test]
+        public async Task ShouldReturnSuccessFromGetEndpointWithResponse()
         {
-            [Test]
-            public async Task ShouldReturnSuccessFromGetEndpointWithResponse()
-            {
-                // Arrange
-                const string query = "test";
-                const bool queryValue = true;
+            // Arrange
+            const string query = "test";
+            const bool queryValue = true;
 
-                var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+            var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
+            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
 
-                // Act
-                var response = await request.ExecuteAsync<RequestResponse>();
+            // Act
+            var response = await request.ExecuteAsync<RequestResponse>();
 
-                // Assert
-                response.ShouldNotBeNull();
-                response.Url.ShouldBe(requestUrl);
-                response.Args.Value<bool>(query).ShouldBe(queryValue);
-            }
-
-            [Test]
-            public async Task ShouldReturnErrorFromDeleteEndpoint()
-            {
-                // Arrange
-                const string query = "test";
-                const bool queryValue = true;
-
-                var requestUrl = $"https://httpbin.org/delete?{query}={queryValue}";
-                var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
-
-                // Act
-                var exception = await request.ExecuteAsync<RequestResponse>().ShouldThrowAsync<HttpRequestException>();
-
-                // Assert
-                exception.StatusCode.ShouldBe(HttpStatusCode.MethodNotAllowed);
-            }
+            // Assert
+            response.ShouldNotBeNull();
+            response.Url.ShouldBe(requestUrl);
+            bool.Parse(response.Args[query].ToString()).ShouldBe(queryValue);
         }
 
-        public class RequestResponse
+        [Test]
+        public async Task ShouldThrowWhenMethodNotAllowed()
         {
-            public JObject Args { get; set; }
+            // Arrange
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.MethodNotAllowed);
+            var request = new JsonGetNetworkRequest(new HttpClient(mockHandler), "http://localhost/delete");
 
-            public string Url { get; set; }
+            // Act
+            var exception = await request.ExecuteAsync<RequestResponse>().ShouldThrowAsync<HttpRequestException>();
+
+            // Assert
+            exception.StatusCode.ShouldBe(HttpStatusCode.MethodNotAllowed);
         }
+    }
+
+    public class RequestResponse
+    {
+        public JsonObject Args { get; set; }
+
+        public string Url { get; set; }
     }
 }

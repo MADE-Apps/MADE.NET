@@ -1,94 +1,92 @@
-namespace MADE.Data.Converters.Tests.Tests
+using System.Diagnostics.CodeAnalysis;
+using MADE.Data.Converters.Exceptions;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Data.Converters.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class BooleanToStringValueConverterTests
 {
-    using System.Diagnostics.CodeAnalysis;
-    using MADE.Data.Converters.Exceptions;
-    using NUnit.Framework;
-
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class BooleanToStringValueConverterTests
+    public class WhenConverting
     {
-        public class WhenConverting
+        [Test]
+        public void ShouldConvertToTrueValueWhenTrue()
         {
-            [Test]
-            public void ShouldConvertToTrueValueWhenTrue()
-            {
-                // Arrange
-                const bool boolean = true;
-                const string expected = "Yes";
+            // Arrange
+            const bool boolean = true;
+            const string expected = "Yes";
 
-                var converter = new BooleanToStringValueConverter {TrueValue = expected, FalseValue = "No"};
+            var converter = new BooleanToStringValueConverter {TrueValue = expected, FalseValue = "No"};
 
-                // Act
-                string converted = converter.Convert(boolean);
+            // Act
+            string converted = converter.Convert(boolean);
 
-                // Assert
-                converted.ShouldBe(expected);
-            }
-
-            [Test]
-            public void ShouldConvertToFalseValueWhenFalse()
-            {
-                const bool boolean = false;
-                const string expected = "No";
-
-                var converter = new BooleanToStringValueConverter {TrueValue = "Yes", FalseValue = expected};
-
-                // Act
-                string converted = converter.Convert(boolean);
-
-                // Assert
-                converted.ShouldBe(expected);
-            }
+            // Assert
+            converted.ShouldBe(expected);
         }
 
-        public class WhenConvertingBack
+        [Test]
+        public void ShouldConvertToFalseValueWhenFalse()
         {
-            [Test]
-            public void ShouldConvertToTrueWhenTrueValue()
-            {
-                // Arrange
-                const string booleanString = "Yes";
-                const bool expected = true;
+            const bool boolean = false;
+            const string expected = "No";
 
-                var converter = new BooleanToStringValueConverter {TrueValue = booleanString, FalseValue = "No"};
+            var converter = new BooleanToStringValueConverter {TrueValue = "Yes", FalseValue = expected};
 
-                // Act
-                bool converted = converter.ConvertBack(booleanString);
+            // Act
+            string converted = converter.Convert(boolean);
 
-                // Assert
-                converted.ShouldBe(expected);
-            }
+            // Assert
+            converted.ShouldBe(expected);
+        }
+    }
 
-            [Test]
-            public void ShouldConvertToFalseWhenFalseValue()
-            {
-                // Arrange
-                const string booleanString = "No";
-                const bool expected = false;
+    public class WhenConvertingBack
+    {
+        [Test]
+        public void ShouldConvertToTrueWhenTrueValue()
+        {
+            // Arrange
+            const string booleanString = "Yes";
+            const bool expected = true;
 
-                var converter = new BooleanToStringValueConverter {TrueValue = "Yes", FalseValue = booleanString};
+            var converter = new BooleanToStringValueConverter {TrueValue = booleanString, FalseValue = "No"};
 
-                // Act
-                bool converted = converter.ConvertBack(booleanString);
+            // Act
+            bool converted = converter.ConvertBack(booleanString);
 
-                // Assert
-                converted.ShouldBe(expected);
-            }
+            // Assert
+            converted.ShouldBe(expected);
+        }
 
-            [Test]
-            public void ShouldThrowInvalidDataConversionExceptionIfNotTrueOrFalseValue()
-            {
-                // Arrange
-                const string booleanString = "Not valid";
+        [Test]
+        public void ShouldConvertToFalseWhenFalseValue()
+        {
+            // Arrange
+            const string booleanString = "No";
+            const bool expected = false;
 
-                var converter = new BooleanToStringValueConverter {TrueValue = "Yes", FalseValue = "No"};
+            var converter = new BooleanToStringValueConverter {TrueValue = "Yes", FalseValue = booleanString};
 
-                // Act & Assert
-                Should.Throw<InvalidDataConversionException>(() => converter.ConvertBack(booleanString));
-            }
+            // Act
+            bool converted = converter.ConvertBack(booleanString);
+
+            // Assert
+            converted.ShouldBe(expected);
+        }
+
+        [Test]
+        public void ShouldThrowInvalidDataConversionExceptionIfNotTrueOrFalseValue()
+        {
+            // Arrange
+            const string booleanString = "Not valid";
+
+            var converter = new BooleanToStringValueConverter {TrueValue = "Yes", FalseValue = "No"};
+
+            // Act & Assert
+            Should.Throw<InvalidDataConversionException>(() => converter.ConvertBack(booleanString));
         }
     }
 }

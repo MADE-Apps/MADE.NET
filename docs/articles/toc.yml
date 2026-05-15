@@ -14,8 +14,6 @@
       href: features/data-validation.md
     - name: Diagnostics
       href: features/diagnostics.md
-    - name: Media Image
-      href: features/media-image.md
     - name: Networking
       href: features/networking.md
     - name: Runtime

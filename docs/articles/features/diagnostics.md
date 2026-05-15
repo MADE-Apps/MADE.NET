@@ -17,8 +17,6 @@ The `LogFileNameFormat` has a `DateTime` parameter that can used to ensure logs 
 
 By default, the logs are stored in the application's root directory, however, this can also be overridden completely using the `LogPath` property which requires a full directory path including log file name.
 
-The implementation also has platform-specific code, so if you're building applications for Windows, Android, or iOS, the `FileEventLogger` will ensure the logs are stored within the application's data store.
-
 Here's an example of the output using the default configuration.
 
 ```log
@@ -53,11 +51,7 @@ There are occasions when you want to build an application that will not crash wh
 
 The `MADE.Diagnostics.AppDiagnostics` helper provides you with the means to ensure your users can keep using your application with no worry about minor issues causing crashes.
 
-Taking advantage of the `IEventLogger` interface available in the Diagnostics package, the `AppDiagnostics` helper can track exceptions thrown by the `AppDomain.UnhandledException`, `TaskScheduler.UnobservedTaskException`, `Windows.UI.Xaml.Application.UnhandledException`, `Android.Runtime.UnhandledExceptionRaiser`, and `Java.Lang.Thread.DefaultUncaughtException` handlers, depending on your platform usage.
-
-In the unfortunate event that an exception thrown is application terminating, the `AppDiagnostics` helper will ensure that the error is logged before closing the application.
-
-Logs will be created for each handle of an unhandled exception from one or more of these handlers at the **Critical** level with a custom message which also includes a correlation ID. 
+Taking advantage of the `IEventLogger` interface available in the Diagnostics package, the `AppDiagnostics` helper can track exceptions thrown by the `AppDomain.UnhandledException` and `TaskScheduler.UnobservedTaskException` handlers, logging them at the **Critical** level with a correlation ID.
 
 ### Observing the unhandled exceptions
 

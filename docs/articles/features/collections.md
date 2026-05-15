@@ -158,3 +158,81 @@ public async Task ProcessMessagesAsync(IEnumerable<Message> messages, Cancellati
     }
 }
 ```
+
+There is also a `Chunk` extension for `IQueryable<T>` in the `MADE.Collections.QueryableExtensions` class, which splits a query into smaller queries for batch processing.
+
+## Conditionally adding or removing items with AddIf and RemoveIf
+
+The `AddIf` and `RemoveIf` extensions on `IList<T>` allow you to add or remove an item based on a condition function.
+
+```csharp
+public void AddPermissionIfAdmin(IList<Permission> permissions, Permission permission, bool isAdmin)
+{
+    permissions.AddIf(permission, () => isAdmin);
+}
+```
+
+Similarly, `AddRangeIf` and `RemoveRangeIf` extensions allow you to conditionally add or remove a collection of items.
+
+## Inserting items at a sorted position with InsertAtPotentialIndex
+
+The `InsertAtPotentialIndex` extension on `IList<T>` inserts an item at the position determined by a predicate, useful for maintaining sorted collections.
+
+```csharp
+public void InsertSorted(IList<int> sortedList, int value)
+{
+    sortedList.InsertAtPotentialIndex(value, (newItem, existingItem) => newItem > existingItem);
+}
+```
+
+The companion `PotentialIndexOf` extension returns the index without inserting, if you need to determine the position first.
+
+## Shuffling a collection with the Shuffle extension
+
+The `Shuffle` extension randomly reorders the elements of an `IEnumerable<T>`.
+
+```csharp
+var shuffled = myItems.Shuffle();
+```
+
+## Sorting an ObservableCollection with Sort and SortDescending
+
+`ObservableCollection<T>` objects don't have built-in sorting. The `Sort` and `SortDescending` extensions allow you to sort in place while correctly raising collection changed events.
+
+```csharp
+myObservableCollection.Sort(item => item.Name);
+myObservableCollection.SortDescending(item => item.Date);
+```
+
+## Checking if a collection is null or empty with IsNullOrEmpty
+
+The `IsNullOrEmpty` extension on `IEnumerable<T>` provides a quick check for whether a collection is null or contains no items.
+
+```csharp
+if (myItems.IsNullOrEmpty())
+{
+    // No items to process
+}
+```
+
+## Working with dictionaries using DictionaryExtensions
+
+The `MADE.Collections.DictionaryExtensions` class provides extensions for `Dictionary<TKey, TValue>`.
+
+### AddOrUpdate
+
+Adds a value to the dictionary, or updates it if the key already exists.
+
+```csharp
+var settings = new Dictionary<string, string>();
+settings.AddOrUpdate("Theme", "Dark");
+settings.AddOrUpdate("Theme", "Light"); // Updates existing key
+```
+
+### GetValueOrDefault
+
+Gets a value from a dictionary by key, or returns a default value if the key does not exist.
+
+```csharp
+var theme = settings.GetValueOrDefault("Theme", "Light");
+```

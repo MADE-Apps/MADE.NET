@@ -7,37 +7,54 @@ title: Using the Data Serialization package
 
 The Data Serialization package provides a collection of helpers and extensions for data serialization in different types, e.g. JSON.
 
-## Handling type changes in JSON objects serialized with JSON.NET with TypeNameHandling set to All
+## Handling type changes in JSON objects with JsonTypeMigrationConverter
 
-There are many ways to use JSON.NET in your applications to serialize and deserialize data. This includes the ability to set the `TypeNameHandling` property to `All` include your .NET type information within your serialized data.
+When working with serialized JSON data that includes .NET type information (e.g., a `$type` metadata property), type refactoring or restructuring in your codebase can cause deserialization to fail.
 
-This can come with challenges when you want to use the same data in different solutions, or when you want to perform refactors or data restructures in your codebase.
+The `MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter` is a `System.Text.Json` converter that reads `$type` metadata from JSON objects and resolves the target type using registered type migrations. It is designed to deserialize JSON that was previously serialized with type metadata (e.g., from Newtonsoft.Json's `TypeNameHandling.All`).
 
-The `JsonTypeMigrationSerializationBinder` class provides a way to handle type changes in JSON objects serialized with JSON.NET, migrating from one type to another (whether known within your codebase or not).
-
-Here's how to setup your application for migrating JSON objects from one type to another.
+Here's how to set up your application for migrating JSON objects from one type to another.
 
 ```csharp
 namespace App.Migrations
 {
+    using System.Text.Json;
     using MADE.Data.Serialization.Json;
-    using MADE.Data.Serialization.Json.Binders;
+    using MADE.Data.Serialization.Json.Converters;
 
-    public class JsonSerializer
+    public class JsonMigrationSerializer
     {
-        public JsonSerializer()
+        private readonly JsonSerializerOptions options;
+
+        public JsonMigrationSerializer()
         {
-            JsonSerializerSettings.Default.TypeNameHandling = TypeNameHandling.All;
-            JsonSerializerSettings.Default.Binder = new JsonTypeMigrationSerializationBinder(
-              new JsonTypeMigration(typeof(OldType), typeof(NewType)),
-              new JsonTypeMigration("App.Migrations", "App.Migrations.Data.OldDataType", typeof(NewType))
+            var converter = new JsonTypeMigrationConverter(
+                new JsonTypeMigration(typeof(OldType), typeof(NewType)),
+                new JsonTypeMigration("App.Migrations", "App.Migrations.Data.OldDataType", typeof(NewType))
             );
+
+            this.options = new JsonSerializerOptions();
+            this.options.Converters.Add(converter);
         }
 
-        public T Deserialize<T>(string serializedJson) 
+        public T? Deserialize<T>(string serializedJson)
         {
-            return JsonConvert.DeserializeObject<T>(serializedJson);
+            return JsonSerializer.Deserialize<T>(serializedJson, this.options);
         }
     }
 }
 ```
+
+### Adding migrations dynamically
+
+You can also add migrations after construction using the `AddTypeMigration` method:
+
+```csharp
+var converter = new JsonTypeMigrationConverter();
+converter.AddTypeMigration(new JsonTypeMigration(typeof(LegacyOrder), typeof(Order)));
+```
+
+The `JsonTypeMigration` class supports two constructor overloads:
+
+- `JsonTypeMigration(Type fromType, Type toType)` - Migrates from one known type to another.
+- `JsonTypeMigration(string fromAssemblyName, string fromTypeName, Type toType)` - Migrates from a type that may no longer exist in the codebase, identified by its original assembly and type name.

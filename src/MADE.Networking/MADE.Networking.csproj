@@ -1,22 +1,27 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Product>MADE.NET Networking</Product>
     <Description>
       MADE.NET Networking comes fully loaded with wrappers for easily executing network requests from applications, handling the responses, as well as providing extensions for common URI scenarios.
       A perfect companion to any application handling networking.
     </Description>
     <PackageTags>MADE Networking Extensions Json Stream HttpClient</PackageTags>
+    <NoWarn>$(NoWarn);CS8600;CS8601;CS8603;CS8604;CS8618;CS8622;CS8625;CA1001;CA1869;CA2016</NoWarn>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MADE.Runtime\MADE.Runtime.csproj" />
     <ProjectReference Include="..\MADE.Threading\MADE.Threading.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net8.0'">
+    <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.*" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net10.0'">
+    <PackageReference Include="Microsoft.Extensions.Http" Version="10.0.*" />
   </ItemGroup>
 
 </Project>

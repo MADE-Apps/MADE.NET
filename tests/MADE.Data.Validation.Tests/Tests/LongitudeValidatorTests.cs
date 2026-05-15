@@ -1,57 +1,56 @@
-namespace MADE.Data.Validation.Tests.Tests
+using System.Diagnostics.CodeAnalysis;
+using MADE.Data.Validation.Validators;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Data.Validation.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class LongitudeValidatorTests
 {
-    using System.Diagnostics.CodeAnalysis;
-    using MADE.Data.Validation.Validators;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class LongitudeValidatorTests
+    public class WhenValidating
     {
-        public class WhenValidating
+        [Test]
+        public void ShouldBeDirtyOnceValidated()
         {
-            [Test]
-            public void ShouldBeDirtyOnceValidated()
+            // Arrange
+            string value = "Test";
+            var validator = new LongitudeValidator();
+
+            // Act
+            validator.Validate(value);
+
+            // Assert
+            validator.IsDirty.ShouldBe(true);
+        }
+
+        [Test]
+        public void ShouldBeValidIfInLongitudeRange()
+        {
+            // Arrange
+            var validator = new LongitudeValidator();
+
+            // Act & Assert
+            for (var i = -180; i <= 180; i++)
             {
-                // Arrange
-                string value = "Test";
-                var validator = new LongitudeValidator();
-
-                // Act
-                validator.Validate(value);
-
-                // Assert
-                validator.IsDirty.ShouldBe(true);
+                validator.Validate(i);
+                validator.IsInvalid.ShouldBe(false);
             }
+        }
 
-            [Test]
-            public void ShouldBeValidIfInLongitudeRange()
-            {
-                // Arrange
-                var validator = new LongitudeValidator();
+        [TestCase(-180.5)]
+        [TestCase(180.5)]
+        public void ShouldBeInvalidIfOutLongitudeRange(object value)
+        {
+            // Arrange
+            var validator = new LongitudeValidator();
 
-                // Act & Assert
-                for (var i = -180; i <= 180; i++)
-                {
-                    validator.Validate(i);
-                    validator.IsInvalid.ShouldBe(false);
-                }
-            }
+            // Act
+            validator.Validate(value);
 
-            [TestCase(-180.5)]
-            [TestCase(180.5)]
-            public void ShouldBeInvalidIfOutLongitudeRange(object value)
-            {
-                // Arrange
-                var validator = new LongitudeValidator();
-
-                // Act
-                validator.Validate(value);
-
-                // Assert
-                validator.IsInvalid.ShouldBe(true);
-            }
+            // Assert
+            validator.IsInvalid.ShouldBe(true);
         }
     }
 }

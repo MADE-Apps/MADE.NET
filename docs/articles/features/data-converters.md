@@ -7,17 +7,26 @@ title: Using the Data Converters package
 
 The Data Converters package provides a collection of value converters and extensions to manipulate data in your applications.
 
+## Converting a bool to a String using the BooleanToStringValueConverter
+
+The `MADE.Data.Converters.BooleanToStringValueConverter` converts `bool` values to configurable `String` representations using the `TrueValue` and `FalseValue` properties.
+
+```csharp
+var converter = new BooleanToStringValueConverter
+{
+    TrueValue = "Yes",
+    FalseValue = "No"
+};
+
+string result = converter.Convert(true); // "Yes"
+bool original = converter.ConvertBack("No"); // false
+```
+
 ## Converting a DateTime to a String using the DateTimeToStringValueConverter
 
-Value converters are a common coding practice for building XAML applications that allow values to be bound to a view, converted to a different type and back depending on the binding mode.
+The `MADE.Data.Converters.DateTimeToStringValueConverter` converts a `DateTime` value to a `String` using a format parameter. The format parameter must be a valid `DateTime` string format [based on the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings).
 
-Why should that be limited to just XAML applications though? 
-
-The `MADE.Data.Converters.DateTimeToStringValueConverter` works across any .NET application, including your XAML bindings.
-
-It converts a `DateTime` value to a `String` using a format parameter. The format parameter must be a valid `DateTime` string format [based on the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings).
-
-Below is an example of this in use in any C# application.
+Below is an example of this in use.
 
 ```csharp
 namespace App.Conversions
@@ -41,67 +50,110 @@ namespace App.Conversions
 }
 ```
 
-You can also take advantage of this converter in your XAML applications too.
-
-```xml
-<Page
-    x:Class="App.Conversions.MainPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:converters="using:MADE.Data.Converters"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
-    mc:Ignorable="d">
-
-    <Page.Resources>
-        <converters:DateTimeToStringValueConverter x:Key="DateTimeToStringValueConverter" />
-    </Page.Resources>
-
-    <RelativePanel Padding="12">
-        <TextBlock Text="{x:Bind ViewModel.Date, Converter={StaticResource DateTimeToStringValueConverter}, ConverterParameter='g'}" />
-    </RelativePanel>
-</Page>
-```
-
 ## Creating your own custom value converters
 
-If you want to take advantage of what goes into a value converter, you can build your own using the `MADE.Data.Converters.IValueConverter` interface which provides the signatures for the `Convert` and `ConvertBack` methods.
+If you want to take advantage of what goes into a value converter, you can build your own using the `MADE.Data.Converters.IValueConverter<TFrom, TTo>` interface which provides the signatures for the `Convert` and `ConvertBack` methods.
 
 These can be used to convert any type to another. Whatever data conversion you think you may need, you'll be able to build out a value converter to satisfy that need for your project.
 
-You can then build out your own, similar to our `DateTimeToStringValueConverter`.
+If there is a common value converter you think is missing from MADE.NET, [raise a tracking item on GitHub](https://github.com/MADE-Apps/MADE.NET/issues/new/choose) and we'll get it implemented.
+
+## Converting strings to enums using the StringToEnumValueConverter
+
+The `MADE.Data.Converters.StringToEnumValueConverter<TEnum>` converts between string values and enum types. It supports case-insensitive matching by default.
 
 ```csharp
-namespace MADE.Data.Converters
-{
-    using System;
-    using System.Globalization;
+var converter = new StringToEnumValueConverter<DayOfWeek>();
 
-    public partial class DateTimeToStringValueConverter : IValueConverter<DateTime, string>
-    {
-        public string Convert(DateTime value, object parameter = default)
-        {
-            string format = parameter?.ToString();
-            return !string.IsNullOrWhiteSpace(format)
-                       ? value.ToString(format, CultureInfo.InvariantCulture)
-                       : value.ToString(CultureInfo.InvariantCulture);
-        }
-
-        public DateTime ConvertBack(string value, object parameter = default)
-        {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return DateTime.MinValue;
-            }
-
-            bool parsed = DateTime.TryParse(value, out DateTime dateTime);
-            return parsed ? dateTime : DateTime.MinValue;
-        }
-    }
-}
+DayOfWeek day = converter.Convert("Monday"); // DayOfWeek.Monday
+string name = converter.ConvertBack(DayOfWeek.Friday); // "Friday"
 ```
 
-If you want to build a XAML specific value converter, you can also apply the `Windows.UI.Xaml.Data.IValueConverter` to your class and implement the additional methods calling directly into your `Convert` and `ConvertBack` methods.
+Set `IgnoreCase` to `false` if you need exact case matching. The converter throws `InvalidDataConversionException` if the string cannot be parsed as the target enum type.
 
-If there is a common value converter you think is missing from MADE.NET, [raise a tracking item on GitHub](https://github.com/MADE-Apps/MADE.NET/issues/new/choose) and we'll get it implemented.
+## Converting DateTime to Unix timestamps using the DateTimeToUnixTimestampValueConverter
+
+The `MADE.Data.Converters.DateTimeToUnixTimestampValueConverter` converts between `DateTime` and Unix timestamps (seconds since 1970-01-01 UTC).
+
+```csharp
+var converter = new DateTimeToUnixTimestampValueConverter();
+
+long timestamp = converter.Convert(new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+DateTime dateTime = converter.ConvertBack(timestamp);
+```
+
+## DateTime extensions
+
+The `MADE.Data.Converters.Extensions.DateTimeExtensions` class provides a comprehensive set of extensions for working with `DateTime` values:
+
+- `ToCurrentAge()` - Calculates an age in years from a date to today.
+- `ToDaySuffix()` - Returns the day suffix (st, nd, rd, th) for a date.
+- `ToNearestHour()` - Rounds a date to the nearest hour.
+- `StartOfDay()` / `EndOfDay()` - Gets the start or end of the day.
+- `StartOfWeek()` / `EndOfWeek()` - Gets the start or end of the week.
+- `StartOfMonth()` / `EndOfMonth()` - Gets the start or end of the month.
+- `StartOfYear()` / `EndOfYear()` - Gets the start or end of the year.
+- `SetTime()` - Overrides the time part of a `DateTime` value (multiple overloads).
+
+## String extensions
+
+The `MADE.Data.Converters.Extensions.StringExtensions` class provides extensions for manipulating `String` values:
+
+- `ToTitleCase()` - Converts a string to title case.
+- `ToDefaultCase()` - Converts a string to default (lower) case.
+- `Truncate()` - Truncates a string to a specified length.
+- `ToBase64()` / `FromBase64()` - Converts to and from Base64 encoding.
+- `ToMemoryStreamAsync()` - Converts a string to a `MemoryStream`.
+- `ToInt()` / `ToNullableInt()` - Parses a string to an integer.
+- `ToFloat()` / `ToNullableFloat()` - Parses a string to a float.
+- `ToDouble()` / `ToNullableDouble()` - Parses a string to a double.
+- `ToBoolean()` - Parses a string to a boolean.
+- `ToSlug()` - Converts a string to a URL-friendly slug by removing diacritics, replacing non-alphanumeric characters with hyphens, and lowercasing.
+
+```csharp
+string slug = "Hello World! Cafe\u0301".ToSlug(); // "hello-world-cafe"
+```
+
+## TimeSpan extensions
+
+The `MADE.Data.Converters.Extensions.TimeSpanExtensions` class provides extensions for working with `TimeSpan` values:
+
+- `ToHumanReadableString()` - Converts a TimeSpan to a human-readable string such as "2 hours 30 minutes".
+- `TotalWeeks()` - Gets the total number of whole weeks in a TimeSpan.
+
+## Boolean extensions
+
+The `MADE.Data.Converters.Extensions.BooleanExtensions` class provides the `ToFormattedString` extension for formatting `bool` values to custom string representations.
+
+```csharp
+bool isActive = true;
+string result = isActive.ToFormattedString("Active", "Inactive"); // "Active"
+```
+
+## Math extensions
+
+The `MADE.Data.Converters.Extensions.MathExtensions` class provides extensions for common mathematic expressions:
+
+- `ToRadians()` - Converts a degrees value to radians.
+- `ToDegrees()` - Converts a radians value to degrees.
+
+## Length extensions
+
+The `MADE.Data.Converters.Extensions.LengthExtensions` class provides extensions for converting length values:
+
+- `ToMeters()` - Converts a value from miles to meters.
+- `ToMiles()` - Converts a value from meters to miles.
+- `KilometersToMeters()` / `ToKilometers()` - Converts between kilometers and meters.
+- `FeetToMeters()` / `ToFeet()` - Converts between feet and meters.
+- `InchesToMeters()` / `ToInches()` - Converts between inches and meters.
+
+## File size extensions
+
+The `MADE.Data.Converters.Extensions.FileSizeExtensions` class provides extensions for converting byte values to human-readable file size strings:
+
+- `ToHumanReadableFileSize()` - Converts a byte count to a string such as "1.50 MB" or "256 B".
+
+```csharp
+long bytes = 1_572_864;
+string size = bytes.ToHumanReadableFileSize(); // "1.50 MB"
+```

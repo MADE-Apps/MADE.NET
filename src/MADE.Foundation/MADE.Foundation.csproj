@@ -1,7 +1,7 @@
-<Project Sdk="MSBuild.Sdk.Extras">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
     <Product>MADE.NET Foundation</Product>
     <Description>
       MADE.NET Foundation is a base library for MADE.NET that allows platform-specific logic to be defined with a helper for ensuring your code can continue to execute with API availability checks.

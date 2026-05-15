@@ -1,117 +1,116 @@
-namespace MADE.Data.Validation.Tests.Tests
+using System;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using MADE.Data.Validation.Extensions;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Data.Validation.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class DateTimeExtensionsTests
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Globalization;
-    using MADE.Data.Validation.Extensions;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class DateTimeExtensionsTests
+    public class WhenDeterminingWhetherDateIsInRange
     {
-        public class WhenDeterminingWhetherDateIsInRange
+        [TestCase("07/01/2021", "01/01/2021", "12/31/2021")]
+        [TestCase("07/01/2021 12:00:00", "07/01/2021 09:00:00", "07/01/2021 15:00:00")]
+        public void ShouldBeTrueIfInRange(string dateVal, string fromVal, string toVal)
         {
-            [TestCase("07/01/2021", "01/01/2021", "12/31/2021")]
-            [TestCase("07/01/2021 12:00:00", "07/01/2021 09:00:00", "07/01/2021 15:00:00")]
-            public void ShouldBeTrueIfInRange(string dateVal, string fromVal, string toVal)
-            {
-                // Arrange
-                var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
-                var from = DateTime.Parse(fromVal, new CultureInfo("en-US"));
-                var to = DateTime.Parse(toVal, new CultureInfo("en-US"));
+            // Arrange
+            var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
+            var from = DateTime.Parse(fromVal, new CultureInfo("en-US"));
+            var to = DateTime.Parse(toVal, new CultureInfo("en-US"));
 
-                // Act
-                bool isInRange = date.IsInRange(from, to);
+            // Act
+            bool isInRange = date.IsInRange(from, to);
 
-                // Assert
-                isInRange.ShouldBeTrue();
-            }
-
-            [TestCase("07/01/2021", "01/01/2020", "12/31/2020")]
-            [TestCase("07/01/2021 00:00:00", "07/01/2021 09:00:00", "07/01/2021 15:00:00")]
-            public void ShouldBeFalseIfNotInRange(string dateVal, string fromVal, string toVal)
-            {
-                // Arrange
-                var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
-                var from = DateTime.Parse(fromVal, new CultureInfo("en-US"));
-                var to = DateTime.Parse(toVal, new CultureInfo("en-US"));
-
-                // Act
-                bool isInRange = date.IsInRange(from, to);
-
-                // Assert
-                isInRange.ShouldBeFalse();
-            }
+            // Assert
+            isInRange.ShouldBeTrue();
         }
 
-        public class WhenDeterminingWeekdays
+        [TestCase("07/01/2021", "01/01/2020", "12/31/2020")]
+        [TestCase("07/01/2021 00:00:00", "07/01/2021 09:00:00", "07/01/2021 15:00:00")]
+        public void ShouldBeFalseIfNotInRange(string dateVal, string fromVal, string toVal)
         {
-            [TestCase("05/10/2021")]
-            [TestCase("05/11/2021")]
-            [TestCase("05/12/2021")]
-            [TestCase("05/13/2021")]
-            [TestCase("05/14/2021")]
-            public void ShouldBeTrueIfWeekday(string dateVal)
-            {
-                // Arrange
-                var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
+            // Arrange
+            var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
+            var from = DateTime.Parse(fromVal, new CultureInfo("en-US"));
+            var to = DateTime.Parse(toVal, new CultureInfo("en-US"));
 
-                // Act
-                bool isWeekday = date.IsWeekday();
+            // Act
+            bool isInRange = date.IsInRange(from, to);
 
-                // Assert
-                isWeekday.ShouldBeTrue();
-            }
+            // Assert
+            isInRange.ShouldBeFalse();
+        }
+    }
 
-            [TestCase("05/15/2021")]
-            [TestCase("05/16/2021")]
-            public void ShouldBeFalseIfNotWeekday(string dateVal)
-            {
-                // Arrange
-                var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
+    public class WhenDeterminingWeekdays
+    {
+        [TestCase("05/10/2021")]
+        [TestCase("05/11/2021")]
+        [TestCase("05/12/2021")]
+        [TestCase("05/13/2021")]
+        [TestCase("05/14/2021")]
+        public void ShouldBeTrueIfWeekday(string dateVal)
+        {
+            // Arrange
+            var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
 
-                // Act
-                bool isWeekday = date.IsWeekday();
+            // Act
+            bool isWeekday = date.IsWeekday();
 
-                // Assert
-                isWeekday.ShouldBeFalse();
-            }
+            // Assert
+            isWeekday.ShouldBeTrue();
         }
 
-        public class WhenDeterminingWeekends
+        [TestCase("05/15/2021")]
+        [TestCase("05/16/2021")]
+        public void ShouldBeFalseIfNotWeekday(string dateVal)
         {
-            [TestCase("05/15/2021")]
-            [TestCase("05/16/2021")]
-            public void ShouldBeTrueIfWeekend(string dateVal)
-            {
-                // Arrange
-                var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
+            // Arrange
+            var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
 
-                // Act
-                bool isWeekend = date.IsWeekend();
+            // Act
+            bool isWeekday = date.IsWeekday();
 
-                // Assert
-                isWeekend.ShouldBeTrue();
-            }
+            // Assert
+            isWeekday.ShouldBeFalse();
+        }
+    }
 
-            [TestCase("05/10/2021")]
-            [TestCase("05/11/2021")]
-            [TestCase("05/12/2021")]
-            [TestCase("05/13/2021")]
-            [TestCase("05/14/2021")]
-            public void ShouldBeFalseIfNotWeekend(string dateVal)
-            {
-                // Arrange
-                var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
+    public class WhenDeterminingWeekends
+    {
+        [TestCase("05/15/2021")]
+        [TestCase("05/16/2021")]
+        public void ShouldBeTrueIfWeekend(string dateVal)
+        {
+            // Arrange
+            var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
 
-                // Act
-                bool isWeekend = date.IsWeekend();
+            // Act
+            bool isWeekend = date.IsWeekend();
 
-                // Assert
-                isWeekend.ShouldBeFalse();
-            }
+            // Assert
+            isWeekend.ShouldBeTrue();
+        }
+
+        [TestCase("05/10/2021")]
+        [TestCase("05/11/2021")]
+        [TestCase("05/12/2021")]
+        [TestCase("05/13/2021")]
+        [TestCase("05/14/2021")]
+        public void ShouldBeFalseIfNotWeekend(string dateVal)
+        {
+            // Arrange
+            var date = DateTime.Parse(dateVal, new CultureInfo("en-US"));
+
+            // Act
+            bool isWeekend = date.IsWeekend();
+
+            // Assert
+            isWeekend.ShouldBeFalse();
         }
     }
 }

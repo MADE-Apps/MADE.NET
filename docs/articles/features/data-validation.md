@@ -142,9 +142,21 @@ The minimum can be configured by setting the `Min` value.
 
 The in-box `System` types which implement the `IComparable` interface can be [found in the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=net-5.0).
 
+### MinLengthValidator
+
+The `MinLengthValidator` validates that a string value meets a minimum length requirement.
+
+The minimum length can be configured by setting the `MinLength` value.
+
+### MaxLengthValidator
+
+The `MaxLengthValidator` validates that a string value does not exceed a maximum length.
+
+The maximum length can be configured by setting the `MaxLength` value.
+
 ### PredicateValidator
 
-The `PredicateValidator` validates a value using a custom predicate to ensure that a condition is met.
+The `PredicateValidator<T>` validates a value using a custom predicate function to ensure that a condition is met. This is useful for one-off validation logic that doesn't warrant its own validator class.
 
 ### RegexValidator
 
@@ -162,6 +174,10 @@ This is determined based on the following criteria:
 - The value is a collection and contains items
 - The value is a boolean and is true
 - The value is a string and is not null or whitespace
+
+### WellFormedUrlValidator
+
+The `WellFormedUrlValidator` validates that a string value is a well-formed URL using the `Uri.IsWellFormedUriString` method.
 
 ## Creating your own custom data validators
 
@@ -231,3 +247,57 @@ The `MADE.Data.Validation.FluentValidation` package provides an easy way to take
 Using the `MADE.Data.Validation.FluentValidatorCollection<T>` based on a `List` type, you can construct a collection of `AbstractValidator` instances which can be used to validate values.
 
 This way, you can bring FluentValidation's out-of-the-box validators or your own custom validators based on the `AbstractValidator` type and get all the benefits of using the existing MADE.NET validation framework. This is great for example with input validator controls that currently support the MADE.NET validation framework!
+
+## Asynchronous validation with IAsyncValidator
+
+For validation scenarios that require I/O operations (such as checking uniqueness against a database), the `IAsyncValidator` interface and `AsyncValidatorCollection` provide an asynchronous validation pipeline.
+
+### Creating an async validator
+
+Implement the `IAsyncValidator` interface for validators that need to perform asynchronous work:
+
+```csharp
+public class UniqueEmailValidator : IAsyncValidator
+{
+    private readonly IUserRepository repository;
+
+    public UniqueEmailValidator(IUserRepository repository)
+    {
+        this.repository = repository;
+    }
+
+    public string Key { get; set; } = nameof(UniqueEmailValidator);
+
+    public bool IsInvalid { get; set; }
+
+    public bool IsDirty { get; set; }
+
+    public string FeedbackMessage { get; set; } = "Email address is already in use.";
+
+    public async Task ValidateAsync(object value, CancellationToken cancellationToken = default)
+    {
+        var email = value?.ToString();
+        this.IsInvalid = !string.IsNullOrWhiteSpace(email)
+            && await this.repository.EmailExistsAsync(email, cancellationToken);
+        this.IsDirty = true;
+    }
+}
+```
+
+### Using the AsyncValidatorCollection
+
+The `AsyncValidatorCollection` works the same as the `ValidatorCollection` but executes each validator asynchronously:
+
+```csharp
+var validators = new AsyncValidatorCollection
+{
+    new UniqueEmailValidator(userRepository),
+};
+
+await validators.ValidateAsync(emailAddress);
+
+if (validators.IsInvalid)
+{
+    var messages = validators.FeedbackMessages;
+}
+```

@@ -1,51 +1,50 @@
-namespace MADE.Collections.Tests.Fakes
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Runtime.CompilerServices;
+
+namespace MADE.Collections.Tests.Fakes;
+
+[ExcludeFromCodeCoverage]
+public class TestObservableObject : INotifyPropertyChanged
 {
-    using System.ComponentModel;
-    using System.Diagnostics.CodeAnalysis;
-    using System.Runtime.CompilerServices;
+    private string name;
 
-    [ExcludeFromCodeCoverage]
-    public class TestObservableObject : INotifyPropertyChanged
+    private int count;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public string Name
     {
-        private string name;
-
-        private int count;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public string Name
+        get => this.name;
+        set
         {
-            get => this.name;
-            set
+            if (value == this.name)
             {
-                if (value == this.name)
-                {
-                    return;
-                }
-
-                this.name = value;
-                this.OnPropertyChanged();
+                return;
             }
-        }
 
-        public int Count
+            this.name = value;
+            this.OnPropertyChanged();
+        }
+    }
+
+    public int Count
+    {
+        get => this.count;
+        set
         {
-            get => this.count;
-            set
+            if (value == this.count)
             {
-                if (value == this.count)
-                {
-                    return;
-                }
-
-                this.count = value;
-                this.OnPropertyChanged();
+                return;
             }
-        }
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            this.count = value;
+            this.OnPropertyChanged();
         }
+    }
+
+    protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+    {
+        this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

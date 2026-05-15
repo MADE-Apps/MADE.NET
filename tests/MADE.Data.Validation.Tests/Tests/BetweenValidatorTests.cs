@@ -1,125 +1,124 @@
-namespace MADE.Data.Validation.Tests.Tests
+using System;
+using System.Diagnostics.CodeAnalysis;
+using MADE.Data.Validation.Validators;
+using NUnit.Framework;
+using Shouldly;
+
+namespace MADE.Data.Validation.Tests.Tests;
+
+[ExcludeFromCodeCoverage]
+[TestFixture]
+public class BetweenValidatorTests
 {
-    using System;
-    using System.Diagnostics.CodeAnalysis;
-    using MADE.Data.Validation.Validators;
-    using NUnit.Framework;
-    using Shouldly;
-
-    [ExcludeFromCodeCoverage]
-    [TestFixture]
-    public class BetweenValidatorTests
+    public class WhenValidatingInclusive
     {
-        public class WhenValidatingInclusive
+        [Test]
+        public void ShouldBeDirtyOnceValidated()
         {
-            [Test]
-            public void ShouldBeDirtyOnceValidated()
-            {
-                // Arrange
-                int value = 1;
-                var validator = new BetweenValidator(0, 2);
+            // Arrange
+            int value = 1;
+            var validator = new BetweenValidator(0, 2);
 
-                // Act
-                validator.Validate(value);
+            // Act
+            validator.Validate(value);
 
-                // Assert
-                validator.IsDirty.ShouldBe(true);
-            }
-
-            [TestCase(0, 0, 2)]
-            [TestCase(1, 0, 2)]
-            [TestCase(2, 0, 2)]
-            [TestCase(0.0, 0.0, 2.0)]
-            [TestCase(1.0, 0.0, 2.0)]
-            [TestCase(2.0, 0.0, 2.0)]
-            [TestCase(0.0f, 0.0f, 2.0f)]
-            [TestCase(1.0f, 0.0f, 2.0f)]
-            [TestCase(2.0f, 0.0f, 2.0f)]
-            public void ShouldBeValidIfValueWithinRange(IComparable value, IComparable min, IComparable max)
-            {
-                // Arrange
-                var validator = new BetweenValidator(min, max);
-
-                // Act
-                validator.Validate(value);
-
-                // Assert
-                validator.IsInvalid.ShouldBe(false);
-            }
-
-            [TestCase(-1, 0, 2)]
-            [TestCase(3, 0, 2)]
-            [TestCase(-1.0, 0.0, 2.0)]
-            [TestCase(3.0, 0.0, 2.0)]
-            [TestCase(-1.0f, 0.0f, 2.0f)]
-            [TestCase(3.0f, 0.0f, 2.0f)]
-            public void ShouldBeInvalidIfValueOutsideRange(IComparable value, IComparable min, IComparable max)
-            {
-                // Arrange
-                var validator = new BetweenValidator(min, max);
-
-                // Act
-                validator.Validate(value);
-
-                // Assert
-                validator.IsInvalid.ShouldBe(true);
-            }
+            // Assert
+            validator.IsDirty.ShouldBe(true);
         }
 
-        public class WhenValidatingExclusive
+        [TestCase(0, 0, 2)]
+        [TestCase(1, 0, 2)]
+        [TestCase(2, 0, 2)]
+        [TestCase(0.0, 0.0, 2.0)]
+        [TestCase(1.0, 0.0, 2.0)]
+        [TestCase(2.0, 0.0, 2.0)]
+        [TestCase(0.0f, 0.0f, 2.0f)]
+        [TestCase(1.0f, 0.0f, 2.0f)]
+        [TestCase(2.0f, 0.0f, 2.0f)]
+        public void ShouldBeValidIfValueWithinRange(IComparable value, IComparable min, IComparable max)
         {
-            [Test]
-            public void ShouldBeDirtyOnceValidated()
-            {
-                // Arrange
-                int value = 1;
-                var validator = new BetweenValidator(0, 2) { Inclusive = false };
+            // Arrange
+            var validator = new BetweenValidator(min, max);
 
-                // Act
-                validator.Validate(value);
+            // Act
+            validator.Validate(value);
 
-                // Assert
-                validator.IsDirty.ShouldBe(true);
-            }
+            // Assert
+            validator.IsInvalid.ShouldBe(false);
+        }
 
-            [TestCase(1, 0, 2)]
-            [TestCase(1.0, 0.0, 2.0)]
-            [TestCase(1.0f, 0.0f, 2.0f)]
-            public void ShouldBeValidIfValueWithinRange(IComparable value, IComparable min, IComparable max)
-            {
-                // Arrange
-                var validator = new BetweenValidator(min, max) { Inclusive = false };
+        [TestCase(-1, 0, 2)]
+        [TestCase(3, 0, 2)]
+        [TestCase(-1.0, 0.0, 2.0)]
+        [TestCase(3.0, 0.0, 2.0)]
+        [TestCase(-1.0f, 0.0f, 2.0f)]
+        [TestCase(3.0f, 0.0f, 2.0f)]
+        public void ShouldBeInvalidIfValueOutsideRange(IComparable value, IComparable min, IComparable max)
+        {
+            // Arrange
+            var validator = new BetweenValidator(min, max);
 
-                // Act
-                validator.Validate(value);
+            // Act
+            validator.Validate(value);
 
-                // Assert
-                validator.IsInvalid.ShouldBe(false);
-            }
+            // Assert
+            validator.IsInvalid.ShouldBe(true);
+        }
+    }
 
-            [TestCase(0, 0, 2)]
-            [TestCase(-1, 0, 2)]
-            [TestCase(2, 0, 2)]
-            [TestCase(3, 0, 2)]
-            [TestCase(0.0, 0.0, 2.0)]
-            [TestCase(-1.0, 0.0, 2.0)]
-            [TestCase(2.0, 0.0, 2.0)]
-            [TestCase(3.0, 0.0, 2.0)]
-            [TestCase(0.0f, 0.0f, 2.0f)]
-            [TestCase(-1.0f, 0.0f, 2.0f)]
-            [TestCase(2.0f, 0.0f, 2.0f)]
-            [TestCase(3.0f, 0.0f, 2.0f)]
-            public void ShouldBeInvalidIfValueOutsideRange(IComparable value, IComparable min, IComparable max)
-            {
-                // Arrange
-                var validator = new BetweenValidator(min, max) { Inclusive = false };
+    public class WhenValidatingExclusive
+    {
+        [Test]
+        public void ShouldBeDirtyOnceValidated()
+        {
+            // Arrange
+            int value = 1;
+            var validator = new BetweenValidator(0, 2) { Inclusive = false };
 
-                // Act
-                validator.Validate(value);
+            // Act
+            validator.Validate(value);
 
-                // Assert
-                validator.IsInvalid.ShouldBe(true);
-            }
+            // Assert
+            validator.IsDirty.ShouldBe(true);
+        }
+
+        [TestCase(1, 0, 2)]
+        [TestCase(1.0, 0.0, 2.0)]
+        [TestCase(1.0f, 0.0f, 2.0f)]
+        public void ShouldBeValidIfValueWithinRange(IComparable value, IComparable min, IComparable max)
+        {
+            // Arrange
+            var validator = new BetweenValidator(min, max) { Inclusive = false };
+
+            // Act
+            validator.Validate(value);
+
+            // Assert
+            validator.IsInvalid.ShouldBe(false);
+        }
+
+        [TestCase(0, 0, 2)]
+        [TestCase(-1, 0, 2)]
+        [TestCase(2, 0, 2)]
+        [TestCase(3, 0, 2)]
+        [TestCase(0.0, 0.0, 2.0)]
+        [TestCase(-1.0, 0.0, 2.0)]
+        [TestCase(2.0, 0.0, 2.0)]
+        [TestCase(3.0, 0.0, 2.0)]
+        [TestCase(0.0f, 0.0f, 2.0f)]
+        [TestCase(-1.0f, 0.0f, 2.0f)]
+        [TestCase(2.0f, 0.0f, 2.0f)]
+        [TestCase(3.0f, 0.0f, 2.0f)]
+        public void ShouldBeInvalidIfValueOutsideRange(IComparable value, IComparable min, IComparable max)
+        {
+            // Arrange
+            var validator = new BetweenValidator(min, max) { Inclusive = false };
+
+            // Act
+            validator.Validate(value);
+
+            // Assert
+            validator.IsInvalid.ShouldBe(true);
         }
     }
 }

@@ -1,22 +1,21 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-namespace MADE.Data.Validation.Exceptions
-{
-    using System;
+using System;
 
+namespace MADE.Data.Validation.Exceptions;
+
+/// <summary>
+/// Defines an exception for an invalid range.
+/// </summary>
+public class InvalidRangeException : Exception
+{
     /// <summary>
-    /// Defines an exception for an invalid range.
+    /// Initializes a new instance of the <see cref="InvalidRangeException"/> class.
     /// </summary>
-    public class InvalidRangeException : Exception
+    /// <param name="message">The exception message.</param>
+    public InvalidRangeException(string message)
+        : base(message)
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="InvalidRangeException"/> class.
-        /// </summary>
-        /// <param name="message">The exception message.</param>
-        public InvalidRangeException(string message)
-            : base(message)
-        {
-        }
     }
 }
