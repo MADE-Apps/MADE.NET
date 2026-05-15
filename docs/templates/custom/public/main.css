@@ -6,6 +6,12 @@
   --brand-blue-dark: #1a5a9e;
 }
 
+/* Navbar logo */
+.navbar .icon .logo {
+  height: 48px;
+  width: auto;
+}
+
 /* Landing page */
 
 .landing-hero {
