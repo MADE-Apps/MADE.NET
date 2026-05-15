@@ -21,4 +21,18 @@ public static class MathExtensions
     {
         return degrees * (System.Math.PI / 180);
     }
+
+    /// <summary>
+    /// Converts a radians value to a degrees value.
+    /// </summary>
+    /// <param name="radians">
+    /// The radians value to convert.
+    /// </param>
+    /// <returns>
+    /// The converted value as degrees.
+    /// </returns>
+    public static double ToDegrees(this double radians)
+    {
+        return radians * (180 / System.Math.PI);
+    }
 }

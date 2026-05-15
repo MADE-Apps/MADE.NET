@@ -16,6 +16,9 @@ on:
     - .github/workflows/docs.yml
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   generate-docs:
 
@@ -38,8 +41,7 @@ jobs:
       run: dotnet tool install -g docfx
 
     - name: Restore projects
-      run: dotnet restore
-      working-directory: src
+      run: dotnet restore MADE.NET.sln
 
     - name: Build DocFX site
       working-directory: docs

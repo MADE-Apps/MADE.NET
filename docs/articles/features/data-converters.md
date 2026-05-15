@@ -58,6 +58,30 @@ These can be used to convert any type to another. Whatever data conversion you t
 
 If there is a common value converter you think is missing from MADE.NET, [raise a tracking item on GitHub](https://github.com/MADE-Apps/MADE.NET/issues/new/choose) and we'll get it implemented.
 
+## Converting strings to enums using the StringToEnumValueConverter
+
+The `MADE.Data.Converters.StringToEnumValueConverter<TEnum>` converts between string values and enum types. It supports case-insensitive matching by default.
+
+```csharp
+var converter = new StringToEnumValueConverter<DayOfWeek>();
+
+DayOfWeek day = converter.Convert("Monday"); // DayOfWeek.Monday
+string name = converter.ConvertBack(DayOfWeek.Friday); // "Friday"
+```
+
+Set `IgnoreCase` to `false` if you need exact case matching. The converter throws `InvalidDataConversionException` if the string cannot be parsed as the target enum type.
+
+## Converting DateTime to Unix timestamps using the DateTimeToUnixTimestampValueConverter
+
+The `MADE.Data.Converters.DateTimeToUnixTimestampValueConverter` converts between `DateTime` and Unix timestamps (seconds since 1970-01-01 UTC).
+
+```csharp
+var converter = new DateTimeToUnixTimestampValueConverter();
+
+long timestamp = converter.Convert(new DateTime(2024, 1, 1, 0, 0, 0, DateTimeKind.Utc));
+DateTime dateTime = converter.ConvertBack(timestamp);
+```
+
 ## DateTime extensions
 
 The `MADE.Data.Converters.Extensions.DateTimeExtensions` class provides a comprehensive set of extensions for working with `DateTime` values:
@@ -84,6 +108,18 @@ The `MADE.Data.Converters.Extensions.StringExtensions` class provides extensions
 - `ToFloat()` / `ToNullableFloat()` - Parses a string to a float.
 - `ToDouble()` / `ToNullableDouble()` - Parses a string to a double.
 - `ToBoolean()` - Parses a string to a boolean.
+- `ToSlug()` - Converts a string to a URL-friendly slug by removing diacritics, replacing non-alphanumeric characters with hyphens, and lowercasing.
+
+```csharp
+string slug = "Hello World! Cafe\u0301".ToSlug(); // "hello-world-cafe"
+```
+
+## TimeSpan extensions
+
+The `MADE.Data.Converters.Extensions.TimeSpanExtensions` class provides extensions for working with `TimeSpan` values:
+
+- `ToHumanReadableString()` - Converts a TimeSpan to a human-readable string such as "2 hours 30 minutes".
+- `TotalWeeks()` - Gets the total number of whole weeks in a TimeSpan.
 
 ## Boolean extensions
 
@@ -96,7 +132,10 @@ string result = isActive.ToFormattedString("Active", "Inactive"); // "Active"
 
 ## Math extensions
 
-The `MADE.Data.Converters.Extensions.MathExtensions` class provides extensions for common mathematic expressions including `ToRadians` to convert a degrees value to radians.
+The `MADE.Data.Converters.Extensions.MathExtensions` class provides extensions for common mathematic expressions:
+
+- `ToRadians()` - Converts a degrees value to radians.
+- `ToDegrees()` - Converts a radians value to degrees.
 
 ## Length extensions
 
@@ -104,3 +143,17 @@ The `MADE.Data.Converters.Extensions.LengthExtensions` class provides extensions
 
 - `ToMeters()` - Converts a value from miles to meters.
 - `ToMiles()` - Converts a value from meters to miles.
+- `KilometersToMeters()` / `ToKilometers()` - Converts between kilometers and meters.
+- `FeetToMeters()` / `ToFeet()` - Converts between feet and meters.
+- `InchesToMeters()` / `ToInches()` - Converts between inches and meters.
+
+## File size extensions
+
+The `MADE.Data.Converters.Extensions.FileSizeExtensions` class provides extensions for converting byte values to human-readable file size strings:
+
+- `ToHumanReadableFileSize()` - Converts a byte count to a string such as "1.50 MB" or "256 B".
+
+```csharp
+long bytes = 1_572_864;
+string size = bytes.ToHumanReadableFileSize(); // "1.50 MB"
+```

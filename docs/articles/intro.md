@@ -66,10 +66,14 @@ It includes features such as:
 
 - BooleanToStringValueConverter, a value converter for converting `bool` values to configurable `String` representations, with the capability to convert back.
 - DateTimeToStringValueConverter, a value converter that takes a `DateTime` string format parameter to convert a `DateTime` value to a `String`, with the capability to convert back.
-- DateTimeExtensions, a collection of useful extensions for interacting with `DateTime` values including `ToCurrentAge` (to get an age in years based on a given date from today), `StartOfDay`/`EndOfDay`, `StartOfWeek`/`EndOfWeek`, `StartOfMonth`/`EndOfMonth`, `StartOfYear`/`EndOfYear`, and `ToNearestHour`.
-- MathExtensions, a collection of extensions for common mathematic expressions including `ToRadians` (to convert a degrees value to radians).
-- StringExtensions, a collection of extensions for manipulating `String` values such as `ToTitleCase`, `ToDefaultCase`, `Truncate`, `ToBase64`, `FromBase64`, `ToInt`, `ToBoolean`, `ToFloat`, and `ToDouble`.
-- LengthExtensions, for converting length values such as `ToMeters` and `ToMiles`.
+- StringToEnumValueConverter, a generic value converter for converting between `String` and any `Enum` type with case-insensitive matching.
+- DateTimeToUnixTimestampValueConverter, a value converter between `DateTime` and Unix timestamps.
+- DateTimeExtensions, a collection of useful extensions for interacting with `DateTime` values including `ToCurrentAge`, `StartOfDay`/`EndOfDay`, `StartOfWeek`/`EndOfWeek`, `StartOfMonth`/`EndOfMonth`, `StartOfYear`/`EndOfYear`, and `ToNearestHour`.
+- TimeSpanExtensions, providing `ToHumanReadableString` and `TotalWeeks`.
+- MathExtensions, providing `ToRadians` and `ToDegrees` for angle conversions.
+- StringExtensions, a collection of extensions for manipulating `String` values such as `ToTitleCase`, `ToDefaultCase`, `Truncate`, `ToBase64`, `FromBase64`, `ToSlug`, `ToInt`, `ToBoolean`, `ToFloat`, and `ToDouble`.
+- LengthExtensions, for converting between miles, meters, kilometers, feet, and inches.
+- FileSizeExtensions, for converting byte counts to human-readable file size strings.
 - BooleanExtensions, for formatting `bool` values to custom string representations with `ToFormattedString`.
 
 <span class="button">

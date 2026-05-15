@@ -2,8 +2,10 @@
 // See the LICENSE file in the project root for more information.
 
 using System;
+using System.Globalization;
 using System.IO;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MADE.Data.Converters.Extensions;
@@ -268,5 +270,47 @@ public static class StringExtensions
 
         bool parsed = double.TryParse(value, out double doubleValue);
         return parsed ? doubleValue : null;
+    }
+
+    /// <summary>
+    /// Converts a string to a URL-friendly slug by removing diacritics, replacing non-alphanumeric characters with hyphens, and lowercasing.
+    /// </summary>
+    /// <param name="value">The value to convert to a slug.</param>
+    /// <returns>A URL-friendly slug string.</returns>
+    public static string ToSlug(this string value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            return string.Empty;
+        }
+
+        // Normalize to decompose characters (e.g., e with accent -> e + combining accent)
+        string normalized = value.Normalize(NormalizationForm.FormD);
+
+        // Remove non-spacing marks (diacritics/accents)
+        var stripped = new StringBuilder();
+        foreach (char c in normalized)
+        {
+            if (CharUnicodeInfo.GetUnicodeCategory(c) != UnicodeCategory.NonSpacingMark)
+            {
+                stripped.Append(c);
+            }
+        }
+
+        string result = stripped.ToString().Normalize(NormalizationForm.FormC);
+
+        // Lowercase
+        result = result.ToLowerInvariant();
+
+        // Replace non-alphanumeric characters with hyphens
+        result = Regex.Replace(result, @"[^a-z0-9\s-]", string.Empty);
+
+        // Replace whitespace and multiple hyphens with a single hyphen
+        result = Regex.Replace(result, @"[\s-]+", "-");
+
+        // Trim leading and trailing hyphens
+        result = result.Trim('-');
+
+        return result;
     }
 }
