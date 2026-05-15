@@ -15,10 +15,8 @@
         }
       ],
       "dest": "api",
-      "disableGitFeatures": false,
-      "disableDefaultFilter": false,
       "properties": {
-        "TargetFramework": "netstandard2.0"
+        "TargetFramework": "net10.0"
       }
     }
   ],
@@ -58,25 +56,17 @@
       }
     ],
     "dest": "_site",
-    "globalMetadataFiles": [],
-    "fileMetadataFiles": [],
     "template": [
       "default",
-      "templates/material"
+      "modern",
+      "templates/custom"
     ],
-    "postProcessors": [],
-    "markdownEngineName": "markdig",
-    "noLangKeyword": false,
-    "keepFileLink": false,
-    "cleanupCacheHistory": false,
-    "disableGitFeatures": false,
     "globalMetadata": {
       "_appLogoPath": "images/Logo.png",
       "_appFaviconPath": "images/Logo.png",
       "_appTitle": "MADE.NET",
       "_appFooter": "Copyright (c) MADE Apps",
-      "_enableSearch": true,
-      "_enableNewTab": true
+      "_enableSearch": true
     }
   }
 }

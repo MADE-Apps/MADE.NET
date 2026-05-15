@@ -1,0 +1,151 @@
+:root {
+  --bs-link-color-rgb: 44, 119, 204;
+  --bs-link-hover-color-rgb: 59, 117, 187;
+  --brand-blue: #2c77cc;
+  --brand-blue-light: #e8f1fb;
+  --brand-blue-dark: #1a5a9e;
+}
+
+/* Landing page */
+
+.landing-hero {
+  text-align: center;
+  padding: 4rem 1.5rem 3rem;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.landing-hero img {
+  max-width: 400px;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+.landing-hero h1 {
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  color: var(--bs-body-color);
+}
+
+.landing-hero p {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--bs-secondary-color);
+  margin-bottom: 2rem;
+}
+
+.landing-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.landing-actions a {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.btn-primary-landing {
+  background-color: var(--brand-blue);
+  color: #fff !important;
+}
+
+.btn-primary-landing:hover {
+  background-color: var(--brand-blue-dark);
+  color: #fff !important;
+}
+
+.btn-outline-landing {
+  border: 1px solid var(--bs-border-color);
+  color: var(--bs-body-color) !important;
+  background: transparent;
+}
+
+.btn-outline-landing:hover {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue) !important;
+}
+
+/* Quick install */
+
+.quick-install {
+  max-width: 520px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.quick-install code {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+/* Feature grid */
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  padding: 0 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.feature-card {
+  padding: 1.5rem;
+  border: 1px solid var(--bs-border-color);
+  border-radius: 8px;
+  transition: border-color 0.15s;
+}
+
+.feature-card:hover {
+  border-color: var(--brand-blue);
+}
+
+.feature-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.feature-card p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--bs-secondary-color);
+  margin-bottom: 0;
+}
+
+/* Bottom CTA */
+
+.landing-cta {
+  text-align: center;
+  padding: 3rem 1.5rem 4rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.landing-cta h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+}
+
+.landing-cta .landing-actions {
+  margin-top: 1rem;
+}
+

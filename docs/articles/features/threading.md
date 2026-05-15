@@ -85,3 +85,26 @@ public class TimerJob
 ```
 
 As you can see, the MADE implementation performs the same actions, but is much more concise and a lot easier to understand.
+
+The `ITimer` interface is also available if you need to define your own timer implementation or use it for dependency injection and testing.
+
+## Task extensions
+
+The `MADE.Threading.TaskExtensions` class provides extensions for working with asynchronous tasks:
+
+### AndObserveExceptions
+
+Observes the exceptions of faulted tasks, allowing you to handle errors without causing unobserved task exceptions.
+
+```csharp
+await myTask.AndObserveExceptions(ex => logger.LogError(ex, "Task faulted"));
+```
+
+### WhenAll and WhenAny for Task IEnumerable
+
+Convenience extensions that call `Task.WhenAll` and `Task.WhenAny` directly on an `IEnumerable<Task>` collection.
+
+```csharp
+var tasks = myItems.Select(item => ProcessAsync(item));
+await tasks.WhenAll();
+```

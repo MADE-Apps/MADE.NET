@@ -142,9 +142,21 @@ The minimum can be configured by setting the `Min` value.
 
 The in-box `System` types which implement the `IComparable` interface can be [found in the Microsoft documentation](https://docs.microsoft.com/en-us/dotnet/api/system.icomparable?view=net-5.0).
 
+### MinLengthValidator
+
+The `MinLengthValidator` validates that a string value meets a minimum length requirement.
+
+The minimum length can be configured by setting the `MinLength` value.
+
+### MaxLengthValidator
+
+The `MaxLengthValidator` validates that a string value does not exceed a maximum length.
+
+The maximum length can be configured by setting the `MaxLength` value.
+
 ### PredicateValidator
 
-The `PredicateValidator` validates a value using a custom predicate to ensure that a condition is met.
+The `PredicateValidator<T>` validates a value using a custom predicate function to ensure that a condition is met. This is useful for one-off validation logic that doesn't warrant its own validator class.
 
 ### RegexValidator
 
@@ -162,6 +174,10 @@ This is determined based on the following criteria:
 - The value is a collection and contains items
 - The value is a boolean and is true
 - The value is a string and is not null or whitespace
+
+### WellFormedUrlValidator
+
+The `WellFormedUrlValidator` validates that a string value is a well-formed URL using the `Uri.IsWellFormedUriString` method.
 
 ## Creating your own custom data validators
 

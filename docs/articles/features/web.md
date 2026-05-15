@@ -73,3 +73,78 @@ The `PaginatedRequest` and `PaginatedResponse` can be used together to help you 
 The `PaginatedRequest` takes a page and page size parameter when constructed, and it automatically provides you with the `Skip` and `Take` properties that you can provide to your data queries.
 
 When you have your data from your request, you can construct a response using the `PaginatedResponse` which takes the data, the original page and page size parameters, and the number of available items. It will also provide the `TotalPages` that are available to allow a UI to generate a pagination user experience.
+
+## Accessing authenticated user identity with AuthenticatedUser
+
+The `MADE.Web.Identity.AuthenticatedUser` class extracts claims-based identity information from a `ClaimsPrincipal`. It provides easy access to common claims:
+
+- `Subject` - The user's identity (`sub` claim).
+- `Email` - The user's preferred email address (`email` claim).
+- `Roles` - The user's assigned roles (`role` claims).
+- `Claims` - All claims as an immutable list.
+
+```csharp
+var authenticatedUser = new AuthenticatedUser(httpContext.User);
+string userId = authenticatedUser.Subject;
+string email = authenticatedUser.Email;
+```
+
+### Using IAuthenticatedUserAccessor with dependency injection
+
+Register the `AuthenticatedUserAccessor` with your service collection to inject authenticated user information:
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddAuthenticatedUserAccessor();
+}
+```
+
+Then inject `IAuthenticatedUserAccessor` into your services:
+
+```csharp
+public class MyService
+{
+    private readonly IAuthenticatedUserAccessor userAccessor;
+
+    public MyService(IAuthenticatedUserAccessor userAccessor)
+    {
+        this.userAccessor = userAccessor;
+    }
+
+    public string GetCurrentUserId()
+    {
+        return this.userAccessor.AuthenticatedUser.Subject;
+    }
+}
+```
+
+## Adding API versioning support with ApiVersioningExtensions
+
+The `MADE.Web.Extensions.ApiVersioningExtensions` class provides extensions for adding API versioning to your ASP.NET Core application.
+
+### URL-based versioning
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApiVersionSupport(defaultMajor: 1, defaultMinor: 0);
+}
+```
+
+### Header-based versioning
+
+```csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddApiVersionHeaderSupport(apiHeaderName: "x-api-version", defaultMajor: 1, defaultMinor: 0);
+}
+```
+
+## Query collection extensions
+
+The `MADE.Web.Extensions.QueryCollectionExtensions` class provides helpers for reading query string values from an `IQueryCollection`:
+
+- `GetStringValueOrDefault` - Gets a string value from the query collection, or a default.
+- `GetIntValueOrDefault` - Gets an integer value from the query collection, or a default.
+- `GetDateTimeValueOrDefault` - Gets a DateTime value from the query collection, or a default.
