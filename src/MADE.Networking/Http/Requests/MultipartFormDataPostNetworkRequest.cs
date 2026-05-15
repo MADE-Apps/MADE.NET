@@ -120,7 +120,7 @@ public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
         }
 
         var uri = new Uri(this.Url);
-        using var request = new HttpRequestMessage(HttpMethod.Post, uri) { Content = this.Content };
+        var request = new HttpRequestMessage(HttpMethod.Post, uri) { Content = this.Content };
 
         if (this.Headers != null)
         {
