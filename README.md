@@ -4,13 +4,12 @@
 
 [![GitHub release](https://img.shields.io/github/release/MADE-Apps/MADE.NET.svg)](https://github.com/MADE-Apps/MADE.NET/releases)
 [![Build status](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/MADE-Apps/MADE.NET/actions/workflows/ci.yml)
-[![Twitter Followers](https://img.shields.io/twitter/follow/jamesmcroft?label=follow%20%40jamesmcroft&style=flat)](https://twitter.com/jamesmcroft)
 [![Nuget](https://img.shields.io/nuget/v/MADE.Collections.svg)](https://www.nuget.org/profiles/made-apps)
 [![MADE.NET docs](https://img.shields.io/badge/docs-MADE.NET-blue.svg)](https://made-apps.github.io/MADE.NET/)
 
 MADE.NET is a suite of libraries built on the boilerplate, reusable components, services, extensions, and helpers that we all drop into our projects. With MADE.NET, you can get all of these in one place, easy to use and consume, to make app development easier for you.
 
-Whether you're building an ASP.NET Core API or a native app experience with MAUI, MADE.NET has something for everyone.
+Whether you're building an ASP.NET Core API or a .NET library, MADE.NET has something for everyone.
 
 **[Discover what's new in MADE.NET](https://github.com/MADE-Apps/MADE.NET/releases)**
 
@@ -45,14 +44,13 @@ Here's a complete list of available packages:
 
 ## Building MADE.NET 🛠
 
-MADE.NET is built using .NET Standard, taking advantage of the new SDK-style projects and multi-targeting enabled with the help of [MSBuild.Sdk.Extras](https://github.com/novotnyllc/MSBuildSdkExtras).
+MADE.NET is built on .NET, targeting both `net8.0` and `net10.0` using SDK-style projects.
 
-You can build the solution using Visual Studio with the following workloads installed:
+You can build the solution using Visual Studio or the .NET CLI:
 
-- .NET desktop development
-- Universal Windows Platform development
-- Mobile Development with .NET
-- .NET Core cross-platform development
+```bash
+dotnet build
+```
 
 ## Contributing 🤝
 
