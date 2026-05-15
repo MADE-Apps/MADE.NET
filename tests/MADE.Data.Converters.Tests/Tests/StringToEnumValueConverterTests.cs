@@ -9,7 +9,7 @@ namespace MADE.Data.Converters.Tests.Tests;
 [TestFixture]
 public class StringToEnumValueConverterTests
 {
-    private enum TestEnum
+    public enum TestEnum
     {
         None,
         First,

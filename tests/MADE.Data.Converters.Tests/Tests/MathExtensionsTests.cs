@@ -28,4 +28,28 @@ public class MathExtensionsTests
             actual.ShouldBe(expected);
         }
     }
+
+    public class WhenConvertingToDegrees
+    {
+        private static readonly object[] ToDegreesTestCases =
+        {
+            new object[] { 0, 0 }, new object[] { Math.PI / 2, 90 }, new object[] { Math.PI, 180 },
+            new object[] { Math.PI * 2, 360 },
+        };
+
+        [TestCaseSource(nameof(ToDegreesTestCases))]
+        public void ShouldConvertToDegrees(double radians, double expected)
+        {
+            double actual = radians.ToDegrees();
+            actual.ShouldBe(expected, 0.0001);
+        }
+
+        [TestCase(45.0)]
+        [TestCase(90.0)]
+        [TestCase(270.0)]
+        public void ShouldRoundTripWithToRadians(double degrees)
+        {
+            degrees.ToRadians().ToDegrees().ShouldBe(degrees, 0.0001);
+        }
+    }
 }

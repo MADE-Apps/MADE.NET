@@ -185,4 +185,21 @@ public class StringExtensionsTests
             actual.ShouldBe(expected);
         }
     }
+
+    public class WhenConvertingToSlug
+    {
+        [TestCase("Hello World", "hello-world")]
+        [TestCase("Hello, World!", "hello-world")]
+        [TestCase("  Multiple   Spaces  ", "multiple-spaces")]
+        [TestCase("Caf\u00e9 Latt\u00e9", "cafe-latte")]
+        [TestCase("C# is GREAT!", "c-is-great")]
+        [TestCase("already-a-slug", "already-a-slug")]
+        [TestCase("", "")]
+        [TestCase("   ", "")]
+        public void ShouldConvert(string value, string expected)
+        {
+            string actual = value.ToSlug();
+            actual.ShouldBe(expected);
+        }
+    }
 }
