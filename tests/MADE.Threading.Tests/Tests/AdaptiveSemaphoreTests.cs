@@ -151,6 +151,28 @@ public class AdaptiveSemaphoreTests
             semaphore.Limit.ShouldBe(1);
             semaphore.Available.ShouldBe(1);
         }
+
+        [Test]
+        public async Task ShouldRollBackLimitWhenCancelled()
+        {
+            // Arrange
+            using var semaphore = new AdaptiveSemaphore(initial: 1, minimum: 1, maximum: 2);
+            semaphore.TryGrow(); // limit = 2, available = 2
+
+            // Exhaust both permits so the next WaitAsync will block.
+            using var hold1 = await semaphore.WaitAsync();
+            using var hold2 = await semaphore.WaitAsync();
+
+            using var cts = new CancellationTokenSource();
+            cts.Cancel();
+
+            // Act - shrink should decrement limit then fail to acquire, rolling back.
+            await Should.ThrowAsync<OperationCanceledException>(
+                async () => await semaphore.TryShrinkAsync(cts.Token));
+
+            // Assert - limit should be restored to 2.
+            semaphore.Limit.ShouldBe(2);
+        }
     }
 
     public class WhenGrowing

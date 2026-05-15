@@ -20,7 +20,7 @@ namespace MADE.Threading;
 /// }
 ///
 /// // Reduce concurrency on backpressure.
-/// semaphore.TryShrink();
+/// await semaphore.TryShrinkAsync();
 /// </code>
 /// </remarks>
 public sealed class AdaptiveSemaphore : IDisposable
@@ -96,7 +96,20 @@ public sealed class AdaptiveSemaphore : IDisposable
             this.limit--;
         }
 
-        await this.semaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            await this.semaphore.WaitAsync(cancellationToken).ConfigureAwait(false);
+        }
+        catch
+        {
+            lock (this.adjustLock)
+            {
+                this.limit++;
+            }
+
+            throw;
+        }
+
         return this.limit;
     }
 
@@ -122,7 +135,17 @@ public sealed class AdaptiveSemaphore : IDisposable
             }
 
             this.limit++;
-            this.semaphore.Release();
+
+            try
+            {
+                this.semaphore.Release();
+            }
+            catch
+            {
+                this.limit--;
+                throw;
+            }
+
             return this.limit;
         }
     }
@@ -156,13 +179,16 @@ public sealed class AdaptiveSemaphore : IDisposable
     /// <inheritdoc />
     public void Dispose()
     {
-        if (this.disposed)
+        lock (this.adjustLock)
         {
-            return;
-        }
+            if (this.disposed)
+            {
+                return;
+            }
 
-        this.semaphore.Dispose();
-        this.disposed = true;
+            this.semaphore.Dispose();
+            this.disposed = true;
+        }
     }
 
     private sealed class SemaphoreReleaser : IDisposable
