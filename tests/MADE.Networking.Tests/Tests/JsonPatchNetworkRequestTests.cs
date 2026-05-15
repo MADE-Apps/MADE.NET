@@ -21,10 +21,13 @@ public class JsonPatchNetworkRequestTests
             var requestData = new RequestData { Key = "test", Enabled = true };
 
             const string requestUrl = "https://httpbin.org/patch";
+            var serializedData = JsonSerializer.Serialize(requestData);
+            var responseJson = JsonSerializer.Serialize(new { data = serializedData, url = requestUrl });
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.OK, responseJson);
             var request = new JsonPatchNetworkRequest(
-                new HttpClient(),
+                new HttpClient(mockHandler),
                 requestUrl,
-                JsonSerializer.Serialize(requestData));
+                serializedData);
 
             // Act
             var response = await request.ExecuteAsync<RequestResponse>();

@@ -34,8 +34,13 @@ public class RetryDelegatingHandler : DelegatingHandler
     /// <param name="maxRetries">The maximum number of retry attempts. Default is 3.</param>
     /// <param name="initialDelay">The initial delay before the first retry. Default is 1 second.</param>
     public RetryDelegatingHandler(int maxRetries = 3, TimeSpan? initialDelay = null)
-        : this(new HttpClientHandler(), maxRetries, initialDelay)
     {
+        ArgumentOutOfRangeException.ThrowIfNegative(maxRetries);
+        ArgumentOutOfRangeException.ThrowIfNegative(initialDelay?.TotalMilliseconds ?? 0);
+
+        this.InnerHandler = new HttpClientHandler();
+        this.MaxRetries = maxRetries;
+        this.InitialDelay = initialDelay ?? TimeSpan.FromSeconds(1);
     }
 
     /// <summary>
@@ -47,6 +52,9 @@ public class RetryDelegatingHandler : DelegatingHandler
     public RetryDelegatingHandler(HttpMessageHandler innerHandler, int maxRetries = 3, TimeSpan? initialDelay = null)
         : base(innerHandler)
     {
+        ArgumentOutOfRangeException.ThrowIfNegative(maxRetries);
+        ArgumentOutOfRangeException.ThrowIfNegative(initialDelay?.TotalMilliseconds ?? 0);
+
         this.MaxRetries = maxRetries;
         this.InitialDelay = initialDelay ?? TimeSpan.FromSeconds(1);
     }

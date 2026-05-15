@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -98,7 +99,7 @@ public sealed class StreamGetNetworkRequest : NetworkRequest
         }
 
         var uri = new Uri(this.Url);
-        var request = new HttpRequestMessage(HttpMethod.Get, uri);
+        using var request = new HttpRequestMessage(HttpMethod.Get, uri);
 
         if (this.Headers != null)
         {
@@ -108,13 +109,16 @@ public sealed class StreamGetNetworkRequest : NetworkRequest
             }
         }
 
-        HttpResponseMessage response = await this.client.SendAsync(
-                                           request,
-                                           HttpCompletionOption.ResponseHeadersRead,
-                                           cancellationToken).ConfigureAwait(false);
+        using HttpResponseMessage response = await this.client.SendAsync(
+                                                 request,
+                                                 HttpCompletionOption.ResponseHeadersRead,
+                                                 cancellationToken).ConfigureAwait(false);
 
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadAsStreamAsync().ConfigureAwait(false);
+        var memoryStream = new MemoryStream();
+        await response.Content.CopyToAsync(memoryStream, cancellationToken).ConfigureAwait(false);
+        memoryStream.Position = 0;
+        return memoryStream;
     }
 }

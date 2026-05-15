@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Net;
 using System.Net.Http;
 using System.Threading;
 using MADE.Networking.Http;
@@ -126,7 +127,9 @@ public class NetworkRequestManagerTests
             const bool queryValue = true;
 
             var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+            var responseJson = $"{{\"args\":{{\"{query}\":\"{queryValue}\"}},\"url\":\"{requestUrl}\"}}";
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.OK, responseJson);
+            var request = new JsonGetNetworkRequest(new HttpClient(mockHandler), requestUrl);
 
             var manager = new NetworkRequestManager();
 
@@ -162,7 +165,9 @@ public class NetworkRequestManagerTests
             const bool queryValue = true;
 
             var requestUrl = $"https://httpbin.org/get?{query}={queryValue}";
-            var request = new JsonGetNetworkRequest(new HttpClient(), requestUrl);
+            var responseJson = $"{{\"args\":{{\"{query}\":\"{queryValue}\"}},\"url\":\"{requestUrl}\"}}";
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.OK, responseJson);
+            var request = new JsonGetNetworkRequest(new HttpClient(mockHandler), requestUrl);
 
             var manager = new NetworkRequestManager();
 
