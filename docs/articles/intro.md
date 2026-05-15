@@ -164,6 +164,7 @@ The Networking package contains a collection of helpers for applications that us
 
 It includes features such as:
 
+- INetworkRequestFactory, a DI-friendly factory for creating network requests without manual HttpClient management. Register with `services.AddNetworkRequestFactory()`.
 - NetworkRequestManager, for managing a queue of HTTP network requests with success and error callbacks.
 - JsonGetNetworkRequest, for making a HTTP GET request with a JSON response, deserializing to a specified type.
 - JsonPostNetworkRequest, for making a HTTP POST request with a JSON payload, and a JSON response.
