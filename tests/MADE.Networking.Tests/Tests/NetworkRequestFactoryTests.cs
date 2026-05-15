@@ -20,7 +20,9 @@ public class NetworkRequestFactoryTests
         public async Task ShouldCreateGetRequest()
         {
             // Arrange
-            var factory = CreateFactory();
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.OK,
+                JsonSerializer.Serialize(new { url = "https://httpbin.org/get?key=value" }));
+            var factory = CreateFactoryWithMock(mockHandler);
 
             // Act
             var request = factory.Get("https://httpbin.org/get?key=value");
@@ -35,8 +37,10 @@ public class NetworkRequestFactoryTests
         public async Task ShouldCreatePostRequest()
         {
             // Arrange
-            var factory = CreateFactory();
             var data = JsonSerializer.Serialize(new { key = "value" });
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.OK,
+                JsonSerializer.Serialize(new { data, url = "https://httpbin.org/post" }));
+            var factory = CreateFactoryWithMock(mockHandler);
 
             // Act
             var request = factory.Post("https://httpbin.org/post", data);
@@ -51,7 +55,9 @@ public class NetworkRequestFactoryTests
         public async Task ShouldCreateDeleteRequest()
         {
             // Arrange
-            var factory = CreateFactory();
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.OK,
+                JsonSerializer.Serialize(new { url = "https://httpbin.org/delete" }));
+            var factory = CreateFactoryWithMock(mockHandler);
 
             // Act
             var request = factory.Delete("https://httpbin.org/delete");

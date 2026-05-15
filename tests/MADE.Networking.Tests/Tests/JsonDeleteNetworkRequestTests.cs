@@ -21,7 +21,9 @@ public class JsonDeleteNetworkRequestTests
             const bool queryValue = true;
 
             var requestUrl = $"https://httpbin.org/delete?{query}={queryValue}";
-            var request = new JsonDeleteNetworkRequest(new HttpClient(), requestUrl);
+            var responseJson = $"{{\"args\":{{\"{query}\":\"{queryValue}\"}},\"url\":\"{requestUrl}\"}}";
+            var mockHandler = new MockHttpMessageHandler(HttpStatusCode.OK, responseJson);
+            var request = new JsonDeleteNetworkRequest(new HttpClient(mockHandler), requestUrl);
 
             // Act
             var response = await request.ExecuteAsync<RequestResponse>();
