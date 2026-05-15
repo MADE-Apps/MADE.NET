@@ -90,6 +90,8 @@ It includes features such as:
 - EntityBaseExtensions, for configuring entity types with EF Core model builders including UTC date property configuration.
 - QueryableExtensions, for pagination and dynamic ordering of queries.
 - UtcDateTimeConverter, to help with the storing of entity model dates in a UTC format.
+- ISoftDeletable, for adding soft-delete support to entities with automatic query filtering and deletion interception.
+- IAuditableEntity, for tracking who created and last updated entities with automatic audit info management.
 
 <span class="button">
 
@@ -165,6 +167,8 @@ It includes features such as:
 - JsonPatchNetworkRequest, for making a HTTP PATCH request with a JSON payload, and a JSON response.
 - JsonDeleteNetworkRequest, for making a HTTP DELETE request with a JSON response.
 - StreamGetNetworkRequest, for making a HTTP GET request with a data stream response.
+- MultipartFormDataPostNetworkRequest, for making a HTTP POST request with multipart form data content including file uploads.
+- RetryDelegatingHandler, a delegating handler for adding automatic retry with exponential backoff to HttpClient instances.
 
 <span class="button">
 
@@ -192,7 +196,12 @@ The Testing package is an extension library for assertions in unit testing proje
 
 It provides additional assertions such as:
 
-- CollectionAssertExtensions, a collection of extensions for asserting enumerable objects including `ShouldBeEquivalentTo` (comparing two collections to ensure they contain the same items ignoring order), and `ShouldNotBeEquivalentTo` (comparing two collection to ensure they do not contain the same items ignoring order).
+- CollectionAssertExtensions, a collection of extensions for asserting enumerable objects including `ShouldBeEquivalentTo` and `ShouldNotBeEquivalentTo`.
+- ObjectAssertExtensions, providing `ShouldBeNull` and `ShouldNotBeNull` assertions.
+- BooleanAssertExtensions, providing `ShouldBeTrue` and `ShouldBeFalse` assertions.
+- ComparableAssertExtensions, providing `ShouldBeGreaterThan`, `ShouldBeLessThan`, and related comparison assertions.
+- StringAssertExtensions, providing `ShouldContain`, `ShouldNotContain`, `ShouldStartWith`, and `ShouldEndWith` assertions.
+- ExceptionAssertExtensions, providing `ShouldThrow` and `ShouldNotThrow` assertions with async variants.
 
 <span class="button">
 
@@ -207,6 +216,9 @@ The Threading package contains a collection of `System.Threading` extensions and
 It includes features such as:
 
 - Timer, a modern take on `System.Threading.Timer` providing properties for configuring the `Interval` and `DueTime`, plus an event handler for `Tick`. It includes simple methods to `Start` and `Stop` the timer running.
+- AsyncLazy, a provider for lazy asynchronous initialization of a value.
+- Debouncer, for delaying execution until a period of inactivity has elapsed, useful for search-as-you-type scenarios.
+- Throttler, for limiting execution to at most once per time interval.
 
 <span class="button">
 
@@ -240,7 +252,8 @@ Included in this package is:
 
 - InternalServerErrorObjectResult, an `ObjectResult` type that returns an Internal Server Error (500) with the optional `ModelStateDictionary` of validation errors.
 - JsonResult, a custom `ActionResult` that serializes a value as JSON with a configurable HTTP status code.
-- ControllerBaseExtensions, providing `Json` and `InternalServerError` helper methods for controller actions.
+- ForbiddenObjectResult, an `ObjectResult` type that returns a Forbidden (403) response.
+- ControllerBaseExtensions, providing `Json`, `InternalServerError`, and `Forbidden` helper methods for controller actions.
 
 <span class="button">
 

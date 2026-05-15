@@ -77,12 +77,16 @@ public class Chain<T> : IChain<T>
     /// Invokes an asynchronous action with the chain.
     /// </summary>
     /// <param name="func">The asynchronous action to invoke.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An asynchronous operation.</returns>
     /// <exception cref="Exception">Potential exceptions thrown if delegate callback throws an exception.</exception>
-    public async Task InvokeAsync(Func<T, Task> func)
+    /// <exception cref="OperationCanceledException">If the <paramref name="cancellationToken" /> is canceled.</exception>
+    public async Task InvokeAsync(Func<T, Task> func, CancellationToken cancellationToken = default)
     {
         foreach (WeakReference<T> instance in this.chain)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             if (instance.TryGetTarget(out T? i))
             {
                 await func(i).ConfigureAwait(false);

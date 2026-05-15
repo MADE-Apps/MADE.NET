@@ -103,3 +103,81 @@ The `MADE.Data.EFCore.Extensions.QueryableExtensions` class provides helpers for
 
 - `Page<T>` - Applies skip and take pagination to a query based on page number and page size.
 - `OrderBy<T>` - Dynamically orders query results by a property name string, with optional descending sort.
+
+## Soft-delete support with ISoftDeletable
+
+The `MADE.Data.EFCore.ISoftDeletable` interface adds soft-delete support to your entities. Instead of permanently removing records, entities are marked as deleted and filtered out of queries by default.
+
+```csharp
+public class User : EntityBase, ISoftDeletable
+{
+    public string Name { get; set; }
+
+    public bool IsDeleted { get; set; }
+
+    public DateTime? DeletedDate { get; set; }
+}
+```
+
+### Applying a global query filter
+
+Use `ApplySoftDeleteFilter` in your model builder to automatically exclude soft-deleted entities from all queries:
+
+```csharp
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.ApplySoftDeleteFilter();
+}
+```
+
+To query soft-deleted entities, use `IgnoreQueryFilters()` on a specific query.
+
+### Automatic soft-delete interception
+
+Use `InterceptSoftDeletions` in your `SaveChangesAsync` override to automatically convert hard deletes to soft deletes:
+
+```csharp
+public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+{
+    this.InterceptSoftDeletions();
+    this.SetEntityDates();
+    return await base.SaveChangesAsync(cancellationToken);
+}
+```
+
+### Manual soft-delete and restore
+
+The `SoftDelete` and `Restore` extension methods allow you to explicitly manage the soft-delete state:
+
+```csharp
+user.SoftDelete();  // Sets IsDeleted = true and DeletedDate
+user.Restore();     // Clears IsDeleted and DeletedDate
+```
+
+## Audit trail support with IAuditableEntity
+
+The `MADE.Data.EFCore.IAuditableEntity` interface adds user tracking to your entities, recording who created and last updated each record.
+
+```csharp
+public class Order : EntityBase, IAuditableEntity
+{
+    public string Description { get; set; }
+
+    public string? CreatedBy { get; set; }
+
+    public string? UpdatedBy { get; set; }
+}
+```
+
+### Automatic audit info tracking
+
+Use `SetEntityAuditInfo` in your `SaveChangesAsync` override to automatically set audit fields:
+
+```csharp
+public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+{
+    this.SetEntityDates();
+    this.SetEntityAuditInfo(currentUserId);
+    return await base.SaveChangesAsync(cancellationToken);
+}
+```

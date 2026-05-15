@@ -108,3 +108,54 @@ Convenience extensions that call `Task.WhenAll` and `Task.WhenAny` directly on a
 var tasks = myItems.Select(item => ProcessAsync(item));
 await tasks.WhenAll();
 ```
+
+## Lazy asynchronous initialization with AsyncLazy
+
+The `MADE.Threading.AsyncLazy<T>` type provides a way to lazily initialize a value using an asynchronous factory method. The value is computed once on first access and cached for subsequent uses.
+
+```csharp
+private readonly AsyncLazy<Configuration> config = new(async () =>
+{
+    return await LoadConfigurationAsync();
+});
+
+public async Task UseConfigAsync()
+{
+    var configuration = await config;
+    // Use configuration
+}
+```
+
+You can check whether the value has been created using the `IsValueCreated` property, or use `GetValueAsync()` if you prefer an explicit task return.
+
+## Rate-limiting actions with Debouncer
+
+The `MADE.Threading.Debouncer` delays execution of an action until a specified period of inactivity has elapsed. This is useful for scenarios where rapid invocations should be collapsed into a single execution, such as search-as-you-type.
+
+```csharp
+private readonly Debouncer debouncer = new() { Delay = TimeSpan.FromMilliseconds(300) };
+
+public void OnSearchTextChanged(string text)
+{
+    debouncer.Debounce(() => PerformSearch(text));
+}
+```
+
+Each call to `Debounce` resets the timer. The action only executes after the delay elapses with no further calls. Use `Cancel()` to cancel a pending action, and `Dispose()` to clean up resources.
+
+An async variant `DebounceAsync` is also available for asynchronous actions.
+
+## Rate-limiting actions with Throttler
+
+The `MADE.Threading.Throttler` limits execution of an action to at most once per specified time interval. Unlike the debouncer, the throttler executes the first invocation immediately and suppresses subsequent invocations until the interval elapses.
+
+```csharp
+private readonly Throttler throttler = new() { Interval = TimeSpan.FromMilliseconds(500) };
+
+public void OnButtonClicked()
+{
+    throttler.Throttle(() => SubmitForm());
+}
+```
+
+An async variant `ThrottleAsync` is also available for asynchronous actions with cancellation support.

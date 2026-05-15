@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bogus" Version="35.6.1" />
-    <PackageReference Include="Moq" Version="4.20.72" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\MADE.Testing\MADE.Testing.csproj" />
     <ProjectReference Include="..\..\src\MADE.Web\MADE.Web.csproj" />
   </ItemGroup>

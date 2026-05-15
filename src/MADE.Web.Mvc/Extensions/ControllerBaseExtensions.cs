@@ -65,4 +65,33 @@ public static class ControllerBaseExtensions
 
         return new InternalServerErrorObjectResult(modelState);
     }
+
+    /// <summary>
+    /// Creates a <see cref="ForbiddenObjectResult"/> that produces a <see cref="StatusCodes.Status403Forbidden"/> response.
+    /// </summary>
+    /// <param name="controller">The controller that is performing the response.</param>
+    /// <param name="responseContent">An error object to be returned to the client.</param>
+    /// <returns>The created <see cref="ForbiddenObjectResult"/> for the response.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if the <paramref name="controller"/> is <see langword="null"/>.</exception>
+    public static IActionResult Forbidden(this ControllerBase controller, object responseContent)
+    {
+        ArgumentNullException.ThrowIfNull(controller);
+
+        return new ForbiddenObjectResult(responseContent);
+    }
+
+    /// <summary>
+    /// Creates a <see cref="ForbiddenObjectResult"/> that produces a <see cref="StatusCodes.Status403Forbidden"/> response.
+    /// </summary>
+    /// <param name="controller">The controller that is performing the response.</param>
+    /// <param name="modelState">The <see cref="ModelStateDictionary" /> containing errors to be returned to the client.</param>
+    /// <returns>The created <see cref="ForbiddenObjectResult"/> for the response.</returns>
+    /// <exception cref="ArgumentNullException">Thrown if the <paramref name="controller"/> or <paramref name="modelState"/> is <see langword="null"/>.</exception>
+    public static IActionResult Forbidden(this ControllerBase controller, ModelStateDictionary modelState)
+    {
+        ArgumentNullException.ThrowIfNull(controller);
+        ArgumentNullException.ThrowIfNull(modelState);
+
+        return new ForbiddenObjectResult(modelState);
+    }
 }

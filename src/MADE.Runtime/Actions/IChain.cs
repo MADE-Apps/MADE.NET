@@ -38,6 +38,7 @@ public interface IChain<T>
     /// Invokes an asynchronous action with the chain.
     /// </summary>
     /// <param name="func">The asynchronous action to invoke.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An asynchronous operation.</returns>
-    Task InvokeAsync(Func<T, Task> func);
+    Task InvokeAsync(Func<T, Task> func, CancellationToken cancellationToken = default);
 }

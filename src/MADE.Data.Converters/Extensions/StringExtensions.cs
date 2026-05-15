@@ -118,13 +118,14 @@ public static class StringExtensions
     /// Converts a string value to a <see cref="MemoryStream"/>.
     /// </summary>
     /// <param name="value">The value to convert.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A <see cref="MemoryStream"/> representing the string value.</returns>
-    public static async Task<MemoryStream> ToMemoryStreamAsync(this string value)
+    public static async Task<MemoryStream> ToMemoryStreamAsync(this string value, CancellationToken cancellationToken = default)
     {
         var stream = new MemoryStream();
         var writer = new StreamWriter(stream);
-        await writer.WriteAsync(value).ConfigureAwait(false);
-        await writer.FlushAsync().ConfigureAwait(false);
+        await writer.WriteAsync(value.AsMemory(), cancellationToken).ConfigureAwait(false);
+        await writer.FlushAsync(cancellationToken).ConfigureAwait(false);
         stream.Position = 0;
         return stream;
     }

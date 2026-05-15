@@ -85,3 +85,39 @@ public void UpdateProfileDetails(Profile profile)
 `NetworkRequest` objects have a `Guid` identifier also, so if you need to update a pending request with different data or a change in URL, you can do simply by recalling `NetworkManager.AddOrUpdate` passing in a network request with the same ID.
 
 The `AddOrUpdate` method has overloads for providing a success callback, as well as an error callback. This allows you to make decisions in your code to handle a successful or failed network request.
+
+## Uploading files with MultipartFormDataPostNetworkRequest
+
+The `MultipartFormDataPostNetworkRequest` allows you to upload files and form data using multipart/form-data encoding. It provides a fluent API for building the request content.
+
+```csharp
+public async Task<UploadResult> UploadFileAsync(Stream fileStream, string fileName, CancellationToken cancellationToken = default)
+{
+    var request = new MultipartFormDataPostNetworkRequest(new HttpClient(), "https://api.example.com/upload")
+        .AddStreamContent("file", fileStream, fileName, "image/png")
+        .AddStringContent("description", "Profile photo");
+
+    return await request.ExecuteAsync<UploadResult>(cancellationToken);
+}
+```
+
+You can add multiple types of content:
+
+- `AddStringContent` - Adds a string form field.
+- `AddStreamContent` - Adds a file stream with a file name and content type.
+- `AddByteArrayContent` - Adds byte array content with a file name and content type.
+
+## Adding retry support with RetryDelegatingHandler
+
+The `RetryDelegatingHandler` is a `DelegatingHandler` that automatically retries failed HTTP requests with exponential backoff. It handles transient failures including timeouts, server errors (500, 502, 503, 504), and rate limiting (429).
+
+```csharp
+var handler = new RetryDelegatingHandler(maxRetries: 3, initialDelay: TimeSpan.FromSeconds(1));
+var client = new HttpClient(handler);
+
+// All requests made with this client will automatically retry on transient failures
+var request = new JsonGetNetworkRequest(client, "https://api.example.com/data");
+var result = await request.ExecuteAsync<MyData>();
+```
+
+The handler uses exponential backoff, doubling the delay between each retry attempt. You can customize the maximum number of retries and the initial delay via the constructor parameters.

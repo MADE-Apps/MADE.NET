@@ -23,13 +23,15 @@ public static class HttpResponseExtensions
     /// <param name="response">The HTTP response to write to.</param>
     /// <param name="statusCode">The status code of the response.</param>
     /// <param name="value">The object to serialize as JSON.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An asynchronous operation.</returns>
     public static async Task WriteJsonAsync(
         this HttpResponse response,
         HttpStatusCode statusCode,
-        object value)
+        object value,
+        CancellationToken cancellationToken = default)
     {
-        await WriteJsonAsync(response, (int)statusCode, value, null).ConfigureAwait(false);
+        await WriteJsonAsync(response, (int)statusCode, value, null, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -38,13 +40,15 @@ public static class HttpResponseExtensions
     /// <param name="response">The HTTP response to write to.</param>
     /// <param name="statusCode">The status code of the response.</param>
     /// <param name="value">The object to serialize as JSON.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An asynchronous operation.</returns>
     public static async Task WriteJsonAsync(
         this HttpResponse response,
         int statusCode,
-        object value)
+        object value,
+        CancellationToken cancellationToken = default)
     {
-        await WriteJsonAsync(response, statusCode, value, null).ConfigureAwait(false);
+        await WriteJsonAsync(response, statusCode, value, null, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -54,14 +58,16 @@ public static class HttpResponseExtensions
     /// <param name="statusCode">The status code of the response.</param>
     /// <param name="value">The object to serialize as JSON.</param>
     /// <param name="serializerOptions">The JSON serializer options.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An asynchronous operation.</returns>
     public static async Task WriteJsonAsync(
         this HttpResponse response,
         HttpStatusCode statusCode,
         object value,
-        JsonSerializerOptions? serializerOptions)
+        JsonSerializerOptions? serializerOptions,
+        CancellationToken cancellationToken = default)
     {
-        await WriteJsonAsync(response, (int)statusCode, value, serializerOptions).ConfigureAwait(false);
+        await WriteJsonAsync(response, (int)statusCode, value, serializerOptions, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -71,12 +77,14 @@ public static class HttpResponseExtensions
     /// <param name="statusCode">The status code of the response.</param>
     /// <param name="value">The object to serialize as JSON.</param>
     /// <param name="serializerOptions">The JSON serializer options.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>An asynchronous operation.</returns>
     public static async Task WriteJsonAsync(
         this HttpResponse response,
         int statusCode,
         object value,
-        JsonSerializerOptions? serializerOptions)
+        JsonSerializerOptions? serializerOptions,
+        CancellationToken cancellationToken = default)
     {
         response.ContentType = new MediaTypeHeaderValue("application/json") { Encoding = Encoding.UTF8 }.ToString();
         response.StatusCode = statusCode;
@@ -85,6 +93,6 @@ public static class HttpResponseExtensions
 
         string json = JsonSerializer.Serialize(value, options);
 
-        await response.WriteAsync(json, Encoding.UTF8).ConfigureAwait(false);
+        await response.WriteAsync(json, Encoding.UTF8, cancellationToken).ConfigureAwait(false);
     }
 }

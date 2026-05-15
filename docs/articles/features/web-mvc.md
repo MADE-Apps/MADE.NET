@@ -23,6 +23,10 @@ return new MADE.Web.Mvc.Responses.JsonResult(myObject, HttpStatusCode.Created);
 
 You can also pass custom `JsonSerializerOptions` to control serialization behavior.
 
+## Returning a forbidden ObjectResult
+
+The `ForbiddenObjectResult` can be used to return a Forbidden (403) response from your API controllers. Like `InternalServerErrorObjectResult`, it supports both an error object and a `ModelStateDictionary`.
+
 ## Controller extensions
 
 The `MADE.Web.Mvc.Extensions.ControllerBaseExtensions` class provides helper methods for returning common action results from controllers:
@@ -30,3 +34,5 @@ The `MADE.Web.Mvc.Extensions.ControllerBaseExtensions` class provides helper met
 - `Json(object, HttpStatusCode, JsonSerializerOptions?)` - Returns a `JsonResult` with a custom status code.
 - `InternalServerError(object)` - Returns an `InternalServerErrorObjectResult` with an error value.
 - `InternalServerError(ModelStateDictionary)` - Returns an `InternalServerErrorObjectResult` with model state validation errors.
+- `Forbidden(object)` - Returns a `ForbiddenObjectResult` with an error value.
+- `Forbidden(ModelStateDictionary)` - Returns a `ForbiddenObjectResult` with model state validation errors.

@@ -201,12 +201,4 @@ public static class CollectionAssertExtensions
 
         return dictionary;
     }
-
-    private class AssertFailedException : Exception
-    {
-        public AssertFailedException(string message)
-            : base(message)
-        {
-        }
-    }
 }

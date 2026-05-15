@@ -17,11 +17,12 @@ public static class HttpResponseMessageExtensions
     /// </summary>
     /// <typeparam name="T">The type of response expected.</typeparam>
     /// <param name="responseTask">The task associated with the <see cref="HttpResponseMessage"/>.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A <see cref="HttpResponseMessage{T}"/> with deserialized content.</returns>
-    public static async Task<HttpResponseMessage<T>> DeserializeAsync<T>(this Task<HttpResponseMessage> responseTask)
+    public static async Task<HttpResponseMessage<T>> DeserializeAsync<T>(this Task<HttpResponseMessage> responseTask, CancellationToken cancellationToken = default)
     {
         HttpResponseMessage response = await responseTask.ConfigureAwait(false);
-        return await DeserializeAsync<T>(response).ConfigureAwait(false);
+        return await DeserializeAsync<T>(response, cancellationToken).ConfigureAwait(false);
     }
 
     /// <summary>
@@ -29,11 +30,12 @@ public static class HttpResponseMessageExtensions
     /// </summary>
     /// <typeparam name="T">The type of response expected.</typeparam>
     /// <param name="response">The <see cref="HttpResponseMessage"/> to deserialize.</param>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A <see cref="HttpResponseMessage{T}"/> with deserialized content.</returns>
-    public static async Task<HttpResponseMessage<T>> DeserializeAsync<T>(this HttpResponseMessage response)
+    public static async Task<HttpResponseMessage<T>> DeserializeAsync<T>(this HttpResponseMessage response, CancellationToken cancellationToken = default)
     {
         var deserializedResponse = new HttpResponseMessage<T>(response);
-        await deserializedResponse.DeserializeAsync().ConfigureAwait(false);
+        await deserializedResponse.DeserializeAsync(cancellationToken).ConfigureAwait(false);
         return deserializedResponse;
     }
 }

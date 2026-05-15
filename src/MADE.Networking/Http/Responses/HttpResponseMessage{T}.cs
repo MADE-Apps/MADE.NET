@@ -90,11 +90,12 @@ public class HttpResponseMessage<T> : IDisposable
     /// <summary>
     /// Deserializes the content of the <see cref="HttpResponseMessage"/> into the <see cref="DeserializedContent"/> value.
     /// </summary>
+    /// <param name="cancellationToken">The cancellation token.</param>
     /// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
-    public async Task<T> DeserializeAsync()
+    public async Task<T> DeserializeAsync(CancellationToken cancellationToken = default)
     {
         this.DeserializedContent = JsonSerializer.Deserialize<T>(
-            await this.Content.ReadAsStringAsync().ConfigureAwait(false),
+            await this.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false),
             DefaultJsonOptions)!;
         return this.DeserializedContent;
     }

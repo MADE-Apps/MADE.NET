@@ -38,3 +38,96 @@ public void InvalidTest()
 ```
 
 You can also perform the same check for scenarios where the collections are **not** equivalent.
+
+## Asserting null state with ObjectAssertExtensions
+
+The `ShouldBeNull` and `ShouldNotBeNull` extension methods for any object allow you to assert the null state of a value.
+
+```csharp
+[Test]
+public void ShouldBeNullTest()
+{
+    object? value = null;
+    value.ShouldBeNull();
+}
+
+[Test]
+public void ShouldNotBeNullTest()
+{
+    object value = new();
+    value.ShouldNotBeNull();
+}
+```
+
+## Asserting boolean values with BooleanAssertExtensions
+
+The `ShouldBeTrue` and `ShouldBeFalse` extension methods for `bool` values allow you to assert the expected state of a boolean.
+
+```csharp
+[Test]
+public void ShouldBeTrueTest()
+{
+    bool result = true;
+    result.ShouldBeTrue();
+}
+
+[Test]
+public void ShouldBeFalseTest()
+{
+    bool result = false;
+    result.ShouldBeFalse();
+}
+```
+
+## Comparing values with ComparableAssertExtensions
+
+The `ShouldBeGreaterThan`, `ShouldBeGreaterThanOrEqualTo`, `ShouldBeLessThan`, and `ShouldBeLessThanOrEqualTo` extension methods allow you to assert the comparison of `IComparable` values.
+
+```csharp
+[Test]
+public void ComparisonTest()
+{
+    int value = 10;
+    value.ShouldBeGreaterThan(5);
+    value.ShouldBeLessThan(20);
+    value.ShouldBeGreaterThanOrEqualTo(10);
+    value.ShouldBeLessThanOrEqualTo(10);
+}
+```
+
+## Asserting strings with StringAssertExtensions
+
+The `ShouldContain`, `ShouldNotContain`, `ShouldStartWith`, and `ShouldEndWith` extension methods allow you to assert the contents of strings.
+
+```csharp
+[Test]
+public void StringAssertionTest()
+{
+    string value = "Hello, World!";
+    value.ShouldContain("World");
+    value.ShouldNotContain("Goodbye");
+    value.ShouldStartWith("Hello");
+    value.ShouldEndWith("World!");
+}
+```
+
+## Asserting exceptions with ExceptionAssertExtensions
+
+The `ShouldThrow` and `ShouldNotThrow` extension methods allow you to assert that an action throws or does not throw an exception. Async variants `ShouldThrowAsync` and `ShouldNotThrowAsync` are also available.
+
+```csharp
+[Test]
+public void ShouldThrowTest()
+{
+    Action action = () => throw new InvalidOperationException("Oops");
+    var exception = action.ShouldThrow<InvalidOperationException>();
+    // exception.Message is "Oops"
+}
+
+[Test]
+public void ShouldNotThrowTest()
+{
+    Action action = () => { /* no error */ };
+    action.ShouldNotThrow();
+}
+```

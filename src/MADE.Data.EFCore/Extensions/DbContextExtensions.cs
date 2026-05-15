@@ -116,19 +116,24 @@ public static class DbContextExtensions
     /// <param name="context">The <see cref="DbContext"/>.</param>
     /// <param name="action">The action to run.</param>
     /// <param name="onError">An exception for handling the exception thrown, for example, event logging.</param>
+    /// <param name="cancellationToken">A <see cref="CancellationToken" /> to observe while waiting for the task to complete.</param>
     /// <typeparam name="TContext">The type of data context.</typeparam>
     /// <returns>True if the action ran successfully; otherwise, false.</returns>
     /// <exception cref="Exception">Potentially thrown by the <paramref name="onError"/> delegate callback.</exception>
+    /// <exception cref="OperationCanceledException">If the <see cref="CancellationToken" /> is canceled.</exception>
     public static async Task<bool> TryAsync<TContext>(
         this TContext context,
         Func<TContext, Task>? action,
-        Action<Exception>? onError = null)
+        Action<Exception>? onError = null,
+        CancellationToken cancellationToken = default)
         where TContext : DbContext
     {
         if (action == null)
         {
             return false;
         }
+
+        cancellationToken.ThrowIfCancellationRequested();
 
         try
         {
@@ -141,5 +146,33 @@ public static class DbContextExtensions
         }
 
         return false;
+    }
+
+    /// <summary>
+    /// Sets the audit information of <see cref="IAuditableEntity"/> entities being tracked in an added or modified state.
+    /// <para>
+    /// It is best to call this method in an override of the DbContext.SaveChangesAsync method in your data context.
+    /// </para>
+    /// </summary>
+    /// <param name="context">The <see cref="DbContext"/> to update entity audit info for.</param>
+    /// <param name="userId">The identifier of the user performing the operation.</param>
+    public static void SetEntityAuditInfo(this DbContext context, string? userId)
+    {
+        IEnumerable<EntityEntry> entries = context.ChangeTracker
+            .Entries()
+            .Where(
+                entry => entry.Entity is IAuditableEntity &&
+                         entry.State is EntityState.Added or EntityState.Modified);
+
+        foreach (EntityEntry entry in entries)
+        {
+            var entity = (IAuditableEntity)entry.Entity;
+            entity.UpdatedBy = userId;
+
+            if (entry.State == EntityState.Added)
+            {
+                entity.CreatedBy = userId;
+            }
+        }
     }
 }
