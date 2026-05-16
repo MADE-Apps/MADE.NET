@@ -33,43 +33,43 @@ public class NetworkRequestFactory : INetworkRequestFactory
     /// <inheritdoc/>
     public JsonGetNetworkRequest Get(string url, Dictionary<string, string>? headers = null)
     {
-        return new JsonGetNetworkRequest(this.CreateClient(), url, headers!);
+        return new JsonGetNetworkRequest(this.CreateClient(), url, headers);
     }
 
     /// <inheritdoc/>
     public JsonPostNetworkRequest Post(string url, string? jsonData = null, Dictionary<string, string>? headers = null)
     {
-        return new JsonPostNetworkRequest(this.CreateClient(), url, jsonData!, headers!);
+        return new JsonPostNetworkRequest(this.CreateClient(), url, jsonData, headers);
     }
 
     /// <inheritdoc/>
     public JsonPutNetworkRequest Put(string url, string? jsonData = null, Dictionary<string, string>? headers = null)
     {
-        return new JsonPutNetworkRequest(this.CreateClient(), url, jsonData!, headers!);
+        return new JsonPutNetworkRequest(this.CreateClient(), url, jsonData, headers);
     }
 
     /// <inheritdoc/>
     public JsonPatchNetworkRequest Patch(string url, string? jsonData = null, Dictionary<string, string>? headers = null)
     {
-        return new JsonPatchNetworkRequest(this.CreateClient(), url, jsonData!, headers!);
+        return new JsonPatchNetworkRequest(this.CreateClient(), url, jsonData, headers);
     }
 
     /// <inheritdoc/>
     public JsonDeleteNetworkRequest Delete(string url, Dictionary<string, string>? headers = null)
     {
-        return new JsonDeleteNetworkRequest(this.CreateClient(), url, headers!);
+        return new JsonDeleteNetworkRequest(this.CreateClient(), url, headers);
     }
 
     /// <inheritdoc/>
     public StreamGetNetworkRequest GetStream(string url, Dictionary<string, string>? headers = null)
     {
-        return new StreamGetNetworkRequest(this.CreateClient(), url, headers!);
+        return new StreamGetNetworkRequest(this.CreateClient(), url, headers);
     }
 
     /// <inheritdoc/>
     public MultipartFormDataPostNetworkRequest PostMultipart(string url, Dictionary<string, string>? headers = null)
     {
-        return new MultipartFormDataPostNetworkRequest(this.CreateClient(), url, headers!);
+        return new MultipartFormDataPostNetworkRequest(this.CreateClient(), url, headers);
     }
 
     /// <inheritdoc/>

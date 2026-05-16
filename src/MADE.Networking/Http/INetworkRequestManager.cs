@@ -2,6 +2,7 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Concurrent;
+using System.Threading.Tasks;
 using MADE.Networking.Http.Requests;
 
 namespace MADE.Networking.Http;
@@ -100,5 +101,6 @@ public interface INetworkRequestManager
     /// <summary>
     /// Processes the current queue of network requests.
     /// </summary>
-    void ProcessCurrentQueue();
+    /// <returns>An asynchronous operation.</returns>
+    Task ProcessCurrentQueueAsync();
 }

@@ -33,7 +33,7 @@ public abstract class NetworkRequest : INetworkRequest
     /// <param name="headers">
     /// Additional headers for the request.
     /// </param>
-    protected NetworkRequest(string url, Dictionary<string, string> headers)
+    protected NetworkRequest(string url, Dictionary<string, string>? headers)
     {
         this.Identifier = Guid.NewGuid();
         this.Url = url;

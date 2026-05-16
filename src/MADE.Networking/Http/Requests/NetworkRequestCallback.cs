@@ -31,7 +31,7 @@ public sealed class NetworkRequestCallback
     /// <param name="successCallback">
     /// The success callback.
     /// </param>
-    public NetworkRequestCallback(NetworkRequest request, WeakReferenceCallback successCallback)
+    public NetworkRequestCallback(NetworkRequest request, WeakReferenceCallback? successCallback)
         : this(request, successCallback, null)
     {
     }
@@ -50,8 +50,8 @@ public sealed class NetworkRequestCallback
     /// </param>
     public NetworkRequestCallback(
         NetworkRequest request,
-        WeakReferenceCallback successCallback,
-        WeakReferenceCallback errorCallback)
+        WeakReferenceCallback? successCallback,
+        WeakReferenceCallback? errorCallback)
     {
         this.Request = request ?? throw new ArgumentNullException(nameof(request));
         this.SuccessCallback = successCallback;
@@ -66,10 +66,10 @@ public sealed class NetworkRequestCallback
     /// <summary>
     /// Gets the success callback.
     /// </summary>
-    public WeakReferenceCallback SuccessCallback { get; }
+    public WeakReferenceCallback? SuccessCallback { get; }
 
     /// <summary>
     /// Gets the error callback.
     /// </summary>
-    public WeakReferenceCallback ErrorCallback { get; }
+    public WeakReferenceCallback? ErrorCallback { get; }
 }

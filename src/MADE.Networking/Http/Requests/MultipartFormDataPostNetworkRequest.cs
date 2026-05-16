@@ -11,6 +11,8 @@ namespace MADE.Networking.Http.Requests;
 /// </summary>
 public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
 {
+    private static readonly JsonSerializerOptions DefaultJsonOptions = new() { PropertyNameCaseInsensitive = true };
+
     private readonly HttpClient client;
 
     /// <summary>
@@ -32,7 +34,7 @@ public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
     public MultipartFormDataPostNetworkRequest(
         HttpClient client,
         string url,
-        Dictionary<string, string> headers)
+        Dictionary<string, string>? headers)
         : base(url, headers)
     {
         this.client = client ?? throw new ArgumentNullException(nameof(client));
@@ -100,7 +102,7 @@ public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
     public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
     {
         string json = await this.PostAndGetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize<TResponse>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions);
     }
 
     /// <inheritdoc/>
@@ -109,7 +111,7 @@ public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
         CancellationToken cancellationToken = default)
     {
         string json = await this.PostAndGetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize(json, expectedResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions);
     }
 
     private async Task<string> PostAndGetJsonResponseAsync(CancellationToken cancellationToken = default)

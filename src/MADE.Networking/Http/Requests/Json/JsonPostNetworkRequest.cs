@@ -16,6 +16,8 @@ namespace MADE.Networking.Http.Requests.Json;
 /// </summary>
 public sealed class JsonPostNetworkRequest : NetworkRequest
 {
+    private static readonly JsonSerializerOptions DefaultJsonOptions = new() { PropertyNameCaseInsensitive = true };
+
     private readonly HttpClient client;
 
     /// <summary>
@@ -44,7 +46,7 @@ public sealed class JsonPostNetworkRequest : NetworkRequest
     /// <param name="jsonData">
     /// The JSON data to post.
     /// </param>
-    public JsonPostNetworkRequest(HttpClient client, string url, string jsonData)
+    public JsonPostNetworkRequest(HttpClient client, string url, string? jsonData)
         : this(client, url, jsonData, null)
     {
     }
@@ -67,8 +69,8 @@ public sealed class JsonPostNetworkRequest : NetworkRequest
     public JsonPostNetworkRequest(
         HttpClient client,
         string url,
-        string jsonData,
-        Dictionary<string, string> headers)
+        string? jsonData,
+        Dictionary<string, string>? headers)
         : base(url, headers)
     {
         this.client = client ?? throw new ArgumentNullException(nameof(client));
@@ -78,7 +80,7 @@ public sealed class JsonPostNetworkRequest : NetworkRequest
     /// <summary>
     /// Gets or sets the data.
     /// </summary>
-    public string Data { get; set; }
+    public string? Data { get; set; }
 
     /// <summary>
     /// Executes the network request.
@@ -95,7 +97,7 @@ public sealed class JsonPostNetworkRequest : NetworkRequest
     public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize<TResponse>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions);
     }
 
     /// <summary>
@@ -115,7 +117,7 @@ public sealed class JsonPostNetworkRequest : NetworkRequest
         CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize(json, expectedResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions);
     }
 
     private async Task<string> GetJsonResponseAsync(CancellationToken cancellationToken = default)
@@ -153,6 +155,6 @@ public sealed class JsonPostNetworkRequest : NetworkRequest
 
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        return await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
     }
 }

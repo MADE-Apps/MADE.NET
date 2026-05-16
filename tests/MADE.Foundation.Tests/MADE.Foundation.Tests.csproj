@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\MADE.Foundation\MADE.Foundation.csproj" />
+    <ProjectReference Include="..\..\src\MADE.Testing\MADE.Testing.csproj" />
+  </ItemGroup>
+
+</Project>

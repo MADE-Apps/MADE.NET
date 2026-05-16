@@ -48,12 +48,12 @@ public class HttpResponseMessage<T> : IDisposable
     /// <summary>
     /// Gets the reason phrase that typically is sent by servers together with the status code.
     /// </summary>
-    public string ReasonPhrase => this.response.ReasonPhrase;
+    public string? ReasonPhrase => this.response.ReasonPhrase;
 
     /// <summary>
     /// Gets the request message which led to this response message.
     /// </summary>
-    public HttpRequestMessage RequestMessage => this.response.RequestMessage;
+    public HttpRequestMessage? RequestMessage => this.response.RequestMessage;
 
     /// <summary>
     /// Gets the status code of the HTTP response.
@@ -71,7 +71,7 @@ public class HttpResponseMessage<T> : IDisposable
     /// Note, ensure that <see cref="DeserializeAsync"/> has been called first, otherwise this value will be default.
     /// </para>
     /// </summary>
-    public T DeserializedContent { get; private set; }
+    public T? DeserializedContent { get; private set; }
 
     /// <summary>
     /// Allows conversion of a <see cref="HttpResponseMessage"/> to the <see cref="HttpResponseMessage{T}"/> without direct casting.
