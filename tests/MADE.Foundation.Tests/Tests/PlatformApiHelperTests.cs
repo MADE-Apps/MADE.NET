@@ -119,49 +119,49 @@ public class PlatformApiHelperTests
             result.ShouldBeFalse();
         }
     }
-}
 
-public class SupportedType
-{
-}
-
-[PlatformNotSupported]
-public class UnsupportedType
-{
-    public void SomeMethod()
-    {
-    }
-}
-
-[PlatformNotSupported]
-public class UnsupportedTypeWithUnsupportedMethod
-{
-    [PlatformNotSupported]
-    public void AlsoUnsupported()
-    {
-    }
-}
-
-[PlatformNotSupported]
-public class UnsupportedTypeWithUnsupportedProp
-{
-    [PlatformNotSupported]
-    public string? AlsoUnsupported { get; set; }
-}
-
-public class MixedSupportType
-{
-    public string? SupportedProperty { get; set; }
-
-    [PlatformNotSupported]
-    public string? UnsupportedProperty { get; set; }
-
-    public void SupportedMethod()
+    private class SupportedType
     {
     }
 
     [PlatformNotSupported]
-    public void UnsupportedMethod()
+    private class UnsupportedType
     {
+        public void SomeMethod()
+        {
+        }
+    }
+
+    [PlatformNotSupported]
+    private class UnsupportedTypeWithUnsupportedMethod
+    {
+        [PlatformNotSupported]
+        public void AlsoUnsupported()
+        {
+        }
+    }
+
+    [PlatformNotSupported]
+    private class UnsupportedTypeWithUnsupportedProp
+    {
+        [PlatformNotSupported]
+        public string? AlsoUnsupported { get; set; }
+    }
+
+    private class MixedSupportType
+    {
+        public string? SupportedProperty { get; set; }
+
+        [PlatformNotSupported]
+        public string? UnsupportedProperty { get; set; }
+
+        public void SupportedMethod()
+        {
+        }
+
+        [PlatformNotSupported]
+        public void UnsupportedMethod()
+        {
+        }
     }
 }

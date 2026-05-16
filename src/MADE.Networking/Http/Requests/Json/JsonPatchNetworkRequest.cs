@@ -97,7 +97,8 @@ public sealed class JsonPatchNetworkRequest : NetworkRequest
     public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions);
+        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {typeof(TResponse).Name}.");
     }
 
     /// <summary>
@@ -117,7 +118,8 @@ public sealed class JsonPatchNetworkRequest : NetworkRequest
         CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions);
+        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {expectedResponse.Name}.");
     }
 
     private async Task<string> GetJsonResponseAsync(CancellationToken cancellationToken = default)
@@ -139,7 +141,7 @@ public sealed class JsonPatchNetworkRequest : NetworkRequest
         {
             Method = new HttpMethod("PATCH"),
             RequestUri = uri,
-            Content = new StringContent(this.Data, Encoding.UTF8, "application/json"),
+            Content = new StringContent(this.Data ?? string.Empty, Encoding.UTF8, "application/json"),
         };
 
         if (this.Headers != null)

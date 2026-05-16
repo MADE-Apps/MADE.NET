@@ -236,10 +236,7 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
         }
         catch (Exception ex)
         {
-            if (successCallback is not null)
-            {
-                successCallback.Invoke(Activator.CreateInstance(successCallback.Type)!);
-            }
+            successCallback.Invoke(Activator.CreateInstance(successCallback.Type)!);
 
             errorCallback?.Invoke(ex);
         }
@@ -251,9 +248,10 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
         {
             await this.ProcessCurrentQueueAsync().ConfigureAwait(false);
         }
-        catch
+        catch (Exception)
         {
-            // Swallow exceptions in timer callback to prevent unobserved task exceptions.
+            // Swallow exceptions in the async void timer callback to prevent them from
+            // escaping as unhandled exceptions and crashing the process.
         }
     }
 }

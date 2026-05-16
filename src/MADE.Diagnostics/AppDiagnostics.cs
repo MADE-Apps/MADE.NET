@@ -94,7 +94,7 @@ public class AppDiagnostics : IAppDiagnostics
                 this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, args.Exception));
             }
         }
-        catch
+        catch (Exception)
         {
             // Swallow exceptions in last-resort exception handlers to prevent crashing the process.
         }
@@ -121,7 +121,7 @@ public class AppDiagnostics : IAppDiagnostics
 
             this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, ex));
         }
-        catch
+        catch (Exception)
         {
             // Swallow exceptions in last-resort exception handlers to prevent crashing the process.
         }

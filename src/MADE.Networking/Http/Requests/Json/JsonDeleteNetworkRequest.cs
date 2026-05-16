@@ -66,7 +66,8 @@ public sealed class JsonDeleteNetworkRequest : NetworkRequest
     public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions);
+        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {typeof(TResponse).Name}.");
     }
 
     /// <summary>
@@ -86,7 +87,8 @@ public sealed class JsonDeleteNetworkRequest : NetworkRequest
         CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions);
+        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {expectedResponse.Name}.");
     }
 
     private async Task<string> GetJsonResponseAsync(CancellationToken cancellationToken = default)

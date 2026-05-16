@@ -59,10 +59,8 @@ public class WeakReferenceCallbackTests
             GC.Collect();
 
             // Act & Assert
-            if (!callback.IsAlive)
-            {
-                Should.Throw<InvalidOperationException>(() => callback.Invoke("test"));
-            }
+            Assume.That(callback.IsAlive, Is.False, "Callback target is still alive; cannot assert dead-target behavior deterministically.");
+            Should.Throw<InvalidOperationException>(() => callback.Invoke("test"));
         }
     }
 

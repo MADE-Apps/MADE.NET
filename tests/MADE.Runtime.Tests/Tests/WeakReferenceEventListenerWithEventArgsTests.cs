@@ -43,19 +43,15 @@ public class WeakReferenceEventListenerWithEventArgsTests
         public void ShouldDetachWhenInstanceIsCollected()
         {
             // Arrange
-            bool detached = false;
             var listener = CreateListenerWithWeakInstance(out _);
-            listener.OnDetachAction = (_, _) => detached = true;
 
             GC.Collect();
             GC.WaitForPendingFinalizers();
             GC.Collect();
 
-            // Act
-            listener.OnEvent(new object(), "EventData");
-
-            // Assert - if GC collected the instance, it should have called Detach
-            // Note: GC behavior is non-deterministic, so we just verify no exception is thrown
+            // Act & Assert - GC behavior is non-deterministic, so verify the listener
+            // safely handles event dispatch even when the weak target may no longer be alive.
+            Should.NotThrow(() => listener.OnEvent(new object(), "EventData"));
         }
     }
 
