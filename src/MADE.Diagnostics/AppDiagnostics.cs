@@ -78,38 +78,52 @@ public class AppDiagnostics : IAppDiagnostics
 
     private async void OnTaskUnobservedException(object? sender, UnobservedTaskExceptionEventArgs args)
     {
-        args.SetObserved();
-
-        var correlationId = Guid.NewGuid();
-
-        await this.EventLogger.WriteCritical(
-            args.Exception != null
-                ? $"An unobserved task exception was thrown. Correlation ID: {correlationId}. Error: {args.Exception}."
-                : $"An unobserved task exception was thrown. Correlation ID: {correlationId}. Error: No exception information was available.").ConfigureAwait(false);
-
-        if (args.Exception != null)
+        try
         {
-            this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, args.Exception));
+            args.SetObserved();
+
+            var correlationId = Guid.NewGuid();
+
+            await this.EventLogger.WriteCritical(
+                args.Exception != null
+                    ? $"An unobserved task exception was thrown. Correlation ID: {correlationId}. Error: {args.Exception}."
+                    : $"An unobserved task exception was thrown. Correlation ID: {correlationId}. Error: No exception information was available.").ConfigureAwait(false);
+
+            if (args.Exception != null)
+            {
+                this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, args.Exception));
+            }
+        }
+        catch (Exception)
+        {
+            // Swallow exceptions in last-resort exception handlers to prevent crashing the process.
         }
     }
 
     private async void OnAppUnhandledException(object sender, UnhandledExceptionEventArgs args)
     {
-        if (args.IsTerminating)
+        try
         {
-            await this.EventLogger.WriteCritical(
-                "The application is terminating due to an unhandled exception being thrown.").ConfigureAwait(false);
-        }
+            if (args.IsTerminating)
+            {
+                await this.EventLogger.WriteCritical(
+                    "The application is terminating due to an unhandled exception being thrown.").ConfigureAwait(false);
+            }
 
-        if (args.ExceptionObject is not Exception ex)
+            if (args.ExceptionObject is not Exception ex)
+            {
+                return;
+            }
+
+            var correlationId = Guid.NewGuid();
+
+            await this.EventLogger.WriteCritical($"An unhandled exception was thrown. Correlation ID: {correlationId}. Error: {ex}").ConfigureAwait(false);
+
+            this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, ex));
+        }
+        catch (Exception)
         {
-            return;
+            // Swallow exceptions in last-resort exception handlers to prevent crashing the process.
         }
-
-        var correlationId = Guid.NewGuid();
-
-        await this.EventLogger.WriteCritical($"An unhandled exception was thrown. Correlation ID: {correlationId}. Error: {ex}").ConfigureAwait(false);
-
-        this.ExceptionObserved?.Invoke(this, new ExceptionObservedEventArgs(correlationId, ex));
     }
 }

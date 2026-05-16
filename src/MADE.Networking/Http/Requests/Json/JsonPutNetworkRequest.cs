@@ -16,6 +16,8 @@ namespace MADE.Networking.Http.Requests.Json;
 /// </summary>
 public sealed class JsonPutNetworkRequest : NetworkRequest
 {
+    private static readonly JsonSerializerOptions DefaultJsonOptions = new() { PropertyNameCaseInsensitive = true };
+
     private readonly HttpClient client;
 
     /// <summary>
@@ -44,7 +46,7 @@ public sealed class JsonPutNetworkRequest : NetworkRequest
     /// <param name="jsonData">
     /// The JSON data to put.
     /// </param>
-    public JsonPutNetworkRequest(HttpClient client, string url, string jsonData)
+    public JsonPutNetworkRequest(HttpClient client, string url, string? jsonData)
         : this(client, url, jsonData, null)
     {
     }
@@ -64,7 +66,7 @@ public sealed class JsonPutNetworkRequest : NetworkRequest
     /// <param name="headers">
     /// The additional headers.
     /// </param>
-    public JsonPutNetworkRequest(HttpClient client, string url, string jsonData, Dictionary<string, string> headers)
+    public JsonPutNetworkRequest(HttpClient client, string url, string? jsonData, Dictionary<string, string>? headers)
         : base(url, headers)
     {
         this.client = client ?? throw new ArgumentNullException(nameof(client));
@@ -74,7 +76,7 @@ public sealed class JsonPutNetworkRequest : NetworkRequest
     /// <summary>
     /// Gets or sets the data.
     /// </summary>
-    public string Data { get; set; }
+    public string? Data { get; set; }
 
     /// <summary>
     /// Executes the network request.
@@ -91,7 +93,8 @@ public sealed class JsonPutNetworkRequest : NetworkRequest
     public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize<TResponse>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {typeof(TResponse).Name}.");
     }
 
     /// <summary>
@@ -111,7 +114,8 @@ public sealed class JsonPutNetworkRequest : NetworkRequest
         CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize(json, expectedResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {expectedResponse.Name}.");
     }
 
     private async Task<string> GetJsonResponseAsync(CancellationToken cancellationToken = default)
@@ -131,7 +135,7 @@ public sealed class JsonPutNetworkRequest : NetworkRequest
 
         using var request = new HttpRequestMessage(HttpMethod.Put, uri)
         {
-            Content = new StringContent(this.Data, Encoding.UTF8, "application/json"),
+            Content = new StringContent(this.Data ?? string.Empty, Encoding.UTF8, "application/json"),
         };
 
         if (this.Headers != null)
@@ -149,6 +153,6 @@ public sealed class JsonPutNetworkRequest : NetworkRequest
 
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        return await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
     }
 }

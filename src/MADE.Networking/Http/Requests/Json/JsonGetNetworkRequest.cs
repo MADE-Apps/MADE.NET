@@ -15,6 +15,8 @@ namespace MADE.Networking.Http.Requests.Json;
 /// </summary>
 public sealed class JsonGetNetworkRequest : NetworkRequest
 {
+    private static readonly JsonSerializerOptions DefaultJsonOptions = new() { PropertyNameCaseInsensitive = true };
+
     private readonly HttpClient client;
 
     /// <summary>
@@ -43,7 +45,7 @@ public sealed class JsonGetNetworkRequest : NetworkRequest
     /// <param name="headers">
     /// The additional headers.
     /// </param>
-    public JsonGetNetworkRequest(HttpClient client, string url, Dictionary<string, string> headers)
+    public JsonGetNetworkRequest(HttpClient client, string url, Dictionary<string, string>? headers)
         : base(url, headers)
     {
         this.client = client ?? throw new ArgumentNullException(nameof(client));
@@ -64,7 +66,8 @@ public sealed class JsonGetNetworkRequest : NetworkRequest
     public override async Task<TResponse> ExecuteAsync<TResponse>(CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize<TResponse>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize<TResponse>(json, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {typeof(TResponse).Name}.");
     }
 
     /// <summary>
@@ -84,7 +87,8 @@ public sealed class JsonGetNetworkRequest : NetworkRequest
         CancellationToken cancellationToken = default)
     {
         string json = await this.GetJsonResponseAsync(cancellationToken).ConfigureAwait(false);
-        return JsonSerializer.Deserialize(json, expectedResponse, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+        return JsonSerializer.Deserialize(json, expectedResponse, DefaultJsonOptions)
+            ?? throw new InvalidOperationException($"Failed to deserialize response to {expectedResponse.Name}.");
     }
 
     private async Task<string> GetJsonResponseAsync(CancellationToken cancellationToken = default)
@@ -118,6 +122,6 @@ public sealed class JsonGetNetworkRequest : NetworkRequest
 
         response.EnsureSuccessStatusCode();
 
-        return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+        return await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
     }
 }

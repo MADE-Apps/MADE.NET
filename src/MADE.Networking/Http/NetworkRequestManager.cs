@@ -84,7 +84,8 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
     /// <summary>
     /// Processes the current queue of network requests.
     /// </summary>
-    public void ProcessCurrentQueue()
+    /// <returns>An asynchronous operation.</returns>
+    public async Task ProcessCurrentQueueAsync()
     {
         if (this.CurrentQueue.Count == 0 || this.isProcessingRequests)
         {
@@ -102,13 +103,13 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
             {
                 if (this.CurrentQueue.TryRemove(
                         this.CurrentQueue.FirstOrDefault().Key,
-                        out NetworkRequestCallback request))
+                        out NetworkRequestCallback? request))
                 {
                     requestTasks.Add(ExecuteRequestsAsync(this.CurrentQueue, request, cts.Token));
                 }
             }
 
-            Task.WhenAll(requestTasks).GetAwaiter().GetResult();
+            await Task.WhenAll(requestTasks).ConfigureAwait(false);
         }
         finally
         {
@@ -220,23 +221,37 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
         }
 
         NetworkRequest request = requestCallback.Request;
-        WeakReferenceCallback successCallback = requestCallback.SuccessCallback;
-        WeakReferenceCallback errorCallback = requestCallback.ErrorCallback;
+        WeakReferenceCallback? successCallback = requestCallback.SuccessCallback;
+        WeakReferenceCallback? errorCallback = requestCallback.ErrorCallback;
 
         try
         {
+            if (successCallback is null)
+            {
+                return;
+            }
+
             object response = await request.ExecuteAsync(successCallback.Type, cancellationToken).ConfigureAwait(false);
             successCallback.Invoke(response);
         }
         catch (Exception ex)
         {
-            successCallback.Invoke(Activator.CreateInstance(successCallback.Type));
+            successCallback.Invoke(Activator.CreateInstance(successCallback.Type)!);
+
             errorCallback?.Invoke(ex);
         }
     }
 
-    private void OnProcessTimerTick(object sender, object e)
+    private async void OnProcessTimerTick(object sender, object e)
     {
-        this.ProcessCurrentQueue();
+        try
+        {
+            await this.ProcessCurrentQueueAsync().ConfigureAwait(false);
+        }
+        catch (Exception)
+        {
+            // Swallow exceptions in the async void timer callback to prevent them from
+            // escaping as unhandled exceptions and crashing the process.
+        }
     }
 }

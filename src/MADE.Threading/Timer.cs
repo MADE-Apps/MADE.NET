@@ -64,12 +64,14 @@ public class Timer : ITimer, IDisposable
     /// </param>
     public void Start(TimeSpan dueTime)
     {
+        this.DueTime = dueTime;
+
         if (this.timer == null)
         {
             this.timer = new System.Threading.Timer(
                 c => this.InvokeTick(),
                 null,
-                dueTime.Milliseconds,
+                (int)Math.Ceiling(dueTime.TotalMilliseconds),
                 (int)Math.Ceiling(this.Interval.TotalMilliseconds));
         }
         else
@@ -90,6 +92,8 @@ public class Timer : ITimer, IDisposable
     /// </param>
     public void Start(int dueTime)
     {
+        this.DueTime = TimeSpan.FromMilliseconds(dueTime);
+
         if (this.timer == null)
         {
             this.timer = new System.Threading.Timer(
@@ -101,7 +105,7 @@ public class Timer : ITimer, IDisposable
         else
         {
             this.timer.Change(
-                (int)Math.Ceiling(this.DueTime.TotalMilliseconds),
+                dueTime,
                 (int)Math.Ceiling(this.Interval.TotalMilliseconds));
         }
 

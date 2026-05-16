@@ -8,7 +8,6 @@
       A perfect companion to any application handling networking.
     </Description>
     <PackageTags>MADE Networking Extensions Json Stream HttpClient</PackageTags>
-    <NoWarn>$(NoWarn);CS8600;CS8601;CS8603;CS8604;CS8618;CS8622;CS8625;CA1001;CA1869;CA2016</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

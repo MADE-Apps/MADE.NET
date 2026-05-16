@@ -43,7 +43,7 @@ public sealed class StreamGetNetworkRequest : NetworkRequest
     /// <param name="headers">
     /// The additional headers.
     /// </param>
-    public StreamGetNetworkRequest(HttpClient client, string url, Dictionary<string, string> headers)
+    public StreamGetNetworkRequest(HttpClient client, string url, Dictionary<string, string>? headers)
         : base(url, headers)
     {
         this.client = client ?? throw new ArgumentNullException(nameof(client));
