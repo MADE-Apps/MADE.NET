@@ -1,7 +1,6 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System.Net.Http;
 using System.Text.Json;
 
 namespace MADE.Networking.Http.Requests;
@@ -38,7 +37,7 @@ public sealed class MultipartFormDataPostNetworkRequest : NetworkRequest
         : base(url, headers)
     {
         this.client = client ?? throw new ArgumentNullException(nameof(client));
-        this.Content = new MultipartFormDataContent();
+        this.Content = [];
     }
 
     /// <summary>

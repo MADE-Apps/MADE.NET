@@ -3,7 +3,6 @@ using System.Net;
 using System.Text.Json;
 using MADE.Networking.Extensions;
 using MADE.Networking.Http;
-using MADE.Networking.Http.Requests.Json;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using Shouldly;

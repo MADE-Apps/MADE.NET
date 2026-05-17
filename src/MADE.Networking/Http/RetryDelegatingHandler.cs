@@ -2,7 +2,6 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Net;
-using System.Net.Http;
 
 namespace MADE.Networking.Http;
 

@@ -1,13 +1,9 @@
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using MADE.Collections.Tests.Fakes;
 using MADE.Testing;
 using NUnit.Framework;
 using Shouldly;
-using CollectionExtensions = MADE.Collections.CollectionExtensions;
 
 namespace MADE.Collections.Tests.Tests;
 

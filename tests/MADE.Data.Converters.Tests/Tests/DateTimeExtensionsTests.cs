@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using MADE.Data.Converters.Constants;
 using MADE.Data.Converters.Extensions;

@@ -1,4 +1,3 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using MADE.Data.Converters.Extensions;
 using NUnit.Framework;

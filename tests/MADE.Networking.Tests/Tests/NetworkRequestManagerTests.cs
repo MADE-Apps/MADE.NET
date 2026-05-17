@@ -1,8 +1,5 @@
-using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Net;
-using System.Net.Http;
-using System.Threading;
 using MADE.Networking.Http;
 using MADE.Networking.Http.Requests.Json;
 using System.Text.Json.Nodes;

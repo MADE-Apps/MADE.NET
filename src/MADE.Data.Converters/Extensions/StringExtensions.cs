@@ -1,19 +1,16 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System;
 using System.Globalization;
-using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MADE.Data.Converters.Extensions;
 
 /// <summary>
 /// Defines a collection of extensions for string values.
 /// </summary>
-public static class StringExtensions
+public static partial class StringExtensions
 {
     /// <summary>
     /// Converts a value to title case using the case rules of the invariant culture.
@@ -85,7 +82,7 @@ public static class StringExtensions
             return string.Empty;
         }
 
-        string result = value.Substring(0, 1).ToUpperInvariant() + value.Substring(1).ToLowerInvariant();
+        string result = value[..1].ToUpperInvariant() + value[1..].ToLowerInvariant();
         return result;
     }
 
@@ -304,14 +301,20 @@ public static class StringExtensions
         result = result.ToLowerInvariant();
 
         // Replace non-alphanumeric characters with hyphens
-        result = Regex.Replace(result, @"[^a-z0-9\s-]", string.Empty);
+        result = NonAlphanumericRegex().Replace(result, string.Empty);
 
         // Replace whitespace and multiple hyphens with a single hyphen
-        result = Regex.Replace(result, @"[\s-]+", "-");
+        result = WhitespaceAndHyphenRegex().Replace(result, "-");
 
         // Trim leading and trailing hyphens
         result = result.Trim('-');
 
         return result;
     }
+
+    [GeneratedRegex(@"[^a-z0-9\s-]")]
+    private static partial Regex NonAlphanumericRegex();
+
+    [GeneratedRegex(@"[\s-]+")]
+    private static partial Regex WhitespaceAndHyphenRegex();
 }

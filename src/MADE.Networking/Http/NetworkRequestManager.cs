@@ -1,12 +1,7 @@
 // MADE Apps licenses this file to you under the MIT license.
 // See the LICENSE file in the project root for more information.
 
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using MADE.Networking.Http.Requests;
 using MADE.Runtime;
 using Timer = MADE.Threading.Timer;
@@ -87,7 +82,7 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
     /// <returns>An asynchronous operation.</returns>
     public async Task ProcessCurrentQueueAsync()
     {
-        if (this.CurrentQueue.Count == 0 || this.isProcessingRequests)
+        if (this.CurrentQueue.IsEmpty || this.isProcessingRequests)
         {
             return;
         }
@@ -99,7 +94,7 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
             using var cts = new CancellationTokenSource();
             var requestTasks = new List<Task>();
 
-            while (this.CurrentQueue.Count > 0)
+            while (!this.CurrentQueue.IsEmpty)
             {
                 if (this.CurrentQueue.TryRemove(
                         this.CurrentQueue.FirstOrDefault().Key,
@@ -166,7 +161,7 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
     public void AddOrUpdate<TRequest, TResponse, TErrorResponse>(
         TRequest request,
         Action<TResponse> successCallback,
-        Action<TErrorResponse> errorCallback)
+        Action<TErrorResponse>? errorCallback)
         where TRequest : NetworkRequest
     {
         var weakSuccessCallback = new WeakReferenceCallback(successCallback, typeof(TResponse));
@@ -202,7 +197,7 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
     /// <param name="key">The key corresponding to the network request to remove from the queue.</param>
     public void RemoveByKey(string key)
     {
-        this.CurrentQueue.TryRemove(key, out NetworkRequestCallback _);
+        this.CurrentQueue.TryRemove(key, out var _);
     }
 
     private static async Task ExecuteRequestsAsync(
@@ -236,13 +231,12 @@ public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable
         }
         catch (Exception ex)
         {
-            successCallback.Invoke(Activator.CreateInstance(successCallback.Type)!);
-
+            successCallback?.Invoke(Activator.CreateInstance(successCallback.Type)!);
             errorCallback?.Invoke(ex);
         }
     }
 
-    private async void OnProcessTimerTick(object sender, object e)
+    private async void OnProcessTimerTick(object? sender, object e)
     {
         try
         {

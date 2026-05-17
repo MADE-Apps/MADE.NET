@@ -2,7 +2,6 @@
 // See the LICENSE file in the project root for more information.
 
 using System.Collections.Concurrent;
-using System.Threading.Tasks;
 using MADE.Networking.Http.Requests;
 
 namespace MADE.Networking.Http;
