@@ -1,5 +1,5 @@
 - name: Docs
   href: articles/
-  homepage: articles/intro.md
+  homepage: articles/get-started/overview.md
 - name: APIs
   href: api/

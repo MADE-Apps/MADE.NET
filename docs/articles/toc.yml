@@ -1,28 +1,132 @@
-- name: Getting Started
-  topicHref: intro.md
-- name: Features
+- name: Get Started
   items:
-    - name: Collections
-      href: features/collections.md
-    - name: Data Converters
-      href: features/data-converters.md
-    - name: Data EF Core
-      href: features/data-efcore.md
-    - name: Data Serialization
-      href: features/data-serialization.md
-    - name: Data Validation
-      href: features/data-validation.md
-    - name: Diagnostics
-      href: features/diagnostics.md
-    - name: Networking
-      href: features/networking.md
-    - name: Runtime
-      href: features/runtime.md
-    - name: Testing
-      href: features/testing.md
-    - name: Threading
-      href: features/threading.md
-    - name: Web
-      href: features/web.md
-    - name: Web MVC
-      href: features/web-mvc.md
+    - name: Overview
+      href: get-started/overview.md
+    - name: Quickstart
+      href: get-started/quickstart.md
+    - name: What's New
+      items:
+        - name: v3.0
+          href: get-started/whats-new/v3.md
+    - name: Migration Guides
+      items:
+        - name: v2 to v3
+          href: get-started/migration/v2-to-v3.md
+- name: Collections
+  items:
+    - name: Overview
+      href: collections/overview.md
+    - name: Collection operations
+      href: collections/collection-operations.md
+    - name: Comparing objects
+      href: collections/comparing-objects.md
+    - name: Observable collections
+      href: collections/observable-collections.md
+    - name: Dictionary extensions
+      href: collections/dictionary-extensions.md
+    - name: Queryable extensions
+      href: collections/queryable-extensions.md
+- name: Data Converters
+  items:
+    - name: Overview
+      href: data-converters/overview.md
+    - name: Value converters
+      href: data-converters/value-converters.md
+    - name: String extensions
+      href: data-converters/string-extensions.md
+    - name: DateTime extensions
+      href: data-converters/datetime-extensions.md
+    - name: Math and units
+      href: data-converters/math-and-units.md
+- name: Data - Entity Framework Core
+  items:
+    - name: Overview
+      href: data-efcore/overview.md
+    - name: Entity base classes
+      href: data-efcore/entity-base.md
+    - name: DbContext extensions
+      href: data-efcore/dbcontext-extensions.md
+    - name: Soft delete
+      href: data-efcore/soft-delete.md
+    - name: Audit tracking
+      href: data-efcore/audit-tracking.md
+    - name: Query extensions
+      href: data-efcore/query-extensions.md
+- name: Data - Serialization
+  items:
+    - name: Overview
+      href: data-serialization/overview.md
+- name: Data - Validation
+  items:
+    - name: Overview
+      href: data-validation/overview.md
+    - name: Built-in validators
+      href: data-validation/built-in-validators.md
+    - name: Custom validators
+      href: data-validation/custom-validators.md
+    - name: Async validation
+      href: data-validation/async-validation.md
+    - name: FluentValidation integration
+      href: data-validation/fluent-validation.md
+- name: Diagnostics
+  items:
+    - name: Overview
+      href: diagnostics/overview.md
+    - name: File logging
+      href: diagnostics/file-logging.md
+    - name: Exception handling
+      href: diagnostics/exception-handling.md
+- name: Networking
+  items:
+    - name: Overview
+      href: networking/overview.md
+    - name: Getting started
+      href: networking/getting-started.md
+    - name: Request types
+      href: networking/request-types.md
+    - name: File uploads
+      href: networking/file-uploads.md
+    - name: Retry handling
+      href: networking/retry-handling.md
+    - name: Request manager
+      href: networking/request-manager.md
+- name: Runtime
+  items:
+    - name: Overview
+      href: runtime/overview.md
+    - name: Action chaining
+      href: runtime/action-chaining.md
+    - name: Weak references
+      href: runtime/weak-references.md
+- name: Testing
+  items:
+    - name: Overview
+      href: testing/overview.md
+- name: Threading
+  items:
+    - name: Overview
+      href: threading/overview.md
+    - name: Timer
+      href: threading/timer.md
+    - name: Debouncer and Throttler
+      href: threading/debouncer-throttler.md
+    - name: AsyncLazy
+      href: threading/async-lazy.md
+    - name: Task extensions
+      href: threading/task-extensions.md
+- name: ASP.NET Core
+  items:
+    - name: Overview
+      href: web/overview.md
+    - name: Exception middleware
+      href: web/exception-middleware.md
+    - name: Pagination
+      href: web/pagination.md
+    - name: Authentication
+      href: web/authentication.md
+    - name: API versioning
+      href: web/api-versioning.md
+- name: ASP.NET Core MVC
+  items:
+    - name: Overview
+      href: web-mvc/overview.md

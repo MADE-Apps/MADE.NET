@@ -9,17 +9,13 @@ _layout: landing
   <h1>Make app development easier with reusable code</h1>
   <p>A toolkit of lightweight .NET libraries that streamline common development tasks, from data validation and serialization to networking and diagnostics.</p>
   <div class="landing-actions">
-    <a href="articles/intro.md" class="btn-primary-landing">Get started</a>
+    <a href="articles/get-started/overview.md" class="btn-primary-landing">Get started</a>
     <a href="https://github.com/MADE-Apps/MADE.NET" class="btn-outline-landing">View on GitHub</a>
   </div>
 </div>
 
 <div class="quick-install">
-
-```
-dotnet add package MADE.Collections
-```
-
+  <code id="package-typewriter">dotnet add package <span id="typewriter-target">MADE.Collections</span><span class="typewriter-cursor">|</span></code>
 </div>
 
 <div class="feature-grid">
@@ -56,3 +52,5 @@ dotnet add package MADE.Collections
     <a href="https://github.com/MADE-Apps/MADE.NET/" class="btn-outline-landing">Contribute</a>
   </div>
 </div>
+
+<script src="public/typewriter.js"></script>

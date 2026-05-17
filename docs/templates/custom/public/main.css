@@ -7,9 +7,9 @@
 }
 
 /* Navbar logo */
-.navbar .icon .logo {
+.navbar .navbar-brand img {
   height: 48px;
-  width: auto;
+  width: 48px;
 }
 
 /* Landing page */
@@ -89,10 +89,19 @@
 }
 
 .quick-install code {
-  display: block;
+  display: inline-block;
   padding: 0.75rem 1.25rem;
   border-radius: 6px;
   font-size: 0.9rem;
+}
+
+.typewriter-cursor {
+  display: inline-block;
+  width: 0;
+  animation: blink 0.7s step-end infinite;
+  margin-left: 1px;
+  font-weight: 100;
+  color: var(--brand-blue);
 }
 
 /* Feature grid */
@@ -153,5 +162,11 @@
 
 .landing-cta .landing-actions {
   margin-top: 1rem;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
 }
 
