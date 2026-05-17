@@ -6,6 +6,7 @@
     <IsPackable>false</IsPackable>
     <IsTestProject>true</IsTestProject>
     <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <ExcludeFromCodeCoverage>true</ExcludeFromCodeCoverage>
     <NoWarn>$(NoWarn);CA2007;CA1869;CA1861;CS8600;CS8601;CS8602;CS8603;CS8604;CS8612;CS8618;CS8620;CS8622;CS8625;CS8629;CS8765;CS8767;CA1061;CA1829</NoWarn>
     <Version>1.0.0.0</Version>
     <Authors>MADE Apps</Authors>
