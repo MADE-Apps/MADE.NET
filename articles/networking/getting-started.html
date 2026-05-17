@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Getting started with networking | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Getting started with networking | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/networking/getting-started.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="networking-getting-started">
+<h1 id="getting-started-with-networking">Getting started with networking</h1>
+
+<p>The <code>INetworkRequestFactory</code> is the recommended entry point for making HTTP requests with <code>MADE.Networking</code>. It wraps <code>IHttpClientFactory</code> and provides a clean API for creating typed requests without managing <code>HttpClient</code> instances yourself.</p>
+<h2 id="registration">Registration</h2>
+<p>Register the factory in your service collection:</p>
+<pre><code class="lang-csharp">services.AddNetworkRequestFactory();
+</code></pre>
+<p>You can also register named clients with pre-configured settings:</p>
+<pre><code class="lang-csharp">services.AddNetworkRequestFactory(&quot;ProductApi&quot;, client =&gt;
+{
+    client.BaseAddress = new Uri(&quot;https://api.example.com/&quot;);
+    client.DefaultRequestHeaders.Add(&quot;Accept&quot;, &quot;application/json&quot;);
+});
+</code></pre>
+<h2 id="creating-and-executing-requests">Creating and executing requests</h2>
+<p>Inject <code>INetworkRequestFactory</code> into your services and use the HTTP method helpers to create requests:</p>
+<pre><code class="lang-csharp">public class ProfileService
+{
+    private readonly INetworkRequestFactory requestFactory;
+
+    public ProfileService(INetworkRequestFactory requestFactory)
+    {
+        this.requestFactory = requestFactory;
+    }
+
+    public async Task&lt;Profile&gt; GetProfileAsync(CancellationToken cancellationToken = default)
+    {
+        var request = requestFactory.Get(&quot;https://api.example.com/profile&quot;);
+        return await request.ExecuteAsync&lt;Profile&gt;(cancellationToken);
+    }
+
+    public async Task UpdateProfileAsync(Profile profile, CancellationToken cancellationToken = default)
+    {
+        var request = requestFactory.Put(
+            &quot;https://api.example.com/profile&quot;,
+            JsonSerializer.Serialize(profile));
+        await request.ExecuteAsync&lt;bool&gt;(cancellationToken);
+    }
+}
+</code></pre>
+<p>The factory provides methods for all standard HTTP verbs: <code>Get</code>, <code>Post</code>, <code>Put</code>, <code>Patch</code>, <code>Delete</code>, and <code>PostMultipart</code>.</p>
+<h2 id="using-named-clients">Using named clients</h2>
+<p>If you registered a named client configuration, select it with <code>WithClient</code>:</p>
+<pre><code class="lang-csharp">// Uses the &quot;ProductApi&quot; client configuration (base address, headers, etc.)
+var request = requestFactory.WithClient(&quot;ProductApi&quot;).Get(&quot;/products&quot;);
+var products = await request.ExecuteAsync&lt;List&lt;Product&gt;&gt;();
+</code></pre>
+<p>This is useful when you communicate with multiple APIs that have different base addresses, authentication headers, or timeout settings.</p>
+<h2 id="direct-request-construction">Direct request construction</h2>
+<p>If you're not using dependency injection, you can create request instances directly with an <code>HttpClient</code>:</p>
+<pre><code class="lang-csharp">var client = httpClientFactory.CreateClient();
+var request = new JsonGetNetworkRequest(client, &quot;https://api.example.com/data&quot;);
+var result = await request.ExecuteAsync&lt;MyData&gt;();
+</code></pre>
+<p>See <a href="request-types.html">Request types</a> for all available request types and their constructors.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/networking/getting-started.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

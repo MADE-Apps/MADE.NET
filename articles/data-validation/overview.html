@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Data Validation | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Data Validation | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-validation/overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-validation-overview">
+<h1 id="data-validation">Data Validation</h1>
+
+<p>Input validation is one of those things that every application needs, but the approach varies wildly between projects. Some developers inline validation logic in controllers, others scatter it across service layers, and some build custom frameworks that are hard to extend. The result is usually inconsistent validation that's difficult to test and maintain.</p>
+<p><code>MADE.Data.Validation</code> provides a lightweight, composable validation pipeline. You pick validators from a library of 30+ built-in types, compose them into a <code>ValidatorCollection</code>, and validate values with a single call. The framework is agnostic of your application architecture - it works in ASP.NET Core, MAUI, console apps, or anywhere else.</p>
+<pre><code class="lang-bash">dotnet add package MADE.Data.Validation
+</code></pre>
+<h2 id="whats-included">What's included</h2>
+<table>
+<thead>
+<tr>
+<th>Guide</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="built-in-validators.html">Built-in validators</a></td>
+<td>All 30+ <code>IValidator</code> types: <code>RequiredValidator</code>, <code>EmailValidator</code>, <code>BetweenValidator</code>, <code>RegexValidator</code>, and more.</td>
+</tr>
+<tr>
+<td><a href="custom-validators.html">Custom validators</a></td>
+<td>How to implement <code>IValidator</code> for your own validation logic.</td>
+</tr>
+<tr>
+<td><a href="async-validation.html">Async validation</a></td>
+<td><code>IAsyncValidator</code> and <code>AsyncValidatorCollection</code> for validation that requires I/O operations.</td>
+</tr>
+<tr>
+<td><a href="fluent-validation.html">FluentValidation integration</a></td>
+<td>Using FluentValidation's <code>AbstractValidator</code> types with MADE's validation pipeline.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-use-this-package">When to use this package</h2>
+<ul>
+<li>You want a consistent validation pattern across your application without adopting a full framework.</li>
+<li>You need composable validators that can be combined, reused, and tested independently.</li>
+<li>You need async validation (e.g., checking uniqueness against a database).</li>
+<li>You want to use FluentValidation validators alongside MADE validators in the same pipeline.</li>
+</ul>
+<h2 id="quick-example">Quick example</h2>
+<pre><code class="lang-csharp">using MADE.Data.Validation;
+using MADE.Data.Validation.Validators;
+
+// Compose validators
+var validators = new ValidatorCollection
+{
+    new RequiredValidator(),
+    new MinLengthValidator { MinLength = 3 },
+    new MaxLengthValidator { MaxLength = 50 },
+    new AlphaNumericValidator(),
+};
+
+// Validate a value
+validators.Validate(&quot;hello123&quot;);
+
+if (validators.IsInvalid)
+{
+    foreach (var message in validators.FeedbackMessages)
+    {
+        Console.WriteLine(message);
+    }
+}
+</code></pre>
+<p>The <code>ValidatorCollection</code> runs every validator and aggregates the results. You get:</p>
+<ul>
+<li><strong><code>IsInvalid</code></strong> - <code>true</code> if any validator failed.</li>
+<li><strong><code>FeedbackMessages</code></strong> - human-readable error descriptions from each failed validator.</li>
+<li><strong><code>Validated</code></strong> event - fires after validation completes, useful for UI binding.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-validation/overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

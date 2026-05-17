@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Observable collections | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Observable collections | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/collections/observable-collections.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="collections-observable-collections">
+<h1 id="observable-collections">Observable collections</h1>
+
+<p><code>ObservableCollection&lt;T&gt;</code> is the standard choice for data-bound collections in .NET UI frameworks, but it has two notable gaps: it doesn't propagate property changes from individual items, and it has no built-in sorting.</p>
+<p><code>MADE.Collections</code> fills both gaps with <code>ObservableItemCollection&lt;T&gt;</code> and sorting extensions.</p>
+<h2 id="tracking-item-property-changes-with-observableitemcollection">Tracking item property changes with ObservableItemCollection</h2>
+<p>Standard <code>ObservableCollection&lt;T&gt;</code> only raises <code>CollectionChanged</code> when items are added, removed, or replaced. If a property on an existing item changes, the collection stays silent and your UI won't update.</p>
+<p><code>ObservableItemCollection&lt;T&gt;</code> solves this by subscribing to <code>INotifyPropertyChanged</code> on each item and surfacing those changes through the collection's own change notifications.</p>
+<pre><code class="lang-csharp">using MADE.Collections;
+
+public class TodoItem : INotifyPropertyChanged
+{
+    private bool isComplete;
+
+    public string Title { get; set; }
+
+    public bool IsComplete
+    {
+        get =&gt; isComplete;
+        set
+        {
+            isComplete = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(IsComplete)));
+        }
+    }
+
+    public event PropertyChangedEventHandler? PropertyChanged;
+}
+
+// Items' property changes are now visible to data binding
+var todos = new ObservableItemCollection&lt;TodoItem&gt;
+{
+    new TodoItem { Title = &quot;Write docs&quot;, IsComplete = false },
+};
+
+// This property change is propagated through the collection
+todos[0].IsComplete = true;
+</code></pre>
+<p>This is particularly useful in MVVM applications where you bind a list to a UI control and need the UI to react when individual items are modified, not just when items are added or removed.</p>
+<h2 id="sorting-with-sort-and-sortdescending">Sorting with Sort and SortDescending</h2>
+<p><code>ObservableCollection&lt;T&gt;</code> provides no sorting mechanism. The typical workaround - creating a new sorted collection and replacing the binding source - breaks UI state and animations.</p>
+<p>The <code>Sort</code> and <code>SortDescending</code> extensions sort the collection in place while correctly raising <code>CollectionChanged</code> notifications, so the UI animates the reorder smoothly:</p>
+<pre><code class="lang-csharp">using MADE.Collections;
+
+var products = new ObservableCollection&lt;Product&gt;
+{
+    new Product { Name = &quot;Keyboard&quot;, Price = 79.99m },
+    new Product { Name = &quot;Mouse&quot;, Price = 49.99m },
+    new Product { Name = &quot;Monitor&quot;, Price = 399.99m },
+};
+
+// Sort ascending by name
+products.Sort(p =&gt; p.Name);
+
+// Sort descending by price
+products.SortDescending(p =&gt; p.Price);
+</code></pre>
+<h2 id="best-practices">Best practices</h2>
+<ul>
+<li><strong>Use <code>ObservableItemCollection&lt;T&gt;</code> when items are mutable</strong> and your UI needs to reflect property-level changes. If your items are immutable (or you replace the entire item when it changes), the standard <code>ObservableCollection&lt;T&gt;</code> is sufficient.</li>
+<li><strong>Prefer in-place sorting</strong> with <code>Sort</code>/<code>SortDescending</code> over creating new sorted collections. This preserves selection state and scroll position in UI frameworks.</li>
+<li><strong>Ensure your items implement <code>INotifyPropertyChanged</code></strong> before using <code>ObservableItemCollection&lt;T&gt;</code>. The collection subscribes to this interface, so items that don't implement it won't have their changes tracked.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/collections/observable-collections.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

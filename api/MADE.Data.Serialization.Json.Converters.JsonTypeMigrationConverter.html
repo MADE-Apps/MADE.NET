@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class JsonTypeMigrationConverter | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class JsonTypeMigrationConverter | MADE.NET ">
+      
+      <meta name="description" content="Defines a JSON converter for migrating serialized  declarations within a serialized JSON object.">
+      <link rel="icon" href="../images/Logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter.md&amp;value=---%0Auid%3A%20MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter">
+
+
+
+  <h1 id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter" class="text-break">
+Class JsonTypeMigrationConverter  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Serialization/Json/Converters/JsonTypeMigrationConverter.cs/#L17"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MADE.html">MADE</a>.<a class="xref" href="MADE.Data.html">Data</a>.<a class="xref" href="MADE.Data.Serialization.html">Serialization</a>.<a class="xref" href="MADE.Data.Serialization.Json.html">Json</a>.<a class="xref" href="MADE.Data.Serialization.Json.Converters.html">Converters</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MADE.Data.Serialization.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines a JSON converter for migrating serialized <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a> declarations within a serialized JSON object.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class JsonTypeMigrationConverter : JsonConverter&lt;object&gt;</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter">JsonConverter</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1">JsonConverter</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>&gt;</div>
+      <div><span class="xref">JsonTypeMigrationConverter</span></div>
+    </dd>
+  </dl>
+
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.canconvert">JsonConverter&lt;object&gt;.CanConvert(Type)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.readaspropertyname">JsonConverter&lt;object&gt;.ReadAsPropertyName(ref Utf8JsonReader, Type, JsonSerializerOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.writeaspropertyname">JsonConverter&lt;object&gt;.WriteAsPropertyName(Utf8JsonWriter, object, JsonSerializerOptions)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.handlenull">JsonConverter&lt;object&gt;.HandleNull</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.serialization.jsonconverter-1.type">JsonConverter&lt;object&gt;.Type</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyNames_System_Object_">ReflectionExtensions.GetPropertyNames(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_">ReflectionExtensions.GetPropertyValue&lt;T&gt;(object, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldBeNull_System_Object_">ObjectAssertExtensions.ShouldBeNull(object?)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldNotBeNull_System_Object_">ObjectAssertExtensions.ShouldNotBeNull(object?)</a>
+  </div>
+  </dd></dl>
+
+
+
+  <h2 id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>This converter reads <code>$type</code> metadata from JSON objects and resolves the target type using registered type migrations.
+It is designed to deserialize JSON that was previously serialized with type metadata (e.g., Newtonsoft.Json's <code>TypeNameHandling.All</code>).</p>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter__ctor_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.#ctor*"></a>
+
+  <h3 id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter__ctor" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.#ctor">
+  JsonTypeMigrationConverter()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Serialization/Json/Converters/JsonTypeMigrationConverter.cs/#L31"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.html">JsonTypeMigrationConverter</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JsonTypeMigrationConverter()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+  <h4 class="section" id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter__ctor_remarks">Remarks</h4>
+  <div class="markdown level1 remarks"><p>To add migrations, call the <a class="xref" href="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.html#MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_AddTypeMigration_MADE_Data_Serialization_Json_JsonTypeMigration_">AddTypeMigration(JsonTypeMigration)</a> method.</p>
+</div>
+
+
+
+
+  <a id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter__ctor_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.#ctor*"></a>
+
+  <h3 id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter__ctor_MADE_Data_Serialization_Json_JsonTypeMigration___" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.#ctor(MADE.Data.Serialization.Json.JsonTypeMigration[])">
+  JsonTypeMigrationConverter(params JsonTypeMigration[])
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Serialization/Json/Converters/JsonTypeMigrationConverter.cs/#L40"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.html">JsonTypeMigrationConverter</a> class with pre-configured type migrations.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public JsonTypeMigrationConverter(params JsonTypeMigration[] migrations)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>migrations</code> <a class="xref" href="MADE.Data.Serialization.Json.JsonTypeMigration.html">JsonTypeMigration</a>[]</dt>
+    <dd><p>The type migrations to initialize with.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_AddTypeMigration_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.AddTypeMigration*"></a>
+
+  <h3 id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_AddTypeMigration_MADE_Data_Serialization_Json_JsonTypeMigration_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.AddTypeMigration(MADE.Data.Serialization.Json.JsonTypeMigration)">
+  AddTypeMigration(JsonTypeMigration)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Serialization/Json/Converters/JsonTypeMigrationConverter.cs/#L54"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds a JSON type migration to the converter.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddTypeMigration(JsonTypeMigration migration)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>migration</code> <a class="xref" href="MADE.Data.Serialization.Json.JsonTypeMigration.html">JsonTypeMigration</a></dt>
+    <dd><p>The type migration to add.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>Thrown if the <code class="paramref">migration</code> is null.</p>
+</dd>
+    <dt><a class="xref" href="MADE.Data.Serialization.Json.Exceptions.JsonTypeMigrationException.html">JsonTypeMigrationException</a></dt>
+    <dd><p>Thrown if a <code class="paramref">migration</code> already exists for the from type.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_Read_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.Read*"></a>
+
+  <h3 id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">
+  Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Serialization/Json/Converters/JsonTypeMigrationConverter.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Reads and converts the JSON to type <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override object Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>reader</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.utf8jsonreader">Utf8JsonReader</a></dt>
+    <dd><p>The reader.</p>
+</dd>
+    <dt><code>typeToConvert</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.type">Type</a></dt>
+    <dd><p>The type to convert.</p>
+</dd>
+    <dt><code>options</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a></dt>
+    <dd><p>An object that specifies serialization options to use.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The converted value.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_Write_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.Write*"></a>
+
+  <h3 id="MADE_Data_Serialization_Json_Converters_JsonTypeMigrationConverter_Write_System_Text_Json_Utf8JsonWriter_System_Object_System_Text_Json_JsonSerializerOptions_" data-uid="MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.Write(System.Text.Json.Utf8JsonWriter,System.Object,System.Text.Json.JsonSerializerOptions)">
+  Write(Utf8JsonWriter, object, JsonSerializerOptions)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Serialization/Json/Converters/JsonTypeMigrationConverter.cs/#L96"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Writes a specified value as JSON.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>writer</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.utf8jsonwriter">Utf8JsonWriter</a></dt>
+    <dd><p>The writer to write to.</p>
+</dd>
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The value to convert to JSON.</p>
+</dd>
+    <dt><code>options</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.text.json.jsonserializeroptions">JsonSerializerOptions</a></dt>
+    <dd><p>An object that specifies serialization options to use.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Serialization/Json/Converters/JsonTypeMigrationConverter.cs/#L17" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

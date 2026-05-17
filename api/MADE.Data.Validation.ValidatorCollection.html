@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class ValidatorCollection | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class ValidatorCollection | MADE.NET ">
+      
+      <meta name="description" content="Defines a list of  objects that can be accessed by index.">
+      <link rel="icon" href="../images/Logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Data_Validation_ValidatorCollection.md&amp;value=---%0Auid%3A%20MADE.Data.Validation.ValidatorCollection%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MADE.Data.Validation.ValidatorCollection">
+
+
+
+  <h1 id="MADE_Data_Validation_ValidatorCollection" data-uid="MADE.Data.Validation.ValidatorCollection" class="text-break">
+Class ValidatorCollection  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L11"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MADE.html">MADE</a>.<a class="xref" href="MADE.Data.html">Data</a>.<a class="xref" href="MADE.Data.Validation.html">Validation</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MADE.Data.Validation.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines a list of <a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a> objects that can be accessed by index.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class ValidatorCollection : List&lt;IValidator&gt;, IList&lt;IValidator&gt;, ICollection&lt;IValidator&gt;, IReadOnlyList&lt;IValidator&gt;, IReadOnlyCollection&lt;IValidator&gt;, IEnumerable&lt;IValidator&gt;, IValidatorCollection, IList, ICollection, IEnumerable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a>&gt;</div>
+      <div><span class="xref">ValidatorCollection</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a>&gt;</div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a>&gt;</div>
+      <div><a class="xref" href="MADE.Data.Validation.IValidatorCollection.html">IValidatorCollection</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ilist">IList</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.icollection">ICollection</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.add">List&lt;IValidator&gt;.Add(IValidator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.addrange">List&lt;IValidator&gt;.AddRange(IEnumerable&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.asreadonly">List&lt;IValidator&gt;.AsReadOnly()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(system-int32-system-int32-0-system-collections-generic-icomparer((-0)))">List&lt;IValidator&gt;.BinarySearch(int, int, IValidator, IComparer&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(-0)">List&lt;IValidator&gt;.BinarySearch(IValidator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.binarysearch#system-collections-generic-list-1-binarysearch(-0-system-collections-generic-icomparer((-0)))">List&lt;IValidator&gt;.BinarySearch(IValidator, IComparer&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.clear">List&lt;IValidator&gt;.Clear()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.contains">List&lt;IValidator&gt;.Contains(IValidator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.convertall">List&lt;IValidator&gt;.ConvertAll&lt;TOutput&gt;(Converter&lt;IValidator, TOutput&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(system-int32-0()-system-int32-system-int32)">List&lt;IValidator&gt;.CopyTo(int, IValidator[], int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(-0())">List&lt;IValidator&gt;.CopyTo(IValidator[])</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.copyto#system-collections-generic-list-1-copyto(-0()-system-int32)">List&lt;IValidator&gt;.CopyTo(IValidator[], int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.ensurecapacity">List&lt;IValidator&gt;.EnsureCapacity(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.exists">List&lt;IValidator&gt;.Exists(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.find">List&lt;IValidator&gt;.Find(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findall">List&lt;IValidator&gt;.FindAll(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-int32-system-int32-system-predicate((-0)))">List&lt;IValidator&gt;.FindIndex(int, int, Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-int32-system-predicate((-0)))">List&lt;IValidator&gt;.FindIndex(int, Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findindex#system-collections-generic-list-1-findindex(system-predicate((-0)))">List&lt;IValidator&gt;.FindIndex(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlast">List&lt;IValidator&gt;.FindLast(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-int32-system-int32-system-predicate((-0)))">List&lt;IValidator&gt;.FindLastIndex(int, int, Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-int32-system-predicate((-0)))">List&lt;IValidator&gt;.FindLastIndex(int, Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.findlastindex#system-collections-generic-list-1-findlastindex(system-predicate((-0)))">List&lt;IValidator&gt;.FindLastIndex(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.foreach">List&lt;IValidator&gt;.ForEach(Action&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.getenumerator">List&lt;IValidator&gt;.GetEnumerator()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.getrange">List&lt;IValidator&gt;.GetRange(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0)">List&lt;IValidator&gt;.IndexOf(IValidator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0-system-int32)">List&lt;IValidator&gt;.IndexOf(IValidator, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.indexof#system-collections-generic-list-1-indexof(-0-system-int32-system-int32)">List&lt;IValidator&gt;.IndexOf(IValidator, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.insert">List&lt;IValidator&gt;.Insert(int, IValidator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.insertrange">List&lt;IValidator&gt;.InsertRange(int, IEnumerable&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0)">List&lt;IValidator&gt;.LastIndexOf(IValidator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0-system-int32)">List&lt;IValidator&gt;.LastIndexOf(IValidator, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.lastindexof#system-collections-generic-list-1-lastindexof(-0-system-int32-system-int32)">List&lt;IValidator&gt;.LastIndexOf(IValidator, int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.remove">List&lt;IValidator&gt;.Remove(IValidator)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removeall">List&lt;IValidator&gt;.RemoveAll(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removeat">List&lt;IValidator&gt;.RemoveAt(int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.removerange">List&lt;IValidator&gt;.RemoveRange(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.reverse#system-collections-generic-list-1-reverse">List&lt;IValidator&gt;.Reverse()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.reverse#system-collections-generic-list-1-reverse(system-int32-system-int32)">List&lt;IValidator&gt;.Reverse(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.slice">List&lt;IValidator&gt;.Slice(int, int)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort">List&lt;IValidator&gt;.Sort()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-collections-generic-icomparer((-0)))">List&lt;IValidator&gt;.Sort(IComparer&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-comparison((-0)))">List&lt;IValidator&gt;.Sort(Comparison&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.sort#system-collections-generic-list-1-sort(system-int32-system-int32-system-collections-generic-icomparer((-0)))">List&lt;IValidator&gt;.Sort(int, int, IComparer&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.toarray">List&lt;IValidator&gt;.ToArray()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.trimexcess">List&lt;IValidator&gt;.TrimExcess()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.trueforall">List&lt;IValidator&gt;.TrueForAll(Predicate&lt;IValidator&gt;)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.capacity">List&lt;IValidator&gt;.Capacity</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1.count">List&lt;IValidator&gt;.Count</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">List&lt;IValidator&gt;.this[int]</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_AddRangeIf__1_System_Collections_Generic_ICollection___0__System_Collections_Generic_IEnumerable___0__System_Func_System_Boolean__">CollectionExtensions.AddRangeIf&lt;T&gt;(ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, Func&lt;bool&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_AddRange__1_System_Collections_Generic_ICollection___0__System_Collections_Generic_IEnumerable___0__">CollectionExtensions.AddRange&lt;T&gt;(ICollection&lt;T&gt;, IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_AreEquivalent__1_System_Collections_Generic_ICollection___0__System_Collections_Generic_ICollection___0__">CollectionExtensions.AreEquivalent&lt;T&gt;(ICollection&lt;T&gt;?, ICollection&lt;T&gt;?)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_MakeEqualTo__1_System_Collections_Generic_ICollection___0__System_Collections_Generic_IEnumerable___0__">CollectionExtensions.MakeEqualTo&lt;T&gt;(ICollection&lt;T&gt;, IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_RemoveRangeIf__1_System_Collections_Generic_ICollection___0__System_Collections_Generic_IEnumerable___0__System_Func_System_Boolean__">CollectionExtensions.RemoveRangeIf&lt;T&gt;(ICollection&lt;T&gt;, IEnumerable&lt;T&gt;, Func&lt;bool&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_RemoveRange__1_System_Collections_Generic_ICollection___0__System_Collections_Generic_IEnumerable___0__">CollectionExtensions.RemoveRange&lt;T&gt;(ICollection&lt;T&gt;, IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_Chunk__1_System_Collections_Generic_IEnumerable___0__System_Int32_">CollectionExtensions.Chunk&lt;T&gt;(IEnumerable&lt;T&gt;, int)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_ForEach__1_System_Collections_Generic_IEnumerable___0__System_Action___0__">CollectionExtensions.ForEach&lt;T&gt;(IEnumerable&lt;T&gt;, Action&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_IsNullOrEmpty__1_System_Collections_Generic_IEnumerable___0__">CollectionExtensions.IsNullOrEmpty&lt;T&gt;(IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_Shuffle__1_System_Collections_Generic_IEnumerable___0__">CollectionExtensions.Shuffle&lt;T&gt;(IEnumerable&lt;T&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Data.Converters.Extensions.CollectionExtensions.html#MADE_Data_Converters_Extensions_CollectionExtensions_ToDelimitedString__1_System_Collections_Generic_IEnumerable___0__System_String_">CollectionExtensions.ToDelimitedString&lt;T&gt;(IEnumerable&lt;T&gt;, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.CollectionAssertExtensions.html#MADE_Testing_CollectionAssertExtensions_ShouldBeEquivalentTo__1_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___0__">CollectionAssertExtensions.ShouldBeEquivalentTo&lt;TItem&gt;(IEnumerable&lt;TItem&gt;, IEnumerable&lt;TItem&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.CollectionAssertExtensions.html#MADE_Testing_CollectionAssertExtensions_ShouldNotBeEquivalentTo__1_System_Collections_Generic_IEnumerable___0__System_Collections_Generic_IEnumerable___0__">CollectionAssertExtensions.ShouldNotBeEquivalentTo&lt;TItem&gt;(IEnumerable&lt;TItem&gt;, IEnumerable&lt;TItem&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_AddIf__1_System_Collections_Generic_IList___0____0_System_Func_System_Boolean__">CollectionExtensions.AddIf&lt;T&gt;(IList&lt;T&gt;, T, Func&lt;bool&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_InsertAtPotentialIndex__1_System_Collections_Generic_IList___0____0_System_Func___0___0_System_Boolean__">CollectionExtensions.InsertAtPotentialIndex&lt;T&gt;(IList&lt;T&gt;, T, Func&lt;T, T, bool&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_PotentialIndexOf__1_System_Collections_Generic_IList___0____0_System_Func___0___0_System_Boolean__">CollectionExtensions.PotentialIndexOf&lt;T&gt;(IList&lt;T&gt;, T, Func&lt;T, T, bool&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_RemoveIf__1_System_Collections_Generic_IList___0____0_System_Func_System_Boolean__">CollectionExtensions.RemoveIf&lt;T&gt;(IList&lt;T&gt;, T, Func&lt;bool&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_Update__1_System_Collections_Generic_IList___0____0_System_Func___0___0_System_Boolean__">CollectionExtensions.Update&lt;T&gt;(IList&lt;T&gt;, T, Func&lt;T, T, bool&gt;)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Collections.CollectionExtensions.html#MADE_Collections_CollectionExtensions_TakeFrom__1_System_Collections_Generic_List___0__System_Int32_System_Int32_">CollectionExtensions.TakeFrom&lt;T&gt;(List&lt;T&gt;, int, int)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyNames_System_Object_">ReflectionExtensions.GetPropertyNames(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_">ReflectionExtensions.GetPropertyValue&lt;T&gt;(object, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldBeNull_System_Object_">ObjectAssertExtensions.ShouldBeNull(object?)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldNotBeNull_System_Object_">ObjectAssertExtensions.ShouldNotBeNull(object?)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MADE_Data_Validation_ValidatorCollection__ctor_" data-uid="MADE.Data.Validation.ValidatorCollection.#ctor*"></a>
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection__ctor" data-uid="MADE.Data.Validation.ValidatorCollection.#ctor">
+  ValidatorCollection()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Data.Validation.ValidatorCollection.html">ValidatorCollection</a> class that is empty and has the default initial capacity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValidatorCollection()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Data_Validation_ValidatorCollection__ctor_" data-uid="MADE.Data.Validation.ValidatorCollection.#ctor*"></a>
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection__ctor_System_Collections_Generic_IEnumerable_MADE_Data_Validation_IValidator__" data-uid="MADE.Data.Validation.ValidatorCollection.#ctor(System.Collections.Generic.IEnumerable{MADE.Data.Validation.IValidator})">
+  ValidatorCollection(IEnumerable&lt;IValidator&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L21"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Data.Validation.ValidatorCollection.html">ValidatorCollection</a> class that contains elements copied from the specified collection and has sufficient capacity to accommodate the number of elements copied.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValidatorCollection(IEnumerable&lt;IValidator&gt; collection)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="MADE.Data.Validation.IValidator.html">IValidator</a>&gt;</dt>
+    <dd><p>The collection whose elements are copied to the new list.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p><code class="paramref">collection</code> is null.</p>
+</dd>
+  </dl>
+
+
+
+  <a id="MADE_Data_Validation_ValidatorCollection__ctor_" data-uid="MADE.Data.Validation.ValidatorCollection.#ctor*"></a>
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection__ctor_System_Int32_" data-uid="MADE.Data.Validation.ValidatorCollection.#ctor(System.Int32)">
+  ValidatorCollection(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L30"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Data.Validation.ValidatorCollection.html">ValidatorCollection</a> class that is empty and has the specified initial capacity.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ValidatorCollection(int capacity)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>capacity</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The number of elements that the new list can initially store.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentoutofrangeexception">ArgumentOutOfRangeException</a></dt>
+    <dd><p><code class="paramref">capacity</code> is less than 0.</p>
+</dd>
+  </dl>
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="MADE_Data_Validation_ValidatorCollection_FeedbackMessages_" data-uid="MADE.Data.Validation.ValidatorCollection.FeedbackMessages*"></a>
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection_FeedbackMessages" data-uid="MADE.Data.Validation.ValidatorCollection.FeedbackMessages">
+  FeedbackMessages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L61"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the validator feedback messages for ones which are invalid.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; FeedbackMessages { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="MADE_Data_Validation_ValidatorCollection_IsDirty_" data-uid="MADE.Data.Validation.ValidatorCollection.IsDirty*"></a>
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection_IsDirty" data-uid="MADE.Data.Validation.ValidatorCollection.IsDirty">
+  IsDirty
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether the data is dirty.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsDirty { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="MADE_Data_Validation_ValidatorCollection_IsInvalid_" data-uid="MADE.Data.Validation.ValidatorCollection.IsInvalid*"></a>
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection_IsInvalid" data-uid="MADE.Data.Validation.ValidatorCollection.IsInvalid">
+  IsInvalid
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L43"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets or sets a value indicating whether the data provided is in an invalid state.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsInvalid { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MADE_Data_Validation_ValidatorCollection_Validate_" data-uid="MADE.Data.Validation.ValidatorCollection.Validate*"></a>
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection_Validate_System_Object_" data-uid="MADE.Data.Validation.ValidatorCollection.Validate(System.Object)">
+  Validate(object)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L68"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Executes data validation on the provided <code class="paramref">value</code> against the validators provided.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Validate(object value)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>value</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></dt>
+    <dd><p>The value to be validated.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>Potentially thrown by the <a class="xref" href="MADE.Data.Validation.ValidatorCollection.html#MADE_Data_Validation_ValidatorCollection_Validated">Validated</a> delegate callback.</p>
+</dd>
+  </dl>
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="MADE_Data_Validation_ValidatorCollection_Validated" data-uid="MADE.Data.Validation.ValidatorCollection.Validated">
+  Validated
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Occurs when the input value is validated against the collection of validators.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event InputValidatedEventHandler? Validated</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="MADE.Data.Validation.InputValidatedEventHandler.html">InputValidatedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Data.Validation/ValidatorCollection.cs/#L11" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

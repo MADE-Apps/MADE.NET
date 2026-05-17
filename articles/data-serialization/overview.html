@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Data Serialization | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Data Serialization | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-serialization/overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-serialization-overview">
+<h1 id="data-serialization">Data Serialization</h1>
+
+<p>When you rename a class, move it to a different namespace, or restructure your assemblies, any JSON data that was serialized with .NET type metadata (<code>$type</code> properties) will fail to deserialize. The old type name no longer resolves, and <code>System.Text.Json</code> throws an exception.</p>
+<p><code>MADE.Data.Serialization</code> provides a <code>JsonTypeMigrationConverter</code> that maps old type names to their new types, letting you evolve your codebase without breaking existing serialized data.</p>
+<pre><code class="lang-bash">dotnet add package MADE.Data.Serialization
+</code></pre>
+<h2 id="when-to-use-this-package">When to use this package</h2>
+<ul>
+<li>You have serialized JSON data in a database, message queue, or file system that includes <code>$type</code> metadata.</li>
+<li>You've renamed classes, moved them to different namespaces, or refactored assemblies.</li>
+<li>You need to deserialize historical data that references types that no longer exist under their original names.</li>
+</ul>
+<h2 id="using-jsontypemigrationconverter">Using JsonTypeMigrationConverter</h2>
+<p>Register type migrations that map old type identifiers to their new types, then add the converter to your <code>JsonSerializerOptions</code>:</p>
+<pre><code class="lang-csharp">using System.Text.Json;
+using MADE.Data.Serialization.Json;
+using MADE.Data.Serialization.Json.Converters;
+
+// Create the converter with type migrations
+var converter = new JsonTypeMigrationConverter(
+    new JsonTypeMigration(typeof(OldOrder), typeof(Order)),
+    new JsonTypeMigration(&quot;MyApp.Legacy&quot;, &quot;MyApp.Legacy.CustomerRecord&quot;, typeof(Customer))
+);
+
+var options = new JsonSerializerOptions();
+options.Converters.Add(converter);
+
+// Deserialize data that references old type names
+var result = JsonSerializer.Deserialize&lt;object&gt;(historicalJson, options);
+</code></pre>
+<h3 id="adding-migrations-dynamically">Adding migrations dynamically</h3>
+<p>You can add migrations after construction, which is useful when you discover old type names at runtime or want to register migrations from configuration:</p>
+<pre><code class="lang-csharp">var converter = new JsonTypeMigrationConverter();
+converter.AddTypeMigration(new JsonTypeMigration(typeof(LegacyOrder), typeof(Order)));
+converter.AddTypeMigration(new JsonTypeMigration(
+    &quot;OldAssembly&quot;, &quot;OldNamespace.OldType&quot;, typeof(NewType)));
+</code></pre>
+<h3 id="migration-overloads">Migration overloads</h3>
+<p><code>JsonTypeMigration</code> supports two constructor patterns:</p>
+<table>
+<thead>
+<tr>
+<th>Constructor</th>
+<th>Use case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JsonTypeMigration(Type fromType, Type toType)</code></td>
+<td>When the old type still exists in your codebase (e.g., during a gradual migration).</td>
+</tr>
+<tr>
+<td><code>JsonTypeMigration(string fromAssemblyName, string fromTypeName, Type toType)</code></td>
+<td>When the old type has been completely removed and you only have its original assembly and type name.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="practical-example-database-migration">Practical example: database migration</h2>
+<p>A common scenario is migrating serialized event data in a database. Suppose you've refactored your domain events from a flat namespace to a structured one:</p>
+<pre><code class="lang-csharp">// Old types (no longer exist):
+//   MyApp.Events.OrderCreated
+//   MyApp.Events.OrderShipped
+
+// New types:
+//   MyApp.Domain.Orders.Events.OrderCreated
+//   MyApp.Domain.Orders.Events.OrderShipped
+
+var converter = new JsonTypeMigrationConverter(
+    new JsonTypeMigration(&quot;MyApp&quot;, &quot;MyApp.Events.OrderCreated&quot;,
+        typeof(MyApp.Domain.Orders.Events.OrderCreated)),
+    new JsonTypeMigration(&quot;MyApp&quot;, &quot;MyApp.Events.OrderShipped&quot;,
+        typeof(MyApp.Domain.Orders.Events.OrderShipped))
+);
+
+var options = new JsonSerializerOptions();
+options.Converters.Add(converter);
+
+// Now you can deserialize historical events stored with old type names
+foreach (var row in await db.EventStore.ToListAsync())
+{
+    var domainEvent = JsonSerializer.Deserialize&lt;IDomainEvent&gt;(row.Payload, options);
+    await Process(domainEvent);
+}
+</code></pre>
+<h2 id="best-practices">Best practices</h2>
+<ul>
+<li><strong>Register all known type migrations upfront</strong> rather than adding them on-the-fly. This makes it easy to audit which migrations exist and ensures consistency.</li>
+<li><strong>Use the string-based constructor</strong> for types that have been completely removed from your codebase. This avoids keeping dead types around just for migration purposes.</li>
+<li><strong>Consider a data migration script</strong> for high-volume scenarios. Rather than paying the migration cost on every read, update the serialized data in place so future reads are clean.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-serialization/overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

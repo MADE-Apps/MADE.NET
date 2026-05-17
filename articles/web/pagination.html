@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Pagination | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Pagination | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/web/pagination.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="web-pagination">
+<h1 id="pagination">Pagination</h1>
+
+<p>Returning unbounded result sets from an API is a performance problem waiting to happen. Pagination is the standard solution, but implementing it consistently across all endpoints requires a shared request/response pattern. <code>PaginatedRequest</code> and <code>PaginatedResponse</code> provide that pattern.</p>
+<h2 id="paginatedrequest">PaginatedRequest</h2>
+<p><code>PaginatedRequest</code> takes a page number and page size, and automatically calculates the <code>Skip</code> and <code>Take</code> values you need for your data query:</p>
+<pre><code class="lang-csharp">using MADE.Web;
+
+var request = new PaginatedRequest(page: 2, pageSize: 25);
+// request.Skip = 25
+// request.Take = 25
+</code></pre>
+<h2 id="paginatedresponse">PaginatedResponse</h2>
+<p><code>PaginatedResponse&lt;T&gt;</code> wraps the result set with metadata about the current page and total available data:</p>
+<pre><code class="lang-csharp">using MADE.Web;
+
+var response = new PaginatedResponse&lt;Product&gt;(
+    items: products,
+    page: 2,
+    pageSize: 25,
+    availableCount: 150);
+
+// response.Page = 2
+// response.PageSize = 25
+// response.AvailableCount = 150
+// response.TotalPages = 6
+</code></pre>
+<p>The <code>TotalPages</code> property is calculated automatically from <code>AvailableCount</code> and <code>PageSize</code>.</p>
+<h2 id="using-with-ef-core">Using with EF Core</h2>
+<p>Pair with the <code>Page</code> extension from <code>MADE.Data.EFCore</code> for a complete pagination flow:</p>
+<pre><code class="lang-csharp">using MADE.Data.EFCore.Extensions;
+using MADE.Web;
+
+[HttpGet(&quot;products&quot;)]
+public async Task&lt;PaginatedResponse&lt;ProductDto&gt;&gt; GetProducts(
+    [FromQuery] int page = 1,
+    [FromQuery] int pageSize = 25)
+{
+    var totalCount = await dbContext.Products.CountAsync();
+
+    var items = await dbContext.Products
+        .OrderBy(p =&gt; p.Name)
+        .Page(page, pageSize)
+        .Select(p =&gt; new ProductDto(p.Id, p.Name, p.Price))
+        .ToListAsync();
+
+    return new PaginatedResponse&lt;ProductDto&gt;(items, page, pageSize, totalCount);
+}
+</code></pre>
+<p>The response gives the client everything it needs to build pagination UI: the current items, which page they're on, and how many pages are available.</p>
+<h2 id="query-collection-helpers">Query collection helpers</h2>
+<p>The <code>MADE.Web.Extensions.QueryCollectionExtensions</code> class provides helpers for reading typed values from query strings:</p>
+<pre><code class="lang-csharp">using MADE.Web.Extensions;
+
+int page = context.Request.Query.GetIntValueOrDefault(&quot;page&quot;, 1);
+string search = context.Request.Query.GetStringValueOrDefault(&quot;q&quot;, &quot;&quot;);
+DateTime? from = context.Request.Query.GetDateTimeValueOrDefault(&quot;from&quot;, null);
+</code></pre>
+<p>These return the specified default value when the query parameter is missing or can't be parsed, avoiding the boilerplate of manual parsing and null checking.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/web/pagination.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Debouncer and Throttler | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Debouncer and Throttler | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/threading/debouncer-throttler.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="threading-debouncer-throttler">
+<h1 id="debouncer-and-throttler">Debouncer and Throttler</h1>
+
+<p>Debouncing and throttling are two rate-limiting strategies for handling rapid invocations. They solve different problems:</p>
+<ul>
+<li><strong>Debouncing</strong> waits for a pause in activity before executing. Use it when you want the <em>last</em> action in a burst (e.g., search-as-you-type).</li>
+<li><strong>Throttling</strong> executes immediately and then ignores subsequent calls until an interval elapses. Use it when you want the <em>first</em> action in a burst (e.g., preventing double-clicks).</li>
+</ul>
+<h2 id="debouncer">Debouncer</h2>
+<p>The <code>Debouncer</code> delays execution until a specified period of inactivity has elapsed. Each new call resets the timer.</p>
+<pre><code class="lang-csharp">using MADE.Threading;
+
+private readonly Debouncer debouncer = new() { Delay = TimeSpan.FromMilliseconds(300) };
+
+public void OnSearchTextChanged(string text)
+{
+    debouncer.Debounce(() =&gt; PerformSearch(text));
+}
+</code></pre>
+<p>In this example, if the user types &quot;hello&quot; character by character, the search only executes once - 300ms after the last keystroke.</p>
+<h3 id="async-debouncing">Async debouncing</h3>
+<p>For async actions, use <code>DebounceAsync</code>:</p>
+<pre><code class="lang-csharp">public void OnSearchTextChanged(string text)
+{
+    debouncer.DebounceAsync(async () =&gt; await SearchApiAsync(text));
+}
+</code></pre>
+<h3 id="cancelling-a-pending-action">Cancelling a pending action</h3>
+<pre><code class="lang-csharp">debouncer.Cancel();
+</code></pre>
+<h3 id="cleanup">Cleanup</h3>
+<p><code>Debouncer</code> implements <code>IDisposable</code>. Dispose it when the owning component is torn down:</p>
+<pre><code class="lang-csharp">debouncer.Dispose();
+</code></pre>
+<h2 id="throttler">Throttler</h2>
+<p>The <code>Throttler</code> limits execution to at most once per interval. The first call executes immediately; subsequent calls within the interval are suppressed.</p>
+<pre><code class="lang-csharp">using MADE.Threading;
+
+private readonly Throttler throttler = new() { Interval = TimeSpan.FromMilliseconds(500) };
+
+public void OnSubmitClicked()
+{
+    throttler.Throttle(() =&gt; SubmitForm());
+}
+</code></pre>
+<p>If the user clicks the submit button three times in quick succession, only the first click triggers <code>SubmitForm()</code>.</p>
+<h3 id="async-throttling">Async throttling</h3>
+<pre><code class="lang-csharp">public void OnSubmitClicked()
+{
+    throttler.ThrottleAsync(async () =&gt; await SubmitFormAsync());
+}
+</code></pre>
+<h2 id="choosing-between-debouncer-and-throttler">Choosing between Debouncer and Throttler</h2>
+<table>
+<thead>
+<tr>
+<th>Scenario</th>
+<th>Use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Search-as-you-type</td>
+<td><strong>Debouncer</strong> - wait for the user to stop typing.</td>
+</tr>
+<tr>
+<td>Window resize handler</td>
+<td><strong>Debouncer</strong> - wait for the resize to finish.</td>
+</tr>
+<tr>
+<td>Form submission button</td>
+<td><strong>Throttler</strong> - process the first click, ignore rapid follow-ups.</td>
+</tr>
+<tr>
+<td>Scroll event handler</td>
+<td><strong>Throttler</strong> - execute at a steady rate during scrolling.</td>
+</tr>
+<tr>
+<td>Auto-save on text change</td>
+<td><strong>Debouncer</strong> - save after the user pauses editing.</td>
+</tr>
+</tbody>
+</table>
+<p>The key distinction: debouncing delays execution until <em>after</em> the burst ends, while throttling executes at the <em>start</em> of the burst and then rate-limits.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/threading/debouncer-throttler.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

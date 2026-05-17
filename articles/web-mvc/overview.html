@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>ASP.NET Core MVC Extensions | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="ASP.NET Core MVC Extensions | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/web-mvc/overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="web-mvc-overview">
+<h1 id="aspnet-core-mvc-extensions">ASP.NET Core MVC Extensions</h1>
+
+<p>ASP.NET Core MVC provides <code>OkObjectResult</code>, <code>NotFoundObjectResult</code>, <code>BadRequestObjectResult</code>, and a few other status-specific result types. But there are gaps - there's no built-in way to return a 500 Internal Server Error or 403 Forbidden with a response body. And returning JSON with a custom status code requires more ceremony than it should.</p>
+<p><code>MADE.Web.Mvc</code> fills these gaps with additional action result types and controller extensions.</p>
+<pre><code class="lang-bash">dotnet add package MADE.Web.Mvc
+</code></pre>
+<h2 id="whats-included">What's included</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>InternalServerErrorObjectResult</code></td>
+<td>Returns HTTP 500 with an error object or model state.</td>
+</tr>
+<tr>
+<td><code>ForbiddenObjectResult</code></td>
+<td>Returns HTTP 403 with an error object or model state.</td>
+</tr>
+<tr>
+<td><code>JsonResult</code></td>
+<td>Returns JSON with a configurable HTTP status code.</td>
+</tr>
+<tr>
+<td><code>ControllerBaseExtensions</code></td>
+<td>Helper methods: <code>Json()</code>, <code>InternalServerError()</code>, <code>Forbidden()</code>.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quick-example">Quick example</h2>
+<pre><code class="lang-csharp">using MADE.Web.Mvc.Extensions;
+
+[ApiController]
+[Route(&quot;api/[controller]&quot;)]
+public class OrdersController : ControllerBase
+{
+    [HttpPost]
+    public async Task&lt;IActionResult&gt; CreateOrder(CreateOrderRequest request)
+    {
+        try
+        {
+            var order = await orderService.CreateAsync(request);
+            return this.Json(order, HttpStatusCode.Created);
+        }
+        catch (InsufficientPermissionsException)
+        {
+            return this.Forbidden(new { message = &quot;You don't have permission to create orders.&quot; });
+        }
+        catch (Exception ex)
+        {
+            return this.InternalServerError(new { message = &quot;An unexpected error occurred.&quot;, detail = ex.Message });
+        }
+    }
+}
+</code></pre>
+<h2 id="action-result-types">Action result types</h2>
+<h3 id="internalservererrorobjectresult">InternalServerErrorObjectResult</h3>
+<p>Returns an HTTP 500 response with a body. Two constructors are available:</p>
+<pre><code class="lang-csharp">// With an error object
+return new InternalServerErrorObjectResult(new { message = &quot;Something went wrong&quot; });
+
+// With model state validation errors
+return new InternalServerErrorObjectResult(ModelState);
+</code></pre>
+<h3 id="forbiddenobjectresult">ForbiddenObjectResult</h3>
+<p>Returns an HTTP 403 response with a body:</p>
+<pre><code class="lang-csharp">return new ForbiddenObjectResult(new { message = &quot;Insufficient permissions&quot; });
+</code></pre>
+<h3 id="jsonresult">JsonResult</h3>
+<p>Serializes a value as JSON using <code>System.Text.Json</code> with a configurable HTTP status code:</p>
+<pre><code class="lang-csharp">return new MADE.Web.Mvc.Responses.JsonResult(myObject, HttpStatusCode.Created);
+
+// With custom serialization options
+return new MADE.Web.Mvc.Responses.JsonResult(myObject, HttpStatusCode.OK, new JsonSerializerOptions
+{
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+});
+</code></pre>
+<h2 id="controller-extensions">Controller extensions</h2>
+<p>The <code>ControllerBaseExtensions</code> class adds helper methods to any <code>ControllerBase</code>:</p>
+<pre><code class="lang-csharp">// Return JSON with a status code
+return this.Json(value, HttpStatusCode.Created);
+return this.Json(value, HttpStatusCode.OK, jsonSerializerOptions);
+
+// Return 500 with an error object
+return this.InternalServerError(errorObject);
+return this.InternalServerError(ModelState);
+
+// Return 403 with an error object
+return this.Forbidden(errorObject);
+return this.Forbidden(ModelState);
+</code></pre>
+<p>These are convenience methods that create the corresponding result types. Use them instead of constructing the result objects directly for cleaner controller code.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/web-mvc/overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

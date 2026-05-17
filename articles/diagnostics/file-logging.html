@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>File logging | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="File logging | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/diagnostics/file-logging.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="diagnostics-file-logging">
+<h1 id="file-logging">File logging</h1>
+
+<p>The <code>MADE.Diagnostics.Logging.FileEventLogger</code> writes structured log entries to files on disk. It supports five severity levels, automatic daily log file rotation, and configurable output paths.</p>
+<h2 id="setting-up-the-logger">Setting up the logger</h2>
+<pre><code class="lang-csharp">using MADE.Diagnostics.Logging;
+
+var logger = new FileEventLogger();
+</code></pre>
+<p>By default, logs are written to a <code>Logs</code> folder in the application's root directory, with files named <code>Log-20260517.txt</code> (one file per day).</p>
+<h3 id="customizing-the-log-location">Customizing the log location</h3>
+<pre><code class="lang-csharp">// Change the folder name (relative to app root)
+logger.LogsFolderName = &quot;AppLogs&quot;;
+
+// Change the file name format (must include {0} for the DateTime parameter)
+logger.LogFileNameFormat = &quot;MyApp-{0:yyyyMMdd}.txt&quot;;
+
+// Or set a fully custom path
+logger.LogPath = @&quot;C:\Logs\MyApp\custom-log.txt&quot;;
+</code></pre>
+<h2 id="writing-log-entries">Writing log entries</h2>
+<p>The logger provides methods for five severity levels, each with three overloads:</p>
+<pre><code class="lang-csharp">// String message
+await logger.WriteInfo(&quot;Application started successfully.&quot;);
+
+// String message with exception
+await logger.WriteError(&quot;Failed to process order.&quot;, exception);
+
+// Exception only
+await logger.WriteCritical(exception);
+</code></pre>
+<h3 id="all-severity-levels">All severity levels</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>When to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>WriteDebug</code></td>
+<td>Detailed diagnostic information for development and troubleshooting.</td>
+</tr>
+<tr>
+<td><code>WriteInfo</code></td>
+<td>General operational events (startup, shutdown, configuration loaded).</td>
+</tr>
+<tr>
+<td><code>WriteWarning</code></td>
+<td>Unexpected situations that don't prevent operation but should be investigated.</td>
+</tr>
+<tr>
+<td><code>WriteError</code></td>
+<td>Errors that affect a specific operation but don't crash the application.</td>
+</tr>
+<tr>
+<td><code>WriteCritical</code></td>
+<td>Severe errors that may cause the application to stop functioning.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="log-output-format">Log output format</h2>
+<p>Each entry is written as a tab-separated line with a timestamp, level, correlation ID, and message:</p>
+<pre><code>4/6/2021 8:58:40 AM	Level: Info	Id: 230b8802-4ba5-465d-bfdf-433698628673	Message: 'Application diagnostics initialized.'
+4/6/2021 8:58:41 AM	Level: Error	Id: f04134e3-7a06-4688-832f-e1e4567aa6e4	Message: 'Error: 'System.InvalidOperationException: Could not complete delete action''
+</code></pre>
+<p>The correlation ID is unique per log entry and can be used to reference specific events from other systems (e.g., <code>AppDiagnostics</code>).</p>
+<h2 id="using-the-ieventlogger-interface">Using the IEventLogger interface</h2>
+<p><code>FileEventLogger</code> implements <code>IEventLogger</code>, which you can use for dependency injection and testing:</p>
+<pre><code class="lang-csharp">public class OrderService
+{
+    private readonly IEventLogger logger;
+
+    public OrderService(IEventLogger logger)
+    {
+        this.logger = logger;
+    }
+
+    public async Task ProcessOrderAsync(Order order)
+    {
+        await logger.WriteInfo($&quot;Processing order {order.Id}&quot;);
+
+        try
+        {
+            // Process the order
+        }
+        catch (Exception ex)
+        {
+            await logger.WriteError($&quot;Failed to process order {order.Id}&quot;, ex);
+            throw;
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong> All <code>IEventLogger</code> methods return <code>Task</code>. Make sure to <code>await</code> them to ensure log entries are flushed to disk.</p>
+</blockquote>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/diagnostics/file-logging.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

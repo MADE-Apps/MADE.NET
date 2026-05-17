@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Entity base classes | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Entity base classes | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-efcore/entity-base.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-efcore-entity-base">
+<h1 id="entity-base-classes">Entity base classes</h1>
+
+<p>Most entities in an EF Core application share the same foundational properties: an identifier, a creation timestamp, and a last-updated timestamp. Rather than defining these on every entity, <code>EntityBase</code> gives you a standardized base class that handles this consistently.</p>
+<h2 id="using-entitybase">Using EntityBase</h2>
+<p>Inherit from <code>EntityBase</code> to get a <code>Guid</code> identifier and automatic date initialization:</p>
+<pre><code class="lang-csharp">using MADE.Data.EFCore;
+
+public class User : EntityBase
+{
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string EmailAddress { get; set; }
+}
+</code></pre>
+<p>When you create a new <code>User</code> instance, <code>Id</code> is set to a new <code>Guid</code>, and <code>CreatedDate</code> and <code>UpdatedDate</code> are initialized to <code>DateTime.UtcNow</code>.</p>
+<h2 id="using-a-custom-key-type">Using a custom key type</h2>
+<p>If your entity needs a different identifier type (e.g., <code>int</code> for auto-increment or <code>string</code> for external IDs), use the generic <code>EntityBase&lt;TKey&gt;</code>:</p>
+<pre><code class="lang-csharp">public class Product : EntityBase&lt;int&gt;
+{
+    public string Name { get; set; }
+    public decimal Price { get; set; }
+}
+
+public class ExternalEvent : EntityBase&lt;string&gt;
+{
+    public string Source { get; set; }
+    public string Payload { get; set; }
+}
+</code></pre>
+<h2 id="entity-interfaces">Entity interfaces</h2>
+<p>If you can't use inheritance (e.g., your entity already has a base class), implement the interfaces directly:</p>
+<table>
+<thead>
+<tr>
+<th>Interface</th>
+<th>Properties</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>IDatedEntity</code></td>
+<td><code>CreatedDate</code>, <code>UpdatedDate</code></td>
+</tr>
+<tr>
+<td><code>IEntityBase&lt;TKey&gt;</code></td>
+<td><code>Id</code> (typed), plus <code>IDatedEntity</code> properties</td>
+</tr>
+<tr>
+<td><code>IEntityBase</code></td>
+<td>Convenience interface using <code>Guid</code> as the key type</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="lang-csharp">public class AuditLog : ExistingBaseClass, IEntityBase
+{
+    public Guid Id { get; set; }
+    public DateTime CreatedDate { get; set; }
+    public DateTime UpdatedDate { get; set; }
+    public string Action { get; set; }
+}
+</code></pre>
+<h2 id="configuring-entities-in-the-model-builder">Configuring entities in the model builder</h2>
+<p>The <code>EntityBaseExtensions</code> class provides extensions for configuring entity types in your <code>DbContext</code>:</p>
+<pre><code class="lang-csharp">protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    // Configures the key and UTC date properties for a Guid-based entity
+    modelBuilder.Entity&lt;User&gt;().Configure();
+
+    // For entities with a custom key type
+    modelBuilder.Entity&lt;Product&gt;().ConfigureWithKey&lt;Product, int&gt;();
+}
+</code></pre>
+<p>The <code>Configure</code> extension sets the entity's <code>Id</code> as the primary key and applies UTC date conversion to <code>CreatedDate</code> and <code>UpdatedDate</code>. You can also use <code>ConfigureDateProperties</code> independently if you only need the date configuration.</p>
+<h2 id="best-practices">Best practices</h2>
+<ul>
+<li><strong>Use <code>EntityBase</code> as your default</strong> unless you have a specific reason to use a different key type. <code>Guid</code> keys avoid the issues with sequential integer keys in distributed systems.</li>
+<li><strong>Call <code>Configure()</code> in <code>OnModelCreating</code></strong> for every entity that inherits from <code>EntityBase</code>. This ensures consistent key and date configuration.</li>
+<li><strong>Pair with <code>SetEntityDates</code></strong> in your <code>SaveChangesAsync</code> override to automatically update <code>UpdatedDate</code> on every save. See <a href="dbcontext-extensions.html">DbContext extensions</a>.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-efcore/entity-base.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

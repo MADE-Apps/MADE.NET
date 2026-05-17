@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>DbContext extensions | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="DbContext extensions | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-efcore/dbcontext-extensions.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-efcore-dbcontext-extensions">
+<h1 id="dbcontext-extensions">DbContext extensions</h1>
+
+<p>The <code>MADE.Data.EFCore.Extensions.DbContextExtensions</code> class provides helper methods for common EF Core operations: updating and saving in one call, removing entities by predicate, automatic date management, and safe save with concurrency handling.</p>
+<h2 id="updateasync">UpdateAsync</h2>
+<p>Updates an entity and saves changes in a single call, reducing the boilerplate of marking an entity as modified and then calling <code>SaveChangesAsync</code> separately:</p>
+<pre><code class="lang-csharp">await dbContext.UpdateAsync(user);
+</code></pre>
+<h2 id="removewhere">RemoveWhere</h2>
+<p>Removes all entities from a <code>DbSet</code> that match a predicate:</p>
+<pre><code class="lang-csharp">await dbContext.RemoveWhere&lt;Session&gt;(s =&gt; s.ExpiresAt &lt; DateTime.UtcNow);
+</code></pre>
+<h2 id="automatic-date-management-with-setentitydates">Automatic date management with SetEntityDates</h2>
+<p><code>SetEntityDates</code> scans the change tracker for entities implementing <code>IDatedEntity</code> and automatically sets their <code>CreatedDate</code> (on insert) and <code>UpdatedDate</code> (on insert and update). Call it from your <code>SaveChangesAsync</code> override:</p>
+<pre><code class="lang-csharp">public override async Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken = default)
+{
+    this.SetEntityDates();
+    return await base.SaveChangesAsync(cancellationToken);
+}
+</code></pre>
+<p>This ensures timestamps are set consistently regardless of which code path triggers the save. You never need to manually set <code>UpdatedDate</code> at your call sites.</p>
+<h2 id="trysavechangesasync">TrySaveChangesAsync</h2>
+<p>A wrapper around <code>SaveChangesAsync</code> that catches <code>DbUpdateConcurrencyException</code> and returns a boolean indicating success:</p>
+<pre><code class="lang-csharp">bool saved = await dbContext.TrySaveChangesAsync();
+if (!saved)
+{
+    // Handle concurrency conflict
+}
+</code></pre>
+<h2 id="combining-extensions-in-savechangesasync">Combining extensions in SaveChangesAsync</h2>
+<p>A typical <code>SaveChangesAsync</code> override uses multiple extensions together:</p>
+<pre><code class="lang-csharp">public class AppDbContext : DbContext
+{
+    private readonly IAuthenticatedUserAccessor userAccessor;
+
+    public override async Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        this.InterceptSoftDeletions();       // Convert hard deletes to soft deletes
+        this.SetEntityDates();               // Set CreatedDate and UpdatedDate
+        this.SetEntityAuditInfo(             // Set CreatedBy and UpdatedBy
+            userAccessor.AuthenticatedUser.Subject);
+        return await base.SaveChangesAsync(cancellationToken);
+    }
+}
+</code></pre>
+<p>See <a href="soft-delete.html">Soft delete</a> and <a href="audit-tracking.html">Audit tracking</a> for details on <code>InterceptSoftDeletions</code> and <code>SetEntityAuditInfo</code>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-efcore/dbcontext-extensions.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

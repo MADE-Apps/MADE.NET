@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Quickstart | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Quickstart | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/get-started/quickstart.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="get-started-quickstart">
+<h1 id="quickstart">Quickstart</h1>
+
+<p>This guide gets you from zero to working code in under five minutes. You'll install a MADE.NET package, use it to solve a common problem, and see the result.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li><a href="https://dotnet.microsoft.com/download/dotnet/8.0">.NET 8 SDK</a> or later</li>
+<li>A .NET project (console app, web API, class library - anything works)</li>
+</ul>
+<h2 id="install-your-first-package">Install your first package</h2>
+<p>For this quickstart, we'll use <code>MADE.Data.Validation</code> to validate user input. Install it via the .NET CLI:</p>
+<pre><code class="lang-bash">dotnet add package MADE.Data.Validation
+</code></pre>
+<h2 id="validate-a-value-in-three-lines">Validate a value in three lines</h2>
+<p>The validation library gives you a collection of ready-made validators that you compose together. Here's a complete example that validates an email address:</p>
+<pre><code class="lang-csharp">using MADE.Data.Validation;
+using MADE.Data.Validation.Validators;
+
+var validators = new ValidatorCollection
+{
+    new RequiredValidator(),
+    new EmailValidator(),
+};
+
+validators.Validate(&quot;user@example.com&quot;);
+Console.WriteLine(validators.IsInvalid ? &quot;Invalid&quot; : &quot;Valid&quot;);
+// Output: Valid
+
+validators.Validate(&quot;&quot;);
+Console.WriteLine(validators.IsInvalid ? &quot;Invalid&quot; : &quot;Valid&quot;);
+// Output: Invalid
+</code></pre>
+<p>The <code>ValidatorCollection</code> runs every validator against the value and aggregates the results. You get a single <code>IsInvalid</code> flag and a <code>FeedbackMessages</code> collection with human-readable error descriptions.</p>
+<h2 id="try-another-package">Try another package</h2>
+<p>Here's a taste of what other packages look like in practice:</p>
+<h3 id="collections---compare-and-sync-collections">Collections - compare and sync collections</h3>
+<pre><code class="lang-bash">dotnet add package MADE.Collections
+</code></pre>
+<pre><code class="lang-csharp">using MADE.Collections;
+
+var current = new List&lt;string&gt; { &quot;Alice&quot;, &quot;Bob&quot;, &quot;Charlie&quot; };
+var updated = new List&lt;string&gt; { &quot;Alice&quot;, &quot;Diana&quot; };
+
+current.MakeEqualTo(updated);
+// current is now [&quot;Alice&quot;, &quot;Diana&quot;]
+</code></pre>
+<h3 id="threading---debounce-rapid-actions">Threading - debounce rapid actions</h3>
+<pre><code class="lang-bash">dotnet add package MADE.Threading
+</code></pre>
+<pre><code class="lang-csharp">using MADE.Threading;
+
+var debouncer = new Debouncer { Delay = TimeSpan.FromMilliseconds(300) };
+
+// Only the last call within 300ms actually executes
+debouncer.Debounce(() =&gt; Console.WriteLine(&quot;Search executed&quot;));
+</code></pre>
+<h3 id="networking---make-typed-http-requests">Networking - make typed HTTP requests</h3>
+<pre><code class="lang-bash">dotnet add package MADE.Networking
+</code></pre>
+<pre><code class="lang-csharp">// In your service registration
+services.AddNetworkRequestFactory();
+
+// In your service
+public class WeatherService(INetworkRequestFactory requestFactory)
+{
+    public async Task&lt;WeatherForecast&gt; GetForecastAsync()
+    {
+        var request = requestFactory.Get(&quot;https://api.example.com/weather&quot;);
+        return await request.ExecuteAsync&lt;WeatherForecast&gt;();
+    }
+}
+</code></pre>
+<h2 id="whats-next">What's next</h2>
+<p>Each package has its own section in the docs with an overview, detailed guides, and best practices:</p>
+<ul>
+<li><strong><a href="../collections/overview.html">Collections</a></strong> - Extensions for lists, dictionaries, and observables.</li>
+<li><strong><a href="../data-validation/overview.html">Data Validation</a></strong> - 30+ built-in validators with async and FluentValidation support.</li>
+<li><strong><a href="../networking/overview.html">Networking</a></strong> - Typed HTTP requests with retry and DI integration.</li>
+<li><strong><a href="../threading/overview.html">Threading</a></strong> - Timer, debouncer, throttler, and async patterns.</li>
+<li><strong><a href="overview.html">Browse all packages</a></strong> - See the complete package list.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/get-started/quickstart.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

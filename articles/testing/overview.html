@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Testing | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Testing | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/testing/overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="testing-overview">
+<h1 id="testing">Testing</h1>
+
+<p>Most .NET test assertion libraries are tightly coupled to a specific test framework. If you're using xUnit, you get <code>Assert.Equal</code>. MSTest gives you <code>Assert.AreEqual</code>. NUnit has <code>Assert.That</code>. They all do the same thing with slightly different syntax, and if you switch frameworks, you rewrite your assertions.</p>
+<p><code>MADE.Testing</code> provides fluent <code>Should*</code> assertion extensions that work with any test framework. The assertions throw <code>AssertFailedException</code> on failure, which is recognized by all major test runners.</p>
+<pre><code class="lang-bash">dotnet add package MADE.Testing
+</code></pre>
+<h2 id="whats-included">What's included</h2>
+<table>
+<thead>
+<tr>
+<th>Assertions</th>
+<th>What they cover</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ShouldBeNull</code> / <code>ShouldNotBeNull</code></td>
+<td>Null state checking for any object.</td>
+</tr>
+<tr>
+<td><code>ShouldBeTrue</code> / <code>ShouldBeFalse</code></td>
+<td>Boolean value assertions.</td>
+</tr>
+<tr>
+<td><code>ShouldBeGreaterThan</code> / <code>ShouldBeLessThan</code></td>
+<td>Comparison assertions for <code>IComparable</code> values (plus <code>OrEqualTo</code> variants).</td>
+</tr>
+<tr>
+<td><code>ShouldContain</code> / <code>ShouldNotContain</code></td>
+<td>String content assertions.</td>
+</tr>
+<tr>
+<td><code>ShouldStartWith</code> / <code>ShouldEndWith</code></td>
+<td>String prefix and suffix assertions.</td>
+</tr>
+<tr>
+<td><code>ShouldBeEquivalentTo</code> / <code>ShouldNotBeEquivalentTo</code></td>
+<td>Collection equivalence (same items, any order).</td>
+</tr>
+<tr>
+<td><code>ShouldThrow</code> / <code>ShouldNotThrow</code></td>
+<td>Exception assertions with async variants.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="quick-example">Quick example</h2>
+<pre><code class="lang-csharp">using MADE.Testing;
+
+[Test]
+public async Task CreateUser_ReturnsValidUser()
+{
+    var user = await userService.CreateAsync(&quot;James&quot;, &quot;james@example.com&quot;);
+
+    user.ShouldNotBeNull();
+    user.Name.ShouldContain(&quot;James&quot;);
+    user.Email.ShouldEndWith(&quot;@example.com&quot;);
+    user.Age.ShouldBeGreaterThan(0);
+}
+
+[Test]
+public void InvalidInput_ThrowsValidationException()
+{
+    Action act = () =&gt; userService.Validate(null);
+    act.ShouldThrow&lt;ArgumentNullException&gt;();
+}
+
+[Test]
+public void GetPermissions_ReturnsExpectedSet()
+{
+    var expected = new[] { &quot;read&quot;, &quot;write&quot;, &quot;delete&quot; };
+    var actual = permissionService.GetPermissions(&quot;admin&quot;);
+    actual.ShouldBeEquivalentTo(expected); // Order doesn't matter
+}
+</code></pre>
+<h2 id="when-to-use-this-package">When to use this package</h2>
+<ul>
+<li>You want framework-agnostic assertions that read naturally in English.</li>
+<li>You're working on a project that uses multiple test frameworks (e.g., NUnit for unit tests, xUnit for integration tests) and want consistent assertion syntax.</li>
+<li>You want collection equivalence checking that ignores order, which most built-in assertion libraries don't provide.</li>
+</ul>
+<h2 id="assertion-details">Assertion details</h2>
+<h3 id="collection-equivalence">Collection equivalence</h3>
+<p><code>ShouldBeEquivalentTo</code> checks that two collections contain the same elements regardless of order. It performs several checks in sequence:</p>
+<ol>
+<li>Null state comparison</li>
+<li>Reference equality (are they the same object?)</li>
+<li>Count comparison</li>
+<li>Element-by-element equality</li>
+</ol>
+<p>This catches common bugs where a method returns the right items but in a different order than the test expected.</p>
+<h3 id="exception-assertions">Exception assertions</h3>
+<p><code>ShouldThrow&lt;T&gt;</code> returns the caught exception, letting you assert on its properties:</p>
+<pre><code class="lang-csharp">var ex = action.ShouldThrow&lt;InvalidOperationException&gt;();
+ex.Message.ShouldContain(&quot;order not found&quot;);
+</code></pre>
+<p>Async variants are available for testing async methods:</p>
+<pre><code class="lang-csharp">Func&lt;Task&gt; act = () =&gt; service.ProcessAsync(invalidInput);
+await act.ShouldThrowAsync&lt;ValidationException&gt;();
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/testing/overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

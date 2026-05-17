@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Threading | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Threading | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/threading/overview.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="threading-overview">
+<h1 id="threading">Threading</h1>
+
+<p>.NET's <code>System.Threading</code> namespace provides the building blocks for async and concurrent code, but several common patterns require more setup than they should. Setting up a repeating timer means wrestling with <code>System.Threading.Timer</code>'s callback-based API. Debouncing search input requires manual <code>CancellationTokenSource</code> management. Lazy-loading an async resource needs careful thread-safety handling.</p>
+<p><code>MADE.Threading</code> provides higher-level primitives for these scenarios: a modern timer, debouncer, throttler, async lazy initialization, and task extensions.</p>
+<pre><code class="lang-bash">dotnet add package MADE.Threading
+</code></pre>
+<h2 id="whats-included">What's included</h2>
+<table>
+<thead>
+<tr>
+<th>Guide</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="timer.html">Timer</a></td>
+<td>A modern <code>Timer</code> with <code>Start</code>/<code>Stop</code>, <code>Interval</code> property, and <code>Tick</code> event.</td>
+</tr>
+<tr>
+<td><a href="debouncer-throttler.html">Debouncer and Throttler</a></td>
+<td>Rate-limiting primitives for collapsing rapid invocations or limiting execution frequency.</td>
+</tr>
+<tr>
+<td><a href="async-lazy.html">AsyncLazy</a></td>
+<td>Thread-safe lazy initialization with an async factory.</td>
+</tr>
+<tr>
+<td><a href="task-extensions.html">Task extensions</a></td>
+<td><code>WhenAll</code>/<code>WhenAny</code> on collections, and <code>AndObserveExceptions</code> for safe error handling.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="when-to-use-this-package">When to use this package</h2>
+<ul>
+<li>You need a timer that's simpler to use than <code>System.Threading.Timer</code>.</li>
+<li>You're implementing search-as-you-type and need to debounce the search action.</li>
+<li>You want to prevent rapid button clicks from submitting a form multiple times.</li>
+<li>You need to lazily initialize an async resource (configuration, cache, connection) with thread safety.</li>
+</ul>
+<h2 id="quick-example">Quick example</h2>
+<pre><code class="lang-csharp">using MADE.Threading;
+
+// Debounce search input
+var debouncer = new Debouncer { Delay = TimeSpan.FromMilliseconds(300) };
+debouncer.Debounce(() =&gt; PerformSearch(query));
+
+// Throttle button clicks
+var throttler = new Throttler { Interval = TimeSpan.FromMilliseconds(500) };
+throttler.Throttle(() =&gt; SubmitForm());
+
+// Lazy async initialization
+var config = new AsyncLazy&lt;Config&gt;(async () =&gt; await LoadConfigAsync());
+var value = await config;
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/threading/overview.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

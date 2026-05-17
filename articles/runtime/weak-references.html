@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Weak references | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Weak references | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/runtime/weak-references.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="runtime-weak-references">
+<h1 id="weak-references">Weak references</h1>
+
+<p>In UI applications and event-driven systems, storing delegate callbacks can accidentally keep objects alive long after they should have been garbage collected. A view model that registers a callback with a long-lived service stays in memory as long as that service holds a reference to the callback, even if the view model's view has been navigated away from.</p>
+<p><code>WeakReferenceCallback</code> wraps a delegate in a <code>WeakReference</code>, allowing the garbage collector to reclaim the target object while the callback registration still exists.</p>
+<h2 id="how-it-works">How it works</h2>
+<pre><code class="lang-csharp">using MADE.Runtime;
+
+// Store a callback without preventing garbage collection of the target
+var callback = new WeakReferenceCallback(myAction, typeof(MyResponse));
+</code></pre>
+<p>When the callback is invoked:</p>
+<ul>
+<li>If the target object is still alive, the delegate executes normally.</li>
+<li>If the target object has been garbage collected, the invocation is silently skipped.</li>
+</ul>
+<h2 id="practical-example-network-request-callbacks">Practical example: network request callbacks</h2>
+<p>The <code>NetworkRequestManager</code> in <code>MADE.Networking</code> uses <code>WeakReferenceCallback</code> internally to store success and error callbacks:</p>
+<pre><code class="lang-csharp">public void AddOrUpdate&lt;TRequest, TResponse, TErrorResponse&gt;(
+    TRequest request,
+    Action&lt;TResponse&gt; successCallback,
+    Action&lt;TErrorResponse&gt; errorCallback)
+    where TRequest : NetworkRequest
+{
+    var weakSuccess = new WeakReferenceCallback(successCallback, typeof(TResponse));
+    var weakError = new WeakReferenceCallback(errorCallback, typeof(TErrorResponse));
+
+    // Store weak references instead of strong references to the callbacks
+    var requestCallback = new NetworkRequestCallback(request, weakSuccess, weakError);
+    CurrentQueue.AddOrUpdate(request.Identifier.ToString(), requestCallback, (s, c) =&gt; requestCallback);
+}
+</code></pre>
+<p>If the view model that registered the callback is disposed before the network request completes, the callback reference doesn't prevent garbage collection. The request still completes, but the callback is skipped.</p>
+<h2 id="reflection-helpers">Reflection helpers</h2>
+<p>The <code>MADE.Runtime.Extensions.ReflectionExtensions</code> class provides <code>GetPropertyNames</code> for retrieving the public property names of an object:</p>
+<pre><code class="lang-csharp">using MADE.Runtime.Extensions;
+
+var user = new User { FirstName = &quot;James&quot;, LastName = &quot;Croft&quot; };
+IEnumerable&lt;string&gt; names = user.GetPropertyNames();
+// [&quot;FirstName&quot;, &quot;LastName&quot;]
+</code></pre>
+<h2 id="when-to-use-weakreferencecallback">When to use WeakReferenceCallback</h2>
+<ul>
+<li><strong>Use it</strong> when storing callbacks in long-lived objects (managers, registries, caches) where the callback source may be short-lived.</li>
+<li><strong>Don't use it</strong> for callbacks that must always execute (e.g., critical cleanup logic). If the target is collected, the callback won't run.</li>
+</ul>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/runtime/weak-references.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

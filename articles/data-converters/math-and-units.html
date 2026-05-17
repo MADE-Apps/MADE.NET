@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Math and units | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Math and units | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-converters/math-and-units.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-converters-math-and-units">
+<h1 id="math-and-units">Math and units</h1>
+
+<p><code>MADE.Data.Converters</code> includes several extension classes for unit conversion, mathematical operations, and human-readable formatting. These are small utilities that come up frequently enough to justify having them available as extension methods.</p>
+<h2 id="file-size-formatting">File size formatting</h2>
+<p>The <code>FileSizeExtensions</code> class converts byte counts to human-readable file size strings. This is useful for upload progress indicators, storage dashboards, or any UI that displays file sizes.</p>
+<pre><code class="lang-csharp">using MADE.Data.Converters.Extensions;
+
+long bytes = 1_572_864;
+string size = bytes.ToHumanReadableFileSize(); // &quot;1.50 MB&quot;
+
+long small = 256;
+string smallSize = small.ToHumanReadableFileSize(); // &quot;256 B&quot;
+
+long large = 2_147_483_648;
+string largeSize = large.ToHumanReadableFileSize(); // &quot;2.00 GB&quot;
+</code></pre>
+<h2 id="timespan-utilities">TimeSpan utilities</h2>
+<p>The <code>TimeSpanExtensions</code> class provides two extensions for working with <code>TimeSpan</code> values:</p>
+<h3 id="human-readable-duration-strings">Human-readable duration strings</h3>
+<pre><code class="lang-csharp">using MADE.Data.Converters.Extensions;
+
+var duration = TimeSpan.FromHours(2.5);
+string readable = duration.ToHumanReadableString(); // &quot;2 hours 30 minutes&quot;
+</code></pre>
+<h3 id="total-weeks">Total weeks</h3>
+<pre><code class="lang-csharp">var span = TimeSpan.FromDays(21);
+int weeks = span.TotalWeeks(); // 3
+</code></pre>
+<h2 id="boolean-formatting">Boolean formatting</h2>
+<p>The <code>BooleanExtensions</code> class provides <code>ToFormattedString</code> for converting boolean values to custom string representations:</p>
+<pre><code class="lang-csharp">using MADE.Data.Converters.Extensions;
+
+bool isActive = true;
+string status = isActive.ToFormattedString(&quot;Active&quot;, &quot;Inactive&quot;); // &quot;Active&quot;
+
+bool hasAccess = false;
+string access = hasAccess.ToFormattedString(&quot;Granted&quot;, &quot;Denied&quot;); // &quot;Denied&quot;
+</code></pre>
+<h2 id="angle-conversions">Angle conversions</h2>
+<p>The <code>MathExtensions</code> class provides conversions between degrees and radians:</p>
+<pre><code class="lang-csharp">using MADE.Data.Converters.Extensions;
+
+double radians = 180.0.ToRadians(); // 3.14159...
+double degrees = Math.PI.ToDegrees(); // 180.0
+</code></pre>
+<h2 id="length-conversions">Length conversions</h2>
+<p>The <code>LengthExtensions</code> class provides conversions between common length units, with meters as the base unit:</p>
+<pre><code class="lang-csharp">using MADE.Data.Converters.Extensions;
+
+// Miles and meters
+double meters = 1.0.ToMeters();   // 1609.344 (1 mile in meters)
+double miles = 1609.344.ToMiles(); // 1.0
+
+// Kilometers
+double km = 1000.0.ToKilometers();       // 1.0
+double m = 1.0.KilometersToMeters();     // 1000.0
+
+// Feet and inches
+double feet = 1.0.ToFeet();             // 3.28084...
+double inches = 1.0.ToInches();         // 39.3701...
+double mFromFeet = 1.0.FeetToMeters();  // 0.3048
+double mFromIn = 1.0.InchesToMeters();  // 0.0254
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-converters/math-and-units.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

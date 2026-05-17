@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Audit tracking | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Audit tracking | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-efcore/audit-tracking.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-efcore-audit-tracking">
+<h1 id="audit-tracking">Audit tracking</h1>
+
+<p>For many applications, knowing <em>when</em> a record changed isn't enough - you also need to know <em>who</em> changed it. Compliance, debugging, and accountability all require tracking the user behind each create and update operation.</p>
+<p><code>IAuditableEntity</code> adds <code>CreatedBy</code> and <code>UpdatedBy</code> fields to your entities, and the <code>SetEntityAuditInfo</code> extension automatically populates them from your authentication context.</p>
+<h2 id="setting-up-audit-tracking">Setting up audit tracking</h2>
+<p>Implement <code>IAuditableEntity</code> on entities that need user tracking:</p>
+<pre><code class="lang-csharp">using MADE.Data.EFCore;
+
+public class Order : EntityBase, IAuditableEntity
+{
+    public string Description { get; set; }
+    public decimal Amount { get; set; }
+
+    public string? CreatedBy { get; set; }
+    public string? UpdatedBy { get; set; }
+}
+</code></pre>
+<h2 id="automatic-audit-info-on-save">Automatic audit info on save</h2>
+<p>Call <code>SetEntityAuditInfo</code> in your <code>SaveChangesAsync</code> override, passing the current user's identifier:</p>
+<pre><code class="lang-csharp">public override async Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken = default)
+{
+    this.SetEntityDates();
+    this.SetEntityAuditInfo(currentUserId);
+    return await base.SaveChangesAsync(cancellationToken);
+}
+</code></pre>
+<p>The extension scans the change tracker for entities implementing <code>IAuditableEntity</code>:</p>
+<ul>
+<li><strong>On insert</strong>: sets both <code>CreatedBy</code> and <code>UpdatedBy</code> to the current user.</li>
+<li><strong>On update</strong>: sets <code>UpdatedBy</code> to the current user, leaving <code>CreatedBy</code> unchanged.</li>
+</ul>
+<h2 id="getting-the-current-user-id">Getting the current user ID</h2>
+<p>The user identifier you pass to <code>SetEntityAuditInfo</code> depends on your authentication setup. If you're using the <code>MADE.Web</code> package, you can use <code>IAuthenticatedUserAccessor</code>:</p>
+<pre><code class="lang-csharp">public class AppDbContext : DbContext
+{
+    private readonly IAuthenticatedUserAccessor userAccessor;
+
+    public AppDbContext(DbContextOptions options, IAuthenticatedUserAccessor userAccessor)
+        : base(options)
+    {
+        this.userAccessor = userAccessor;
+    }
+
+    public override async Task&lt;int&gt; SaveChangesAsync(CancellationToken cancellationToken = default)
+    {
+        this.SetEntityDates();
+        this.SetEntityAuditInfo(userAccessor.AuthenticatedUser.Subject);
+        return await base.SaveChangesAsync(cancellationToken);
+    }
+}
+</code></pre>
+<p>See <a href="../web/authentication.html">Authentication helpers</a> for setting up <code>IAuthenticatedUserAccessor</code>.</p>
+<h2 id="combining-with-soft-delete">Combining with soft delete</h2>
+<p>Audit tracking and soft delete work well together. When a user &quot;deletes&quot; a record, you can track who did it:</p>
+<pre><code class="lang-csharp">public class Document : EntityBase, ISoftDeletable, IAuditableEntity
+{
+    public string Title { get; set; }
+
+    // ISoftDeletable
+    public bool IsDeleted { get; set; }
+    public DateTime? DeletedDate { get; set; }
+
+    // IAuditableEntity
+    public string? CreatedBy { get; set; }
+    public string? UpdatedBy { get; set; }
+}
+</code></pre>
+<p>With <code>InterceptSoftDeletions</code> and <code>SetEntityAuditInfo</code> both running in <code>SaveChangesAsync</code>, the soft delete is recorded with the <code>UpdatedBy</code> field showing who performed the deletion.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-efcore/audit-tracking.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

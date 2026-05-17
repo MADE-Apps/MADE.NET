@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Custom validators | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Custom validators | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-validation/custom-validators.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-validation-custom-validators">
+<h1 id="custom-validators">Custom validators</h1>
+
+<p>The built-in validators cover common scenarios, but your application will likely need validation logic specific to your domain. Implementing <code>IValidator</code> gives you a consistent pattern that integrates seamlessly with <code>ValidatorCollection</code>.</p>
+<h2 id="implementing-ivalidator">Implementing IValidator</h2>
+<p>Here's a validator that checks whether a username meets your application's naming rules:</p>
+<pre><code class="lang-csharp">using MADE.Data.Validation;
+
+public class UsernameValidator : IValidator
+{
+    public string Key { get; set; } = nameof(UsernameValidator);
+    public bool IsInvalid { get; set; }
+    public bool IsDirty { get; set; }
+    public string FeedbackMessage { get; set; } = &quot;Username must be 3-20 characters, letters and numbers only, starting with a letter.&quot;;
+
+    public void Validate(object value)
+    {
+        var username = value?.ToString();
+
+        IsInvalid = string.IsNullOrWhiteSpace(username)
+            || username.Length &lt; 3
+            || username.Length &gt; 20
+            || !char.IsLetter(username[0])
+            || !username.All(c =&gt; char.IsLetterOrDigit(c));
+
+        IsDirty = true;
+    }
+}
+</code></pre>
+<p>Use it standalone or as part of a collection:</p>
+<pre><code class="lang-csharp">var validators = new ValidatorCollection
+{
+    new RequiredValidator(),
+    new UsernameValidator(),
+};
+
+validators.Validate(input);
+</code></pre>
+<h2 id="the-ivalidator-contract">The IValidator contract</h2>
+<p>When implementing <code>IValidator</code>, follow these conventions:</p>
+<ul>
+<li><strong>Set <code>IsInvalid</code></strong> to <code>true</code> when validation fails, <code>false</code> when it passes.</li>
+<li><strong>Set <code>IsDirty</code></strong> to <code>true</code> after <code>Validate</code> is called, regardless of the result. This lets consumers distinguish between &quot;not yet validated&quot; and &quot;validated and passed&quot;.</li>
+<li><strong>Provide a meaningful <code>FeedbackMessage</code></strong> that tells the user what went wrong and how to fix it.</li>
+<li><strong>Use <code>Key</code></strong> to identify the validator in collections. This defaults to the class name but can be customized for scenarios where you use multiple instances of the same validator type.</li>
+</ul>
+<h2 id="when-to-use-custom-validators-vs-predicatevalidator">When to use custom validators vs PredicateValidator</h2>
+<p><strong>Use <code>PredicateValidator&lt;T&gt;</code></strong> for simple, one-off checks where creating a full class would be overkill:</p>
+<pre><code class="lang-csharp">var ageCheck = new PredicateValidator&lt;int&gt;
+{
+    Predicate = age =&gt; age &gt;= 18,
+    FeedbackMessage = &quot;Must be 18 or older.&quot;,
+};
+</code></pre>
+<p><strong>Use a custom <code>IValidator</code> class</strong> when:</p>
+<ul>
+<li>The validation logic is complex enough to warrant its own tests.</li>
+<li>You'll reuse the validator across multiple forms or endpoints.</li>
+<li>You need to configure the validator with properties (like <code>MinLength</code> on <code>MinLengthValidator</code>).</li>
+</ul>
+<p>If you build a validator that would be broadly useful, consider <a href="https://github.com/MADE-Apps/MADE.NET/issues/new/choose">contributing it back to MADE.NET</a>.</p>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-validation/custom-validators.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

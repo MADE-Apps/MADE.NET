@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Built-in validators | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Built-in validators | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-validation/built-in-validators.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-validation-built-in-validators">
+<h1 id="built-in-validators">Built-in validators</h1>
+
+<p><code>MADE.Data.Validation</code> ships with over 30 validators covering the most common validation scenarios. Each validator implements <code>IValidator</code> and can be used independently or composed into a <code>ValidatorCollection</code>.</p>
+<p>Every validator exposes the same properties:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Key</code></td>
+<td>A string identifier for the validator (defaults to the class name).</td>
+</tr>
+<tr>
+<td><code>IsInvalid</code></td>
+<td><code>true</code> if the last validation failed.</td>
+</tr>
+<tr>
+<td><code>IsDirty</code></td>
+<td><code>true</code> if <code>Validate</code> has been called at least once.</td>
+</tr>
+<tr>
+<td><code>FeedbackMessage</code></td>
+<td>A human-readable error message. Customizable via the property setter.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="string-validators">String validators</h2>
+<h3 id="requiredvalidator">RequiredValidator</h3>
+<p>Ensures a value is not null, not an empty string, not whitespace, not an empty collection, and not <code>false</code>:</p>
+<pre><code class="lang-csharp">var validator = new RequiredValidator();
+validator.Validate(null);       // IsInvalid = true
+validator.Validate(&quot;&quot;);         // IsInvalid = true
+validator.Validate(&quot;  &quot;);      // IsInvalid = true
+validator.Validate(&quot;hello&quot;);   // IsInvalid = false
+</code></pre>
+<h3 id="alphavalidator">AlphaValidator</h3>
+<p>Checks that a string contains only letter characters (a-z, case-insensitive):</p>
+<pre><code class="lang-csharp">var validator = new AlphaValidator();
+validator.Validate(&quot;Hello&quot;);    // IsInvalid = false
+validator.Validate(&quot;Hello123&quot;); // IsInvalid = true
+</code></pre>
+<h3 id="alphanumericvalidator">AlphaNumericValidator</h3>
+<p>Checks that a string contains only letters and numbers:</p>
+<pre><code class="lang-csharp">var validator = new AlphaNumericValidator();
+validator.Validate(&quot;Hello123&quot;); // IsInvalid = false
+validator.Validate(&quot;Hello!&quot;);   // IsInvalid = true
+</code></pre>
+<h3 id="minlengthvalidator">MinLengthValidator</h3>
+<p>Validates that a string meets a minimum length:</p>
+<pre><code class="lang-csharp">var validator = new MinLengthValidator { MinLength = 3 };
+validator.Validate(&quot;Hi&quot;);    // IsInvalid = true
+validator.Validate(&quot;Hello&quot;); // IsInvalid = false
+</code></pre>
+<h3 id="maxlengthvalidator">MaxLengthValidator</h3>
+<p>Validates that a string doesn't exceed a maximum length:</p>
+<pre><code class="lang-csharp">var validator = new MaxLengthValidator { MaxLength = 10 };
+validator.Validate(&quot;Hello&quot;);          // IsInvalid = false
+validator.Validate(&quot;Hello, World!&quot;); // IsInvalid = true
+</code></pre>
+<h3 id="regexvalidator">RegexValidator</h3>
+<p>Validates a value against a configurable regular expression:</p>
+<pre><code class="lang-csharp">var validator = new RegexValidator { Pattern = @&quot;^\d{3}-\d{4}$&quot; };
+validator.Validate(&quot;123-4567&quot;); // IsInvalid = false
+validator.Validate(&quot;abc&quot;);      // IsInvalid = true
+</code></pre>
+<h3 id="base64validator">Base64Validator</h3>
+<p>Checks whether a string is valid Base64:</p>
+<pre><code class="lang-csharp">var validator = new Base64Validator();
+validator.Validate(&quot;SGVsbG8=&quot;); // IsInvalid = false
+validator.Validate(&quot;not base64!&quot;); // IsInvalid = true
+</code></pre>
+<h2 id="format-validators">Format validators</h2>
+<h3 id="emailvalidator">EmailValidator</h3>
+<p>Validates that a string is a valid email address. Extends <code>RegexValidator</code> with a comprehensive email pattern:</p>
+<pre><code class="lang-csharp">var validator = new EmailValidator();
+validator.Validate(&quot;user@example.com&quot;); // IsInvalid = false
+validator.Validate(&quot;not-an-email&quot;);     // IsInvalid = true
+</code></pre>
+<h3 id="ipaddressvalidator">IpAddressValidator</h3>
+<p>Validates that a value is a valid IPv4 address:</p>
+<pre><code class="lang-csharp">var validator = new IpAddressValidator();
+validator.Validate(&quot;192.168.1.1&quot;);   // IsInvalid = false
+validator.Validate(&quot;999.999.999.999&quot;); // IsInvalid = true
+</code></pre>
+<h3 id="macaddressvalidator">MacAddressValidator</h3>
+<p>Validates that a value is a valid MAC address using .NET's <code>PhysicalAddress.Parse</code>:</p>
+<pre><code class="lang-csharp">var validator = new MacAddressValidator();
+validator.Validate(&quot;00:1A:2B:3C:4D:5E&quot;); // IsInvalid = false
+</code></pre>
+<h3 id="guidvalidator">GuidValidator</h3>
+<p>Checks whether a string is a valid GUID:</p>
+<pre><code class="lang-csharp">var validator = new GuidValidator();
+validator.Validate(&quot;550e8400-e29b-41d4-a716-446655440000&quot;); // IsInvalid = false
+validator.Validate(&quot;not-a-guid&quot;); // IsInvalid = true
+</code></pre>
+<h3 id="wellformedurlvalidator">WellFormedUrlValidator</h3>
+<p>Validates that a string is a well-formed URL:</p>
+<pre><code class="lang-csharp">var validator = new WellFormedUrlValidator();
+validator.Validate(&quot;https://example.com&quot;); // IsInvalid = false
+validator.Validate(&quot;not a url&quot;);           // IsInvalid = true
+</code></pre>
+<h2 id="range-validators">Range validators</h2>
+<h3 id="betweenvalidator">BetweenValidator</h3>
+<p>Validates that an <code>IComparable</code> value falls within a range:</p>
+<pre><code class="lang-csharp">var validator = new BetweenValidator { Min = 1, Max = 100, Inclusive = true };
+validator.Validate(50);  // IsInvalid = false
+validator.Validate(0);   // IsInvalid = true
+validator.Validate(100); // IsInvalid = false (inclusive)
+</code></pre>
+<h3 id="minvaluevalidator">MinValueValidator</h3>
+<p>Validates that a value is greater than a minimum:</p>
+<pre><code class="lang-csharp">var validator = new MinValueValidator { Min = 0 };
+validator.Validate(5);  // IsInvalid = false
+validator.Validate(-1); // IsInvalid = true
+</code></pre>
+<h3 id="maxvaluevalidator">MaxValueValidator</h3>
+<p>Validates that a value is less than a maximum:</p>
+<pre><code class="lang-csharp">var validator = new MaxValueValidator { Max = 100 };
+validator.Validate(50);  // IsInvalid = false
+validator.Validate(150); // IsInvalid = true
+</code></pre>
+<h3 id="latitudevalidator">LatitudeValidator</h3>
+<p>Validates that a value is within the valid latitude range (-90 to 90):</p>
+<pre><code class="lang-csharp">var validator = new LatitudeValidator();
+validator.Validate(51.5074); // IsInvalid = false (London)
+validator.Validate(95.0);    // IsInvalid = true
+</code></pre>
+<h3 id="longitudevalidator">LongitudeValidator</h3>
+<p>Validates that a value is within the valid longitude range (-180 to 180):</p>
+<pre><code class="lang-csharp">var validator = new LongitudeValidator();
+validator.Validate(-0.1278); // IsInvalid = false (London)
+validator.Validate(200.0);   // IsInvalid = true
+</code></pre>
+<h2 id="custom-predicate-validation">Custom predicate validation</h2>
+<h3 id="predicatevalidator">PredicateValidator</h3>
+<p>Validates using a custom function, useful for one-off validation logic:</p>
+<pre><code class="lang-csharp">var validator = new PredicateValidator&lt;string&gt;
+{
+    Predicate = value =&gt; value?.Contains(&quot;@&quot;) == true,
+    FeedbackMessage = &quot;Value must contain @&quot;,
+};
+validator.Validate(&quot;test@example&quot;); // IsInvalid = false
+validator.Validate(&quot;test&quot;);         // IsInvalid = true
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-validation/built-in-validators.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

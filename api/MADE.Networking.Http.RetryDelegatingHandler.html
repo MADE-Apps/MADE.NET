@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class RetryDelegatingHandler | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class RetryDelegatingHandler | MADE.NET ">
+      
+      <meta name="description" content="Defines a delegating handler that retries failed HTTP requests with exponential backoff.">
+      <link rel="icon" href="../images/Logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_RetryDelegatingHandler.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.RetryDelegatingHandler%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MADE.Networking.Http.RetryDelegatingHandler">
+
+
+
+  <h1 id="MADE_Networking_Http_RetryDelegatingHandler" data-uid="MADE.Networking.Http.RetryDelegatingHandler" class="text-break">
+Class RetryDelegatingHandler  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/RetryDelegatingHandler.cs/#L18"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MADE.html">MADE</a>.<a class="xref" href="MADE.Networking.html">Networking</a>.<a class="xref" href="MADE.Networking.Http.html">Http</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MADE.Networking.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines a delegating handler that retries failed HTTP requests with exponential backoff.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class RetryDelegatingHandler : DelegatingHandler, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpmessagehandler">HttpMessageHandler</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.delegatinghandler">DelegatingHandler</a></div>
+      <div><span class="xref">RetryDelegatingHandler</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.delegatinghandler.dispose">DelegatingHandler.Dispose(bool)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.delegatinghandler.send">DelegatingHandler.Send(HttpRequestMessage, CancellationToken)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.delegatinghandler.innerhandler">DelegatingHandler.InnerHandler</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpmessagehandler.dispose#system-net-http-httpmessagehandler-dispose">HttpMessageHandler.Dispose()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyNames_System_Object_">ReflectionExtensions.GetPropertyNames(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_">ReflectionExtensions.GetPropertyValue&lt;T&gt;(object, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldBeNull_System_Object_">ObjectAssertExtensions.ShouldBeNull(object?)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldNotBeNull_System_Object_">ObjectAssertExtensions.ShouldNotBeNull(object?)</a>
+  </div>
+  </dd></dl>
+
+
+
+  <h2 id="MADE_Networking_Http_RetryDelegatingHandler_remarks">Remarks</h2>
+  <div class="markdown level0 remarks"><p>Use this handler when constructing an <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpclient">HttpClient</a> to automatically retry transient failures.</p>
+<pre><code class="lang-csharp">var handler = new RetryDelegatingHandler(maxRetries: 3, initialDelay: TimeSpan.FromSeconds(1));
+var client = new HttpClient(handler);</code></pre>
+</div>
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MADE_Networking_Http_RetryDelegatingHandler__ctor_" data-uid="MADE.Networking.Http.RetryDelegatingHandler.#ctor*"></a>
+
+  <h3 id="MADE_Networking_Http_RetryDelegatingHandler__ctor_System_Int32_System_Nullable_System_TimeSpan__" data-uid="MADE.Networking.Http.RetryDelegatingHandler.#ctor(System.Int32,System.Nullable{System.TimeSpan})">
+  RetryDelegatingHandler(int, TimeSpan?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/RetryDelegatingHandler.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Networking.Http.RetryDelegatingHandler.html">RetryDelegatingHandler</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RetryDelegatingHandler(int maxRetries = 3, TimeSpan? initialDelay = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>maxRetries</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The maximum number of retry attempts. Default is 3.</p>
+</dd>
+    <dt><code>initialDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>?</dt>
+    <dd><p>The initial delay before the first retry. Default is 1 second.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_RetryDelegatingHandler__ctor_" data-uid="MADE.Networking.Http.RetryDelegatingHandler.#ctor*"></a>
+
+  <h3 id="MADE_Networking_Http_RetryDelegatingHandler__ctor_System_Net_Http_HttpMessageHandler_System_Int32_System_Nullable_System_TimeSpan__" data-uid="MADE.Networking.Http.RetryDelegatingHandler.#ctor(System.Net.Http.HttpMessageHandler,System.Int32,System.Nullable{System.TimeSpan})">
+  RetryDelegatingHandler(HttpMessageHandler, int, TimeSpan?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/RetryDelegatingHandler.cs/#L51"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Networking.Http.RetryDelegatingHandler.html">RetryDelegatingHandler</a> class with the specified inner handler.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RetryDelegatingHandler(HttpMessageHandler innerHandler, int maxRetries = 3, TimeSpan? initialDelay = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>innerHandler</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpmessagehandler">HttpMessageHandler</a></dt>
+    <dd><p>The inner handler which is responsible for processing the HTTP response messages.</p>
+</dd>
+    <dt><code>maxRetries</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd><p>The maximum number of retry attempts. Default is 3.</p>
+</dd>
+    <dt><code>initialDelay</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a>?</dt>
+    <dd><p>The initial delay before the first retry. Default is 1 second.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="MADE_Networking_Http_RetryDelegatingHandler_InitialDelay_" data-uid="MADE.Networking.Http.RetryDelegatingHandler.InitialDelay*"></a>
+
+  <h3 id="MADE_Networking_Http_RetryDelegatingHandler_InitialDelay" data-uid="MADE.Networking.Http.RetryDelegatingHandler.InitialDelay">
+  InitialDelay
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/RetryDelegatingHandler.cs/#L69"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the initial delay before the first retry. Each subsequent retry doubles the delay.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public TimeSpan InitialDelay { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_RetryDelegatingHandler_MaxRetries_" data-uid="MADE.Networking.Http.RetryDelegatingHandler.MaxRetries*"></a>
+
+  <h3 id="MADE_Networking_Http_RetryDelegatingHandler_MaxRetries" data-uid="MADE.Networking.Http.RetryDelegatingHandler.MaxRetries">
+  MaxRetries
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/RetryDelegatingHandler.cs/#L64"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the maximum number of retry attempts.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int MaxRetries { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MADE_Networking_Http_RetryDelegatingHandler_SendAsync_" data-uid="MADE.Networking.Http.RetryDelegatingHandler.SendAsync*"></a>
+
+  <h3 id="MADE_Networking_Http_RetryDelegatingHandler_SendAsync_System_Net_Http_HttpRequestMessage_System_Threading_CancellationToken_" data-uid="MADE.Networking.Http.RetryDelegatingHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+  SendAsync(HttpRequestMessage, CancellationToken)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/RetryDelegatingHandler.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Sends an HTTP request to the inner handler to send to the server as an asynchronous operation.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected override Task&lt;HttpResponseMessage&gt; SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httprequestmessage">HttpRequestMessage</a></dt>
+    <dd><p>The HTTP request message to send to the server.</p>
+</dd>
+    <dt><code>cancellationToken</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.cancellationtoken">CancellationToken</a></dt>
+    <dd><p>A cancellation token to cancel operation.</p>
+</dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.net.http.httpresponsemessage">HttpResponseMessage</a>&gt;</dt>
+    <dd><p>The task object representing the asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.argumentnullexception">ArgumentNullException</a></dt>
+    <dd><p>The <code class="paramref">request</code> was <a href="https://learn.microsoft.com/dotnet/csharp/language-reference/keywords/null">null</a>.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.operationcanceledexception">OperationCanceledException</a></dt>
+    <dd><p>The cancellation token was canceled. This exception is stored into the returned task.</p>
+</dd>
+  </dl>
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/RetryDelegatingHandler.cs/#L18" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

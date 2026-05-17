@@ -1,0 +1,3310 @@
+{
+  "source_base_path": "/home/runner/work/MADE.NET/MADE.NET/docs",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      }
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "README.md",
+      "output": {
+        ".html": {
+          "relative_path": "README.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.CollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.CollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.CollectionExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Collections.CollectionExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for enumerables, lists, and collections.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.Compare.GenericEqualityComparer-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.Compare.GenericEqualityComparer-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.Compare.GenericEqualityComparer<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Collections.Compare.GenericEqualityComparer-1.yml\" sourcestartlinenumber=\"1\">Defines an equality comparer for comparing two objects using a simple comparison function.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.Compare.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.Compare.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.Compare",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.DictionaryExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.DictionaryExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.DictionaryExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Collections.DictionaryExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for dictionaries.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.ObjectModel.ObservableItemCollection-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.ObjectModel.ObservableItemCollection-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.ObjectModel.ObservableItemCollection<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Collections.ObjectModel.ObservableItemCollection-1.yml\" sourcestartlinenumber=\"1\">Defines an <xref href=\"System.Collections.ObjectModel.ObservableCollection%601\" data-throw-if-not-resolved=\"false\"></xref> that manages the property changed events of the contained <xref href=\"System.ComponentModel.INotifyPropertyChanged\" data-throw-if-not-resolved=\"false\"></xref> items.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventArgs",
+      "Summary": "<p sourcefile=\"api/MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventArgs.yml\" sourcestartlinenumber=\"1\">Defines an event argument for when an <xref href=\"System.ComponentModel.INotifyPropertyChanged\" data-throw-if-not-resolved=\"false\"></xref> object property has changed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventHandler",
+      "Summary": "<p sourcefile=\"api/MADE.Collections.ObjectModel.ObservableItemCollectionPropertyChangedEventHandler.yml\" sourcestartlinenumber=\"1\">Defines event handler for when an <xref href=\"System.ComponentModel.INotifyPropertyChanged\" data-throw-if-not-resolved=\"false\"></xref> object has invoked the\n<xref href=\"System.ComponentModel.INotifyPropertyChanged.PropertyChanged\" data-throw-if-not-resolved=\"false\"></xref> event within a <xref href=\"MADE.Collections.ObjectModel.ObservableItemCollection%601\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.ObjectModel.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.ObjectModel.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.ObjectModel",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.QueryableExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.QueryableExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections.QueryableExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Collections.QueryableExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for queryable objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Collections.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Collections.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Collections",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.BooleanToStringValueConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.BooleanToStringValueConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.BooleanToStringValueConverter",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.BooleanToStringValueConverter.yml\" sourcestartlinenumber=\"1\">Defines a value converter from <xref href=\"System.Boolean\" data-throw-if-not-resolved=\"false\"></xref> to <xref href=\"System.String\" data-throw-if-not-resolved=\"false\"></xref> with a pre-determined <xref href=\"MADE.Data.Converters.BooleanToStringValueConverter.TrueValue\" data-throw-if-not-resolved=\"false\"></xref> and <xref href=\"MADE.Data.Converters.BooleanToStringValueConverter.FalseValue\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Constants.DateTimeConstants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Constants.DateTimeConstants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Constants.DateTimeConstants",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Constants.DateTimeConstants.yml\" sourcestartlinenumber=\"1\">Defines a collection of constants for <xref href=\"System.DateTime\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Constants.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Constants.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Constants",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.DateTimeToStringValueConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.DateTimeToStringValueConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.DateTimeToStringValueConverter",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.DateTimeToStringValueConverter.yml\" sourcestartlinenumber=\"1\">Defines a value converter from <xref href=\"System.DateTime\" data-throw-if-not-resolved=\"false\"></xref> to <xref href=\"System.String\" data-throw-if-not-resolved=\"false\"></xref> with an optional format string.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.DateTimeToUnixTimestampValueConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.DateTimeToUnixTimestampValueConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.DateTimeToUnixTimestampValueConverter",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.DateTimeToUnixTimestampValueConverter.yml\" sourcestartlinenumber=\"1\">Defines a value converter from <xref href=\"System.DateTime\" data-throw-if-not-resolved=\"false\"></xref> to a Unix timestamp represented as a <xref href=\"System.Int64\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Exceptions.InvalidDataConversionException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Exceptions.InvalidDataConversionException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Exceptions.InvalidDataConversionException",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Exceptions.InvalidDataConversionException.yml\" sourcestartlinenumber=\"1\">Defines an exception thrown when a data conversion has failed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.BooleanExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.BooleanExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.BooleanExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.BooleanExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"System.Boolean\" data-throw-if-not-resolved=\"false\"></xref> values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.CollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.CollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.CollectionExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.CollectionExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for collection objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.DateTimeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.DateTimeExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.DateTimeExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.DateTimeExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for a date/time object.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.FileSizeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.FileSizeExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.FileSizeExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.FileSizeExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for converting byte values to human-readable file size representations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.LengthExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.LengthExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.LengthExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.LengthExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for converting length measurements.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.MathExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.MathExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.MathExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.MathExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for common mathematics expressions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.StringExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.StringExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.StringExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for string values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.TimeSpanExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.TimeSpanExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions.TimeSpanExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Extensions.TimeSpanExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"System.TimeSpan\" data-throw-if-not-resolved=\"false\"></xref> values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.IValueConverter-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.IValueConverter-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.IValueConverter<TFrom, TTo>",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.IValueConverter-2.yml\" sourcestartlinenumber=\"1\">Defines an interface for a value converter from <code class=\"typeparamref\">TFrom</code> to <code class=\"typeparamref\">TTo</code>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.StringToBase64StringValueConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.StringToBase64StringValueConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.StringToBase64StringValueConverter",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.StringToBase64StringValueConverter.yml\" sourcestartlinenumber=\"1\">Defines a value converter from <xref href=\"System.String\" data-throw-if-not-resolved=\"false\"></xref> to Base64 <xref href=\"System.String\" data-throw-if-not-resolved=\"false\"></xref> with an optional Encoding parameter.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.StringToEnumValueConverter-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.StringToEnumValueConverter-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.StringToEnumValueConverter<TEnum>",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.StringToEnumValueConverter-1.yml\" sourcestartlinenumber=\"1\">Defines a value converter from <xref href=\"System.String\" data-throw-if-not-resolved=\"false\"></xref> to an <xref href=\"System.Enum\" data-throw-if-not-resolved=\"false\"></xref> type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Strings.Resources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Strings.Resources.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Strings.Resources",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Converters.Strings.Resources.yml\" sourcestartlinenumber=\"1\">A strongly-typed resource class, for looking up localized strings, etc.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.Strings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.Strings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters.Strings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Converters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Converters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.Converters.UtcDateTimeConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.Converters.UtcDateTimeConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.Converters.UtcDateTimeConverter",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.Converters.UtcDateTimeConverter.yml\" sourcestartlinenumber=\"1\">Defines a converter to help with the storing of dates in a UTC format.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.Converters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.Converters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.EntityBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.EntityBase-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.EntityBase<TKey>",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.EntityBase-1.yml\" sourcestartlinenumber=\"1\">Defines a base definition for an entity.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.EntityBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.EntityBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.EntityBase",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.EntityBase.yml\" sourcestartlinenumber=\"1\">Defines a base definition for an entity.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.Extensions.DbContextExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.Extensions.DbContextExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.Extensions.DbContextExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.Extensions.DbContextExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"Microsoft.EntityFrameworkCore.DbContext\" data-throw-if-not-resolved=\"false\"></xref> types.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.Extensions.EntityBaseExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.Extensions.EntityBaseExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.Extensions.EntityBaseExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.Extensions.EntityBaseExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for the <xref href=\"MADE.Data.EFCore.EntityBase\" data-throw-if-not-resolved=\"false\"></xref> type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.Extensions.QueryableExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.Extensions.QueryableExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.Extensions.QueryableExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.Extensions.QueryableExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for Entity Framework queries.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.Extensions.SoftDeleteExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.Extensions.SoftDeleteExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.Extensions.SoftDeleteExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.Extensions.SoftDeleteExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for supporting soft deletion of entities.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.IAuditableEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.IAuditableEntity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.IAuditableEntity",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.IAuditableEntity.yml\" sourcestartlinenumber=\"1\">Defines an interface for entities that track who created and last updated them.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.IDatedEntity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.IDatedEntity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.IDatedEntity",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.IDatedEntity.yml\" sourcestartlinenumber=\"1\">Defines a base definition for an entity with defined created and updated date.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.IEntityBase-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.IEntityBase-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.IEntityBase<TKey>",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.IEntityBase-1.yml\" sourcestartlinenumber=\"1\">Defines a base definition for an entity with a defined primary key type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.IEntityBase.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.IEntityBase.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.IEntityBase",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.IEntityBase.yml\" sourcestartlinenumber=\"1\">Defines a base definition for an entity.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.ISoftDeletable.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.ISoftDeletable.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore.ISoftDeletable",
+      "Summary": "<p sourcefile=\"api/MADE.Data.EFCore.ISoftDeletable.yml\" sourcestartlinenumber=\"1\">Defines an interface for entities that support soft deletion.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.EFCore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.EFCore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.EFCore",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter.yml\" sourcestartlinenumber=\"1\">Defines a JSON converter for migrating serialized <xref href=\"System.Type\" data-throw-if-not-resolved=\"false\"></xref> declarations within a serialized JSON object.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Serialization.Json.Converters.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Serialization.Json.Converters.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Serialization.Json.Converters",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Serialization.Json.Exceptions.JsonTypeMigrationException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Serialization.Json.Exceptions.JsonTypeMigrationException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Serialization.Json.Exceptions.JsonTypeMigrationException",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Serialization.Json.Exceptions.JsonTypeMigrationException.yml\" sourcestartlinenumber=\"1\">Defines an exception for errors occurred when interacting with JSON type migrations.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Serialization.Json.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Serialization.Json.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Serialization.Json.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Serialization.Json.JsonTypeMigration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Serialization.Json.JsonTypeMigration.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Serialization.Json.JsonTypeMigration",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Serialization.Json.JsonTypeMigration.yml\" sourcestartlinenumber=\"1\">Defines the detail for migrating from one type to another using the <xref href=\"MADE.Data.Serialization.Json.Converters.JsonTypeMigrationConverter\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Serialization.Json.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Serialization.Json.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Serialization.Json",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.AsyncValidatorCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.AsyncValidatorCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.AsyncValidatorCollection",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.AsyncValidatorCollection.yml\" sourcestartlinenumber=\"1\">Defines a list of <xref href=\"MADE.Data.Validation.IAsyncValidator\" data-throw-if-not-resolved=\"false\"></xref> objects that can be accessed by index.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Exceptions.InvalidRangeException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Exceptions.InvalidRangeException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Exceptions.InvalidRangeException",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Exceptions.InvalidRangeException.yml\" sourcestartlinenumber=\"1\">Defines an exception for an invalid range.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Extensions.ComparableExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Extensions.ComparableExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Extensions.ComparableExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Extensions.ComparableExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"System.IComparable\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Extensions.DateTimeExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Extensions.DateTimeExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Extensions.DateTimeExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Extensions.DateTimeExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of data validation extensions for <xref href=\"System.DateTime\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Extensions.MathExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Extensions.MathExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Extensions.MathExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Extensions.MathExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for common mathematics expressions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Extensions.StringExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Extensions.StringExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Extensions.StringExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Extensions.StringExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for string values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.FluentValidatorCollection-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.FluentValidatorCollection-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.FluentValidatorCollection<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.FluentValidatorCollection-1.yml\" sourcestartlinenumber=\"1\">Defines a list of <xref href=\"FluentValidation.IValidator\" data-throw-if-not-resolved=\"false\"></xref> objects that can be accessed by index.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.IAsyncValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.IAsyncValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.IAsyncValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.IAsyncValidator.yml\" sourcestartlinenumber=\"1\">Defines an interface for a data validator that performs asynchronous validation.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.IValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.IValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.IValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.IValidator.yml\" sourcestartlinenumber=\"1\">Defines an interface for a data validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.IValidatorCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.IValidatorCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.IValidatorCollection",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.IValidatorCollection.yml\" sourcestartlinenumber=\"1\">Defines an interface for a collection of validators.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.InputValidatedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.InputValidatedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.InputValidatedEventArgs",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.InputValidatedEventArgs.yml\" sourcestartlinenumber=\"1\">Defines an event argument for an input validated request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.InputValidatedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.InputValidatedEventHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.InputValidatedEventHandler",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.InputValidatedEventHandler.yml\" sourcestartlinenumber=\"1\">Defines a delegate for an event handler for observing when an input is validated.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Strings.Resources.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Strings.Resources.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Strings.Resources",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Strings.Resources.yml\" sourcestartlinenumber=\"1\">A strongly-typed resource class, for looking up localized strings, etc.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Strings.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Strings.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Strings",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.ValidatorCollection.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.ValidatorCollection.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.ValidatorCollection",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.ValidatorCollection.yml\" sourcestartlinenumber=\"1\">Defines a list of <xref href=\"MADE.Data.Validation.IValidator\" data-throw-if-not-resolved=\"false\"></xref> objects that can be accessed by index.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.AlphaNumericValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.AlphaNumericValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.AlphaNumericValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.AlphaNumericValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value contains alphanumeric characters.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.AlphaValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.AlphaValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.AlphaValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.AlphaValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value contains alpha characters.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.Base64Validator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.Base64Validator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.Base64Validator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.Base64Validator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is a valid base64 value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.BetweenValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.BetweenValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.BetweenValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.BetweenValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is within a minimum and maximum range.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.EmailValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.EmailValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.EmailValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.EmailValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is an email address.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.GuidValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.GuidValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.GuidValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.GuidValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is a <xref href=\"System.Guid\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.IpAddressValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.IpAddressValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.IpAddressValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.IpAddressValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is a valid IP address.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.LatitudeValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.LatitudeValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.LatitudeValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.LatitudeValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is within the valid range for a latitude value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.LongitudeValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.LongitudeValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.LongitudeValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.LongitudeValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is within the valid range for a longitude value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.MacAddressValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.MacAddressValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.MacAddressValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.MacAddressValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is a valid MAC address.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.MaxLengthValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.MaxLengthValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.MaxLengthValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.MaxLengthValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is less than a maximum length.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.MaxValueValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.MaxValueValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.MaxValueValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.MaxValueValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is less than a maximum value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.MinLengthValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.MinLengthValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.MinLengthValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.MinLengthValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is greater than a minimum length.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.MinValueValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.MinValueValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.MinValueValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.MinValueValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is greater than a minimum value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.PredicateValidator-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.PredicateValidator-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.PredicateValidator<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.PredicateValidator-1.yml\" sourcestartlinenumber=\"1\">Defines a generic data validator that performs custom validation logic based on the value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.RegexValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.RegexValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.RegexValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.RegexValidator.yml\" sourcestartlinenumber=\"1\">Defines a generic regular expression data validator.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.RequiredValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.RequiredValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.RequiredValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.RequiredValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is provided.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.WellFormedUrlValidator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.WellFormedUrlValidator.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators.WellFormedUrlValidator",
+      "Summary": "<p sourcefile=\"api/MADE.Data.Validation.Validators.WellFormedUrlValidator.yml\" sourcestartlinenumber=\"1\">Defines a data validator for ensuring a value is a valid well formed URL, e.g. <a href=\"https://www.example.com\" sourcefile=\"api/MADE.Data.Validation.Validators.WellFormedUrlValidator.yml\" sourcestartlinenumber=\"1\">https://www.example.com</a>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.Validators.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.Validators.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation.Validators",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Data.Validation.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Data.Validation.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Data.Validation",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.AppDiagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.AppDiagnostics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.AppDiagnostics",
+      "Summary": "<p sourcefile=\"api/MADE.Diagnostics.AppDiagnostics.yml\" sourcestartlinenumber=\"1\">Defines a service for managing application wide event logging for exceptions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.Exceptions.ExceptionObservedEventArgs.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.Exceptions.ExceptionObservedEventArgs.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.Exceptions.ExceptionObservedEventArgs",
+      "Summary": "<p sourcefile=\"api/MADE.Diagnostics.Exceptions.ExceptionObservedEventArgs.yml\" sourcestartlinenumber=\"1\">Defines an event argument for an observed exception.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.Exceptions.ExceptionObservedEventHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.Exceptions.ExceptionObservedEventHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.Exceptions.ExceptionObservedEventHandler",
+      "Summary": "<p sourcefile=\"api/MADE.Diagnostics.Exceptions.ExceptionObservedEventHandler.yml\" sourcestartlinenumber=\"1\">Defines a delegate for an event handler for observing exceptions that were thrown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.IAppDiagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.IAppDiagnostics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.IAppDiagnostics",
+      "Summary": "<p sourcefile=\"api/MADE.Diagnostics.IAppDiagnostics.yml\" sourcestartlinenumber=\"1\">Defines an interface for handling application diagnostics.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.Logging.FileEventLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.Logging.FileEventLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.Logging.FileEventLogger",
+      "Summary": "<p sourcefile=\"api/MADE.Diagnostics.Logging.FileEventLogger.yml\" sourcestartlinenumber=\"1\">Defines a service for logging events to a log file.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.Logging.IEventLogger.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.Logging.IEventLogger.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.Logging.IEventLogger",
+      "Summary": "<p sourcefile=\"api/MADE.Diagnostics.Logging.IEventLogger.yml\" sourcestartlinenumber=\"1\">Defines an interface for an event logging service.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.Logging.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.Logging.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.Logging",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.StopwatchHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.StopwatchHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics.StopwatchHelper",
+      "Summary": "<p sourcefile=\"api/MADE.Diagnostics.StopwatchHelper.yml\" sourcestartlinenumber=\"1\">Defines a helper class for creating <xref href=\"System.Diagnostics.Stopwatch\" data-throw-if-not-resolved=\"false\"></xref> instances for method calls to track how long they take to execute.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Diagnostics.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Diagnostics.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Diagnostics",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Foundation.Platform.PlatformApiHelper.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Foundation.Platform.PlatformApiHelper.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Foundation.Platform.PlatformApiHelper",
+      "Summary": "<p sourcefile=\"api/MADE.Foundation.Platform.PlatformApiHelper.yml\" sourcestartlinenumber=\"1\">Defines a helper for checking platform support for APIs.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Foundation.Platform.PlatformNotSupportedAttribute.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Foundation.Platform.PlatformNotSupportedAttribute.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Foundation.Platform.PlatformNotSupportedAttribute",
+      "Summary": "<p sourcefile=\"api/MADE.Foundation.Platform.PlatformNotSupportedAttribute.yml\" sourcestartlinenumber=\"1\">Defines an attribute that marks a component as not supported by a specific platform.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Foundation.Platform.PlatformNotSupportedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Foundation.Platform.PlatformNotSupportedException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Foundation.Platform.PlatformNotSupportedException",
+      "Summary": "<p sourcefile=\"api/MADE.Foundation.Platform.PlatformNotSupportedException.yml\" sourcestartlinenumber=\"1\">Defines an exception thrown when code is called for a platform that is not supported.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Foundation.Platform.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Foundation.Platform.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Foundation.Platform",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Extensions.HttpResponseMessageExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Extensions.HttpResponseMessageExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Extensions.HttpResponseMessageExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Extensions.HttpResponseMessageExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"System.Net.Http.HttpResponseMessage\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Extensions.ServiceCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Extensions.ServiceCollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Extensions.ServiceCollectionExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Extensions.ServiceCollectionExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for registering MADE.NET Networking services with dependency injection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Extensions.UriExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Extensions.UriExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Extensions.UriExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Extensions.UriExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"System.Uri\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.INetworkRequestFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.INetworkRequestFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.INetworkRequestFactory",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.INetworkRequestFactory.yml\" sourcestartlinenumber=\"1\">Defines an interface for creating <xref href=\"MADE.Networking.Http.Requests.NetworkRequest\" data-throw-if-not-resolved=\"false\"></xref> instances using a managed <xref href=\"System.Net.Http.HttpClient\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.INetworkRequestManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.INetworkRequestManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.INetworkRequestManager",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.INetworkRequestManager.yml\" sourcestartlinenumber=\"1\">Defines an interface for a network request manager.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.NetworkRequestFactory.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.NetworkRequestFactory.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.NetworkRequestFactory",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.NetworkRequestFactory.yml\" sourcestartlinenumber=\"1\">Defines a factory for creating <xref href=\"MADE.Networking.Http.Requests.NetworkRequest\" data-throw-if-not-resolved=\"false\"></xref> instances using a managed <xref href=\"System.Net.Http.HttpClient\" data-throw-if-not-resolved=\"false\"></xref> from <xref href=\"System.Net.Http.IHttpClientFactory\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.NetworkRequestManager.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.NetworkRequestManager.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.NetworkRequestManager",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.NetworkRequestManager.yml\" sourcestartlinenumber=\"1\">Defines a manager for executing queued network requests.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.INetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.INetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.INetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.INetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines an interface for a basic network request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Json.JsonDeleteNetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Json.JsonDeleteNetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Json.JsonDeleteNetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.Json.JsonDeleteNetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines a network request for a DELETE call with a JSON response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Json.JsonGetNetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Json.JsonGetNetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Json.JsonGetNetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.Json.JsonGetNetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines a network request for a GET call with a JSON response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Json.JsonPatchNetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Json.JsonPatchNetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Json.JsonPatchNetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.Json.JsonPatchNetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines a network request for a PATCH call with a JSON response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Json.JsonPostNetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Json.JsonPostNetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Json.JsonPostNetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.Json.JsonPostNetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines a network request for a POST call with a JSON response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Json.JsonPutNetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Json.JsonPutNetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Json.JsonPutNetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.Json.JsonPutNetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines a network request for a PUT call with a JSON response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Json.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Json.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Json",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.MultipartFormDataPostNetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.MultipartFormDataPostNetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.MultipartFormDataPostNetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.MultipartFormDataPostNetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines a network request for a POST call with multipart form data content.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.NetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.NetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.NetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.NetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines the model for a network request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.NetworkRequestCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.NetworkRequestCallback.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.NetworkRequestCallback",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.NetworkRequestCallback.yml\" sourcestartlinenumber=\"1\">Defines a model for a network request callback.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Streams.StreamGetNetworkRequest.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Streams.StreamGetNetworkRequest.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Streams.StreamGetNetworkRequest",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Requests.Streams.StreamGetNetworkRequest.yml\" sourcestartlinenumber=\"1\">Defines a network request for a GET call with a data stream response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.Streams.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.Streams.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests.Streams",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Requests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Requests.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Requests",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Responses.HttpResponseMessage-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Responses.HttpResponseMessage-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Responses.HttpResponseMessage<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.Responses.HttpResponseMessage-1.yml\" sourcestartlinenumber=\"1\">Defines a HTTP response message that includes a deserializing option for the response data.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.Responses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.Responses.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.Responses",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.RetryDelegatingHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.RetryDelegatingHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http.RetryDelegatingHandler",
+      "Summary": "<p sourcefile=\"api/MADE.Networking.Http.RetryDelegatingHandler.yml\" sourcestartlinenumber=\"1\">Defines a delegating handler that retries failed HTTP requests with exponential backoff.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Networking.Http.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Networking.Http.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Networking.Http",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.Actions.Chain-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.Actions.Chain-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.Actions.Chain<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Runtime.Actions.Chain-1.yml\" sourcestartlinenumber=\"1\">Defines an implementation for a chain of objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.Actions.IChain-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.Actions.IChain-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.Actions.IChain<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Runtime.Actions.IChain-1.yml\" sourcestartlinenumber=\"1\">Defines an interface for a chain of objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.Actions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.Actions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.Actions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.Extensions.ReflectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.Extensions.ReflectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.Extensions.ReflectionExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Runtime.Extensions.ReflectionExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for object reflection.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.WeakReferenceCallback.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.WeakReferenceCallback.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.WeakReferenceCallback",
+      "Summary": "<p sourcefile=\"api/MADE.Runtime.WeakReferenceCallback.yml\" sourcestartlinenumber=\"1\">Defines a model for providing a weak referenced callback.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.WeakReferenceEventListener-2.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.WeakReferenceEventListener-2.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.WeakReferenceEventListener<TInstance, TSource>",
+      "Summary": "<p sourcefile=\"api/MADE.Runtime.WeakReferenceEventListener-2.yml\" sourcestartlinenumber=\"1\">Defines a model for providing a weak referenced event listener.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.WeakReferenceEventListener-3.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.WeakReferenceEventListener-3.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime.WeakReferenceEventListener<TInstance, TSource, TEventArgs>",
+      "Summary": "<p sourcefile=\"api/MADE.Runtime.WeakReferenceEventListener-3.yml\" sourcestartlinenumber=\"1\">Defines a model for providing a weak referenced event listener.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Runtime.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Runtime.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Runtime",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.AssertFailedException.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.AssertFailedException.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing.AssertFailedException",
+      "Summary": "<p sourcefile=\"api/MADE.Testing.AssertFailedException.yml\" sourcestartlinenumber=\"1\">Defines an exception that is thrown when an assertion fails.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.BooleanAssertExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.BooleanAssertExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing.BooleanAssertExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Testing.BooleanAssertExtensions.yml\" sourcestartlinenumber=\"1\">Defines a code assertion helper for boolean-based scenarios.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.CollectionAssertExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.CollectionAssertExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing.CollectionAssertExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Testing.CollectionAssertExtensions.yml\" sourcestartlinenumber=\"1\">Defines a code assertion helper for collection based scenarios.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.ComparableAssertExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.ComparableAssertExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing.ComparableAssertExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Testing.ComparableAssertExtensions.yml\" sourcestartlinenumber=\"1\">Defines a code assertion helper for <xref href=\"System.IComparable\" data-throw-if-not-resolved=\"false\"></xref> based scenarios.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.ExceptionAssertExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.ExceptionAssertExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing.ExceptionAssertExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Testing.ExceptionAssertExtensions.yml\" sourcestartlinenumber=\"1\">Defines a code assertion helper for exception-based scenarios.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.ObjectAssertExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.ObjectAssertExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing.ObjectAssertExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Testing.ObjectAssertExtensions.yml\" sourcestartlinenumber=\"1\">Defines a code assertion helper for object-based scenarios.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.StringAssertExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.StringAssertExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing.StringAssertExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Testing.StringAssertExtensions.yml\" sourcestartlinenumber=\"1\">Defines a code assertion helper for string-based scenarios.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Testing.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Testing.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Testing",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.AdaptiveSemaphore.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.AdaptiveSemaphore.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading.AdaptiveSemaphore",
+      "Summary": "<p sourcefile=\"api/MADE.Threading.AdaptiveSemaphore.yml\" sourcestartlinenumber=\"1\">Defines a semaphore that allows adjusting the concurrency limit at runtime to respond to backpressure.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.AsyncLazy-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.AsyncLazy-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading.AsyncLazy<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Threading.AsyncLazy-1.yml\" sourcestartlinenumber=\"1\">Defines a provider for lazy asynchronous initialization of a value.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.Debouncer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.Debouncer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading.Debouncer",
+      "Summary": "<p sourcefile=\"api/MADE.Threading.Debouncer.yml\" sourcestartlinenumber=\"1\">Defines a debouncer that delays execution of an action until a specified period of inactivity has elapsed.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.ITimer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.ITimer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading.ITimer",
+      "Summary": "<p sourcefile=\"api/MADE.Threading.ITimer.yml\" sourcestartlinenumber=\"1\">Defines an interface for a timer to use for performing actions on a tick.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.TaskExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.TaskExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading.TaskExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Threading.TaskExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for tasks.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.Throttler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.Throttler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading.Throttler",
+      "Summary": "<p sourcefile=\"api/MADE.Threading.Throttler.yml\" sourcestartlinenumber=\"1\">Defines a throttler that limits execution of an action to at most once per specified time interval.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.Timer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.Timer.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading.Timer",
+      "Summary": "<p sourcefile=\"api/MADE.Threading.Timer.yml\" sourcestartlinenumber=\"1\">Defines a timer to use for performing actions on a tick.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Threading.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Threading.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Threading",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Exceptions.DefaultExceptionHandler.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Exceptions.DefaultExceptionHandler.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Exceptions.DefaultExceptionHandler",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Exceptions.DefaultExceptionHandler.yml\" sourcestartlinenumber=\"1\">Defines a default exception handler for exceptions thrown which are not explicitly handled.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Exceptions.ExceptionResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Exceptions.ExceptionResponse-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Exceptions.ExceptionResponse<TException>",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Exceptions.ExceptionResponse-1.yml\" sourcestartlinenumber=\"1\">Defines a response to a an exception being thrown.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Exceptions.HttpContextExceptionsMiddleware.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Exceptions.HttpContextExceptionsMiddleware.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Exceptions.HttpContextExceptionsMiddleware",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Exceptions.HttpContextExceptionsMiddleware.yml\" sourcestartlinenumber=\"1\">Defines a middleware for handling JSON exceptions.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Exceptions.IHttpContextExceptionHandler-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Exceptions.IHttpContextExceptionHandler-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Exceptions.IHttpContextExceptionHandler<TException>",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Exceptions.IHttpContextExceptionHandler-1.yml\" sourcestartlinenumber=\"1\">Defines an interface for a <xref href=\"Microsoft.AspNetCore.Http.HttpContext\" data-throw-if-not-resolved=\"false\"></xref> exception handler.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Exceptions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Exceptions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Exceptions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Extensions.ApiVersioningExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Extensions.ApiVersioningExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Extensions.ApiVersioningExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Extensions.ApiVersioningExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for API versioning.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Extensions.HttpContextExceptionHandlerExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Extensions.HttpContextExceptionHandlerExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Extensions.HttpContextExceptionHandlerExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Extensions.HttpContextExceptionHandlerExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"MADE.Web.Exceptions.IHttpContextExceptionHandler%601\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Extensions.HttpContextExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Extensions.HttpContextExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Extensions.HttpContextExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Extensions.HttpContextExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for a <xref href=\"Microsoft.AspNetCore.Http.HttpContext\" data-throw-if-not-resolved=\"false\"></xref> object.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Extensions.HttpResponseExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Extensions.HttpResponseExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Extensions.HttpResponseExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Extensions.HttpResponseExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for a <xref href=\"Microsoft.AspNetCore.Http.HttpResponse\" data-throw-if-not-resolved=\"false\"></xref> object.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Extensions.IntExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Extensions.IntExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Extensions.IntExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Extensions.IntExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for integer values.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Extensions.QueryCollectionExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Extensions.QueryCollectionExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Extensions.QueryCollectionExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Extensions.QueryCollectionExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"Microsoft.AspNetCore.Http.IQueryCollection\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Identity.AuthenticatedUser.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Identity.AuthenticatedUser.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Identity.AuthenticatedUser",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Identity.AuthenticatedUser.yml\" sourcestartlinenumber=\"1\">Defines a base model for an authenticated user within the application.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Identity.AuthenticatedUserAccessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Identity.AuthenticatedUserAccessor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Identity.AuthenticatedUserAccessor",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Identity.AuthenticatedUserAccessor.yml\" sourcestartlinenumber=\"1\">Defines an accessor for retrieving the authenticated user from a <xref href=\"Microsoft.AspNetCore.Http.IHttpContextAccessor\" data-throw-if-not-resolved=\"false\"></xref>.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Identity.AuthenticatedUserExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Identity.AuthenticatedUserExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Identity.AuthenticatedUserExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Identity.AuthenticatedUserExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for <xref href=\"MADE.Web.Identity.AuthenticatedUser\" data-throw-if-not-resolved=\"false\"></xref> objects.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Identity.IAuthenticatedUserAccessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Identity.IAuthenticatedUserAccessor.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Identity.IAuthenticatedUserAccessor",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Identity.IAuthenticatedUserAccessor.yml\" sourcestartlinenumber=\"1\">Defines an interface for accessing an authenticated user's claims principal.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Identity.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Identity.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Identity",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Mvc.Extensions.ControllerBaseExtensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Mvc.Extensions.ControllerBaseExtensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Mvc.Extensions.ControllerBaseExtensions",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Mvc.Extensions.ControllerBaseExtensions.yml\" sourcestartlinenumber=\"1\">Defines a collection of extensions for MVC <xref href=\"Microsoft.AspNetCore.Mvc.ControllerBase\" data-throw-if-not-resolved=\"false\"></xref> instances.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Mvc.Extensions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Mvc.Extensions.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Mvc.Extensions",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Mvc.Responses.ForbiddenObjectResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Mvc.Responses.ForbiddenObjectResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Mvc.Responses.ForbiddenObjectResult",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Mvc.Responses.ForbiddenObjectResult.yml\" sourcestartlinenumber=\"1\">Defines an <xref href=\"Microsoft.AspNetCore.Mvc.ObjectResult\" data-throw-if-not-resolved=\"false\"></xref> that when executed will produce a Forbidden (403) response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Mvc.Responses.InternalServerErrorObjectResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Mvc.Responses.InternalServerErrorObjectResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Mvc.Responses.InternalServerErrorObjectResult",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Mvc.Responses.InternalServerErrorObjectResult.yml\" sourcestartlinenumber=\"1\">Defines an <xref href=\"Microsoft.AspNetCore.Mvc.ObjectResult\" data-throw-if-not-resolved=\"false\"></xref> that when executed will produce a Internal Server Error (500) response.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Mvc.Responses.JsonResult.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Mvc.Responses.JsonResult.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Mvc.Responses.JsonResult",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Mvc.Responses.JsonResult.yml\" sourcestartlinenumber=\"1\">Defines a model for a result of a request that is serialized as JSON.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Mvc.Responses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Mvc.Responses.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Mvc.Responses",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Requests.IPaginatedRequest-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Requests.IPaginatedRequest-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Requests.IPaginatedRequest<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Requests.IPaginatedRequest-1.yml\" sourcestartlinenumber=\"1\">Defines an interface for a request with paginated results of the specified response type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Requests.PaginatedRequest-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Requests.PaginatedRequest-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Requests.PaginatedRequest<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Requests.PaginatedRequest-1.yml\" sourcestartlinenumber=\"1\">Defines a request with paginated results of the specified response type.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Requests.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Requests.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Requests",
+      "Summary": null
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Responses.IPaginatedResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Responses.IPaginatedResponse-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Responses.IPaginatedResponse<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Responses.IPaginatedResponse-1.yml\" sourcestartlinenumber=\"1\">Defines an interface for a response to a <xref href=\"MADE.Web.Requests.IPaginatedRequest%601\" data-throw-if-not-resolved=\"false\"></xref> request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Responses.PaginatedResponse-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Responses.PaginatedResponse-1.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Responses.PaginatedResponse<T>",
+      "Summary": "<p sourcefile=\"api/MADE.Web.Responses.PaginatedResponse-1.yml\" sourcestartlinenumber=\"1\">Defines a response to a <xref href=\"MADE.Web.Requests.IPaginatedRequest%601\" data-throw-if-not-resolved=\"false\"></xref> request.</p>\n"
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/MADE.Web.Responses.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/MADE.Web.Responses.html"
+        }
+      },
+      "version": "",
+      "Uid": null,
+      "IsMRef": true,
+      "Title": "MADE.Web.Responses",
+      "Summary": null
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "api/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "api/toc.json"
+        },
+        ".html": {
+          "relative_path": "api/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/collections/collection-operations.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/collections/collection-operations.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/collections/comparing-objects.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/collections/comparing-objects.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/collections/dictionary-extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/collections/dictionary-extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/collections/observable-collections.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/collections/observable-collections.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/collections/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/collections/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/collections/queryable-extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/collections/queryable-extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-converters/datetime-extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-converters/datetime-extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-converters/math-and-units.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-converters/math-and-units.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-converters/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-converters/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-converters/string-extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-converters/string-extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-converters/value-converters.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-converters/value-converters.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-efcore/audit-tracking.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-efcore/audit-tracking.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-efcore/dbcontext-extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-efcore/dbcontext-extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-efcore/entity-base.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-efcore/entity-base.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-efcore/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-efcore/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-efcore/query-extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-efcore/query-extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-efcore/soft-delete.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-efcore/soft-delete.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-serialization/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-serialization/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-validation/async-validation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-validation/async-validation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-validation/built-in-validators.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-validation/built-in-validators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-validation/custom-validators.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-validation/custom-validators.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-validation/fluent-validation.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-validation/fluent-validation.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/data-validation/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/data-validation/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/diagnostics/exception-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/diagnostics/exception-handling.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/diagnostics/file-logging.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/diagnostics/file-logging.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/diagnostics/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/diagnostics/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/get-started/migration/v2-to-v3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/get-started/migration/v2-to-v3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/get-started/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/get-started/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/get-started/quickstart.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/get-started/quickstart.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/get-started/whats-new/v3.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/get-started/whats-new/v3.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/networking/file-uploads.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/networking/file-uploads.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/networking/getting-started.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/networking/getting-started.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/networking/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/networking/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/networking/request-manager.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/networking/request-manager.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/networking/request-types.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/networking/request-types.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/networking/retry-handling.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/networking/retry-handling.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/runtime/action-chaining.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/runtime/action-chaining.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/runtime/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/runtime/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/runtime/weak-references.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/runtime/weak-references.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/testing/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/testing/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/threading/async-lazy.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/threading/async-lazy.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/threading/debouncer-throttler.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/threading/debouncer-throttler.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/threading/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/threading/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/threading/task-extensions.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/threading/task-extensions.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/threading/timer.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/threading/timer.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "articles/toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "articles/toc.json"
+        },
+        ".html": {
+          "relative_path": "articles/toc.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/web-mvc/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/web-mvc/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/web/api-versioning.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/web/api-versioning.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/web/authentication.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/web/authentication.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/web/exception-middleware.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/web/exception-middleware.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/web/overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/web/overview.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "articles/web/pagination.md",
+      "output": {
+        ".html": {
+          "relative_path": "articles/web/pagination.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/FilePicker.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/FilePicker.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/FilePickerSample.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/FilePickerSample.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ImageBehavior.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ImageBehavior.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/InputValidator.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/InputValidator.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/Logo.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/Logo.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MultiSelectDropDownListCollapsed.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MultiSelectDropDownListCollapsed.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MultiSelectDropDownListExpanded.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MultiSelectDropDownListExpanded.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/MultiWindow.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/MultiWindow.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/ProjectBanner.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/ProjectBanner.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/data.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/data.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/github.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/github.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/love.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/love.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/model.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/model.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/network.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/network.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "images/icons/validation.png",
+      "output": {
+        "resource": {
+          "relative_path": "images/icons/validation.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".json": {
+          "relative_path": "toc.json"
+        },
+        ".html": {
+          "relative_path": "toc.html"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

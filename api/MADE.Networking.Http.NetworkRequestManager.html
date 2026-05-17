@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class NetworkRequestManager | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class NetworkRequestManager | MADE.NET ">
+      
+      <meta name="description" content="Defines a manager for executing queued network requests.">
+      <link rel="icon" href="../images/Logo.png">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/new/main/apiSpec/new?filename=MADE_Networking_Http_NetworkRequestManager.md&amp;value=---%0Auid%3A%20MADE.Networking.Http.NetworkRequestManager%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="MADE.Networking.Http.NetworkRequestManager">
+
+
+
+  <h1 id="MADE_Networking_Http_NetworkRequestManager" data-uid="MADE.Networking.Http.NetworkRequestManager" class="text-break">
+Class NetworkRequestManager  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="MADE.html">MADE</a>.<a class="xref" href="MADE.Networking.html">Networking</a>.<a class="xref" href="MADE.Networking.Http.html">Http</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>MADE.Networking.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"><p>Defines a manager for executing queued network requests.</p>
+</div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public sealed class NetworkRequestManager : INetworkRequestManager, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">NetworkRequestManager</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="MADE.Networking.Http.INetworkRequestManager.html">INetworkRequestManager</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+  <dl class="typelist extensionMethods">
+    <dt>Extension Methods</dt>
+    <dd>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyNames_System_Object_">ReflectionExtensions.GetPropertyNames(object)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Runtime.Extensions.ReflectionExtensions.html#MADE_Runtime_Extensions_ReflectionExtensions_GetPropertyValue__1_System_Object_System_String_">ReflectionExtensions.GetPropertyValue&lt;T&gt;(object, string)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldBeNull_System_Object_">ObjectAssertExtensions.ShouldBeNull(object?)</a>
+  </div>
+  <div>
+      <a class="xref" href="MADE.Testing.ObjectAssertExtensions.html#MADE_Testing_ObjectAssertExtensions_ShouldNotBeNull_System_Object_">ObjectAssertExtensions.ShouldNotBeNull(object?)</a>
+  </div>
+  </dd></dl>
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager__ctor_" data-uid="MADE.Networking.Http.NetworkRequestManager.#ctor*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager__ctor" data-uid="MADE.Networking.Http.NetworkRequestManager.#ctor">
+  NetworkRequestManager()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L24"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="MADE.Networking.Http.NetworkRequestManager.html">NetworkRequestManager</a> class.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public NetworkRequestManager()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_CurrentQueue_" data-uid="MADE.Networking.Http.NetworkRequestManager.CurrentQueue*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_CurrentQueue" data-uid="MADE.Networking.Http.NetworkRequestManager.CurrentQueue">
+  CurrentQueue
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L34"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Gets the current queue of network requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ConcurrentDictionary&lt;string, NetworkRequestCallback&gt; CurrentQueue { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.concurrent.concurrentdictionary-2">ConcurrentDictionary</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>, <a class="xref" href="MADE.Networking.Http.Requests.NetworkRequestCallback.html">NetworkRequestCallback</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_AddOrUpdate_" data-uid="MADE.Networking.Http.NetworkRequestManager.AddOrUpdate*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_AddOrUpdate__2___0_System_Action___1__" data-uid="MADE.Networking.Http.NetworkRequestManager.AddOrUpdate``2(``0,System.Action{``1})">
+  AddOrUpdate&lt;TRequest, TResponse&gt;(TRequest, Action&lt;TResponse&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L132"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds or updates a network request in the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddOrUpdate&lt;TRequest, TResponse&gt;(TRequest request, Action&lt;TResponse&gt; successCallback) where TRequest : NetworkRequest</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <span class="xref">TRequest</span></dt>
+    <dd><p>The network request to execute.</p>
+</dd>
+    <dt><code>successCallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;TResponse&gt;</dt>
+    <dd><p>The action to execute when receiving a successful response.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TRequest</code></dt>
+    <dd><p>The type of network request.</p>
+</dd>
+    <dt><code>TResponse</code></dt>
+    <dd><p>The expected response type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The <code class="paramref">successCallback</code> throws an exception acquiring method info.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.overflowexception">OverflowException</a></dt>
+    <dd><p>The <a class="xref" href="MADE.Networking.Http.NetworkRequestManager.html#MADE_Networking_Http_NetworkRequestManager_CurrentQueue">CurrentQueue</a> already contains the maximum number of elements (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32.maxvalue">MaxValue</a>).</p>
+</dd>
+  </dl>
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_AddOrUpdate_" data-uid="MADE.Networking.Http.NetworkRequestManager.AddOrUpdate*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_AddOrUpdate__3___0_System_Action___1__System_Action___2__" data-uid="MADE.Networking.Http.NetworkRequestManager.AddOrUpdate``3(``0,System.Action{``1},System.Action{``2})">
+  AddOrUpdate&lt;TRequest, TResponse, TErrorResponse&gt;(TRequest, Action&lt;TResponse&gt;, Action&lt;TErrorResponse&gt;?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L161"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Adds or updates a network request in the queue.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void AddOrUpdate&lt;TRequest, TResponse, TErrorResponse&gt;(TRequest request, Action&lt;TResponse&gt; successCallback, Action&lt;TErrorResponse&gt;? errorCallback) where TRequest : NetworkRequest</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <span class="xref">TRequest</span></dt>
+    <dd><p>The network request to execute.</p>
+</dd>
+    <dt><code>successCallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;TResponse&gt;</dt>
+    <dd><p>The action to execute when receiving a successful response.</p>
+</dd>
+    <dt><code>errorCallback</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.action-1">Action</a>&lt;TErrorResponse&gt;</dt>
+    <dd><p>The action to execute when receiving an error response.</p>
+</dd>
+  </dl>
+
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>TRequest</code></dt>
+    <dd><p>The type of network request.</p>
+</dd>
+    <dt><code>TResponse</code></dt>
+    <dd><p>The expected response type.</p>
+</dd>
+    <dt><code>TErrorResponse</code></dt>
+    <dd><p>The expected error response type.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+  <h4 class="section">Exceptions</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.exception">Exception</a></dt>
+    <dd><p>The <code class="paramref">successCallback</code> or <code class="paramref">errorCallback</code> throws an exception acquiring method info.</p>
+</dd>
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.overflowexception">OverflowException</a></dt>
+    <dd><p>The <a class="xref" href="MADE.Networking.Http.NetworkRequestManager.html#MADE_Networking_Http_NetworkRequestManager_CurrentQueue">CurrentQueue</a> already contains the maximum number of elements (<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32.maxvalue">MaxValue</a>).</p>
+</dd>
+  </dl>
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_Dispose_" data-uid="MADE.Networking.Http.NetworkRequestManager.Dispose*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_Dispose" data-uid="MADE.Networking.Http.NetworkRequestManager.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_ProcessCurrentQueueAsync_" data-uid="MADE.Networking.Http.NetworkRequestManager.ProcessCurrentQueueAsync*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_ProcessCurrentQueueAsync" data-uid="MADE.Networking.Http.NetworkRequestManager.ProcessCurrentQueueAsync">
+  ProcessCurrentQueueAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Processes the current queue of network requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task ProcessCurrentQueueAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd><p>An asynchronous operation.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_Remove_" data-uid="MADE.Networking.Http.NetworkRequestManager.Remove*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_Remove_MADE_Networking_Http_Requests_INetworkRequest_" data-uid="MADE.Networking.Http.NetworkRequestManager.Remove(MADE.Networking.Http.Requests.INetworkRequest)">
+  Remove(INetworkRequest)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L186"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes a network request from the queue.</p>
+<p>
+If the request is no longer in the queue, this method does nothing.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Remove(INetworkRequest request)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>request</code> <a class="xref" href="MADE.Networking.Http.Requests.INetworkRequest.html">INetworkRequest</a></dt>
+    <dd><p>The request to remove from the queue.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_RemoveByKey_" data-uid="MADE.Networking.Http.NetworkRequestManager.RemoveByKey*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_RemoveByKey_System_String_" data-uid="MADE.Networking.Http.NetworkRequestManager.RemoveByKey(System.String)">
+  RemoveByKey(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L198"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Removes a network request from the queue by the registered key identifier.</p>
+<p>
+If the request is no longer in the queue, this method does nothing.
+</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void RemoveByKey(string key)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>key</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd><p>The key corresponding to the network request to remove from the queue.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_Start_" data-uid="MADE.Networking.Http.NetworkRequestManager.Start*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_Start" data-uid="MADE.Networking.Http.NetworkRequestManager.Start">
+  Start()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L39"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the manager processing the queue of network requests at a default time period of 1 minute.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Start()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_Start_" data-uid="MADE.Networking.Http.NetworkRequestManager.Start*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_Start_System_TimeSpan_" data-uid="MADE.Networking.Http.NetworkRequestManager.Start(System.TimeSpan)">
+  Start(TimeSpan)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L50"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Starts the manager processing the queue of network requests.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Start(TimeSpan processPeriod)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>processPeriod</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.timespan">TimeSpan</a></dt>
+    <dd><p>The time period between each process of the queue.</p>
+</dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="MADE_Networking_Http_NetworkRequestManager_Stop_" data-uid="MADE.Networking.Http.NetworkRequestManager.Stop*"></a>
+
+  <h3 id="MADE_Networking_Http_NetworkRequestManager_Stop" data-uid="MADE.Networking.Http.NetworkRequestManager.Stop">
+  Stop()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Stops the processing of the network manager queues.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Stop()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/src/MADE.Networking/Http/NetworkRequestManager.cs/#L14" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

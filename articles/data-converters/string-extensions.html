@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>String extensions | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="String extensions | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../images/Logo.png">
+      <link rel="stylesheet" href="../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../public/main.css">
+      <meta name="docfx:navrel" content="../../toc.html">
+      <meta name="docfx:tocrel" content="../toc.html">
+      
+      <meta name="docfx:rel" content="../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-converters/string-extensions.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../index.html">
+            <img id="logo" class="svg" src="../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="data-converters-string-extensions">
+<h1 id="string-extensions">String extensions</h1>
+
+<p>The <code>MADE.Data.Converters.Extensions.StringExtensions</code> class provides extension methods for common string manipulation and parsing operations. These cover the transformations you'd otherwise implement as utility methods in every project.</p>
+<h2 id="text-formatting">Text formatting</h2>
+<h3 id="totitlecase">ToTitleCase</h3>
+<p>Converts a string to title case (capitalizing the first letter of each word):</p>
+<pre><code class="lang-csharp">string title = &quot;hello world&quot;.ToTitleCase(); // &quot;Hello World&quot;
+</code></pre>
+<h3 id="todefaultcase">ToDefaultCase</h3>
+<p>Converts a string to lowercase:</p>
+<pre><code class="lang-csharp">string lower = &quot;HELLO&quot;.ToDefaultCase(); // &quot;hello&quot;
+</code></pre>
+<h3 id="truncate">Truncate</h3>
+<p>Truncates a string to a specified maximum length:</p>
+<pre><code class="lang-csharp">string preview = &quot;This is a long description of a product&quot;.Truncate(20);
+// &quot;This is a long descr&quot;
+</code></pre>
+<h2 id="url-slug-generation-with-toslug">URL slug generation with ToSlug</h2>
+<p>Converts a string to a URL-friendly slug by removing diacritics, replacing non-alphanumeric characters with hyphens, and lowercasing. This is essential for generating clean URLs from user input or content titles.</p>
+<pre><code class="lang-csharp">string slug = &quot;How To Build &amp; Publish NuGet Packages!&quot;.ToSlug();
+// &quot;how-to-build-publish-nuget-packages&quot;
+
+string international = &quot;Cafe\u0301 Résumé&quot;.ToSlug();
+// &quot;cafe-resume&quot;
+</code></pre>
+<p>The slug generator handles Unicode diacritics correctly, collapsing accented characters to their base forms.</p>
+<h2 id="base64-encoding">Base64 encoding</h2>
+<p>Convert strings to and from Base64:</p>
+<pre><code class="lang-csharp">string encoded = &quot;Hello, World!&quot;.ToBase64();     // &quot;SGVsbG8sIFdvcmxkIQ==&quot;
+string decoded = encoded.FromBase64();             // &quot;Hello, World!&quot;
+</code></pre>
+<h2 id="safe-numeric-parsing">Safe numeric parsing</h2>
+<p>The standard <code>int.Parse</code> and <code>double.Parse</code> methods throw exceptions on invalid input. These extensions return <code>null</code> instead, which is cleaner when you're dealing with user input or configuration values that might not be valid:</p>
+<pre><code class="lang-csharp">// Returns null instead of throwing on invalid input
+int? count = &quot;42&quot;.ToNullableInt();        // 42
+int? invalid = &quot;not-a-number&quot;.ToNullableInt(); // null
+
+float? price = &quot;19.99&quot;.ToNullableFloat();  // 19.99f
+double? rate = &quot;0.05&quot;.ToNullableDouble();  // 0.05
+
+// Non-nullable variants (return 0 on failure)
+int count = &quot;42&quot;.ToInt();           // 42
+float price = &quot;19.99&quot;.ToFloat();    // 19.99f
+double rate = &quot;0.05&quot;.ToDouble();    // 0.05
+</code></pre>
+<h3 id="boolean-parsing-with-toboolean">Boolean parsing with ToBoolean</h3>
+<p>Parses a string to a boolean value:</p>
+<pre><code class="lang-csharp">bool isEnabled = &quot;true&quot;.ToBoolean();  // true
+bool isActive = &quot;false&quot;.ToBoolean();  // false
+</code></pre>
+<h2 id="stream-conversion-with-tomemorystreamasync">Stream conversion with ToMemoryStreamAsync</h2>
+<p>Converts a string to a <code>MemoryStream</code>, useful when an API expects a stream but you have string content:</p>
+<pre><code class="lang-csharp">using var stream = await jsonContent.ToMemoryStreamAsync();
+await blobClient.UploadAsync(stream);
+</code></pre>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/data-converters/string-extensions.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

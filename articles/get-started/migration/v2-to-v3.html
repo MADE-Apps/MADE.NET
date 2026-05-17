@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Migrating from v2 to v3 | MADE.NET </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Migrating from v2 to v3 | MADE.NET ">
+      
+      
+      <link rel="icon" href="../../../images/Logo.png">
+      <link rel="stylesheet" href="../../../public/docfx.min.css">
+      <link rel="stylesheet" href="../../../public/main.css">
+      <meta name="docfx:navrel" content="../../../toc.html">
+      <meta name="docfx:tocrel" content="../../toc.html">
+      
+      <meta name="docfx:rel" content="../../../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/get-started/migration/v2-to-v3.md/#L1">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../../../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../../../index.html">
+            <img id="logo" class="svg" src="../../../images/Logo.png" alt="">
+            
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="get-started-migration-v2-to-v3">
+<h1 id="migrating-from-v2-to-v3">Migrating from v2 to v3</h1>
+
+<p>This guide covers all breaking changes in MADE.NET v3.0 and provides step-by-step instructions for updating your code.</p>
+<h2 id="target-framework-changes">Target framework changes</h2>
+<p>All libraries now target <code>net8.0</code> and <code>net10.0</code>. If your project targets an earlier framework, you must update your <code>TargetFramework</code> before upgrading.</p>
+<pre><code class="lang-xml">&lt;!-- Before --&gt;
+&lt;TargetFramework&gt;net6.0&lt;/TargetFramework&gt;
+
+&lt;!-- After --&gt;
+&lt;TargetFramework&gt;net8.0&lt;/TargetFramework&gt;
+</code></pre>
+<h2 id="newtonsoftjson-replaced-with-systemtextjson">Newtonsoft.Json replaced with System.Text.Json</h2>
+<p>The following libraries have migrated from <code>Newtonsoft.Json</code> to <code>System.Text.Json</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MADE.Web.Mvc</td>
+<td>Public API signature changes</td>
+</tr>
+<tr>
+<td>MADE.Web</td>
+<td>Public API signature changes</td>
+</tr>
+<tr>
+<td>MADE.Networking</td>
+<td>Internal only, no public API changes</td>
+</tr>
+<tr>
+<td>MADE.Data.Serialization</td>
+<td>Type replaced (see below)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="updating-madewebmvc">Updating MADE.Web.Mvc</h3>
+<p>Replace <code>JsonSerializerSettings</code> with <code>JsonSerializerOptions</code> in calls to <code>Json()</code> and when constructing <code>JsonResult</code>:</p>
+<pre><code class="lang-csharp">// Before (v2)
+using Newtonsoft.Json;
+
+var result = controller.Json(value, HttpStatusCode.OK, new JsonSerializerSettings
+{
+    NullValueHandling = NullValueHandling.Ignore
+});
+
+// After (v3)
+using System.Text.Json;
+using System.Text.Json.Serialization;
+
+var result = controller.Json(value, HttpStatusCode.OK, new JsonSerializerOptions
+{
+    DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+});
+</code></pre>
+<h3 id="updating-madeweb">Updating MADE.Web</h3>
+<p>All <code>HttpResponseExtensions.WriteJsonAsync()</code> overloads that accepted <code>JsonSerializerSettings</code> now accept <code>JsonSerializerOptions</code>. Update the parameter type at each call site.</p>
+<h3 id="updating-madenetworking">Updating MADE.Networking</h3>
+<p>No code changes required. Internal serialization now uses <code>System.Text.Json</code> with <code>PropertyNameCaseInsensitive = true</code> to maintain behavioral compatibility.</p>
+<h3 id="common-newtonsoftjson-to-systemtextjson-mappings">Common Newtonsoft.Json to System.Text.Json mappings</h3>
+<table>
+<thead>
+<tr>
+<th>Newtonsoft.Json</th>
+<th>System.Text.Json</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>JsonSerializerSettings</code></td>
+<td><code>JsonSerializerOptions</code></td>
+</tr>
+<tr>
+<td><code>JsonConvert.SerializeObject()</code></td>
+<td><code>JsonSerializer.Serialize()</code></td>
+</tr>
+<tr>
+<td><code>JsonConvert.DeserializeObject&lt;T&gt;()</code></td>
+<td><code>JsonSerializer.Deserialize&lt;T&gt;()</code></td>
+</tr>
+<tr>
+<td><code>NullValueHandling.Ignore</code></td>
+<td><code>DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull</code></td>
+</tr>
+<tr>
+<td><code>ReferenceLoopHandling.Ignore</code></td>
+<td><code>ReferenceHandler = ReferenceHandler.IgnoreCycles</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="removing-the-newtonsoftjson-dependency">Removing the Newtonsoft.Json dependency</h3>
+<p>After updating your code, remove <code>Newtonsoft.Json</code> from any projects that only used it through MADE.NET:</p>
+<pre><code class="lang-bash">dotnet remove package Newtonsoft.Json
+</code></pre>
+<h2 id="jsontypemigrationserializationbinder-replaced">JsonTypeMigrationSerializationBinder replaced</h2>
+<p>The Newtonsoft.Json-based <code>JsonTypeMigrationSerializationBinder</code> in the <code>MADE.Data.Serialization.Json.Binders</code> namespace has been removed. Replace it with <code>JsonTypeMigrationConverter</code> in the <code>MADE.Data.Serialization.Json.Converters</code> namespace.</p>
+<pre><code class="lang-csharp">// Before (v2)
+using MADE.Data.Serialization.Json.Binders;
+
+var binder = new JsonTypeMigrationSerializationBinder();
+binder.AddTypeMigration(new JsonTypeMigration(
+    &quot;OldAssembly&quot;, &quot;OldNamespace.OldType&quot;, typeof(NewType)));
+
+var settings = new JsonSerializerSettings
+{
+    TypeNameHandling = TypeNameHandling.All,
+    SerializationBinder = binder
+};
+var result = JsonConvert.DeserializeObject&lt;object&gt;(json, settings);
+
+// After (v3)
+using MADE.Data.Serialization.Json.Converters;
+
+var converter = new JsonTypeMigrationConverter();
+converter.AddTypeMigration(new JsonTypeMigration(
+    &quot;OldAssembly&quot;, &quot;OldNamespace.OldType&quot;, typeof(NewType)));
+
+var options = new JsonSerializerOptions();
+options.Converters.Add(converter);
+var result = JsonSerializer.Deserialize&lt;object&gt;(json, options);
+</code></pre>
+<p>The <code>AddTypeMigrationAsync</code> method has also been renamed to <code>AddTypeMigration</code> and is now synchronous.</p>
+<h2 id="zentityframeworkplusefcore-removed">Z.EntityFramework.Plus.EFCore removed</h2>
+<p>The <code>Z.EntityFramework.Plus.EFCore</code> dependency has been removed from <code>MADE.Data.EFCore</code>. If you were using its <code>OrderBy</code> or pagination features through MADE, these are now provided by built-in <code>QueryableExtensions</code>:</p>
+<ul>
+<li><code>query.Page(page, pageSize)</code> for pagination</li>
+<li><code>query.OrderBy(propertyName, descending)</code> for dynamic ordering</li>
+</ul>
+<p>The API is unchanged. If you used <code>Z.EntityFramework.Plus.EFCore</code> directly for other features, you can continue referencing it in your own project.</p>
+<h2 id="ieventlogger-methods-changed-from-void-to-task">IEventLogger methods changed from void to Task</h2>
+<p>All 15 methods on <code>IEventLogger</code> now return <code>Task</code> instead of <code>void</code>:</p>
+<ul>
+<li><code>WriteDebug(string)</code>, <code>WriteDebug(string, Exception)</code>, <code>WriteDebug(Exception)</code></li>
+<li><code>WriteInfo(string)</code>, <code>WriteInfo(string, Exception)</code>, <code>WriteInfo(Exception)</code></li>
+<li><code>WriteWarning(string)</code>, <code>WriteWarning(string, Exception)</code>, <code>WriteWarning(Exception)</code></li>
+<li><code>WriteError(string)</code>, <code>WriteError(string, Exception)</code>, <code>WriteError(Exception)</code></li>
+<li><code>WriteCritical(string)</code>, <code>WriteCritical(string, Exception)</code>, <code>WriteCritical(Exception)</code></li>
+</ul>
+<p>If you implement <code>IEventLogger</code>, update your method signatures and <code>await</code> calls to the logger:</p>
+<pre><code class="lang-csharp">// Before (v2)
+public void WriteInfo(string message) { /* ... */ }
+
+logger.WriteInfo(&quot;Starting process&quot;);
+
+// After (v3)
+public Task WriteInfo(string message) { /* ... */ }
+
+await logger.WriteInfo(&quot;Starting process&quot;);
+</code></pre>
+<h2 id="timer-moved-from-maderuntime-to-madethreading">Timer moved from MADE.Runtime to MADE.Threading</h2>
+<p><code>Timer</code> and <code>ITimer</code> have moved from the <code>MADE.Runtime</code> namespace to <code>MADE.Threading</code>. Update your <code>using</code> statements and package references:</p>
+<pre><code class="lang-csharp">// Before (v2)
+using MADE.Runtime;
+
+// After (v3)
+using MADE.Threading;
+</code></pre>
+<p>If your project referenced <code>MADE.Runtime</code> solely for <code>Timer</code>, replace the package reference:</p>
+<pre><code class="lang-xml">&lt;!-- Before --&gt;
+&lt;PackageReference Include=&quot;MADE.Runtime&quot; /&gt;
+
+&lt;!-- After --&gt;
+&lt;PackageReference Include=&quot;MADE.Threading&quot; /&gt;
+</code></pre>
+<h2 id="windows-uwp-converters-removed">Windows UWP converters removed</h2>
+<p>The obsolete Windows UWP partial classes <code>BooleanToStringValueConverter.Windows.cs</code> and <code>DateTimeToStringValueConverter.Windows.cs</code> have been removed. These were guarded by <code>#if WINDOWS_UWP</code> and marked <code>[Obsolete]</code> in v2. The cross-platform converter classes remain unchanged.</p>
+<h2 id="removed-dependencies-summary">Removed dependencies summary</h2>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th>Removed</th>
+<th>Replacement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MADE.Networking</td>
+<td><code>Newtonsoft.Json</code></td>
+<td><code>System.Text.Json</code> (built-in)</td>
+</tr>
+<tr>
+<td>MADE.Web</td>
+<td><code>Newtonsoft.Json</code></td>
+<td><code>System.Text.Json</code> (built-in)</td>
+</tr>
+<tr>
+<td>MADE.Web.Mvc</td>
+<td><code>Newtonsoft.Json</code></td>
+<td><code>System.Text.Json</code> (built-in)</td>
+</tr>
+<tr>
+<td>MADE.Data.Serialization</td>
+<td><code>Newtonsoft.Json</code></td>
+<td><code>System.Text.Json</code> (built-in)</td>
+</tr>
+<tr>
+<td>MADE.Data.EFCore</td>
+<td><code>Z.EntityFramework.Plus.EFCore</code></td>
+<td>Custom <code>QueryableExtensions</code></td>
+</tr>
+</tbody>
+</table>
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/MADE-Apps/MADE.NET/blob/main/docs/articles/get-started/migration/v2-to-v3.md/#L1" class="edit-link">Edit this page</a>
+        </div>
+
+        <div class="next-article d-print-none border-top" id="nextArticle"></div>
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          Copyright (c) MADE Apps
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
